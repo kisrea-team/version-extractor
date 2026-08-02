@@ -1,0 +1,22 @@
+{
+  "name": "version-extractor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "规则化软件版本号提取模型 + 基准测试工具（不依赖 LLM）",
+  "type": "module",
+  "scripts": {
+    "bench": "tsx scripts/bench.ts",
+    "bench:cases": "tsx scripts/bench.ts --cases benchmark/cases.json",
+    "probe": "tsx scripts/bench.ts --probe"
+  },
+  "dependencies": {
+    "got-scraping": "^4.2.1",
+    "header-generator": "^2.1.87",
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5"
+  }
+}
