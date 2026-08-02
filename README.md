@@ -77,4 +77,6 @@ npm run probe -- <url>
 
 ## License
 
-MIT
+[GNU General Public License v3.0](LICENSE) — 自由软件,允许再分发与修改,但衍生作品必须同样以 GPL 发布。
+
+Copyright (C) 2026 kisrea-team
