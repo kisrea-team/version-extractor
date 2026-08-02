@@ -26,6 +26,7 @@ interface TestCase {
   expectedVersion: string;
   currentDbVersion?: string;
   expectChangelog?: boolean;
+  registryKey?: string; // 可选：结构化版本源，如 "winget:7zip.7zip" / "brew:node"
 }
 
 const BUILTIN_CASES: TestCase[] = [
@@ -102,7 +103,7 @@ async function main() {
     changelogCounted: boolean;
   }
   async function runCase(c: TestCase): Promise<CaseResult> {
-    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN });
+    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey });
     const extracted = out.version?.version || null;
     const conf = out.version?.confidence || '—';
     let verdict: string;
@@ -125,7 +126,7 @@ async function main() {
       verdict,
       conf: String(conf),
       changelogOk,
-      browser: out.neededBrowser ? '🖥️' : '',
+      browser: out.neededBrowser ? '🖥️' : out.registryVersion ? '📦' : '',
       versionPass: verdict.startsWith('PASS'),
       versionCounted: true,
       changelogPass,

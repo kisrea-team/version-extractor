@@ -9,6 +9,7 @@ import { classifySource, enrichSource } from './sources';
 import { extractVersionFromHtml } from './version-extract';
 import { extractChangelog } from './changelog';
 import { fetchPage, fetchPageRendered, closeBrowser } from './crawler';
+import { queryRegistry } from './registries';
 import type { ChangelogEntry, UpdateSource, VersionResult } from './types';
 
 export interface ExtractOutcome {
@@ -17,11 +18,40 @@ export interface ExtractOutcome {
   version: VersionResult;
   changelog: ChangelogEntry | null;
   neededBrowser: boolean; // 是否升级到了浏览器渲染
+  registryVersion?: string | null; // 注册表确定性版本（最高优先级）
+  registryKey?: string | null;
   renderedText?: string;
 }
 
-export async function extractFromUrl(url: string, opts: { token?: string } = {}): Promise<ExtractOutcome> {
+export async function extractFromUrl(
+  url: string,
+  opts: { token?: string; registryKey?: string } = {}
+): Promise<ExtractOutcome> {
   const source = await enrichSource(classifySource(url));
+
+  // 0. 注册表优先：确定性命名字段，优于任何 HTML 猜测；命中直接短路（快且权威）
+  let registryVersion: string | null = null;
+  let registryResolvedKey: string | null = null;
+  if (opts.registryKey) {
+    try {
+      const reg = await queryRegistry(opts.registryKey, { token: opts.token });
+      registryVersion = reg.version;
+      registryResolvedKey = opts.registryKey;
+    } catch {
+      // 注册表查询失败则回退 HTML
+    }
+  }
+  if (registryVersion) {
+    const finalVersion: VersionResult = {
+      version: registryVersion,
+      source: 'registry',
+      confidence: 'high',
+      needsAiCheck: false,
+      needsBrowser: false,
+      suggestedRegex: null,
+    };
+    return { url, source, version: finalVersion, changelog: null, neededBrowser: false, registryVersion, registryKey: registryResolvedKey };
+  }
 
   // changelog-page / rss 走页面；github 走 API（无需渲染）
   let page = source.type === 'changelog-page' || source.type === 'rss'
@@ -35,7 +65,6 @@ export async function extractFromUrl(url: string, opts: { token?: string } = {})
     const rendered = await fetchPageRendered(url);
     if (!rendered.error && rendered.text) {
       const re = extractVersionFromHtml(rendered.text);
-      // 渲染结果更好才替换（渲染可能引入更多噪音）
       if (!version || !version.version || (re.version && re.confidence === 'high')) {
         version = re;
         page = rendered;
@@ -44,7 +73,9 @@ export async function extractFromUrl(url: string, opts: { token?: string } = {})
     }
   }
 
-  const finalVersion = version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
+  // 注册表未命中时，用页面提取结果
+  const finalVersion: VersionResult =
+    version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
 
   // 日志
   let changelog: ChangelogEntry | null = null;
@@ -54,7 +85,7 @@ export async function extractFromUrl(url: string, opts: { token?: string } = {})
     changelog = await extractChangelog(source, { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token });
   }
 
-  return { url, source, version: finalVersion, changelog, neededBrowser, renderedText: neededBrowser ? page.text : undefined };
+  return { url, source, version: finalVersion, changelog, neededBrowser, registryVersion, registryKey: registryResolvedKey, renderedText: neededBrowser ? page.text : undefined };
 }
 
 export { closeBrowser };

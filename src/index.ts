@@ -5,5 +5,6 @@ export * from './types';
 export * from './version-extract';
 export * from './sources';
 export * from './changelog';
+export * from './registries';
 export * from './pipeline';
 export { fetchPage, fetchJson, fetchPageRendered, closeBrowser } from './crawler';

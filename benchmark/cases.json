@@ -1,65 +1,364 @@
 [
-  { "name": "firefox", "url": "https://www.mozilla.org/en-US/firefox/new/", "expectedVersion": "v1", "currentDbVersion": "v1.40" },
-  { "name": "opera", "url": "https://www.opera.com/", "expectedVersion": "v1", "currentDbVersion": "v1.10" },
-  { "name": "brave", "url": "https://brave.com/download/", "expectedVersion": "v1", "currentDbVersion": "v1.70" },
-  { "name": "vivaldi", "url": "https://vivaldi.com/", "expectedVersion": "v7", "currentDbVersion": "v6" },
-
-  { "name": "libreoffice", "url": "https://www.libreoffice.org/download/download-libreoffice/", "expectedVersion": "v25", "currentDbVersion": "v24" },
-  { "name": "obsidian", "url": "https://obsidian.md/", "expectedVersion": "v1", "currentDbVersion": "v1.8" },
-  { "name": "notion", "url": "https://www.notion.so/", "expectedVersion": "", "currentDbVersion": "v0.1" },
-  { "name": "evernote", "url": "https://evernote.com/", "expectedVersion": "", "currentDbVersion": "v10" },
-  { "name": "wps", "url": "https://www.wps.com/", "expectedVersion": "", "currentDbVersion": "v12" },
-
-  { "name": "blender", "url": "https://www.blender.org/download/", "expectedVersion": "v5", "currentDbVersion": "v4" },
-  { "name": "gimp", "url": "https://www.gimp.org/downloads/", "expectedVersion": "v3", "currentDbVersion": "v2" },
-  { "name": "vlc", "url": "https://www.videolan.org/vlc/", "expectedVersion": "v3", "currentDbVersion": "v3.0" },
-  { "name": "inkscape", "url": "https://inkscape.org/release/", "expectedVersion": "v1", "currentDbVersion": "v1.3" },
-  { "name": "krita", "url": "https://krita.org/en/download/krita-desktop/", "expectedVersion": "v5", "currentDbVersion": "v5.2" },
-  { "name": "audacity", "url": "https://www.audacityteam.org/download/", "expectedVersion": "v3", "currentDbVersion": "v3.5" },
-  { "name": "handbrake", "url": "https://handbrake.fr/", "expectedVersion": "v1", "currentDbVersion": "v1.8" },
-  { "name": "obsstudio", "url": "https://obsproject.com/download", "expectedVersion": "v3", "currentDbVersion": "v30" },
-  { "name": "shotcut", "url": "https://shotcut.org/download/", "expectedVersion": "v25", "currentDbVersion": "v24" },
-  { "name": "kdenlive", "url": "https://kdenlive.org/en/download/", "expectedVersion": "v24", "currentDbVersion": "v23" },
-  { "name": "davinci", "url": "https://www.blackmagicdesign.com/products/davinciresolve", "expectedVersion": "", "currentDbVersion": "v19" },
-
-  { "name": "nodejs", "url": "https://nodejs.org/en/download/", "expectedVersion": "v24", "currentDbVersion": "v23" },
-  { "name": "python", "url": "https://www.python.org/downloads/", "expectedVersion": "v3.1", "currentDbVersion": "v3.13" },
-  { "name": "golang", "url": "https://go.dev/dl/", "expectedVersion": "v1.2", "currentDbVersion": "v1.25" },
-  { "name": "rust", "url": "https://www.rust-lang.org/", "expectedVersion": "v1.9", "currentDbVersion": "v1.90" },
-  { "name": "ruby", "url": "https://www.ruby-lang.org/en/downloads/", "expectedVersion": "v3", "currentDbVersion": "v3.3" },
-  { "name": "php", "url": "https://www.php.net/downloads.php", "expectedVersion": "v8", "currentDbVersion": "v8.3" },
-  { "name": "postgresql", "url": "https://www.postgresql.org/", "expectedVersion": "v18", "currentDbVersion": "v17" },
-  { "name": "mysql", "url": "https://dev.mysql.com/downloads/", "expectedVersion": "", "currentDbVersion": "v8" },
-  { "name": "nginx", "url": "https://nginx.org/en/download.html", "expectedVersion": "v1.2", "currentDbVersion": "v1.28" },
-  { "name": "apache", "url": "https://httpd.apache.org/", "expectedVersion": "v2.4", "currentDbVersion": "v2.4" },
-  { "name": "git", "url": "https://git-scm.com/downloads", "expectedVersion": "", "currentDbVersion": "v2" },
-  { "name": "docker", "url": "https://www.docker.com/", "expectedVersion": "", "currentDbVersion": "v27" },
-  { "name": "terraform", "url": "https://www.terraform.io/downloads", "expectedVersion": "v1", "currentDbVersion": "v1.9" },
-  { "name": "vagrant", "url": "https://developer.hashicorp.com/vagrant/downloads", "expectedVersion": "v2", "currentDbVersion": "v2.4" },
-  { "name": "dotnet", "url": "https://dotnet.microsoft.com/en-us/download", "expectedVersion": "v9", "currentDbVersion": "v8" },
-  { "name": "openjdk", "url": "https://jdk.java.net/", "expectedVersion": "v25", "currentDbVersion": "v21" },
-  { "name": "nodejs-lts", "url": "https://nodejs.org/en/about/releases/", "expectedVersion": "v24", "currentDbVersion": "v23" },
-
-  { "name": "telegram", "url": "https://telegram.org/", "expectedVersion": "v5", "currentDbVersion": "v4.9" },
-  { "name": "signal", "url": "https://signal.org/download/", "expectedVersion": "v7", "currentDbVersion": "v6" },
-  { "name": "slack", "url": "https://slack.com/", "expectedVersion": "", "currentDbVersion": "v4" },
-  { "name": "zoom", "url": "https://zoom.us/download", "expectedVersion": "", "currentDbVersion": "v6" },
-  { "name": "teamviewer", "url": "https://www.teamviewer.com/en/download/windows/", "expectedVersion": "v15", "currentDbVersion": "v15" },
-  { "name": "whatsapp", "url": "https://www.whatsapp.com/download", "expectedVersion": "", "currentDbVersion": "v2" },
-
-  { "name": "7zip", "url": "https://www.7-zip.org/", "expectedVersion": "v25", "currentDbVersion": "v24" },
-  { "name": "winrar", "url": "https://www.win-rar.com/", "expectedVersion": "v7", "currentDbVersion": "v6" },
-  { "name": "notepadpp", "url": "https://notepad-plus-plus.org/downloads/", "expectedVersion": "v8", "currentDbVersion": "v8.7" },
-  { "name": "filezilla", "url": "https://filezilla-project.org/", "expectedVersion": "v3", "currentDbVersion": "v3.66" },
-  { "name": "winscp", "url": "https://winscp.net/eng/download.php", "expectedVersion": "v6", "currentDbVersion": "v6.3" },
-  { "name": "putty", "url": "https://www.putty.org/", "expectedVersion": "v0.8", "currentDbVersion": "v0.81" },
-  { "name": "everything", "url": "https://www.voidtools.com/", "expectedVersion": "v1.4", "currentDbVersion": "v1.4" },
-  { "name": "virtualbox", "url": "https://www.virtualbox.org/wiki/Downloads", "expectedVersion": "v7", "currentDbVersion": "v7.0" },
-  { "name": "autohotkey", "url": "https://www.autohotkey.com/", "expectedVersion": "v2", "currentDbVersion": "v1.1" },
-  { "name": "mpv", "url": "https://mpv.io/", "expectedVersion": "", "currentDbVersion": "v0.3" },
-  { "name": "irfanview", "url": "https://www.irfanview.com/", "expectedVersion": "v4", "currentDbVersion": "v4.6" },
-  { "name": "veracrypt", "url": "https://www.veracrypt.fr/en/Downloads.html", "expectedVersion": "v1.2", "currentDbVersion": "v1.26" },
-  { "name": "qgis", "url": "https://qgis.org/", "expectedVersion": "v3", "currentDbVersion": "v3.3" },
-  { "name": "arduino-ide", "url": "https://www.arduino.cc/en/software", "expectedVersion": "v2", "currentDbVersion": "v2.3" },
-  { "name": "raspbian", "url": "https://www.raspberrypi.com/software/", "expectedVersion": "", "currentDbVersion": "v2024" }
+  {
+    "name": "firefox",
+    "url": "https://www.mozilla.org/en-US/firefox/new/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.40"
+  },
+  {
+    "name": "opera",
+    "url": "https://www.opera.com/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.10"
+  },
+  {
+    "name": "brave",
+    "url": "https://brave.com/download/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.70"
+  },
+  {
+    "name": "vivaldi",
+    "url": "https://vivaldi.com/",
+    "expectedVersion": "v7",
+    "currentDbVersion": "v6"
+  },
+  {
+    "name": "libreoffice",
+    "url": "https://www.libreoffice.org/download/download-libreoffice/",
+    "expectedVersion": "v25",
+    "currentDbVersion": "v24"
+  },
+  {
+    "name": "obsidian",
+    "url": "https://obsidian.md/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.8"
+  },
+  {
+    "name": "notion",
+    "url": "https://www.notion.so/",
+    "expectedVersion": "",
+    "currentDbVersion": "v0.1"
+  },
+  {
+    "name": "evernote",
+    "url": "https://evernote.com/",
+    "expectedVersion": "",
+    "currentDbVersion": "v10"
+  },
+  {
+    "name": "wps",
+    "url": "https://www.wps.com/",
+    "expectedVersion": "",
+    "currentDbVersion": "v12"
+  },
+  {
+    "name": "blender",
+    "url": "https://www.blender.org/download/",
+    "expectedVersion": "v5",
+    "currentDbVersion": "v4",
+    "registryKey": "winget:BlenderFoundation.Blender"
+  },
+  {
+    "name": "gimp",
+    "url": "https://www.gimp.org/downloads/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v2",
+    "registryKey": "winget:GIMP.GIMP"
+  },
+  {
+    "name": "vlc",
+    "url": "https://www.videolan.org/vlc/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v3.0",
+    "registryKey": "brew:vlc"
+  },
+  {
+    "name": "inkscape",
+    "url": "https://inkscape.org/release/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.3"
+  },
+  {
+    "name": "krita",
+    "url": "https://krita.org/en/download/krita-desktop/",
+    "expectedVersion": "v5",
+    "currentDbVersion": "v5.2"
+  },
+  {
+    "name": "audacity",
+    "url": "https://www.audacityteam.org/download/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v3.5",
+    "registryKey": "winget:Audacity.Audacity"
+  },
+  {
+    "name": "handbrake",
+    "url": "https://handbrake.fr/",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.8"
+  },
+  {
+    "name": "obsstudio",
+    "url": "https://obsproject.com/download",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v30",
+    "registryKey": "winget:OBSProject.OBSStudio"
+  },
+  {
+    "name": "shotcut",
+    "url": "https://shotcut.org/download/",
+    "expectedVersion": "v25",
+    "currentDbVersion": "v24"
+  },
+  {
+    "name": "kdenlive",
+    "url": "https://kdenlive.org/en/download/",
+    "expectedVersion": "v24",
+    "currentDbVersion": "v23"
+  },
+  {
+    "name": "davinci",
+    "url": "https://www.blackmagicdesign.com/products/davinciresolve",
+    "expectedVersion": "",
+    "currentDbVersion": "v19"
+  },
+  {
+    "name": "nodejs",
+    "url": "https://nodejs.org/en/download/",
+    "expectedVersion": "v26",
+    "currentDbVersion": "v23",
+    "registryKey": "brew:node"
+  },
+  {
+    "name": "python",
+    "url": "https://www.python.org/downloads/",
+    "expectedVersion": "v3.1",
+    "currentDbVersion": "v3.13"
+  },
+  {
+    "name": "golang",
+    "url": "https://go.dev/dl/",
+    "expectedVersion": "v1.2",
+    "currentDbVersion": "v1.25"
+  },
+  {
+    "name": "rust",
+    "url": "https://www.rust-lang.org/",
+    "expectedVersion": "v1.9",
+    "currentDbVersion": "v1.90"
+  },
+  {
+    "name": "ruby",
+    "url": "https://www.ruby-lang.org/en/downloads/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v3.3"
+  },
+  {
+    "name": "php",
+    "url": "https://www.php.net/downloads.php",
+    "expectedVersion": "v8",
+    "currentDbVersion": "v8.3"
+  },
+  {
+    "name": "postgresql",
+    "url": "https://www.postgresql.org/",
+    "expectedVersion": "v18",
+    "currentDbVersion": "v17"
+  },
+  {
+    "name": "mysql",
+    "url": "https://dev.mysql.com/downloads/",
+    "expectedVersion": "",
+    "currentDbVersion": "v8"
+  },
+  {
+    "name": "nginx",
+    "url": "https://nginx.org/en/download.html",
+    "expectedVersion": "v1.2",
+    "currentDbVersion": "v1.28"
+  },
+  {
+    "name": "apache",
+    "url": "https://httpd.apache.org/",
+    "expectedVersion": "v2.4",
+    "currentDbVersion": "v2.4"
+  },
+  {
+    "name": "git",
+    "url": "https://git-scm.com/downloads",
+    "expectedVersion": "",
+    "currentDbVersion": "v2"
+  },
+  {
+    "name": "docker",
+    "url": "https://www.docker.com/",
+    "expectedVersion": "",
+    "currentDbVersion": "v27"
+  },
+  {
+    "name": "terraform",
+    "url": "https://www.terraform.io/downloads",
+    "expectedVersion": "v1",
+    "currentDbVersion": "v1.9"
+  },
+  {
+    "name": "vagrant",
+    "url": "https://developer.hashicorp.com/vagrant/downloads",
+    "expectedVersion": "v2",
+    "currentDbVersion": "v2.4"
+  },
+  {
+    "name": "dotnet",
+    "url": "https://dotnet.microsoft.com/en-us/download",
+    "expectedVersion": "v10",
+    "currentDbVersion": "v8"
+  },
+  {
+    "name": "openjdk",
+    "url": "https://jdk.java.net/",
+    "expectedVersion": "v25",
+    "currentDbVersion": "v21"
+  },
+  {
+    "name": "nodejs-lts",
+    "url": "https://nodejs.org/en/about/releases/",
+    "expectedVersion": "v26",
+    "currentDbVersion": "v23"
+  },
+  {
+    "name": "telegram",
+    "url": "https://telegram.org/",
+    "expectedVersion": "v7",
+    "currentDbVersion": "v4.9",
+    "registryKey": "winget:Telegram.TelegramDesktop"
+  },
+  {
+    "name": "signal",
+    "url": "https://signal.org/download/",
+    "expectedVersion": "v8",
+    "currentDbVersion": "v6",
+    "registryKey": "winget:OpenWhisperSystems.Signal"
+  },
+  {
+    "name": "slack",
+    "url": "https://slack.com/",
+    "expectedVersion": "",
+    "currentDbVersion": "v4"
+  },
+  {
+    "name": "zoom",
+    "url": "https://zoom.us/download",
+    "expectedVersion": "",
+    "currentDbVersion": "v6"
+  },
+  {
+    "name": "teamviewer",
+    "url": "https://www.teamviewer.com/en/download/windows/",
+    "expectedVersion": "v15",
+    "currentDbVersion": "v15"
+  },
+  {
+    "name": "whatsapp",
+    "url": "https://www.whatsapp.com/download",
+    "expectedVersion": "",
+    "currentDbVersion": "v2"
+  },
+  {
+    "name": "7zip",
+    "url": "https://www.7-zip.org/",
+    "expectedVersion": "v26",
+    "currentDbVersion": "v24",
+    "registryKey": "winget:7zip.7zip"
+  },
+  {
+    "name": "winrar",
+    "url": "https://www.win-rar.com/",
+    "expectedVersion": "v7",
+    "currentDbVersion": "v6",
+    "registryKey": "winget:RARLab.WinRAR"
+  },
+  {
+    "name": "notepadpp",
+    "url": "https://notepad-plus-plus.org/downloads/",
+    "expectedVersion": "v8",
+    "currentDbVersion": "v8.7",
+    "registryKey": "winget:Notepad++.Notepad++"
+  },
+  {
+    "name": "filezilla",
+    "url": "https://filezilla-project.org/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v3.66"
+  },
+  {
+    "name": "winscp",
+    "url": "https://winscp.net/eng/download.php",
+    "expectedVersion": "v6",
+    "currentDbVersion": "v6.3",
+    "registryKey": "winget:WinSCP.WinSCP"
+  },
+  {
+    "name": "putty",
+    "url": "https://www.putty.org/",
+    "expectedVersion": "v0.84",
+    "currentDbVersion": "v0.81",
+    "registryKey": "winget:PuTTY.PuTTY"
+  },
+  {
+    "name": "everything",
+    "url": "https://www.voidtools.com/",
+    "expectedVersion": "v1.4",
+    "currentDbVersion": "v1.4"
+  },
+  {
+    "name": "virtualbox",
+    "url": "https://www.virtualbox.org/wiki/Downloads",
+    "expectedVersion": "v7",
+    "currentDbVersion": "v7.0",
+    "registryKey": "winget:Oracle.VirtualBox"
+  },
+  {
+    "name": "autohotkey",
+    "url": "https://www.autohotkey.com/",
+    "expectedVersion": "v2",
+    "currentDbVersion": "v1.1"
+  },
+  {
+    "name": "mpv",
+    "url": "https://mpv.io/",
+    "expectedVersion": "",
+    "currentDbVersion": "v0.3"
+  },
+  {
+    "name": "irfanview",
+    "url": "https://www.irfanview.com/",
+    "expectedVersion": "v4",
+    "currentDbVersion": "v4.6"
+  },
+  {
+    "name": "veracrypt",
+    "url": "https://www.veracrypt.fr/en/Downloads.html",
+    "expectedVersion": "v1.26",
+    "currentDbVersion": "v1.26"
+  },
+  {
+    "name": "qgis",
+    "url": "https://qgis.org/",
+    "expectedVersion": "v3",
+    "currentDbVersion": "v3.3"
+  },
+  {
+    "name": "arduino-ide",
+    "url": "https://www.arduino.cc/en/software",
+    "expectedVersion": "v2",
+    "currentDbVersion": "v2.3"
+  },
+  {
+    "name": "raspbian",
+    "url": "https://www.raspberrypi.com/software/",
+    "expectedVersion": "",
+    "currentDbVersion": "v2024"
+  }
 ]
