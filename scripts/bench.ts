@@ -14,10 +14,11 @@
  */
 import { createRequire } from 'module';
 import { readFileSync } from 'fs';
-import { classifySource, enrichSource } from '../src/sources';
-import { extractVersionFromHtml, shouldTrustExtraction } from '../src/version-extract';
-import { extractChangelog } from '../src/changelog';
-import { fetchPage } from '../src/crawler';
+import { extractFromUrl, closeBrowser } from '../src/pipeline';
+import { shouldTrustExtraction } from '../src/version-extract';
+
+// 开启抓取磁盘缓存（改模型重跑不用重新抓页）
+process.env.BENCH_CACHE_DIR = process.env.BENCH_CACHE_DIR || '.bench-cache';
 
 interface TestCase {
   name: string;
@@ -58,21 +59,16 @@ async function main() {
 
   if (args.probe) {
     const url = args.probe;
-    const source = await enrichSource(classifySource(url));
+    const out = await extractFromUrl(url, { token: process.env.GITHUB_TOKEN });
     console.log(`URL: ${url}`);
-    console.log(`来源: ${source.type}${source.note ? ` (${source.note})` : ''}`);
-    if (source.type === 'changelog-page') {
-      const r = await fetchPage(url, { timeout: 15000 });
-      if (!r.error && r.text) {
-        const v = extractVersionFromHtml(r.text);
-        console.log(`版本: ${v.version || '—'} | 置信 ${v.confidence} | 正则: ${v.suggestedRegex}`);
-        const cl = extractChangelog(source, { pageHtml: r.text, version: v.version || undefined });
-        console.log(`日志: ${cl ? `✅ ${cl.content.slice(0, 120).replace(/\n/g, ' ')}...` : '❌ 未提取到'}`);
-      }
-    } else {
-      const cl = await extractChangelog(source, { version: undefined });
-      console.log(`日志: ${cl ? `✅ 版本 ${cl.version} | ${cl.content.slice(0, 120).replace(/\n/g, ' ')}...` : '❌ 未提取到'}`);
+    console.log(`来源: ${out.source.type}${out.source.note ? ` (${out.source.note})` : ''}${out.neededBrowser ? ' | 走了浏览器渲染' : ''}`);
+    console.log(`版本: ${out.version.version || '—'} | 置信 ${out.version.confidence} | 正则: ${out.version.suggestedRegex}`);
+    if (out.version.candidates?.length) {
+      console.log('候选:');
+      for (const c of out.version.candidates) console.log(`  ${c.version}  score=${c.score}  下载链接=${c.inDownloadUrl}  来源=${c.scope}`);
     }
+    console.log(`日志: ${out.changelog ? `✅ 版本 ${out.changelog.version} | ${out.changelog.content.slice(0, 120).replace(/\n/g, ' ')}...` : '❌ 未提取到'}`);
+    await closeBrowser();
     return;
   }
 
@@ -88,8 +84,8 @@ async function main() {
       })();
 
   console.log(`\n=== 更新数据提取基准 (${cases.length} 例) ===\n`);
-  console.log('站点'.padEnd(12), '期望'.padEnd(10), '版本提取'.padEnd(16), '判定', '置信', '日志');
-  console.log('-'.repeat(76));
+  console.log('站点'.padEnd(12), '期望'.padEnd(10), '版本提取'.padEnd(16), '判定', '置信', '日志', '浏览器');
+  console.log('-'.repeat(80));
 
   // 单例处理（可并行）
   interface CaseResult {
@@ -99,55 +95,42 @@ async function main() {
     verdict: string;
     conf: string;
     changelogOk: string | boolean;
+    browser: string;
     versionPass: boolean;
     versionCounted: boolean;
     changelogPass: boolean;
     changelogCounted: boolean;
   }
   async function runCase(c: TestCase): Promise<CaseResult> {
-    const source = await enrichSource(classifySource(c.url));
-    let verdict = '?';
-    let conf = '—';
-    let extracted: string | null = null;
+    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN });
+    const extracted = out.version?.version || null;
+    const conf = out.version?.confidence || '—';
+    let verdict: string;
+    if (c.expectedVersion === '') verdict = extracted ? 'FAIL(误报)' : 'PASS';
+    else verdict = extracted && matchesPrefix(extracted, c.expectedVersion) ? 'PASS' : 'FAIL';
+
     let changelogOk: string | boolean = '—';
-    let versionPass = false;
-    let versionCounted = false;
     let changelogPass = false;
     let changelogCounted = false;
-
-    if (source.type === 'changelog-page') {
-      const r = await fetchPage(c.url, { timeout: 15000 });
-      if (!r.error && r.text) {
-        const e = extractVersionFromHtml(r.text);
-        extracted = e.version;
-        conf = e.confidence;
-        versionCounted = true;
-        if (c.expectedVersion === '') verdict = extracted ? 'FAIL(误报)' : 'PASS';
-        else verdict = extracted && matchesPrefix(extracted, c.expectedVersion) ? 'PASS' : 'FAIL';
-        versionPass = verdict.startsWith('PASS');
-        if (c.expectChangelog) {
-          changelogCounted = true;
-          const cl = extractChangelog(source, { pageHtml: r.text, version: extracted || undefined });
-          changelogOk = cl && cl.content.length > 20 ? '✅' : '❌';
-          changelogPass = changelogOk === '✅';
-        }
-      } else {
-        verdict = '❌抓取失败';
-      }
-    } else {
+    if (c.expectChangelog) {
       changelogCounted = true;
-      const cl = await extractChangelog(source);
-      extracted = cl?.version || null;
-      conf = cl?.confidence || '—';
-      changelogOk = cl && cl.content.length > 20 ? '✅' : '❌';
+      changelogOk = out.changelog && out.changelog.content.length > 20 ? '✅' : '❌';
       changelogPass = changelogOk === '✅';
-      versionCounted = true;
-      if (c.expectedVersion === '') verdict = extracted ? 'FAIL(误报)' : 'PASS';
-      else verdict = extracted && matchesPrefix(extracted, c.expectedVersion) ? 'PASS' : 'FAIL';
-      versionPass = verdict.startsWith('PASS');
     }
 
-    return { name: c.name, expected: c.expectedVersion, extracted, verdict, conf, changelogOk, versionPass, versionCounted, changelogPass, changelogCounted };
+    return {
+      name: c.name,
+      expected: c.expectedVersion,
+      extracted,
+      verdict,
+      conf: String(conf),
+      changelogOk,
+      browser: out.neededBrowser ? '🖥️' : '',
+      versionPass: verdict.startsWith('PASS'),
+      versionCounted: true,
+      changelogPass,
+      changelogCounted,
+    };
   }
 
   // 并发限流执行
@@ -164,7 +147,7 @@ async function main() {
     return results;
   }
 
-  const CONCURRENCY = 6; // 并发抓取数，可调
+  const CONCURRENCY = 8; // 并发抓取数，可调
   const results = await mapWithConcurrency(cases, CONCURRENCY, runCase);
 
   let versionPass = 0;
@@ -178,13 +161,14 @@ async function main() {
     if (r.changelogCounted) changelogTotal += 1;
     if (r.changelogPass) changelogPass += 1;
     const confIcon = { high: '🟢高', medium: '🟡中', low: '🔴低' }[r.conf] || r.conf;
-    console.log(r.name.padEnd(12), (r.expected || '(无)').padEnd(10), (r.extracted || '—').padEnd(16), r.verdict, confIcon, r.changelogOk);
+    console.log(r.name.padEnd(12), (r.expected || '(无)').padEnd(10), (r.extracted || '—').padEnd(16), r.verdict, confIcon, r.changelogOk, r.browser);
   }
 
   console.log('\n' + '='.repeat(60));
   console.log(`版本号提取准确率: ${versionPass}/${versionTotal} = ${(versionPass / Math.max(versionTotal, 1) * 100).toFixed(0)}%`);
   console.log(`更新日志提取成功率: ${changelogPass}/${changelogTotal} = ${(changelogPass / Math.max(changelogTotal, 1) * 100).toFixed(0)}%`);
   console.log('');
+  await closeBrowser();
 }
 
 main().catch((e) => {

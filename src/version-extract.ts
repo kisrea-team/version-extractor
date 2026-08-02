@@ -57,7 +57,7 @@ function extractStructuredText(html: string): string {
 }
 
 export function extractVersionFromHtml(html: string, opts: { versionRegex?: string | null } = {}): VersionResult {
-  const none = (): VersionResult => ({ version: null, source: 'none', confidence: 'low', needsAiCheck: true, suggestedRegex: null });
+  const none = (): VersionResult => ({ version: null, source: 'none', confidence: 'low', needsAiCheck: true, needsBrowser: true, suggestedRegex: null });
   if (!html) return none();
 
   if (opts.versionRegex) {
@@ -81,6 +81,7 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   const metas = [...html.matchAll(/<meta[^>]+(?:name|property)=["'](?:description|og:title|og:description)["'][^>]*content=["']([^"']*)["']/gi)].map((m) => m[1]).join(' ');
   const structured = extractStructuredText(html);
   const body = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ');
+  const visibleText = `${title}\n${metas}\n${body}`; // 可见文字：真实产品版本必然出现在这里
   const keywordRe = /(?:version|v\.?\s|release|changelog|download|下载|更新|版本)[^\n]{0,80}/gi;
   const keywordText = [...body.matchAll(keywordRe)].map((m) => m[0]).join('\n');
 
@@ -113,15 +114,17 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
 
   const scopeWeight: Record<string, number> = { title: 3, 'json-ld': 3, body: 2, url: 2 };
   const patternWeight: Record<string, number> = { semver: 2, minor: 1, major: 0 };
-  const scoreMap = new Map<string, { score: number; inDownloadUrl: boolean; scope: string; pattern: string }>();
+  const scoreMap = new Map<string, { score: number; inDownloadUrl: boolean; inVisibleText: boolean; scope: string; pattern: string }>();
 
   for (const c of candidates) {
     const bare = c.version.replace(/^v/i, '');
     let e = scoreMap.get(c.version);
     if (!e) {
-      e = { score: 0, inDownloadUrl: false, scope: c.scope, pattern: c.pattern };
+      e = { score: 0, inDownloadUrl: false, inVisibleText: false, scope: c.scope, pattern: c.pattern };
       scoreMap.set(c.version, e);
     }
+    // 出现在可见正文（真实产品版本必然展示给用户；只出现在 <script>/CDN 链接的是垃圾）
+    if (visibleText.includes(bare)) e.inVisibleText = true;
     if (urls.some((u) => u.includes(bare))) e.score += 2;
     if (downloadUrls.some((u) => u.includes(bare))) {
       e.inDownloadUrl = true;
@@ -147,11 +150,12 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   if (!bestKey) return none();
   const bestEntry = scoreMap.get(bestKey)!;
 
+  // 置信度：出现在可见正文是"真实版本"的必要条件（标题/json-ld 除外，它们是结构化权威源）
   let confidence: Confidence;
-  if (bestEntry.inDownloadUrl && bestEntry.score >= 7) confidence = 'high';
+  if (bestEntry.inDownloadUrl && bestEntry.score >= 7 && bestEntry.inVisibleText) confidence = 'high';
   else if (bestEntry.scope === 'title' && bestEntry.score >= 7) confidence = 'high';
   else if (bestEntry.scope === 'json-ld' && bestEntry.score >= 6) confidence = 'high';
-  else if (bestEntry.score >= 5) confidence = 'medium';
+  else if (bestEntry.score >= 5 && bestEntry.inVisibleText) confidence = 'medium';
   else confidence = 'low';
 
   const matchedIndex = html.indexOf(bestKey.replace(/^v/i, ''));
@@ -160,6 +164,7 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
     source: bestEntry.scope,
     confidence,
     needsAiCheck: confidence !== 'high',
+    needsBrowser: confidence === 'low', // 低置信/未提取 → 建议 Playwright 渲染后再试
     suggestedRegex: suggestRegex(bestKey),
     matchedContext: matchedIndex >= 0 ? extractContext(html, matchedIndex) : undefined,
     candidates: [...scoreMap.entries()]

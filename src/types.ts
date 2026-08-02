@@ -13,6 +13,7 @@ export interface VersionResult {
   source: string; // version_regex | title | json-ld | body | url | none
   confidence: Confidence;
   needsAiCheck: boolean; // 只有 high 才免 AI
+  needsBrowser: boolean; // 页面疑似 JS 渲染，启发式拿不到 → 建议 chrome-devtools/AI
   suggestedRegex: string | null;
   matchedContext?: string;
   candidates?: Array<{ version: string; score: number; inDownloadUrl: boolean; scope: string }>;
