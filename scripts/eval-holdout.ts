@@ -53,7 +53,7 @@ async function main() {
       } catch {}
     }
     let V: string | null = null;
-    try { V = (await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, skipBrowser })).version?.version || null; } catch { V = null; }
+    try { V = (await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey, skipBrowser })).version?.version || null; } catch { V = null; }
     return { name: c.name, url: c.url, R, V, fetchError: page.error && !page.text ? page.error : null };
   });
 

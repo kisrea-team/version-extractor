@@ -57,7 +57,8 @@
     "name": "Everything (voidtools)",
     "url": "https://www.voidtools.com/Changes.txt",
     "versionRegex": "Version ([\\d.]+)",
-    "currentDbVersion": "v1.4.1.1032"
+    "currentDbVersion": "v1.4.1.1032",
+    "registryKey": "winget:voidtools.Everything"
   },
   {
     "name": "nuxt/nuxt",
@@ -75,7 +76,8 @@
     "name": "Sublime Text",
     "url": "https://www.sublimetext.com/download",
     "versionRegex": "class=\"latest\"><i>Version:<\\/i>\\s*Build\\s*([0-9]{4})<\\/p>",
-    "currentDbVersion": "v4200"
+    "currentDbVersion": "v4200",
+    "registryKey": "winget:SublimeHQ.SublimeText"
   },
   {
     "name": "Typora",
@@ -93,25 +95,29 @@
     "name": "Notepad++",
     "url": "https://notepad-plus-plus.org/downloads/",
     "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
-    "currentDbVersion": "v8.9.2"
+    "currentDbVersion": "v8.9.2",
+    "registryKey": "winget:Notepad++.Notepad++"
   },
   {
     "name": "Wireshark",
     "url": "https://www.wireshark.org/docs/relnotes/wireshark-4.6.4.html",
     "versionRegex": "Wireshark\\s+(\\d+\\.\\d+\\.\\d+)",
-    "currentDbVersion": "v4.6.4"
+    "currentDbVersion": "v4.6.4",
+    "registryKey": "winget:WiresharkFoundation.Wireshark"
   },
   {
     "name": "WinSCP",
     "url": "https://winscp.net/eng/docs/history",
     "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
-    "currentDbVersion": "v6.6.1"
+    "currentDbVersion": "v6.6.1",
+    "registryKey": "winget:WinSCP.WinSCP"
   },
   {
     "name": "7-Zip",
     "url": "https://www.7-zip.org/history.txt",
     "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
-    "currentDbVersion": "v26.00"
+    "currentDbVersion": "v26.00",
+    "registryKey": "winget:7zip.7zip"
   },
   {
     "name": "Alfred",
@@ -129,7 +135,8 @@
     "name": "WinRAR",
     "url": "https://www.win-rar.com/start.html?&L=0",
     "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
-    "currentDbVersion": "v7.20"
+    "currentDbVersion": "v7.20",
+    "registryKey": "winget:RARLab.WinRAR"
   },
   {
     "name": "Bandizip",
@@ -195,7 +202,8 @@
     "name": "VLC media player",
     "url": "https://www.videolan.org/vlc/releases/",
     "versionRegex": "VLC\\s+(\\d+\\.\\d+\\.\\d+)",
-    "currentDbVersion": "v3.0.23"
+    "currentDbVersion": "v3.0.23",
+    "registryKey": "winget:VideoLAN.VLC"
   },
   {
     "name": "IrfanView",
