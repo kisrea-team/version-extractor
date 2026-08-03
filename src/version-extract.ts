@@ -68,6 +68,21 @@ function extractStructuredText(html: string): string {
   return parts.join('\n');
 }
 
+// JSON 响应（iTunes lookup / 版本接口等）：提取精确 version 键的值；排除 OS/SDK/API/构建版本键
+function extractVersionFromJsonLike(json: string): string | null {
+  const BAD_KEY_RE = /minimumOsVersion|minimum_os_version|requiredOsVersion|sdkVersion|sdk_version|apiVersion|api_version|buildNumber|build_number|schemaVersion|schema_version|protocolVersion|protocol_version|releaseCandidateVersion|minRequiredVersion|compatibleVersion/i;
+  // 优先精确 version 键（产品版本）
+  const exact = json.match(/["']version["']\s*:\s*["']([^"']{1,30})["']/i);
+  if (exact && !BAD_KEY_RE.test(exact[0])) {
+    const v = exact[1].trim();
+    if (/\d/.test(v) && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(v)) return normalizeVersion(v);
+  }
+  // 其他命名字段（排除 BAD）
+  const m = json.match(/["'](?:appVersion|latestVersion|releaseVersion|currentVersion|stableVersion|newVersion)["']\s*:\s*["']([^"']{1,30})["']/i);
+  if (m && !BAD_KEY_RE.test(m[0])) return normalizeVersion(m[1]);
+  return null;
+}
+
 export function extractVersionFromHtml(html: string, opts: { versionRegex?: string | null } = {}): VersionResult {
   const none = (): VersionResult => ({ version: null, source: 'none', confidence: 'low', needsAiCheck: true, needsBrowser: true, suggestedRegex: null });
   if (!html) return none();
@@ -82,6 +97,15 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
       }
     } catch {
       // 正则无效，继续启发式
+    }
+  }
+
+  // JSON 响应（如 iTunes lookup / 版本接口）：按命名字段提取，避免把 minimumOsVersion 当产品版本
+  const trimmedHtml = html.trim();
+  if (trimmedHtml.startsWith('{') || trimmedHtml.startsWith('[')) {
+    const jv = extractVersionFromJsonLike(html);
+    if (jv) {
+      return { version: jv, source: 'json', confidence: 'high', needsAiCheck: false, needsBrowser: false, suggestedRegex: suggestRegex(jv) };
     }
   }
 

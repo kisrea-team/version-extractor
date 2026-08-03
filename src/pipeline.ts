@@ -81,14 +81,52 @@ export async function extractFromUrl(
   if (!opts.skipBrowser && page.text && (!version || version.needsBrowser || !version.version)) {
     const deep = await fetchPageRenderedDeep(url);
     let l2Version: VersionResult | null = null;
-    // 优先级：网络拦截 version 字段 > 运行时全局态 > CTA 定位 > 渲染后 HTML 启发式
-    const l2Candidates: string[] = [...deep.networkVersions, ...deep.globalVersions, ...deep.ctaVersions];
-    if (l2Candidates.length > 0) {
-      // 取第一个语义版本（network/global 是命名字段，确定性高）
-      const pick = l2Candidates.find((v) => /^v?\d+\.\d+/.test(v)) || l2Candidates[0];
+
+    // ── L2 采纳规则（修正误报：不取"第一个 version 字段"）──
+    // 产品版本会跨多个网络响应重复出现 + 出现在主下载按钮/渲染DOM 中；
+    // SDK/接口版本只出现一次，不满足交叉验证 → 不采纳
+    const nv = deep.networkVersions || []; // [{version, count}] 按 count 降序
+    const ctaSet = new Set(deep.ctaVersions || []);
+    const domHas = (v: string) => deep.text && deep.text.includes(v.replace(/^v/i, ''));
+    const semverish = (v: string) => /^v?\d+\.\d+/.test(v);
+
+    let pick: string | null = null;
+    let pickSource = '';
+    // 1. 网络中出现 >=2 个响应，且与 CTA 或渲染DOM 交叉验证一致 → 最强
+    const confirmed = nv.find((x) => x.count >= 2 && (ctaSet.has(x.version) || domHas(x.version)));
+    if (confirmed && semverish(confirmed.version)) {
+      pick = confirmed.version;
+      pickSource = 'network';
+    }
+    // 2. 网络中出现 >=2 个响应的（无交叉也采纳，频次本身就是共识）
+    if (!pick) {
+      const freq = nv.find((x) => x.count >= 2);
+      if (freq && semverish(freq.version)) {
+        pick = freq.version;
+        pickSource = 'network';
+      }
+    }
+    // 3. CTA 定位（主下载按钮 href/text）
+    if (!pick) {
+      const c = [...ctaSet].find(semverish);
+      if (c) {
+        pick = c;
+        pickSource = 'cta';
+      }
+    }
+    // 4. 全局态
+    if (!pick) {
+      const g = (deep.globalVersions || []).find(semverish);
+      if (g) {
+        pick = g;
+        pickSource = 'global';
+      }
+    }
+
+    if (pick) {
       l2Version = {
         version: pick.startsWith('v') ? pick : `v${pick}`,
-        source: deep.networkVersions.length > 0 ? 'network' : deep.globalVersions.length > 0 ? 'global' : 'cta',
+        source: pickSource,
         confidence: 'high',
         needsAiCheck: false,
         needsBrowser: false,

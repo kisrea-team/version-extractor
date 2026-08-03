@@ -155,7 +155,7 @@ export async function fetchPageRendered(url: string, opts: { timeout?: number } 
 // 返回渲染后的 HTML + 从 XHR/fetch 响应中捕获的 version 字段值 + 全局态版本
 export interface RenderedWithNetwork {
   text: string;
-  networkVersions: string[]; // 从 JSON 响应中的 version 命名字段提取
+  networkVersions: Array<{ version: string; count: number }>; // 每个版本出现的响应数（产品版本跨多个响应重复出现）
   globalVersions: string[];  // 从 __NEXT_DATA__ / __INITIAL_STATE__ / window 全局提取
   ctaVersions: string[];     // 从主下载按钮 href/text 提取
 }
@@ -167,7 +167,11 @@ const VERSION_KEY_RE =
 export function extractVersionsFromJson(json: string): string[] {
   const out = new Set<string>();
   const matches = [...json.matchAll(VERSION_KEY_RE)];
+  // 排除 OS/SDK/API/构建/最低系统版本 等非产品版本键
+  const BAD_KEY_RE = /minimumOsVersion|minimum_os_version|requiredOsVersion|sdkVersion|sdk_version|apiVersion|api_version|buildNumber|build_number|schemaVersion|schema_version|protocolVersion|protocol_version|releaseCandidateVersion|minRequiredVersion|compatibleVersion/i;
   for (const m of matches) {
+    const key = m[0];
+    if (BAD_KEY_RE.test(key)) continue;
     const v = m[1].trim();
     // 过滤明显非版本的值（日期、URL、哈希、纯单词）
     if (!/\d/.test(v)) continue;
@@ -190,7 +194,7 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
   if (cached) {
     return { text: cached.text, networkVersions: (cached as any).networkVersions || [], globalVersions: (cached as any).globalVersions || [], ctaVersions: (cached as any).ctaVersions || [] };
   }
-  const networkVersions = new Set<string>();
+  const networkCount = new Map<string, number>(); // version -> 出现该版本的响应数
   const globalVersions = new Set<string>();
   const ctaVersions = new Set<string>();
   try {
@@ -213,7 +217,9 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
           if (!/json/i.test(ct)) return;
           const body = await resp.text();
           if (body && body.length < 2_000_000) {
-            for (const v of extractVersionsFromJson(body)) networkVersions.add(v);
+            const vs = extractVersionsFromJson(body);
+            // 每个响应内去重后计数一次；产品版本会跨多个响应重复出现，SDK/接口版本只出现一次
+            for (const v of new Set(vs)) networkCount.set(v, (networkCount.get(v) || 0) + 1);
           }
         } catch {
           // 忽略解析失败
@@ -264,20 +270,23 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
       }).catch(() => []);
       cta.forEach((v: string) => ctaVersions.add(v));
 
+      const networkVersions = [...networkCount.entries()]
+        .map(([version, count]) => ({ version, count }))
+        .sort((a, b) => b.count - a.count); // 按出现响应数降序
       const result = {
         status: 200,
         text,
-        networkVersions: [...networkVersions],
+        networkVersions,
         globalVersions: [...globalVersions],
         ctaVersions: [...ctaVersions],
         ts: Date.now(),
       };
       cacheSet(cacheKey3, result as any);
-      return { text, networkVersions: [...networkVersions], globalVersions: [...globalVersions], ctaVersions: [...ctaVersions] };
+      return { text, networkVersions, globalVersions: [...globalVersions], ctaVersions: [...ctaVersions] };
     } finally {
       await context.close();
     }
   } catch (e: any) {
-    return { text: '', networkVersions: [...networkVersions], globalVersions: [...globalVersions], ctaVersions: [...ctaVersions] };
+    return { text: '', networkVersions: [], globalVersions: [...globalVersions], ctaVersions: [...ctaVersions] };
   }
 }
