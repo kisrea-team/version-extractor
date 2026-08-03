@@ -60,7 +60,7 @@ async function main() {
 
   if (args.probe) {
     const url = args.probe;
-    const out = await extractFromUrl(url, { token: process.env.GITHUB_TOKEN });
+    const out = await extractFromUrl(url, { token: process.env.GITHUB_TOKEN, skipBrowser: process.env.SKIP_BROWSER === '1' });
     console.log(`URL: ${url}`);
     console.log(`来源: ${out.source.type}${out.source.note ? ` (${out.source.note})` : ''}${out.neededBrowser ? ' | 走了浏览器渲染' : ''}`);
     console.log(`版本: ${out.version.version || '—'} | 置信 ${out.version.confidence} | 正则: ${out.version.suggestedRegex}`);
@@ -103,7 +103,7 @@ async function main() {
     changelogCounted: boolean;
   }
   async function runCase(c: TestCase): Promise<CaseResult> {
-    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey });
+    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey, skipBrowser: process.env.SKIP_BROWSER === '1' });
     const extracted = out.version?.version || null;
     const conf = out.version?.confidence || '—';
     let verdict: string;
@@ -148,7 +148,7 @@ async function main() {
     return results;
   }
 
-  const CONCURRENCY = 8; // 并发抓取数，可调
+  const CONCURRENCY = 2; // 缓存命中案例不吃内存；仅未缓存案例需抓取/渲染。并发 2 平衡速度与 OOM 风险
   const results = await mapWithConcurrency(cases, CONCURRENCY, runCase);
 
   let versionPass = 0;

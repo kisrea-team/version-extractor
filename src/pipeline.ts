@@ -8,8 +8,8 @@
 import { classifySource, enrichSource } from './sources';
 import { extractVersionFromHtml } from './version-extract';
 import { extractChangelog } from './changelog';
-import { fetchPage, fetchPageRendered, closeBrowser } from './crawler';
-import { queryRegistry } from './registries';
+import { fetchPage, fetchPageRendered, fetchPageRenderedDeep, closeBrowser } from './crawler';
+import { queryRegistry, queryOfficialEndpoint } from './registries';
 import type { ChangelogEntry, UpdateSource, VersionResult } from './types';
 
 export interface ExtractOutcome {
@@ -25,9 +25,24 @@ export interface ExtractOutcome {
 
 export async function extractFromUrl(
   url: string,
-  opts: { token?: string; registryKey?: string } = {}
+  opts: { token?: string; registryKey?: string; skipBrowser?: boolean } = {}
 ): Promise<ExtractOutcome> {
   const source = await enrichSource(classifySource(url));
+
+  // L3 结构化源优先（文档 three-tier-extractor.md P3）：官方 JSON 端点比注册表更权威。
+  // 对已知域名尝试，命中即确定性返回。
+  const l3 = await queryOfficialEndpoint(url);
+  if (l3) {
+    const finalVersion: VersionResult = {
+      version: l3.version,
+      source: 'official-endpoint',
+      confidence: 'high',
+      needsAiCheck: false,
+      needsBrowser: false,
+      suggestedRegex: null,
+    };
+    return { url, source, version: finalVersion, changelog: null, neededBrowser: false, registryVersion: null, registryKey: null };
+  }
 
   // 0. 注册表优先：确定性命名字段，优于任何 HTML 猜测；命中直接短路（快且权威）
   let registryVersion: string | null = null;
@@ -60,20 +75,51 @@ export async function extractFromUrl(
   let version = page.text ? extractVersionFromHtml(page.text) : null;
   let neededBrowser = false;
 
-  // JS 兜底：普通抓取拿不到/低置信 → 浏览器渲染
-  if (page.text && (!version || version.needsBrowser || !version.version)) {
-    const rendered = await fetchPageRendered(url);
-    if (!rendered.error && rendered.text) {
-      const re = extractVersionFromHtml(rendered.text);
-      if (!version || !version.version || (re.version && re.confidence === 'high')) {
-        version = re;
-        page = rendered;
-        neededBrowser = true;
+  // L2 深度兜底（文档 three-tier-extractor.md P1/P2）：
+  // 普通抓取拿不到/低置信 → 浏览器渲染 + 网络拦截 + 运行时全局态 + 主 CTA 定位
+  // opts.skipBrowser 时跳过渲染（低内存机器/CI 用：只测 L1+注册表+L3 确定性路径）
+  if (!opts.skipBrowser && page.text && (!version || version.needsBrowser || !version.version)) {
+    const deep = await fetchPageRenderedDeep(url);
+    let l2Version: VersionResult | null = null;
+    // 优先级：网络拦截 version 字段 > 运行时全局态 > CTA 定位 > 渲染后 HTML 启发式
+    const l2Candidates: string[] = [...deep.networkVersions, ...deep.globalVersions, ...deep.ctaVersions];
+    if (l2Candidates.length > 0) {
+      // 取第一个语义版本（network/global 是命名字段，确定性高）
+      const pick = l2Candidates.find((v) => /^v?\d+\.\d+/.test(v)) || l2Candidates[0];
+      l2Version = {
+        version: pick.startsWith('v') ? pick : `v${pick}`,
+        source: deep.networkVersions.length > 0 ? 'network' : deep.globalVersions.length > 0 ? 'global' : 'cta',
+        confidence: 'high',
+        needsAiCheck: false,
+        needsBrowser: false,
+        suggestedRegex: null,
+      };
+    }
+    if (l2Version && l2Version.version) {
+      // L2 命名字段确定性命中 → 直接采用
+      version = l2Version;
+      neededBrowser = true;
+    } else {
+      // 渲染后 HTML 启发式（L1 在 JS 跑完后的 DOM 上重跑）
+      const rendered = await fetchPageRendered(url);
+      if (!rendered.error && rendered.text) {
+        const re = extractVersionFromHtml(rendered.text);
+        // 只采用高置信的渲染后结果；低置信（营销页/SPA 噪音）宁缺毋滥
+        if (re.version && re.confidence === 'high') {
+          version = re;
+          page = rendered;
+          neededBrowser = true;
+        } else if (!version || !version.version) {
+          // L1 也无结果时，用渲染后的结果兜底（置信不变，仍可能低）
+          version = re;
+          page = rendered;
+          neededBrowser = true;
+        }
       }
     }
   }
 
-  // 注册表未命中时，用页面提取结果
+  // 注册表未命中时，用页面提取结果（含 L1/L2 各档结果）
   const finalVersion: VersionResult =
     version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
 
