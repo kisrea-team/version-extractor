@@ -166,15 +166,18 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   for (const c of candidates) {
     if (c.scope === 'json-ld') structuredAuthority.set(c.version, (structuredAuthority.get(c.version) || 0) + 3);
   }
-  const scoreMap = new Map<string, { score: number; inDownloadUrl: boolean; inVisibleText: boolean; scope: string; pattern: string }>();
+  const scoreMap = new Map<string, { score: number; inDownloadUrl: boolean; inVisibleText: boolean; scope: string; pattern: string; contexts: Set<string> }>();
 
   for (const c of candidates) {
     const bare = c.version.replace(/^v/i, '');
     let e = scoreMap.get(c.version);
     if (!e) {
-      e = { score: 0, inDownloadUrl: false, inVisibleText: false, scope: c.scope, pattern: c.pattern };
+      e = { score: 0, inDownloadUrl: false, inVisibleText: false, scope: c.scope, pattern: c.pattern, contexts: new Set() };
       scoreMap.set(c.version, e);
     }
+    // 上下文多样性：同一个版本出现在多少个不同上下文（标题/meta/json-ld/正文/标题区块/URL）
+    // 产品版本跨多个上下文反复出现；构建号/库版本只在一处 → 多样性是"语义版本 vs 构建号"的强判别
+    e.contexts.add(c.scope);
     // 出现在可见正文（真实产品版本必然展示给用户；只出现在 <script>/CDN 链接的是垃圾）
     if (visibleText.includes(bare)) e.inVisibleText = true;
     if (urls.some((u) => u.includes(bare))) e.score += 2;
@@ -187,6 +190,8 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
     e.score += scopeWeight[e.scope] || 0;
     e.score += patternWeight[e.pattern] || 0;
     e.score += structuredAuthority.get(key) || 0; // json-ld 权威加成
+    // 上下文多样性加成：每个额外出现的上下文 +2（语义版本多上下文胜出，构建号单上下文落败）
+    e.score += Math.max(0, e.contexts.size - 1) * 2;
     const bare = key.replace(/^v/i, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const count = (html.match(new RegExp(bare, 'g')) || []).length;
     e.score += Math.min(count, 5);

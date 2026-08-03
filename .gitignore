@@ -8,3 +8,7 @@ node_modules/
 .pr_files.json
 .reg-cache/
 
+data/html/
+data/*.json
+!data/DATA.md
+
