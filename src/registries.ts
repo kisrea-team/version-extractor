@@ -145,6 +145,18 @@ export async function queryRegistry(registryKey: string, opts: { token?: string 
 // 官方 JSON 端点确定性给出版本，无需猜 HTML。按 URL 域名匹配已知端点。
 const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<string | null> }> = [
   {
+    // iTunes lookup：id=... 或 bundleId=... → results[0].version（App Store 确定性版本）
+    host: /itunes\.apple\.com\/lookup|apps\.apple\.com/,
+    fetch: async (url) => {
+      const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
+      if (!r.ok) return null;
+      const d = await r.json();
+      const app = d?.results?.[0];
+      if (app?.version) return `v${app.version}`;
+      return null;
+    },
+  },
+  {
     // go.dev/dl/?mode=json → [{version:"go1.26.5",...}] 只返回稳定版
     host: /go\.dev|golang\.org/,
     fetch: async () => {
