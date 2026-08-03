@@ -15,6 +15,7 @@
 import { createRequire } from 'module';
 import { readFileSync } from 'fs';
 import { extractFromUrl, closeBrowser } from '../src/pipeline';
+import { fetchPage } from '../src/crawler';
 import { shouldTrustExtraction } from '../src/version-extract';
 
 // 开启抓取磁盘缓存（改模型重跑不用重新抓页）
@@ -27,6 +28,13 @@ interface TestCase {
   currentDbVersion?: string;
   expectChangelog?: boolean;
   registryKey?: string; // 可选：结构化版本源，如 "winget:7zip.7zip" / "brew:node"
+  versionRegex?: string; // 可选：DB 的 version_regex，作为"站点信任的精确方法"基准
+  skip?: boolean; // 待人工核实的用例，跳过评分
+}
+
+function normalizeVersion(v: string): string {
+  const t = String(v || '').trim();
+  return /^v/i.test(t) ? t : `v${t}`;
 }
 
 const BUILTIN_CASES: TestCase[] = [
@@ -103,6 +111,10 @@ async function main() {
     changelogCounted: boolean;
   }
   async function runCase(c: TestCase): Promise<CaseResult> {
+    // 待人工用例跳过（不参与评分）
+    if (c.skip) {
+      return { name: c.name, expected: '', extracted: null, verdict: '跳过(待人工)', conf: '—', changelogOk: '—', browser: '', versionPass: false, versionCounted: false, changelogPass: false, changelogCounted: false };
+    }
     const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey, skipBrowser: process.env.SKIP_BROWSER === '1' });
     const extracted = out.version?.version || null;
     const conf = out.version?.confidence || '—';
@@ -148,7 +160,7 @@ async function main() {
     return results;
   }
 
-  const CONCURRENCY = 2; // 缓存命中案例不吃内存；仅未缓存案例需抓取/渲染。并发 2 平衡速度与 OOM 风险
+  const CONCURRENCY = 8; // 高并发：Playwright 单浏览器多页面，got-scraping 并发安全；缓存命中案例不吃内存
   const results = await mapWithConcurrency(cases, CONCURRENCY, runCase);
 
   let versionPass = 0;
