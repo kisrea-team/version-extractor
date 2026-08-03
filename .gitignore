@@ -4,11 +4,7 @@ node_modules/
 .DS_Store
 .bench-cache/
 .reg-cache/
+data/html/
 .fix.mts
 .pr_files.json
-.reg-cache/
-
-data/html/
-data/*.json
-!data/DATA.md
 

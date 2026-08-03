@@ -102,7 +102,13 @@ export function extractFromChangelogPage(html: string, opts: { version?: string 
   if (!html) return null;
   const target = opts.version ? opts.version.replace(/^v/i, '') : null;
 
-  // 收集标题节点（带 id 的 heading 最容易匹配版本）
+  // ① 无 h1-h4 版本标题的页面（nginx CHANGES 等纯文本/近纯文本）→ 纯文本按版本行切块
+  if (!/<h[1-4][^>]*>[^<]*v?\d+\.\d+[^<]*<\/h[1-4]>/i.test(html)) {
+    const pt = extractFromPlainText(html, target);
+    if (pt) return pt;
+  }
+
+  // ② 收集标题节点（带 id 的 heading 最容易匹配版本）
   const headings = [...html.matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((m) => ({
     level: Number(m[1]),
     html: m[2],
@@ -131,7 +137,6 @@ export function extractFromChangelogPage(html: string, opts: { version?: string 
   content = cleanMarkdown(content);
   if (!content) return null;
 
-  // 尝试从相邻元素找日期（time 标签）
   const dateMatch = html.slice(Math.max(0, h.index - 200), h.index + 500).match(/datetime=["']([^"']+)["']/i) || html.slice(Math.max(0, h.index - 200), h.index + 500).match(/\b(\d{4}[-/]\d{1,2}[-/]\d{1,2})\b/);
 
   return {
@@ -143,6 +148,61 @@ export function extractFromChangelogPage(html: string, opts: { version?: string 
     language: detectLanguage(content),
     confidence: 'medium',
   };
+}
+
+// 纯文本 changelog（nginx CHANGES / postgresql 等）：按"版本行 + 后续行"切块
+function extractFromPlainText(text: string, target: string | null): ChangelogEntry | null {
+  const lines = text.split(/\r?\n/).map((l) => l.trim());
+  // 版本行：以版本号开头的行，如 "Changes with nginx 1.31.3" / "2026-07-15  PostgreSQL 18.2"
+  const versionLineRe = /(?:^|\s)(?:v|version\s+)?(\d+(?:\.\d+){1,3})(?:\s|$)/i;
+  let idx = -1;
+  if (target) idx = lines.findIndex((l) => l.includes(target));
+  if (idx === -1) idx = lines.findIndex((l) => versionLineRe.test(l) && !/^[A-Z]{2,}/.test(l));
+  if (idx === -1) return null;
+
+  const v = lines[idx].match(versionLineRe)?.[1];
+  if (!v) return null;
+  // 取到下一个版本行之间的内容
+  const next = lines.slice(idx + 1).findIndex((l) => versionLineRe.test(l) && l !== lines[idx]);
+  const contentLines = next === -1 ? lines.slice(idx + 1) : lines.slice(idx + 1, idx + 1 + next);
+  const content = contentLines.filter(Boolean).join('\n').trim();
+  if (!content) return null;
+
+  return {
+    version: normalizeVersion(v),
+    date: lines[idx].match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2})/)?.[1] || null,
+    title: lines[idx],
+    content,
+    source: 'changelog-page',
+    language: detectLanguage(content),
+    confidence: 'medium',
+  };
+}
+
+// 列表页（python news / blender releases 等）：找含版本号的链接，返回最新的那个
+// 版本链接特征：href 或链接文本里带版本号，且 href 不含 js/css
+function findLatestVersionLink(html: string, baseUrl: string): string | null {
+  const links = [...html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)]
+    .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
+    .filter((l) => !/\.(js|css|map)(\?|#|$)/i.test(l.href))
+    .map((l) => {
+      const m = (l.href + ' ' + l.text).match(/\bv?(\d+(?:\.\d+){1,3})\b/);
+      return m ? { href: l.href, version: m[1] } : null;
+    })
+    .filter((x): x is { href: string; version: string } => x !== null);
+
+  if (links.length === 0) return null;
+  // 取版本最高的链接（列表页通常按最新在前，但取 max 更稳）
+  let best = links[0];
+  for (const l of links) {
+    if (compareVersions(`v${l.version}`, `v${best.version}`) > 0) best = l;
+  }
+  // 解析相对链接
+  try {
+    return new URL(best.href, baseUrl).href;
+  } catch {
+    return best.href;
+  }
 }
 
 // ── 统一入口 ──
@@ -161,7 +221,18 @@ export async function extractChangelog(
         if (source.url) {
           const r = await fetchPage(source.url, { timeout: 15000 });
           if (r.error || !r.text) return null;
-          return extractFromChangelogPage(r.text, { version: opts.version });
+          // 先内联提取；失败则列表页跟随最新版本链接
+          const inline = extractFromChangelogPage(r.text, { version: opts.version });
+          if (inline) return inline;
+          const latestLink = findLatestVersionLink(r.text, source.url);
+          if (latestLink) {
+            const page2 = await fetchPage(latestLink, { timeout: 15000 });
+            if (page2.text && !page2.error) {
+              const followed = extractFromChangelogPage(page2.text, { version: opts.version });
+              if (followed) return { ...followed, source: 'changelog-page', confidence: 'medium' };
+            }
+          }
+          return null;
         }
         return null;
       default:

@@ -49,10 +49,23 @@ async function main() {
   }
 
   mkdirSync('data/html', { recursive: true });
-  const manifest: any[] = [];
-  let fetched = 0;
-  let failed = 0;
-  for (const c of byUrl.values()) {
+
+  // 并行抓取（高并发 8），避免 243 页串行超时
+  async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+    const results = new Array<R>(items.length);
+    let next = 0;
+    async function worker() {
+      while (next < items.length) {
+        const i = next++;
+        results[i] = await fn(items[i]);
+      }
+    }
+    await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+    return results;
+  }
+
+  const items = [...byUrl.values()];
+  const outcomes = await mapWithConcurrency(items, 8, async (c: any) => {
     const id = createHash('sha1').update(c._url).digest('hex').slice(0, 12);
     const page = await fetchPage(c._url, { retries: 2 });
     let label: string | null = null;
@@ -64,22 +77,29 @@ async function main() {
     }
     if (page.text && !page.error) {
       writeFileSync(join('data/html', `${id}.html`), page.text);
-      fetched += 1;
-    } else {
-      failed += 1;
+      return { ...c, id, label, htmlOk: true };
     }
+    return { ...c, id, label, htmlOk: false };
+  });
+
+  const manifest: any[] = [];
+  let fetched = 0;
+  let failed = 0;
+  for (const c of outcomes) {
+    if (c.htmlOk) fetched += 1;
+    else failed += 1;
     manifest.push({
-      id,
+      id: c.id,
       name: c.name,
       url: c._url,
       batch: c.batch,
       versionRegex: c.versionRegex || null,
-      expectedVersion: c.expectedVersion || label || null,
+      expectedVersion: c.expectedVersion || c.label || null,
       currentDbVersion: c.currentDbVersion || null,
       registryKey: c.registryKey || null,
-      label, // 正则现抓活标注（唯一真值）
-      labelSource: label ? 'regex-live' : null,
-      htmlFile: `data/html/${id}.html`,
+      label: c.label, // 正则现抓活标注（唯一真值）
+      labelSource: c.label ? 'regex-live' : null,
+      htmlFile: `data/html/${c.id}.html`,
       fetchedAt: new Date().toISOString(),
     });
   }
