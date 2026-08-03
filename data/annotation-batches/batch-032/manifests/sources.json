@@ -1,0 +1,77 @@
+[
+  {
+    "pageId": "844c50192b51",
+    "name": "微信开发者工具",
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html",
+    "expected": "v2.02.2607271",
+    "fetchedAt": "2026-08-03T17:39:50.543970+00:00",
+    "status": 200,
+    "finalUrl": "https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 54829,
+    "htmlFile": "data/annotation-batches/batch-032/html/844c50192b51.html",
+    "snapshotSha256": "f1799af015a905603ed1866a3a28a77088a04489e7089e5a218a52df7c22ef3a"
+  },
+  {
+    "pageId": "31910b13bd60",
+    "name": "Visual Studio 2026",
+    "url": "https://learn.microsoft.com/zh-tw/visualstudio/releases/2026/release-history",
+    "expected": "v18.8.2",
+    "fetchedAt": "2026-08-03T17:39:51.698566+00:00",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/zh-tw/visualstudio/releases/2026/release-history",
+    "contentType": "text/html",
+    "bytes": 66128,
+    "htmlFile": "data/annotation-batches/batch-032/html/31910b13bd60.html",
+    "snapshotSha256": "ee2195e86ac383164c9a387537f79e4beb2f32fadb1e4820ff1d459840a48e01"
+  },
+  {
+    "pageId": "c68981163151",
+    "name": "Linux内核",
+    "url": "https://linuxkernel.org.cn/",
+    "expected": "v6.15.4",
+    "fetchedAt": "2026-08-03T17:39:51.936911+00:00",
+    "status": 200,
+    "finalUrl": "https://linuxkernel.org.cn/",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 17773,
+    "htmlFile": "data/annotation-batches/batch-032/html/c68981163151.html",
+    "snapshotSha256": "610ed832e9b0c6cd0d9f8dced603d941104554bb9c8733507ef2039716e46bd6"
+  },
+  {
+    "pageId": "1317c3170490",
+    "name": "DolphinDB",
+    "url": "https://dolphindb.com/history-versions",
+    "expected": "v3.00.5",
+    "fetchedAt": "2026-08-03T17:39:52.486922+00:00",
+    "status": 200,
+    "finalUrl": "https://dolphindb.com/history-versions",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 119814,
+    "htmlFile": "data/annotation-batches/batch-032/html/1317c3170490.html",
+    "snapshotSha256": "2b638b0dcf69ef846260a53d672f11715f64c044b38f0ff4b9c3c184881d3553"
+  },
+  {
+    "pageId": "c74a3471ed46",
+    "name": "FinalShell",
+    "url": "https://www.finalshell.net.cn/",
+    "expected": "v4.6.2",
+    "fetchedAt": "2026-08-03T17:39:52.991691+00:00",
+    "status": 200,
+    "finalUrl": "https://www.finalshell.net.cn/",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 51437,
+    "htmlFile": "data/annotation-batches/batch-032/html/c74a3471ed46.html",
+    "snapshotSha256": "5ea177a006a9a75b208982ad8bb0fd09d3fcdc79f2b2472f067d92cc6066149f"
+  },
+  {
+    "pageId": "4de378f79bab",
+    "name": "SelectDB",
+    "url": "https://www.selectdb.com/enterprise/download-center",
+    "expected": "v4.0.5",
+    "fetchedAt": "2026-08-03T17:39:53.376523+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  }
+]

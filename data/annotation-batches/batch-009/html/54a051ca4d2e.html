@@ -1,0 +1,1804 @@
+ <!DOCTYPE html>
+		<html
+			class="layout layout-holy-grail   show-table-of-contents conceptual show-breadcrumb default-focus"
+			lang="en-us"
+			dir="ltr"
+			data-authenticated="false"
+			data-auth-status-determined="false"
+			data-target="docs"
+			x-ms-format-detection="none"
+		>
+			
+		<head>
+			<title>Microsoft Edge release notes for Stable Channel | Microsoft Learn</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<meta name="color-scheme" content="light dark" />
+
+			<meta name="description" content="Microsoft Edge release note for the Stable Channel" />
+			<link rel="canonical" href="https://learn.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel" /> 
+
+			<!-- Non-customizable open graph and sharing-related metadata -->
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@MicrosoftLearn" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image:alt" content="Microsoft Learn" />
+			<meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+			<!-- Page specific open graph and sharing-related metadata -->
+			<meta property="og:title" content="Microsoft Edge release notes for Stable Channel" />
+			<meta property="og:url" content="https://learn.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel" />
+			<meta property="og:description" content="Microsoft Edge release note for the Stable Channel" />
+			<meta name="platform_id" content="598ca47f-5e0a-3c33-bed7-664a51e2cbd1" /> <meta name="scope" content="Microsoft Edge" />
+			<meta name="locale" content="en-us" />
+			 
+			<meta name="uhfHeaderId" content="MSDocsHeader-MSEdge" />
+
+			<meta name="page_type" content="conceptual" />
+
+			<!--page specific meta tags-->
+			
+
+			<!-- custom meta tags -->
+			
+		<meta name="breadcrumb_path" content="/DeployEdge/breadcrumb/toc.json" />
+	
+		<meta name="recommendations" content="true" />
+	
+		<meta name="feedback_system" content="Standard" />
+	
+		<meta name="feedback_product_url" content="https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app" />
+	
+		<meta name="ms.author" content="absaini" />
+	
+		<meta name="author" content="vmliramichael" />
+	
+		<meta name="manager" content="venkatk" />
+	
+		<meta name="ms.date" content="2026-07-31T00:00:00Z" />
+	
+		<meta name="audience" content="ITPro" />
+	
+		<meta name="ms.topic" content="release-notes" />
+	
+		<meta name="ms.service" content="microsoft-edge" />
+	
+		<meta name="ms.subservice" content="edge-admin" />
+	
+		<meta name="ms.localizationpriority" content="high" />
+	
+		<meta name="ms.collection" content="M365-modern-desktop" />
+	
+		<meta name="updated_at" content="2026-07-31T23:20:00Z" />
+	
+		<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/Edge-Enterprise-pr/blob/live/edgeenterprise/microsoft-edge-relnote-stable-channel.md" />
+	
+		<meta name="gitcommit" content="https://github.com/MicrosoftDocs/Edge-Enterprise-pr/blob/3c5e0b75a5c15b41df28b3c45b2dd7c7360bd17d/edgeenterprise/microsoft-edge-relnote-stable-channel.md" />
+	
+		<meta name="git_commit_id" content="3c5e0b75a5c15b41df28b3c45b2dd7c7360bd17d" />
+	
+		<meta name="site_name" content="Docs" />
+	
+		<meta name="depot_name" content="office.Edge-Enterprise" />
+	
+		<meta name="schema" content="Conceptual" />
+	
+		<meta name="toc_rel" content="toc.json" />
+	
+		<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/office.Edge-Enterprise/{branchName}{pdfName}" />
+	
+		<meta name="feedback_help_link_type" content="" />
+	
+		<meta name="feedback_help_link_url" content="" />
+	
+		<meta name="word_count" content="1552" />
+	
+		<meta name="asset_id" content="microsoft-edge-relnote-stable-channel" />
+	
+		<meta name="moniker_range_name" content="" />
+	
+		<meta name="item_type" content="Content" />
+	
+		<meta name="source_path" content="edgeenterprise/microsoft-edge-relnote-stable-channel.md" />
+	
+		<meta name="previous_tlsh_hash" content="99C8C822A70E0A93EFA26E6B7D7BFB10A9F0D6C85EE4AAD4253FE5626A451E636E40057FDB6B9701A77786836283DA4046A2FF3DD28D93414F34145C401C31933DDC23F6AA" />
+	
+		<meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/Edge-Enterprise/blob/public/edgeenterprise/microsoft-edge-relnote-stable-channel.md" />
+	
+		<meta name="markdown_url" content="https://learn.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel?accept=text/markdown" />
+	 
+		<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/5287f575-02f0-405f-92b7-800456526b0c" data-source="generated" />
+	
+		<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/06e86142-34c2-4b94-ab9c-9477c21f7152" data-source="generated" />
+	
+
+			<!-- Apply persisted/system theme before first paint to prevent wrong-theme flash when scripts are deferred. -->
+			<script id="theme-preference">
+				(function () {
+			try {
+				var stored = localStorage.getItem('theme');
+				var theme = /^(light|dark|high-contrast)$/.test(stored)
+					? stored
+					: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				document.documentElement.classList.add('theme-' + theme);
+			} catch (e) {}
+		})();;
+			</script>
+
+			<script id="atlas-layout-preferences">
+				(function () {
+			try {
+				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
+				var view = state["docs-layout-persistence"] || {};
+				var excludesKey = "";
+				var blocked = {};
+				if (excludesKey) {
+					var exclusions = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
+					if (Object.prototype.hasOwnProperty.call(exclusions, excludesKey)) {
+						var scoped = exclusions[excludesKey];
+						if (scoped) {
+							if (typeof scoped === 'object') blocked = scoped;
+						}
+					}
+				}
+				var html = document.documentElement;
+				for (var c in view) {
+					if (Object.prototype.hasOwnProperty.call(blocked, c)) continue;
+					if (view[c]) html.classList.add(c);
+					else html.classList.remove(c);
+				}
+			} catch (e) {}
+		})();;
+			</script>
+
+			<!-- assets and js globals -->
+			
+			<link rel="stylesheet" href="/static/assets/0.4.03496.8081-83220ef3/styles/site.css" />
+			
+			<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+			<script async src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script>
+			
+
+			<!-- msdocs global object -->
+			<script id="msdocs-script">
+		var msDocs = {
+  "environment": {
+    "accessLevel": "online",
+    "azurePortalHostname": "portal.azure.com",
+    "reviewFeatures": false,
+    "supportLevel": "production",
+    "systemContent": true,
+    "siteName": "learn",
+    "legacyHosting": false
+  },
+  "data": {
+    "contentLocale": "en-us",
+    "contentDir": "ltr",
+    "userLocale": "en-us",
+    "userDir": "ltr",
+    "pageTemplate": "Conceptual",
+    "layoutStateStorageKey": "docs-layout-persistence",
+    "brand": "",
+    "context": {},
+    "standardFeedback": true,
+    "showFeedbackReport": false,
+    "feedbackHelpLinkType": "",
+    "feedbackHelpLinkUrl": "",
+    "feedbackSystem": "Standard",
+    "feedbackGitHubRepo": "",
+    "feedbackProductUrl": "https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app",
+    "extendBreadcrumb": false,
+    "isEditDisplayable": false,
+    "isPrivateUnauthorized": false,
+    "hideViewSource": false,
+    "isPermissioned": false,
+    "hasRecommendations": true,
+    "contributors": [
+      {
+        "name": "vmliramichael",
+        "url": "https://github.com/vmliramichael"
+      },
+      {
+        "name": "Y-Kelly",
+        "url": "https://github.com/Y-Kelly"
+      },
+      {
+        "name": "alekyaj",
+        "url": "https://github.com/alekyaj"
+      },
+      {
+        "name": "openpublishbuild",
+        "url": "https://github.com/openpublishbuild"
+      },
+      {
+        "name": "sainiab",
+        "url": "https://github.com/sainiab"
+      },
+      {
+        "name": "huypub",
+        "url": "https://github.com/huypub"
+      },
+      {
+        "name": "dan-wesley",
+        "url": "https://github.com/dan-wesley"
+      },
+      {
+        "name": "PatrizioBytes",
+        "url": "https://github.com/PatrizioBytes"
+      },
+      {
+        "name": "v-stsavell",
+        "url": "https://github.com/v-stsavell"
+      },
+      {
+        "name": "AndreaLBarr",
+        "url": "https://github.com/AndreaLBarr"
+      },
+      {
+        "name": "shisub",
+        "url": "https://github.com/shisub"
+      },
+      {
+        "name": "srugh",
+        "url": "https://github.com/srugh"
+      },
+      {
+        "name": "AdiGuta",
+        "url": "https://github.com/AdiGuta"
+      },
+      {
+        "name": "DCtheGeek",
+        "url": "https://github.com/DCtheGeek"
+      }
+    ]
+  },
+  "functions": {}
+};;
+	</script>
+
+			<!-- base scripts, msdocs global should be before this -->
+			<script
+				src="/static/assets/0.4.03496.8081-83220ef3/scripts/en-us/index-docs.js"
+				async
+			></script>
+			
+
+			<!-- json-ld -->
+			
+		</head>
+	
+			<body
+				id="body"
+				data-bi-name="body"
+				class="layout-body "
+				lang="en-us"
+				dir="ltr"
+			>
+				<header class="layout-body-header background-color-body-medium">
+		<div class="header-holder has-default-focus">
+			
+		<a
+			href="#main"
+			
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			
+		>
+			Skip to main content
+		</a>
+	
+		<a
+			href="#"
+			data-skip-to-ask-learn
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			hidden
+		>
+			Skip to Ask Learn chat experience
+		</a>
+	
+
+			<div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+			<!-- Unsupported browser warning -->
+			<div
+				id="unsupported-browser"
+				style="background-color: white; color: black; padding: 16px; border-bottom: 1px solid grey;"
+				hidden
+			>
+				<div style="max-width: 800px; margin: 0 auto;">
+					<p style="font-size: 24px">This browser is no longer supported.</p>
+					<p style="font-size: 16px; margin-top: 16px;">
+						Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.
+					</p>
+					<div style="margin-top: 12px;">
+						<a
+							href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+							style="background-color: #0078d4; border: 1px solid #0078d4; color: white; padding: 6px 12px; border-radius: 2px; display: inline-block;"
+						>
+							Download Microsoft Edge
+						</a>
+						<a
+							href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+							style="background-color: white; padding: 6px 12px; border: 1px solid #505050; color: #171717; border-radius: 2px; display: inline-block;"
+						>
+							More info about Internet Explorer and Microsoft Edge
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- site header -->
+			<div
+				id="ms--site-header"
+				data-test-id="site-header-wrapper"
+				itemscope="itemscope"
+				itemtype="http://schema.org/Organization"
+			>
+				<div
+					id="ms--mobile-nav"
+					class="site-header display-none-tablet padding-inline-none gap-none"
+					data-bi-name="mobile-header"
+					data-test-id="mobile-header"
+				></div>
+				<div
+					id="ms--primary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L1-header"
+					data-test-id="primary-header"
+				></div>
+				<div
+					id="ms--secondary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L2-header"
+					data-test-id="secondary-header"
+					
+				></div>
+			</div>
+			
+		<!-- banner -->
+		<div data-banner>
+			<div id="disclaimer-holder"></div>
+			
+		</div>
+		<!-- banner end -->
+	
+		</div>
+	</header>
+				 <section
+					id="layout-body-menu"
+					class="layout-body-menu border-right display-flex background-color-body-medium"
+					data-bi-name="menu"
+			  >
+					
+		<div
+			id="left-container"
+			class="left-container display-none padding-none display-block-tablet width-full display-none-until-layout-restored"
+			data-toc-container="true"
+		>
+			<div
+				id="ms--toc-content"
+				class="padding-left-sm padding-right-none padding-bottom-sm height-full"
+			>
+				<nav
+					id="affixed-left-container"
+					class="margin-top-xxs-tablet position-sticky display-flex flex-direction-column width-full"
+					aria-label="Primary"
+					data-bi-name="left-toc"
+					role="navigation"
+				>
+					<div
+						id="ms--collapsible-toc-header"
+						class="display-flex flex-direction-row-reverse justify-content-center align-items-center margin-bottom-xxs margin-right-xxs"
+					>
+						<button
+							type="button"
+							class="button button-clear inner-focus"
+							data-collapsible-toc-toggle
+							aria-expanded="true"
+							hidden
+							aria-controls="ms--toc-content"
+							aria-label="Table of contents"
+						>
+							<span class="icon icon-mirrored-rtl font-size-md" aria-hidden="true">
+								<span
+									class="docon docon-panel-left-contract display-none-layout-menu-collapsed"
+								></span>
+								<span
+									class="docon docon-panel-left-expand display-none display-inline-layout-menu-collapsed"
+								></span>
+							</span>
+						</button>
+						<div
+							id="ms--collapsible-toc-moniker-slot"
+							class="flex-grow-1 display-none-layout-menu-collapsed"
+						></div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	
+			  </section>
+
+				<main
+					id="main"
+					role="main"
+					class="layout-body-main "
+					data-bi-name="content"
+					lang="en-us"
+					dir="ltr"
+				>
+					
+			<div
+		id="ms--content-header"
+		class="content-header default-focus border-bottom-none"
+		data-bi-name="content-header"
+	>
+		<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+			<button
+				type="button"
+				class="contents-button button button-sm margin-right-xxs"
+				data-bi-name="contents-expand"
+				aria-haspopup="true"
+				data-contents-button
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-menu"></span></span>
+				<span class="contents-expand-title"> Table of contents </span>
+			</button>
+			<button
+				type="button"
+				class="ap-collapse-behavior ap-expanded button button-sm"
+				data-bi-name="ap-collapse"
+				aria-controls="action-panel"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-exit-mode"></span></span>
+				<span>Exit editor mode</span>
+			</button>
+		</div>
+	</div>
+			<div
+				data-main-column
+				class="reading-width margin-inline-auto layout-padding padding-top-none padding-top-sm-tablet padding-bottom-sm"
+			>
+				<div>
+					
+		<div id="article-header" class="background-color-body margin-bottom-xs display-none-print">
+			<div class="display-flex align-items-center justify-content-space-between">
+				
+		<details
+			id="article-header-breadcrumbs-overflow-popover"
+			class="popover popover-left"
+			data-for="article-header-breadcrumbs"
+		>
+			<summary
+				class="button button-clear button-primary button-sm inner-focus"
+				aria-label="All breadcrumbs"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-more"></span>
+				</span>
+			</summary>
+			<div id="article-header-breadcrumbs-overflow" class="popover-content"></div>
+		</details>
+
+		<bread-crumbs
+			id="article-header-breadcrumbs"
+			role="group"
+			aria-label="Breadcrumbs"
+			data-test-id="article-header-breadcrumbs"
+			class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"
+		></bread-crumbs>
+	 
+		<div
+			id="article-header-page-actions"
+			class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"
+		>
+			
+		<button
+			class="button button-sm border-none inner-focus display-none-tablet flex-shrink-0 "
+			data-bi-name="ask-learn-assistant-entry"
+			data-test-id="ask-learn-assistant-modal-entry-mobile"
+			data-ask-learn-modal-entry
+			
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-none display-inline-flex-tablet display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-modal-entry-tablet"
+			data-ask-learn-modal-entry
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-flyout-entry"
+			data-ask-learn-flyout-entry
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	 
+
+			<details class="popover popover-right" id="article-header-page-actions-overflow">
+				<summary
+					class="justify-content-flex-start button button-clear button-sm button-primary inner-focus"
+					aria-label="More actions"
+					title="More actions"
+				>
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-more-vertical"></span>
+					</span>
+				</summary>
+				<div class="popover-content">
+					
+		<button
+			type="button"
+			id="ms--focus-mode-button"
+			data-focus-mode
+			data-bi-name="focus-mode-entry"
+			data-page-action-item="overflow-all"
+			data-popover-close
+			class="button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus display-none display-inline-flex-tablet"
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-glasses"></span>
+			</span>
+			<span>Reading mode</span>
+		</button>
+	 
+		<button
+			data-page-action-item="overflow-mobile"
+			type="button"
+			class="display-block-layout-menu-collapsed button-block button-sm inner-focus button button-clear display-none-tablet justify-content-flex-start text-align-left"
+			data-bi-name="contents-expand"
+			data-contents-button
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true"
+				><span class="docon docon-editor-list-bullet"></span
+			></span>
+			<span class="contents-expand-title">Table of contents</span>
+		</button>
+	 
+		<a
+			id="lang-link-overflow"
+			class="button-sm inner-focus button button-clear button-block justify-content-flex-start text-align-left"
+			data-bi-name="language-toggle"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-read-in-link
+			href="#"
+			hidden
+		>
+			<span class="icon" aria-hidden="true" data-read-in-link-icon>
+				<span class="docon docon-locale-globe"></span>
+			</span>
+			<span data-read-in-link-text>Read in English</span>
+		</a>
+	
+					
+		<button
+			type="button"
+			class="collection button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus"
+			data-list-type="collection"
+			data-bi-name="collection"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="collection-status">Add</span>
+		</button>
+	 
+		<button
+			type="button"
+			class="collection button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+			data-list-type="plan"
+			data-bi-name="plan"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="plan-status">Add to Plans</span>
+		</button>
+	 
+					
+		<a
+			data-contenteditbtn
+			class="button button-clear button-block button-sm inner-focus justify-content-flex-start text-align-left text-decoration-none"
+			data-bi-name="edit"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			hidden
+			href="https://github.com/MicrosoftDocs/Edge-Enterprise/blob/public/edgeenterprise/microsoft-edge-relnote-stable-channel.md"
+			data-original_content_git_url="https://github.com/MicrosoftDocs/Edge-Enterprise-pr/blob/live/edgeenterprise/microsoft-edge-relnote-stable-channel.md"
+			data-original_content_git_url_template="{repo}/blob/{branch}/edgeenterprise/microsoft-edge-relnote-stable-channel.md"
+			data-pr_repo=""
+			data-pr_branch=""
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-edit-outline"></span>
+			</span>
+			<span>Edit</span>
+		</a>
+	  
+		<hr class="margin-block-xxs" />
+		
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="copy-markdown"
+					data-page-action-item="overflow-all"
+					data-copy-markdown
+					data-copy-state="idle"
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span data-show-when="idle" class="docon docon-code-lang"></span>
+						<span data-show-when="loading" class="loader" hidden></span>
+						<span data-show-when="success" class="docon docon-check-mark" hidden></span>
+					</span>
+					<span>Copy Markdown</span>
+				</button>
+		   
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="print"
+					data-page-action-item="overflow-all"
+					data-popover-close
+					data-print-page
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span class="docon docon-print"></span>
+					</span>
+					<span>Print</span>
+				</button>
+		  
+	
+				</div>
+			</details>
+		</div>
+	
+			</div>
+		</div>
+	  
+		<!-- privateUnauthorizedTemplate is hidden by default -->
+		<div unauthorized-private-section data-bi-name="permission-content-unauthorized-private" hidden>
+			<hr class="hr margin-top-xs margin-bottom-sm" />
+			<div class="notification notification-info">
+				<div class="notification-content">
+					<p class="margin-top-none notification-title">
+						<span class="icon" aria-hidden="true"
+							><span class="docon docon-exclamation-circle-solid"></span
+						></span>
+						<span>Note</span>
+					</p>
+					<p class="margin-top-none authentication-determined not-authenticated">
+						Access to this page requires authorization. You can try <a class="docs-sign-in" href="#" data-bi-name="permission-content-sign-in">signing in</a> or <a  class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+					<p class="margin-top-none authentication-determined authenticated">
+						Access to this page requires authorization. You can try <a class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	
+					<div class="content"><h1 id="microsoft-edge-release-notes-for-stable-and-extended-stable-channels">Microsoft Edge release notes for Stable and Extended Stable Channels</h1></div>
+					
+		<div
+			id="article-metadata"
+			data-bi-name="article-metadata"
+			data-test-id="article-metadata"
+			class="page-metadata-container display-flex gap-xxs justify-content-space-between align-items-center flex-wrap-wrap"
+		>
+			 
+				<div
+					id="user-feedback"
+					class="margin-block-xxs display-none display-none-print"
+					hidden
+					data-hide-on-archived
+				>
+					
+		<button
+			id="user-feedback-button"
+			data-test-id="conceptual-feedback-button"
+			class="button button-sm button-clear button-primary display-none"
+			type="button"
+			data-bi-name="user-feedback-button"
+			data-user-feedback-button
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-like"></span>
+			</span>
+			<span>Feedback</span>
+		</button>
+	
+				</div>
+		  
+		</div>
+	 
+		<div data-id="ai-summary" class="display-none-print">
+			<div id="ms--ai-summary-cta" class="margin-top-xs display-flex align-items-center">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-sparkle-fill gradient-text-vivid"></span>
+				</span>
+				<button
+					id="ms--ai-summary"
+					type="button"
+					class="tag tag-sm tag-suggestion margin-left-xxs"
+					data-test-id="ai-summary-cta"
+					data-bi-name="ai-summary-cta"
+					data-an="ai-summary"
+				>
+					<span class="ai-summary-cta-text">
+						Summarize this article for me
+					</span>
+				</button>
+			</div>
+			<!-- Slot where the client will render the summary card after the user clicks the CTA -->
+			<div id="ms--ai-summary-header" class="margin-top-xs"></div>
+		</div>
+	 
+		<nav
+			id="center-doc-outline"
+			class="doc-outline display-none-desktop display-none-print margin-bottom-sm"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">
+				In this article
+			</h2>
+		</nav>
+	
+					<div class="content"><p>These release notes provide information about new features and nonsecurity updates that are included in the Microsoft Edge Stable and Extended Stable Channels.</p>
+<p><a href="/api/search/rss?search=%22Release+notes+for+Microsoft+Edge+Stable+Channel%22+%2B+%22These+release+notes+provide+information+about+new+features+and+nonsecurity+updates%22&amp;locale=en-us" data-linktype="absolute-path"><strong>Subscribe via RSS</strong></a> | <a href="/en-us/deployedge/microsoft-edge-relnote-archive-stable-channel" data-linktype="absolute-path"><strong>Previous Releases</strong></a> | <a href="/en-us/deployedge/microsoft-edge-known-issues?tabs=Open" data-linktype="absolute-path"><strong>Known Issues</strong></a></p>
+<h2 id="contents---july-2026">Contents - July 2026</h2>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Latest Major Version</th>
+<th>Latest Minor Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stable 151</td>
+<td><a href="#version-1510412959-july-31-2026-stable" data-linktype="self-bookmark">151.0.4129.59 (July 31, 2026)</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Extended Stable 150</td>
+<td><a href="#version-1500407848-july-2-2026-stable" data-linktype="self-bookmark">150.0.4078.48 (July 02, 2026)</a></td>
+<td><a href="#version-15004078110-july-31-2026-extended-stable" data-linktype="self-bookmark">150.0.4078.110 (July 31, 2026)</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1510412959-july-31-2026-stable">Version 151.0.4129.59: July 31, 2026 (Stable)</h2>
+<h3 id="release-summary">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#announcements" data-linktype="self-bookmark">Announcements</a></td>
+<td>Announcements about Microsoft Translator requirements and Drop retirement in Microsoft Edge.</td>
+</tr>
+<tr>
+<td><a href="#feature-updates" data-linktype="self-bookmark">Feature Updates</a></td>
+<td>Updates to clipboard suggestions, passkey sync, Sidebar, and macOS support in Microsoft Edge.</td>
+</tr>
+<tr>
+<td><a href="#fixes" data-linktype="self-bookmark">Fixes</a></td>
+<td>Fixes for third-party extensions in Microsoft Edge.</td>
+</tr>
+<tr>
+<td><a href="#policy-updates" data-linktype="self-bookmark">Policy Updates</a></td>
+<td>New and updated policies in Microsoft Edge.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-31-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="announcements">Announcements</h3>
+<ul>
+<li><p><strong>Microsoft Translator update</strong>. On Microsoft Edge versions earlier than 136, translation will stop working after July 30, 2026. Users can update their browser by going to Settings and more (...) &gt; Help and feedback &gt; About Microsoft Edge; install the update and restart when prompted. Admins should update managed devices to the latest version of Microsoft Edge.</p>
+</li>
+<li><p><strong>Drop is being retired</strong>. We're simplifying Microsoft Edge. Drop will be retired in the near future. Files shared are saved in OneDrive. Text notes need to be downloaded separately.</p>
+</li>
+</ul>
+<h3 id="feature-updates">Feature Updates</h3>
+<ul>
+<li><p><strong>Clipboard suggestions in the address bar</strong>. Microsoft Edge can suggest content based on text and links copied to the clipboard directly in the address bar dropdown. Admins can control availability of this feature using the <a href="/en-us/deployedge/microsoft-edge-policies/addressbarclipboardsuggestenabled" data-linktype="absolute-path">AddressBarClipboardSuggestEnabled</a> policy.</p>
+</li>
+<li><p><strong>Passkey Sync for Enterprise Users</strong>. Microsoft Edge is introducing support for passkey synchronization for enterprise users, enabling secure, passwordless authentication across devices. Passkeys created in Edge can now be synced seamlessly, improving sign-in experience while maintaining strong security standards. Admins can control availability to this feature using the <a href="/en-us/deployedge/microsoft-edge-policies/passwordmanagerpasskeysenabled" data-linktype="absolute-path">PasswordManagerPasskeysEnabled</a> policy.</p>
+</li>
+<li><p><strong>Sidebar app list is retired for enterprise users</strong>. We're simplifying Microsoft Edge. The sidebar app list is retired for enterprise users. New apps can no longer be added to the sidebar, and apps currently pinned in the app tower are removed. Sidebar app policies are no longer supported, and any configured sidebar app policies are no longer applied. For more information, see <a href="https://support.microsoft.com/en-US/edge/streamline-access-to-your-favorite-sites-and-apps-with-sidebar-in-microsoft-edge" data-linktype="external">Streamline access to your favorite sites and apps with Sidebar in Microsoft Edge</a>.</p>
+</li>
+<li><p><strong>Microsoft Edge supported Operating Systems for macOS</strong>. Microsoft Edge version 151 or later requires macOS 13 (Ventura) or later.</p>
+</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Fixed an issue which caused third-party extensions to be temporarily disabled on <code>m365.cloud.microsoft</code>.</li>
+</ul>
+<h3 id="policy-updates">Policy Updates</h3>
+<h4 id="new-policies">New policies</h4>
+<ul>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/addressbarclipboardsuggestenabled" data-linktype="absolute-path">AddressBarClipboardSuggestEnabled</a></strong> - Enable clipboard suggestions in the address bar</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/edgereadingmodeservicebasedextractionenabled" data-linktype="absolute-path">EdgeReadingModeServiceBasedExtractionEnabled</a></strong> - Enable service-based extraction for Reading Mode in Microsoft Edge</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/processisolationenabled" data-linktype="absolute-path">ProcessIsolationEnabled</a></strong> - Enable Process Isolation</li>
+</ul>
+<h4 id="additional-policy-changes">Additional policy changes</h4>
+<ul>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector" data-linktype="absolute-path">OnBulkDataEntryEnterpriseConnector</a></strong> - Add macOS platform support</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector" data-linktype="absolute-path">OnFileAttachedEnterpriseConnector</a></strong> - Add macOS platform support</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/onprintenterpriseconnector" data-linktype="absolute-path">OnPrintEnterpriseConnector</a></strong> - Add macOS platform support</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>For the latest web platform features and updates, see the <a href="/en-us/microsoft-edge/web-platform/release-notes/151" data-linktype="absolute-path">Microsoft Edge 151 web platform release notes (July 2026)</a>.</p>
+</div>
+<hr>
+<p><a href="#microsoft-edge-release-notes-for-stable-and-extended-stable-channels" data-linktype="self-bookmark">Back to top</a></p>
+<hr>
+<h2 id="version-1500407848-july-2-2026-stable">Version 150.0.4078.48: July 2, 2026 (Stable)</h2>
+<h3 id="release-summary-1">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#feature-updates" data-linktype="self-bookmark">Feature Updates</a></td>
+<td>Updates macOS, Workspaces Migration, and Sidebar Retirement.</td>
+</tr>
+<tr>
+<td><a href="#policy-updates" data-linktype="self-bookmark">Policy Updates</a></td>
+<td>New and updated policies in Microsoft Edge.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-2-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="announcements-1">Announcements</h3>
+<ul>
+<li><p><strong>Microsoft Edge supported operating systems for macOS</strong>. Microsoft Edge version 150 is the last release that supports macOS 12 (Monterey). Microsoft Edge version 151 or later requires macOS 13 (Ventura) or later. For more information, see <a href="/en-us/deployedge/microsoft-edge-supported-operating-systems" data-linktype="absolute-path">Microsoft Edge supported operating systems</a>.</p>
+</li>
+<li><p><strong>Migration to improved V2 architecture for Workspaces</strong>. <a href="https://www.microsoft.com/en-us/edge/features/workspaces" data-linktype="external">Workspaces</a>, introduced in Edge in 2022, allows users to create durable sets of tabs that can be saved and shared with others. In order to improve reliability and performance of this feature, the following changes are being made:</p>
+<ul>
+<li>Migrating data for saved Workspaces from OneDrive/SharePoint to Edge Sync service</li>
+<li>Removing the collaboration/share functionality of this feature</li>
+</ul>
+<p>For organizations who have disabled Sync through policy, the existing v1 Workspace data will still be migrated to the new architecture. New v2 Workspaces created after migration won't sync across devices and will remain local to each device. This update occurs on a progressive rollout beginning in Edge Stable v145 and continues rolling out through Edge v150. For more information, see <a href="https://support.microsoft.com/topic/getting-started-with-microsoft-edge-workspaces-63a5a6d7-3db4-468f-aba8-fdd00dce4c35" data-linktype="external">Getting started with Microsoft Edge Workspaces</a>.</p>
+</li>
+<li><p><strong>Sidebar app list is being retired</strong>. We're simplifying Microsoft Edge. The sidebar app list will be retired in the near future. New apps can no longer be added to the sidebar, and apps currently pinned in the app tower will be removed in a future update. Sidebar app policies will no longer be supported, and any configured sidebar app policies will no longer be applied. For more information, see <a href="https://support.microsoft.com/microsoft-edge/streamline-access-to-your-favorite-sites-and-apps-with-sidebar-in-microsoft-edge" data-linktype="external">Streamline access to your favorite sites and apps with Sidebar in Microsoft Edge</a>.</p>
+</li>
+</ul>
+<h3 id="feature-updates-1">Feature Updates</h3>
+<ul>
+<li><p><strong>Clarify choices surrounding third-party cookie settings</strong>. Language under 'Settings &gt; Privacy, search, and services &gt; Cookies' is updated to better describe the choices users have when managing third-party cookies.</p>
+</li>
+<li><p><strong>Sign in to Edge with a Google account</strong>. Users can now sign in to Microsoft Edge using a Google account in addition to a Microsoft account from the profile menu and Edge sign-in screen. Available for Windows and macOS devices. Admins can control availability of this feature using the <a href="/en-us/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" data-linktype="absolute-path">NonMicrosoftAccountSignInEnabled</a> policy. <strong>Note:</strong> This is a controlled feature rollout. If you don't see this feature, check back as we continue our rollout.</p>
+</li>
+<li><p><strong>Intune MAM Protected Downloads</strong>. The protected downloads feature for Intune MAM now saves downloaded files to the 'Documents &gt; Microsoft Edge &gt; Downloads' folder in OneDrive.</p>
+</li>
+<li><p><strong>Enterprise WebView2 runtime downgrade via DowngradeVersion policy</strong>. Starting with Microsoft Edge version 150, enterprises can actively use the 'DowngradeVersion' policy to downgrade WebView2 applications. Administrators can temporarily roll back specific applications to a previous WebView2 Evergreen Runtime version (N-1 or N-2) using the new 'DowngradeVersion' policy in <em>msedgewebview2.admx</em>. The policy allows enterprises to mitigate critical regressions by specifying per-application executable-to-version mappings. The Edge Updater installs the target version side-by-side, and the WebView2 Loader redirects targeted applications accordingly. Downgrades automatically expire with each new WebView2 release. Applications pinned to N-1 remain on the same version (now becoming N-2) and automatically update in the next release, while applications pinned to N-2 revert to the current Evergreen Runtime. The policy applies only to enterprise-managed devices (domain-joined or MDM-enrolled). For more information, see <a href="/en-us/deployedge/microsoft-edge-webview-policies#downgradeversion" data-linktype="absolute-path">Microsoft Edge WebView2 Policy Documentation</a>.</p>
+</li>
+<li><p><strong>Update to the "View in File Explorer" feature</strong>. When the <a href="/en-us/deployedge/microsoft-edge-policies/configureviewinfileexplorer" data-linktype="absolute-path">ConfigureViewInFileExplorer</a> policy is enabled, the <strong>View in File Explorer</strong> feature can be used in SharePoint document libraries. Microsoft Edge has updated the feature to enforce additional validation and restrictions when triggered by webpages to improve security.</p>
+</li>
+<li><p><strong>Security Update Alerts in the Edge management service</strong>. Administrators can choose a severity threshold and receive alerts when a new Microsoft Edge update includes security fixes that meet or exceed that level, including zero-day fixes. This helps organizations quickly identify updates that may require attention while avoiding unnecessary notifications for routine releases. <strong>Note:</strong> This experience is in public preview and is available by opting in to <a href="/en-us/microsoft-365/admin/manage/release-options-in-office-365?view=o365-worldwide#targeted-release" data-linktype="absolute-path">Targeted Release in the Microsoft 365 admin center</a>. For more information, see <a href="/en-us/deployedge/microsoft-edge-management-service-monitoring-dashboard" data-linktype="absolute-path">Monitoring dashboard</a>.</p>
+</li>
+</ul>
+<h3 id="policy-updates-1">Policy Updates</h3>
+<h4 id="new-policies-1">New policies</h4>
+<ul>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/allowsocketpoolsizerandomizationforproxies" data-linktype="absolute-path">AllowSocketPoolSizeRandomizationForProxies</a></strong> - Allow socket pool size randomization for proxies</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" data-linktype="absolute-path">NonMicrosoftAccountSignInEnabled</a></strong> - Enable sign-in to Microsoft Edge using non-Microsoft accounts</li>
+<li><strong><a href="/en-us/deployedge/microsoft-edge-policies/strictmimetypecheckforworkerscriptsenabled" data-linktype="absolute-path">StrictMimetypeCheckForWorkerScriptsEnabled</a></strong> - Enable strict MIME type checking for worker scripts</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>For the latest web platform features and updates, see the <a href="/en-us/microsoft-edge/web-platform/release-notes/150" data-linktype="absolute-path">Microsoft Edge 150 web platform release notes (Jul. 2026)</a>.</p>
+</div>
+<h2 id="version-15004078110-july-31-2026-extended-stable">Version 150.0.4078.110: July 31, 2026 (Extended Stable)</h2>
+<h3 id="release-summary-2">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-15004078105-july-27-2026-stable">Version 150.0.4078.105: July 27, 2026 (Stable)</h2>
+<h3 id="release-summary-3">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1500407899-july-24-2026-stable">Version 150.0.4078.99: July 24, 2026 (Stable)</h2>
+<h3 id="release-summary-4">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-24-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1500407896-july-23-2026-stable">Version 150.0.4078.96: July 23, 2026 (Stable)</h2>
+<h3 id="release-summary-5">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-23-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fixes-1">Fixes</h3>
+<ul>
+<li>Fixed an issue where files downloaded while running Microsoft Edge with different user credentials, or as a published application where the Windows Shell was unavailable, did not automatically open in the associated application after the download completed.</li>
+</ul>
+<h2 id="version-1500407883-july-17-2026-stable">Version 150.0.4078.83: July 17, 2026 (Stable)</h2>
+<h3 id="release-summary-6">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-17-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1500407880-july-16-2026-stable">Version 150.0.4078.80: July 16, 2026 (Stable)</h2>
+<h3 id="release-summary-7">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-16-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1500407865-july-09-2026-stable">Version 150.0.4078.65: July 09, 2026 (Stable)</h2>
+<h3 id="release-summary-8">Release Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixes</td>
+<td>Fixed various bugs and performance issues.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-09-2026" data-linktype="absolute-path">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-1500407850-july-02-2026-stable-macos">Version 150.0.4078.50: July 02, 2026 (Stable) macOS</h2>
+<h3 id="release-summary-9">Release Summary</h3>
+<h2 id="-category--description------------------------------fixes--fixed-various-bugs-and-performance-issues--security--stable-channel-security-updates-are-listed-here-">| Category | Description |
+|----------|------------------|
+| Fixes | Fixed various bugs and performance issues. |
+| Security | Stable channel security updates are listed <a href="/en-us/deployedge/microsoft-edge-relnotes-security#july-2nd-2026-macOS" data-linktype="absolute-path">here</a>. |</h2>
+<p><a href="#microsoft-edge-release-notes-for-stable-and-extended-stable-channels" data-linktype="self-bookmark">Back to top</a></p>
+<hr>
+<h2 id="see-also">See also</h2>
+<ul>
+<li>All the security updates are listed in <a href="microsoft-edge-relnotes-security" data-linktype="relative-path">Release notes for Microsoft Edge Security Updates</a>.</li>
+<li>Archived release notes for Microsoft Edge Stable Channel are located in <a href="microsoft-edge-relnote-archive-stable-channel" data-linktype="relative-path">Archived release notes for Microsoft Edge Stable Channel</a>.</li>
+<li><a href="https://aka.ms/EdgeEnterprise" data-linktype="external">Microsoft Edge Enterprise landing page</a>.</li>
+<li><a href="/en-us/deployedge/microsoft-edge-relnote-archive-stable-channel" data-linktype="absolute-path">Explore all previous releases</a>.</li>
+</ul>
+<p>To understand Microsoft Edge channels, see the <a href="microsoft-edge-channels" data-linktype="relative-path">Overview of the Microsoft Edge channels</a>.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>For the Stable Channel, updates roll out progressively over one or more days. To learn more, see <a href="microsoft-edge-update-progressive-rollout" data-linktype="relative-path">Progressive rollouts for Microsoft Edge updates</a>.</p>
+<p>Microsoft Edge Web Platform constantly evolves to improve user experience, security, and privacy. To learn more, see <a href="/en-us/microsoft-edge/web-platform/site-impacting-changes" data-linktype="absolute-path">Site compatibility-impacting changes coming to Microsoft Edge</a>.</p>
+</div>
+</div>
+					
+		<div
+			id="ms--inline-notifications"
+			class="margin-block-xs"
+			data-bi-name="inline-notification"
+		></div>
+	 
+		<div
+			id="assertive-live-region"
+			role="alert"
+			aria-live="assertive"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+		<div
+			id="polite-live-region"
+			role="status"
+			aria-live="polite"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+	
+					
+		<!-- feedback section -->
+		<section
+			id="site-user-feedback-footer"
+			class="font-size-sm margin-top-md display-none-print display-none-desktop"
+			data-test-id="site-user-feedback-footer"
+			data-bi-name="site-feedback-section"
+		>
+			<hr class="hr" />
+			<h2 id="ms--feedback" class="title is-3">Feedback</h2>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="buttons">
+					<button
+						class="thumb-rating-button like button button-primary button-sm"
+						data-test-id="footer-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+						<span>Yes</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike button button-primary button-sm"
+						id="standard-rating-no-button"
+						hidden
+						data-test-id="footer-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+						<span>No</span>
+					</button>
+					<details
+						class="popover popover-top"
+						id="mobile-help-popover"
+						data-test-id="footer-feedback-popover"
+					>
+						<summary
+							class="thumb-rating-button dislike button button-primary button-sm"
+							data-test-id="details-footer-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+							<span>No</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading"
+							aria-describedby="popover-description"
+						>
+							<p id="popover-heading" class="font-size-lg margin-bottom-xxs font-weight-semibold">
+								Need help with this topic?
+							</p>
+							<p id="popover-description" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		<!-- end feedback section -->
+	
+				</div>
+				
+		<div id="ms--additional-resources-mobile" class="display-none-print">
+			<hr class="hr" hidden />
+			<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>
+				Additional resources
+			</h2>
+			
+		<section
+			id="right-rail-recommendations-mobile"
+			class=""
+			data-bi-name="recommendations"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-training-mobile"
+			class=""
+			data-bi-name="learning-resource-card"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-events-mobile"
+			class=""
+			data-bi-name="events-card"
+			hidden
+		></section>
+	
+		</div>
+	 
+		<div
+			id="article-metadata-footer"
+			data-bi-name="article-metadata-footer"
+			data-test-id="article-metadata-footer"
+			class="page-metadata-container"
+		>
+			<hr class="hr" />
+			<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+				<li class="visibility-hidden-visual-diff">
+			<span class="badge badge-sm text-wrap-pretty">
+				<span>Last updated on <local-time format="twoDigitNumeric"
+		datetime="2026-07-31T21:54:00.000Z"
+		data-article-date-source="calculated"
+		class="is-invisible"
+	>
+		2026-07-31
+	</local-time></span>
+			</span>
+		</li>
+			</ul>
+		</div>
+	
+			</div>
+			
+		<div
+			id="action-panel"
+			role="region"
+			aria-label="Action Panel"
+			class="action-panel"
+			tabindex="-1"
+		></div>
+	
+		
+				</main>
+				<aside
+					id="layout-body-aside"
+					class="layout-body-aside  "
+					data-bi-name="aside"
+					aria-label="Additional resources"
+			  >
+					
+		<div
+			id="ms--additional-resources"
+			class="right-container padding-sm display-none display-block-desktop height-full"
+			data-bi-name="pageactions"
+		>
+			<div id="affixed-right-container" data-bi-name="right-column">
+				
+		<nav
+			id="side-doc-outline"
+			class="doc-outline border-bottom padding-bottom-xs margin-bottom-xs scrollbar-width-thin"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h3>In this article</h3>
+		</nav>
+	
+				<!-- Feedback -->
+				
+		<section
+			id="ms--site-user-feedback-right-rail"
+			class="font-size-sm display-none-print"
+			data-test-id="site-user-feedback-right-rail"
+			data-bi-name="site-feedback-right-rail"
+		>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="display-flex flex-wrap-nowrap">
+					<button
+						class="thumb-rating-button like inner-focus"
+						data-test-id="right-rail-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						aria-label="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike inner-focus"
+						id="right-rail-no-button"
+						hidden
+						data-test-id="right-rail-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						aria-label="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+					</button>
+					<details class="popover popover-right" id="help-popover" data-test-id="feedback-popover">
+						<summary
+							tabindex="0"
+							class="thumb-rating-button dislike inner-focus"
+							data-test-id="details-right-rail-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							aria-label="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading-right-rail"
+							aria-describedby="popover-description-right-rail"
+						>
+							<p
+								id="popover-heading-right-rail"
+								class="font-size-lg margin-bottom-xxs font-weight-semibold"
+							>
+								Need help with this topic?
+							</p>
+							<p id="popover-description-right-rail" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+	
+			</div>
+		</div>
+	
+			  </aside> <section
+					id="layout-body-flyout"
+					class="layout-body-flyout "
+					data-bi-name="flyout"
+			  >
+					 <div
+	class="height-full border-left background-color-body-medium"
+	id="ask-learn-flyout"
+></div>
+			  </section> <div class="layout-body-footer " data-bi-name="layout-footer">
+		<footer
+			id="footer"
+			data-test-id="footer"
+			data-bi-name="footer"
+			class="footer-layout padding-xs padding-sm-desktop has-default-focus border-top"
+			role="contentinfo"
+		>
+			<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
+				
+		<a
+			data-mscc-ic="false"
+			href="#"
+			data-bi-name="select-locale"
+			class="locale-selector-link flex-shrink-0 button button-sm button-clear external-link-indicator"
+			id=""
+			title=""
+			><span class="icon" aria-hidden="true"
+				><span class="docon docon-world"></span></span
+			><span class="local-selector-link-text">en-us</span></a
+		>
+	 <div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://aka.ms/yourcaliforniaprivacychoices"
+			data-bi-name="your-privacy-choices"
+			class="button button-sm button-clear flex-shrink-0 external-link-indicator"
+			id=""
+			title=""
+			>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 30 14"
+			xml:space="preserve"
+			height="16"
+			width="43"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<path
+				d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"
+			></path>
+			<path
+				d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"
+			></path>
+			<path
+				d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"
+				style="fill:#fff"
+			></path>
+			<path
+				d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"
+				style="fill:#06f"
+			></path>
+		</svg>
+	
+			<span>Your Privacy Choices</span></a
+		>
+	
+	</div>
+				<div class="flex-shrink-0">
+		<div class="dropdown has-caret-up">
+			<button
+				data-test-id="theme-selector-button"
+				class="dropdown-trigger button button-clear button-sm inner-focus theme-dropdown-trigger"
+				aria-controls="{{ themeMenuId }}"
+				aria-haspopup="true"
+				aria-expanded="false"
+				data-bi-name="theme"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-sun"></span></span>
+				<span>Theme</span>
+				<span class="icon expanded-indicator" aria-hidden="true">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<div class="dropdown-menu" id="{{ themeMenuId }}" role="menu">
+				<ul class="theme-selector padding-xxs" data-test-id="theme-dropdown-menu" role="none">
+					<li class="theme display-block" role="none">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							role="menuitemradio"
+							aria-checked="false"
+							data-theme-to="light"
+							tabindex="-1"
+						>
+							<span class="theme-light margin-right-xxs">
+								<span
+									class="theme-selector-icon border display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span> Light </span>
+						</button>
+					</li>
+					<li class="theme display-block" role="none">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							role="menuitemradio"
+							aria-checked="false"
+							data-theme-to="dark"
+							tabindex="-1"
+						>
+							<span class="theme-dark margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span> Dark </span>
+						</button>
+					</li>
+					<li class="theme display-block" role="none">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							role="menuitemradio"
+							aria-checked="false"
+							data-theme-to="high-contrast"
+							tabindex="-1"
+						>
+							<span class="theme-high-contrast margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span> High contrast </span>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+			</div>
+			<ul class="links" data-bi-name="footerlinks">
+				<li class="manage-cookies-holder" hidden=""></li>
+				<li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/principles-for-ai-generated-content"
+			data-bi-name="aiDisclaimer"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>AI Disclaimer</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/previous-versions/"
+			data-bi-name="archivelink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Previous Versions</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog"
+			data-bi-name="bloglink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Blog</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/contribute"
+			data-bi-name="contributorGuide"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Contribute</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?LinkId=521839"
+			data-bi-name="privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?linkid=2259814"
+			data-bi-name="consumer-health-privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Consumer Health Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/legal/termsofuse"
+			data-bi-name="termsofuse"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Terms of Use</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/"
+			data-bi-name="trademarks"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Trademarks</a
+		>
+	
+	</li>
+				<li>&copy; Microsoft 2026</li>
+			</ul>
+		</footer>
+	</footer>
+			</body>
+		</html>

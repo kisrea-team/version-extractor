@@ -1,0 +1,49 @@
+[
+  {
+    "pageId": "594e06239537",
+    "name": "Vivaldi",
+    "url": "https://vivaldi.com/download/",
+    "pageStatus": "product-page",
+    "version": "8.1",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "json-ld",
+      "structured"
+    ],
+    "evidenceQuote": "softwareVersion\":\"8.1\"",
+    "confidence": "high",
+    "note": "Official JSON-LD current version.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:38:05.386167+00:00",
+    "htmlFile": "data/annotation-batches/batch-030/html/594e06239537.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "ed83a13dd40daea42cdec285460d72c7fd06ac4f9b836c54246b92a172d7d1ca"
+  },
+  {
+    "pageId": "b676f3da0853",
+    "name": "Vivaldi blog",
+    "url": "https://vivaldi.com/blog/",
+    "pageStatus": "product-page",
+    "version": "8.1",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "visible"
+    ],
+    "evidenceQuote": "8.1 blog hero image",
+    "confidence": "medium",
+    "note": "Blog post references current 8.1 series.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:38:06.129450+00:00",
+    "htmlFile": "data/annotation-batches/batch-030/html/b676f3da0853.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "b790d1b6190ffd51772b31848285d71da06099f0b7d9ec057a8faf217b6f0c56"
+  }
+]

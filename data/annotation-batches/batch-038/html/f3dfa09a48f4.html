@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebSite">
+    <head>
+          <title>GIMP 3.2 Released - GIMP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/images/wilber32.png" type="image/png" />
+        <link rel="me" href='https://floss.social/@GIMP'/>
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/grid.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/gimp.css" />
+
+        <link href="/theme/css/tipuesearch/tipuesearch.css" rel="stylesheet">
+
+        <link href="https://www.gimp.org/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="GIMP Atom Feed" />
+        <link href="https://www.gimp.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="GIMP RSS Feed" />
+
+
+
+    <meta name="description" content="Release notes for GIMP 3.2" />
+
+
+
+    <link rel='stylesheet' type='text/css' href="/theme/css/article.css" />
+
+    <meta property='og:type' content='article' />
+    <meta property='article:published_time' content='2026-03-14T00:00:00+01:00' />
+
+    <meta itemprop='url' content='https://www.gimp.org/news/2026/03/14/gimp-3-2-released/' />
+    <meta property='og:url' content='https://www.gimp.org/news/2026/03/14/gimp-3-2-released/' />
+
+    <meta itemprop='name' content='GIMP - GIMP 3.2 Released' />
+    <meta property='og:title' content='GIMP - GIMP 3.2 Released' />
+
+    <meta itemprop='image' content='https://www.gimp.org/news/2026/03/14/gimp-3-2-released//gimp-3.2-splash.jpg' />
+    <meta property='og:image' content='https://www.gimp.org/news/2026/03/14/gimp-3-2-released//gimp-3.2-splash.jpg' />
+
+    <meta itemprop='author' content='GIMP Team' />
+    <meta property='og:author' content='GIMP Team' />
+
+    <meta itemprop='description' content="Release notes for GIMP 3.2" />
+    <meta property='og:description' content="Release notes for GIMP 3.2" />
+
+
+
+    </head>
+
+<body id="index" class="home">
+
+        <nav id="menu">
+            <ul>
+                <li id='gimp-home'><a href="/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-wilber"/>
+</svg> GIMP</a></li>
+                <li><a href="/downloads/">Download</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/docs/">Docs</a></li>
+                <li><a href="/develop/">Participate</a></li>
+                <li><a href="/tutorials/">Tutorials</a></li>
+
+
+                <li>
+                    <form action='https://duckduckgo.com/' class='search-form'>
+    <div class='search-input-wrapper'>
+        <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-magnifying-glass"/>
+</svg>
+        <input type='text' name='q'
+	class='tipue-search-input'
+	autocomplete='off' required placeholder='Search with DuckDuckGo'>
+    </div>
+    <input type='hidden' name='sites' value='www.gimp.org'>
+</form>
+
+                </li>
+
+                <li>
+                    <a class='donate-orange' href="/donating/">Donate</a>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=gimp%40gnome%2eorg&lc=US&item_name=Donation%20to%20GIMP%20Project&item_number=106&currency_code=USD" title='Donate with PayPal' class='donate-type'>
+		        <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-paypal"/>
+</svg>
+                    </a>
+                </li>
+
+            </ul>
+            <span id='nav-up'><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-chevron-up"/>
+</svg></span>
+        </nav><!-- /#menu -->
+
+        <div id='navstrip' class='nav-down'>
+            <a href="/" class='navfive'>
+                <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-wilber"/>
+</svg><br/>
+                GIMP
+            </a>
+            <a href="/news/" class='navfive'>
+                <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-newspaper"/>
+</svg><br/>
+                News
+            </a>
+            <a href="/docs/" class='navfive'>
+                <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-book"/>
+</svg><br/>
+                Docs
+            </a>
+            <a href="/tutorials/" class='navfive'>
+                <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-graduation-cap"/>
+</svg><br/>
+                Tutorials
+            </a>
+            <a href="#bottom-nav" id='navel' class='navfive' >
+                <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-bars"/>
+</svg><br/>
+                More
+            </a>
+        </div>
+
+        <a id="navel-old" href="#bottom-nav" ><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-bars"/>
+</svg></a>
+
+    <div id="pushPage">
+
+
+
+
+<section id="content" class="body">
+    <div class='container'>
+        <div class='row clearfix'>
+
+            <div class='column full'>
+
+                    <h2 class="entry-title">
+                      <a href="/news/2026/03/14/gimp-3-2-released/" rel="bookmark"
+                         title="Permalink to GIMP 3.2 Released"><span class="caps">GIMP</span> 3.2&nbsp;Released</a></h2>
+                 
+
+
+                  <div class="post-info">
+                    <a class="post-nav prev" href="/news/2026/03/02/gimp-3-2-RC3-released/">Previous Post</a>
+                    <abbr class="published" title="2026-03-14T00:00:00+01:00">
+                      2026-03-14
+                    </abbr>
+                    <address class="vcard author">
+                      by                           <a class="url fn" href="/author/gimp-team.html">GIMP Team</a>                    </address>
+                    <a class="post-nav next" href="/news/2026/03/28/gimp-3-2-2-released/">Next Post</a>
+                  </div><!-- /.post-info -->
+
+                  <div class="entry-content">
+                    <p>We&#8217;re happy to present the <a href="https://www.gimp.org/downloads/">first release of <span class="caps">GIMP</span> 3.2</a>!
+This marks a year of design, development, and testing from volunteers and the community, as part of our plan to
+<a href="https://www.gimp.org/release-notes/gimp-3.0.html#next-steps-on-the-roadmap">streamline releases after <span class="caps">GIMP</span> 3.0</a>.
+We&#8217;re excited for you to see the new features that version 3.2&nbsp;offers!</p>
+<figure>
+<img src="https://www.gimp.org/news/2026/03/14/gimp-3-2-released/gimp-3.2-splash.jpg"
+     alt="GIMP 3.2: splash screen by Mark McCaughrean"/>
+<figcaption>
+<em><span class="caps">GIMP</span> 3.2 splash screen, by Mark McCaughrean (<span class="caps">CC</span> by-sa 4.0)</em>
+</figcaption>
+</figure>
+
+<div class="toc">
+<ul>
+<li><a href="#highlights">Highlights</a></li>
+<li><a href="#learn-more">Learn&nbsp;More</a></li>
+<li><a href="#other-related-releases">Other Related&nbsp;Releases</a></li>
+<li><a href="#enjoy-gimp-32">Enjoy <span class="caps">GIMP</span>&nbsp;3.2!</a></li>
+<li><a href="#support-gimp-development">Support <span class="caps">GIMP</span>&nbsp;development</a></li>
+</ul>
+</div>
+<h1 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h1>
+<p>Here are some of the many highlights to look out for as you start using <span class="caps">GIMP</span>&nbsp;3.2:</p>
+<ul>
+<li>
+<p>New non-destructive&nbsp;layers!</p>
+<ul>
+<li>You can now use <strong>Link Layers</strong> to incorporate external image as part of your compositions, easily
+   scaling, rotating, and transforming them without losing quality or sharpness. The link layer&#8217;s content
+   is updated when the source file is&nbsp;modified</li>
+<li>The Path tool can now create <strong>Vector Layers</strong>, which lets you draw shapes with adjustable fill and
+stroke&nbsp;settings.</li>
+</ul>
+</li>
+<li>
+<p>The <strong>MyPaint Brush tool</strong> has been upgraded, adding 20 new brushes, and it now automatically adjusts to
+  your canvas zoom and rotation for more dynamic&nbsp;painting.</p>
+</li>
+<li>
+<p>A&nbsp;new <code>Overwrite</code> paint mode allows you to draw over existing colors without blending their&nbsp;transparency.</p>
+</li>
+<li>
+<p>The on-canvas Text Editor has a number of workflow improvements. Among them, you can now move it as needed
+across the canvas and utilize many common shortcuts such as <kbd>Ctrl</kbd> + <kbd>B</kbd> for bold text and
+<kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>V</kbd> for pasting unformatted text. The Text Outline feature
+also includes more options to control the direction of the&nbsp;outline.</p>
+</li>
+<li>
+<p>New file format support and improvements to existing formats, such as <strong><span class="caps">DDS</span> <span class="caps">BC7</span> export</strong> and more <strong>layer styles</strong>
+imported for PSDs. Thanks to vector layers, we now also support <strong><span class="caps">SVG</span> export</strong> and expanded vector options
+in <span class="caps">PDF</span>&nbsp;export.</p>
+</li>
+<li>
+<p>A variety of <span class="caps">UX</span> and <span class="caps">UI</span> improvements, based on your feedback and our design team&#8217;s efforts.
+To list a&nbsp;few:</p>
+<ul>
+<li>Options to make the brush thumbnails use theme colors for previews, for a nicer experience in dark&nbsp;themes</li>
+<li>Ability to drag and drop images onto the image tab to open in <span class="caps">GIMP</span></li>
+<li>Keyboard shortcut support for the Shear and Flip&nbsp;tools</li>
+<li>New <code>System</code> color scheme that automatically matches <span class="caps">GIMP</span>&#8217;s theme color scheme to the one you set for your <span class="caps">OS</span></li>
+</ul>
+</li>
+<li>
+<p>The <span class="caps">CMYK</span> color selector now shows&nbsp;the <code>Total Ink Coverage</code> for your color, helping you adjust during
+soft-proofing based on your printer&#8217;s ink coverage&nbsp;limit.</p>
+</li>
+<li>
+<p>For script and plug-in developers, a new <strong><span class="caps">GEGL</span> Filter browser</strong> has been added to make it easier to find
+non-destructive filters to&nbsp;use.</p>
+</li>
+</ul>
+<h1 id="learn-more">Learn More<a class="headerlink" href="#learn-more" title="Permanent link">&para;</a></h1>
+<p>We&#8217;ve prepared <a href="/release-notes/gimp-3.2.html">release notes</a> to go over all the changes, improvements, new features, and more. And if you&#8217;d like even more details, you can peruse the <a href="https://gitlab.gnome.org/GNOME/gimp/-/blob/master/NEWS"><span class="caps">NEWS</span></a> changelog for all 3.1 and 3.2 development&nbsp;releases.</p>
+<p>But to see it for yourself, you can get <span class="caps">GIMP</span> 3.2 directly from our <a href="https://www.gimp.org/downloads/">Downloads page</a> and try it&nbsp;out!</p>
+<p><a class="NewsButton"
+   href="/release-notes/gimp-3.2.html"
+   title="GIMP 3.2 Release Notes" >
+    » <span class="caps">READ</span> <span class="caps">COMPLETE</span> <span class="caps">RELEASE</span> <span class="caps">NOTES</span>&nbsp;«
+</a></p>
+<h1 id="other-related-releases">Other Related Releases<a class="headerlink" href="#other-related-releases" title="Permanent link">&para;</a></h1>
+<p>To accompany our release of <span class="caps">GIMP</span> 3.2, packagers should be aware that we also&nbsp;released:</p>
+<ul>
+<li>babl 0.1.124 (<a href="https://download.gimp.org/babl/0.1/">tarball</a>)</li>
+<li><span class="caps">GEGL</span> 0.4.68 (<a href="https://download.gimp.org/gegl/0.4/">tarball</a>)</li>
+</ul>
+<p>We do not have a ready-to-release documentation for this version 3.2
+yet. We recommend you to continue using the <a href="https://docs.gimp.org/">3.0 online
+documentation</a> for the time being.<br/>
+Our contributors are working hard on enhancing the documentation. Any
+help is welcome on our <a href="https://gitlab.gnome.org/GNOME/gimp-help/"><code>gimp-help</code>
+project</a> to speed up the&nbsp;process!</p>
+<h1 id="enjoy-gimp-32">Enjoy <span class="caps">GIMP</span> 3.2!<a class="headerlink" href="#enjoy-gimp-32" title="Permanent link">&para;</a></h1>
+<p><span class="caps">GIMP</span> 3.2 builds on the foundation we created in <span class="caps">GIMP</span> 3.0, providing great new features
+and setting the stage for even more awesome things in future&nbsp;versions!</p>
+<p class='buttons'>
+  <span class='download-button'>
+    <a href="/downloads/">
+      Download <span class="caps">GIMP</span>&nbsp;3.2
+    </a>
+  </span>
+</p>
+
+<p><em>Note</em>: packages on stores may take a bit longer to reach you as they
+may be in&nbsp;review.</p>
+<h1 id="support-gimp-development">Support <span class="caps">GIMP</span> development<a class="headerlink" href="#support-gimp-development" title="Permanent link">&para;</a></h1>
+<p>Don’t forget you can <a href="https://www.gimp.org/donating/">donate and personally fund <span class="caps">GIMP</span> developers</a>, as a way to
+give back and accelerate the development of <span class="caps">GIMP</span>. Community commitment helps the project to grow&nbsp;stronger!</p>
+<p class='buttons'>
+  <a href="https://www.gimp.org/donating/">
+    <span class='donate-button'>
+    Support us by<br/> <strong>Donating</strong>
+    </span>
+  </a>
+</p>
+                  </div><!-- /.entry-content -->
+
+                  <div class="post-info post-nav-bottom">
+                    <a class="post-nav prev" href="/news/2026/03/02/gimp-3-2-RC3-released/">Previous Post</a>
+                    <a class="post-nav next" href="/news/2026/03/28/gimp-3-2-2-released/">Next Post</a>
+                  </div><!-- /.post-nav-bottom -->
+
+            </div>
+
+
+            <div class='column full social'>
+            <hr/>
+                <p>
+                  Share this on:
+                  <a class="mastodon-share-button"
+                     data-link="https://www.gimp.org/news/2026/03/14/gimp-3-2-released/"
+                     data-title='"GIMP 3.2 Released" by @GIMP@floss.social'
+                     title="Share this post on Mastodon">Mastodon</a> |
+
+                  <a href="https://twitter.com/intent/tweet?url=https://www.gimp.org/news/2026/03/14/gimp-3-2-released/&via=GIMP_Official&text=GIMP 3.2 Released"
+                     target="_blank" title="Share this post on twitter">twitter</a> |
+
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.gimp.org/news/2026/03/14/gimp-3-2-released/"
+                     target="_blank" title="Share this post on Facebook">Facebook</a>
+                </p>
+
+                <form class="mastodon-share-form" id='mastodon-share-news/2026/03/14/gimp-3-2-released/'>
+                  <label for="mastodon-server-address">Your Mastodon instance:</label>
+                  <input type="text" name="mastodon-instance"
+                         id="mastodon-server-address"
+                         list="common-mastodon-instances"
+                         placeholder="https://mastodon.social">
+                  <datalist id="common-mastodon-instances">
+                      <option value="bsd.network">
+                      <option value="chaos.social">
+                      <option value="floss.social">
+                      <option value="fosstodon.org">
+                      <option value="framapiaf.org">
+                      <option value="mamot.fr">
+                      <option value="mastodon.art">
+                      <option value="mastodon.online">
+                      <option value="mastodon.social">
+                      <option value="mastodon.uno">
+                      <option value="mastodon.xyz">
+                      <option value="mstdn.social">
+                      <option value="post.lurk.org">
+                      <option value="pouet.chapril.org">
+                  </datalist>
+                  <input class="mastodon-share-submit" type="submit" form='mastodon-share-news/2026/03/14/gimp-3-2-released/'
+                         value="Share on your instance"/>
+                </form>
+
+            </div>
+
+          </div>
+      </div>
+</section>
+
+<script async src='/js/mastodon.js'></script>
+
+
+        <footer id="contentinfo" class="body">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="column third">
+                        <ul class="nav-bottom">
+                            <li id='nav-btm-gimp-home'><a href="/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-wilber"/>
+</svg> GIMP</a></li>
+                            <li id="nav-btm-downloads"><a href="/downloads/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-download"/>
+</svg> Download</a></li>
+                            <li id="nav-btm-news"><a href="/news/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-newspaper"/>
+</svg> News</a></li>
+                        </ul>
+                    </div>
+                    <div class="column third">
+                        <ul class="nav-bottom">
+                            <li id="nav-btm-about"><a href="/about/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-info-circle"/>
+</svg> About GIMP</a></li>
+                            <li id="nav-btm-docs"><a href="/docs/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-book"/>
+</svg> Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="column third">
+                        <ul class="nav-bottom">
+                            <li id="nav-btm-develop"><a href="/develop/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-code"/>
+</svg> Get Involved</a></li>
+                            <li id="nav-btm-tutorials"><a href="/tutorials/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-graduation-cap"/>
+</svg> Tutorials</a></li>
+                            <li id="nav-btm-donating"><a href="/donating/"><svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-money-bill"/>
+</svg> Donate</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class='row clearfix'>
+                    <div class='column full'>
+                        <form action='https://duckduckgo.com/' class='search-form'>
+    <div class='search-input-wrapper'>
+        <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-magnifying-glass"/>
+</svg>
+        <input type='text' name='q'
+	class='tipue-search-input'
+	autocomplete='off' required placeholder='Search with DuckDuckGo'>
+    </div>
+    <input type='hidden' name='sites' value='www.gimp.org'>
+</form>
+
+                    </div>
+                </div>
+
+                <div class='row clearfix secondary-links'>
+
+                    <div class='column third'>
+                        <ul>
+                            <li><a href='/release-notes/'>Release Notes</a></li>
+                            <li><a href='https://developer.gimp.org/core/roadmap/'>Roadmap</a></li>
+                        </ul>
+                    </div>
+
+                    <div class='column third'>
+                        <ul>
+                            <li><a href='/docs/userfaq.html' title='Frequently Asked Questions'>FAQ</a></li>
+                            <li><a href='/books/'>Books</a></li>
+                            <li><a href='/bugs/'>Bug Reports</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class='column third'>
+                        <ul class='social-links'>
+                            <li><a href='/donating/sponsors.html'>Sponsors</a></li>
+                            <li><a href='/discuss.html'>Discuss</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="row clearfix bottom">
+                    <div class="column half flow-opposite">
+                        <a href="/feeds/atom.xml">GIMP News Feed <svg class="icon" aria-hidden="true" focusable="false">
+  <use href="/theme/icons/sprite.svg#icon-rss"/>
+</svg></a> | <a href="/webmasters.html">Contacting Us</a>
+                    </div>
+                    <div class="column half">
+                        <p>
+                        <small>
+                            Unless otherwise noted, <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">GIMP's Website</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.gimp.org/team.html" property="cc:attributionName" rel="cc:attributionURL">GIMP's Team</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+			    <br>
+			    <em>Icons</em> by <a href="https://fontawesome.com">Font Awesome</a> (<a href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution"><span class='cc'>cb</span></a>)
+                        </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer><!-- /#contentinfo -->
+
+    </div>
+
+    <script async src='/js/push-menu.js'></script>
+
+    <script async src='/js/search-embed.js'></script>
+
+</body>
+</html>

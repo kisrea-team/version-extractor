@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head> 
+	<title>Keyboard Maestro 11.1.1: Work Faster with Macros for macOS</title>
+	<link rel="stylesheet" type="text/css" href="/css/standard.css" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css"     media="print" />
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<meta http-equiv="Reply-To" content="support@stairways.com" /> 
+	<meta http-equiv="generator" content="Interarchy,BBEdit,Perl" /> 
+	<meta http-equiv="author" content="Stairways Software Pty Ltd" /> 
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- Site: KEYBOARDMAESTRO -->
+	<script src="/javascript/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<meta name="keywords" content="Custom Keyboard, automation software, productivity software, mac os x, business productivity, mac macros, keyboard maestro, custom toolbars, mac software, mac os x software, mac software download, mac os software, macro program, macro keyboard, business productivity software, mac osx" /> 
+	<meta name="description" content="Keyboard Maestro is the leading software for macOS automation.  It will increase business productivity by using macros (or short cuts) with simple keystrokes." /> 
+<script type="text/javascript">
+
+function ScrollTo( hash )
+{
+	$('html, body').animate({
+		scrollTop: $(hash).offset().top - $('#HeaderFixed').height()
+	}, 800, function() {
+		window.location.hash = hash;
+	});
+}
+
+function StartLightBox( id ) {
+	DismissLightBox();
+	$("#LightBoxBackground").css("display", "block");
+	$('div.LightBox').click(function (evt) {
+	    DismissLightBox();
+	});
+	$('div.LightBox div').click(function (evt) {
+	    evt.stopPropagation();
+	});
+	$(id).css("display", "block");
+	$(id).find('video').get(0).play();
+}
+
+function DismissLightBox() {
+	$("#LightBoxBackground").css("display", "none");
+	$("#LightBoxKMFull").css("display", "none");
+	$("#LightBoxKMFull").find('video').get(0).pause();
+}
+
+</script>
+
+
+<style type="text/css">
+/* CSS Reset from http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 15px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, sans-serif;
+	vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+
+:focus {
+	outline: 0;
+}
+
+body {
+	line-height: 1.4;
+	color: #333;
+	background: white;
+	width: 950px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+a {
+	text-decoration: none;
+	color: #008ACE;
+}
+
+a:hover {
+	color: red;
+}
+
+em {
+	font-style: italic;
+	font-weight: 700;
+}
+
+:root {
+    color-scheme: light dark;
+	--background: white;
+	--header-background: hsl(0,0%,95%);
+	--header-border: hsl(0,0%,70%);
+	--text:  hsl(0,0%,20%);
+	--nav-color: hsl(0,0%,30%);
+	--nav-color-hover: hsl(214,88%,41%);
+	--button-try: hsl(214,88%,41%);
+	--button-buy: hsl(28,92%,51%);
+	--button-watch: hsl(214,3%,31%);
+	--button-try-border: hsl(214,88%,55%);
+	--button-buy-border: hsl(28,92%,60%);
+	--button-watch-border: hsl(214,3%,41%);
+	--button-try-hover: hsl(214,88%,55%);
+	--button-buy-hover: hsl(28,92%,60%);
+	--button-watch-hover: hsl(214,3%,41%);
+	--heading-color: hsl(214,88%,35%);
+	--button-text: white;
+	--premiere-text: white;
+	--join-text: white;
+	--blue-background: hsl(214,88%,92%);
+	--darkblue-background: hsl(214,88%,75%);
+	--link-text: hsl(214,88%,35%);
+	--link-text-hover: hsl(214,88%,55%);
+	--tooltip-background: hsl(0,0%,50%,0.8);
+	--tooltip-text: white;
+	--footer-text: white;
+	--footer-background: hsl(0,0%,30%);
+	--footer-link-hover: hsl(0,0%,80%);
+	--picture-border: hsl(0,0%,0%);
+}
+
+body {
+	width:100%;
+	line-height: 1.6em;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+		--background: black;
+		--header-background: hsl(0,0%,15%);
+		--header-border: hsl(0,0%,60%);
+		--text:  hsl(0,0%,90%);
+		--nav-color: hsl(0,0%,85%);
+		--nav-color-hover: hsl(214,88%,41%);
+		--button-try: hsl(214,88%,41%);
+		--button-buy: hsl(28,92%,51%);
+		--button-watch: hsl(214,3%,31%);
+		--button-try-border: hsl(214,88%,55%);
+		--button-buy-border: hsl(28,92%,60%);
+		--button-watch-border: hsl(214,3%,41%);
+		--button-try-hover: hsl(214,88%,55%);
+		--button-buy-hover: hsl(28,92%,60%);
+		--button-watch-hover: hsl(214,3%,41%);
+		--heading-color: hsl(214,68%,55%);
+		--button-text: white;
+		--premiere-text: white;
+		--join-text: white;
+		--blue-background: hsl(214,44%,20%);
+		--darkblue-background: hsl(214,68%,30%);
+		--link-text: hsl(214,88%,35%);
+		--link-text-hover: hsl(214,88%,55%);
+		--tooltip-background: hsl(0,0%,50%,0.8);
+		--tooltip-text: white;
+		--footer-text: white;
+		--footer-background: hsl(0,0%,25%);
+		--footer-link-hover: hsl(0,0%,80%);
+		--picture-border: hsl(0,0%,0%);
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--text);
+}
+
+
+div.clear {
+	clear: both;
+}
+
+div.gap {
+	clear: both;
+	height: 20px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  bottom: 100%;
+  left: 50%; 
+  margin-left: -100px;
+  background-color: var(--tooltip-background);
+  color: var(--tooltip-text);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+a
+{
+	color: var(--link-text);
+}
+
+a:hover {
+	color: var(--link-text-hover);
+}
+
+a.Button
+{
+	text-align: center;
+	display: inline-block;
+	border-radius: 5px;
+	padding: 7px 14px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	width: 145px;
+	height: 26px;
+	font-size: 20px;
+	font-weight: bold;
+	color: var(--button-text);
+}
+
+a.Buy {
+	background: var(--button-buy);
+	border: 1px solid var(--button-buy-border);
+}
+
+a.Try {
+	background: var(--button-try);
+	border: 1px solid var(--button-try-border);
+}
+
+a.Watch {
+	background: var(--button-watch);
+	border: 1px solid var(--button-watch-border);
+}
+
+a.Buy:hover {
+  background: var(--button-buy-hover);
+}
+
+a.Try:hover {
+  background: var(--button-try-hover);
+}
+
+a.Watch:hover {
+  background: var(--button-watch-hover);
+}
+
+div.InnerContent {
+	padding: 20px;
+}
+
+div.WideContent {
+	width: 100%;
+}
+
+div.WideInnerContent {
+	width: 1150px;
+	margin: 0 auto;
+}
+
+div#SiteTitle {
+	display: none;
+}
+
+div#HeaderFixed {
+	position: fixed;
+	top:0;
+	background: var(--header-background);
+	border-bottom: 1px solid var(--header-border);
+}
+
+div#HeaderFixedSpace {
+	height: 104px;
+}
+
+div#KMIcon {
+	float:left;
+	margin-right: 20px;
+}
+
+div#HeaderNav {
+	float:left;
+	margin-top:20px;
+}
+
+div#HeaderNav a {
+	font-size: 20px;
+	color: var(--nav-color);
+	margin-right: 20px;
+}
+
+div#HeaderNav a:hover {
+	color: var(--nav-color-hover);
+}
+
+div#HeaderButtons {
+	padding-top: 10px;
+	float:right;
+}
+
+div#BannerPremiereBackground {
+	background-image: url(/img/v11/background.png);
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div#BannerPremiereTitle {
+	text-align: center;
+	font-weight: bold;
+	color: var(--premiere-text);
+	font-size: 70px;
+	line-height: 1.2em;
+	padding-top: 57px;
+	padding-bottom: 23px;
+}
+
+div#BannerPremiereContent {
+	text-align: center;
+	font-weight: bold;
+	color: var(--premiere-text);
+	font-size: 25px;
+	line-height: 1.4em;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+div#BannerPremiereExtra {
+	text-align: center;
+	font-weight: bold;
+	color: var(--premiere-text);
+	font-size: 20px;
+	line-height: 1.4em;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 15px;
+}
+
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+body{
+    height:100%; /* force the BODY element to match the height of the HTML element */
+}
+
+
+#LightBoxBackground {
+    z-index: 99;
+	position: absolute;
+	background-color: black;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+	opacity: 0.7;
+	display: none;
+}
+
+div#LightBoxKMFull {
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.LightBoxWideContent {
+    z-index: 100;
+	position: absolute;
+}
+
+.LightBox {
+    z-index: 101;
+	width: 95%;
+	text-align: center;
+	display: none;
+}
+
+div.LightBoxFull {
+	top: 100px;
+}
+
+div.LightBoxHalf {
+	top: 187px;
+}
+
+.LightBox div {
+    z-index: 102;
+}
+
+.LightBox video {
+    z-index: 105;
+}
+
+div.TryBuyButtons, div.PricingBuyButtons {
+	text-align: center;
+}
+
+div#PricingButton1, div#PricingButton2 {
+	padding-top: 10px;
+	display: none;
+}
+
+div#PricingButtonsBottom {
+	display: block;
+}
+
+div.TryBuyButtons {
+	padding-top: 35px;
+	padding-bottom: 70px;
+}
+
+div.Left50 {
+	width: 45%;
+	float: left;
+	padding-left: 1%;
+}
+
+div.Right50 {
+	width: 50%;
+	float: right;
+}
+
+div.Right66 {
+	width: 65%;
+	float: right;
+}
+
+div.Left66 {
+	width: 65%;
+	float: left;
+	padding-right: 4%;
+}
+
+div.Right50 img, div.Right66 img, div.Left50 img, div.Left66 img {
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+h2 {
+	color: var(--heading-color);
+	font-size: 25px;
+	line-height: 1.2em;
+	padding-top: 1em;
+	padding-bottom: 12px;
+	text-align: center;
+}
+
+h3 {
+	color: var(--heading-color);
+	font-size: 23px;
+	line-height: 1.2em;
+	padding-top: 1em;
+	padding-bottom: 12px;
+}
+
+h4 {
+	font-size: 17px;
+	line-height: 1.2em;
+}
+
+p.bigtext {
+	font-size: 19px;
+	line-height: 1.7em;
+}
+
+p.bigtext strong {
+	font-size: 19px;
+	font-weight: bold;
+}
+
+p.smalltext {
+	font-size: 15px;
+	line-height: 1.7em;
+}
+
+p.smalltext strong {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+div#Join h2 {
+	padding-top: 50px;
+	line-height: 1.3em;
+	text-align: center;
+}
+
+div#Join p, div#Join h2 {
+	color: var(--join-text);
+}
+
+div#Copyright {
+	text-align: center;
+}
+
+div.Blue {
+ 	background-color: var(--blue-background);
+}
+
+div.DarkBlue {
+ 	background-color: var(--darkblue-background);
+}
+
+div#Footer {
+ 	background-color: var(--footer-background);
+}
+
+div#Footer, div#Footer a {
+	color: var(--footer-text);
+}
+
+div#Footer a {
+	text-decoration: underline;
+	font-size: 13px;
+}
+
+div#Footer a:hover {
+	color: var(--footer-link-hover);
+}
+
+div.Three {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1%;
+	width: 30%;
+	float: left;
+}
+
+div.Three + div.Three {
+	padding-left: 4%;
+}
+
+div.Four {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1%;
+	width: 21.4%;
+	float: left;
+}
+
+div.Four + div.Four {
+	padding-left: 4%;
+}
+
+div#Footer2Break + div.Four {
+	padding-left: 4%;
+}
+
+div#Footer2Break {
+	display: none;
+}
+
+h4 {
+	padding-bottom: 1em;
+	font-weight: bold;
+}
+
+div.ThreeRight {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-right: 1%;
+	width: 30%;
+	float: right;
+}
+
+picture.Border img {
+	border:1px solid var(--picture-border);
+}
+
+@media screen and (max-width: 1150px) {
+	div.Content {
+		width: 100%;
+	}
+
+	div.WideInnerContent {
+		width: 100%;
+	}
+
+	div#BannerPremiereTitle {
+		font-size: 6vw;
+		padding-top: 5vw;
+		padding-bottom: 2vw;
+	}
+
+	div#BannerPremiereContent {
+		font-size: 2.2vw;
+		padding-left: 3vw;
+		padding-right: 3vw;
+	}
+
+	div#BannerPremiereExtra {
+		font-size: 2.2vw;
+		padding-left: 3vw;
+		padding-right: 3vw;
+	}
+
+	div.TryBuyButtons {
+		padding-top: 3vw;
+		padding-bottom: 6vw;
+	}
+}
+
+@media screen and (max-width: 950px) {
+
+	div.Four {
+		padding-left: 1%;
+		width: 47%;
+		float: left;
+	}
+
+	div.Four + div.Four {
+		padding-left: 4%;
+	}
+	
+	div#Footer2Break + div.Four {
+		padding-left: 1%;
+	}
+
+	div#Footer2Break {
+		display: block;
+	}
+	div#MiddleFooter {
+		padding-left: 1%;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	div#HeaderNav {
+		display:none;
+	}
+
+	div#BannerPremiereTitle {
+		font-size: 51px;
+	}
+
+	div#BannerPremiereContent {
+		font-size: 18px;
+	}
+
+	div#BannerPremiereExtra {
+		font-size: 16px;
+	}
+
+}
+
+@media screen and (max-width: 670px) {
+	h2 {
+		padding-bottom: 1vw;
+	}
+	div#OverviewText {
+		padding-bottom: 3vw;
+	}
+	div.Right50, div.Right66, div.Left50, div.Left66, div.Three, div.ThreeRight {
+		float: none;
+		width: 98%;
+		padding-left: 1%;
+		padding-right: 1%;
+	}
+	div.Three + div.Three {
+		width: 98%;
+		padding-left: 1%;
+		padding-right: 1%;
+	}
+
+	div.TryBuyButtons {
+		padding-top: 4.5vw;
+	}
+	
+	div#PricingButton1, div#PricingButton2 {
+		display: block;
+	}
+
+	div#PricingButtonsBottom {
+		display: none;
+	}
+
+}
+
+@media screen and (max-width: 550px) {
+	div.Four {
+		float: none;
+		width: 98%;
+		padding-left: 1%;
+		padding-right: 1%;
+	}
+	div.Four + div.Four {
+		padding-left: 1%;
+	}
+	
+	div.Four h4, div.Four li {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 495px) {
+	div#HeaderFixed, div#HeaderFixedSpace {
+		display:none;
+	}
+	div#BannerPremiereTitle {
+		font-size: 9.5vw;
+	}
+}
+
+
+
+</style> 
+
+</head>
+
+<body id="KEYBOARDMAESTROPage">
+
+<div id="SiteTitle">
+<a href="/"><img src="/img/keyboardmaestro-title-icon.png"  width="64" height="64" alt="Keyboard&nbsp;Maestro Icon" /></a>
+<div id="SiteTitleText">
+<p class="title"><a href="/">Keyboard&nbsp;Maestro</a></p>
+<p class="tag"><a href="/">Conduct your Mac Like a Pro!</a></p>
+</div>
+</div>
+<div id="SiteTitleSpace">
+</div>
+
+<div id="HeaderFixed" class="WideContent"><div class="WideInnerContent"><div class="InnerContent" style="padding-bottom:0">
+	<div id="Header">
+		<div id="KMIcon"><img alt="Keyboard Maestro Icon" src="/img/keyboardmaestro-64.png" srcset="/img/keyboardmaestro-128.png 2x" height="64" width="64"></div>
+		<div id="HeaderButtons">
+			<a class="Button Try"href="https://download.keyboardmaestro.com/">Free Trial</a>
+			<a class="Button Buy" href="https://purchase.keyboardmaestro.com">Buy Now</a>
+		</div>
+		<div id="HeaderNav">
+			<a href="#Overview" onclick="javascript:ScrollTo( '#Overview' )">Overview</a>
+			<a href="#WhatsNew" onclick="javascript:ScrollTo( '#WhatsNew' )">What’s New</a>
+			<a href="#Pricing"  onclick="javascript:ScrollTo( '#Pricing' )">Pricing</a>
+		</div>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div id="HeaderFixedSpace" class="WideContent" style="padding-bottom:0">
+</div>
+
+<div id="LightBoxBackground" onclick="DismissLightBox()">
+</div>
+
+<div class="WideContent LightBoxWideContent" onclick="DismissLightBox()"><div class="WideInnerContent"><div id="LightBoxKMFull" class="InnerContent LightBox LightBoxFull">
+
+<div>
+	<video controls width="100%" poster="/img/v11/KeyboardMaestro11Poster.png" preload="none">
+		<source src="/img/v11/KeyboardMaestro11.mp4" type='video/mp4' />
+		<p>If you can see this, you're using a pre-HTML5 browser, download the <a href="/img/v11/KeyboardMaestro11.mp4">Keyboard&nbsp;Maestro&nbsp; video</a>.</p>
+	</video>
+</div>
+</div></div></div>
+
+<div>
+
+<div id="BannerPremiereBackground" class="WideContent"><div class="WideInnerContent"><div class="InnerContent" style="padding-top:0">
+	<div id="BannerPremiere">
+		<div id="BannerPremiereTitle">The Premier<br />Mac Automation Software</div>
+		<div id="BannerPremiereContent">Automate applications or web sites, text or images, simple or complex, on command or scheduled. You can automate virtually anything.</div>
+		<!-- <div id="BannerPremiereExtra">Ready for Ventura and Native for Apple Silicon.</div> -->
+		<div id="BannerPremiereExtra">Version 11 Out Now!</div>
+		<div class="TryBuyButtons">
+			<a class="Button Try" href="https://download.keyboardmaestro.com/">Free Trial</a>
+			<a class="Button Watch" href="javascript:StartLightBox('#LightBoxKMFull')">Watch Video</a>
+		</div>
+	</div>
+</div></div></div>
+
+<div id="Overview" class="WideContent"><div class="WideInnerContent"><div class="InnerContent">
+	<div id="OverviewText" class="Left50">
+		<h3 id="Overview">Improve Your Productivity</h3>
+		<p class="bigtext">Whether you are a power user or just getting started, your time is precious. 
+		So don’t waste it. You can quickly benefit from Keyboard Maestro. 
+		<strong>Let Keyboard&nbsp;Maestro help make your Mac life more pleasant and efficient.</strong></p>
+	</div>
+	<div id="OverviewImage" class="Right50">
+		<picture> <!-- dark and light deliberately reversed -->
+		    <source srcset="/img/v11/overview.png 980w, /img/v11/overview@2x.png 1960w" media="(prefers-color-scheme: dark)">
+			<source srcset="/img/v11/overview-dark.png 980w, /img/v11/overview-dark@2x.png 1960w">
+			<img alt="Keyboard Maestro Overview" src="/img/v11/overview.png" srcset="/img/v11/overview.png 981w, /img/v11/overview@2x.png 1962w" width="100%" ></a>
+		</picture>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div id="Powerful" class="WideContent Blue"><div class="WideInnerContent"><div class="InnerContent">
+	<div>
+		<h2>“The most powerful Mac productivity and automation app available”</h2>
+		<div class="Three">
+			<h4>Quickly automate any task</h4>
+			<p class="smalltext">If you can perform it manually, Keyboard&nbsp;Maestro can almost certainly automate it for you. 
+			Whether it is typing your email address, going to Gmail or Facebook, launching Pages, 
+			or duplicating a line, Keyboard&nbsp;Maestro can help.</p>
+		</div>
+		<div class="Three">
+			<h4>Control applications</h4>
+			<p class="smalltext">Launch commonly used applications, open specific documents, rearrange windows, play music, 
+			handle email, you can do it all with Keyboard&nbsp;Maestro, faster, easier, and much more reliably.</p>
+		</div>
+		<div class="Three">
+			<h4>Manipulate text and images</h4>
+			<p class="smalltext">Create reports, transform text, OCR images, download files, expand text snippets, 
+			perform calculations, filter clipboards and work with multiple entry clipboard history.  
+			Make email and end-of-month processes so much quicker and easier.</p>
+		</div>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div class="WideContent"><div class="WideInnerContent"><div class="InnerContent">
+	<div class="Right50">
+		<h3>Control web sites</h3>
+		<p class="bigtext">Keyboard&nbsp;Maestro can help you fill in web forms, visit commonly read pages, 
+		download reports or bank statements, format web pages, 
+		and generally make browsing the web more efficient.</p>
+	</div>
+	<div class="Left50">
+		<picture class="Border">
+			<source srcset="/img/v11/web-form.gif 910w, /img/v11/web-form@2x.gif 1820w" >
+			<img alt="Web Form Annimation" src="/img/v11/web-form.gif" srcset="/img/v11/web-form.gif 910w, /img/v11/web-form@2x.gif 1820w" width="100%" >
+		</picture>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div class="WideContent Blue"><div class="WideInnerContent"><div class="InnerContent">
+	<div class="Left50">
+		<h3>Hundreds of Built-In Actions</h3>
+		<p class="bigtext">With so many possible actions that you can combine together, 
+		including flow control, conditions and looping actions, you can automate almost any task, 
+		from the trivial to very complex multi-application reporting systems.</p>
+	</div>
+	<div class="Right50">
+		<picture class="Border">
+		    <source srcset="/img/v11/actions-dark.gif 574w, /img/v11/actions-dark@2x.gif 1148w" media="(prefers-color-scheme: dark)">
+			<source srcset="/img/v11/actions.gif 574w, /img/v11/actions@2x.gif 1148w" >
+			<img alt="Actions Annimation" src="/img/v11/actions.gif" srcset="/img/v11/actions.gif 574w, /img/v11/actions@2x.gif 1148w" width="100%" >
+		</picture>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div class="WideContent"><div class="WideInnerContent"><div class="InnerContent">
+	<div class="ThreeRight">
+		<h3>Work How You Want</h3>
+		<p class="bigtext">Make your Mac and its applications behave the way you want. Launch applications and 
+		have the windows arranged your way.  Have other applications quit when you launch an application.  
+		Have your Mac set itself up at 8:00 each morning.  
+		It’s your Mac, with Keyboard&nbsp;Maestro you are in control.</p>
+	</div>
+	<div class="Left66">
+		<picture class="Border">
+			<source srcset="/img/v11/setup.gif 960w, /img/v11/setup@2x.gif 1920w" >
+			<img alt="Web Form Annimation" src="/img/v11/setup.gif" srcset="/img/v11/setup.gif 960w, /img/v11/setup@2x.gif 1920w" width="100%" >
+		</picture>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div id="Join" class="WideContent DarkBlue"><div class="WideInnerContent"><div class="InnerContent">
+	<div>
+		<h2>Join the thousands of people who benefit from Keyboard&nbsp;Maestro every day</h2>
+		<div>
+			<p class="bigtext">No matter what you do on your Mac, Keyboard&nbsp;Maestro can help you do it faster, easier and more accurately.
+			With an active forum to help with getting started or creating the next masterpiece macro, you can get the most out of your Mac.</p>
+		</div>
+	</div>
+	<div class="TryBuyButtons">
+		<a class="Button Try" href="https://download.keyboardmaestro.com/">Free Trial</a>
+		<a class="Button Buy" href="https://purchase.keyboardmaestro.com">Buy Now</a>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+
+<div id="WhatsNew" class="WideContent"><div class="WideInnerContent"><div class="InnerContent">
+	<div>
+		<h2>Version&nbsp;11 adds dozens of actions, new macro wizard, keyboardmaestro tool, and more</h2>
+		<div class="Three">
+			<h4>Prompt for Snippet</h4>
+			<p>Ask for various bits of information like name, time and location and combine it into a single text invite to a meeting.</p>
+		</div>
+		<div class="Three">
+			<h4>New Macro Wizard</h4>
+			<p>Quickly create a new macro which you can then configure further.</p>
+		</div>
+		<div class="Three">
+			<h4>Security Settings pane</h4>
+			<p>New Security Settings pane to show you the current status of the various system security permissions that allow Keyboard Maestro to help you with your tasks.</p>
+		</div>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div id="Pricing" class="WideContent Blue"><div class="WideInnerContent"><div class="InnerContent">
+	<div>
+		<h2>Pricing</h2>
+		<div class="Three">
+			<h4>One-Time Purchase for Version&nbsp;11</h4>
+			<p style="font-size:90%">Keyboard&nbsp;Maestro&nbsp;11 is a one-time purchase. No subscription, you can purchase it now for US$36<span class="tooltip">*<span class="tooltiptext">plus applicable tax</span></span> and use version 11 indefinitely.</p>
+			<div id="PricingButton1" class="PricingBuyButtons">
+				<a class="Button Buy" href="https://purchase.keyboardmaestro.com">Buy Now</a>
+			</div>
+		</div>
+		<div class="Three">
+			<h4>Upgrade to Version&nbsp;11</h4>
+			<p style="font-size:90%">Every couple years we release a great new major upgrade, and you can purchase an upgrade from any previous version 
+			for US$25<span class="tooltip">*<span class="tooltiptext">plus applicable tax</span></span>. 
+			Purchases since 1&nbsp;March, 2023 will receive a free upgrade to version&nbsp;11.</p>
+			<div id="PricingButton2" class="PricingBuyButtons">
+				<a class="Button Buy" href="https://www.keyboardmaestro.com/form/enquiry?upgrade=keyboardmaestro">Buy Upgrade</a>
+			</div>
+		</div>
+		<div class="Three">
+			<h4>Requires macOS 10.13+</h4>
+			<p style="font-size:90%">Keyboard&nbsp;Maestro&nbsp;11 requires macOS&nbsp;10.13 High Sierra or later (including Tahoe, native in Apple Silicon/M1).  For OS&nbsp;X&nbsp;10.12 and older, <a href="https://www.stairways.com/main/download">download an old version</a>.</p>
+		</div>
+	</div>
+	<div class="gap">
+	</div>
+	<div id="PricingButtonsBottom">
+		<div class="Three">
+			<div class="PricingBuyButtons">
+				<a class="Button Buy" href="https://purchase.keyboardmaestro.com">Buy Now</a>
+			</div>
+		</div>
+		<div class="Three">
+			<div class="PricingBuyButtons">
+				<a class="Button Buy" href="https://www.keyboardmaestro.com/form/enquiry?upgrade=keyboardmaestro">Buy Upgrade</a>
+			</div>
+		</div>
+	</div>
+	<div class="gap">
+	</div>
+</div></div></div>
+
+<div id="Footer" class="WideContent"><div class="WideInnerContent"><div class="InnerContent">
+	<div class="Four">
+	<h4>Version&nbsp;11</h4>
+	<ul>
+	<li><a href="https://download.keyboardmaestro.com">Download Keyboard&nbsp;Maestro&nbsp;11</a></li>
+	<li><a href="https://wiki.keyboardmaestro.com/manual/Whats_New">What&rsquo;s New?</a></li>
+	<li><a href="https://purchase.keyboardmaestro.com">Purchase a License for US$36</a></li>
+	<li><a href="/form/enquiry?upgrade=keyboardmaestro">Purchase an Upgrade for US$25</a></li>
+	<li><a href="https://files.stairways.com/">Old Versions</a></li>
+	<li>&nbsp;</li>
+	<li><a href="https://www.macsparky.com">Thanks for the audio, David Sparks</a></li>
+	<li><a href="https://www.techsmith.com">Thanks for inspiration, TechSmith</a></li>
+	<li><a href="https://www.flickr.com/photos/joshua_schnable/3046323724/in/photostream/">Thanks for the photo, Joshua</a></li>
+	</ul>
+	</div><!-- End Four -->
+
+	<div class="Four">
+	<h4>Keyboard&nbsp;Maestro</h4>
+	<ul>
+	<li><a href="https://wiki.keyboardmaestro.com/User_Manual">User Manual</a></li>
+	<li><a href="https://wiki.keyboardmaestro.com/manual/Features">Feature List</a></li>
+	<li><a href="https://wiki.keyboardmaestro.com/manual/Screenshots">Screenshots</a></li>
+	<li><a href="https://wiki.keyboardmaestro.com/">Wiki</a></li>
+	<li><a href="https://forum.keyboardmaestro.com/">Forum</a></li>
+	<li><a href="https://mastodon.social/@KeyboardMaestro">Mastodon @KeyboardMaestro@mastodon.social</a></li>
+	<li><a href="https://learn.macsparky.com/p/km">MacSparky Field Guide</a></li>
+	<li><a href="https://wiki.keyboardmaestro.com/manual/Support">Support</a></li>
+	</ul>
+	</div><!-- End Four -->
+
+	<div id="Footer2Break" class="gap">
+	</div>
+
+	<div class="Four">
+	<h4>User Database</h4>
+	<ul>
+	<li><a href="/form/enquiry">What&rsquo;s My License?</a></li>
+	<li><a href="/form/announce">Send Announcements</a></li>
+	<li><a href="/form/manageemail">Manage Email Address</a></li>
+	<li><a href="https://www.stairways.com/main/no-sale-of-personal-information">Do Not Sell My Personal Information</a> (we don’t)</li>
+	</ul>
+	</div><!-- End Four -->
+
+	<div class="Four">
+	<h4>Stairways Software</h4>
+	<ul>
+	<li><a href="https://www.stairways.com/main/about">About Us</a></li>
+	<li><a href="https://www.stairways.com/main/history">History</a></li>
+	<li><a href="https://www.stairways.com/press/">Press Releases</a></li>
+	<li><a href="https://www.stairways.com/main/privacy">Privacy Policy</a></li>
+	<li><a href="https://www.stairways.com/main/contact">Contact Us</a></li>
+	</ul>
+	</div><!-- End Four -->
+
+	<div class="gap">
+	</div>
+
+	<div id="Copyright">
+	&copy; 1990 - 2026 Stairways Software Pty Ltd.
+	</div>
+
+</div></div></div>
+
+</body> 
+</html> 

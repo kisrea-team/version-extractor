@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>News | OBS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <meta name="description" content="OBS (Open Broadcaster Software) is free and open source software for video recording and live streaming. Stream to Twitch, YouTube and many other providers or record your own videos with high quality H264 / AAC encoding.">
+    <meta name="keywords" content="OBS, OBS Studio, Stream, Video, Live Streaming, Recording, Games, Twitch, YouTube, Livestream, Open Broadcaster Software">
+    <!--<link rel="preload" href="/assets/fonts/open-sans-v18-latin-ext_latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>-->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn-fastly.obsproject.com/">
+  <link href="https://obsproject.com/assets/css/blurple.min.css?20260123-1" rel="stylesheet">    <link rel="alternate" type="application/rss+xml" title="RSS Feed obsproject.com" href="/blog/rss">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+                    <link rel="alternate" hreflang="cs" href="https://obsproject.com/cs/blog">
+                        <link rel="alternate" hreflang="da" href="https://obsproject.com/da/blog">
+                        <link rel="alternate" hreflang="de" href="https://obsproject.com/de/blog">
+                        <link rel="alternate" hreflang="en" href="https://obsproject.com/blog">
+                        <link rel="alternate" hreflang="es" href="https://obsproject.com/es/blog">
+                        <link rel="alternate" hreflang="eu" href="https://obsproject.com/eu/blog">
+                        <link rel="alternate" hreflang="fi" href="https://obsproject.com/fi/blog">
+                        <link rel="alternate" hreflang="fr" href="https://obsproject.com/fr/blog">
+                        <link rel="alternate" hreflang="hu" href="https://obsproject.com/hu/blog">
+                        <link rel="alternate" hreflang="ja" href="https://obsproject.com/ja/blog">
+                        <link rel="alternate" hreflang="ko" href="https://obsproject.com/ko/blog">
+                        <link rel="alternate" hreflang="pt-br" href="https://obsproject.com/pt-br/blog">
+                        <link rel="alternate" hreflang="ru" href="https://obsproject.com/ru/blog">
+                        <link rel="alternate" hreflang="sv" href="https://obsproject.com/sv/blog">
+                        <link rel="alternate" hreflang="tr" href="https://obsproject.com/tr/blog">
+                        <link rel="alternate" hreflang="uk" href="https://obsproject.com/uk/blog">
+                        <link rel="alternate" hreflang="zh-cn" href="https://obsproject.com/zh-cn/blog">
+            
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34644124-1"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-34644124-1', {
+      'anonymize_ip': true
+    });
+  </script>
+</head>
+
+<body class="">
+
+  <div id="wrapper">
+
+    <header id="header" class="cf">
+  <a class="logo" href="https://obsproject.com">
+    <img src="/assets/images/new_icon_small-r.png" alt="OBS" />
+  </a>
+
+  <div class="header_title">
+    <div class="header_title_main">OBS</div>
+    <div class="header_subtitle">Open Broadcaster Software<span class="smalltext">®️</span></div>
+  </div>
+
+  <div id="SocialButtons">
+
+    <div id="DiscordButton">
+      <a href="https://discord.gg/obsproject" target="_blank" aria-label="OBS Discord">
+        <img src="/assets/images/Discord.svg" class="icon-discord" />
+      </a>
+      <span class="tooltip">Discord</span>
+    </div>
+
+    <div id="TwitterButton">
+      <a rel="me" href="https://twitter.com/OBSProject" target="_blank" aria-label="OBS Twitter">
+        <i class="icon-twitter"></i>
+      </a>
+      <span class="tooltip">Twitter</span>
+    </div>
+
+    <div id="MastodonButton">
+      <a rel="me" href="https://mastodon.social/@OBSProject" target="_blank" aria-label="OBS Mastodon">
+        <img src="/assets/images/Mastodon.svg" class="icon-mastodon">
+      </a>
+      <span class="tooltip">Mastodon</span>
+    </div>
+
+    <div id="GitHubButton">
+      <a rel="me" href="https://github.com/obsproject/obs-studio" target="_blank" aria-label="OBS Studio GitHub">
+        <i class="icon-github"></i>
+      </a>
+      <span class="tooltip">GitHub</span>
+    </div>
+    <!--
+          <div id="BlogButton">
+            <a href="https://obsproject.com/blog">
+              <i class="icon-blog"></i>
+            </a>
+          </div>
+
+          <div id="LivechatButton">
+            <a href="https://obsproject.com/chat" target="_blank">
+              <i class="icon-comment">Community Chat</i>
+            </a>
+          </div>
+        -->
+
+    <div id="ContributeButton">
+      <a href="https://obsproject.com/contribute">
+        <i class="icon-heart">Contribute</i>
+      </a>
+    </div>
+
+  </div>
+
+  <nav>
+
+  <ul class="menu cf">
+          <li>
+                <a  href="https://obsproject.com">Home</a>
+
+        
+      </li>
+          <li>
+                <a  href="https://obsproject.com/download">Download</a>
+
+        
+      </li>
+          <li>
+                <a  class="active" href="https://obsproject.com/blog">News</a>
+
+        
+      </li>
+          <li>
+                <a  href="https://obsproject.com/help">Help</a>
+
+        
+      </li>
+          <li>
+                <a  href="/forum/">Forum</a>
+
+        
+      </li>
+      </ul>
+
+</nav>
+</header>
+<div class="pagewidth blog_list">
+
+  <div class="headerpusher"></div>
+
+  <div class="med_width">
+
+    
+    <div class="bpheader">
+              <h1>Latest News</h1>
+      
+          </div>
+
+    
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-32-2-release-notes">
+                OBS Studio 32.2 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2026-07-21 18:00:00">
+      July 21st, 2026    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 32.2 is out!</p>
+<p>This release features an overhauled process for creating and adding sources featuring a new window with preview thumbnails!</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-32-2-release-notes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-32-1-release-notes">
+                OBS Studio 32.1 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2026-04-02 16:00:00">
+      April 2nd, 2026    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 32.1 is out!</p>
+<p>This release features a large overhaul of the audio mixer and adds WebRTC support.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-32-1-release-notes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-gets-a-new-renderer">
+                OBS Studio Gets A New Renderer              </a>
+            </h2>
+                          <h3>How OBS Adopted Metal</h3>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+      <div class="bpinfo bpauthor">
+              <a href="https://obsproject.com/blog/author/Patrick+Heyer">
+          by Patrick Heyer        </a>
+          </div>
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2025-11-07 ">
+      November 7th, 2025    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 0 -->
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>Starting with OBS Studio 32.0.0 a new renderer backend based on Apple's <strong>Metal</strong> graphics API is available for users to test as an experimental alternative to the existing OpenGL backend on macOS. This marks an important step in OBS Studio's development to adapt one of the modern APIs that deliberately broke with the past to unlock better performance and efficiency gains for end users, but also require fundamental changes to how an application interacts with a GPU.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-gets-a-new-renderer">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-32-0-release-notes">
+                OBS Studio 32.0 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2025-09-22 17:00:00">
+      September 22nd, 2025    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 32.0 is out!</p>
+<p>This release comes with our initial version of the Plugin Manager! We've also made additions and optimizations to NVIDIA RTX filters, and added hybrid MOV support.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-32-0-release-notes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-31-0-release-notes">
+                OBS Studio 31.0 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2025-03-28 17:00:00">
+      March 28th, 2025    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 31.0 is out!</p>
+<p>This release is focused on a number of behind the scenes changes and improvements rather than noticeable features.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-31-0-release-notes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-versioning-changes">
+                Our Plan to Stop Confusing Everyone with OBS Studio Versioning              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+      <div class="bpinfo bpauthor">
+              <a href="https://obsproject.com/blog/author/Warchamp7">
+          by Warchamp7        </a>
+          </div>
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2024-10-21 18:00:00">
+      October 21st, 2024    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 0 -->
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS has been around for over ten years now, and in that time, it has grown significantly in terms of functionality, code complexity, and community size. With this growth came challenges, both in development and organization. While it’s a great problem to have, figuring out how to manage these growing pains hasn’t always been easy. </p>
+<p>One of the areas that needed attention was our release process and versioning methods. Up until recently, we lacked a clear, consistent approach to how we numbered our releases. But with version 30, we’ve started to more closely follow proper <strong>Semantic Versioning (SemVer)</strong>.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-versioning-changes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-hybrid-mp4">
+                Writing an MP4 Muxer for Fun and Profit              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+      <div class="bpinfo bpauthor">
+              <a href="https://obsproject.com/blog/author/Rodney">
+          by Rodney        </a>
+          </div>
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2024-07-12 18:00:00">
+      July 12th, 2024    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 0 -->
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>In OBS 30.2 I introduced the new "Hybrid MP4" output format which solves a number of complaints our users have had for pretty much all of OBS's existence; It's resilient against data loss like MKV, but widely compatible like regular MP4.</p>
+<p>Getting here was quite a journey, and involved fixing several other bugs in OBS that were only apparent once diving this deep into how the audio and video data is stored.</p>
+<p>In this post I'll try to explain how MP4 works, what the drawbacks were to regular/fragmented MP4, and how I tried to solve them with a hybrid approach.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-hybrid-mp4">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-30-2-release-notes">
+                OBS Studio 30.2 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2024-07-12 17:00:00">
+      July 12th, 2024    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 30.2 is out!</p>
+<p>This release brings some visual updates to the UI, a new Hybrid MP4 recording format, a wide array of fixes and improvements, as well as multitrack video output.</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-30-2-release-notes">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/youtube-renews-premier-sponsorship-of-the-obs-project">
+                YouTube Renews Premier Sponsorship of the OBS Project              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+      <div class="bpinfo bpauthor">
+              <a href="https://obsproject.com/blog/author/Fenrir">
+          by Fenrir        </a>
+          </div>
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2024-03-14 19:00:00">
+      March 14th, 2024    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 0 -->
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p><a href="https://www.youtube.com"><figure class="centered"><img alt="YouTube Logo" src="https://obsproject.com/media/pages/blog/youtube-renews-premier-sponsorship-of-the-obs-project/97f8c429a5-1767490533/yt_logo_mono_dark_small.png"></figure></a></p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/youtube-renews-premier-sponsorship-of-the-obs-project">Read More...</a>
+
+        </article>
+
+              <article class="blogpost">
+          <header>
+            <h2>
+              <a href="https://obsproject.com/blog/obs-studio-30-1-release-notes">
+                OBS Studio 30.1 Release Notes              </a>
+            </h2>
+                      </header>
+
+          
+<div class="bpheader cf">
+
+  <!-- Author -->
+  
+  <!-- Date -->
+  <div class="bpinfo bpdate">
+    <time datetime="2024-03-13 14:00:00">
+      March 13th, 2024    </time>
+  </div>
+
+  <!-- Tags -->
+  <!-- Valid: 1 -->
+      <div class="bptags">
+      <ul>
+                    <li>
+                              <a href="https://obsproject.com/blog/tag/releases">
+                  Releases                </a>
+                          </li>
+              </ul>
+    </div>
+  
+  <br />
+
+</div>
+<!-- End Post Header -->
+          <div class="bp_content" style="max-height: 340px; overflow: hidden;">
+                          <p>OBS Studio 30.1 is out!</p>
+<p>A rewritten image slideshow source, Game Capture audio capture on Windows, HDR for HEVC over RTMP to YouTube, PipeWire video capture device source, GPU rescaling for outputs, AV1 support for WHIP, and more!</p>            
+          </div>
+
+          <a class="bpjump" href="https://obsproject.com/blog/obs-studio-30-1-release-notes">Read More...</a>
+
+        </article>
+
+      
+
+              <nav id="pager">
+
+          
+                      <div class="next-post">
+              <a class="next" href="https://obsproject.com/blog/page:2">Older Posts &rsaquo;</a>
+            </div>
+          
+        </nav>
+
+          
+  </div>
+
+</div>
+
+  <div class="footer_push"></div>
+  </div>
+  <!-- End Wrapper -->
+
+  <footer id="footer" class="footer cf">
+    <div class="footer_extra">
+      <div class="footer_left">
+        <div class="footer_row">
+          <div class="logo"><img src="/assets/images/new_icon_small-r.png"></div>
+          <div class="footer_title">OBS Project</div>
+        </div>
+        <div class="footer_row footer_social">
+          <a href="https://twitter.com/OBSProject" target="_blank" aria-label="OBS Twitter">
+            <i class="icon-twitter"></i>
+          </a>
+          <a href="https://facebook.com/OpenBroadcasterSoftware" target="_blank" aria-label="OBS Facebook">
+            <i class="icon-facebook"></i>
+          </a>
+          <a href="/discord" target="_blank" aria-label="OBS Discord">
+            <img src="/assets/images/Discord.svg" class="icon-discord">
+          </a>
+          <a href="https://github.com/obsproject/obs-studio" target="_blank" aria-label="OBS GitHub">
+            <i class="icon-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer_right">
+
+        <!-- App -->
+        <div class="footer_items">
+          <div class="footer_category">OBS Studio</div>
+          <a href="/download" aria-label="Download">Download</a>
+          <a href="https://ideas.obsproject.com/" target="_blank" aria-label="Feature suggestions">Ideas</a>
+          <a href="/privacy-policy" aria-label="Privacy Policy">Privacy Policy</a>
+          <!-- <a id="cookie-footer" href="#" aria-label="Manage Cookies">Manage Cookies</a> -->
+        </div>
+
+        <!-- Contribute -->
+        <div class="footer_items">
+          <div class="footer_category">Contribute</div>
+          <a href="https://github.com/obsproject/obs-studio" target="_blank" aria-label="OBS GitHub">GitHub</a>
+          <a href="https://opencollective.com/obsproject" aria-label="OBS on Open Collective">Open Collective</a>
+          <a href="https://www.patreon.com/obsproject/overview" aria-label="OBS on Patreon">Patreon</a>
+        </div>
+
+        <!-- Help -->
+        <div class="footer_items">
+          <div class="footer_category">Support</div>
+          <a href="/kb" aria-label="Knowledge Base">Knowledge Base</a>
+          <a href="/discord" aria-label="Official Discord">Discord</a>
+          <a href="/forum/" aria-label="Forums">Forums</a>
+          <a href="/help" aria-label="Help Portal">Help Portal</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© 2012 - 2026. All rights reserved. OBS, OBS Studio, Open Broadcaster Software, and the OBS Studio logo are registered trademarks of Wizards of OBS LLC.<br />
+OBS and OBS Studio are open source projects created and maintained by Lain. Development by <a href="https://github.com/obsproject/obs-studio/graphs/contributors">OBS Studio Contributors</a>.<br />
+Website designed and created by <a href="https://twitter.com/Warchamp7">Warchamp7</a>, powered by <a href="https://getkirby.com/made-with-kirby-and-love">Kirby CMS</a>. Downloads powered by <a href="https://fastly.com">Fastly</a>.</p>    </div>
+    <br>
+    <div class="languages" arial-label="Select Language">
+      <p>
+                              <a href="https://obsproject.com/cs/blog">Čeština</a>
+                                        <a href="https://obsproject.com/da/blog">Dansk</a>
+                                        <a href="https://obsproject.com/de/blog">Deutsch</a>
+                                                          <a href="https://obsproject.com/es/blog">Español</a>
+                                        <a href="https://obsproject.com/eu/blog">Euskara</a>
+                                        <a href="https://obsproject.com/fi/blog">Suomi</a>
+                                        <a href="https://obsproject.com/fr/blog">Français</a>
+                                        <a href="https://obsproject.com/hu/blog">Magyar</a>
+                                        <a href="https://obsproject.com/ja/blog">日本語</a>
+                                        <a href="https://obsproject.com/ko/blog">한국어</a>
+                                        <a href="https://obsproject.com/pt-br/blog">Português do Brasil</a>
+                                        <a href="https://obsproject.com/ru/blog">ру́сский</a>
+                                        <a href="https://obsproject.com/sv/blog">Svenska</a>
+                                        <a href="https://obsproject.com/tr/blog">Türkçe</a>
+                                        <a href="https://obsproject.com/uk/blog">українська</a>
+                                        <a href="https://obsproject.com/zh-cn/blog">中文(简体)</a>
+                        </p>
+    </div>
+
+  </footer>
+
+  
+  </body>
+
+  </html>

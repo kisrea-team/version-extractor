@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Allow pinning of website on windows -->
+    <meta name="application-name" content="Erlang.org">
+    <meta name="msapplication-tooltip" content="The official home of the Erlang Programming Language">
+    <meta name="msapplication-starturl" content="/" >
+
+    <!-- Make the site look nicer on facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Erlang.org">
+    <meta property="og:title" content="Index - Erlang/OTP">
+    <meta property="og:description" content="The official home of the Erlang Programming Language">
+    <meta property="og:image" content="https://www.erlang.org/assets/img/erlang-228x200.png">
+    <meta property="og:image:secure_url" content="https://www.erlang.org/assets/img/erlang-228x200.png">
+    <meta property="og:url" content="https://www.erlang.org/">
+
+    <!-- Rich data for google search -->
+    <script type="application/ld+json">
+{"@type":"WebSite","url":"https://erlang.org/","headline":"Index - Erlang/OTP","name":"Erlang.org","sameAs":["https://github.com/erlang/otp"],"@context":"https://schema.org"}</script>
+
+    <title>Index - Erlang/OTP</title>
+
+    
+    <script>
+      (function() {
+        try {
+          var s = JSON.parse(localStorage.getItem("ex_doc:settings") || "{}");
+          var t = s.theme;
+          var dark = t === "dark" || (t !== "light" && window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) {
+            document.documentElement.classList.add("dark");
+            document.documentElement.setAttribute("data-bs-theme", "dark");
+          }
+        } catch (e) { /* localStorage may be unavailable; just skip */ }
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- tells iOS browsers to not show telephone numbers as links -->
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="application-name" content="Erlang.org">
+    <meta name="description" content="The official home of the Erlang Programming Language">
+    <!-- https://www.rssboard.org/rss-autodiscovery -->
+    <link rel="alternate" type="application/atom+xml" title="News Atom Feed" href="https://www.erlang.org/news.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Blog Atom Feed" href="https://www.erlang.org/blog.xml" />
+    <link rel="icon" href="/favicon.ico" />
+    
+    <link rel="stylesheet" href="/assets/css/index.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header class="navbar navbar-expand-lg navbar-light bg-body">
+        <nav class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img
+                    src="/assets/img/erlang-logo.svg" width="60" alt="Erlang.org main page"/></a>
+            <div class="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
+                <ul class="navbar-nav text-uppercase me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/downloads">Download</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/docs">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/security">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/eep">EEP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                </ul>
+                <form class="d-flex" role="search" method="get" action="https://duckduckgo.com/">
+                    <input type="hidden" name="sites" value="erlang.org">
+                    <input class="form-control me-2" id="searchfield" name="q" type="search" placeholder="Search erlang.org"
+                        aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="flex-shrink-0 border-top-dark">
+        <div class="bg-erlang-grey">
+    <div class="container banner px-0 px-md-2">
+        <div class="slogan text-center">
+            <h1 class="h4 px-4 pt-4 text-light">
+                Practical functional programming<br /> for a parallel world
+            </h1>
+            <!-- <h4 class="px-4 pt-4 text-light">
+                        Build massively scalable soft real-time systems
+                    </h4> -->
+        </div>
+        <div class="download text-center">
+            <!-- We hide the download button on small screens as most likely it is a mobile
+                 and no one want to workload Erlang on a mobile -->
+            <div class="btn-group">
+                
+                <a href="/downloads"
+                    class="btn btn-success d-inline-flex align-items-center gap-1">
+                    Get Erlang/OTP 29
+                    <svg width="20" height="20" >
+    
+    <use xlink:href="#download"></use>
+</svg>
+
+                </a>
+            </div>
+        </div>
+        <!-- We have two different examples that are shown
+             depending on the size of the viewport -->
+        <div class="example">
+            
+            
+            <div class="large">
+                <div id="large-example-carousel" class="h-100 carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner h-100">
+                        
+                        
+                        
+                        <div class="h-100 carousel-item active" data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 15 lines long -->
+<pre><code class="language-erlang">fact(0) -&gt; 1;              %% Pattern matching for control-flow
+fact(N) -&gt; N * fact(N-1).  %% Recursion to create loops
+
+&gt; example:fact(10).        %% Interactive shell for fast iterations
+3628800
+&gt; [{I, example:fact(I)} || I &lt;- lists:seq(1,10)].
+[{1, 1}, {2, 2}, {3, 6}, {4, 24}, {5, 120}, {6, 720},
+ {7, 5040}, {8, 40320}, {9, 362880}, {10, 3628800}]
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Functional programming</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 15 lines long -->
+<pre><code class="language-erlang">&gt; Fruits = ["banana","monkey","jungle"].     %% Immutable variables
+["banana","monkey","jungle"]
+&gt; lists:map(fun string:uppercase/1, Fruits). %% Map values using stdlib functions
+["BANANA","MONKEY","JUNGLE"]
+%% Fold over lists using custom functions
+&gt; lists:foldl(fun(Str, Cnt) -&gt; string:length(Str) + Cnt end, 0, Fruits).
+18
+
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Higher-order functions</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 15 lines long -->
+<pre><code class="language-erlang">&gt; Parent = self().                         %% Get own process id
+&lt;0.376.0&gt;
+&gt; Child = spawn(fun() -&gt; receive go -&gt; Parent ! lists:seq(1,100) end end).
+&lt;0.930.0&gt;
+&gt; Child ! go.                              %% Send message to child
+go
+&gt; receive Reply -&gt; Reply end.              %% Receive response from child
+[1,2,3,4,5,6,7,8,9,10,11|...]
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Lightweight processes</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 15 lines long -->
+<pre><code class="language-erlang">-spec even(list(integer())) -&gt; list(integer()).
+even(Numbers) -&gt;
+  mapreduce(Numbers, fun(Number) -&gt; Number rem 2 == 0 end).
+mapreduce(Numbers, Function) -&gt;
+  Parent = self(),
+  [spawn(fun() -&gt; Parent ! {Number, Function(Number)} end) || Number &lt;- Numbers],
+  lists:flatten(
+    [receive {Number, true} -&gt; Number; _ -&gt; [] end || Number &lt;- Numbers]).
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Parallel map-reduce to find even numbers</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#large-example-carousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#large-example-carousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="small">
+                <div id="small-example-carousel" class="h-100 carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner h-100">
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item active" data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 13 lines long -->
+<pre><code class="language-erlang">%% Return factorial for N
+fact(0) -&gt; 1;
+fact(N) -&gt; N * fact(N-1).
+
+&gt; example:fact(10).
+3628800
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Functional programming</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 13 lines long -->
+<pre><code class="language-erlang">&gt; Fruits = ["banana","monkey"].
+["banana","monkey"]
+&gt; lists:map(
+    fun string:uppercase/1,
+    Fruits).
+["BANANA","MONKEY"]
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Higher-order functions</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <!-- This file has to be 13 lines long -->
+<pre><code class="language-erlang">&gt; Me = self().
+&lt;0.376.0&gt;        %% Send msg using !
+&gt; spawn(fun() -&gt; Me!lists:seq(1,10) end).
+&lt;0.930.0&gt;
+&gt; receive Reply -&gt; Reply end.
+[1,2,3,4,5,6,7,8,9,10]
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Light-weight processes</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="h-100 carousel-item " data-bs-interval="10000">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="flex-grow-1 mx-auto">
+                                    <pre><code class="language-erlang">-spec even(In) -&gt; Out
+  when In :: list(integer()),
+       Out :: list(integer()).
+even(Numbers) -&gt;
+  [Number || Number &lt;- Numbers,
+   Number rem 2 == 0].
+</code></pre>
+
+                                </div>
+                                <div class="text-light text-center">
+                                    <p>Find even numbers</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#small-example-carousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#small-example-carousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+<main class="content container">
+    <div class="what-is-erlang">
+        <h2 class="h4">What is Erlang?</h2>
+        <p class="ps-3">Erlang is a programming language used to build massively scalable soft real-time
+            systems with requirements on high availability. Some of its uses are in telecoms, banking,
+            e-commerce, computer telephony and instant messaging. Erlang's runtime system has built-in
+            support for concurrency, distribution and fault tolerance.</p>
+        <a href="/doc/getting_started/intro.html" role="button"
+            class="btn btn-primary float-end d-inline-flex align-items-center">
+            Erlang Quickstart
+            <svg width="24" height="24" >
+    
+    <use xlink:href="#arrow-right"></use>
+</svg>
+
+        </a>
+    </div>
+    <div class="what-is-otp">
+        <h2 class="h4">What is OTP?</h2>
+        <p class="ps-3">OTP is set of Erlang libraries and design principles providing middle-ware to
+            develop these systems. It includes its own distributed database, applications to interface
+            towards other languages, debugging and release handling tools.</p>
+        <a href="/doc/design_principles/des_princ.html" role="button"
+            class="btn btn-primary float-end d-inline-flex align-items-center">
+            Getting Started with OTP
+            <svg width="24" height="24" >
+    
+    <use xlink:href="#arrow-right"></use>
+</svg>
+
+        </a>
+    </div>
+    <div class="news">
+        <h2 class="h4">News</h2>
+        <dl class="ps-3">
+            
+            
+            
+            
+            
+            <dt>
+                <h3 class="h5"><a href="/news/190">Björn on BEAM on the BEAM There, Done That Podcast</a></h3>
+                <small class="ps-2">June 26, 2026 by Björn Gustavsson</small>
+            </dt>
+            <dd class="px-3 py-1">
+                Björn on BEAM on the BEAM There, Done That Podcast
+            </dd>
+            
+            
+            
+            
+            <dt>
+                <h3 class="h5"><a href="/news/189">Native Records on the Podcast BEAM There, Done That</a></h3>
+                <small class="ps-2">May 28, 2026 by Björn Gustavsson</small>
+            </dt>
+            <dd class="px-3 py-1">
+                Native Records on the Podcast BEAM There, Done That
+            </dd>
+            
+            
+            
+            
+            <dt>
+                <h3 class="h5"><a href="/blog/highlights-otp-29/">Erlang/OTP 29 Highlights</a></h3>
+                <small class="ps-2">May 18, 2026 by Björn Gustavsson</small>
+            </dt>
+            <dd class="px-3 py-1">
+                Erlang/OTP 29 is finally here. This blog post introduces the new
+features that we are most excited about.
+
+            </dd>
+            
+        </dl>
+    </div>
+    <div class="participate">
+        <h2 class="h4">Participate</h2>
+        <p class="ps-3">
+            <a href="https://erlef.org"><img alt="Join the Erlang Ecosystem Foundation"
+                    src="/assets/img/eef.png" class="eef-logo" width="174"></a>
+        </p>
+    </div>
+</main>
+<script src="/assets/js/prismjs/prism.js"></script>
+<script src="/assets/js/prismjs/components/prism-erlang.js"></script>
+
+    </div>
+    <footer class="container-fluid footer mt-auto text-center border-top border-bottom">
+        <div>
+            <a href="/downloads.html" title="DOWNLOAD">
+                <svg width="36" height="24" role="img">
+    
+        <title>Download Erlang/OTP</title>
+    
+    <use xlink:href="#download-cloud"></use>
+</svg>
+
+            </a>
+        </div>
+        <div>
+            <a href="http://www.github.com/erlang/otp">
+                <svg width="32" height="32" role="img">
+    
+        <title>Erlang/OTP on Github</title>
+    
+    <use xlink:href="#github"></use>
+</svg>
+
+            </a>
+        </div>
+        
+        <div>
+            <button type="button" id="theme-toggle" class="theme-toggle"
+                    aria-label="Toggle theme" title="Toggle theme (light / dark / system)">
+                <svg width="20" height="20"  class="icon-theme-light">
+    
+    <use xlink:href="#theme-light"></use>
+</svg>
+
+                <svg width="20" height="20"  class="icon-theme-dark">
+    
+    <use xlink:href="#theme-dark"></use>
+</svg>
+
+                <svg width="20" height="20"  class="icon-theme-system">
+    
+    <use xlink:href="#theme-system"></use>
+</svg>
+
+            </button>
+        </div>
+    </footer>
+    <!-- SVG icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+        <symbol id="download-cloud" viewBox="0 0 36 24">
+            <path fill="currentColor" d="M30.096 10.54S30.76 1.59 22.56.568c-7.03-.718-9.168 5.814-9.168 5.814s-2.117-2.035-4.99-.372c-2.57 1.587-2.116 4.492-2.116 4.492s-5.709 1.11-5.709 6.93c.128 5.812 6.2 5.87 6.2 5.87h11.621l-5.12-5.119h3.072V12.04h4.096v6.143h3.071l-5.119 5.12h10.716s5.652.005 6.446-5.524c.377-6.047-5.464-7.239-5.464-7.239Z"/>
+        </symbol>
+        <symbol id="download" viewBox="0 0 20 20">
+            <path fill="currentColor" d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+            <path fill="currentColor" d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+        </symbol>
+        <symbol id="arrow-right" viewBox="0 0 20 20">
+            <path fill="currentColor" fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol id="theme-light" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1ZM2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Zm17 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1ZM4.93 4.93a1 1 0 0 1 1.41 0l1.42 1.42A1 1 0 1 1 6.34 7.76L4.93 6.34a1 1 0 0 1 0-1.41Zm11.31 11.31a1 1 0 0 1 1.41 0l1.42 1.42a1 1 0 0 1-1.41 1.41l-1.42-1.42a1 1 0 0 1 0-1.41ZM19.07 4.93a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 0 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0ZM7.76 16.24a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 0 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0Z"/>
+        </symbol>
+        <symbol id="theme-dark" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M20 14.6A8 8 0 0 1 9.4 4a8.001 8.001 0 1 0 10.6 10.6Z"/>
+        </symbol>
+        <symbol id="theme-system" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 16V5a7 7 0 0 1 0 14Z" clip-rule="evenodd"/>
+        </symbol>
+        <symbol id="github" viewBox="0 0 32 32">
+            <path fill="currentColor" fill-rule="evenodd" d="M16 0c8.837 0 16 7.344 16 16.405 0 7.246-4.58 13.393-10.933 15.565-.811.161-1.099-.35-1.099-.788 0-.54.02-2.307.02-4.502 0-1.53-.513-2.528-1.087-3.037 3.563-.406 7.307-1.793 7.307-8.094 0-1.792-.62-3.255-1.648-4.403.166-.415.715-2.084-.157-4.343 0 0-1.34-.44-4.395 1.682A15.034 15.034 0 0 0 16 7.933a15 15 0 0 0-4.005.552C8.938 6.363 7.594 6.803 7.594 6.803c-.87 2.26-.32 3.928-.156 4.343-1.022 1.148-1.648 2.61-1.648 4.403 0 6.285 3.736 7.693 7.29 8.107-.458.41-.872 1.133-1.016 2.194-.912.419-3.229 1.144-4.656-1.364 0 0-.846-1.576-2.453-1.69 0 0-1.56-.022-.109.996 0 0 1.048.504 1.776 2.4 0 0 .94 2.928 5.39 1.936.009 1.371.023 2.664.023 3.054 0 .434-.294.941-1.093.79C4.584 29.802 0 23.651 0 16.404 0 7.344 7.165 0 16 0Z" clip-rule="evenodd"/>
+        </symbol>
+        <symbol id="twitter" viewBox="0 0 32 27">
+            <path fill="#00AAEC" fill-rule="evenodd" d="M32 3.157a12.822 12.822 0 0 1-3.77 1.06A6.717 6.717 0 0 0 31.115.493a12.93 12.93 0 0 1-4.171 1.632A6.472 6.472 0 0 0 22.153 0c-3.623 0-6.562 3.014-6.562 6.732 0 .527.056 1.04.169 1.533-5.457-.282-10.294-2.958-13.534-7.037a6.854 6.854 0 0 0-.887 3.389 6.778 6.778 0 0 0 2.92 5.603 6.446 6.446 0 0 1-2.974-.84v.083c0 3.262 2.263 5.984 5.268 6.6-.562.16-1.145.24-1.73.238-.422 0-.836-.041-1.236-.12.836 2.673 3.259 4.621 6.133 4.673a12.963 12.963 0 0 1-8.153 2.883c-.53 0-1.054-.031-1.567-.092a18.278 18.278 0 0 0 10.063 3.022c12.077 0 18.68-10.257 18.68-19.154 0-.292-.006-.585-.018-.872 1.29-.957 2.4-2.137 3.274-3.484Z" clip-rule="evenodd"/>
+        </symbol>
+    </svg>
+    <script src="/assets/js/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Theme toggle: cycles light -> dark -> system. Persists into the
+      // same `ex_doc:settings` localStorage entry that ExDoc uses, so
+      // the choice flows between Jekyll-rendered pages and the
+      // ExDoc-generated docs without a separate switch.
+      (function () {
+        var KEY = "ex_doc:settings";
+        var btn = document.getElementById("theme-toggle");
+        if (!btn) return;
+
+        function loadSettings() {
+          try { return JSON.parse(localStorage.getItem(KEY) || "{}"); }
+          catch (_) { return {}; }
+        }
+        function saveSettings(s) {
+          try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (_) {}
+        }
+        function effectiveDark(theme) {
+          if (theme === "dark") return true;
+          if (theme === "light") return false;
+          return window.matchMedia &&
+                 window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function apply(theme) {
+          var dark = effectiveDark(theme);
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.setAttribute(
+            "data-bs-theme", dark ? "dark" : "light");
+          btn.setAttribute("data-theme", theme || "system");
+        }
+
+        // Initial: reflect the current saved choice on the button.
+        var current = loadSettings().theme || "system";
+        apply(current);
+
+        btn.addEventListener("click", function () {
+          var order = ["light", "dark", "system"];
+          var next = order[(order.indexOf(current) + 1) % order.length];
+          current = next;
+          var s = loadSettings();
+          if (next === "system") delete s.theme; else s.theme = next;
+          saveSettings(s);
+          apply(next);
+        });
+
+        // When in system mode, react to OS theme changes live.
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          var listener = function () { if (current === "system") apply("system"); };
+          if (mq.addEventListener) mq.addEventListener("change", listener);
+          else if (mq.addListener) mq.addListener(listener);  // Safari < 14
+        }
+      })();
+    </script>
+</body>
+
+</html>

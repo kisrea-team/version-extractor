@@ -1,0 +1,558 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-vdxcvpsm"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Changelog | Warp</title><link rel="canonical" href="https://docs.warp.dev/changelog/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.1.3"/><meta name="generator" content="Starlight v0.41.4"/><meta property="og:type" content="article"/><meta property="og:url" content="https://docs.warp.dev/changelog/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Warp ships weekly updates, typically on Thursdays."/><meta property="og:site_name" content="Warp"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Warp ships weekly updates, typically on Thursdays."/><meta name="robots" content="index, follow"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-title" content="Warp"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><link rel="alternate" type="text/markdown" href="/changelog.md"/><meta property="og:title" content="Changelog | Warp"/><meta property="og:image" content="https://docs.warp.dev/og-image.png"/><meta property="og:image:secure_url" content="https://docs.warp.dev/og-image.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="Warp — Changelog"/><meta name="twitter:title" content="Changelog | Warp"/><meta name="twitter:image" content="https://docs.warp.dev/og-image.png"/><meta name="twitter:description" content="Warp ships weekly updates, typically on Thursdays."/><!--
+  Force the browser's native scroll restoration for back/forward navigation.
+  Defensive: some tools (and the previous `<ClientRouter />` we shipped) can
+  leave `history.scrollRestoration` stuck at `'manual'` in a tab's session,
+  which would make the main-window scroll jump to the top on back/forward.
+--><script>
+	if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
+</script><!--
+  Make Starlight's heading anchor icons behave like GitBook's: clicking the
+  icon copies the absolute section URL to the clipboard instead of only
+  navigating to the fragment. The URL still updates so the page state matches
+  the copied link.
+--><script>
+	const copiedTimers = new WeakMap();
+	const originalLabels = new WeakMap();
+
+	function copyText(text) {
+		if (navigator.clipboard?.writeText) {
+			return navigator.clipboard.writeText(text);
+		}
+
+		const textarea = document.createElement('textarea');
+		textarea.value = text;
+		textarea.setAttribute('readonly', '');
+		textarea.style.position = 'fixed';
+		textarea.style.opacity = '0';
+		document.body.appendChild(textarea);
+		textarea.select();
+
+		try {
+			document.execCommand('copy');
+			return Promise.resolve();
+		} finally {
+			textarea.remove();
+		}
+	}
+
+	function showCopiedFeedback(anchor) {
+		const previousTimer = copiedTimers.get(anchor);
+		if (previousTimer) window.clearTimeout(previousTimer);
+		if (!originalLabels.has(anchor)) {
+			originalLabels.set(anchor, anchor.getAttribute('aria-label'));
+		}
+		anchor.dataset.copied = 'true';
+		anchor.setAttribute('aria-label', 'Copied section link to clipboard');
+		anchor.setAttribute('title', 'Copied');
+
+		const timer = window.setTimeout(() => {
+			const originalLabel = originalLabels.get(anchor);
+			delete anchor.dataset.copied;
+			if (originalLabel === null || typeof originalLabel === 'undefined') {
+				anchor.removeAttribute('aria-label');
+			} else {
+				anchor.setAttribute('aria-label', originalLabel);
+			}
+			anchor.removeAttribute('title');
+			copiedTimers.delete(anchor);
+			originalLabels.delete(anchor);
+		}, 1800);
+
+		copiedTimers.set(anchor, timer);
+	}
+
+	document.addEventListener('click', async (event) => {
+		const target = event.target;
+		if (!(target instanceof Element)) return;
+
+		const anchor = target.closest('a.sl-anchor-link');
+		if (!anchor) return;
+
+		const href = anchor.getAttribute('href');
+		if (!href) return;
+
+		event.preventDefault();
+
+		const url = new URL(href, window.location.href);
+
+		try {
+			await copyText(url.href);
+			history.pushState(null, '', url);
+			showCopiedFeedback(anchor);
+		} catch {
+			// Navigate to the anchor fragment without using href-based
+			// navigation, which the afdocs redirect-behavior check
+			// misclassifies as a JS redirect when scanned in inline scripts.
+			window.location.hash = url.hash;
+		}
+	});
+</script><!-- Google Fonts: preconnect, preload, then non-blocking stylesheet swap. --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'"><script>// RudderStack JS SDK v3.2.0 async stub.
+!function(){
+  "use strict";
+  window.RudderSnippetVersion = "3.2.0";
+  var e = "rudderanalytics";
+  window[e] || (window[e] = []);
+  var rudderanalytics = window[e];
+  if (Array.isArray(rudderanalytics)) {
+    if (true === rudderanalytics.snippetExecuted && window.console && console.error) {
+      console.error("RudderStack JavaScript SDK snippet included more than once.");
+    } else {
+      rudderanalytics.snippetExecuted = true;
+      window.rudderAnalyticsBuildType = "legacy";
+      var sdkBaseUrl = "https://cdn.rudderlabs.com";
+      var sdkVersion = "v3";
+      var sdkFileName = "rsa.min.js";
+      var scriptLoadingMode = "async";
+      var methods = ["setDefaultInstanceKey", "load", "ready", "page", "track", "identify", "alias", "group", "reset", "setAnonymousId", "startSession", "endSession", "consent", "addCustomIntegration"];
+      for (var n = 0; n < methods.length; n++) {
+        var method = methods[n];
+        rudderanalytics[method] = function(methodName) {
+          return function() {
+            var instance;
+            Array.isArray(window[e])
+              ? rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)))
+              : (instance = window[e][methodName]) && instance.apply(window[e], arguments);
+          };
+        }(method);
+      }
+      try {
+        new Function("class Test{field=()=>{};test({prop=[]}={}){return prop?(prop?.property??[...prop]):import('');}}");
+        window.rudderAnalyticsBuildType = "modern";
+      } catch (error) {}
+      var head = document.head || document.getElementsByTagName("head")[0];
+      var body = document.body || document.getElementsByTagName("body")[0];
+      window.rudderAnalyticsAddScript = function(src, attrName, attrValue) {
+        var script = document.createElement("script");
+        script.src = src;
+        script.setAttribute("data-loader", "RS_JS_SDK");
+        if (attrName && attrValue) script.setAttribute(attrName, attrValue);
+        if ("async" === scriptLoadingMode) script.async = true;
+        else if ("defer" === scriptLoadingMode) script.defer = true;
+        if (head) head.insertBefore(script, head.firstChild);
+        else body.insertBefore(script, body.firstChild);
+      };
+      window.rudderAnalyticsMount = function() {
+        !function() {
+          if ("undefined" == typeof globalThis) {
+            var globalObject = function getGlobal() {
+              return "undefined" != typeof self ? self : "undefined" != typeof window ? window : null;
+            }();
+            if (globalObject) Object.defineProperty(globalObject, "globalThis", { value: globalObject, configurable: true });
+          }
+        }();
+        window.rudderAnalyticsAddScript(
+          "".concat(sdkBaseUrl, "/").concat(sdkVersion, "/").concat(window.rudderAnalyticsBuildType, "/").concat(sdkFileName),
+          "data-rsa-write-key", "2lOD6vA1gmxGrsVN7DL6b0PLgDT"
+        );
+      };
+      if ("undefined" == typeof Promise || "undefined" == typeof globalThis) {
+        window.rudderAnalyticsAddScript(
+          "https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=Symbol%2CPromise&callback=rudderAnalyticsMount"
+        );
+      } else {
+        window.rudderAnalyticsMount();
+      }
+      var loadOptions = {};
+      rudderanalytics.load("2lOD6vA1gmxGrsVN7DL6b0PLgDT", "https://app.warp.dev/_rs/api", loadOptions);
+      rudderanalytics.page();
+    }
+  }
+}();</script><vercel-analytics data-props="{}" data-params="{&quot;slug&quot;:&quot;changelog&quot;}" data-pathname="/changelog/"></vercel-analytics><script type="module">var e=()=>{window.va||(window.va=function(...e){window.vaq||(window.vaq=[]),window.vaq.push(e)})},t=`@vercel/analytics`,n=`2.0.1`;function r(){return typeof window<`u`}function i(){return`production`}function a(e=`auto`){if(e===`auto`){window.vam=i();return}window.vam=e}function o(){return(r()?window.vam:i())||`production`}function s(){return o()===`development`}function c(e,t){if(!e||!t)return e;let n=e;try{let e=Object.entries(t);for(let[t,r]of e)if(!Array.isArray(r)){let e=l(r);e.test(n)&&(n=n.replace(e,`/[${t}]`))}for(let[t,r]of e)if(Array.isArray(r)){let e=l(r.join(`/`));e.test(n)&&(n=n.replace(e,`/[...${t}]`))}return n}catch{return e}}function l(e){return RegExp(`/${u(e)}(?=[/?#]|$)`)}function u(e){return e.replace(/[.*+?^${}()|[\]\\]/g,`\\$&`)}function d(e){return e.scriptSrc?p(e.scriptSrc):s()?`https://va.vercel-scripts.com/v1/script.debug.js`:e.basePath?p(`${e.basePath}/insights/script.js`):`/_vercel/insights/script.js`}function f(e,r){let i=e;if(r)try{i={...JSON.parse(r)?.analytics,...e}}catch{}a(i.mode);let o={sdkn:t+(i.framework?`/${i.framework}`:``),sdkv:n};return i.disableAutoTrack&&(o.disableAutoTrack=`1`),i.viewEndpoint&&(o.viewEndpoint=p(i.viewEndpoint)),i.eventEndpoint&&(o.eventEndpoint=p(i.eventEndpoint)),i.sessionEndpoint&&(o.sessionEndpoint=p(i.sessionEndpoint)),s()&&i.debug===!1&&(o.debug=`false`),i.dsn&&(o.dsn=i.dsn),i.endpoint?o.endpoint=i.endpoint:i.basePath&&(o.endpoint=p(`${i.basePath}/insights`)),{beforeSend:i.beforeSend,src:d(i),dataset:o}}function p(e){return e.startsWith(`http://`)||e.startsWith(`https://`)||e.startsWith(`/`)?e:`/${e}`}function m(t={debug:!0},n){var i;if(!r())return;let{beforeSend:a,src:o,dataset:c}=f(t,n);if(e(),a&&((i=window.va)==null||i.call(window,`beforeSend`,a)),document.head.querySelector(`script[src*="${o}"]`))return;let l=document.createElement(`script`);l.src=o;for(let[e,t]of Object.entries(c))l.dataset[e]=t;l.defer=!0,l.onerror=()=>{let e=s()?`Please check if any ad blockers are enabled and try again.`:`Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information.`;console.log(`[Vercel Web Analytics] Failed to load script from ${o}. ${e}`)},document.head.appendChild(l)}function h({route:e,path:t}){var n;(n=window.va)==null||n.call(window,`pageview`,{route:e,path:t})}function g(){try{return}catch{}}function _(){try{return`{"analytics":{"scriptSrc":"9b599df8e38e4174/script.js","viewEndpoint":"9b599df8e38e4174/view","eventEndpoint":"9b599df8e38e4174/event","sessionEndpoint":"9b599df8e38e4174/session"},"speedInsights":{"scriptSrc":"1c057db7ac183f56/script.js","endpoint":"1c057db7ac183f56/vitals"}}`}catch{}}customElements.define(`vercel-analytics`,class extends HTMLElement{constructor(){super();try{let e=JSON.parse(this.dataset.props??`{}`),t=JSON.parse(this.dataset.params??`{}`);m({...e,disableAutoTrack:!0,framework:`astro`,basePath:g(),beforeSend:window.webAnalyticsBeforeSend},_());let n=this.dataset.pathname;h({route:c(n??``,t),path:n})}catch(e){throw Error(`Failed to parse WebAnalytics properties: ${e}`)}}});</script><vercel-speed-insights data-props="{}" data-params="{&quot;slug&quot;:&quot;changelog&quot;}" data-pathname="/changelog/"></vercel-speed-insights><script type="module">var e=()=>{window.si||(window.si=function(...e){window.siq=window.siq||[],window.siq.push(e)})},t=`@vercel/speed-insights`,n=`2.0.0`;function r(){return typeof window<`u`}function i(){return`production`}function a(){return i()===`development`}function o(e,t){if(!e||!t)return e;let n=e;try{let e=Object.entries(t);for(let[t,r]of e)if(!Array.isArray(r)){let e=s(r);e.test(n)&&(n=n.replace(e,`/[${t}]`))}for(let[t,r]of e)if(Array.isArray(r)){let e=s(r.join(`/`));e.test(n)&&(n=n.replace(e,`/[...${t}]`))}return n}catch{return e}}function s(e){return RegExp(`/${c(e)}(?=[/?#]|$)`)}function c(e){return e.replace(/[.*+?^${}()|[\]\\]/g,`\\$&`)}function l(e){return e.scriptSrc?d(e.scriptSrc):a()?`https://va.vercel-scripts.com/v1/speed-insights/script.debug.js`:e.dsn?`https://va.vercel-scripts.com/v1/speed-insights/script.js`:e.basePath?d(`${e.basePath}/speed-insights/script.js`):`/_vercel/speed-insights/script.js`}function u(e,r){let i=e;if(r)try{i={...JSON.parse(r)?.speedInsights,...e}}catch{}let o={sdkn:t+(i.framework?`/${i.framework}`:``),sdkv:n};return i.sampleRate&&(o.sampleRate=i.sampleRate.toString()),i.route&&(o.route=i.route),a()&&i.debug===!1&&(o.debug=`false`),i.dsn&&(o.dsn=i.dsn),i.endpoint?o.endpoint=d(i.endpoint):i.basePath&&(o.endpoint=d(`${i.basePath}/speed-insights/vitals`)),{src:l(i),beforeSend:i.beforeSend,dataset:o}}function d(e){return e.startsWith(`http://`)||e.startsWith(`https://`)||e.startsWith(`/`)?e:`/${e}`}function f(t={},n){var i;if(!r()||t.route===null)return null;e();let{beforeSend:a,src:o,dataset:s}=u(t,n);if(document.head.querySelector(`script[src*="${o}"]`))return null;a&&((i=window.si)==null||i.call(window,`beforeSend`,a));let c=document.createElement(`script`);c.src=o,c.defer=!0;for(let[e,t]of Object.entries(s))c.dataset[e]=t;return c.onerror=()=>{console.log(`[Vercel Speed Insights] Failed to load script from ${o}. Please check if any content blockers are enabled and try again.`)},document.head.appendChild(c),{setRoute:e=>{c.dataset.route=e??void 0}}}function p(){try{return}catch{}}function m(){try{return`{"analytics":{"scriptSrc":"9b599df8e38e4174/script.js","viewEndpoint":"9b599df8e38e4174/view","eventEndpoint":"9b599df8e38e4174/event","sessionEndpoint":"9b599df8e38e4174/session"},"speedInsights":{"scriptSrc":"1c057db7ac183f56/script.js","endpoint":"1c057db7ac183f56/vitals"}}`}catch{return}}customElements.define(`vercel-speed-insights`,class extends HTMLElement{constructor(){super();try{let e=JSON.parse(this.dataset.props??`{}`),t=JSON.parse(this.dataset.params??`{}`);f({route:o(this.dataset.pathname??``,t),...e,framework:`astro`,basePath:p(),beforeSend:window.speedInsightsBeforeSend},m())}catch(e){throw Error(`Failed to parse SpeedInsights properties: ${e}`)}}});</script><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"></noscript><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.CVbU1ksu.css"><style>@layer starlight.components{svg:where(.astro-n5k4ipy7){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em}}
+@layer starlight.components{starlight-tabs:where(.astro-hbt4ddzs){display:block}.tablist-wrapper:where(.astro-hbt4ddzs){overflow-x:auto}:where(.astro-hbt4ddzs)[role=tablist]{border-bottom:2px solid var(--sl-color-gray-5);padding:0;list-style:none;display:flex}.tab:where(.astro-hbt4ddzs){display:flex}.tab:where(.astro-hbt4ddzs)>:where(.astro-hbt4ddzs)[role=tab]{--sl-tab-color-border:var(--sl-color-gray-5);line-height:var(--sl-line-height-headings);box-shadow:0 2px 0 var(--sl-tab-color-border);color:var(--sl-color-gray-3);outline-offset:var(--sl-outline-offset-inside);overflow-wrap:initial;align-items:center;gap:.5rem;padding:.275rem 1.25rem;text-decoration:none;display:flex}.tab:where(.astro-hbt4ddzs) :where(.astro-hbt4ddzs)[role=tab][aria-selected=true]{--sl-tab-color-border:var(--sl-color-text-accent);color:var(--sl-color-white);font-weight:600}.tablist-wrapper:where(.astro-hbt4ddzs)~[role=tabpanel]{margin-top:1rem}}
+@layer starlight.components{.sl-steps{--bullet-size:calc(var(--sl-line-height) * 1rem);--bullet-margin:.375rem;counter-reset:steps-counter var(--sl-steps-start,0);padding-inline-start:0;list-style:none}.sl-steps>li{counter-increment:steps-counter;padding-inline-start:calc(var(--bullet-size) + 1rem);min-height:calc(var(--bullet-size) + var(--bullet-margin));padding-bottom:1px;position:relative}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);top:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);box-shadow:inset 0 0 0 1px var(--sl-color-gray-5);border-radius:99rem;font-weight:600;position:absolute;inset-inline-start:0}.sl-steps>li:after{--guide-width:1px;content:"";top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);width:var(--guide-width);background-color:var(--sl-color-hairline-light);position:absolute;inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2)}}@layer starlight.content{.sl-steps>li>:first-child{--lh:calc(1em * var(--sl-line-height));--shift-y:calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh:calc(1em * var(--sl-line-height-headings))}@supports (--prop:1lh){.sl-steps>li>:first-child{--lh:1lh}}}
+@layer starlight.components{starlight-file-tree:where(.astro-r3uioum7){--x-space:1.5rem;--y-space:.125rem;--y-pad:0;border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-gray-6);font-size:var(--sl-text-xs);font-family:var(--__sl-font-mono);padding:1rem;display:block;overflow-x:auto}starlight-file-tree:where(.astro-r3uioum7) .directory>details{padding:0;background:0 0;border:0;padding-inline-start:var(--x-space)}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary{padding:var(--y-pad) .625rem;color:var(--sl-color-white);border:0;max-width:100%;margin-inline-start:calc(-1 * var(--x-space));font-weight:400}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary::marker{color:var(--sl-color-gray-3)}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary::-webkit-details-marker{color:var(--sl-color-gray-3)}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary:hover,starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary:hover .tree-icon{cursor:pointer;color:var(--sl-color-text-accent);fill:currentColor}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary:hover~ul{border-color:var(--sl-color-gray-4)}starlight-file-tree:where(.astro-r3uioum7) .directory>details>summary:hover .highlight .tree-icon{color:var(--sl-color-text-invert);fill:currentColor}starlight-file-tree:where(.astro-r3uioum7) ul{border-inline-start:1px solid var(--sl-color-gray-5);margin-inline-start:.5rem;padding:0;padding-inline-start:.125rem;list-style:none}starlight-file-tree:where(.astro-r3uioum7)>ul{border:0;margin:0;padding:0}starlight-file-tree:where(.astro-r3uioum7) li{margin:var(--y-space) 0;padding:var(--y-pad) 0}starlight-file-tree:where(.astro-r3uioum7) .file{color:var(--sl-color-white);margin-inline-start:calc(var(--x-space) - .125rem)}starlight-file-tree:where(.astro-r3uioum7) .tree-entry{flex-wrap:wrap;align-items:flex-start;max-width:calc(100% - 1rem);display:inline-flex}@media (width>=30em){starlight-file-tree:where(.astro-r3uioum7) .tree-entry{flex-wrap:nowrap}}starlight-file-tree:where(.astro-r3uioum7) .tree-entry>:first-child{flex-shrink:0}starlight-file-tree:where(.astro-r3uioum7) .empty{color:var(--sl-color-gray-3);padding-inline-start:.375rem}starlight-file-tree:where(.astro-r3uioum7) .comment{color:var(--sl-color-gray-3);min-width:12rem;max-width:24rem;padding-inline-start:1.625rem}starlight-file-tree:where(.astro-r3uioum7) .highlight{color:var(--sl-color-text-invert);background-color:var(--sl-color-text-accent);border-radius:.25rem;padding-inline-end:.5rem;display:inline-block}starlight-file-tree:where(.astro-r3uioum7) svg{fill:var(--sl-color-gray-3);vertical-align:middle;width:.875rem;height:.875rem;margin-inline:.25rem .375rem;display:inline}starlight-file-tree:where(.astro-r3uioum7) .highlight svg.tree-icon{fill:currentColor}}
+</style><script type="module" src="/_astro/page.PH5W3CUr.js"></script></head><body class="astro-vdxcvpsm"><a class="sl-skip-link astro-vxeigawq" href="#_top">Skip to content</a><div class="page sl-flex astro-gqpr5s5a"><header class="header astro-gqpr5s5a"><div class="llms-directive sr-only astro-wwttrs33" aria-hidden="true">For the complete documentation in markdown, see <a href="/llms.txt" class="astro-wwttrs33">llms.txt</a>. Markdown versions of each page are available by appending .md to any URL.</div><div class="header astro-wwttrs33"><div class="title-wrapper sl-flex astro-wwttrs33"><a href="https://www.warp.dev" class="site-title sl-flex astro-tvlojboh"><span class="logo light:sl-hidden print:hidden astro-tvlojboh" aria-hidden="true"><svg viewBox="91 26 592 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M170.286 27.5005H227.682C236.973 27.5005 244.505 35.2835 244.505 44.8844V112.374C244.505 121.975 236.973 129.758 227.682 129.758H145.546L170.286 27.5005Z" fill="#FAF9F6"/>
+<path d="M155.378 46.8732H109.141C99.9291 46.8732 92.4613 54.6562 92.4613 64.257V131.747C92.4613 141.348 99.9291 149.131 109.141 149.131H166.048L168.33 139.618H133.131L155.378 46.8732Z" fill="#FAF9F6"/>
+<path d="M313.427 129.717L288.122 46.9034H302.418L320.328 110.164L339.717 46.9034H353.19L372.58 110.164L390.325 46.9034H404.949L379.481 129.717H365.843L346.454 66.7853L327.065 129.717H313.427ZM467.986 75.8225C467.986 64.4849 459.935 57.2551 447.776 57.2551C436.438 57.2551 428.387 63.992 427.237 75.1653L414.256 72.7006C416.721 56.2692 430.359 45.5889 447.776 45.5889C467.822 45.5889 481.789 57.4194 481.789 76.6441V129.717H467.986V115.586C463.221 125.117 452.377 131.032 440.382 131.032C423.786 131.032 412.449 120.844 412.449 106.549C412.449 90.6107 425.429 81.9021 451.884 79.2731L467.986 77.4657V75.8225ZM426.415 106.385C426.415 114.108 432.988 119.53 442.518 119.53C458.621 119.53 467.986 108.849 467.986 92.2539V88.3103L451.884 90.1178C435.124 91.9252 426.415 97.6762 426.415 106.385ZM575.81 75.001L561.843 77.63C561.186 65.3065 553.463 58.241 540.975 58.241C525.694 58.241 515.835 72.0433 515.835 94.2256V129.717H501.869V46.9034H515.835V63.1704C521.915 51.3398 532.102 45.5889 544.262 45.5889C562.665 45.5889 575.152 57.0908 575.81 75.001ZM590.697 159.622V46.9034H604.664V58.8982C609.1 51.3398 619.945 45.5889 631.94 45.5889C657.408 45.5889 671.539 63.992 671.539 88.3103C671.539 112.629 657.08 131.032 631.611 131.032C621.095 131.032 610.251 125.774 604.664 118.215V159.622H590.697ZM630.297 118.544C646.728 118.544 657.408 106.549 657.408 88.3103C657.408 70.0716 646.728 58.0767 630.297 58.0767C614.194 58.0767 603.514 70.0716 603.514 88.3103C603.514 106.549 614.194 118.544 630.297 118.544Z" fill="#FAF9F6"/>
+</svg>
+</span><span class="logo dark:sl-hidden print:block astro-tvlojboh" aria-hidden="true"><svg viewBox="91 26 592 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M170.286 27.5005H227.682C236.973 27.5005 244.505 35.2835 244.505 44.8844V112.374C244.505 121.975 236.973 129.758 227.682 129.758H145.546L170.286 27.5005Z" fill="#121212"/>
+<path d="M155.378 46.8732H109.141C99.9291 46.8732 92.4613 54.6562 92.4613 64.257V131.747C92.4613 141.348 99.9291 149.131 109.141 149.131H166.048L168.33 139.618H133.131L155.378 46.8732Z" fill="#121212"/>
+<path d="M313.427 129.717L288.122 46.9034H302.418L320.328 110.164L339.717 46.9034H353.19L372.58 110.164L390.325 46.9034H404.949L379.481 129.717H365.843L346.454 66.7853L327.065 129.717H313.427ZM467.986 75.8225C467.986 64.4849 459.935 57.2551 447.776 57.2551C436.438 57.2551 428.387 63.992 427.237 75.1653L414.256 72.7006C416.721 56.2692 430.359 45.5889 447.776 45.5889C467.822 45.5889 481.789 57.4194 481.789 76.6441V129.717H467.986V115.586C463.221 125.117 452.377 131.032 440.382 131.032C423.786 131.032 412.449 120.844 412.449 106.549C412.449 90.6107 425.429 81.9021 451.884 79.2731L467.986 77.4657V75.8225ZM426.415 106.385C426.415 114.108 432.988 119.53 442.518 119.53C458.621 119.53 467.986 108.849 467.986 92.2539V88.3103L451.884 90.1178C435.124 91.9252 426.415 97.6762 426.415 106.385ZM575.81 75.001L561.843 77.63C561.186 65.3065 553.463 58.241 540.975 58.241C525.694 58.241 515.835 72.0433 515.835 94.2256V129.717H501.869V46.9034H515.835V63.1704C521.915 51.3398 532.102 45.5889 544.262 45.5889C562.665 45.5889 575.152 57.0908 575.81 75.001ZM590.697 159.622V46.9034H604.664V58.8982C609.1 51.3398 619.945 45.5889 631.94 45.5889C657.408 45.5889 671.539 63.992 671.539 88.3103C671.539 112.629 657.08 131.032 631.611 131.032C621.095 131.032 610.251 125.774 604.664 118.215V159.622H590.697ZM630.297 118.544C646.728 118.544 657.408 106.549 657.408 88.3103C657.408 70.0716 646.728 58.0767 630.297 58.0767C614.194 58.0767 603.514 70.0716 603.514 88.3103C603.514 106.549 614.194 118.544 630.297 118.544Z" fill="#121212"/>
+</svg>
+</span><span class="sr-only astro-tvlojboh" translate="no">Warp</span></a></div><div class="topic-nav-slot sl-hidden md:sl-flex print:hidden astro-wwttrs33"><nav class="warp-topic-nav astro-c37wdunz" aria-label="Documentation sections"><ul class="astro-c37wdunz"><li class="astro-c37wdunz"><a href="/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg aria-hidden="true" class="astro-c37wdunz astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Terminal</span></a></li><li class="astro-c37wdunz"><a href="/agents/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-c37wdunz"><rect x="4" y="7" width="16" height="13" rx="2.5" class="astro-c37wdunz"></rect><line x1="12" y1="3" x2="12" y2="7" class="astro-c37wdunz"></line><circle cx="12" cy="3" r="0.6" fill="currentColor" class="astro-c37wdunz"></circle><circle cx="9" cy="13" r="1" fill="currentColor" stroke="none" class="astro-c37wdunz"></circle><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none" class="astro-c37wdunz"></circle><line x1="9" y1="17" x2="15" y2="17" class="astro-c37wdunz"></line><line x1="4" y1="13" x2="2" y2="13" class="astro-c37wdunz"></line><line x1="22" y1="13" x2="20" y2="13" class="astro-c37wdunz"></line></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Agents</span></a></li><li class="astro-c37wdunz"><a href="/platform/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-c37wdunz"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" class="astro-c37wdunz"></path></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Oz</span></a></li><li class="astro-c37wdunz"><a href="/reference/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg aria-hidden="true" class="astro-c37wdunz astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Reference</span></a></li><li class="astro-c37wdunz"><a href="/api" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-c37wdunz"><path d="M16 18l6-6-6-6" class="astro-c37wdunz"></path><path d="M8 6l-6 6 6 6" class="astro-c37wdunz"></path></svg></span><span class="warp-topic-nav__label astro-c37wdunz">API</span></a></li><li class="astro-c37wdunz"><a href="/changelog/2026/" aria-current="page" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg aria-hidden="true" class="astro-c37wdunz astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M9 10h1a1 1 0 1 0 0-2H9a1 1 0 0 0 0 2Zm0 2a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2H9Zm11-3.06a1.3 1.3 0 0 0-.06-.27v-.09c-.05-.1-.11-.2-.19-.28l-6-6a1.07 1.07 0 0 0-.28-.19h-.09a.88.88 0 0 0-.33-.11H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8.94Zm-6-3.53L16.59 8H15a1 1 0 0 1-1-1V5.41ZM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5v3a3 3 0 0 0 3 3h3v9Zm-3-3H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Z"/></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Changelog</span></a></li><li class="astro-c37wdunz"><a href="/support-and-community/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg aria-hidden="true" class="astro-c37wdunz astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 2A10 10 0 0 0 2 12a9.9 9.9 0 0 0 2.3 6.3l-2 2a1 1 0 0 0-.3 1.1 1 1 0 0 0 1 .6h9a10 10 0 0 0 0-20m0 18H5.4l1-1a1 1 0 0 0 0-1.3A8 8 0 1 1 12 20"/></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Support &amp; Community</span></a></li><li class="astro-c37wdunz"><a href="/enterprise/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-c37wdunz"><rect x="4" y="2" width="16" height="20" rx="1" class="astro-c37wdunz"></rect><line x1="9" y1="6" x2="9" y2="6.01" class="astro-c37wdunz"></line><line x1="15" y1="6" x2="15" y2="6.01" class="astro-c37wdunz"></line><line x1="9" y1="10" x2="9" y2="10.01" class="astro-c37wdunz"></line><line x1="15" y1="10" x2="15" y2="10.01" class="astro-c37wdunz"></line><line x1="9" y1="14" x2="9" y2="14.01" class="astro-c37wdunz"></line><line x1="15" y1="14" x2="15" y2="14.01" class="astro-c37wdunz"></line><path d="M10 22v-4h4v4" class="astro-c37wdunz"></path></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Enterprise</span></a></li><li class="astro-c37wdunz"><a href="/guides/" class="astro-c37wdunz"><span class="warp-topic-nav__icon astro-c37wdunz" aria-hidden="true"><svg aria-hidden="true" class="astro-c37wdunz astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg></span><span class="warp-topic-nav__label astro-c37wdunz">Guides</span></a></li></ul></nav></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-wwttrs33"><div class="sl-flex social-icons astro-wwttrs33"><a href="https://github.com/warpdotdev" rel="me" class="sl-flex astro-cg55etiy"><span class="sr-only astro-cg55etiy">GitHub</span><svg aria-hidden="true" class="astro-cg55etiy astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-r2p65idu"><span class="sr-only astro-r2p65idu">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-r2p65idu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-r2p65idu"><option value="dark" class="astro-r2p65idu">Dark</option><option value="light" class="astro-r2p65idu">Light</option><option value="auto" selected class="astro-r2p65idu">Auto</option></select><svg aria-hidden="true" class="icon caret astro-r2p65idu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-gqpr5s5a" aria-label="Main"><starlight-menu-button class="print:hidden astro-vvx7mffu"><button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-vvx7mffu"><svg aria-hidden="true" class="open-menu astro-vvx7mffu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-vvx7mffu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg></button></starlight-menu-button><script type="module">var e=class extends HTMLElement{btn=this.querySelector(`button`);constructor(){super(),this.btn.addEventListener(`click`,()=>this.toggleExpanded());let e=this.closest(`nav`);e&&e.addEventListener(`keyup`,e=>this.closeOnEscape(e)),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.setExpanded(!1))}setExpanded(e){this.setAttribute(`aria-expanded`,String(e)),document.body.toggleAttribute(`data-mobile-menu-expanded`,e),document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}toggleExpanded(){this.setExpanded(this.getAttribute(`aria-expanded`)!==`true`)}closeOnEscape(e){e.code===`Escape`&&(this.setExpanded(!1),this.btn.focus())}};customElements.define(`starlight-menu-button`,e);</script><div id="starlight__sidebar" class="sidebar-pane astro-gqpr5s5a"><div class="sidebar-content sl-flex astro-gqpr5s5a"><div class="warp-sidebar-search"><site-search class=" astro-r5ar4xm7" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-r5ar4xm7"><svg aria-hidden="true" class="astro-r5ar4xm7 astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-r5ar4xm7" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-r5ar4xm7" style="display: none;"><kbd class="astro-r5ar4xm7">Ctrl</kbd><kbd class="astro-r5ar4xm7">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-r5ar4xm7"><div class="dialog-frame sl-flex astro-r5ar4xm7"><button data-close-modal class="sl-flex md:sl-hidden astro-r5ar4xm7">Cancel</button><div class="search-container astro-r5ar4xm7"><div id="starlight__search" class="astro-r5ar4xm7"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.B8eKIy4B.js?dpl=dpl_5Vpo7ypfc76Rd9WEXzKWokvmCNVg"></script><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var l=(n,t)=>{let i=async()=>{await(await n())()},e=typeof t.value=="object"?t.value:void 0,s={timeout:e==null?void 0:e.timeout};"requestIdleCallback"in window?window.requestIdleCallback(i,s):setTimeout(i,s.timeout||200)};(self.Astro||(self.Astro={})).idle=l;window.dispatchEvent(new Event("astro:idle"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="1pCCOC" prefix="r1" component-url="/_astro/KapaChatLauncher.C3p5Hp1C.js?dpl=dpl_5Vpo7ypfc76Rd9WEXzKWokvmCNVg" component-export="default" renderer-url="/_astro/client.CTpMqk1H.js?dpl=dpl_5Vpo7ypfc76Rd9WEXzKWokvmCNVg" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;KapaChatLauncher&quot;,&quot;value&quot;:true}" await-children><div class="warp-kapa-shell"><button type="button" class="warp-kapa-button" aria-label="Ask AI" aria-haspopup="dialog" aria-expanded="false" aria-controls="sl-kapa-panel" aria-keyshortcuts="Control+I" data-tooltip="Ask AI Ctrl+I"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="warp-kapa-button__label">Ask</span></button><dialog id="sl-kapa-panel" class="sl-kapa-dialog" aria-label="Ask Warp"><div class="sl-kapa-panel"><header class="sl-kapa-panel__header"><button type="button" class="sl-kapa-icon-button sl-kapa-icon-button--ghost" disabled="" aria-label="New conversation" data-tooltip="New conversation"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></button><div class="sl-kapa-panel__header-actions"><button type="button" class="sl-kapa-icon-button sl-kapa-icon-button--close sl-kapa-icon-button--ghost" aria-label="Close AI chat"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></header><div class="sl-kapa-panel__body"><div class="sl-kapa-empty-state"><p class="sl-kapa-empty-state__title">Ask a question</p><p>What do you want to know about Warp?</p></div></div><footer class="sl-kapa-panel__footer"><form class="sl-kapa-form"><input type="text" placeholder="Ask a question about Warp…" value=""/><button type="submit" class="sl-kapa-submit" disabled="" aria-label="Send message"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg></button></form><div class="sl-kapa-meta"><p class="sl-kapa-attribution">Powered by<!-- --> <a href="https://kapa.ai" target="_blank" rel="noreferrer">kapa.ai</a></p><p class="sl-kapa-disclosure">Protected by<!-- --> <button type="button" class="sl-kapa-disclosure-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_r1R_lp_" data-state="closed">reCAPTCHA</button></p></div></footer></div></dialog></div><div style="display:none"></div><!--astro:end--></astro-island></div><div class="md:sl-hidden"><ul class="starlight-sidebar-topics astro-weqivxqx"><li class="astro-weqivxqx"><a href="/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></div><div class="astro-weqivxqx">Terminal</div></a></li><li class="astro-weqivxqx"><a href="/agents/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg></div><div class="astro-weqivxqx">Agents</div></a></li><li class="astro-weqivxqx"><a href="/platform/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M14.29 17.29 13 18.59V13a1 1 0 0 0-2 0v5.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l3 3a1 1 0 0 0 .33.21.94.94 0 0 0 .76 0 1 1 0 0 0 .33-.21l3-3a1 1 0 0 0-1.42-1.42Zm4.13-11.07A7 7 0 0 0 5.06 8.11 4 4 0 0 0 6 16a1 1 0 0 0 0-2 2 2 0 0 1 0-4 1 1 0 0 0 1-1 5 5 0 0 1 9.73-1.61 1 1 0 0 0 .78.67 3 3 0 0 1 .24 5.84 1 1 0 1 0 .5 1.94 5 5 0 0 0 .17-9.62Z"/></svg></div><div class="astro-weqivxqx">Oz</div></a></li><li class="astro-weqivxqx"><a href="/reference/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></div><div class="astro-weqivxqx">Reference</div></a></li><li class="astro-weqivxqx"><a href="/api" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M0.734 13.269L0.562 10.732Q1.938 10.732 2.497 10.087L2.497 10.087Q2.884 9.614 2.884 8.711L2.884 8.711Q2.884 8.324 2.798 7.571Q2.712 6.819 2.712 6.410Q2.712 6.002 2.669 5.185L2.669 5.185Q2.583 4.454 2.583 4.153L2.583 4.153Q2.583 2.089 3.787 1.099Q4.991 0.111 7.184 0.111L7.184 0.111L8.259 0.111L8.259 2.648L7.700 2.648Q6.754 2.648 6.345 3.185Q5.937 3.723 5.937 4.798L5.937 4.798Q5.937 5.056 6.023 5.572L6.023 5.572Q6.109 6.217 6.109 6.561L6.109 6.561Q6.109 6.819 6.152 7.378L6.152 7.378Q6.238 8.152 6.238 8.582L6.238 8.582Q6.238 10.216 5.550 11.033L5.550 11.033Q4.948 11.764 3.658 12.065L3.658 12.065Q4.948 12.409 5.550 13.097L5.550 13.097Q6.238 13.957 6.238 15.548L6.238 15.548Q6.238 16.021 6.152 16.795L6.152 16.795Q6.066 17.354 6.088 17.612Q6.109 17.870 6.023 18.515L6.023 18.515Q5.937 18.988 5.937 19.203L5.937 19.203Q5.937 20.278 6.345 20.815Q6.754 21.353 7.700 21.353L7.700 21.353L8.259 21.353L8.259 23.890L7.184 23.890Q2.712 23.890 2.712 19.848L2.712 19.848Q2.712 18.386 2.862 17.590Q3.013 16.795 3.013 15.290L3.013 15.290Q3.013 13.269 0.734 13.269L0.734 13.269ZM23.438 10.732L23.438 13.011Q21.159 13.011 21.159 15.032L21.159 15.032Q21.159 15.419 21.224 16.171Q21.288 16.924 21.288 17.311L21.288 17.311Q21.417 18.128 21.417 19.590L21.417 19.590Q21.417 23.632 16.859 23.632L16.859 23.632L15.784 23.632L15.784 21.353L16.300 21.353Q17.246 21.353 17.654 20.815Q18.063 20.278 18.063 19.203Q18.063 18.128 17.934 17.569L17.934 17.569Q17.934 17.225 17.848 16.558Q17.762 15.892 17.762 15.548L17.762 15.548Q17.762 13.957 18.450 13.097L18.450 13.097Q19.052 12.409 20.342 12.065L20.342 12.065Q19.052 11.764 18.450 11.033L18.450 11.033Q17.762 10.216 17.762 8.582L17.762 8.582Q17.762 8.152 17.848 7.378L17.848 7.378Q17.934 6.819 17.934 6.561L17.934 6.561Q18.063 5.873 18.063 4.841Q18.063 3.809 17.633 3.293Q17.203 2.777 16.300 2.648L16.300 2.648L15.784 2.648L15.784 0.111L16.859 0.111Q19.009 0.111 20.213 1.099Q21.417 2.089 21.417 4.153L21.417 4.153Q21.417 4.540 21.352 5.292Q21.288 6.045 21.288 6.432L21.288 6.432Q21.159 7.249 21.116 8.711L21.116 8.711Q21.159 9.614 21.503 10.087L21.503 10.087Q22.062 10.732 23.438 10.732L23.438 10.732Z"/></svg></div><div class="astro-weqivxqx">API</div></a></li><li class="astro-weqivxqx"><a href="/changelog/2026/" class="starlight-sidebar-topics-current astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M9 10h1a1 1 0 1 0 0-2H9a1 1 0 0 0 0 2Zm0 2a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2H9Zm11-3.06a1.3 1.3 0 0 0-.06-.27v-.09c-.05-.1-.11-.2-.19-.28l-6-6a1.07 1.07 0 0 0-.28-.19h-.09a.88.88 0 0 0-.33-.11H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8.94Zm-6-3.53L16.59 8H15a1 1 0 0 1-1-1V5.41ZM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5v3a3 3 0 0 0 3 3h3v9Zm-3-3H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Z"/></svg></div><div class="astro-weqivxqx">Changelog</div></a></li><li class="astro-weqivxqx"><a href="/support-and-community/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 2A10 10 0 0 0 2 12a9.9 9.9 0 0 0 2.3 6.3l-2 2a1 1 0 0 0-.3 1.1 1 1 0 0 0 1 .6h9a10 10 0 0 0 0-20m0 18H5.4l1-1a1 1 0 0 0 0-1.3A8 8 0 1 1 12 20"/></svg></div><div class="astro-weqivxqx">Support &amp; Community</div></a></li><li class="astro-weqivxqx"><a href="/enterprise/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m21.32 9.55-1.89-.63.89-1.78A1 1 0 0 0 20.13 6L18 3.87a1 1 0 0 0-1.15-.19l-1.78.89-.63-1.89A1 1 0 0 0 13.5 2h-3a1 1 0 0 0-.95.68l-.63 1.89-1.78-.89A1 1 0 0 0 6 3.87L3.87 6a1 1 0 0 0-.19 1.15l.89 1.78-1.89.63a1 1 0 0 0-.68.94v3a1 1 0 0 0 .68.95l1.89.63-.89 1.78A1 1 0 0 0 3.87 18L6 20.13a1 1 0 0 0 1.15.19l1.78-.89.63 1.89a1 1 0 0 0 .95.68h3a1 1 0 0 0 .95-.68l.63-1.89 1.78.89a1 1 0 0 0 1.13-.19L20.13 18a1 1 0 0 0 .19-1.15l-.89-1.78 1.89-.63a1 1 0 0 0 .68-.94v-3a1 1 0 0 0-.68-.95ZM20 12.78l-1.2.4A2 2 0 0 0 17.64 16l.57 1.14-1.1 1.1-1.11-.6a2 2 0 0 0-2.79 1.16l-.4 1.2h-1.59l-.4-1.2A2 2 0 0 0 8 17.64l-1.14.57-1.1-1.1.6-1.11a2 2 0 0 0-1.16-2.82l-1.2-.4v-1.56l1.2-.4A2 2 0 0 0 6.36 8l-.57-1.11 1.1-1.1L8 6.36a2 2 0 0 0 2.82-1.16l.4-1.2h1.56l.4 1.2A2 2 0 0 0 16 6.36l1.14-.57 1.1 1.1-.6 1.11a2 2 0 0 0 1.16 2.79l1.2.4v1.59ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg></div><div class="astro-weqivxqx">Enterprise</div></a></li><li class="astro-weqivxqx"><a href="/guides/" class="astro-weqivxqx"><div class="starlight-sidebar-topics-icon astro-weqivxqx"><svg aria-hidden="true" class="astro-weqivxqx astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg></div><div class="astro-weqivxqx">Guides</div></a></li></ul></div><sl-sidebar-state-persist data-hash="0za16pd" class="astro-f5yvicm7"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-ojxuodky"><li class="astro-ojxuodky"><a href="/changelog/" aria-current="page" class="large astro-ojxuodky"><span class="astro-ojxuodky">All years</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2026/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2026</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2025/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2025</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2024/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2024</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2023/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2023</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2022/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2022</span></a></li><li class="astro-ojxuodky"><a href="/changelog/2021/" class="large astro-ojxuodky"><span class="astro-ojxuodky">2021</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-b5gddk54"><div class="social-icons astro-b5gddk54"><a href="https://github.com/warpdotdev" rel="me" class="sl-flex astro-cg55etiy"><span class="sr-only astro-cg55etiy">GitHub</span><svg aria-hidden="true" class="astro-cg55etiy astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-r2p65idu"><span class="sr-only astro-r2p65idu">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-r2p65idu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-r2p65idu"><option value="dark" class="astro-r2p65idu">Dark</option><option value="light" class="astro-r2p65idu">Light</option><option value="auto" selected class="astro-r2p65idu">Auto</option></select><svg aria-hidden="true" class="icon caret astro-r2p65idu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div><!-- Search UX enhancements:
+     1. Persistent dialog footer (GitBook-style):
+          - "Ask AI" CTA whose label interpolates the live search query
+            ("Ask AI" when empty, `Ask AI: "<query>"` once typed) and
+            surfaces the ⌘+I (Ctrl+I on Windows/Linux) shortcut. Clicking
+            it routes the query into the Kapa Ask chat panel.
+          - Keyboard-hint strip (↑↓ Navigate · ↵ Select · Esc Close)
+            hidden under 50rem.
+     2. Arrow key navigation through results with visible selection
+        state. Enter opens the selected result. Ask AI is the LAST
+        navigable item, so arrow-down past the last doc result lands
+        on it.
+     3. Breadcrumb row injected at the top of each result title,
+        derived from the result URL (first segment maps to the topic
+        label; subsequent segments are humanized). --><script>
+	(() => {
+		var dialog = document.querySelector('site-search dialog');
+		if (!dialog) return;
+
+		var footerId = 'warp-search-footer';
+		var askAiId = 'warp-search-ask-ai';
+		var breadcrumbClass = 'warp-search-breadcrumb';
+		var selectedIndex = -1;
+
+		// Mirrors the top-level sidebar topic labels (see src/sidebar.ts) so
+		// the breadcrumb's first segment reads as the user-facing topic name
+		// rather than the URL slug. Unmapped segments fall back to a humanized
+		// version (e.g. "agents" → "Agents", "foo-bar" → "Foo bar").
+		var TOPIC_LABELS = {
+			'terminal': 'Terminal',
+			'code': 'Code',
+			'getting-started': 'Getting started',
+			'knowledge-and-collaboration': 'Knowledge & collaboration',
+			'agents': 'Agents',
+			'reference': 'Reference',
+			'changelog': 'Changelog',
+			'support-and-community': 'Support',
+			'enterprise': 'Enterprise',
+			'guides': 'Guides',
+			'api': 'API',
+		};
+
+		// Detect Apple platforms once so the Ask AI kbd reads ⌘+I on Macs and
+		// Ctrl+I elsewhere. Mirrors KapaChatLauncher.tsx which binds the same
+		// shortcut via keymatch's `CmdOrCtrl+I`.
+		var isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform || '');
+		var modKey = isMac ? '\u2318' : 'Ctrl';
+
+		function humanize(slug) {
+			return slug.replace(/-/g, ' ').replace(/^(\w)/, function (c) {
+				return c.toUpperCase();
+			});
+		}
+
+		function labelForSegment(segment, isFirst) {
+			if (isFirst && TOPIC_LABELS[segment]) return TOPIC_LABELS[segment];
+			return humanize(segment);
+		}
+
+		// Build a breadcrumb (`Topic › Section`) from a result URL. We drop
+		// the leaf segment because the result title already carries it, and
+		// cap the breadcrumb at two levels (topic + section) so it stays
+		// scannable at the eyebrow scale.
+		function breadcrumbFromUrl(url) {
+			if (!url) return '';
+			var path = url;
+			try {
+				path = new URL(url, 'https://docs.warp.dev').pathname;
+			} catch (e) {}
+			var segments = path.split('/').filter(function (s) {
+				return s && s !== 'index' && !s.endsWith('.html');
+			});
+			if (segments.length === 0) return TOPIC_LABELS.terminal;
+			// Drop the leaf segment if there's more than one (the title carries it).
+			var parts = segments.length > 1 ? segments.slice(0, -1) : segments;
+			// Cap at the first two parts (topic + section) so we don't sprawl.
+			if (parts.length > 2) parts = parts.slice(0, 2);
+			return parts.map(function (seg, i) { return labelForSegment(seg, i === 0); }).join('\u00a0\u203a\u00a0');
+		}
+
+		function renderAskAiLabel(label) {
+			var query = label && label.trim();
+			if (!query) return 'Ask AI';
+			var escaped = query
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;');
+			return 'Ask AI: <span class="warp-search-ask-ai-row__query">"' + escaped + '"</span>';
+		}
+
+		// --- Build the persistent footer (Ask AI + keyboard hints) once ---
+		function buildFooter() {
+			var footer = document.createElement('div');
+			footer.id = footerId;
+			footer.className = 'warp-search-footer';
+
+			var askAi = document.createElement('button');
+			askAi.id = askAiId;
+			askAi.type = 'button';
+			askAi.className = 'warp-search-ask-ai-row';
+			askAi.innerHTML =
+				'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+				+ '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>'
+				+ '<path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>'
+				+ '</svg>'
+				+ '<span class="warp-search-ask-ai-row__label">Ask AI</span>'
+				+ '<kbd class="warp-search-ask-ai-row__kbd" aria-hidden="true">' + modKey + '<span class="warp-search-ask-ai-row__kbd-plus">+</span>I</kbd>';
+			askAi.addEventListener('click', function () {
+				// openPanel() in KapaChatLauncher reads the live search input and
+				// closes the search dialog itself, so we just route the click.
+				var kapaBtn = document.querySelector('.warp-kapa-button');
+				if (kapaBtn) kapaBtn.click();
+			});
+			footer.appendChild(askAi);
+
+			var hints = document.createElement('div');
+			hints.className = 'warp-search-keyboard-hints';
+			hints.innerHTML =
+				'<span class="warp-search-keyboard-hints__group">'
+				+ '<kbd class="warp-search-keyboard-hints__kbd">\u2191</kbd>'
+				+ '<kbd class="warp-search-keyboard-hints__kbd">\u2193</kbd>'
+				+ '<span>Navigate</span>'
+				+ '</span>'
+				+ '<span class="warp-search-keyboard-hints__group">'
+				+ '<kbd class="warp-search-keyboard-hints__kbd">\u21b5</kbd>'
+				+ '<span>Select</span>'
+				+ '</span>'
+				+ '<span class="warp-search-keyboard-hints__group">'
+				+ '<kbd class="warp-search-keyboard-hints__kbd">Esc</kbd>'
+				+ '<span>Close</span>'
+				+ '</span>';
+			footer.appendChild(hints);
+
+			return footer;
+		}
+
+		function ensureFooter() {
+			var existing = document.getElementById(footerId);
+			if (existing) return existing;
+			var frame = dialog.querySelector('.dialog-frame');
+			if (!frame) return null;
+			var footer = buildFooter();
+			frame.appendChild(footer);
+			return footer;
+		}
+
+		function removeFooter() {
+			var el = document.getElementById(footerId);
+			if (el) el.remove();
+		}
+
+		function updateAskAiLabel() {
+			var labelEl = dialog.querySelector('.warp-search-ask-ai-row__label');
+			if (!labelEl) return;
+			var searchInput = dialog.querySelector('.pagefind-ui__search-input');
+			var value = searchInput ? searchInput.value : '';
+			labelEl.innerHTML = renderAskAiLabel(value);
+		}
+
+		// --- Breadcrumb injection ---
+		// Pagefind re-renders the results area on every keystroke, so on every
+		// observer tick we (re)inject a small breadcrumb above each result
+		// title. The breadcrumb is idempotent (we skip if already present).
+		function injectBreadcrumbs() {
+			dialog.querySelectorAll('.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *))').forEach(function (titleEl) {
+				if (titleEl.querySelector('.' + breadcrumbClass)) return;
+				var link = titleEl.querySelector('.pagefind-ui__result-link');
+				if (!link) return;
+				var crumb = breadcrumbFromUrl(link.getAttribute('href') || '');
+				if (!crumb) return;
+				var span = document.createElement('span');
+				span.className = breadcrumbClass;
+				span.textContent = crumb;
+				titleEl.insertBefore(span, titleEl.firstChild);
+			});
+		}
+
+		// --- Arrow key navigation ---
+		// Navigate per VISIBLE ROW: each .pagefind-ui__result-title and
+		// .pagefind-ui__result-nested is one navigable item (matching the
+		// mouse hover granularity). Ask AI is LAST so arrow-down past the
+		// last result lands on it (mirrors GitBook's persistent CTA).
+		function getNavigableItems() {
+			var items = [];
+			dialog.querySelectorAll('.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)), .pagefind-ui__result-nested').forEach(function (row) {
+				items.push(row);
+			});
+			var askAi = document.getElementById(askAiId);
+			if (askAi) items.push(askAi);
+			return items;
+		}
+
+		function clearSelection() {
+			dialog.querySelectorAll('.warp-search-selected').forEach(function (el) {
+				el.classList.remove('warp-search-selected');
+			});
+			selectedIndex = -1;
+		}
+
+		function selectItem(index) {
+			var items = getNavigableItems();
+			if (items.length === 0) return;
+			clearSelection();
+			if (index < 0) index = items.length - 1;
+			if (index >= items.length) index = 0;
+			selectedIndex = index;
+			var item = items[selectedIndex];
+			item.classList.add('warp-search-selected');
+			item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+		}
+
+		// Clear keyboard selection when mouse moves over results
+		// so hover supersedes arrow-key highlight.
+		dialog.addEventListener('mousemove', function () {
+			if (selectedIndex >= 0) clearSelection();
+		}, { passive: true });
+
+		// --- Keyboard handler ---
+		dialog.addEventListener('keydown', function (e) {
+			var items = getNavigableItems();
+			if (items.length === 0) return;
+
+			if (e.key === 'ArrowDown') {
+				e.preventDefault();
+				selectItem(selectedIndex + 1);
+			} else if (e.key === 'ArrowUp') {
+				e.preventDefault();
+				selectItem(selectedIndex - 1);
+			} else if (e.key === 'Enter') {
+				if (selectedIndex >= 0 && selectedIndex < items.length) {
+					e.preventDefault();
+					// For result rows, click the link inside; for Ask AI, click the button
+					var link = items[selectedIndex].querySelector('.pagefind-ui__result-link');
+					if (link) { link.click(); } else { items[selectedIndex].click(); }
+				} else {
+					// No keyboard selection: open the first doc result if any.
+					var firstResult = dialog.querySelector('.pagefind-ui__result-link');
+					if (firstResult) {
+						e.preventDefault();
+						firstResult.click();
+					}
+				}
+			}
+		});
+
+		// --- Observer: refresh breadcrumbs + reset selection on results change ---
+		// The footer is built once and lives outside Pagefind's render scope so
+		// it survives every re-render without re-injection.
+		var observer = new MutationObserver(function () {
+			injectBreadcrumbs();
+			clearSelection();
+		});
+
+		dialog.addEventListener('close', function () {
+			observer.disconnect();
+			removeFooter();
+			clearSelection();
+		});
+
+		// Wire the input listener at the dialog level (delegated) so it
+		// catches the Pagefind input even though that input is mounted after
+		// the dialog itself exists. Updates the Ask AI label live as the
+		// user types or clears the query.
+		dialog.addEventListener('input', function (e) {
+			if (e.target && e.target.classList && e.target.classList.contains('pagefind-ui__search-input')) {
+				updateAskAiLabel();
+			}
+		});
+
+		new MutationObserver(function () {
+			if (dialog.open) {
+				ensureFooter();
+				updateAskAiLabel();
+				var target = dialog.querySelector('#starlight__search') || dialog;
+				observer.observe(target, { childList: true, subtree: true });
+				injectBreadcrumbs();
+				clearSelection();
+			}
+		}).observe(dialog, { attributes: true, attributeFilter: ['open'] });
+	})();
+</script><!-- Scroll the active sidebar link into view after page load.
+     Starlight's SidebarPersister restores scrollTop from sessionStorage,
+     but when navigating via crosslink to a different section, the restored
+     position is stale and the active link ends up off-screen. This script
+     runs after Starlight's inline restoration (which fires synchronously
+     before DOMContentLoaded) and uses `block: 'center'` to place the
+     active link in the middle of the sidebar viewport for orientation.
+     Desktop only -- on mobile the sidebar is a drawer that scrolls
+     independently. --><script>
+	(() => {
+		if (!matchMedia('(min-width: 50em)').matches) return;
+		const active = document.querySelector('.sidebar-content a[aria-current="page"]');
+	if (active) active.scrollIntoView({ block: 'center' });
+	})();
+</script></div></div></nav><div class="main-frame astro-gqpr5s5a"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-abfeecmu"><aside class="right-sidebar-container print:hidden astro-abfeecmu"><div class="right-sidebar astro-abfeecmu"><div class="lg:sl-hidden astro-arie4oy5"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-5ulgm6bh"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-5ulgm6bh"><details id="starlight__mobile-toc" class="astro-5ulgm6bh"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-5ulgm6bh"><span class="toggle sl-flex astro-5ulgm6bh">On this page<svg aria-hidden="true" class="caret astro-5ulgm6bh astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-5ulgm6bh"></span></summary><div class="dropdown astro-5ulgm6bh"><ul class="isMobile astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.BcSo_yiZ.js?dpl=dpl_5Vpo7ypfc76Rd9WEXzKWokvmCNVg"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-arie4oy5"><div class="sl-container sidebar-col astro-arie4oy5"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.Csloo1VZ.js?dpl=dpl_5Vpo7ypfc76Rd9WEXzKWokvmCNVg"></script><footer class="sidebar-footer astro-arie4oy5"><a href="https://github.com/warpdotdev/docs/edit/main/src/content/docs/changelog/index.mdx" class="sidebar-footer__link astro-arie4oy5"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-arie4oy5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" class="astro-arie4oy5"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" class="astro-arie4oy5"></path></svg>Edit page</a><a href="https://go.warp.dev/join-preview" class="sidebar-footer__link astro-arie4oy5" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-arie4oy5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" class="astro-arie4oy5"></path></svg>Join our Slack community</a><p class="sidebar-footer__updated astro-arie4oy5">Last updated <time datetime="2026-07-29T20:38:21.000Z" class="astro-arie4oy5">Jul 29, 2026</time></p><p class="sidebar-footer__copyright astro-arie4oy5">&copy; 2026 Warp</p></footer></div></div></div></aside><div class="main-pane astro-abfeecmu"><main data-pagefind-body class="astro-vdxcvpsm" lang="en" dir="ltr"><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><p class="page-eyebrow astro-oqnp4c7o">Changelog</p><div class="page-title-row astro-oqnp4c7o"><h1 id="_top" class="astro-oqnp4c7o">Changelog</h1><div class="copy-dropdown-wrapper astro-3jsjis6e" id="copy-dropdown-wrapper" data-pagefind-ignore><button class="copy-dropdown-trigger astro-3jsjis6e" id="copy-dropdown-trigger"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-3jsjis6e"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" class="astro-3jsjis6e"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" class="astro-3jsjis6e"></path></svg><span class="astro-3jsjis6e">Copy</span><svg class="chevron astro-3jsjis6e" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" class="astro-3jsjis6e"></path></svg></button><div class="copy-dropdown-panel astro-3jsjis6e" id="copy-dropdown-panel"><button class="copy-dropdown-item astro-3jsjis6e" id="copy-as-markdown"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-3jsjis6e"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" class="astro-3jsjis6e"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" class="astro-3jsjis6e"></path></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">Copy page</div><div class="item-desc astro-3jsjis6e">Copy page as Markdown for LLMs</div></div></button><button class="copy-dropdown-item astro-3jsjis6e" id="copy-agent-prompt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-3jsjis6e"><polyline points="4 17 10 11 4 5" class="astro-3jsjis6e"></polyline><line x1="12" y1="19" x2="20" y2="19" class="astro-3jsjis6e"></line></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">Copy agent prompt</div><div class="item-desc astro-3jsjis6e">Copy a prompt to guide you through this page</div></div></button><button class="copy-dropdown-item astro-3jsjis6e" id="view-as-markdown"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-3jsjis6e"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" class="astro-3jsjis6e"></path><polyline points="14 2 14 8 20 8" class="astro-3jsjis6e"></polyline><line x1="16" y1="13" x2="8" y2="13" class="astro-3jsjis6e"></line><line x1="16" y1="17" x2="8" y2="17" class="astro-3jsjis6e"></line><polyline points="10 9 9 9 8 9" class="astro-3jsjis6e"></polyline></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">View as Markdown &#x2197;</div><div class="item-desc astro-3jsjis6e">View this page as plain text</div></div></button><div class="dropdown-divider astro-3jsjis6e"></div><a class="copy-dropdown-item astro-3jsjis6e" href="https://chatgpt.com/?q=Read%20https%3A%2F%2Fdocs.warp.dev%2Fchangelog%2F.%20I%20want%20to%20ask%20questions%20about%20it." target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="astro-3jsjis6e"><path d="M22.28 9.37a5.98 5.98 0 0 0-.52-4.93 6.07 6.07 0 0 0-6.55-2.74A5.97 5.97 0 0 0 10.7.15a6.07 6.07 0 0 0-5.8 4.22 5.98 5.98 0 0 0-4 2.89 6.07 6.07 0 0 0 .74 7.11 5.98 5.98 0 0 0 .52 4.93 6.07 6.07 0 0 0 6.55 2.74 5.97 5.97 0 0 0 4.51 1.55 6.07 6.07 0 0 0 5.8-4.22 5.98 5.98 0 0 0 4-2.89 6.07 6.07 0 0 0-.74-7.11ZM13.3 22.18a4.49 4.49 0 0 1-2.88-1.04l.14-.08 4.79-2.77a.78.78 0 0 0 .39-.68v-6.76l2.02 1.17a.07.07 0 0 1 .04.06v5.6a4.52 4.52 0 0 1-4.5 4.5ZM3.6 18.11a4.49 4.49 0 0 1-.54-3.02l.14.09 4.79 2.76a.78.78 0 0 0 .78 0l5.85-3.38v2.33a.07.07 0 0 1-.03.06l-4.84 2.8a4.52 4.52 0 0 1-6.15-1.64ZM2.34 7.89a4.49 4.49 0 0 1 2.35-1.98v5.71a.78.78 0 0 0 .39.68l5.85 3.37-2.02 1.17a.07.07 0 0 1-.07 0l-4.84-2.8A4.52 4.52 0 0 1 2.34 7.9Zm17.33 4.03-5.85-3.38 2.02-1.16a.07.07 0 0 1 .07 0l4.84 2.8a4.52 4.52 0 0 1-.69 8.14v-5.72a.78.78 0 0 0-.39-.68Zm2.01-3.04-.14-.09-4.79-2.76a.78.78 0 0 0-.78 0L10.12 9.4V7.07a.07.07 0 0 1 .03-.06l4.84-2.8a4.52 4.52 0 0 1 6.69 4.67ZM8.92 12.98l-2.03-1.17a.07.07 0 0 1-.03-.06V6.15a4.52 4.52 0 0 1 7.38-3.47l-.14.08-4.79 2.77a.78.78 0 0 0-.39.68v6.77Zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5v-3Z" class="astro-3jsjis6e"></path></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">Open in ChatGPT &#x2197;</div><div class="item-desc astro-3jsjis6e">Ask ChatGPT about this page</div></div></a><a class="copy-dropdown-item astro-3jsjis6e" href="https://claude.ai/new?q=Read%20https%3A%2F%2Fdocs.warp.dev%2Fchangelog%2F.%20I%20want%20to%20ask%20questions%20about%20it." target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="astro-3jsjis6e"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z" class="astro-3jsjis6e"></path></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">Open in Claude &#x2197;</div><div class="item-desc astro-3jsjis6e">Ask Claude about this page</div></div></a><div class="dropdown-divider astro-3jsjis6e"></div><button class="copy-dropdown-item astro-3jsjis6e" id="export-as-pdf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="astro-3jsjis6e"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" class="astro-3jsjis6e"></path><polyline points="14 2 14 8 20 8" class="astro-3jsjis6e"></polyline><line x1="12" y1="18" x2="12" y2="12" class="astro-3jsjis6e"></line><polyline points="9 15 12 18 15 15" class="astro-3jsjis6e"></polyline></svg><div class="astro-3jsjis6e"><div class="item-label astro-3jsjis6e">Export as PDF</div><div class="item-desc astro-3jsjis6e">Save or print this page</div></div></button></div><span class="copy-toast astro-3jsjis6e" id="copy-toast">Copied!</span></div><!-- Store the markdown content in a hidden element so client JS can read it --><template id="page-markdown-content" class="astro-3jsjis6e"># Changelog
+
+Submit bugs and feature requests on our [GitHub board!](https://github.com/warpdotdev/Warp/issues/new/choose)
+
+* [**2026**](/changelog/2026/)
+* [**2025**](/changelog/2025/)
+* [**2024**](/changelog/2024/)
+* [**2023**](/changelog/2023/)
+* [**2022**](/changelog/2022/)
+* [**2021**](/changelog/2021/)</template><!-- Store the agent prompt in a hidden element so client JS can read it --><template id="agent-prompt-content" class="astro-3jsjis6e">Summarize what&#39;s new and whether I need to take any action: https://docs.warp.dev/changelog/</template><script type="module">function e(){let e=document.getElementById(`copy-dropdown-wrapper`),t=document.getElementById(`copy-dropdown-trigger`),n=document.getElementById(`copy-dropdown-panel`),r=document.getElementById(`copy-toast`),i=document.getElementById(`copy-as-markdown`),a=document.getElementById(`copy-agent-prompt`),o=document.getElementById(`view-as-markdown`),s=document.getElementById(`export-as-pdf`),c=document.getElementById(`page-markdown-content`),l=document.getElementById(`agent-prompt-content`);if(!e||!t||!n)return;t.addEventListener(`click`,e=>{e.stopPropagation(),n.classList.toggle(`open`),t.classList.toggle(`active`),n.classList.contains(`open`)&&setTimeout(()=>document.addEventListener(`click`,u),0)});function u(r){e?.contains(r.target)||(n?.classList.remove(`open`),t?.classList.remove(`active`),document.removeEventListener(`click`,u))}i?.addEventListener(`click`,async()=>{let e=c?.content.textContent||``;if(e)try{await navigator.clipboard.writeText(e),d()}catch{}n?.classList.remove(`open`),t?.classList.remove(`active`)}),a?.addEventListener(`click`,async()=>{let e=l?.content.textContent||``;if(e)try{await navigator.clipboard.writeText(e),d()}catch{}n?.classList.remove(`open`),t?.classList.remove(`active`)}),o?.addEventListener(`click`,async()=>{n?.classList.remove(`open`),t?.classList.remove(`active`);let e=(window.location.pathname.replace(/\/$/,``)||`/index`)+`.md`;try{if((await fetch(e,{method:`HEAD`})).ok){window.open(e,`_blank`,`noopener`);return}}catch{}let r=c?.content.textContent||``;if(r){let e=new Blob([r],{type:`text/markdown;charset=utf-8`}),t=URL.createObjectURL(e);window.open(t,`_blank`,`noopener`),setTimeout(()=>URL.revokeObjectURL(t),6e4)}}),s?.addEventListener(`click`,()=>{n?.classList.remove(`open`),t?.classList.remove(`active`),window.print()});function d(){r?.classList.add(`visible`),setTimeout(()=>r?.classList.remove(`visible`),2e3)}}document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,e):e();</script></div><p class="page-subtitle astro-oqnp4c7o">Warp ships weekly updates, typically on Thursdays.</p></div></div><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><div class="sl-markdown-content"><p>Submit bugs and feature requests on our <a href="https://github.com/warpdotdev/Warp/issues/new/choose">GitHub board!</a></p>
+<ul>
+<li><a href="/changelog/2026/"><strong>2026</strong></a></li>
+<li><a href="/changelog/2025/"><strong>2025</strong></a></li>
+<li><a href="/changelog/2024/"><strong>2024</strong></a></li>
+<li><a href="/changelog/2023/"><strong>2023</strong></a></li>
+<li><a href="/changelog/2022/"><strong>2022</strong></a></li>
+<li><a href="/changelog/2021/"><strong>2021</strong></a></li>
+</ul></div><footer class="sl-flex astro-f66jggi6"><div class="pagination-links print:hidden astro-jgq3vlii" dir="ltr"><a href="/changelog/2026/" rel="next" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jgq3vlii">Next<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">2026</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

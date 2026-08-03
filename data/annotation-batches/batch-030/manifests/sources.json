@@ -1,0 +1,38 @@
+[
+  {
+    "pageId": "da76a783a49d",
+    "name": "Linux Mint",
+    "url": "https://linuxmint.com/download.php",
+    "expected": "v22.3",
+    "fetchedAt": "2026-08-03T17:38:05.265918+00:00",
+    "status": null,
+    "error": "HTTP Error 403: Forbidden",
+    "bytes": 0
+  },
+  {
+    "pageId": "594e06239537",
+    "name": "Vivaldi",
+    "url": "https://vivaldi.com/download/",
+    "expected": "v8.1.4087.61",
+    "fetchedAt": "2026-08-03T17:38:05.386167+00:00",
+    "status": 200,
+    "finalUrl": "https://vivaldi.com/download/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 74671,
+    "htmlFile": "data/annotation-batches/batch-030/html/594e06239537.html",
+    "snapshotSha256": "ed83a13dd40daea42cdec285460d72c7fd06ac4f9b836c54246b92a172d7d1ca"
+  },
+  {
+    "pageId": "b676f3da0853",
+    "name": "Vivaldi blog",
+    "url": "https://vivaldi.com/blog/",
+    "expected": "v8.1",
+    "fetchedAt": "2026-08-03T17:38:06.129450+00:00",
+    "status": 200,
+    "finalUrl": "https://vivaldi.com/blog/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 75275,
+    "htmlFile": "data/annotation-batches/batch-030/html/b676f3da0853.html",
+    "snapshotSha256": "b790d1b6190ffd51772b31848285d71da06099f0b7d9ec057a8faf217b6f0c56"
+  }
+]

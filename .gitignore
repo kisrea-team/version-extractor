@@ -4,3 +4,6 @@ node_modules/
 .DS_Store
 .bench-cache/
 .reg-cache/
+
+# Non-HTML download response accidentally retained during annotation; not a dataset snapshot.
+data/annotation-batches/batch-014/html/42d4ae870011.html

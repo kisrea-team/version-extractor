@@ -1,0 +1,67 @@
+[
+  {
+    "pageId": "15b0e289b463",
+    "name": "Ubuntu desktop",
+    "url": "https://ubuntu.com/download/desktop",
+    "expected": "v26.04",
+    "fetchedAt": "2026-08-03T17:38:56.758217+00:00",
+    "status": 200,
+    "finalUrl": "https://ubuntu.com/download/desktop",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 81644,
+    "htmlFile": "data/annotation-batches/batch-031/html/15b0e289b463.html",
+    "snapshotSha256": "5e9aacdd1f06b0ae21eac83d022141c1ec387dc043346eb96b77d702de6d3c50"
+  },
+  {
+    "pageId": "94f9a611c731",
+    "name": "KDE",
+    "url": "https://kde.org/",
+    "expected": "v6.x",
+    "fetchedAt": "2026-08-03T17:38:57.560768+00:00",
+    "status": 200,
+    "finalUrl": "https://kde.org/",
+    "contentType": "text/html",
+    "bytes": 54451,
+    "htmlFile": "data/annotation-batches/batch-031/html/94f9a611c731.html",
+    "snapshotSha256": "bab56e0a757a39bfb6e765f8fab72ec0f7a94d03d67692c9102f51107a91a58a"
+  },
+  {
+    "pageId": "7de4a64ed17c",
+    "name": "GIMP",
+    "url": "https://www.gimp.org/downloads/",
+    "expected": "v3.2.4",
+    "fetchedAt": "2026-08-03T17:38:58.393013+00:00",
+    "status": 200,
+    "finalUrl": "https://www.gimp.org/downloads/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 32350,
+    "htmlFile": "data/annotation-batches/batch-031/html/7de4a64ed17c.html",
+    "snapshotSha256": "5a222a46f23c5ea0cc8bf8270eb9833ea4edd57eba349fc0bcef067523f2ce49"
+  },
+  {
+    "pageId": "79f8d8c5f83e",
+    "name": "OBS Studio",
+    "url": "https://obsproject.com/download",
+    "expected": "v32.2.1",
+    "fetchedAt": "2026-08-03T17:38:58.561279+00:00",
+    "status": 200,
+    "finalUrl": "https://obsproject.com/download",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 18279,
+    "htmlFile": "data/annotation-batches/batch-031/html/79f8d8c5f83e.html",
+    "snapshotSha256": "c7b87ecc8a4bdf63f20f9259ff9c5119a9243fc66398029a3e34f9e2aa182a7b"
+  },
+  {
+    "pageId": "a146106eaeb8",
+    "name": "Debian",
+    "url": "https://www.debian.org/distrib/",
+    "expected": "v13.6",
+    "fetchedAt": "2026-08-03T17:38:59.058410+00:00",
+    "status": 200,
+    "finalUrl": "https://www.debian.org/distrib/",
+    "contentType": "text/html",
+    "bytes": 15043,
+    "htmlFile": "data/annotation-batches/batch-031/html/a146106eaeb8.html",
+    "snapshotSha256": "d4135a32ba0f22024875426885a24bee3792685f7bfc866b12f45b34f1244df3"
+  }
+]

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.CShZuLqV.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.DgakXc13.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.BJdqDXbV.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.CoG5ZhIt.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.DX2tk7Wj.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/entry.BGWExhOU.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/scheduler.DQkMsCme.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.DXzOHq6C.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.BN8yp0nr.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.DidmSOuj.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.hNR2-YDE.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.gptmBXlJ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.Bh4EX9LI.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.ucxL7p6H.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.DKIoM6dL.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.RC_5fCRL.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7OP1iPcb.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.BAnxiaAa.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/each.DStbqIFS.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/38.BsowOV9F.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.DDyitwi-.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.DLjOsXzZ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Accordion.Cdcg7mt0.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.Bk0cdD5b.js"><title>Going to production - Docs - PocketBase</title><!-- HEAD_svelte-1az7yaz_START --><!-- HEAD_svelte-1az7yaz_END -->
+
+    <script src="/pagefind/pagefind-ui.js"></script>
+</head>
+<body>
+    <div class="page-body">  <header class="page-header"><div class="wrapper wrapper-lg"><div class="header-section left"><a href="/" class="logo logo-sm" data-sveltekit-preload-data><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40"> <span class="txt" data-svelte-h="svelte-omx7fd">Pocket<strong>Base</strong></span> <span class="version">v0.39.10</span></a></div> <div class="header-section center"> <div tabindex="-1" class="form-field searchbar"><div class="form-field-addon prefix" data-svelte-h="svelte-4xuxr"><i class="ri-search-line"></i></div>  <input type="text" class="searchbar-input" placeholder="Search..." value=""> <div tabindex="-1" class="dropdown searchbar-dropdown"><div class="tabs-header compact"><button type="button" class="tab-item active" data-svelte-h="svelte-1gcu78o">Go</button> <button type="button" class="tab-item" data-svelte-h="svelte-1oz4ee9">JavaScript</button></div>  <div id="pagefind_searchxUnBR"></div></div></div></div> <div class="header-section right"><button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span> <i class="ri-menu-3-fill"></i>  <div class="toggler-container" tabindex="-1" role="menu"></div></button> <nav class="main-menu" data-svelte-h="svelte-1w5krcj"><a href="/faq" class="btn btn-secondary" data-sveltekit-preload-data>FAQ</a> <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a> <a href="/docs" class="btn btn-outline" data-sveltekit-preload-data><span class="txt">Documentation</span></a></nav></div></div></header> <main class="wrapper wrapper-lg page-content-wrapper"> <aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-kkdbbm"><div class="sidebar-content"><nav class="sidebar-list">  <a href="/docs" class="list-item"> <span class="icon"><i class="ri-home-2-line"></i></span> <span class="txt">Introduction</span> </a>   <a href="/docs/going-to-production" class="list-item active"> <span class="icon"><i class="ri-check-double-line"></i></span> <span class="txt">Going to production</span> </a>   <a href="/docs/api-records" class="list-item"> <span class="icon"><i class="ri-file-list-2-line"></i></span> <span class="txt">Web APIs reference</span> </a> </nav> <div class="clearfix m-t-base"></div> <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview" data-svelte-h="svelte-1qkrccu"><div class="block">Extend with
+                            <br> <strong>Go</strong></div></a> <a class="tab-item" href="/docs/js-overview" data-svelte-h="svelte-qrgnnx"><div class="block">Extend with
+                            <br> <strong>JavaScript</strong></div></a></div> <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">  <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Overview</span> </a>   <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Event hooks</span> </a>   <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Routing</span> </a>   <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Database</span> </a>   <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Record operations</span> </a>   <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Collection operations</span> </a>   <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Migrations</span> </a>   <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Jobs scheduling</span> </a>   <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Sending emails</span> </a>   <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Rendering templates</span> </a>   <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Console commands</span> </a>   <a href="/docs/go-realtime" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Realtime messaging</span> </a>   <a href="/docs/go-filesystem" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Filesystem</span> </a>   <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Logging</span> </a>   <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Testing</span> </a>   <a href="/docs/go-miscellaneous" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Miscellaneous</span> </a>   <a href="/docs/go-record-proxy" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Record proxy</span> </a> </nav></div> <div class="tab-item"><nav class="sidebar-list">  <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Overview</span> </a>   <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Event hooks</span> </a>   <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Routing</span> </a>   <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Database</span> </a>   <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Record operations</span> </a>   <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Collection operations</span> </a>   <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Migrations</span> </a>   <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Jobs scheduling</span> </a>   <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Sending emails</span> </a>   <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Rendering templates</span> </a>   <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Console commands</span> </a>   <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Sending HTTP requests</span> </a>   <a href="/docs/js-realtime" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Realtime messaging</span> </a>   <a href="/docs/js-filesystem" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Filesystem</span> </a>   <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Logging</span> </a>   <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Types reference</span> </a> </nav></div></div></div></div></div> </aside> <div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Going to production</div></nav> <div class="content" data-pagefind-body data-tag-javascript="javascript" data-tag-go="go" data-tag-other="other" data-pagefind-filter="tag[data-tag-javascript],tag[data-tag-go],tag[data-tag-other]"><span class="hidden" data-pagefind-meta="title">Going to production</span> <div class="toc"><ul class="toc-list-1"></ul></div> <h3 id="deployment-strategies" class="heading-link "><a href="#deployment-strategies" class="link-primary"> Deployment strategies </a></h3> <h5 id="minimal-setup" class="heading-link "><a href="#minimal-setup" class="link-primary"> Minimal setup </a></h5> <p data-svelte-h="svelte-1u4aub4">One of the best PocketBase features is that it&#39;s completely portable. This means that it doesn&#39;t require
+    any external dependency and
+    <strong>could be deployed by just uploading the executable on your server</strong>.</p> <p data-svelte-h="svelte-1lxik3s">Here is an example of starting a production HTTPS server (auto managed TLS with Let&#39;s Encrypt) on a clean
+    Ubuntu 22.04 installation.</p> <ol><li value="0"><p data-svelte-h="svelte-r5oc0s">Consider the following app directory structure:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->myapp/
+    pb_migrations/
+    pb_hooks/
+    pocketbase<!-- HTML_TAG_END --></code> </div></li> <li><p data-svelte-h="svelte-qiypfw">Upload the binary and anything else required by your application to your remote server, for
+            example using
+            <strong>rsync</strong>:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->rsync <span class="token operator">-</span>avz <span class="token operator">-</span>e ssh <span class="token operator">/</span>local<span class="token operator">/</span>path<span class="token operator">/</span>to<span class="token operator">/</span>myapp root@<span class="token constant">YOUR_SERVER_IP</span><span class="token operator">:</span><span class="token operator">/</span>root<span class="token operator">/</span>pb<!-- HTML_TAG_END --></code> </div></li> <li><p data-svelte-h="svelte-a9mlxl">Start a SSH session with your server:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->ssh root@<span class="token constant">YOUR_SERVER_IP</span><!-- HTML_TAG_END --></code> </div></li> <li><p data-svelte-h="svelte-edfwua">Start the executable (specifying a domain name will issue a Let&#39;s encrypt certificate for it)</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>root@dev <span class="token operator">~</span><span class="token punctuation">]</span>$ <span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>pocketbase serve yourdomain<span class="token punctuation">.</span>com<!-- HTML_TAG_END --></code> </div> <blockquote><p data-svelte-h="svelte-h6xbpg">Notice that in the above example we are logged in as <strong>root</strong> which allows us to
+                bind to the
+                <strong>privileged 80 and 443 ports</strong>.
+                <br>
+                For <strong>non-root</strong> users usually you&#39;ll need special privileges to be able to do
+                that. You have several options depending on your OS - <code>authbind</code>,
+                <code>setcap</code>,
+                <code>iptables</code>, <code>sysctl</code>, etc. Here is an example using <code>setcap</code>:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>myuser@dev <span class="token operator">~</span><span class="token punctuation">]</span>$ sudo setcap <span class="token string">'cap_net_bind_service=+ep'</span> <span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>pocketbase<!-- HTML_TAG_END --></code> </div></blockquote></li> <li><p data-svelte-h="svelte-1bafj7x">(Optional) Systemd service</p> <p data-svelte-h="svelte-119pyzh">You can skip step 3 and create a <strong>Systemd service</strong>
+            to allow your application to start/restart on its own.
+            <br>
+            Here is an example service file (usually created in
+            <code>/lib/systemd/system/pocketbase.service</code>):</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+Description <span class="token operator">=</span> pocketbase
+
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+Type             <span class="token operator">=</span> simple
+User             <span class="token operator">=</span> root
+Group            <span class="token operator">=</span> root
+LimitNOFILE      <span class="token operator">=</span> <span class="token number">4096</span>
+Restart          <span class="token operator">=</span> always
+RestartSec       <span class="token operator">=</span> 5s
+StandardOutput   <span class="token operator">=</span> append<span class="token operator">:</span><span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>std<span class="token punctuation">.</span>log
+StandardError    <span class="token operator">=</span> append<span class="token operator">:</span><span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>std<span class="token punctuation">.</span>log
+WorkingDirectory <span class="token operator">=</span> <span class="token operator">/</span>root<span class="token operator">/</span>pb
+ExecStart        <span class="token operator">=</span> <span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>pocketbase serve yourdomain<span class="token punctuation">.</span>com
+
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
+WantedBy <span class="token operator">=</span> multi<span class="token operator">-</span>user<span class="token punctuation">.</span>target<!-- HTML_TAG_END --></code> </div> <p data-svelte-h="svelte-xrof42">After that we just have to enable it and start the service using <code>systemctl</code>:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>root@dev <span class="token operator">~</span><span class="token punctuation">]</span>$ systemctl enable pocketbase<span class="token punctuation">.</span>service
+<span class="token punctuation">[</span>root@dev <span class="token operator">~</span><span class="token punctuation">]</span>$ systemctl start pocketbase<!-- HTML_TAG_END --></code> </div> <blockquote><p data-svelte-h="svelte-1nv9bc5">You can find a link to the Web UI installer in the <code>/root/pb/std.log</code>, but
+                alternatively you can also create the first superuser explicitly via the
+                <code>superuser</code> PocketBase command:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>root@dev <span class="token operator">~</span><span class="token punctuation">]</span>$ <span class="token operator">/</span>root<span class="token operator">/</span>pb<span class="token operator">/</span>pocketbase superuser create <span class="token constant">EMAIL</span> <span class="token constant">PASS</span><!-- HTML_TAG_END --></code> </div></blockquote></li></ol> <h5 id="using-reverse-proxy" class="heading-link "><a href="#using-reverse-proxy" class="link-primary"> Using reverse proxy </a></h5> <p data-svelte-h="svelte-13xvg3j">If you plan on hosting multiple applications on a single server or need finer network controls, you can
+    always put PocketBase behind a reverse proxy such as
+    <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, etc.
+    <br> <em>Just note that when using a reverse proxy you may need to set up the &quot;User IP proxy headers&quot; in the
+        PocketBase settings so that the application can extract and log the actual visitor/client IP (the
+        headers are usually <code>X-Real-IP</code>, <code>X-Forwarded-For</code>).</em></p> <p data-svelte-h="svelte-i5yqa3">Here is a minimal <em>NGINX</em> example configuration:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->server {
+    listen 80;
+    server_name example.com;
+    client_max_body_size 10M;
+
+    location / {
+        # check http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive
+        proxy_set_header Connection '';
+        proxy_http_version 1.1;
+        proxy_read_timeout 360s;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # enable if you are serving under a subpath location
+        #
+        # note that it is better to use a subdomain when possible because of
+        # the same-origin isolation for localStorage and other resources
+        # rewrite /yourSubpath/(.*) /$1  break;
+
+        proxy_pass http://127.0.0.1:8090;
+    }
+}<!-- HTML_TAG_END --></code> </div> <p data-svelte-h="svelte-wxqarr">Corresponding <em>Caddy</em> configuration is:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->example.com {
+    request_body {
+        max_size 10MB
+    }
+    reverse_proxy 127.0.0.1:8090 {
+        transport http {
+            read_timeout 360s
+        }
+    }
+}<!-- HTML_TAG_END --></code> </div> <h5 id="using-docker" class="heading-link "><a href="#using-docker" class="link-primary"> Using Docker </a></h5> <p data-svelte-h="svelte-edle8j">Some hosts (e.g. <a href="https://fly.io" target="_blank" rel="noopener noreferrer">fly.io</a>) use Docker
+    for deployments. PocketBase doesn&#39;t have an official Docker image, but you could use the below minimal
+    Dockerfile as an example:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->FROM alpine:latest
+
+ARG PB_VERSION=0.39.10
+
+RUN apk add --no-cache \
+    unzip \
+    ca-certificates
+
+# download and unzip PocketBase
+ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
+RUN unzip /tmp/pb.zip -d /pb/
+
+# uncomment to copy the local pb_migrations dir into the image
+# COPY ./pb_migrations /pb/pb_migrations
+
+# uncomment to copy the local pb_hooks dir into the image
+# COPY ./pb_hooks /pb/pb_hooks
+
+EXPOSE 8080
+
+# start PocketBase
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]<!-- HTML_TAG_END --></code> </div> <p class="txt-bold" data-svelte-h="svelte-1twozwg">To persist your data you need to mount a volume at <code>/pb/pb_data</code>.</p> <p class="txt-hint" data-svelte-h="svelte-116956o"><em>For a full example you could check the
+        <a href="https://github.com/pocketbase/pocketbase/discussions/537" target="_blank" rel="noopener noreferrer">&quot;Host for free on Fly.io&quot;</a>
+        guide.</em></p> <h3 id="backup-and-restore" class="heading-link "><a href="#backup-and-restore" class="link-primary"> Backup and Restore </a></h3> <p data-svelte-h="svelte-5xic0z">To backup/restore your application it is enough to manually copy/replace your <code>pb_data</code>
+    directory
+    <em>(for transactional safety make sure that the application is not running)</em>.</p> <p>To make things slightly easier, PocketBase v0.16+ comes with builtin backups and restore APIs that could
+    be accessed from the Dashboard (
+    <em data-svelte-h="svelte-5h5n3z">Settings</em> > <em data-svelte-h="svelte-1gmx8n3">Backups</em>
+    ):</p> <img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs"> <p data-svelte-h="svelte-6t1z69">Backups can be stored locally (default) or in a S3 compatible storage (<em>it is recommended to use a separate bucket only for the backups</em>). The generated backup represents a full snapshot as ZIP archive of your <code>pb_data</code> directory (including
+    the locally stored uploaded files but excluding any local backups or files uploaded to S3).</p> <div class="alert alert-warning m-b-xs" data-svelte-h="svelte-2a4d6n"><div class="icon"><i class="ri-error-warning-line"></i></div> <div class="content"><p class="txt-bold">During the backup&#39;s ZIP generation the application will be temporary set in read-only mode.</p> <p>Depending on the size of your <code>pb_data</code> this could be a very slow operation and it is
+            advised in case of large <code>pb_data</code> (e.g. 2GB+) to consider a different backup strategy
+            <em class="txt-sm">(see an example
+                <a href="https://github.com/pocketbase/pocketbase/discussions/4254#backups" target="_blank" rel="noopener noreferrer">backup.sh script</a>
+                that combines <code>sqlite3 .backup</code> + <code>rsync</code>)
+            </em>.</p></div></div> <h3 id="recommendations" class="heading-link "><a href="#recommendations" class="link-primary"> Recommendations </a></h3> <div class="accordions"> <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="use-smtp-mail-server" class="heading-link "><a href="#use-smtp-mail-server" class="link-primary"> Use SMTP mail server </a></strong> <span class="label label-danger txt-bold m-l-auto" data-svelte-h="svelte-vv5oyj">highly recommended</span> </button>  <div class="accordion-content hidden"><p data-svelte-h="svelte-1dw3mak">By default, PocketBase uses the internal Unix <code>sendmail</code> command for sending emails.
+            <br>
+            While it&#39;s OK for development, it&#39;s not very useful for production, because your emails most likely will get
+            marked as spam or even fail to deliver.</p> <p data-svelte-h="svelte-v7sncc">To avoid deliverability issues, consider using a local SMTP server or an external mail service like
+            <a href="https://www.mailersend.com/" target="_blank" rel="noreferrer noopener">MailerSend</a>,
+            <a href="https://www.brevo.com/" target="_blank" rel="noreferrer noopener">Brevo</a>,
+            <a href="https://sendgrid.com/" target="_blank" rel="noreferrer noopener">SendGrid</a>,
+            <a href="https://www.mailgun.com/" target="_blank" rel="noreferrer noopener">Mailgun</a>,
+            <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.</p> <p>Once you&#39;ve decided on a mail service, you could configure the PocketBase SMTP settings from the
+            <em>Dashboard > Settings > Mail settings </em>:</p> <img src="/images/screenshots/smtp-settings.png" alt="SMTP settings screenshot" class="screenshot m-b-xs"></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="enable-rate-limiter" class="heading-link "><a href="#enable-rate-limiter" class="link-primary"> Enable rate limiter </a></strong> <span class="label label-danger txt-bold m-l-auto" data-svelte-h="svelte-vv5oyj">highly recommended</span> </button>  <div class="accordion-content hidden"><p data-svelte-h="svelte-1eh2gb7">To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to set
+            up a rate limiter.</p> <p data-svelte-h="svelte-1e55ypu">PocketBase v0.23.0+ comes with a simple builtin rate limiter that should cover most of the cases but you
+            are also free to use any external one via reverse proxy if you need more advanced options.</p> <p>You can configure the builtin rate limiter from the
+            <em>Dashboard > Settings > Application:</em></p> <img src="/images/screenshots/rate-limit-settings.png" alt="Rate limit settings screenshot" class="screenshot m-b-xs"></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="restrict-superusers-to-specific-ipssubnets" class="heading-link "><a href="#restrict-superusers-to-specific-ipssubnets" class="link-primary"> Restrict superusers to specific IPs/subnets </a></strong> <span class="label label-danger txt-bold m-l-auto" data-svelte-h="svelte-vv5oyj">highly recommended</span> </button>  <div class="accordion-content hidden"><p data-svelte-h="svelte-16kwbby">PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help hardening the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p> <p data-svelte-h="svelte-edqgr7">The IPs whitelist setting can be conveniently enabled from the <em>Dashboard &gt; Settings &gt; Application &gt; Superuser IPs</em>:</p> <img src="/images/screenshots/superusers_ips.png" alt="Superusers IPs whitelist screenshot" class="screenshot m-b-xs"> <p data-svelte-h="svelte-in9bgo">In case your IP changes, you can also reset/change the whitelist setting using the <code>superuser ips</code> console command:</p> <div class="code-wrapper m-b-sm prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --># note: --dir is optional and defaults to pb_data next to the executable
+
+# clear whitelisted IPs
+./pocketbase superuser ips --dir=/path/to/your/pb_data
+
+# OR change the whitelisted IPs to 127.0.0.1 and 10.0.0.0 (replace with your real IP)
+./pocketbase superuser ips 127.0.0.1 10.0.0.0 --dir=/path/to/your/pb_data<!-- HTML_TAG_END --></code> </div></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="enable-mfa-for-superusers" class="heading-link "><a href="#enable-mfa-for-superusers" class="link-primary"> Enable MFA for superusers </a></strong> <span class="label label-warning txt-bold m-l-auto" data-svelte-h="svelte-1p4b7fa">optional</span> </button>  <div class="accordion-content hidden"><p data-svelte-h="svelte-1y2r9tz">As an additional layer of security you can enable the MFA and OTP options for the <code>_superusers</code>
+            collection, which will enforce an additional one-time password (email code) requirement when authenticating
+            as superuser.</p> <p data-svelte-h="svelte-89zg69">In case of email deliverability issues, you can also generate an OTP manually using the
+            <code>./pocketbase superuser otp yoursuperuser@example.com</code> command.</p> <img src="/images/screenshots/superusers_mfa.png" alt="Superusers MFA settings screenshot" class="screenshot m-b-xs"></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="increase-the-open-file-descriptors-limit" class="heading-link "><a href="#increase-the-open-file-descriptors-limit" class="link-primary"> Increase the open file descriptors limit </a></strong> <span class="label label-warning txt-bold m-l-auto" data-svelte-h="svelte-1p4b7fa">optional</span> </button>  <div class="accordion-content hidden"><p class="txt-hint txt-bold" data-svelte-h="svelte-19ke1oz">The below instructions are for Linux but other operating systems have similar mechanism.</p> <p data-svelte-h="svelte-fmm62r">Unix uses <em>&quot;file descriptors&quot;</em> also for network connections and most systems have a default limit
+            of ~ 1024.
+            <br>
+            If your application has a lot of concurrent realtime connections, it is possible that at some point you would
+            get an error such as: <code>Too many open files</code>.</p> <p data-svelte-h="svelte-82lh4o">One way to mitigate this is to check your current account resource limits by running
+            <code>ulimit -a</code> and find the parameter you want to change. For example, if you want to increase the
+            open files limit (<em>-n</em>), you could run
+            <code>ulimit -n 4096</code> before starting PocketBase OR adjust the <code>LimitNOFILE</code> option in your systemd service file.</p></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="set-gomemlimit" class="heading-link "><a href="#set-gomemlimit" class="link-primary"> Set GOMEMLIMIT </a></strong> <span class="label label-warning txt-bold m-l-auto" data-svelte-h="svelte-1p4b7fa">optional</span> </button>  <div class="accordion-content hidden"><p data-svelte-h="svelte-1uky8le">If you are running in a memory constrained environment and/or allow upload of large files, defining the
+            <a href="https://pkg.go.dev/runtime#hdr-Environment_Variables" target="_blank" rel="noopener"><code>GOMEMLIMIT</code></a>
+            environment variable could help preventing out-of-memory (OOM) termination of your process. It is a &quot;soft limit&quot;
+            meaning that the memory usage could still exceed it in some situations, but it instructs the GC to be more
+            &quot;aggressive&quot; and run more often if needed. For example: <code>GOMEMLIMIT=512MiB</code>.</p> <p data-svelte-h="svelte-mi4fv8">If after <code>GOMEMLIMIT</code> you are still experiencing OOM errors, you can try to enable swap
+            partitioning (if not already) or open a
+            <a href="https://github.com/pocketbase/pocketbase/discussions" target="_blank" rel="noopener">Q&amp;A discussion</a>
+            with some steps to reproduce the error in case it is something that we can improve in PocketBase.</p></div></div>  <div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive"><strong id="enable-settings-encryption" class="heading-link "><a href="#enable-settings-encryption" class="link-primary"> Enable settings encryption </a></strong> <span class="label label-warning txt-bold m-l-auto" data-svelte-h="svelte-1p4b7fa">optional</span> </button>  <div class="accordion-content hidden"><p class="txt-bold txt-hint" data-svelte-h="svelte-bmvz0q">It is fine to ignore the below if you are not sure whether you need it.</p> <p data-svelte-h="svelte-ejvmz3">By default, PocketBase stores the applications settings in the database as plain JSON text, including the
+            SMTP password and S3 storage credentials.</p> <p data-svelte-h="svelte-ywra35">While this is not a security issue on its own (PocketBase applications live entirely on a single server
+            and it is expected only authorized users to have access to your server and application data), in some
+            situations it may be a good idea to store the settings encrypted in case someone get their hands on your
+            database file (e.g. from an external stored backup).</p> <p data-svelte-h="svelte-u7lib5">To store your PocketBase settings encrypted:</p> <ol><li class="m-b-10">Create a new environment variable and <strong data-svelte-h="svelte-1wjp855">set a random 32 characters</strong> string as its value.
+                <br> <span class="txt-hint">e.g. add
+                    <code>export PB_ENCRYPTION_KEY=&quot;UmfPc6RjAdMMOYeROmXxcEqyuem4SVpH&quot;</code>
+                    in your shell profile file</span></li> <li data-svelte-h="svelte-1u1vbj5">Start the application with <code>--encryptionEnv=YOUR_ENV_VAR</code> flag.
+                <br> <span class="txt-hint">e.g. <code>pocketbase serve --encryptionEnv=PB_ENCRYPTION_KEY</code></span></li></ol></div></div></div></div>  <div class="docs-footer svelte-1dbn67j" data-pagefind-ignore>  </div></div></main> <footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links" data-svelte-h="svelte-3s56aa"><a href="/faq" class="link-item">FAQ</a> <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions</a> <a href="/docs" class="link-item">Documentation</a></nav> <nav class="footer-col links" data-svelte-h="svelte-1ie6rey"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK</a> <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK</a></nav> <div class="footer-col socials"><div class="watermark-logo" data-svelte-h="svelte-tfgzzj">Pocket<strong>Base</strong></div> <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a> <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub" data-svelte-h="svelte-liy1aj"><i class="ri-github-line"></i></a></div></div> <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2026 Pocket<strong data-svelte-h="svelte-1d8skxd">Base</strong></span> <span class="gopher-credit" data-svelte-h="svelte-3v1v6q">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers</a></span></div> <div class="flex-fill"></div> <div class="credit" data-svelte-h="svelte-18tjksi">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>  <button type="button" class="btn btn-lg btn-circle btn-secondary scroll-to-top svelte-1fubo8o" arial-label="Go to top" data-svelte-h="svelte-tty6dx"><i class="ri-arrow-up-line"></i> </button> 
+			
+			<script>
+				{
+					__sveltekit_2djzwc = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DX2tk7Wj.js"),
+						import("../../_app/immutable/entry/app.BN8yp0nr.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 38],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

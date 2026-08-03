@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An open-source x64/x32 debugger for windows.">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="canonical" href="https://x64dbg.com/">
+
+    <title>x64dbg</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.min.css">
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E83ZYYGQ7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0E83ZYYGQ7');
+  </script>
+</head>
+
+    <body>
+        <header id="heading">
+    <div class="navbar, mymenu navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                <img style="margin:0; margin-top:-8px;" src="img/icon-white.png" alt="icon">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#start" class="scroll">Start</a>
+                    </li>
+                    <li>
+                        <a href="#features" class="scroll">Features</a>
+                    </li>
+                    <li>
+                        <a href="#overview" class="scroll">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#credits" class="scroll">Credits</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="scroll">Contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a target="_blank" href="https://plugins.x64dbg.com">Plugins</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://issues.x64dbg.com">Issues</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://wiki.x64dbg.com">Wiki</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://help.x64dbg.com">Docs</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://blog.x64dbg.com">Blog</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://discord.x64dbg.com">Discord</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <script>
+if(document.referrer.indexOf("adf.ly") > -1) {
+    alert("The website you came from does not support x64dbg in any way. Consider donating if you want to support us :)");
+}
+</script>
+<section class="panel start dark" data-section-name="start" id="start">
+    <div class="container">
+        <div class="row" style="margin-top:5%;padding-bottom:100px;">
+            <div class="col-md-4">
+                <h1 class="title">x64dbg</h1>
+                <h1>
+                <small>An open-source x64/x32 debugger for windows.</small>
+                </h1>
+                <br>
+                <h4>Check out the <a target="_blank" href="https://blog.x64dbg.com">blog</a>!</h4>
+                <br>
+                <p>
+                <a class="btn btn-primary btn-lg" href="https://snapshots.x64dbg.com" target="_blank" role="button">Download &raquo;</a>
+                <a class="btn btn-primary btn-lg" href="https://source.x64dbg.com" target="_blank" role="button">Source &raquo;</a>
+                <a class="btn btn-primary btn-lg" href="https://github.com/sponsors/mrexodia?metadata_source=x64dbg-site" target="_blank" role="button">Donate</a>
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.7.0/jquery.qrcode.min.js"></script>
+                </p>
+            </div>
+            <div class="col-md-8">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <!-- <li data-target="#carousel-example-generic" data-slide-to="3"></li> -->
+        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="img/slide1.png" alt="interface">
+            <div class="carousel-caption">
+                A familiar, yet new interface.
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/slide2.png" alt="different themes">
+            <div class="carousel-caption">
+                Fully customizable themes.
+            </div>
+        </div>
+        <!-- <div class="item">
+            <img src="img/slide3.png" alt="one gui">
+            <div class="carousel-caption">
+                One GUI, two platforms: x64 and x32
+            </div>
+        </div> -->
+        <div class="item">
+            <img src="img/slide4.png" alt="cpu_sidebar">
+            <div class="carousel-caption">
+                More information about jump targets and register values.
+            </div>
+        </div>
+        <div class="item">
+            <img src="img/slide5.png" alt="registerview">
+            <div class="carousel-caption">
+                Smart, content-sensitive register view.
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="panel features " data-section-name="features" id="features">
+    <div class="container">
+        <!-- Example row of columns -->
+        <h2>Features</h2>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="greencol">
+                    <ul>
+  <li>Open-source</li>
+  <li>Intuitive and familiar, yet new user interface</li>
+  <li>C-like expression parser</li>
+  <li>Full-featured debugging of DLL and EXE files (TitanEngine)</li>
+  <li>IDA-like sidebar with jump arrows</li>
+  <li>IDA-like instruction token highlighter (highlight registers, etc.)</li>
+  <li>Memory map</li>
+  <li>Symbol view</li>
+  <li>Thread view</li>
+  <li>Source code view</li>
+  <li>Graph view</li>
+  <li>Content-sensitive register view</li>
+  <li>Fully customizable color scheme</li>
+  <li>Dynamically recognize modules and strings</li>
+  <li>Import reconstructor integrated (Scylla)</li>
+  <li>Fast disassembler (<a href="https://zydis.re">Zydis</a>)</li>
+  <li>User database (JSON) for comments, labels, bookmarks, etc.</li>
+  <li>Plugin support with growing API</li>
+  <li>Extendable, debuggable scripting language for automation</li>
+  <li>Multi-datatype memory dump</li>
+  <li>Basic debug symbol (PDB) support</li>
+  <li>Dynamic stack view</li>
+  <li>Built-in assembler (XEDParse/<a href="https://github.com/asmjit">asmjit</a>)</li>
+  <li>Executable patching</li>
+  <li>Analysis</li>
+</ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="panel overview" data-section-name="overview" id="overview">
+    <div class="container">
+        <h2>Overview</h2>
+        <div class="row">
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-refresh"></span> Active development</h3>
+        <p>x64dbg is under constant active development.</p>
+    </div>
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-file"></span> GPLv3</h3>
+        <p>We provide both the executable and the source. Feel free to contribute.</p>
+    </div>
+    <div class="col-md-4 ">
+        <h3><span class="glyphicon glyphicon-cog"></span> Customizable</h3>
+        <p>Write plugins in C++, change colors and tweak your preferences.</p>
+    </div>
+</div>
+<div class="row" style="margin-top:5%;">
+    <div class="col-md-4">
+        <h3><span class="blue"><span class="glyphicon glyphicon-transfer"></span></span> x64/x32 support</h3>
+        <p>x64dbg can debug both x64 and x32 applications. There is only one interface.</p>
+    </div>
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-globe"></span> Built on open-source libraries</h3>
+        <p>x64dbg uses Qt, TitanEngine, Zydis, Yara, Scylla, Jansson, lz4, XEDParse, asmjit and snowman.</p>
+    </div>
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-send"></span> Simple, powerful development</h3>
+        <p>x64dbg uses C++ and Qt to quickly add new features.</p>
+    </div>
+</div>
+<div class="row" style="margin-top:5%;">
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-wrench"></span> Scriptable</h3>
+        <p>x64dbg has an integrated, debuggable, ASM-like scripting language.</p>
+    </div>
+    <div class="col-md-4">
+        <h3><span class="glyphicon glyphicon-user"></span> Community-aware</h3>
+        <p>x64dbg has many features thought of or implemented by the reversing community.</p>
+    </div>
+    <div class="col-md-4 ">
+        <h3><span class="glyphicon glyphicon-new-window"></span> Extendable</h3>
+        <p>Write plugins to add script commands or to integrate your tools.</p>
+    </div>
+</div>
+
+    </div>
+</section>
+<section class="panel credits" data-section-name="credits" id="credits">
+    <div class="container">
+        <h2>Credits</h2>
+        <ul>
+  <li>Debugger core by <a href="https://bitbucket.org/titanengineupdate/titanengine-update">TitanEngine Community Edition</a></li>
+  <li>Disassembly powered by <a href="https://zydis.re">Zydis</a></li>
+  <li>Assembly powered by <a href="https://github.com/x64dbg/XEDParse">XEDParse</a> and <a href="https://github.com/asmjit">asmjit</a></li>
+  <li>Import reconstruction powered by <a href="https://github.com/NtQuery/Scylla">Scylla</a></li>
+  <li>JSON powered by <a href="https://www.digip.org/jansson">Jansson</a></li>
+  <li>Database compression powered by <a href="https://bitbucket.org/mrexodia/lz4">lz4</a></li>
+  <li>Bug icon by <a href="https://www.visualpharm.com">VisualPharm</a></li>
+  <li>Interface icons by <a href="https://p.yusukekamiyamane.com">Fugue</a></li>
+  <li>Website by tr4ceflow</li>
+</ul>
+
+<p>You can find a more exhaustive list of contributers on the <a href="https://github.com/x64dbg/x64dbg/wiki/Credits">wiki</a>.</p>
+
+    </div>
+</section>
+<section class="panel contact" data-section-name="contact" id="contact">
+    <div class="container">
+        <h2>Contact</h2>
+        <ul>
+  <li><a href="https://discord.x64dbg.com"><img src="https://img.shields.io/badge/chat-on%20Discord-green.svg" alt="Discord" /></a></li>
+  <li><a href="https://slack.x64dbg.com"><img src="https://img.shields.io/badge/chat-on%20Slack-red.svg" alt="Slack" /></a></li>
+  <li><a href="https://gitter.im/x64dbg/x64dbg"><img src="https://img.shields.io/badge/chat-on%20Gitter-lightseagreen.svg" alt="Gitter" /></a></li>
+  <li><a href="https://matrix.to/#/#x64dbg:matrix.org"><img src="https://img.shields.io/badge/chat-on%20Matrix-yellowgreen.svg" alt="Matrix" /></a></li>
+  <li><a href="https://web.libera.chat/#x64dbg"><img src="https://img.shields.io/badge/chat-on%20IRC-purple.svg" alt="IRC" /></a></li>
+  <li><a href="https://x.com/x64dbg"><img src="https://img.shields.io/badge/X-%40x64dbg-1DA1F2" alt="X" /></a></li>
+  <li><img src="https://img.shields.io/badge/e--mail-contact%40x64dbg.com-blueviolet" alt="email" /></li>
+  <li><a href="https://github.com/x64dbg/x64dbg/discussions"><img src="https://img.shields.io/github/discussions/x64dbg/x64dbg" alt="GitHub Discussions" /></a></li>
+</ul>
+
+    </div>
+</section>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+
+
+    </body>
+</html>

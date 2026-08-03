@@ -1,0 +1,80 @@
+[
+  {
+    "pageId": "d25e4175e417",
+    "name": "WorkBuddy",
+    "url": "https://www.workbuddy.cn/docs/workbuddy/Changelog",
+    "expected": "v5.3.8",
+    "fetchedAt": "2026-08-03T17:31:40.879776+00:00",
+    "status": 200,
+    "finalUrl": "https://www.workbuddy.cn/docs/workbuddy/Changelog",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 132310,
+    "htmlFile": "data/annotation-batches/batch-026/html/d25e4175e417.html",
+    "snapshotSha256": "18e8bc50495662d63c8f2249308b1681559444bcb8d8d143f4ed5730027e2898"
+  },
+  {
+    "pageId": "76a76050e113",
+    "name": "Aliyun SASE client",
+    "url": "https://help.aliyun.com/zh/sase/product-overview/release-notes-for-clients",
+    "expected": "v4.7.0",
+    "fetchedAt": "2026-08-03T17:31:41.448663+00:00",
+    "status": 200,
+    "finalUrl": "https://help.aliyun.com/zh/sase/product-overview/release-notes-for-clients",
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 182307,
+    "htmlFile": "data/annotation-batches/batch-026/html/76a76050e113.html",
+    "snapshotSha256": "090b9307dcf3828768303f1d60ce0d6c3f0bfb9597e54aa46157520e00fcc7a9"
+  },
+  {
+    "pageId": "55ca14605d96",
+    "name": "Jianguoyun client",
+    "url": "https://help.jianguoyun.com/?p=1419",
+    "expected": "v6.4.7",
+    "fetchedAt": "2026-08-03T17:31:44.412343+00:00",
+    "status": 200,
+    "finalUrl": "https://help.jianguoyun.com/?p=1419",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 55155,
+    "htmlFile": "data/annotation-batches/batch-026/html/55ca14605d96.html",
+    "snapshotSha256": "8242b35c5eafd891f7c02f8f4f2c76c4035983c4dc3e53afafa06a85f6b48380"
+  },
+  {
+    "pageId": "7cf5d91b7c88",
+    "name": "Winmostar",
+    "url": "https://winmostar.com/jp/revision_history/",
+    "expected": "v11.17.0",
+    "fetchedAt": "2026-08-03T17:31:45.372329+00:00",
+    "status": 200,
+    "finalUrl": "https://winmostar.com/jp/revision_history/",
+    "contentType": "text/html",
+    "bytes": 928427,
+    "htmlFile": "data/annotation-batches/batch-026/html/7cf5d91b7c88.html",
+    "snapshotSha256": "fa98dad006bec43a1d568f79b7c7ed73667566b8b7b5bd4b02eb2e8a6d993d06"
+  },
+  {
+    "pageId": "d07e66fba98d",
+    "name": "Devolutions Password Manager",
+    "url": "https://devolutions.net/password-manager/release-notes/",
+    "expected": "v2026.2.2.0",
+    "fetchedAt": "2026-08-03T17:31:46.530412+00:00",
+    "status": 200,
+    "finalUrl": "https://devolutions.net/password-manager/release-notes/",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 832116,
+    "htmlFile": "data/annotation-batches/batch-026/html/d07e66fba98d.html",
+    "snapshotSha256": "cd22a17ecbdcc5627de5af78f5a79c78db8c02438e9712815a18be144b1b5e1e"
+  },
+  {
+    "pageId": "1ca631de9ece",
+    "name": "1Password Mac",
+    "url": "https://releases.1password.com/mac/stable/",
+    "expected": "v8.12.30",
+    "fetchedAt": "2026-08-03T17:31:46.769949+00:00",
+    "status": 200,
+    "finalUrl": "https://releases.1password.com/mac/stable/",
+    "contentType": "text/html",
+    "bytes": 296415,
+    "htmlFile": "data/annotation-batches/batch-026/html/1ca631de9ece.html",
+    "snapshotSha256": "42ef792bb6ae14db4f4e7f9b520923967374089546388a6642c993039ef33966"
+  }
+]

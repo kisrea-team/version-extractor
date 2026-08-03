@@ -1,0 +1,1657 @@
+<!DOCTYPE html><!-- Last Published: Mon Aug 03 2026 15:21:44 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="wisprflow.ai" data-wf-page="69baced2eac07eb15b1f3962" data-wf-site="682f84b3838c89f8ff7667db" lang="en"><head><meta charset="utf-8"/><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/><title>What&#x27;s new | Wispr Flow</title><meta content="Keep up with the latest releases, improvements, and fixes at Wispr Flow." name="description"/><meta content="What&#x27;s new | Wispr Flow" property="og:title"/><meta content="Keep up with the latest releases, improvements, and fixes at Wispr Flow." property="og:description"/><meta content="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683c611aba65ade013982bcd_wispr-og-min.jpg" property="og:image"/><meta content="What&#x27;s new | Wispr Flow" name="twitter:title"/><meta content="Keep up with the latest releases, improvements, and fixes at Wispr Flow." name="twitter:description"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="nB5ZhzlaRY-zASqKlMYFlebzNc0mGhssolT9qcS3nms" name="google-site-verification"/><link href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/css/flowsite-dev.webflow.shared.673f6e2a5.min.css" rel="stylesheet" type="text/css" integrity="sha384-Zz9uKlJMFCMZRnIfPUSH+2/vOu1m4q3DkcXcZOMCOAgziMilfIS1Xh5Ye4fbDZqS" crossorigin="anonymous"/><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/684b3be32acf9b372f54d041_ws-favi.png" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68d27d1a8a10f417b5644527_flow-wc-v2.png" rel="apple-touch-icon"/><link href="https://wisprflow.ai/whats-new" rel="canonical"/><!--AB Test: CTA Verb Test-->
+<!--Replaces the "Download button text - OS detection (site-wide)" block in head-tag.html.
+    Desktop (>=992px) gets the PostHog-assigned variant; mobile/tablet keep today's behavior.
+    Copy is: control = "Download for [OS]", test = "Get Started on [OS]".-->
+<style>
+  html.cta-verb-test-loading body {
+    visibility: hidden;
+    animation: cta-verb-test-fallback-show 0s linear 2.5s forwards;
+  }
+  @keyframes cta-verb-test-fallback-show {
+    to {
+      visibility: visible;
+    }
+  }
+</style>
+<script>
+  (function () {
+    // Promo variant lives in the home page's per-page head and owns the CTAs
+    // when ?promo_code= is present. Yield to it — don't participate in this test.
+    if (new URLSearchParams(window.location.search).has('promo_code')) return;
+
+    const flagName = 'cta-verb-test';
+    const POSTHOG_TIMEOUT_MS = 2500;
+    const COOKIE_DAYS = 30;
+    const DESKTOP_MIN_WIDTH = 992;
+    const startTime = performance.now();
+    const isDesktop = window.innerWidth >= DESKTOP_MIN_WIDTH;
+
+    // Hide body while variant + platform resolve. Desktop-only so mobile users
+    // don't pay the wait — they aren't in the experiment. CSS animation at 2.5s
+    // forces visibility as a doomsday backup if JS ever fails to remove the class.
+    if (isDesktop) {
+      document.documentElement.classList.add('cta-verb-test-loading');
+    }
+
+    const showPage = () => {
+      document.documentElement.classList.remove('cta-verb-test-loading');
+    };
+
+    const elapsed = () => Math.round(performance.now() - startTime);
+
+    // --- Cookie helpers ---
+    const getCookie = (name) => {
+      const cookies = document.cookie.split(';');
+      const cookie = cookies.find((c) => c.trim().startsWith(name + '='));
+      return cookie ? decodeURIComponent(cookie.split('=')[1]) : null;
+    };
+
+    const setCookie = (name, value, days) => {
+      const expiryDate = new Date();
+      expiryDate.setTime(expiryDate.getTime() + days * 24 * 60 * 60 * 1000);
+      const { hostname } = window.location;
+      const domain = hostname.includes('wisprflow.ai') ? '.wisprflow.ai' : hostname;
+      document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + expiryDate.toUTCString() + ';path=/;domain=' + domain + ';SameSite=Lax;Secure';
+    };
+
+    // --- OS text (mirrors head-tag OS-detection; only the verb changes per variant) ---
+    const getVerb = (variant) => (variant === 'test' ? 'Get started on' : 'Download for');
+
+    const getOSText = (platform, variant) => {
+      const verb = getVerb(variant);
+      switch (platform) {
+        case 'mac_m1':
+        case 'mac_intel':
+        case 'mac_unknown':
+          return verb + ' macOS';
+        case 'Windows':
+        case 'win_unknown':
+          return verb + ' Windows';
+        case 'iOS':
+          return verb + ' iPhone';
+        case 'Android':
+          return verb + ' Android';
+        default:
+          return null;
+      }
+    };
+
+    // --- Apply text: waits for platform + buttons, then sets text and reveals body ---
+    const applyText = (variant) => {
+      const run = () => {
+        // Promo can activate mid-page-load. Yield if it did.
+        if (window.promoActive) {
+          showPage();
+          return;
+        }
+        if (!window.userPlatform) {
+          setTimeout(run, 1);
+          return;
+        }
+
+        const platform = window.userPlatform;
+        const osText = getOSText(platform, variant);
+
+        // Linux, ChromeOS, or unknown — no text change for this platform.
+        // Show the page immediately; leave whatever default text is on the button.
+        if (!osText) {
+          showPage();
+          return;
+        }
+
+        const buttons = document.querySelectorAll('[app-download]:not([no-change])');
+        if (buttons.length === 0) {
+          setTimeout(run, 1);
+          return;
+        }
+
+        const appleIcon = document.querySelector('[apple-icon]');
+        const windowsIcon = document.querySelector('[windows-icon]');
+        const androidIcon = document.querySelector('[android-icon]');
+
+        const applyToButton = (btn) => {
+          btn.textContent = osText;
+          if ((platform === 'mac_m1' || platform === 'mac_intel' || platform === 'mac_unknown' || platform === 'iOS') && appleIcon) {
+            btn.prepend(appleIcon.cloneNode(true));
+          } else if ((platform === 'Windows' || platform === 'win_unknown') && windowsIcon) {
+            btn.prepend(windowsIcon.cloneNode(true));
+          } else if (platform === 'Android' && androidIcon) {
+            btn.prepend(androidIcon.cloneNode(true));
+          }
+        };
+
+        buttons.forEach(applyToButton);
+
+        const navContainer = document.querySelector('.nav_container-v2');
+        if (navContainer) {
+          if (platform === 'mac_m1' || platform === 'mac_intel' || platform === 'mac_unknown') {
+            navContainer.classList.add('macos-button-fit');
+          } else if (platform === 'Windows' || platform === 'win_unknown') {
+            navContainer.classList.add('windows-button-fit');
+          }
+        }
+
+        document.querySelector('.nav_big-button')?.classList.add('smaller');
+
+        const setupAnims = () => {
+          if (typeof setupButtonAnimations === 'function') {
+            setupButtonAnimations('.button:not([no-animations="true"])');
+          } else {
+            setTimeout(setupAnims, 50);
+          }
+        };
+        setupAnims();
+
+        // Late-binding safety: re-apply if the button was re-rendered after we set it.
+        // Matches the behavior of the OS-detection script this block replaces.
+        const reapply = () => {
+          if (window.promoActive) return;
+          document.querySelectorAll('[app-download]:not([no-change])').forEach((btn) => {
+            if (!btn.textContent.includes(osText)) applyToButton(btn);
+          });
+        };
+        setTimeout(reapply, 200);
+        setTimeout(reapply, 600);
+
+        showPage();
+      };
+      run();
+    };
+
+    // --- Exposure event (PostHog auto-attaches variant to future events) ---
+    const captureExposureEvent = (variant) => {
+      if (typeof posthog === 'undefined' || typeof posthog.capture !== 'function') return;
+      posthog.capture('$feature_flag_called', {
+        $feature_flag: flagName,
+        $feature_flag_response: variant,
+      });
+    };
+
+    // --- Mobile / narrow screens: skip experiment, keep today's behavior ---
+    if (!isDesktop) {
+      applyText('control');
+      return;
+    }
+
+    // --- Query-param override for QA (?ab-cta=control|test) ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryOverride = urlParams.get('ab-cta');
+    if (['control', 'test'].includes(queryOverride)) {
+      console.log(`✨ ${flagName} (query override): ${queryOverride} (took ${elapsed()}ms)`);
+      applyText(queryOverride);
+      return;
+    }
+
+    // --- Fast path: cookie hit (repeat visitors) ---
+    const existingVariant = getCookie(flagName);
+    if (existingVariant) {
+      if (existingVariant === 'control-timeout') {
+        console.log(`✨ ${flagName} (timeout user - showing control, NOT tracking) (took ${elapsed()}ms)`);
+        applyText('control');
+        return;
+      }
+      console.log(`✨ ${flagName} (cookie): ${existingVariant} (took ${elapsed()}ms)`);
+      captureExposureEvent(existingVariant);
+      applyText(existingVariant);
+      return;
+    }
+
+    // --- New visitor: race PostHog vs timeout ---
+    let handled = false;
+
+    const timeoutId = setTimeout(() => {
+      if (handled) return;
+      handled = true;
+      console.log(`✨ ${flagName} (timeout — showing control, NOT tracking in experiment) (took ${elapsed()}ms)`);
+      if (typeof posthog !== 'undefined' && typeof posthog.capture === 'function') {
+        posthog.capture('experiment_timeout', {
+          experiment_name: flagName,
+          fallback_variant: 'control',
+          elapsed_ms: elapsed(),
+        });
+      }
+      setCookie(flagName, 'control-timeout', COOKIE_DAYS);
+      applyText('control');
+    }, POSTHOG_TIMEOUT_MS);
+
+    const waitForPosthogAndApply = () => {
+      if (handled) return;
+      if (typeof posthog !== 'undefined' && typeof posthog.onFeatureFlags === 'function') {
+        posthog.onFeatureFlags(() => {
+          if (handled) return;
+          handled = true;
+          clearTimeout(timeoutId);
+
+          const flagValue = posthog.getFeatureFlag(flagName);
+          const validVariants = ['control', 'test'];
+          const normalized = validVariants.includes(flagValue) ? flagValue : 'control';
+
+          if (flagValue === undefined || flagValue === null || flagValue === false) {
+            console.log(`✨ ${flagName} (PostHog returned "${flagValue}" — flag not active, defaulting to control) (took ${elapsed()}ms)`);
+          } else {
+            console.log(`✨ ${flagName} (PostHog assigned): ${flagValue} (took ${elapsed()}ms)`);
+          }
+
+          captureExposureEvent(normalized);
+          setCookie(flagName, normalized, COOKIE_DAYS);
+          applyText(normalized);
+        });
+      } else {
+        setTimeout(waitForPosthogAndApply, 50);
+      }
+    };
+
+    waitForPosthogAndApply();
+  })();
+</script>
+
+<!--UTM capture: persist UTM params to localStorage on any page load-->
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+      var v = params.get(k);
+      if (v) localStorage.setItem('wf_' + k, v);
+    });
+  })();
+</script>
+
+<!--Download button text - OS detection (site-wide). Promo variant lives in the home page's per-page head and owns the buttons when ?promo_code= is present.
+<script>
+  (function () {
+    const waitAndApply = () => {
+      if (window.promoActive || new URLSearchParams(window.location.search).get('promo_code')) return;
+      if (window.userPlatform) {
+        const getOSText = (platform) => {
+          switch (platform) {
+            case 'mac_m1':
+            case 'mac_intel':
+            case 'mac_unknown':
+              return 'Download for macOS';
+            case 'Windows':
+            case 'win_unknown':
+              return 'Download for Windows';
+            case 'iOS':
+              return 'Download for iPhone';
+            case 'Android':
+              return 'Download for Android';
+            default:
+              return null;
+          }
+        };
+
+        const platform = window.userPlatform;
+        const osText = getOSText(platform);
+
+        if (osText) {
+          const buttons = document.querySelectorAll('[app-download]:not([no-change])');
+          const appleIcon = document.querySelector('[apple-icon]');
+          const windowsIcon = document.querySelector('[windows-icon]');
+          const androidIcon = document.querySelector('[android-icon]');
+
+          if (buttons.length === 0) {
+            setTimeout(waitAndApply, 1);
+            return;
+          }
+
+          buttons.forEach((button) => {
+            button.textContent = osText;
+
+            if ((platform === 'mac_m1' || platform === 'mac_intel' || platform === 'mac_unknown' || platform === 'iOS') && appleIcon) {
+              button.prepend(appleIcon.cloneNode(true));
+            } else if ((platform === 'Windows' || platform === 'win_unknown') && windowsIcon) {
+              button.prepend(windowsIcon.cloneNode(true));
+            } else if (platform === 'Android' && androidIcon) {
+              button.prepend(androidIcon.cloneNode(true));
+            }
+          });
+
+          const navContainer = document.querySelector('.nav_container-v2');
+          if (navContainer) {
+            if (platform === 'mac_m1' || platform === 'mac_intel' || platform === 'mac_unknown') {
+              navContainer.classList.add('macos-button-fit');
+            } else if (platform === 'Windows' || platform === 'win_unknown') {
+              navContainer.classList.add('windows-button-fit');
+            }
+          }
+
+          document.querySelector('.nav_big-button')?.classList.add('smaller');
+
+          const setupAnims = () => {
+            if (typeof setupButtonAnimations === 'function') {
+              setupButtonAnimations('.button:not([no-animations="true"]):not([app-download])');
+            } else {
+              setTimeout(setupAnims, 50);
+            }
+          };
+          setupAnims();
+
+          const reapply = () => {
+          if (window.promoActive) return;
+            document.querySelectorAll('[app-download]:not([no-change])').forEach((btn) => {
+              if (!btn.textContent.includes(osText)) {
+                btn.textContent = osText;
+                if ((platform === 'mac_m1' || platform === 'mac_intel' || platform === 'mac_unknown' || platform === 'iOS') && appleIcon) {
+                  btn.prepend(appleIcon.cloneNode(true));
+                } else if ((platform === 'Windows' || platform === 'win_unknown') && windowsIcon) {
+                  btn.prepend(windowsIcon.cloneNode(true));
+                } else if (platform === 'Android' && androidIcon) {
+                  btn.prepend(androidIcon.cloneNode(true));
+                }
+              }
+            });
+          };
+          setTimeout(reapply, 200);
+          setTimeout(reapply, 600);
+        }
+      } else {
+        setTimeout(waitAndApply, 1);
+      }
+    };
+    waitAndApply();
+  })();
+</script>-->
+
+<style>
+  #usercentrics-cmp-ui {
+    position: relative;
+    z-index: 99;
+  }
+</style>
+
+<script>
+  window.addEventListener('UC_UI_VIEW_CHANGED', (event) => {
+    const layer = event.detail?.view;
+    const ucEl = document.querySelector('#usercentrics-cmp-ui');
+    if (!ucEl) return;
+    if (layer === 'FIRST_LAYER' || layer === 'SECOND_LAYER') {
+      ucEl.style.zIndex = '999999';
+    } else {
+      ucEl.style.zIndex = '99';
+    }
+  });
+</script>
+
+<!--Safari smart app banner-->
+<meta name="apple-itunes-app" content="app-id=6497229487, app-argument=https://wisprflow.ai" />
+
+<!--Usercentrics CMP DRAFT script
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-draft="true" data-settings-id="OJkJpCiDSYCcgG" async></script>-->
+
+<!--Usercentrics CMP LIVE script
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="OJkJpCiDSYCcgG" async></script>-->
+
+<!--load cmp on staging homepage only
+<script>
+  if (window.location.hostname === 'flowsite-dev.webflow.io' && window.location.pathname === '/') {
+    var s2 = document.createElement('script');
+    s2.src = 'https://web.cmp.usercentrics.eu/ui/loader.js';
+    s2.id = 'usercentrics-cmp';
+    s2.setAttribute('data-settings-id', 'OJkJpCiDSYCcgG');
+    s2.async = true;
+    document.head.prepend(s2);
+  }
+</script>-->
+
+<!--Bottom bar-->
+<style>
+  .nav_bottom {
+    transform: translateY(100%);
+  }
+</style>
+
+<!--Preloading above the fold fonts-->
+<link rel="preload" href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/682fbe57a719a4ebf1fb56d5_EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
+<link rel="preload" href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68d3db1d34da60ddf73ff544_683b1349ca0a0ddd3d6a7cd3_EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin />
+
+<link rel="preload" href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/682fbd6763ee33a2be0ffd05_Figtree-Medium.woff2" as="font" type="font/woff2" crossorigin />
+
+<link rel="preload" href="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/682fbd676708c4fa3708edc8_Figtree-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+
+<!-- GSC Verification -->
+<meta name="google-site-verification" content="P6GGpe_kog7Zac5lr_zc-Riq4UO4NNedDoVSLBu2-C4" />
+<!-- End of GSC Verification -->
+
+<!-- Persistent anonymous visitor ID for Meta CAPI matching -->
+<script>
+  (function () {
+    if (!localStorage.getItem('wispr_visitor_id')) {
+      localStorage.setItem('wispr_visitor_id', crypto.randomUUID());
+    }
+  })();
+</script>
+
+<!--No consent in GTM by default-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 2000,
+  });
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-N8JTW8TQ');
+</script>
+<!-- End Google Tag Manager -->
+
+<!--Verbiflow
+<script type="text/plain" data-usercentrics="Verbiflow">
+  !function(){
+    // Don't load Verbiflow on /get-started page
+    if (window.location.pathname === '/get-started') {
+      return;
+    }
+    
+    window.__VERBIFLOW_API_KEY__ = "fb7e1058-28fd-466d-86da-d1114ed68ffd";
+    var verbiflowScript = document.createElement("script");
+    verbiflowScript.async = true;
+    verbiflowScript.setAttribute("src", "https://verbiflow-customer-assets.s3.us-east-1.amazonaws.com/deanonymization.js");
+    verbiflowScript.setAttribute("id", "verbiflowtag");
+    (document.body || document.head).appendChild(verbiflowScript);
+  }();
+</script>-->
+
+<!--Unify
+<script type="text/plain" data-usercentrics="Unify">!function(){var e=["identify","page","startAutoPage","stopAutoPage","startAutoIdentify","stopAutoIdentify"];function t(o){return Object.assign([],e.reduce(function(r,n){return r[n]=function(){return o.push([n,[].slice.call(arguments)]),o},r},{}))}window.unify||(window.unify=t(window.unify)),window.unifyBrowser||(window.unifyBrowser=t(window.unifyBrowser));var n=document.createElement("script");n.async=!0,n.setAttribute("src","https://tag.unifyintent.com/v1/6pSdUHMfwsfTM4drx7hLnj/script.js"),n.setAttribute("data-api-key","wk_SutNNYTR_A5ygcgBTbiAx1Bvf6Wb8HBvubDQLJBm6"),n.setAttribute("id","unifytag"),(document.body||document.head).appendChild(n)}();</script>-->
+
+<!-- Save referral code and promo code in cookies-->
+<script>
+  (function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const referral = urlParams.get('referral');
+    const promoCode = urlParams.get('promo_code');
+
+    if (referral) {
+      const sanitizedReferral = encodeURIComponent(referral);
+      const expiryDate = new Date();
+      expiryDate.setTime(expiryDate.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days
+
+      // Dynamic domain logic (matching your global code)
+      const { hostname } = window.location;
+      const domain = hostname.includes('wisprflow.ai') ? '.wisprflow.ai' : hostname;
+
+      document.cookie = `referral=${sanitizedReferral};expires=${expiryDate.toUTCString()};path=/;domain=${domain};Secure;`;
+    }
+
+    if (promoCode) {
+      const sanitizedPromoCode = encodeURIComponent(promoCode);
+      const expiryDate = new Date();
+      expiryDate.setTime(expiryDate.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days
+
+      // Dynamic domain logic (matching your global code)
+      const { hostname } = window.location;
+      const domain = hostname.includes('wisprflow.ai') ? '.wisprflow.ai' : hostname;
+
+      document.cookie = `promo_code=${sanitizedPromoCode};expires=${expiryDate.toUTCString()};path=/;domain=${domain};Secure;`;
+    }
+  })();
+</script>
+
+<!-- Analytics-->
+<script>
+  // Posthog
+  !(function (t, e) {
+    var o, n, p, r;
+    e.__SV ||
+      ((window.posthog = e),
+      (e._i = []),
+      (e.init = function (i, s, a) {
+        function g(t, e) {
+          var o = e.split('.');
+          (2 == o.length && ((t = t[o[0]]), (e = o[1])),
+            (t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            }));
+        }
+        (((p = t.createElement('script')).type = 'text/javascript'), (p.async = !0), (p.src = s.api_host + '/static/array.js'), (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r));
+        var u = e;
+        for (
+          void 0 !== a ? (u = e[a] = []) : (a = 'posthog'),
+            u.people = u.people || [],
+            u.toString = function (t) {
+              var e = 'posthog';
+              return ('posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e);
+            },
+            u.people.toString = function () {
+              return u.toString(1) + '.people (stub)';
+            },
+            o = 'capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep'.split(' '),
+            n = 0;
+          n < o.length;
+          n++
+        )
+          g(u, o[n]);
+        e._i.push([i, s, a]);
+      }),
+      (e.__SV = 1));
+  })(document, window.posthog || []);
+
+  window.posthog.init('phc_yV8yhSiAUoblWb3L5ju54QEk6Y3u2rA3xV4Dep1yIDC', {
+    api_host: 'https://ph.wisprflow.ai',
+    ui_host: 'https://us.posthog.com',
+  });
+</script>
+
+<!--Dub
+<script type="text/plain" data-usercentrics="Dub.co" src="https://www.dubcdn.com/analytics/script.js" defer></script>-->
+
+<!-- Ahrefs Analytics
+
+<script type="text/plain" data-usercentrics="Ahrefs" src="https://analytics.ahrefs.com/analytics.js" data-key="5nR81NV35qF6wRFgDb3Tjg" async></script>-->
+
+<!-- End of Ahrefs Analytics -->
+
+<!--new [data-localize]
+<script src="https://cdn.jsdelivr.net/npm/@tanay-wispr/webflow-package@6.5.5/dist/global.js"></script>-->
+
+<!--posthog if check
+<script src="https://cdn.jsdelivr.net/npm/@tanay-wispr/webflow-package@6.5.12/dist/global.js"></script>-->
+
+<!--meta capi improvements
+<script src="https://cdn.jsdelivr.net/npm/@tanay-wispr/webflow-package@6.5.17/dist/global.js"></script>-->
+
+<!--chromebook support-->
+<script src="https://cdn.jsdelivr.net/npm/@tanay-wispr/webflow-package@6.6.1/dist/global.js"></script>
+
+<!-- <script defer src="http://localhost:3000/global.js"></script> -->
+
+<style>
+  .fs-rangeslider_handle:focus-visible {
+    outline: 0rem solid transparent !important;
+  }
+</style><!--Customer.io script-->
+<script type="text/javascript">
+  (function () {
+    var t = document.createElement('script'),
+      s = document.getElementsByTagName('script')[0];
+    t.async = true;
+    t.id = 'cio-forms-handler';
+    t.setAttribute('data-site-id', '4f306a6abedd39af83c9');
+    t.setAttribute('data-base-url', 'https://customerioforms.com');
+
+    t.src = 'https://customerioforms.com/assets/forms.js';
+
+    s.parentNode.insertBefore(t, s);
+  })();
+</script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db%2F6544eda5f000985a163a8687%2F68c93c62c7911406d96f138f%2Ffinsweetcomponentsconfig-1.0.0.js" type="module" async="" siteId="682f84b3838c89f8ff7667db" finsweet="components"></script></head><body><div class="page-wrapper"><div class="global-styles w-embed"><style>
+  /* Make text look crisper and more legible in all browsers */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Focus state style for keyboard navigation for the focusable elements */
+  *[tabindex]:focus-visible,
+  input[type='file']:focus-visible {
+    outline: 0.125rem solid #4d65ff;
+    outline-offset: 0.125rem;
+  }
+
+  /* Set color style to inherit */
+  .inherit-color * {
+    color: inherit;
+  }
+
+  /* Get rid of top margin on first element in any rich text element */
+  .w-richtext > :not(div):first-child,
+  .w-richtext > div:first-child > :first-child {
+    margin-top: 0 !important;
+  }
+
+  /* Get rid of bottom margin on last element in any rich text element */
+  .w-richtext > :last-child,
+  .w-richtext ol li:last-child,
+  .w-richtext ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Make sure containers never lose their center alignment */
+  .container-medium,
+  .container-small,
+  .container-large {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  /* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+  /*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+
+  /* Apply "..." after 3 lines of text */
+  .text-style-3lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  /* Apply "..." after 2 lines of text */
+  .text-style-2lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* These classes are never overwritten */
+  .hide {
+    display: none !important;
+  }
+
+  @media screen and (max-width: 991px) {
+    .hide,
+    .hide-tablet {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .hide-mobile {
+      display: none !important;
+    }
+  }
+
+  .margin-0 {
+    margin: 0rem !important;
+  }
+
+  .padding-0 {
+    padding: 0rem !important;
+  }
+
+  .spacing-clean {
+    padding: 0rem !important;
+    margin: 0rem !important;
+  }
+
+  .margin-top {
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+
+  .padding-top {
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
+  .margin-right {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+
+  .padding-right {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
+  .margin-bottom {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+
+  .padding-bottom {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
+  .margin-left {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .padding-left {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+
+  .margin-horizontal {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .padding-horizontal {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+
+  .margin-vertical {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+
+  .padding-vertical {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+
+  .text-wrap-balance {
+    text-wrap: balance !important;
+  }
+</style>
+
+<style>
+  .footer_link-block .icon-embed-xxsmall {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 300ms;
+  }
+
+  .footer_link-block:hover .icon-embed-xxsmall {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<style>
+  .w-nav-overlay {
+    margin-top: -10px !important;
+    z-index: 1;
+  }
+</style>
+
+<style>
+  @media screen and (max-width: 992px) {
+    .w-dropdown-toggle.w--open .nav_menu-dropdown-arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown1_border-radius-wrap,
+  .dropdown-border-right-overlay {
+    opacity: 0;
+  }
+
+  .dropdown-link:hover .dropdown-link-text {
+    color: #034f46;
+  }
+
+  @media (min-width: 992px) {
+    .nav_component:has([apple-icon]),
+    .nav_component:has([windows-icon]) {
+      max-width: 66rem;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .nav_container-v2:has(.nav_button.w--open),
+    .nav_container-v3:has(.nav_button.w--open) {
+      border-bottom-color: transparent;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .nav_container-v2:has(.nav_button.w--open) .nav_left-line,
+    .nav_container-v3:has(.nav_button.w--open) .nav_left-line,
+    .nav_container-v2:has(.nav_button.w--open) .nav_right-line,
+    .nav_container-v3:has(.nav_button.w--open) .nav_right-line {
+      opacity: 1;
+    }
+  }
+
+  /*.text-link:hover .text-link-arrow {
+    transform: translateX(100%);
+  }*/
+
+  /* nav v2 */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    [nav-dropdown='resources'] .dropdown-link {
+      min-width: 13rem !important;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .nav-link-wrap.research {
+      padding-left: 0.5rem;
+      align-items: center;
+      /* gap: 3.5rem; */
+      gap: 2.25rem;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .nav_mobile-btn:has([android-icon]) {
+      font-size: 0.75rem;
+    }
+
+    .nav_mobile-btn [android-icon] {
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+    }
+  }
+
+  .nav_menu-dropdown-toggle-v2.force-reset,
+  .nav_menu-dropdown-toggle-v2.force-reset:hover {
+    background-color: rgba(228, 228, 208, 0) !important;
+  }
+
+  .blog-v2-item h2,
+  .blog-v2-item h3 {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 3px;
+    transition: text-decoration-color 0.25s ease;
+  }
+
+  .blog-v2-item:hover h2,
+  .blog-v2-item:hover h3 {
+    text-decoration-color: currentColor;
+  }
+
+  .testi_card-bottom-card:has(.testi_card-bottom-card-bg.is-green) {
+    color: #ffffeb;
+  }
+
+  .testi_card:has(.testi_card-bg-color.is-dark-green) {
+    color: #ffffeb;
+  }
+
+  @media (max-width: 767px) {
+    .testi_card:has(.testi_card-bg-color.is-dark-green) .testi_card-stats-grid {
+      color: #ffffeb;
+    }
+  }
+</style></div><div class="page-specific-css w-embed"><style>
+  .wn_body .w-embed {
+    border-radius: 2.5rem;
+    overflow: clip;
+    margin-bottom: 1.875rem;
+    margin-top: 1.875rem;
+  }
+
+  @media (max-width: 400px) {
+    .wn_body .w-embed {
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  [data-filter='desktop'].active {
+    background-color: #ff6c4c;
+  }
+
+  [data-filter='android'].active {
+    background-color: #f0d7ff;
+  }
+
+  [data-filter='ios'].active {
+    background-color: #ffa946;
+  }
+</style></div><div class="nav_fixed"><div data-wf--navbar--variant="base" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_component w-nav"><div class="hide"><img apple-icon="" src="https://cdn.prod.website-files.com/6838259bd246e848c14f0840/683829796f346a9a6f931363_apple.png" alt="" class="download_button-icon homepage"/><img windows-icon="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/686d4881d944a4b80f7d047e_windows.svg" alt="" class="download_button-icon homepage"/><img android-icon="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69935aa16ba22091f2d8c927_Android.svg" alt="" class="download_button-icon homepage"/></div><div class="nav_container-v2"><a href="/" id="w-node-_74e8b1ce-5aa8-4ef6-e6f9-f898264bfae4-63dfdea9" class="nav_brand w-nav-brand"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683215c6f233131a07d8bafc_navbar_logo.svg" loading="eager" alt="Flow Logo" class="nav_logo"/></a><nav role="navigation" id="w-node-_74e8b1ce-5aa8-4ef6-e6f9-f898264bfae6-63dfdea9" class="nav_menu v2 w-nav-menu"><div class="nav_menu-wrapper grid v2"><div data-delay="200" data-hover="true" data-w-id="74e8b1ce-5aa8-4ef6-e6f9-f898264bfae8" class="nav_menu-dropdown-toggle-v2 w-dropdown"><div class="dropdown1_toggle v2 w-dropdown-toggle"><div>Product</div><img loading="lazy" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6832181fdb427a83a4270c9a_dropdown_arrow.svg" alt="" class="nav_menu-dropdown-arrow"/><div class="dropdown-border-overlay"></div><div class="dropdown-border-right-overlay hide"></div><div class="dropdown1_border-radius-wrap hide"><div class="dropdown1_border-radius"></div></div></div><nav class="dropdown-list-v2 w-dropdown-list"><div class="dropdown-inside-wrap"><div class="dropdown-wrap"><div class="dropdown-list-heading hide-tablet">GET STARTED</div><a nav-link="features" href="/features" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985066f81584cc3d6676b3d_ni-toggles.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Features</div><div class="dropdown-link-description">Do more with your voice</div></div></a><a nav-link="pricing" href="/pricing" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985066f520e4076bbf2d4ef_ni-dollar-circle.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Pricing</div><div class="dropdown-link-description">Flow Pro free for 14 days — No card required</div></div></a><div class="hide"><a nav-link="android_waitlist" href="/android-waitlist" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/698253c37a362938d982d229_android-icon.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text">Android Waitlist</div><div class="dropdown-link-description">Get early access to Flow for Android</div></div></a></div><a nav-link="privacy" href="/privacy" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985066fecbc15fdf3640fac_ni-lock.svg" class="dropdown-link-icon more-big"/><div><div class="dropdown-link-text">Privacy &amp; Security</div><div class="dropdown-link-description">Your data, your control</div></div></a><a nav-link="web_demo" href="/demo" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985066f0e48d2f8dd8cc148_ni-browser.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Web Demo</div><div class="dropdown-link-description">Try Flow on browser</div></div></a><a nav-link="why_flow" href="/why-flow" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69372964162376d54a70d1fe_ft-icon.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text">Why Flow over built-in voice-to-text</div><div class="dropdown-link-description">Flow turns messy speech into polished text</div></div></a><a nav-link="microphones" href="/microphones" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69cbd8b466f017465b3aee1d_mic-2.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text">Microphone guide</div><div class="dropdown-link-description">Find the best mic for how you work</div></div></a></div></div></nav></div><div data-delay="200" data-hover="true" data-w-id="74e8b1ce-5aa8-4ef6-e6f9-f898264bfb12" class="nav_menu-dropdown-toggle-v2 w-dropdown"><div class="dropdown1_toggle v2 w-dropdown-toggle"><div>Individuals</div><img loading="lazy" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6832181fdb427a83a4270c9a_dropdown_arrow.svg" alt="" class="nav_menu-dropdown-arrow"/><div class="dropdown-border-overlay"></div><div class="dropdown-border-right-overlay hide"></div><div class="dropdown1_border-radius-wrap hide"><div class="dropdown1_border-radius"></div></div></div><nav class="dropdown-list-v2 w-dropdown-list"><div class="dropdown-inside-wrap"><div class="dropdown-wrap"><div class="dropdown-list-heading hide-tablet">FLOW FOR</div><a nav-link="leaders" href="/leaders" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6871316099ef4cdaa2d5a491_ni-users.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Leaders</div><div class="dropdown-link-description">Unblock teams, build faster with voice</div></div></a><a nav-link="developers" href="/developers" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68713161422abeaaa67d75d8_ni-laptop-code.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Developers</div></div><div class="dropdown-link-description">Speak more context, get better results</div></div></a><a nav-link="creators" href="/content-creators" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/686f99457ec3bf09c623568a_ni-pen-field.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Creators</div><div class="dropdown-link-description">Capture content ideas anytime, anywhere</div></div></a><a nav-link="customer_support" href="/customer-support" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68e68fbef65fbd90a7324195_chat-v5.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Customer Support</div></div><div class="dropdown-link-description">Resolve tickets 4x faster</div></div></a><a nav-link="students" href="/students" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6871316091dba51361abccce_ni-pen-line.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Students</div><div class="dropdown-link-description">write faster, study smarter</div></div></a><a nav-link="lawyers" href="/lawyers" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985072b2a676a187f7af13f_ni-briefcase.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Lawyers</div><div class="dropdown-link-description">Dictate case notes and memos on the go</div></div></a><a nav-link="accessibility" href="/accessibility" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69850763626f572018f8a9c9_ni-pageview.png" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Accessibility</div></div><div class="dropdown-link-description">Break free from the keyboard</div></div></a><a nav-link="sales" href="/sales" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985072be9b9ae75d0a3ce72_ni-chart-line.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Sales</div></div><div class="dropdown-link-description">Close more deals with your voice</div></div></a></div></div></nav></div><div class="nav-link-wrap"><a nav-link="teams" href="/business" class="nav_menu-link w-inline-block"><div>Business</div></a></div><div data-delay="200" data-hover="true" nav-dropdown="resources" data-w-id="74e8b1ce-5aa8-4ef6-e6f9-f898264bfb60" class="nav_menu-dropdown-toggle-v2 w-dropdown"><div class="dropdown1_toggle v2 w-dropdown-toggle"><div>Resources</div><img loading="lazy" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6832181fdb427a83a4270c9a_dropdown_arrow.svg" alt="" class="nav_menu-dropdown-arrow"/><div class="dropdown-border-overlay"></div><div class="dropdown-border-right-overlay hide"></div><div class="dropdown1_border-radius-wrap hide"><div class="dropdown1_border-radius"></div></div></div><nav class="dropdown-list-v2 w-dropdown-list"><div class="dropdown-inside-wrap"><div class="dropdown-wrap"><div class="dropdown-list-heading">CASE STUDIES FOR</div><a nav-link="clay_case_study" href="/case-study/clay" class="dropdown-link min-15rem w-inline-block"><img alt="Clay CRM logo" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6942f86ec78b14492a2b3d0e_clay-png.png" class="dropdown-link-icon clay-logo"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Teams at Clay</div><div class="new-tag">NEW</div></div><div class="dropdown-link-description">20% faster GTM execution</div></div></a><div class="dropdown-cs-border"></div><a nav-link="reid_case_study" href="/case-study/reid-hoffman" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/698507a597e8e21f584866f8_Vector.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Reid the Cofounder of LinkedIn</div></div><div class="dropdown-link-description">Switched from typing to talking</div></div></a><div><a nav-link="steven_case_study" href="/case-study/steven-bartlett" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69cbd8b466f017465b3aee1d_mic-2.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Steven Bartlett the CEO</div><div class="new-tag">NEW</div></div><div class="dropdown-link-description">Got 90% faster across every app</div></div></a></div><a nav-link="tijs_case_study" href="/case-study/tijs-nieuwboer" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/698507bd5729d964a3712889_ni-award.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Tijs the Marathon Maker</div></div><div class="dropdown-link-description">Built an app with Flow mid-race</div></div></a><a nav-link="dean_case_study" href="/case-study/dean-payn" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985072b2a676a187f7af13f_ni-briefcase.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Dean the Founder</div></div><div class="dropdown-link-description">Runs businesses by talking</div></div></a><a nav-link="gaurav_case_study" href="/case-study/gaurav-vohra" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985e976b5401268eec94d0b_ni-user-award.svg" class="dropdown-link-icon medium-big"/><div><div class="dropdown-link-text">Gaurav the Advisor</div><div class="dropdown-link-description">Fast, fluent replies for busy advisors</div></div></a><a nav-link="greg_case_study" href="/case-study/writing-a-book-with-flow" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68713160a0cad3ec2546238d_ni-pencil.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Greg the Writer</div><div class="dropdown-link-description">Speaking chapters into life</div></div></a><div class="hide"><a nav-link="anthony_case_study" href="/case-study/anthony-troli" class="dropdown-link min-15rem w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985eb19fc92d3d4e501238e_Icon.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Anthony the Creator</div><div class="dropdown-link-description">Unlocking creative rhythm</div></div></a></div></div><div class="dropdown-border"></div><div class="dropdown-wrap"><div class="dropdown-list-heading">Learn</div><a nav-link="blog" href="/blog" class="dropdown-link type2 w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68713160c48747e4b8f02812_ni-rss.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Blog</div><div class="dropdown-link-description">Insights, stories, and updates</div></div></a><a nav-link="usecases" href="/use-cases" class="dropdown-link type2 w-inline-block"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6871316154c9c063830781ef_ni-grid-plus.svg" alt="" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Use cases</div><div class="dropdown-link-description">See how Flow fits into your day</div></div></a><a nav-link="prompting" href="/ai-prompting-guide" class="dropdown-link type2 w-inline-block"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a199a623d9fd98845c4bcef_chat.svg" alt="" class="dropdown-link-icon"/><div><div class="dropdown-link-text">AI prompting guide</div><div class="dropdown-link-description">Better inputs, better AI results</div></div></a><div class="dropdown-cs-border type2"></div><div class="dropdown-list-heading">Get help</div><a nav-link="user_guide" href="https://docs.wisprflow.ai/" target="_blank" class="dropdown-link type2 w-inline-block"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985081abf88c52505916f41_ni-comment-question.svg" alt="" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Help Center</div><div class="dropdown-link-description">Learn the ins and outs of Flow</div></div></a><a nav-link="talk_to_support" href="/support" class="dropdown-link type2 w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68713161e23892103720a247_ni-email.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Talk to support</div><div class="dropdown-link-description">Reach out to our support team</div></div></a><a typeform-open="" nav-link="talk_to_sales" href="#" class="dropdown-link type2 w-inline-block"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68713160903636aa26d40710_ni-email-open-text.svg" alt="" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Talk to sales</div><div class="dropdown-link-description">Reach out to our enterprise team</div></div></a></div></div></nav></div><div data-delay="200" data-hover="true" data-w-id="1f76c005-4f73-7143-8f4c-0f1b95f08689" class="nav_menu-dropdown-toggle-v2 w-dropdown"><div class="dropdown1_toggle v2 w-dropdown-toggle"><div>Company</div><img loading="lazy" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6832181fdb427a83a4270c9a_dropdown_arrow.svg" alt="" class="nav_menu-dropdown-arrow"/><div class="dropdown-border-overlay"></div><div class="dropdown-border-right-overlay hide"></div><div class="dropdown1_border-radius-wrap hide"><div class="dropdown1_border-radius"></div></div></div><nav class="dropdown-list-v2 w-dropdown-list"><div class="dropdown-inside-wrap"><div class="dropdown-wrap"><div class="dropdown-list-heading hide-tablet">About flow</div><a nav-link="about" href="/about" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69372964162376d54a70d1fe_ft-icon.svg" class="dropdown-link-icon bigger"/><div><div class="dropdown-link-text">About</div><div class="dropdown-link-description">Our mission, team, and story</div></div></a><a nav-link="careers" href="/careers" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/691af3525da3571faf5e3c14_sales-icon.svg" class="dropdown-link-icon careers"/><div><div class="dropdown-link-text">Careers</div><div class="dropdown-link-description">Join the team behind Flow</div></div></a><a nav-link="trust-center" href="https://trust.wispr.ai/" target="_blank" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69aed8cea3028cb764aacdb5_shield-black.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Trust Center</div></div><div class="dropdown-link-description">Your data, protected and private</div></div></a><a nav-link="affiliate" href="https://partners.dub.co/flow" target="_blank" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6985066f520e4076bbf2d4ef_ni-dollar-circle.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text-wrap"><div class="dropdown-link-text">Become an Affiliate</div></div><div class="dropdown-link-description">Share Flow and earn rewards</div></div></a><a nav-link="media-kit" href="/media-kit" class="dropdown-link w-inline-block"><img alt="" src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/68d5741e72998641762ae89c_clap.svg" class="dropdown-link-icon"/><div><div class="dropdown-link-text">Media Kit</div><div class="dropdown-link-description">Logos, assets, and brand guidelines</div></div></a></div></div></nav></div><div class="nav-link-wrap research"><div class="nav-link-spacer"></div><div class="nav-link-divider"></div></div></div></nav><div class="nav_mobile-cta"><a id="nav-mobile-download" cta="" cta_location="nav_mobile" cta_type="download_for_free" app-download="" href="/get-started" class="nav_mobile-btn w-button">Download for free</a></div><div class="nav_button w-nav-button"><div class="hamburger_12_wrap"><div class="hamburger_12_line"></div><div class="hamburger_embed w-embed"><style>
+.hamburger_12_wrap {
+	--thickness: 0.125rem;
+	--gap: 0.375rem;
+	--rotate: 45;
+  --width: 100%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line {
+	width: 65%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line:first-child {
+	width: 85%;
+}
+.hamburger_12_wrap:hover .hamburger_12_line:last-child {
+	width: 100%;
+}
+.w--open .hamburger_12_line {
+	width: 100% !important;
+	transform: scaleX(0);
+}
+.w--open .hamburger_12_line:first-child {
+	transform: translateY(calc(var(--thickness) + var(--gap))) rotate(calc(var(--rotate) * 3 * 1deg));
+}
+.w--open .hamburger_12_line:last-child {
+	transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
+}
+</style></div><div class="hamburger_12_line"></div><div class="hamburger_12_line"></div></div></div><a id="nav-download" cta="" cta_location="navbar" cta_type="download_for_free" app-download="" nav-link="download" href="/get-started" class="nav_big-button button w-node-_74e8b1ce-5aa8-4ef6-e6f9-f898264bfbdf-63dfdea9 w-inline-block"><div>Download for free</div></a><div class="nav_left-line"></div><div class="nav_right-line"></div></div></div></div><div class="nav-spacer"></div><div class="main-wrapper"><section class="section_releases-hero-v2"><div class="padding-global"><div class="container-large"><div class="spacer-huge"></div><div class="spacer-small"></div><div><div><div><h1 class="heading-style-h2 lineheight-0-95">What&#x27;s new</h1></div></div><div class="spacer-medium"></div><div><p class="text-size-large">Keep up with the latest releases, improvements, and fixes.</p></div><div class="spacer-medium"></div><div class="max-width-medium align-center"><div class="release-form-block w-form"><form id="wf-form-Releases-Form" name="wf-form-Releases-Form" data-name="Releases Form" method="get" data-wf-page-id="69baced2eac07eb15b1f3962" data-wf-element-id="4bb87386-28ba-220d-0fbb-04a6c5fc97ed"><div class="whats-new-form-inside"><input class="wn-email-input w-input" maxlength="256" name="email" data-name="email" placeholder="Email address" type="email" id="email" required=""/><div class="hide w-embed"><input type="hidden" name="subscribed_releases" value="true"></div><input type="submit" data-wait="Please wait..." class="button w-button" value="Subscribe"/></div></form><div class="form_message-success w-form-done"><div>Check your inbox to confirm your email</div></div><div class="form_message-error w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div></div></div><div class="spacer-xxlarge"></div><div class="pills-list"><div data-filter="all" class="pill active"><div>View all</div></div><div data-filter="desktop" class="pill"><div>Desktop</div></div><div data-filter="android" class="pill"><div>Android</div></div><div data-filter="ios" class="pill"><div>iOS</div></div></div><div class="spacer-xxlarge"></div><div class="position-relative hide-mobile-landscape"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfb1a1d8a799bf280c7b94_release-bn.svg" loading="eager" alt="" class="releases-hero_img"/></div><div class="divider"></div></div></div></section><section class="section_releases-body"><div class="padding-global"><div class="container-medium"><div class="w-dyn-list"><div role="list" class="release-list w-dyn-items"><div role="listitem" class="release-item w-dyn-item"><div id="july-29-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">July 29, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.6.288</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Snippets now support rich text formatting</h3><p>Snippets previously only supported plain text. Now they support bold, italic, links, lists, and more, allowing richer, more expressive content. When you paste a snippet, the formatting is preserved in any app. If you use the same snippet on iOS or Android, it&#x27;ll paste as plain text for now.</p><div class="w-embed w-iframe"><div data-video-id="61981" style="aspect-ratio: 1.56296296; overflow: hidden;">
+
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/yYaA3V1Mvx?dq=576&ap=false&muted=false&loop=false&ctp=true&bv=false&piv=false&playsinline=false&bc=%234E5FFD&controls=play-large%2Cplay%2Cprogress%2Ccurrent-time%2Cmute%2Cvolume%2Csettings%2Cfullscreen" title="rich-text-snippets" style="aspect-ratio: 1.56296296; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div><h3>Pro teams now get a leaderboard</h3><p>The leaderboard used to be an Enterprise-only feature. Now it&#x27;s available to Pro teams too. See how you rank against your teammates, track who&#x27;s been dictating the most, and share the standings with your group.</p><p>Find it under Wispr Flow &gt; Insights &gt; Leaderboard. </p><h3><br/>Teams: Invite multiple teammates at once</h3><p>Adding multiple people to your team used to mean inviting one email at a time. We&#x27;ve streamlined it: admins can now add several email addresses and send all the invites at once. Everyone receives an invite email immediately, and you can track who has accepted from the Teams page in the <a href="https://admin.wisprflow.ai/">Admin Portal</a>.</p><p>‍</p><p>‍</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="july-9-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">July 9, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="all-platforms"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd7bf79ac056f4a93c74_all-platforms-v2.svg" alt="" class="wn_pill all-platforms"/></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Reliability and accuracy: where things stand</h3><p>Reliability and accuracy are the core of what Flow does. Here&#x27;s where things stand:</p><ul role="list"><li><strong>Uptime:</strong> Dictation stayed up and running 99.9% of the time over the past few weeks.</li><li><strong>Speed:</strong> Dictation latency is down 30% since the start of the year, and it&#x27;s still coming down.</li><li><strong>Accuracy:</strong> We tracked the biggest driver of recent accuracy issues to an Auto Cleanup setting that was too aggressive for some users. That&#x27;s fixed now.</li></ul></div></div><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Put the Flow Bar wherever works best for you</h3><p>The Flow Bar used to sit fixed at the bottom of your screen, which meant it could land right on top of something you needed next, like the send button in Gmail. Now you can drag it to the left or right edge instead, so it&#x27;s out of the way of whatever you&#x27;re actually doing. On Mac, that also means it&#x27;s no longer sitting on top of your dock.</p><p>It remembers your position too, so it stays put instead of resetting every time you reopen Flow.</p><p>Just click and drag the Flow Bar to reposition it.</p><div class="w-embed w-iframe"><div data-video-id="61212" style="aspect-ratio: 1.54444444; overflow: hidden;">
+
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/tU77vXwjsk?dq=576&ap=false&muted=true&loop=true&ctp=false&bv=false&piv=false&playsinline=false&bc=%234E5FFD&controls=play-large%2Cplay%2Cprogress%2Ccurrent-time%2Cmute%2Cvolume%2Csettings%2Cfullscreen" title="flow bar 5 (1)" style="aspect-ratio: 1.54444444; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div><h3>Canadian English</h3><p>English-speaking users in Canada now get a friendly, one-time nudge to switch to Canadian English. A single tap swaps in the Canadian dictionary so spellings like &quot;colour&quot; and &quot;centre&quot; come out just right.</p><p>We shipped this on Canada Day. Seemed like the right day for it.</p><p>Find it: Go to Settings &gt; General &gt; Dictation Languages.</p><figure style="max-width:1140px" class="w-richtext-align-fullwidth w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/6a5546256f3274b2b7716a4b_CleanShot%202026-07-13%20at%2013.09.32.png" loading="lazy"/></div></figure></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="july-2-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">July 2, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="android"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbba9abebe57c60ed542f_android-pill.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v2.0.9</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Reliability &amp; Stability</h3><p>We heard from Android users that things haven&#x27;t felt as solid as they should, so the team spent the past few months tightening things up:</p><ul role="list"><li><strong>Flow Bubble recovery:</strong> If the bubble disappears, it now recovers on its own, and you&#x27;ll get a system notification if it needs a nudge.</li><li><strong>Accessibility permission recovery:</strong> If a device revokes Flow&#x27;s accessibility permission in the background, Flow now catches that and recovers instead of silently breaking.</li><li><strong>Crash fixes:</strong> Fixed several crashes.</li><li><strong>Multi-account isolation:</strong> If you share a device with other accounts, your Flow settings and onboarding now stay isolated per account instead of carrying over between users.</li><li><strong>Flow Bubble UX cleanup:</strong> Fixed sizing glitches, visibility issues, errors that used to stick around, and snooze/shrink not working right.</li><li><strong>Xiaomi/OnePlus fixes:</strong> Resolved battery optimization and overlay problems specific to these devices.</li></ul><p>‍</p><p>‍</p></div></div><div release-content="ios"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbbe241b1fa192fcade08_ios-pill.svg" alt="" class="wn_pill ios"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.63</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Flow now switches back automatically for more apps</h3><p>Auto-switchback automatically returns you to your host app the moment you finish dictating, so you&#x27;re not stuck manually tapping back in. It now works across every supported iOS version, including the iOS 27 beta.</p><p>We&#x27;ve also added native switchback support for a long list of apps that didn&#x27;t have it before, including Claude, ChatGPT, Gemini, Grok, Perplexity, Kin, LinkedIn, and many more messaging and productivity apps.</p><p>‍</p><p>‍</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="june-24-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">June 24, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="all-platforms"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd7bf79ac056f4a93c74_all-platforms-v2.svg" alt="" class="wn_pill all-platforms"/></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>More consistent and accurate formatting</h3><p>Over the past few months, some dictations had formatting issues: course corrections that didn&#x27;t land, words swapped for ones you didn&#x27;t say, punctuation or edits getting ignored, and quality that varied session to session. A portion of dictations were being handled by older models, one too conservative on course correction and one too aggressive about changing words.</p><p>Both are now fixed. Everyone is on the same current model, so quality is consistent every time you speak. You&#x27;ll notice:</p><ul role="list"><li>Cleaner course correction</li><li>Fewer changes to words you said</li><li>Punctuation and corrections that do what you tell them to</li></ul><p>To keep it from recurring, we&#x27;ve added A/B testing and expanded benchmarks so every new model is tested against real usage before it ships. If you hit a formatting issue, report the transcript from inside the app with a note on what went wrong. Those reports are what help the team improve Flow.</p></div></div><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.751</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Let Flow pick the right microphone automatically</h3><p><strong>‍</strong>Rank your microphones once and Flow uses your top available one without you switching manually. Plug in a headset and Flow picks it up; unplug it mid-dictation and Flow falls back to your next-ranked mic without interrupting you.<br/><br/>Find it: Settings &gt; General &gt; Microphone</p><h3>Keep dictating when you dock your laptop (clamshell mode) </h3><p><strong>‍</strong>Close your laptop lid and Flow switches to your highest-ranked external mic on its own instead of interrupting you with a notification, then returns to your built-in mic when you open it again. Reordering mics in settings now applies instantly, with no need to restart recording.<br/>Find it: Settings &gt; General &gt; Microphone</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="june-17-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">June 17, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.891</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>A more reliable Wispr Flow</h3><p>Rapid growth in our user base strained our infrastructure recently, and some users saw slower dictation, lower accuracy, or trouble signing in and using polish.</p><p>We&#x27;ve scaled up our infrastructure to keep pace with growth and isolated the most demanding work onto a dedicated system, so heavy usage in one area can&#x27;t disrupt the rest. We&#x27;ve also tightened monitoring to catch and resolve issues faster. This work is ongoing.</p><p>On accuracy, we fixed several specific issues:</p><ul role="list"><li><strong>Better language routing:</strong> UK English and Swiss German weren&#x27;t always being sent to the right place, which hurt accuracy for those users. Both are now routed correctly.</li><li><strong>Cleaner audio handling:</strong> Audio compression wasn&#x27;t fully working as intended, which could affect how well your speech was transcribed. It&#x27;s now working the way it should.</li><li><strong>A higher bar for every model:</strong> We built a much stronger set of evaluations across all of our models, so we can catch accuracy regressions before they reach you.</li></ul><p>Some of the recent drop in accuracy was a side effect of this infrastructure strain rather than the models themselves, and it improves as the stability work lands.</p><p>We&#x27;re also testing a new round of model improvements to push accuracy further, and building toward personalized speech models that adapt to how you speak over time.</p><h3>Updated data controls</h3><p>We&#x27;re introducing <strong>Cloud Sync</strong>, a new setting alongside Privacy Mode that gives you more granular control over how Flow handles your data.</p><p><strong>Why we&#x27;re making this change:</strong> To support upcoming features like personalized speech models, Flow needs to store your transcription data on our servers. Until now, Privacy Mode meant zero data retention: nothing stored, nothing trained on. That was the right default when Flow was purely a dictation tool, but it also meant we couldn&#x27;t build features that depend on your history, like syncing notes across devices or learning how you speak to improve accuracy over time.</p><p>Rather than weaken Privacy Mode, we split it into two independent controls:</p><ul role="list"><li><strong>Privacy Mode</strong> controls whether your data can be used for model training. This hasn&#x27;t changed. With Privacy Mode on, none of your data is used to train or improve AI models, by us or any third party.</li><li><strong>Cloud Sync</strong> controls whether your transcription data (transcripts, audio, and dictation history) is stored on Wispr&#x27;s servers. Turning Cloud Sync on unlocks cross-device sync for Wispr Scratchpad and enables future features.</li></ul><p><strong>What this means for existing users:</strong></p><ul role="list"><li>If you had Privacy Mode on, nothing changes automatically. Privacy Mode remains on, and Cloud Sync stays off. This is identical to the previous level of privacy → zero data retention for all audio and transcript data.</li><li><strong>If you had Privacy Mode off:</strong> Nothing changes. Your settings carry forward as-is.</li><li>When you&#x27;re ready to try features that require Cloud Sync, or want to enable cross-device sync, Wispr will prompt you to turn it on. You&#x27;re always in control.</li></ul><p>Your dictionary, snippets, and custom prompts continue to sync across devices, regardless of your Cloud Sync setting. Wispr Scratchpad requires Cloud Sync to be enabled for cross-device sync.</p><p>For the full breakdown, see our updated <a href="https://wisprflow.ai/data-controls">Data Controls</a> page.</p><p>‍</p></div></div><div release-content="ios"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbbe241b1fa192fcade08_ios-pill.svg" alt="" class="wn_pill ios"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.62</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Never Lose a Dictation Again</h3><p>If you&#x27;ve ever started a dictation outside the keyboard and had a phone call, Siri, or the five-minute limit cut you off, you know the worst part was the silence: you had no idea whether your words were saved. Now Flow tells you. When something interrupts a dictation, Flow sends a notification with sound so you know your transcript made it to your history. Tap it and you&#x27;ll jump straight to that transcript, already copied to your clipboard, with a one-tap copy button right on the row. If a dictation fails instead of finishing, you get a &quot;Tap to retry&quot; notification that kicks off an instant retry.</p><ul role="list"><li><strong>Interrupted? You&#x27;ll know:</strong> A gentle notification with sound confirms your transcript is saved whenever a call, Siri, or the time limit cuts a dictation short.</li><li><strong>One tap back to your words:</strong> Tapping the notification opens the transcript, auto-copies it, and highlights a copy button on the row.</li><li><strong>Failures retry themselves:</strong> A failed dictation sends a &quot;Tap to retry&quot; notification that triggers the retry for you. (Make sure Flow has notification permission so these can reach you.)</li></ul><h3>One-Tap Retry for Failed Transcripts</h3><p>Failed transcripts in your history used to be easy to miss, and recovering one meant digging through a context menu. Now they&#x27;re impossible to overlook: any failed transcript shows up in orange with a &quot;Retry your X:XX transcript&quot; label and a dedicated retry button. Tap the row or the button to retry it instantly. No more wondering whether a transcript was empty or guessing how to get it back.</p><p><a href="https://docs.wisprflow.ai/articles/2503460374-Retry-failed-transcriptions">Help Center: Retry failed transcriptions</a></p><h3>Always-On Live Dictation Timer</h3><p>The Dynamic Island and Lock Screen Live Activity now show a running timer for every dictation, not just the ones you start with the Action Button. Whether you kick things off from the keyboard or anywhere else, you&#x27;ll always have a clear visual signal that Flow is listening, so you can speak with confidence without peeking at the screen or restarting unnecessarily.</p><h3>Smarter, Faster Backspace</h3><p>The keyboard&#x27;s backspace now behaves like the iOS system keyboard. A single tap deletes one character on release, and holding it down speeds up from character-by-character to whole-word deletion after about two seconds, with natural pauses at punctuation. It works across most languages (including Chinese, Japanese, Korean, Hindi, Bengali, and more), so cleaning up a long passage no longer means grinding through one character at a time.</p><p>‍</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="june-10-2026-reliability-and-localization"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">June 10, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.751</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Reliability: where things stand </h3><p>We know Flow hasn&#x27;t been as reliable lately. Here&#x27;s what&#x27;s been happening, what we&#x27;re doing about it, and how to stay informed.</p><h4>What went wrong</h4><p>We had two separate issues over the past two weeks: </p><ul role="list"><li><strong>Last week:</strong> Outages affecting core dictation, caused by a combination of vendor failures and our own scaling issues</li><li><strong>This week:</strong> Backend instability that affected a different set of users</li></ul><p>We&#x27;re calling them out separately because if you experienced issues last week but not this week (or vice versa), that&#x27;s why. Either way, both are being treated with the same urgency.</p><h4><strong>What we&#x27;re doing about it</strong></h4><p>This is our top priority. That means:</p><ul role="list"><li>We’re reallocating engineering resources to focus on stability until this is resolved</li><li>We&#x27;re re-evaluating our current vendors and onboarding additional ones so a single provider failure doesn&#x27;t take Flow down</li><li>We&#x27;re also working on accuracy improvements, including testing a rollback on a recent setting that may have had unintended effects and developing an upgraded speech recognition model</li></ul><p>We built in some redundancy after the first round of issues, but the past week showed us that wasn&#x27;t enough. We&#x27;re going further.</p><h4><strong>Stay updated</strong></h4><p>You can subscribe to real-time incident notifications at <a href="https://statuspage.incident.io/wispr-flow">statuspage.incident.io/wispr-flow</a>. Current status is also always visible at <a href="https://wisprflow.ai/support">wisprflow.ai/support.</a></p><h3>See the Flow Hub in four new languages</h3><p>Although most of the team has been heads down on stability, we also shipped Desktop localization. </p><p>This means you can now choose between English, German, Spanish. Italian, and Portugese and all of your settings, notifications, insights, and more will be updated to your preferred language automatically. </p><p>To change this preference, go to Settings &gt; General &gt; App language. </p><p>‍</p><div class="w-embed w-iframe"><div data-video-id="59629" style="aspect-ratio: 1.31851852; overflow: hidden;">
+
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/gbRIIpibMg?dq=576&ap=true&muted=true&loop=true&ctp=false&bv=false&piv=false&playsinline=false&bc=%234E5FFD&controls=play-large%2Cplay%2Cprogress%2Ccurrent-time%2Cmute%2Cvolume%2Csettings%2Cfullscreen" title="localization" style="aspect-ratio: 1.31851852; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="june-4-2026-reliability"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">June 4, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.619</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>An Update on Wispr Flow Reliability </h3><p>Flow has been less reliable than it should be over the past few weeks. Here&#x27;s a transparent look at what went wrong and what&#x27;s being done about it.</p><p><strong>Outages:</strong> The issues stemmed from infrastructure changes made while scaling up capacity. The rollout moved faster than planned, and failover didn&#x27;t hold up the way it should have. Redundancy is now in place so a single provider outage doesn&#x27;t take Flow down, along with health monitoring and an on-call rotation to catch issues faster. This is the top priority across engineering and infrastructure right now.</p><p><strong>Accuracy:</strong> The introduction of the auto-cleanup setting may have affected other settings as well. A rollback is actively being tested. An upgraded speech recognition model is also in progress, targeting both accuracy and latency. All users run on the same model, so any improvements reach everyone at once.</p><p>Longer term, better internal tooling is being built so issues like these get caught before they reach you. </p><p>‍</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="may-1-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">May 1, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.113</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h3>Scratchpad: A notepad that lives on top of everything (Beta)</h3><p>Scratchpad replaces Flow Notes on Desktop. It&#x27;s a lightweight notepad you can pull up with a keyboard shortcut (Option + S on Mac) without leaving whatever app you&#x27;re in. It floats on top of your screen like a sticky note.</p><p>On Desktop, it&#x27;s a rich-text editor with tabs, version history, a notes sidebar, and image support. Your notes sync between Desktop and iPhone. (It is not yet available on Android.) </p><p>This is in beta. Note that there are occasional syncing issues between devices that we&#x27;re actively fixing. If you previously used Flow Notes, your notes are still here under the new name.</p><p><em>Find it:</em> Press <strong>Option + S</strong> on Mac, or click <strong>Scratchpad</strong> in the left sidebar of the Hub.</p><p><a href="https://docs.wisprflow.ai/articles/9618237082-using-the-scratchpad-to-save-and-edit-notes">Help Center: Using the Scratchpad to Save and Edit Notes</a></p><h3>Transforms: Rewrite any text with AI (Beta)</h3><p>Transforms lets you highlight any text, press a shortcut, and have Flow rewrite it using AI. It works anywhere Flow works.</p><p>There are two built-in transforms to start: <strong>Polish</strong> cleans up your text for clarity and conciseness, and <strong>Prompt Engineer</strong> restructures what you dictated into a well-formatted AI prompt. You can also create your own custom transforms with any prompt you want.</p><p>You can run a transform on demand by highlighting text and pressing the shortcut. Or set one to run automatically after every dictation, so your text is polished before it&#x27;s even pasted.</p><p>A note on how this is different from Auto Cleanup: Auto Cleanup applies to every dictation at the moment you dictate. Transforms give you the option to change text after the fact, on any text you select, with more specific control over what the rewrite does.</p><p>This is in beta. The core functionality is solid, but we&#x27;re still working on discoverability and activation. Give it a try and let us know what you think.</p><p><em>Find it:</em> Highlight text, then either hover over the Flow Bar and click the wand icon OR apply a keyboard shortcut. To modify your keyboard shortcuts and Transforms options, go to <strong>Transforms</strong> in the left sidebar of the Hub.</p><p><a href="https://docs.wisprflow.ai/articles/8068950331-how-to-use-transforms-beta?lang=en">Help Center: How to Use Transforms</a></p><div class="w-embed w-iframe"><div data-video-id="57566" style="aspect-ratio: 1.54444444; overflow: hidden">
+  <iframe width="100%" height="100%" src="https://app.vidzflow.com/v/VNPa9KARHm?dq=576&ap=false&muted=false&loop=true&ctp=false&bv=false&piv=false&playsinline=false&bc=%234E5FFD&controls=play-large%2Cplay%2Cprogress%2Ccurrent-time%2Cmute%2Cvolume%2Csettings%2Cfullscreen" title="How to use Transforms (Beta)" style="aspect-ratio: 1.54444444; overflow: hidden" frameborder="0" scrolling="no" allow="fullscreen"></iframe>
+</div></div><p><strong>Dictate into AI coding terminals without your text getting hidden</strong></p><p>If you use Claude Code or Codex in your terminal, longer dictations used to get collapsed into an unreadable &quot;[Pasted N lines]&quot; block. Now Flow automatically keeps your dictated text visible and editable, so you can review what you said before sending it. <a href="https://docs.wisprflow.ai/articles/6478598909-Using-Flow-with-Linux,-WSL,-and-Terminal-Applications">Learn more →</a></p><p><strong>Check Flow&#x27;s status anytime</strong></p><p>You can now see whether Flow is experiencing any issues at <a href="https://statuspage.incident.io/wispr-flow">statuspage.incident.io/wispr-flow</a>. If dictation feels slow or something seems off, this page will tell you whether it&#x27;s a Flow-wide issue or something on your end. You can subscribe to get notified automatically when incidents happen or resolve. We&#x27;re also working on bringing status updates directly into the app in a future release.</p><p><strong>Recover dictations after quitting</strong></p><p>If you quit or restart Flow mid-dictation, your audio is now automatically saved. Reopen the app, go to History, and click Recover to finish processing it. No more lost thoughts from an accidental Cmd+Q.</p><p><strong>Clearer microphone error messages</strong></p><p>When Flow can&#x27;t access your mic, you now get a specific notification telling you exactly what&#x27;s wrong: mic unplugged, in use by another app, or blocked by system settings. Each one includes a suggested fix so you can get back to dictating fast. <a href="https://docs.wisprflow.ai/articles/4351452717-Troubleshooting-mic-issues">Learn more →</a></p><p><strong>Sync your subscription instantly</strong></p><p>If you upgraded to Pro on another device but Desktop still shows your old plan, there&#x27;s now a sync button in Settings → Plans &amp; Billing that refreshes your status in one click. No more contacting support.</p><p><strong>IT Admin seats for Enterprise</strong></p><p>Organizations can now add non-paid IT Admin seats to their plan. IT Admins can manage settings, billing, and usage in the Admin Portal without needing a full Flow license. Useful for IT teams that need to manage the rollout without being active Flow users themselves.</p><p>‍</p></div></div><div release-content="android"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbba9abebe57c60ed542f_android-pill.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.88</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><p><strong>Smarter shake gesture.</strong> </p><p>Shake to un-snooze now only activates when Flow is actually snoozed. When you&#x27;re not snoozed, the accelerometer is completely off, which saves battery and eliminates false triggers from scrolling or moving your phone around. <a href="https://docs.wisprflow.ai/articles/6391241694-Use-Flow-hands-free">Learn more →</a></p><p><strong>Smarter back button navigation.</strong> </p><p>The system back button now behaves the way you&#x27;d expect: open drawers close cleanly, keyboards dismiss before navigation happens, and you always land back on Home with predictable behavior across every screen.</p><p>‍</p></div></div><div release-content="ios"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbbe241b1fa192fcade08_ios-pill.svg" alt="" class="wn_pill ios"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.59</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><p><strong>Scratchpad syncs with Desktop.</strong> Your Scratchpad notes now sync between Desktop and iPhone. On iPhone, however, it&#x27;s a plain-text editor and is still named Notes. It will be renamed Scratchpad and include more functionality in future releases. </p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="april-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">April 24, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.5.55</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Insights: see how you use Flow</h2><p>Flow now has an Insights tab with three views. Each tab generates cards that you can post on social accounts or share with your team. </p><p>This is a first version, and we plan to make it much more useful over time: think actionable tips, coaching on how you communicate, and deeper patterns. For now, here&#x27;s what&#x27;s there:</p><p><strong>Your Usage</strong> shows your words per minute (and how you stack up against other Flow users), total words dictated, words cleaned up by Flow, smart replacements from your dictionary and snippets, a breakdown of which apps you use Flow in most, and a daily streak heatmap.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/6a3dcd4b5e942844812a8925_CleanShot%202026-06-25%20at%2017.01.06%402x.png" loading="lazy"/></div></figure><p>‍<strong>Your Voice</strong> generates a communication profile from your dictation patterns: your archetype, your catchphrase, your most corrected word, and when you&#x27;re most active. Unlocks at 2,000 words and gets richer over time.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/6a3dcd57130052abffef9c19_CleanShot%202026-06-25%20at%2017.01.12%402x.png" loading="lazy"/></div></figure><p><strong>Leaderboard</strong> lets Enterprise teams see who&#x27;s dictating most, with weekly and all-time views and a top three podium.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/6a3dcd788dcb1e6a6fa17d5f_CleanShot%202026-06-25%20at%2017.01.17%402x.png" loading="lazy"/></div></figure><p>This is just the beginning for Insights. We want to hear what would make it most valuable to you. What stats would you actually act on? What would you want to learn about how you speak? <a href="https://www.reddit.com/r/WisprFlow/comments/1susv4c/april_24_2026_product_updates_insights_auto/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">Share your thoughts on our Reddit thread. </a></p><p><em>Find it:</em> Click <strong>Insights</strong> in the left sidebar.</p><h2>Auto Cleanup: choose how much Flow edits for you</h2><p>If you used Smart Formatting before, this its replacement in a new place with more control. Auto Cleanup now lives under the <strong>Style</strong> tab (not Settings), and instead of a simple on/off toggle, you can pick from four levels:</p><ul role="list"><li><strong>None:</strong> transcribes exactly what you said, including mistakes</li><li><strong>Light:</strong> cleans up filler words and grammar</li><li><strong>Medium:</strong> edits for clarity and conciseness</li><li><strong>High:</strong> rewrites for brevity and polish</li></ul><p>Your original dictation is never lost: hover over any transcript in your history, click the three dots, and select &quot;Undo AI edit&quot; to see the raw version. Redo it anytime.</p><p>We&#x27;re still refining the UI and where exactly this lives in the product, so expect this to evolve. But if you previously wanted more or less cleanup than the old on/off toggle gave you, this should already be a big improvement.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/6a3dcd84ea71520f895c1ad6_CleanShot%202026-06-25%20at%2017.00.58%402x.png" loading="lazy"/></div></figure><p><em>Find it:</em> <strong>Style</strong> tab in the sidebar → <strong>Auto Cleanup</strong>.</p><p><a href="https://docs.wisprflow.ai/articles/4136931124-how-to-use-auto-cleanup-beta">Help Center: How to Use Auto Cleanup (Beta)</a></p><h2>Control how your transcripts are stored</h2><p>New local data storage options let you choose to save transcripts normally, auto-delete them after 24 hours, or never store them on your device at all. Find it in Settings → Privacy.</p><h2>Share an invite link to grow your team</h2><p>Team admins can now generate a shareable link that lets new members join instantly, no manual approval needed. Find it on the Team page in Settings or the Admin Portal. <a href="https://docs.wisprflow.ai/articles/2277907847-How-Do-I-Use-the-Admin-Portal-to-Manage-Users-and-Billing?">Learn more.</a></p><h2>Reliability improvements</h2><p>&quot;Start at login&quot; on Windows now works reliably. We also improved text insertion reliability and fixed edge cases with notifications and dictation responsiveness.</p></div></div><div release-content="android"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbba9abebe57c60ed542f_android-pill.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.7.3</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Less bubble, more screen </h2><p>The Flow bubble now auto-shrinks after 5 seconds of inactivity. Choose between a compact icon or a tiny dot, and it even auto-minimizes in search fields so it&#x27;s never in the way. Tap it anytime to restore and start dictating. Find the setting under Settings → Bubble Size.</p><h2>Cleaner notification tray</h2><p>We removed the persistent foreground notification that was cluttering your notifications. Flow still runs reliably in the background — you just won&#x27;t see the extra notification anymore. <a href="https://docs.wisprflow.ai/articles/2277907847-How-Do-I-Use-the-Admin-Portal-to-Manage-Users-and-Billing?">Learn more.</a></p><h2>Copy button after dictation</h2><p>A quick copy-to-clipboard button now appears next to the bubble after each dictation. Tap it to grab your transcribed text, or let it auto-dismiss after 10 seconds. <a href="https://docs.wisprflow.ai/articles/3400534884-Snooze-the-Dictation-Bubble">Learn more →</a></p><h2>Adjustable bubble opacity</h2><p>If the bubble feels visually distracting over certain apps, you can now dial it back. A new opacity slider in Settings lets you set it anywhere from 20% to 100%.</p><h2>Reliability improvements</h2><p>The Flow bubble is more responsive when you tap into text fields, the service recovers automatically if your device&#x27;s battery manager stops it, and we&#x27;re now fully compatible with Android 16.</p><p>‍</p></div></div><div release-content="ios"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbbe241b1fa192fcade08_ios-pill.svg" alt="" class="wn_pill ios"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.52</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Quick Dictation to Notes shortcut </h2><p>You can now assign a built-in &quot;Quick Dictation to Notes&quot; shortcut to your Action Button, no iCloud workaround needed. Press the button, dictate, and your words are saved directly to Flow Notes, even when you stop from the Dynamic Island. Find it in Settings → Action Button → search for Wispr Flow.</p><p>Help Center: <a href="https://docs.wisprflow.ai/articles/4500510662-Set-up-the-Action-Button-for-Flow-on-iPhone">Set up Action Button for Flow on iPhone</a></p><p>‍</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div><div role="listitem" class="release-item w-dyn-item"><div id="march-2026"><div class="spacer-xxlarge"></div><div class="release-item-grid-v2"><div class="release-item-grid-left"><div class="release-date">March 31, 2026</div></div><div class="release-item-grid-right"><div class="release-item-card"><div release-content="desktop"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a4bdd49f79ac056f4a90ad8_desktop-pill-v3.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.4.661</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Language Picker in the Flow Bar</h2><p>If you use Flow in more than one language, manually selecting the language you’re dictating in yields the best results but switching languages has been a pain. The new language picker lives right in the Flow Bar, so switching languages is one click away.</p><p>Make sure multiple languages are selected in Settings, then hover over the Flow bar to see the different language options pop up.</p><div class="w-embed w-iframe w-script"><div data-video-id="55666" style="aspect-ratio: 1.45555556; overflow: hidden;">
+<script>window.addEventListener("message", function(e) {if (!e.origin.includes("vidzflow")) {return;}if (e.data.eventType === "videoReady") {new IntersectionObserver((entries, observer) => {entries.forEach(entry => {if (entry.isIntersecting && entry.target.getAttribute("data-video-id") === String(e.data.videoId)) {let iframe = entry.target.querySelector("iframe");if (iframe) {iframe.contentWindow.postMessage("playerPlay", "*");observer.unobserve(entry.target);}}});}).observe(document.querySelector("div[data-video-id=\"" + e.data.videoId + "\"]"));}});</script>
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/SQNjGuBfk2?dq=576&ap=true&muted=true&loop=true&ctp=false&bv=false&piv=true&playsinline=false&bc=%234E5FFD&controls=false" title="languagepick" style="aspect-ratio: 1.45555556; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/3191899797-use-flow-with-multiple-languages">Use Flow with Multiple Languages</a>]</p><h2>20-Minute Dictations</h2><p>Dictation sessions now go up to 20 minutes, 4x the previous limit. Whether you&#x27;re drafting a long email, recording meeting notes, or thinking through an essay out loud, Flow will keep up with you the entire time. You&#x27;ll get a heads-up at 19 minutes so you can wrap up naturally.</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/4841123325-Longer-dictation-sessions-%E2%80%94-now-up-to-20-minutes">Longer dictation sessions</a>]</p><h2>Mouse Flow: Dictate With Your Mouse</h2><p>You can now bind any non-primary mouse button (anything besides left and right click) to trigger dictation. If you have an external mouse with extra buttons, you can set one up as a push-to-talk or a push-on/push-off shortcut, so you never have to take your hands off the mouse to start dictating.</p><p>Here&#x27;s what&#x27;s included:</p><ul role="list"><li><strong>Core functionality:</strong> Bind any non-primary mouse button to start and stop dictation, right from Settings &gt; Shortcuts.</li><li><strong>Send with your mouse too:</strong> You can also bind a mouse button to trigger &quot;Enter,&quot; so you can dictate and send messages entirely from your mouse.</li></ul><p>If you dictate while an external mouse with extra buttons is connected, Flow will let you know Mouse Flow is available and talk you through a guided walkthrough.</p><div class="w-embed w-iframe w-script"><div data-video-id="55743" style="aspect-ratio: 1.47211896; overflow: hidden;">
+<script>window.addEventListener("message", function(e) {if (!e.origin.includes("vidzflow")) {return;}if (e.data.eventType === "videoReady") {new IntersectionObserver((entries, observer) => {entries.forEach(entry => {if (entry.isIntersecting && entry.target.getAttribute("data-video-id") === String(e.data.videoId)) {let iframe = entry.target.querySelector("iframe");if (iframe) {iframe.contentWindow.postMessage("playerPlay", "*");observer.unobserve(entry.target);}}});}).observe(document.querySelector("div[data-video-id=\"" + e.data.videoId + "\"]"));}});</script>
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/u0r1jlhWkn?dq=576&ap=true&muted=true&loop=true&ctp=false&bv=false&piv=true&playsinline=false&bc=%234E5FFD&controls=false" title="mouseflow" style="aspect-ratio: 1.47211896; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/7890049085-set-up-mouse-flow-for-faster-dictation-workflows">Set up Mouse Flow for faster dictation workflows</a>]</p><h2>Dictionary Upgrades</h2><p>As custom dictionaries grow, it gets harder to find and manage the words that matter most. This month we added three improvements:</p><ul role="list"><li><strong>Star important words:</strong> Pin your most critical terms so Flow prioritizes them during transcription.</li><li><strong>Usage-based ranking:</strong> Dictionary entries now sort by how often you use them, so your most relevant words are always at the top.</li><li><strong>Smarter auto-add:</strong> Auto-add now properly filters apostrophe variants, preventing duplicate entries from cluttering your list.</li></ul><p>Dictionary also launched on Android this month (more on that below).</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/4052411709-teach-flow-your-words-with-the-dictionary">Teach Flow Your Words with the Dictionary</a>]</p><h2>Shortcuts &amp; Controls</h2><p>A few updates for users who like to customize how Flow responds to their input:</p><ul role="list"><li><strong>Customizable cancel shortcut:</strong> The Escape key for cancelling dictation is now fully rebindable. If you use Vim, Terminal, or certain IDEs where Escape already does something, you can set a different key. Find it in Settings &gt; Shortcuts.</li><li><strong>Inline retry for dismissed or failed transcripts:</strong> If you accidentally cancelled a dictation by hitting <code>Esc</code> or it errored out, you can now retry it directly from your Hub history instead of re-dictating from scratch. This was one of our most common support requests, so we wanted to make recovery as easy as possible.</li><li><strong>Rebind Enter:</strong> You can now assign Enter to a different key, freeing it up for use as a voice command or keeping it for sending messages while you use another key for dictation control.</li></ul><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/2612050838-supported-unsupported-keyboard-hotkey-shortcuts">Supported Keyboard Hotkey Shortcuts</a>]</p><h2>Smarter Notifications</h2><p>We overhauled how Flow communicates with you. The goal: less noise, more control, and better feedback when you interact with notifications.</p><ul role="list"><li><strong>Redesigned notification UI:</strong> Updated visuals and smoother animations make notifications feel less intrusive and more informative at a glance.</li><li><strong>Granular mute controls:</strong> You can now mute specific notification categories independently (feature tips, formatting reminders, milestones, and more) instead of toggling all notifications on or off. Find it in Settings &gt; Notifications.</li><li><strong>Click confirmation:</strong> Action buttons on notifications now show a checkmark when you tap them, so you always know your click registered. Previously it could feel unresponsive, and you&#x27;d wonder if the action actually went through.</li></ul><figure style="max-width:1061pxpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/682fa12727f78b943ed45584/69cd48504a0c73eedc44a18f_Screenshot%202026-04-01%20at%209.30.47%E2%80%AFAM.png" loading="lazy"/></div></figure><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/2250194357-Customize-notification-preferences-by-category">Customize Notification Preferences</a>]</p><h2>More Desktop Updates</h2><ul role="list"><li><strong>Browser sign-in:</strong> The &quot;Sign in via browser&quot; option is now available to everyone. This is especially useful if you use SSO, corporate firewalls, or have a complex auth setup where in-app login doesn&#x27;t work reliably. [Help Center: <a href="https://docs.wisprflow.ai/articles/1753832329-login-issues-with-wispr-flow">Login Issues with Wispr Flow</a>]</li><li><strong>Clamshell mode mic warning:</strong> If you use your MacBook with the lid closed at an external display, Flow now warns you when you&#x27;re still using the built-in microphone, which gets muffled by the closed lid. If you&#x27;ve ever had rough transcriptions at your desk setup without knowing why, this might have been the culprit. Connect an external mic or headphones to get back to full quality. [Help Center: <a href="https://docs.wisprflow.ai/articles/4351452717-troubleshooting-mic-issues">Troubleshooting Mic Issues</a>]</li><li><strong>Additional app/website support in Styles:</strong> Flow now recognizes Instagram, Discord, and Signal as personal messaging apps and LinkedIn as a work messaging app, applying the associated conversational writing style when you dictate in them. [Help Center: <a href="https://docs.wisprflow.ai/articles/2368263928-how-to-setup-flow-styles">How to setup Flow Styles</a>]</li></ul><h2>Security &amp; Privacy</h2><ul role="list"><li><strong>HIPAA BAA access:</strong> Enterprise users with HIPAA Business Associate Agreements can now view signing details and download the agreement as a PDF directly from Settings &gt; Account. No more digging through email to find your compliance paperwork. [Help Center:  <a href="https://docs.wisprflow.ai/articles/4218718535-HIPAA-Compliance-&amp;-Healthcare-Use">HIPAA Compliance &amp; Healthcare Use</a>]</li></ul><h2>Desktop Stability &amp; Reliability</h2><p>We&#x27;re continuously fixing the small things that add up to a smoother experience. This month&#x27;s improvements include: fewer duplicate notification sounds, better recovery after your machine wakes from sleep, improved responsiveness when starting and stopping dictation, and several UI fixes on Windows. If Flow has felt more solid lately, this is why.</p></div></div><div release-content="android"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbba9abebe57c60ed542f_android-pill.svg" alt="" class="wn_pill"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.4.1</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Custom Dictionary</h2><p>Android users can now teach Flow their vocabulary. If Flow keeps getting your name, your company&#x27;s name, or industry jargon wrong, open Dictionary in Settings and add the words you need. Flow will prioritize them during transcription going forward. Full add, edit, delete, and search support, with a polished UI that matches the desktop experience.</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/4052411709-Teach-Flow-your-words-with-the-dictionary">Teach Flow Your Words with the Dictionary</a>]</p><h2>Context-Aware Dictation</h2><p>Flow on Android now reads the surrounding text in your input field before transcribing. That means it can continue your sentences naturally, match the tone of what you&#x27;ve already typed, and avoid repeating words. If you start typing a thought and switch to dictation halfway through, Flow picks up right where you left off. This is the same intelligence that powers Flow on desktop, and it&#x27;s a big step toward full platform parity.</p><p>[Help Center <a href="https://docs.wisprflow.ai/articles/4678293671-Context-Awareness">Context Awareness</a>]</p><h2>Banking App Privacy Protection (50+ Apps Globally)</h2><p>Flow now automatically pauses in 50+ banking and financial apps across the US, UK, Europe, India, Asia, Latin America, and South Africa. No setup needed: if you&#x27;re in a recognized financial app, dictation pauses automatically. This was a big gap for international users whose local banking apps weren&#x27;t covered previously. Privacy in financial apps is non-negotiable.</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/4909908692-Banking-App-Detection-Support-in-Wispr-Flow">Banking App Detection Support</a>]</p><h2>Secure Sign-Out</h2><p>Signing out now shows a confirmation dialog and securely deletes local transcripts, protecting your data on shared or managed devices.</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/1846165703-Switching-accounts-on-Android">Switching Accounts on Android</a>]</p><h2>Quality-of-Life Improvements</h2><p>We&#x27;ve been listening to what trips people up on Android, and this month we tackled a bunch of the most common friction points:</p><ul role="list"><li><strong>Tap transcript to copy:</strong> Tap any transcript card in your history to copy the text to your clipboard instantly. Useful when you want to paste a transcription into a different app without extra steps. [Help Center:  <a href="https://docs.wisprflow.ai/articles/2296441257-Starting-Your-First-Dictation-on-Android">Starting Your First Dictation on Android</a>]</li><li><strong>&quot;Copy Last&quot; in notification shade:</strong> The persistent notification now includes a &quot;Copy Last&quot; button, so you can grab your most recent transcription without even opening the app. [Help Center: <a href="https://docs.wisprflow.ai/articles/2250194357-Customize-notification-preferences-by-category">Customize Notification Preferences</a>]</li><li><strong>Keep screen on during dictation:</strong> Your screen no longer sleeps mid-sentence during longer dictation sessions. If you&#x27;ve ever been halfway through a thought and had your screen go dark, this one&#x27;s for you. [Help Center: <a href="https://docs.wisprflow.ai/articles/8402624323-Android-troubleshooting">Android Troubleshooting</a>]</li><li><strong>Dictation session time management:</strong> You&#x27;ll now see a gentle warning as you approach the 5-minute session limit, and the session auto-saves when it reaches the cap. Start a new session to keep going. This prevents accidental long-running sessions from draining your battery or producing unwieldy transcripts. [Help Center: <a href="https://docs.wisprflow.ai/articles/6216145749-Dictation-session-time-limits-on-Android">Dictation Session Time Limits on Android</a>]</li><li><strong>Retry failed transcriptions:</strong> If a transcription fails because of connectivity issues or a server error, the audio is now preserved in your history. You can retry it anytime without re-dictating. You&#x27;ll never lose a recording again.</li><li><strong>Service not running warning:</strong> Android sometimes kills background services without telling you. If the accessibility service stops, the home screen now shows a clear warning card with a one-tap fix to re-enable it, so you&#x27;re never stuck wondering why dictation isn&#x27;t working. [Help Center: <a href="https://docs.wisprflow.ai/articles/8402624323-android-settings-troubleshooting-background-activity-battery-management">Android Troubleshooting</a>]</li></ul><h2>Android Stability &amp; Reliability</h2><p>We squashed a lot of bugs this month. Fixes include: crashes on Samsung devices with disabled default browsers, text landing in the wrong input field when switching between fields quickly, the waveform animation not responding at the start of dictation, and several accessibility framework issues that were causing unexpected behavior. If dictation on Android feels more solid this month, these are why.</p><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/8402624323-android-settings-troubleshooting-background-activity-battery-management">Android Troubleshooting</a>]</p></div></div><div release-content="ios"><div class="wn_heading-wrap"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69dfbbe241b1fa192fcade08_ios-pill.svg" alt="" class="wn_pill ios"/><div class="w-embed"><div class="text-weight-medium text-style-muted">v1.46</div></div></div><div class="spacer-medium"></div><div class="wn_body w-richtext"><h2>Adapting to iOS 26.4</h2><p>Apple changed how third-party keyboards work in iOS 26.4, and it affected two core parts of the Flow experience. We moved fast to minimize the friction and give you new ways to control your writing style.</p><p><strong>What changed (these are Apple platform changes, not something we control):</strong></p><ul role="list"><li><strong>Quick swipe to start:</strong> In many apps, tapping &quot;Start Flow&quot; used to briefly open the Flow app and automatically return you to what you were doing. After iOS 26.4, you&#x27;ll need to swipe back to your app manually. Voice-to-text still works exactly as before once you&#x27;re back in your app.</li><li><strong>Styles no longer auto-adjust by app:</strong> Flow adjusted formatting depending on which app you were typing in (more formal in email, more casual in messaging apps). iOS 26.4 removed that ability. Your default style now applies everywhere.</li></ul><p><strong>What we shipped to help:</strong></p><ul role="list"><li><strong>Default style settings in the app:</strong> Set your preferred writing style in the Style tab, and it applies across all apps. You can update it anytime.</li><li><strong>Quick Style Switcher on the keyboard:</strong> A new style pill appears above the keyboard, letting you tap to temporarily switch your style for any conversation without leaving the app you&#x27;re in. The override resets back to the default style after 15 minutes of inactivity.</li><li>Both features are available for users with English, British English, or auto-detect language settings.</li></ul><p>Desktop and Android are unaffected. You&#x27;ll continue to get the full seamless experience there.</p><div class="w-embed w-iframe w-script"><div data-video-id="55744" style="aspect-ratio: 1.32962963; overflow: hidden;">
+<script>window.addEventListener("message", function(e) {if (!e.origin.includes("vidzflow")) {return;}if (e.data.eventType === "videoReady") {new IntersectionObserver((entries, observer) => {entries.forEach(entry => {if (entry.isIntersecting && entry.target.getAttribute("data-video-id") === String(e.data.videoId)) {let iframe = entry.target.querySelector("iframe");if (iframe) {iframe.contentWindow.postMessage("playerPlay", "*");observer.unobserve(entry.target);}}});}).observe(document.querySelector("div[data-video-id=\"" + e.data.videoId + "\"]"));}});</script>
+<iframe width="100%" height="100%" src="https://app.vidzflow.com/v/agValeWJqo?dq=576&ap=true&muted=true&loop=true&ctp=false&bv=false&piv=true&playsinline=false&bc=%234E5FFD&controls=false" title="style_picker" style="aspect-ratio: 1.32962963; overflow: hidden;" frameborder="0" scrolling="no" allow="fullscreen"></iframe></div></div><p>[Help Center: <a href="https://docs.wisprflow.ai/articles/6269634092-adapting-to-ios-26-4?lang=en">Adapting to iOS 26.4</a>]</p></div></div></div></div></div><div class="spacer-xxlarge"></div><div class="divider"></div></div></div></div></div><div class="spacer-xxlarge"></div></div></div></section></div><div unsubscribe-div="" class="unsubscribe-div"><div class="unsubscribe-div-content"><p>You’ve unsubscribed from Wispr Flow release updates. <em>You may still receive other Wispr Flow emails if you’re subscribed to them.</em></p><a resubscribe-btn="" data-w-id="3d537270-5e35-411c-7636-51b5f81429d1" href="#" class="button w-button">Resubscribe</a></div><div data-w-id="e84e30f9-b93c-d99b-b0c3-b1e4c971cb73" class="unsubscribe-div-overlay"></div></div><div data-wf--footer-combined--variant="base" class="section_footer-wrapper"><footer class="section_footer"><div class="padding-global"><div class="container-large"><div class="footer_flex-links"><div class="footer_flex_inner"><h3 class="heading-style-h4 text-color-black50">Company</h3><div class="footer_nav-links-wrap"><a href="/about" class="footer_link-block w-inline-block"><div>About</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/careers" class="footer_link-block w-inline-block"><div>Careers</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://trust.wispr.ai/" target="_blank" class="footer_link-block w-inline-block"><div>Trust Center</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://partners.dub.co/flow" target="_blank" class="footer_link-block w-inline-block"><div>Become an Affiliate</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/media-kit" class="footer_link-block w-inline-block"><div>Media Kit</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a></div></div><div class="footer_flex_inner"><h3 class="heading-style-h4 text-color-black50">Product</h3><div class="footer_nav-links-wrap"><a rel="noopener noreferrer" href="/whats-new" aria-current="page" class="footer_link-block w-inline-block w--current"><div>What’s New</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/use-cases" class="footer_link-block w-inline-block"><div>Use Cases</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/students" class="footer_link-block w-inline-block"><div>Flow for Students</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/for-non-profits" class="footer_link-block w-inline-block"><div>Flow for Non-Profits</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/android" class="footer_link-block w-inline-block"><div>Flow for Android</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a></div></div><div class="footer_flex_inner"><h3 class="heading-style-h4 text-color-black50">Resources</h3><div class="footer_nav-links-wrap"><a href="/workflows" class="footer_link-block w-inline-block"><div>Workflows</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/research" class="footer_link-block w-inline-block"><div>Research</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/vibe-coding" class="footer_link-block w-inline-block"><div>Vibe Coding</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/support" class="footer_link-block w-inline-block"><div>Talk to Support</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a typeform-open="" href="/talk-to-sales" class="footer_link-block w-inline-block"><div>Talk to Sales</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://docs.wisprflow.ai/" target="_blank" class="footer_link-block w-inline-block"><div>Help Center</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><a href="/bug-bounty" class="footer_link-block w-inline-block"><div>Bug Bounty</div><div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 9" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.30209 4.39387C5.58154 4.37997 3.86103 4.36522 2.14057 4.34963C1.79759 4.34582 1.45417 4.31894 1.11266 4.28535C1.05617 4.27926 1.00284 4.25627 0.959627 4.21939C0.916414 4.18251 0.88533 4.13345 0.870437 4.07863C0.842351 3.99082 0.939919 3.86619 1.05679 3.84791C1.16971 3.83011 1.2821 3.80265 1.39573 3.79577C2.12069 3.75198 2.84552 3.68968 3.57115 3.67664C5.06198 3.65002 6.55317 3.64309 8.04409 3.64158C9.45874 3.63994 10.8733 3.65774 12.2882 3.66093C12.5152 3.66146 12.7424 3.63267 12.9693 3.61257C12.9844 3.60886 12.9982 3.60144 13.0097 3.59097C13.0211 3.5805 13.0297 3.56733 13.0347 3.55267C13.0388 3.51762 13.0288 3.45878 13.0052 3.44595C12.5704 3.2096 12.1412 2.96113 11.694 2.75006C10.6541 2.2595 9.67872 1.65767 8.70364 1.05423C8.54347 0.955023 8.37557 0.854219 8.31084 0.65726C8.29908 0.621454 8.28076 0.560097 8.29575 0.548117C8.34922 0.498263 8.4142 0.462417 8.4849 0.443795C8.5602 0.434903 8.6365 0.447087 8.70529 0.478984C8.94883 0.589421 9.19069 0.70447 9.42749 0.828484C11.1214 1.71282 12.8125 2.60248 14.5075 3.48451C15.147 3.8172 15.4508 4.13955 14.6833 4.87064C14.4621 5.08139 14.2384 5.29192 13.998 5.47948C12.8828 6.34954 11.7636 7.21439 10.6403 8.07401C10.4859 8.18478 10.323 8.28331 10.1532 8.36871C10.0424 8.42883 9.93159 8.39317 9.83597 8.32107C9.73072 8.24173 9.66536 8.01096 9.7017 7.90948C9.78232 7.68422 9.94289 7.51894 10.1154 7.36928C10.7796 6.79313 11.449 6.22298 12.1186 5.65327C12.555 5.28207 12.9957 4.91656 13.4313 4.54474C13.4528 4.52633 13.4537 4.46908 13.4451 4.43514C13.4393 4.42033 13.4301 4.40713 13.4181 4.39669C13.4061 4.38625 13.3918 4.37888 13.3763 4.3752C13.1485 4.36038 12.9206 4.34125 12.6927 4.34245C10.8957 4.35189 9.09869 4.36372 7.30168 4.37795L7.30209 4.39387Z" fill="currentColor"/>
+</svg></div></a><div class="hide"><div class="w-embed w-script"><!--<div data-tf-live="01JXE8C3H5DBPWEG1Y4WZE7FNZ"></div><script src="//embed.typeform.com/next/embed.js"></script>--></div></div></div></div></div><div data-w-id="a13f4943-95a2-60d3-e20e-e12854af9d42" class="footer_logo"><div><div id="w-node-_6ca0a8ce-bad4-f0ae-d8d7-e6c3a8dc1b2e-9cb12a35" data-is-ix2-target="1" class="footer_lottie" data-w-id="6ca0a8ce-bad4-f0ae-d8d7-e6c3a8dc1b2e" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683a875030ccb710048ea251_Flow%20-%20Footer%20icon.lottie" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-duration="0" data-loading="eager" data-ix2-initial-state="0"></div></div><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/683b9b328bdb48594a3514e5_Flow%20New.svg" alt="" class="footer_logo-text"/></div><div class="footer_copyright-div"><div footer-legal-links=""><div class="footer_copyright-content"><div class="text-block">© Wispr Flow <span year="">year</span></div><div class="footer_copyright-links-wrap"><a href="/terms-of-service" class="footer_link-block is-legal w-inline-block"><div>Terms</div></a><a href="/privacy-policy" class="footer_link-block is-legal w-inline-block"><div>Privacy</div></a><a href="/data-controls" class="footer_link-block is-legal w-inline-block"><div>Data Controls</div></a></div></div></div><div class="footer_socials-content"><a rel="noopener noreferrer" href="https://www.youtube.com/channel/UCzaXlOt3J2_rYQT1aEJMMFQ/videos?sub_confirmation=1" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21.0657 4.77345C22.0134 5.02692 22.7526 5.76903 23.0089 6.71673C23.6792 9.42042 23.6356 14.5321 23.023 17.278C22.7695 18.2257 22.0274 18.965 21.0797 19.2213C18.4042 19.8831 6.42063 19.8015 3.90001 19.2213C2.95231 18.9678 2.21302 18.2257 1.95673 17.278C1.32446 14.7011 1.36811 9.25144 1.94265 6.73081C2.19612 5.78311 2.93823 5.04382 3.88593 4.78753C7.46268 4.0412 19.7927 4.282 21.0657 4.77345ZM10.3639 8.70227L16.1093 11.9974L10.3639 15.2925V8.70227Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://www.crunchbase.com/organization/wispr-ai" target="_blank" class="footer_social-link w-inline-block"><div class="icon-embed-custom w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 25" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<g clip-path="url(#clip0_7503_2610)">
+<mask id="mask0_7503_2610" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+<path d="M24.4971 0.5H0.49707V24.5H24.4971V0.5Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_7503_2610)">
+<path d="M22.0971 0.5H2.89707C2.26136 0.502632 1.65244 0.756334 1.20292 1.20585C0.753404 1.65537 0.499703 2.26429 0.49707 2.9V22.1C0.499703 22.7357 0.753404 23.3446 1.20292 23.7941C1.65244 24.2437 2.26136 24.4974 2.89707 24.5H22.0971C22.7328 24.4974 23.3417 24.2437 23.7912 23.7941C24.2408 23.3446 24.4945 22.7357 24.4971 22.1V2.9C24.4945 2.26429 24.2408 1.65537 23.7912 1.20585C23.3417 0.756334 22.7328 0.502632 22.0971 0.5ZM7.54207 14.965C8.05129 15.1971 8.63183 15.2173 9.15599 15.0214C9.68016 14.8254 10.105 14.4292 10.3371 13.92H11.9971C11.7831 14.7966 11.2554 15.5644 10.5136 16.0783C9.77186 16.5921 8.86754 16.8164 7.97166 16.7086C7.07578 16.6008 6.25043 16.1686 5.65169 15.4935C5.05295 14.8184 4.72231 13.9473 4.72231 13.045C4.72231 12.1427 5.05295 11.2716 5.65169 10.5965C6.25043 9.92145 7.07578 9.48916 7.97166 9.38141C8.86754 9.27365 9.77186 9.49789 10.5136 10.0117C11.2554 10.5256 11.7831 11.2934 11.9971 12.17H10.3371C10.1958 11.8599 9.98146 11.5887 9.71247 11.3795C9.44349 11.1702 9.12784 11.0293 8.79252 10.9686C8.45719 10.908 8.11216 10.9295 7.78695 11.0312C7.46173 11.133 7.166 11.312 6.92504 11.553C6.68408 11.7939 6.50507 12.0897 6.40331 12.4149C6.30155 12.7401 6.28007 13.0851 6.34071 13.4204C6.40135 13.7558 6.54231 14.0714 6.75152 14.3404C6.96074 14.6094 7.23198 14.8237 7.54207 14.965ZM18.8871 15.81C18.5732 16.0802 18.2145 16.2934 17.8271 16.44C17.2733 16.655 16.6757 16.7327 16.0854 16.6665C15.4951 16.6003 14.9295 16.3922 14.4371 16.06V16.44H12.9271V5.87H14.4271V9.98C14.9626 9.61798 15.5827 9.40093 16.2271 9.35H16.4971C17.2479 9.34883 17.981 9.57797 18.5975 10.0065C19.2141 10.4351 19.6843 11.0424 19.9448 11.7466C20.2053 12.4507 20.2436 13.2179 20.0545 13.9445C19.8653 14.6711 19.4579 15.3222 18.8871 15.81ZM18.6641 13.044C18.6702 13.3241 18.6203 13.6026 18.5173 13.8631C18.4144 14.1237 18.2604 14.3611 18.0645 14.5613C17.8685 14.7616 17.6346 14.9207 17.3763 15.0293C17.1181 15.1379 16.8408 15.1939 16.5606 15.1939C16.2804 15.1939 16.0031 15.1379 15.7449 15.0293C15.4866 14.9207 15.2527 14.7616 15.0567 14.5613C14.8608 14.3611 14.7068 14.1237 14.6039 13.8631C14.5009 13.6026 14.451 13.3241 14.4571 13.044C14.4691 12.4941 14.696 11.9707 15.0892 11.586C15.4823 11.2013 16.0105 10.9859 16.5606 10.9859C17.1107 10.9859 17.6389 11.2013 18.032 11.586C18.4252 11.9707 18.6521 12.4941 18.6641 13.044Z" fill="currentColor"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_7503_2610">
+<rect width="24" height="25" fill="white" transform="translate(0.49707)"/>
+</clipPath>
+</defs>
+</svg></div></a><a rel="noopener noreferrer" href="https://www.instagram.com/wisprflow/" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.4971 3H8.49707C5.73565 3 3.49707 5.23858 3.49707 8V16C3.49707 18.7614 5.73565 21 8.49707 21H16.4971C19.2585 21 21.4971 18.7614 21.4971 16V8C21.4971 5.23858 19.2585 3 16.4971 3ZM19.7471 16C19.7416 17.7926 18.2897 19.2445 16.4971 19.25H8.49707C6.70442 19.2445 5.25256 17.7926 5.24707 16V8C5.25256 6.20735 6.70442 4.75549 8.49707 4.75H16.4971C18.2897 4.75549 19.7416 6.20735 19.7471 8V16ZM17.2471 8.25C17.7994 8.25 18.2471 7.80228 18.2471 7.25C18.2471 6.69772 17.7994 6.25 17.2471 6.25C16.6948 6.25 16.2471 6.69772 16.2471 7.25C16.2471 7.80228 16.6948 8.25 17.2471 8.25ZM12.4971 7.5C10.0118 7.5 7.99707 9.51472 7.99707 12C7.99707 14.4853 10.0118 16.5 12.4971 16.5C14.9824 16.5 16.9971 14.4853 16.9971 12C16.9998 10.8057 16.5265 9.65957 15.682 8.81508C14.8375 7.97059 13.6914 7.49734 12.4971 7.5ZM9.74707 12C9.74707 13.5188 10.9783 14.75 12.4971 14.75C14.0159 14.75 15.2471 13.5188 15.2471 12C15.2471 10.4812 14.0159 9.25 12.4971 9.25C10.9783 9.25 9.74707 10.4812 9.74707 12Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://x.com/wisprflow" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M17.6732 4H20.4333L14.4032 10.7774L21.4971 20H15.9427L11.5922 14.4066L6.6143 20H3.85251L10.3022 12.7508L3.49707 4H9.19252L13.125 9.11262L17.6732 4ZM16.7044 18.3754H18.2339L8.36148 5.53928H6.72027L16.7044 18.3754Z" fill="currentColor"/>
+</svg></div></a><a rel="noopener noreferrer" href="https://www.linkedin.com/company/wisprflow" target="_blank" class="footer_social-link w-inline-block"><div class="footer_social-icons w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 25 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.99707 3C4.16864 3 3.49707 3.67157 3.49707 4.5V19.5C3.49707 20.3284 4.16864 21 4.99707 21H19.9971C20.8255 21 21.4971 20.3284 21.4971 19.5V4.5C21.4971 3.67157 20.8255 3 19.9971 3H4.99707ZM9.01783 7.00272C9.02346 7.95897 8.30768 8.54819 7.4583 8.54397C6.65814 8.53975 5.96064 7.90272 5.96486 7.00413C5.96908 6.15897 6.63705 5.47975 7.50471 5.49944C8.38502 5.51913 9.02346 6.1646 9.01783 7.00272ZM12.7768 9.76176H10.2568H10.2554V18.3216H12.9188V18.1219C12.9188 17.742 12.9185 17.362 12.9182 16.9819C12.9174 15.9681 12.9165 14.9532 12.9217 13.9397C12.9231 13.6936 12.9343 13.4377 12.9976 13.2028C13.2352 12.3253 14.0242 11.7586 14.9045 11.8979C15.4698 11.9864 15.8438 12.3141 16.0013 12.8471C16.0984 13.1803 16.142 13.5389 16.1462 13.8863C16.1576 14.9339 16.156 15.9815 16.1544 17.0292C16.1538 17.399 16.1532 17.769 16.1532 18.1388V18.3202H18.8251V18.1149C18.8251 17.6629 18.8249 17.211 18.8246 16.7591C18.8241 15.6296 18.8235 14.5001 18.8265 13.3702C18.8279 12.8597 18.7731 12.3563 18.6479 11.8627C18.4609 11.1286 18.0742 10.5211 17.4456 10.0824C16.9998 9.77019 16.5104 9.5691 15.9634 9.5466C15.9011 9.54401 15.8383 9.54062 15.7752 9.53721C15.4955 9.52209 15.2112 9.50673 14.9438 9.56066C14.1788 9.71394 13.5067 10.0641 12.999 10.6814C12.94 10.7522 12.8823 10.8241 12.7962 10.9314L12.7768 10.9557V9.76176ZM6.17871 18.3244H8.82949V9.76733H6.17871V18.3244Z" fill="currentColor"/>
+</svg></div></a></div></div></div></div></footer><div class="nav_bottom"><div bottom-bar2="" class="bb-v2_wrap"><div class="bb-v2_div"><div class="bb-v2_left"><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69d91e631c2edb2851e6565b_close.svg" alt="" data-w-id="5573d0a0-36a5-6871-41d3-3df73ac9edae" class="bb-v2_close-btn"/><img src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/69d91e94a9c949c8dbd78faa_App%20Icon.png" alt="Wispr Flow app icon" class="bb-v2_logo"/><div><div bb-heading="" class="text-weight-semibold text-size-small">Wispr Flow</div><div class="spacer-xxsmall"></div><div bb-subtext="" class="text-size-tiny">Talk 4x faster</div><div class="spacer-xxsmall"></div><div class="text-size-tiny text-weight-medium">FREE</div></div></div><a bb-button="" cta="" cta_location="bottom_bar" cta_type="download_flow" app-download="" no-change="" href="/get-started" class="bb_btn bb-v2 w-button">Get app</a></div></div></div></div></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=682f84b3838c89f8ff7667db" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/js/webflow.schunk.f2efb3c5440a81cf.js" type="text/javascript" integrity="sha384-VK02VJvMib7ytrF5M2joPWNtDQs366FZgEQ5B+Iwnjx0WBnwQXfootyziSYxdrmS" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/js/webflow.schunk.dc370da4f96b9092.js" type="text/javascript" integrity="sha384-BOoVg9Q1k8memH0SXiuWg6rv5zUwKmDq8w6JO/pPdDLGHUpfkV188Dw6PIqe5WFu" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/js/webflow.schunk.009322c29a43beeb.js" type="text/javascript" integrity="sha384-L2PtLZNaBQXpuKAdbo9qc5CZWZkCgI2MpD/5EkVnkGTV1Tt3r1v2HaixueyaRRfm" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/js/webflow.117e6ba2.1ed6842551a3f683.js" type="text/javascript" integrity="sha384-bCqRE2Uzj7nWn6jEcV/oxktCobv7TQxD/cI4M7Htq/EA6aaoabh9pN0a/RldoyVQ" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/MotionPathPlugin.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/SplitText.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/DrawSVGPlugin.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/MotionPathHelper.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollToPlugin.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(MotionPathPlugin,SplitText,DrawSVGPlugin,ScrollTrigger,MotionPathHelper,ScrollToPlugin);</script><!--Direct 0.1% users to start.wisprflow.ai when they click download button - desktop only-->
+<script>
+  (function () {
+    // ============ KNOBS ============
+    var TREATMENT_RATE = 0.05; // 0.001 = 0.1%. Change to ramp: 0.01 = 1%, 0.5 = 50%, 0 = no new treatments.
+    var DISABLE_ALL = false; // Set to true for an instant hard-stop (no one gets redirected, even existing treatment cookies).
+    // ================================
+
+    var COOKIE = 'web_onboarding_canary';
+
+    function readCookie(name) {
+      var m = document.cookie.split('; ').find(function (c) {
+        return c.indexOf(name + '=') === 0;
+      });
+      return m ? m.split('=')[1] : null;
+    }
+
+    function writeCookie(name, value) {
+      var domain = window.location.hostname.indexOf('wisprflow.ai') !== -1 ? '.wisprflow.ai' : window.location.hostname;
+      document.cookie = name + '=' + value + '; path=/; domain=' + domain + '; max-age=' + 60 * 60 * 24 * 30 + '; SameSite=Lax';
+    }
+
+    function assignOrRead() {
+      var existing = readCookie(COOKIE);
+      if (existing) return existing;
+      var variant = Math.random() < TREATMENT_RATE ? 'treatment' : 'control';
+      writeCookie(COOKIE, variant);
+      return variant;
+    }
+
+    // QA override — ?variant=treatment (or =control) writes the cookie so a
+    // shared link puts the recipient into that variant persistently.
+    var forced = new URLSearchParams(window.location.search).get('variant');
+    if (forced === 'treatment' || forced === 'control') {
+      writeCookie(COOKIE, forced);
+    }
+
+    // Inline script runs before <head defer> scripts execute, so global.js has
+    // NOT yet attached its click listener. Mine registers first → fires first on
+    // click. preventDefault stops the default navigation regardless of order.
+    document.querySelectorAll('[app-download]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        // Desktop only per George's spec — checked at click time so a browser
+        // resize between page load and click is honored.
+        if (window.innerWidth < 992) return;
+
+        var variant = assignOrRead();
+
+        if (window.posthog && typeof window.posthog.capture === 'function') {
+          window.posthog.capture('web_onboarding_canary_exposed', {
+            variant: variant,
+            device_type: window.userPlatform,
+            source: el.getAttribute('cta_location') || el.id || 'unknown',
+            width: window.innerWidth,
+          });
+        }
+
+        if (variant === 'treatment' && !DISABLE_ALL) {
+          e.preventDefault();
+          // Forward query string (UTMs, ref, etc.) so SPA's attribution capture
+          // sees them. Strip our QA-only `variant` param — it's ours, not theirs.
+          var params = new URLSearchParams(window.location.search);
+          params.delete('variant');
+          var query = params.toString();
+          window.location.href = 'https://start.wisprflow.ai' + (query ? '?' + query : '');
+        }
+      });
+    });
+  })();
+</script>
+
+<!--Adding no opener and no referrer to external links-->
+<script>
+  document.querySelectorAll('a[target="_blank"]').forEach(function (a) {
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
+</script>
+
+<!--Navbar dropdown click closes dropdown but not toggle bg color - fix -->
+<script>
+  document.querySelectorAll('.nav_menu-dropdown-toggle-v2').forEach((wrapper) => {
+    const toggle = wrapper.querySelector('.dropdown1_toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', () => {
+      if (window.innerWidth < 992) return;
+      if (toggle.classList.contains('w--open')) {
+        requestAnimationFrame(() => wrapper.classList.add('force-reset'));
+      } else {
+        wrapper.classList.remove('force-reset');
+      }
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      wrapper.classList.remove('force-reset');
+    });
+  });
+</script>
+
+<!--Remove rogue quotes-->
+<script>
+  // Function to remove rogue quotes
+  function removeRogueQuotes() {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (node.parentElement?.closest('.page-wrapper')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        const text = node.textContent;
+        if (/[""]/.test(text) && /^[""\s]+$/.test(text)) {
+          return NodeFilter.FILTER_ACCEPT;
+        }
+        return NodeFilter.FILTER_REJECT;
+      },
+    });
+
+    const nodesToRemove = [];
+    while (walker.nextNode()) {
+      nodesToRemove.push(walker.currentNode);
+    }
+
+    nodesToRemove.forEach((node) => node.remove());
+  }
+
+  // Run immediately
+  removeRogueQuotes();
+
+  // Run after DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', removeRogueQuotes);
+
+  // Run after everything including external scripts
+  window.addEventListener('load', removeRogueQuotes);
+
+  // Watch for changes (in case plugin adds them dynamically)
+  const observer = new MutationObserver(() => {
+    removeRogueQuotes();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+</script>
+
+<!--Navbar scroll animation-->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const navbar = document.querySelector('.nav_fixed');
+
+  if (navbar && window.matchMedia('(max-width: 991px)').matches) {
+    // Create the hide animation (from visible to hidden)
+    const hideAnim = gsap.fromTo(navbar, { yPercent: 0 }, { yPercent: -100, duration: 0.5, ease: 'power2.inOut', paused: true });
+
+    let lastScrollY = 0;
+    let ticking = false;
+
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'max',
+      onUpdate: (self) => {
+        const currentScrollY = self.scroll();
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+              // Scrolling down - hide navbar
+              hideAnim.play();
+            } else if (currentScrollY < lastScrollY) {
+              // Scrolling up - show navbar
+              hideAnim.reverse();
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+    });
+  }
+</script>
+
+<!-- Bottom Sticky Nav -->
+<script>
+  if (window.matchMedia('(max-width: 991px)').matches) {
+    window.addEventListener('load', () => {
+      gsap.registerPlugin(ScrollTrigger);
+      const bottomBar = document.querySelector('.nav_bottom');
+      if (bottomBar && window.matchMedia('(max-width: 991px)').matches) {
+        const showAnim = gsap.fromTo(
+          bottomBar,
+          { y: '100%' },
+          {
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.inOut',
+            paused: true,
+          },
+        );
+
+        let lastScrollY = 0;
+        let ticking = false;
+
+        ScrollTrigger.create({
+          start: 'top top',
+          end: 'max',
+          onUpdate: (self) => {
+            const currentScrollY = self.scroll();
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                  showAnim.play();
+                } else if (currentScrollY < lastScrollY) {
+                  showAnim.reverse();
+                }
+                lastScrollY = currentScrollY;
+                ticking = false;
+              });
+              ticking = true;
+            }
+          },
+        });
+
+        // Hide bottom nav when footer is in view
+        ScrollTrigger.create({
+          trigger: '.section_footer',
+          start: 'top 80%',
+          end: 'bottom bottom',
+          onEnter: () => {
+            gsap.to(bottomBar, {
+              opacity: 0,
+              pointerEvents: 'none',
+              duration: 0.3,
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(bottomBar, {
+              opacity: 1,
+              pointerEvents: 'auto',
+              duration: 0.3,
+            });
+          },
+        });
+      }
+    });
+  }
+</script>
+
+<!--Script to show typeform on button clicks
+<script src="//embed.typeform.com/next/embed.js"></script>-->
+
+<!--[typeform-open] href change-->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const triggers = document.querySelectorAll('[typeform-open]');
+
+    triggers.forEach(function (trigger) {
+      trigger.setAttribute('href', '/talk-to-sales');
+    });
+  });
+</script>
+
+<!--Open typeform popup
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        const trigger = e.target.closest('[typeform-open]');
+        
+        if (trigger) {
+            e.preventDefault();
+            
+            const typeformButton = document.querySelector('[data-tf-live] button');
+            
+            if (typeformButton) {
+                typeformButton.click();
+            } else {
+                console.warn('Typeform button not found. Make sure the hidden div is loaded.');
+            }
+        }
+    });
+});
+</script>-->
+
+<!--Nav dropdown flicker issue code-->
+<script>
+  $('.nav_menu-dropdown-toggle-v2')
+    .on('mouseenter', function () {
+      const hoveredDropdown = $(this);
+
+      $('.dropdown-border-overlay').not(hoveredDropdown.find('.dropdown-border-overlay')).css('opacity', '0');
+
+      const allDropdowns = $('.nav_menu-dropdown-toggle-v2');
+      const currentIndex = allDropdowns.index(this);
+      const nextDropdown = allDropdowns.eq(currentIndex + 1);
+
+      if (nextDropdown.length) {
+        const lastHoveredIndex = allDropdowns.data('lastHoveredIndex') || -1;
+        const isSecondToFirst = lastHoveredIndex === 1 && currentIndex === 0;
+
+        if (isSecondToFirst) {
+          setTimeout(() => {
+            nextDropdown.find('.dropdown1_border-radius-wrap').css('opacity', '0');
+          }, 200);
+        } else {
+          nextDropdown.find('.dropdown1_border-radius-wrap').css('opacity', '0');
+        }
+      }
+
+      allDropdowns.data('lastHoveredIndex', currentIndex);
+    })
+    .on('mouseleave', function () {
+      $('.dropdown-border-overlay').css('opacity', '');
+
+      const allDropdowns = $('.nav_menu-dropdown-toggle-v2');
+      const currentIndex = allDropdowns.index(this);
+      const nextDropdown = allDropdowns.eq(currentIndex + 1);
+
+      if (nextDropdown.length) {
+        nextDropdown.find('.dropdown1_border-radius-wrap').css('opacity', '');
+      }
+    });
+</script>
+
+<!--Close nav dropdown when you scroll down and dropdown is open-->
+<script>
+  $(window).scroll(function () {
+    const navbarStyle = $('.nav_fixed').attr('style');
+
+    if (navbarStyle && /transform:\s*translate(3d)?\(0(px|%),\s*-/.test(navbarStyle)) {
+      if (window.matchMedia('(min-width: 992px)').matches) {
+        $('.nav_menu-dropdown-toggle, .nav_menu-dropdown-toggle-v2').has('.w--open').find('.w--open').removeClass('w--open');
+      } else {
+        $('.nav_menu-dropdown-toggle, .nav_menu-dropdown-toggle-v2').has('.w--open').click();
+        $('.nav_button.w--open').click();
+      }
+    }
+  });
+</script>
+
+<!--Button hover animation-->
+<script>
+  function setupButtonAnimations(selector = '.button', targetSelector = null) {
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll(selector).forEach((element) => {
+        const animationTarget = targetSelector ? element.querySelector(targetSelector) : element;
+
+        if (animationTarget) {
+          const split = new SplitText(animationTarget, {
+            type: 'words,chars',
+          });
+          const chars = split.chars;
+          let waveTimeline;
+
+          element.addEventListener('mouseenter', () => {
+            if (waveTimeline) waveTimeline.kill();
+            waveTimeline = gsap.timeline();
+            chars.forEach((char, i) => {
+              waveTimeline.to(
+                char,
+                {
+                  keyframes: [
+                    {
+                      yPercent: -20,
+                      rotation: -5,
+                    },
+                    {
+                      yPercent: 20,
+                      rotation: 5,
+                    },
+                    {
+                      yPercent: 0,
+                      rotation: 0,
+                    },
+                  ],
+                  duration: 1,
+                  ease: 'none',
+                  yoyo: true,
+                },
+                i * 0.06,
+              );
+            });
+          });
+
+          element.addEventListener('mouseleave', () => {
+            if (waveTimeline) {
+              waveTimeline.kill();
+              gsap.to(chars, {
+                yPercent: 0,
+                rotation: 0,
+                duration: 0.2,
+                ease: 'none',
+              });
+            }
+          });
+        }
+      });
+    }
+  }
+
+  // Usage:
+  // [app-download] excluded — the site-wide head's OS-detection script owns text+icon+animation for those buttons to avoid a double-setup race.
+  setupButtonAnimations('.button:not([no-animations="true"]):not([app-download])');
+  setupButtonAnimations('.nav_menu-link'); // navbar links
+  setupButtonAnimations('.nav_menu-link-v2'); // navbar links [notetaker page]
+  setupButtonAnimations('.nav_tab'); // [notetaker page]
+  setupButtonAnimations('.dropdown-link', '.dropdown-link-text'); // Dropdown links
+  setupButtonAnimations('.blog-v2-item', '.text-link-text');
+  setupButtonAnimations('.text-link', '.text-link-text');
+</script>
+
+<!-- 5) CTA dots moving on a path [Footer] -->
+<script>
+  function initCtaDots() {
+    const ctaCount = 100;
+    const ctaDuration = 20;
+    const pathOpts = {
+      path: '#curve-cta',
+      align: '#curve-cta',
+      alignOrigin: [0.5, 0.5],
+    };
+
+    const curveElement = document.querySelector('#curve-cta');
+    if (!curveElement) {
+      return;
+    }
+
+    const svgWrapper = curveElement.closest('svg').parentNode;
+    svgWrapper.style.position = 'relative';
+
+    for (let i = 0; i < ctaCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('cta_dot');
+      gsap.set(dot, { position: 'absolute' });
+      svgWrapper.appendChild(dot);
+
+      const tween = gsap.to(dot, {
+        duration: ctaDuration,
+        repeat: -1,
+        ease: 'none',
+        motionPath: pathOpts,
+        immediateRender: false,
+      });
+      tween.progress(i / ctaCount);
+    }
+  }
+
+  // create a GSAP matchMedia instance
+  const mm = gsap.matchMedia();
+
+  // add a rule for screens ≥768px
+  mm.add('(min-width: 768px)', () => {
+    // when this rule first matches, wait for load + a frame then init
+    window.addEventListener('load', () => {
+      requestAnimationFrame(initCtaDots);
+    });
+
+    // return a cleanup function to remove the listener if rule no longer matches
+    return () => {
+      window.removeEventListener('load', initCtaDots);
+    };
+  });
+</script>
+
+<script>
+  // Find all elements with the attribute 'year'
+  const elements = document.querySelectorAll('[year]');
+
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
+  // Loop through all elements and set their text content to the current year
+  elements.forEach((element) => {
+    element.textContent = currentYear;
+  });
+</script>
+
+<!--Nextplay Adapta and Terra code-->
+<script>
+  function setCookie(name, value, daysToExpire, domain) {
+    const date = new Date();
+    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    const expires = 'expires=' + date.toUTCString();
+    document.cookie = name + '=' + value + ';' + expires + ';path=/;domain=' + domain + ';secure;samesite=lax';
+  }
+
+  function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  const trialPromo = getQueryParam('trial_promo');
+  if (trialPromo === '3mo' || trialPromo === '2mo') {
+    setCookie('trial_promo', trialPromo, 30, '.wisprflow.ai');
+  }
+</script>
+
+<!--bear AI code
+<script type="text/plain" data-usercentrics="Bear AI" src="https://yqagkqabd5.us-east-2.awsapprunner.com/pixel.js" data-project-id="eed39acc-d24c-4129-a771-db2bcea87cf8"></script>-->
+
+<!--No new tab opens in mobile (Arc browser issue)-->
+<script>
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+      link.removeAttribute('target');
+    });
+  }
+</script><!--filter system-->
+<script>
+  document.querySelectorAll('.pill').forEach((pill) => {
+    pill.addEventListener('click', function () {
+      const filter = this.dataset.filter;
+
+      document.querySelectorAll('.pill').forEach((p) => p.classList.remove('active'));
+      this.classList.add('active');
+
+      document.querySelectorAll('.release-item').forEach((item) => {
+        const contents = item.querySelectorAll('[release-content]');
+
+        if (filter === 'all') {
+          item.style.display = 'block';
+          contents.forEach((c) => (c.style.display = 'block'));
+        } else {
+          let hasMatch = false;
+          contents.forEach((c) => {
+            if (c.getAttribute('release-content') === filter) {
+              c.style.display = 'block';
+              hasMatch = true;
+            } else {
+              c.style.display = 'none';
+            }
+          });
+          item.style.display = hasMatch ? 'block' : 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<!--Social share-->
+<script>
+  document.querySelectorAll('.release-item').forEach((item) => {
+    const id = item.querySelector('[id]')?.id;
+    if (!id) return;
+
+    const url = window.location.href.split('#')[0] + '#' + id;
+
+    item.querySelectorAll('[data-share]').forEach((btn) => {
+      const type = btn.getAttribute('data-share');
+
+      if (type === 'copy') {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          navigator.clipboard.writeText(url);
+        });
+      }
+
+      if (type === 'linkedin') {
+        btn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+      }
+
+      if (type === 'x') {
+        btn.href = 'https://x.com/intent/tweet?url=' + encodeURIComponent(url);
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+      }
+    });
+  });
+</script>
+
+<!-- email verification success -->
+<script>
+  if (new URLSearchParams(window.location.search).get('verified') === 'true') {
+    const form = document.querySelector('#wf-form-Releases-Form');
+    const success = document.querySelector('.form_message-success');
+
+    if (form) form.style.display = 'none';
+    if (success) {
+      success.style.display = 'block';
+      success.querySelector('div').textContent = 'Your email address has been verified!';
+    }
+  }
+</script>
+
+<!-- unsubscribe ui -->
+<script>
+  if (new URLSearchParams(window.location.search).get('unsubscribed') === 'true') {
+    const cioId = new URLSearchParams(window.location.search).get('cio_id');
+
+    if (cioId) {
+      fetch('https://track.customer.io/api/v1/customers/cio_' + encodeURIComponent(cioId), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Basic ' + btoa('4f306a6abedd39af83c9:95ed2ac33a012c3d5fff'),
+        },
+        body: JSON.stringify({ subscribed_releases_unsubscribed: true }),
+      });
+    }
+
+    const unsubDiv = document.querySelector('[unsubscribe-div]');
+    if (unsubDiv) unsubDiv.style.display = 'flex';
+  }
+</script>
+
+<!-- re-subscribe -->
+<script>
+  const resubscribeBtn = document.querySelector('[resubscribe-btn]');
+  if (resubscribeBtn) {
+    resubscribeBtn.addEventListener('click', function () {
+      const cioId = new URLSearchParams(window.location.search).get('cio_id');
+      if (cioId) {
+        fetch('https://track.customer.io/api/v1/customers/cio_' + encodeURIComponent(cioId), {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Basic ' + btoa('4f306a6abedd39af83c9:95ed2ac33a012c3d5fff'),
+          },
+          body: JSON.stringify({ subscribed_releases_unsubscribed: false }),
+        });
+      }
+
+      const form = document.querySelector('#wf-form-Releases-Form');
+      if (form) form.style.display = 'none';
+
+      const formSuccess = document.querySelector('.form_message-success');
+      if (formSuccess) {
+        formSuccess.style.display = 'block';
+        formSuccess.querySelector('div').textContent = "You've resubscribed to Wispr Flow release updates!";
+      }
+    });
+  }
+</script></body></html>

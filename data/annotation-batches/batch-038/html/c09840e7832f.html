@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html><head>
+	<meta name="generator" content="Hugo 0.121.2">
+    <title>Pitivi, a free and open source video editor for Linux</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="revisit-after" content="10 days" />
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="initial-scale=1.0,
+    width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/css/pitivi.css" />
+    
+    <link rel="icon" type="image/png" href="/i/pitivi-2019-icon-16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/i/pitivi-2019-icon-32.png" sizes="32x32" />
+    <link rel="alternate" type="application/rss+xml" href="https://www.pitivi.org/index.xml" title="Pitivi" />
+    <script src="https://kit.fontawesome.com/762a6b0d58.js" crossorigin="anonymous"></script>
+</head>
+<body><header>
+    <nav id="menu">
+        <a href="/" title="Go back to the home page" class="logo hidden">Pitivi</a>
+        <ul>
+            <li><a href="/download/" title="Learn how to get or build Pitivi" class="hidden">Get it!</a></li>
+            <li><a href="/manual/" title="Need to find something in the latest user manual?" class="hidden">User Manual</a></li>
+            <li><a href="/contribute/" title="See how you can get involved in the project" class="hidden">Contribute</a></li>
+            <li><a href="/contact/" title="Need to get in touch with us?" class="hidden">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<div id="content">
+<section class="centered-introduction">
+    <p><a href="" title="[pronounciation]" class="hidden" onclick="return play();">Pitivi <i id="audio_icon" class="fas fa-volume-up"></i></a> is a Free video editor with a beautiful and intuitive user interface, a clean codebase and a fantastic community. <a href="/contribute/">Join us!</a></p>
+    <audio id="audio" src="/i/pitivi%20pronounciation.ogg"></audio>
+    <script>
+        function play() {
+            let audio = document.getElementById("audio");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+            return false;
+        }
+
+        function update() {
+            let button = document.getElementById("audio_icon");
+            if (audio.paused) {
+                button.className = "fas fa-volume-up";
+            } else {
+                button.className = "fas fa-pause";
+            }
+        }
+
+        const audio = document.getElementById("audio");
+        audio.addEventListener("pause", update);
+        audio.addEventListener("play", update);
+    </script>
+</section>
+
+<section id="frontpage_splash" class="auto-column-half">
+    <h1>We believe in allowing everyone on the planet to <a href="/showcase/">express themselves</a> through filmmaking, with tools that they can own and improve.</h1>
+
+    <div style="margin-left: auto; margin-right: auto; margin-top: 1em;">
+        <a href="/tour/" class="discreet">
+            <h1 style="margin-bottom: 0.5em;">Take the tour...<img src="/i/screenshots/2020.05.png" alt="Pitivi screenshot"/></h1>
+        </a>
+    </div>
+
+</section>
+
+<section id="news" class="auto-column-half">
+<h1><a href="/news/" class="hidden">News</a></h1>
+<ul>
+
+<article class="article">
+    <h2 class="title"><a class="discreet" href="/news/2023-03-26-pitivi-2023-03-time-was-money/">Pitivi 2023.03 — Time Was Money</a></h2>
+    <ul class="article-meta">
+    <li class="article-meta-date"><time datetime="2023-08-12">Aug 12, 2023</time></li>
+    <li class="article-meta-tag">
+    <a href="/tags/release/" class="hidden">
+        <i class="fas fa-tag"></i>Release
+    </a>
+    </li>
+</ul>
+
+    <div class="summary">Auto alignment and precise waveforms.</div>
+</article>
+<article class="article">
+    <h2 class="title"><a class="discreet" href="/news/2022-06-26-pitivi-2022-06-reel-easing/">Pitivi 2022.06 — Reel Easing</a></h2>
+    <ul class="article-meta">
+    <li class="article-meta-date"><time datetime="2022-06-28">Jun 28, 2022</time></li>
+    <li class="article-meta-tag">
+    <a href="/tags/release/" class="hidden">
+        <i class="fas fa-tag"></i>Release
+    </a>
+    </li>
+</ul>
+
+    <div class="summary">Object tracking, beat detection and Clip Properties enhancements.</div>
+</article>
+<article class="article">
+    <h2 class="title"><a class="discreet" href="/news/2021-05-30-pitivi-2021-05-oubliette/">Pitivi 2021.05 — Oubliette</a></h2>
+    <ul class="article-meta">
+    <li class="article-meta-date"><time datetime="2021-05-30">May 30, 2021</time></li>
+    <li class="article-meta-tag">
+    <a href="/tags/release/" class="hidden">
+        <i class="fas fa-tag"></i>Release
+    </a>
+    </li>
+</ul>
+
+    <div class="summary">Media Library clips tagging.</div>
+</article>
+<article class="article">
+    <h2 class="title"><a class="discreet" href="/news/2021-01-01-pitivi-2021-01-retro-perspective/">Pitivi 2021.01 — Retro Perspective</a></h2>
+    <ul class="article-meta">
+    <li class="article-meta-date"><time datetime="2021-02-01">Feb 1, 2021</time></li>
+    <li class="article-meta-tag">
+    <a href="/tags/release/" class="hidden">
+        <i class="fas fa-tag"></i>Release
+    </a>
+    </li>
+</ul>
+
+    <div class="summary">Bug fixes.</div>
+</article>
+<article class="article">
+    <h2 class="title"><a class="discreet" href="/news/2020-10-11-pitivi-2020-09-hocus-focus/">Pitivi 2020.09 — Hocus Focus</a></h2>
+    <ul class="article-meta">
+    <li class="article-meta-date"><time datetime="2020-10-11">Oct 11, 2020</time></li>
+    <li class="article-meta-tag">
+    <a href="/tags/release/" class="hidden">
+        <i class="fas fa-tag"></i>Release
+    </a>
+    </li>
+</ul>
+
+    <div class="summary">Lots of new features.</div>
+</article>
+</ul>
+<p style="text-align: right; margin-right: 0;"><a href="/news/">Archive...</a></p>
+</section>
+
+        </div><footer>
+    <div class="footer-box">
+        <p>If you really like the work we do, you may consider <a href="/donators/">donating</a>.</p>
+    </div>
+    <div class="footer-box">
+        <div style="font-size: 300%; float: left;">
+            <a href="https://twitter.com/pitivi"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://gitlab.gnome.org/GNOME/pitivi"><i class="fab fa-gitlab"></i></a>
+        </div>
+        <div style="float: right;">
+            <a href="https://tree-nation.com/profile/impact/pitivi#co2" target="_blank" style="position:relative;cursor:pointer;display:block;z-index:999;">
+                <img src="https://tree-nation.com/images/tracking/label-co2-website-white-en.png" style="width:157px;height:auto;">
+            </a>
+        </div>
+    </div>
+    <div class="footer-box">
+        <p><a style="color: gray; font-size: smaller;" href="https://gitlab.gnome.org/Infrastructure/pitivi-web/-/blob/master/layouts/index.html">Edit this page</a></p>
+    </div>
+</footer>
+
+
+
+<script type="text/javascript">
+var pkBaseURL = "https://piwik.ecchi.ca/";
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 5);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script>
+
+
+
+<script src="https://tree-nation.com/js/track.js"></script>
+<script>treenation_track("6104650b7213b");</script></body>
+</html>

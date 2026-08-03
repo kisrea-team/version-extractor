@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link href="wayland.css" rel="stylesheet" type="text/css">
+<title>Wayland</title>
+</head>
+
+<body>
+<h1><img src="wayland.png" alt="Wayland logo"></h1>
+
+<h2>Wayland</h2>
+
+<p>Wayland is a replacement for the X11 window system protocol and
+architecture with the aim to be easier to develop, extend, and
+maintain.</p>
+
+<p>Wayland is the language (protocol) that applications can use to
+talk to a display server in order to make themselves visible and
+get input from the user (a person). A Wayland server is called
+a "compositor". Applications are Wayland clients.</p>
+
+<p>Wayland also refers to a system architecture. It is not just a
+server-client relationship between a compositor and applications.
+There is no single common Wayland server like Xorg is for X11,
+but every graphical environment brings with it one of many compositor
+implementations. Window management and the end user experience
+are often tied to the compositor rather than swappable components.
+</p>
+
+<p>A core part of Wayland architecture is libwayland: an inter-process
+communication library that translates a protocol definition in XML to a C
+language API. This library does not implement Wayland, it merely
+encodes and decodes Wayland messages. The actual implementations are
+in the various compositor and application toolkit projects.</p>
+
+<p>Wayland does not restrict where and how it is used. A Wayland
+compositor could be a standalone display server running on Linux
+kernel modesetting and evdev input devices or on many other
+operating systems, or a nested compositor that itself is an X11 or
+Wayland application (client). Wayland can even be used in
+application-internal communication as is done in some web browsers.
+</p>
+
+<p>Information:</p>
+<ul>
+  <li><a href="architecture.html">Wayland architecture</a></li>
+  <li><a href="faq.html">Wayland FAQ</a></li>
+  <li><a href="docs/book">Wayland book</a></li>
+  <li><a href="docs/html">libwayland documentation</a></li>
+</ul>
+
+<p>Software:</p>
+<ul>
+  <li><a href="releases.html">Releases</a></li>
+  <li><a href="https://gitlab.freedesktop.org/wayland">Wayland Git repositories</a></li>
+  <li><a href="extras.html">Extras</a>: some apps and debugging tools</li>
+</ul>
+
+<p>Development:</p>
+<ul>
+  <li><a href="http://lists.freedesktop.org/mailman/listinfo/wayland-devel">Mailing list</a></li>
+  <li>IRC: <a href="ircs://irc.oftc.net/#wayland">#wayland</a> on <a href="https://www.oftc.net/">OFTC</a></li>
+  <li><a href="https://gitlab.freedesktop.org/wayland/wayland/-/merge_requests">Pending Wayland patches</a></li>
+  <li><a href="https://gitlab.freedesktop.org/wayland/wayland/blob/master/CONTRIBUTING.md">Contribution instructions</a> for Wayland</li>
+  <li><a href="https://gitlab.freedesktop.org/wayland/wayland/issues">Wayland bugs</a></li>
+</ul>
+
+</body>
+</html>

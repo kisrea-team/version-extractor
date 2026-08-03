@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installation &#8212; JupyterLab 4.6.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f0199216" />
+    <link rel="stylesheet" type="text/css" href="https://docs.jupyter.org/en/latest/_static/jupyter.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=5f0a4c00"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://plausible.io/js/pa-Tem97Eeu4LJFfSRY89aW1.js"></script>
+    <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init({hashBasedRouting:true})</script>
+    <script src="../_static/js/plugin_playground_embed.js?v=a0dbedc9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/installation';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Starting JupyterLab" href="starting.html" />
+    <link rel="prev" title="Get Started" href="overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.6" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/getting_started/installation.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">🚀 JupyterLab 4.6.0 is now available · <a href="https://jupyterlab.rtfd.io/en/latest/getting_started/installation.html">INSTALL</a> · <a href="https://jupyterlab.rtfd.io/en/latest/getting_started/changelog.html#v4-6">RELEASE NOTES</a></div>
+</aside>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i><span class="visually-hidden">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/#narrow/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i><span class="visually-hidden">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/#narrow/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starting.html">Starting JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issue.html">Reporting an issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">JupyterLab Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">JupyterLab Accessibility Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Version lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../privacy_policies.html">Privacy policies</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="overview.html" class="nav-link">Get Started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
+<p>JupyterLab can be installed as a terminal-launched application accessible via a web browser (default), or as a desktop application which is running in its own window and can be opened by clicking on a desktop shortcut (<a class="reference external" href="https://github.com/jupyterlab/jupyterlab-desktop">JupyterLab Desktop</a>). This page describes installation of the default (terminal-launched) JupyterLab application using <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">pipenv</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span></code> and assumes basic knowledge of the terminal. For JupyterLab Desktop instructions see the <a class="reference external" href="https://github.com/jupyterlab/jupyterlab-desktop#installation">Installation section</a> in the JupyterLab Desktop repository.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>New versions of JupyterLab may break backwards compatibility with extensions and other
+Jupyter customizations. As noted in <a class="reference internal" href="../developer/contributing.html#versioning-notes"><span class="std std-ref">Backwards Compatibility, Versions and Breaking Changes</span></a>, JupyterLab development and
+release cycles follow semantic versioning, so we recommend planning your installation and
+upgrade procedures to account for possible breaking changes that may disrupt your usage
+of JupyterLab and any related tools that are critical to your workflows.</p>
+</div>
+<section id="conda">
+<h2>conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, you can install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+</section>
+<section id="mamba">
+<h2>mamba<a class="headerlink" href="#mamba" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, you can install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+</section>
+<section id="uv">
+<h2>uv<a class="headerlink" href="#uv" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">uv</span></code>, you can install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>--with<span class="w"> </span>pip
+</pre></div>
+</div>
+</section>
+<section id="pip">
+<h2>pip<a class="headerlink" href="#pip" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">pip</span></code>, you can install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+<p>If installing using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code>, you must add the user-level
+<code class="docutils literal notranslate"><span class="pre">bin</span></code> directory to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable in order to launch
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>. If you are using a Unix derivative (FreeBSD, GNU/Linux,
+macOS), you can do this by running <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=&quot;$HOME/.local/bin:$PATH&quot;</span></code>.</p>
+</section>
+<section id="pipenv">
+<h2>pipenv<a class="headerlink" href="#pipenv" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>, you can install it as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipenv<span class="w"> </span>install<span class="w"> </span>jupyterlab
+pipenv<span class="w"> </span>shell
+</pre></div>
+</div>
+<p>or from a git checkout:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipenv<span class="w"> </span>install<span class="w"> </span>git+git://github.com/jupyterlab/jupyterlab.git#egg<span class="o">=</span>jupyterlab
+pipenv<span class="w"> </span>shell
+</pre></div>
+</div>
+<p>When using <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>, in order to launch <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>, you must activate the project’s virtualenv.
+For example, in the directory where <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>’s <code class="docutils literal notranslate"><span class="pre">Pipfile</span></code> and <code class="docutils literal notranslate"><span class="pre">Pipfile.lock</span></code> live (i.e., where you ran the above commands):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipenv<span class="w"> </span>shell
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>Alternatively, you can run <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> inside the virtualenv with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipenv<span class="w"> </span>run<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
+<p>If you have <a class="reference external" href="https://docs.docker.com/install/">Docker installed</a>, you can install and use JupyterLab by selecting one
+of the many <a class="reference external" href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html">ready-to-run Docker images</a>
+maintained by the Jupyter Team. Follow the instructions in the <a class="reference external" href="https://jupyter-docker-stacks.readthedocs.io/en/latest/">Quick Start Guide</a>
+to deploy the chosen Docker image.</p>
+<p>Ensure your docker command includes the <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">JUPYTER_ENABLE_LAB=yes</span></code> flag to ensure
+JupyterLab is enabled in your container.</p>
+</section>
+<section id="usage-with-jupyterhub">
+<h2>Usage with JupyterHub<a class="headerlink" href="#usage-with-jupyterhub" title="Link to this heading">#</a></h2>
+<p>Read the details on our <a class="reference internal" href="../user/jupyterhub.html#jupyterhub"><span class="std std-ref">JupyterLab on JupyterHub documentation page</span></a>.</p>
+</section>
+<section id="usage-with-jupyverse">
+<h2>Usage with Jupyverse<a class="headerlink" href="#usage-with-jupyverse" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/jupyter-server/jupyverse/">Jupyverse</a> is a next-generation Jupyter server based on
+<a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>. It can be used instead of
+<a class="reference external" href="https://github.com/jupyter-server/jupyter_server/">jupyter-server</a>, the Jupyter server installed by default with JupyterLab.
+Note that <code class="docutils literal notranslate"><span class="pre">jupyter-server</span></code> extensions won’t work with <code class="docutils literal notranslate"><span class="pre">jupyverse</span></code> (for which there might be equivalent plugins).</p>
+<p>You can install <code class="docutils literal notranslate"><span class="pre">jupyverse</span></code> with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;jupyverse[auth,jupyterlab]&quot;</span>
+</pre></div>
+</div>
+<p>or with <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyverse<span class="w"> </span>fps-auth<span class="w"> </span>fps-jupyterlab
+</pre></div>
+</div>
+<p>or with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyverse<span class="w"> </span>fps-auth<span class="w"> </span>fps-jupyterlab
+</pre></div>
+</div>
+<p>And run it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyverse
+</pre></div>
+</div>
+</section>
+<section id="supported-browsers">
+<h2>Supported browsers<a class="headerlink" href="#supported-browsers" title="Link to this heading">#</a></h2>
+<p>The latest versions of the following browsers are currently known to work:</p>
+<ul class="simple">
+<li><p>Firefox</p></li>
+<li><p>Chrome</p></li>
+<li><p>Safari</p></li>
+<li><p>Edge</p></li>
+</ul>
+<p>Earlier browser versions may also work, but come with no guarantees.</p>
+</section>
+<section id="installation-problems">
+<h2>Installation problems<a class="headerlink" href="#installation-problems" title="Link to this heading">#</a></h2>
+<p>If your computer is behind corporate proxy or firewall,
+you may encounter HTTP and SSL errors due to the proxy or firewall blocking connections to widely-used servers. For example, you might see this error if conda cannot connect to its own repositories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CondaHTTPError</span><span class="p">:</span> <span class="n">HTTP</span> <span class="mi">000</span> <span class="n">CONNECTION</span> <span class="n">FAILED</span> <span class="k">for</span> <span class="n">url</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pkgs</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">win</span><span class="o">-</span><span class="mi">64</span><span class="o">/</span><span class="n">current_repodata</span><span class="o">.</span><span class="n">json</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here are some widely-used sites that host packages in the Python and JavaScript open-source ecosystems. Your network administrator may be able to allow http and https connections to these domains:</p>
+<ul class="simple">
+<li><p>pypi.org</p></li>
+<li><p>pythonhosted.org</p></li>
+<li><p>continuum.io</p></li>
+<li><p>anaconda.com</p></li>
+<li><p>conda.io</p></li>
+<li><p>github.com</p></li>
+<li><p>githubusercontent.com</p></li>
+<li><p>npmjs.com</p></li>
+<li><p>yarnpkg.com</p></li>
+</ul>
+<p>Alternatively, you can specify a proxy user (usually a domain user with password),
+that is allowed to communicate via network. This can be easily achieved
+by setting two common environment variables: <code class="docutils literal notranslate"><span class="pre">HTTP_PROXY</span></code> and <code class="docutils literal notranslate"><span class="pre">HTTPS_PROXY</span></code>.
+These variables are automatically used by many open-source tools (like <code class="docutils literal notranslate"><span class="pre">conda</span></code>) if set correctly.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Windows</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://USER:PWD@proxy.company.com:PORT
+<span class="nb">set</span><span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>https://USER:PWD@proxy.company.com:PORT
+
+<span class="c1"># For Linux / MacOS</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://USER:PWD@proxy.company.com:PORT
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>https://USER:PWD@proxy.company.com:PORT
+</pre></div>
+</div>
+<p>In case you can communicate via HTTP, but installation with <code class="docutils literal notranslate"><span class="pre">conda</span></code> fails
+on connectivity problems to HTTPS servers, you can disable using SSL for <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Disabling SSL in communication is generally not recommended and involves potential security risks.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure npm to not use SSL</span>
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>ssl_verify<span class="w"> </span>False
+</pre></div>
+</div>
+<p>You can do a similar thing for <code class="docutils literal notranslate"><span class="pre">pip</span></code>.
+The approach here is to mark repository servers as trusted hosts,
+which means SSL communication will not be required for downloading Python libraries.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install pandas (without SSL)</span>
+pip<span class="w"> </span>install<span class="w"> </span>--trusted-host<span class="w"> </span>pypi.org<span class="w"> </span>--trusted-host<span class="w"> </span>files.pythonhosted.org<span class="w"> </span>pandas
+</pre></div>
+</div>
+<p>Using the tips from above, you can handle many network problems
+related to installing Python libraries.</p>
+<p>Many Jupyter extensions require having working <code class="docutils literal notranslate"><span class="pre">npm</span></code> and <code class="docutils literal notranslate"><span class="pre">jlpm</span></code> (alias for <code class="docutils literal notranslate"><span class="pre">yarn</span></code>) commands,
+which is required for downloading useful Jupyter extensions or other JavaScript dependencies. If <code class="docutils literal notranslate"><span class="pre">npm</span></code> cannot connect to its own repositories, you might see an error like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="s2">&quot;@jupyterlab/toc&quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">npm</span> <span class="n">package</span>
+</pre></div>
+</div>
+<p>You can set the proxy or registry used for npm with the following commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set proxy for NPM</span>
+npm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>proxy<span class="w"> </span>http://USER:PWD@proxy.company.com:PORT
+npm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>proxy<span class="w"> </span>https://USER:PWD@proxy.company.com:PORT
+
+<span class="c1"># Set default registry for NPM (optional, useful in case if common JavaScript libs cannot be found)</span>
+npm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>registry<span class="w"> </span>http://registry.npmjs.org/
+jlpm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>npmRegistryServer<span class="w"> </span>https://registry.yarnpkg.com/
+</pre></div>
+</div>
+<p>In case you can communicate via HTTP, but installation with <code class="docutils literal notranslate"><span class="pre">npm</span></code> fails
+on connectivity problems to HTTPS servers, you can disable using SSL for <code class="docutils literal notranslate"><span class="pre">npm</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Disabling SSL in communication is generally not recommended and involves potential security risk.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure npm to not use SSL</span>
+npm<span class="w"> </span><span class="nb">set</span><span class="w"> </span>strict-ssl<span class="w"> </span>False
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Get Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="starting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Starting JupyterLab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mamba">mamba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv">uv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">pip</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipenv">pipenv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-with-jupyterhub">Usage with JupyterHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-with-jupyverse">Usage with Jupyverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-browsers">Supported browsers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-problems">Installation problems</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.6.x/docs/source/getting_started/installation.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/getting_started/installation.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2026, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+    <p>
+        <a href="../privacy_policies.html">Privacy Policies</a>
+    </p>
+</div></div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

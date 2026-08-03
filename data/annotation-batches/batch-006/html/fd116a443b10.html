@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<script>
+		let pageUTM = ''
+		let pageMS = 0
+		let pageReturning = localStorage.getItem('firstVisit') ? true : false
+		let pageNamedTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+		let pageLang = navigator.language
+
+		let userAgent = window.navigator.userAgent, platform = window.navigator.platform,
+			macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+			windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+			iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+			pageOS = ''
+
+		if (macosPlatforms.includes(platform)) pageOS = 'Mac'
+		else if (iosPlatforms.includes(platform)) pageOS = 'iOS'
+		else if (windowsPlatforms.includes(platform)) pageOS = 'Windows'
+		else if (/Googlebot/.test(userAgent)) pageOS = 'bot'
+		else if (userAgent.includes("yandex") && userAgent.includes("bot")) pageOS = 'bot'
+		else if (/Android/.test(userAgent)) pageOS = 'Android'
+		else if (/Linux/.test(platform)) pageOS = 'Linux'
+
+		if (window.location.href.includes('?')) {
+			let params = (new URL(document.location)).searchParams
+			for (let [key, val] of params) {
+				if (key.toLowerCase() == 'utm_source') pageUTM = val
+				if (key.toLowerCase() == 'utm_medium' && pageUTM.length == 0) pageUTM = val
+				if (key.toLowerCase() == 'ref' && pageUTM.length == 0) pageUTM = val
+				if (key.toLowerCase() == 'referrer' && pageUTM.length == 0) pageUTM = val
+				if (key.toLowerCase() == 'ms') pageMS = val
+			}
+		}
+
+		let firstVisit = localStorage.getItem('firstVisit') ?? (new Date()).toISOString()
+		localStorage.setItem('firstVisit', firstVisit);
+
+		function checkin_tb(type, data = {}) {
+			if (type == 'load' && window.location.href.includes('#')) { return; }
+			if (pageOS == 'bot') return;
+			let path = window.location.pathname
+			if (path.endsWith('/')) path = path.slice(0, -1)
+			let payload = {
+				type: type, ms: pageMS, utm: pageUTM, referrer: document.referrer, ts: (new Date())*1,
+				returning: pageReturning, os: pageOS, tz: (new Date()).getTimezoneOffset(), timestamp: (new Date()).toISOString(), ntz: pageNamedTimezone, lang: pageLang,
+				url: window.location.href, path: path, firstVisit: firstVisit,
+				...data
+			}
+			fetch('https://silent-fire.blimps.workers.dev', {
+				method: 'POST', mode: 'no-cors', cache: 'no-cache',
+				headers: {'Content-Type': 'application/json'},
+				redirect: 'follow', body: JSON.stringify(payload)
+			})
+		}
+
+		/*function checkin(type, data = {}) {
+			if (type == 'load' && window.location.href.includes('#')) { return; }
+			if (pageOS == 'bot') return;
+			const formData  = new FormData()
+			let payload = {
+				type: type, ms: pageMS, utm: pageUTM, referrer: document.referrer, ts: (new Date())*1, addr: 'shottr#cc',
+				returning: pageReturning, gauid: gauid, os: pageOS, tz: (new Date()).getTimezoneOffset(), ntz: pageNamedTimezone, lang: pageLang
+			}
+			for (let attr in data) payload[attr] = data[attr]
+			formData.append('string', JSON.stringify(payload))
+
+			fetch('/api/checkin.php', {
+				method: 'POST', mode: 'no-cors', cache: 'no-cache', credentials: 'same-origin',
+				headers: {'Content-Type': 'form/multipart'},
+				redirect: 'follow', referrerPolicy: 'no-referrer',
+				body: formData
+			})
+		}
+		checkin("load")*/
+		checkin_tb("load")
+	</script>
+
+	<!-- script src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="5ced3fd2-4c65-439e-8ae0-34c4d091a99a" async></script -->
+	<script>
+		window.addEventListener("click", function(e) {
+			let elements = [e.target]
+			while (elements[elements.length-1].parentNode) elements.push(elements[elements.length-1].parentNode)
+			elements = elements.reduce((acc, el) => [...acc, ...Array.from(el.classList ?? [])], []).filter(el => el.startsWith("ga"))
+			// if (elements.length > 0) window.beam("/evt/" + elements[0].substr(2))
+			if (elements.length > 0) checkin_tb("click", {target: elements[0].substr(2)})
+		})
+	</script>
+
+	<title>Shottr – Screenshot Annotation App For Mac</title>
+
+	<link rel="canonical" href="https://shottr.cc">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="assets/favicon.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@shottr_cc">
+	<meta name="twitter:creator" content="@shottr_cc">
+	<meta name="twitter:title" content="Shottr">
+	<meta name="twitter:description" content="Free Mac screenshot app that allows you to zoom in, measure things and pick colors.">
+	<meta name="twitter:image" content="https://shottr.cc/assets/page-preview.jpg">
+	<meta property="twitter:player" content="https://shottr.cc/assets/shottr-demo-1-6.mp4">
+
+	<meta name="description" content="Shottr is a free macOS screenshot app with scrolling screenshots, OCR, annotation and measurement instruments.">
+	<meta name="image" content="https://shottr.cc/assets/page-preview.jpg">
+
+	<meta property="og:title" content="Shottr – screenshot app for pixel professionals">
+	<meta property="og:description" content="Shottr is a free macOS screenshot app with scrolling screenshots, OCR, annotation and measurement instruments.">
+	<meta property="og:image" content="https://shottr.cc/assets/page-preview.jpg">
+	<meta property="og:url" content="https://shottr.cc/">
+	<meta property="og:site_name" content="Shottr – screenshot app for pixel professionals">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:video" content="https://shottr.cc/assets/shottr-demo-1-6.mp4">
+	<meta property="og:type" content="website">
+
+	<!-- Schema.org for Google -->
+	<meta itemprop="name" content="Shottr – screenshot app for pixel professionals">
+	<meta itemprop="description" content="Shottr is a free macOS screenshot app with scrolling screenshots, OCR, annotation and measurement instruments.">
+	<meta itemprop="image" content="https://shottr.cc/assets/page-preview.jpg">
+
+	<script type="application/ld+json">{
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "Shottr",
+		"description": "Shottr is a free macOS screenshot app with scrolling screenshots, OCR, annotation and measurement instruments.",
+		"softwareVersion": "1.6.1",
+		"operatingSystem": "macOS 10.15 and higher",
+		"downloadUrl": "https://shottr.cc/dl/Shottr-1.6.2.dmg",
+		"applicationCategory": "productivity,design",
+		"fileSize": "1.4mb"
+	}</script>
+
+</head>
+<style>
+	@font-face {font-family: 'MuseoSlab'; src: url('assets/font.woff2') format('woff2'), url('assets/font.woff') format('woff');}
+																																																										   .t1 {#515C5E}
+	div {box-sizing: border-box;}
+
+	body {
+		padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;
+		font-family: Avenir, "Avenir Next", Century Gothic, "Trebuchet MS", sans-serif;
+		font-size: 16px; line-height: 23px; color: #3E413D;
+	}
+
+	textarea {font-family: Avenir, "Avenir Next", Century Gothic, "Trebuchet MS", sans-serif; font-size: 16px;}
+
+	h1 {font-family: 'MuseoSlab', sans-serif; text-align: center; font-weight: 500; font-size: 48px; line-height: 58px; }
+	h2 {
+		margin: 80px 0 60px 0;
+		font-family: 'MuseoSlab', sans-serif; text-align: center;
+		font-weight: 500; font-size: 32px; line-height: 1.25;
+	}
+	h3 {margin: 0; font-size: 1.19rem; font-weight: 500; line-height: 1.3; }
+
+	a.gray {color: #525960; text-underline-offset: 2px; text-decoration-color: rgba(0 0 0 / 20%);}
+	a.gray:hover {color: #323940; text-decoration-color: rgba(0 0 0 / 40%);}
+
+	.twitter-follow-button {
+		height: 28px; line-height: 28px; padding: 0 20px 0 36px; border-radius: 14px;
+		font-size: 14px; font-weight: 500; text-decoration: none;
+		background: #1B9BF0 no-repeat 10px 50% url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2072%2072%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h72v72H0z%22%2F%3E%3Cpath%20class%3D%22icon%22%20fill%3D%22%23fff%22%20d%3D%22M68.812%2015.14c-2.348%201.04-4.87%201.744-7.52%202.06%202.704-1.62%204.78-4.186%205.757-7.243-2.53%201.5-5.33%202.592-8.314%203.176C56.35%2010.59%2052.948%209%2049.182%209c-7.23%200-13.092%205.86-13.092%2013.093%200%201.026.118%202.02.338%202.98C25.543%2024.527%2015.9%2019.318%209.44%2011.396c-1.125%201.936-1.77%204.184-1.77%206.58%200%204.543%202.312%208.552%205.824%2010.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163%200%206.345%204.513%2011.638%2010.504%2012.84-1.1.298-2.256.457-3.45.457-.845%200-1.666-.078-2.464-.23%201.667%205.2%206.5%208.985%2012.23%209.09-4.482%203.51-10.13%205.605-16.26%205.605-1.055%200-2.096-.06-3.122-.184%205.794%203.717%2012.676%205.882%2020.067%205.882%2024.083%200%2037.25-19.95%2037.25-37.25%200-.565-.013-1.133-.038-1.693%202.558-1.847%204.778-4.15%206.532-6.774z%22%2F%3E%3C%2Fsvg%3E);
+		background-size: 20px;
+		color: #fff;
+	}
+	.twitter-follow-button:hover {background-color: #007DE1;}
+
+	header {
+		display: flex; flex-direction: row; justify-content: space-between; align-items: center;
+		height: 100px; width: 1040px;
+	}
+
+	header menu {display: flex; flex-direction: row;}
+	header menu a {
+		margin-left: 60px;
+		text-decoration: none; color: #3E413D; font-weight: 500;
+		line-height: 2rem; height: 2rem;
+		border-bottom: 3px solid transparent;
+	}
+	header menu a:first-child {margin-left: 0;}
+	header menu a:hover {border-bottom: 3px solid #FD6A33;}
+
+	header menu a svg {margin: 2px 0 0 0;}
+	header menu a:hover svg path {fill: #ff5624;}
+	header menu a.svg:hover {border-bottom-color: transparent;}
+
+	.hero {
+		padding: min(55px, calc(25px + 2.6vw)) 0 236px 0;
+		position: relative; display: flex; flex-direction: column; align-items: center; align-self: stretch;
+		/*background-image: radial-gradient(900px circle at 50% 100%, #FF9247 0%, #FF763A 57%, #FA5726 95%);*/
+		background: url(assets/bg-pattern.png) 50% 110% no-repeat, radial-gradient(900px circle at 50% 100%, #FF9247 0%, #FF763A 57%, #FA5726 95%) 50% 100%;
+		/*background: url(assets/bg-pattern.png) 50% 110% no-repeat, radial-gradient(900px circle at 50% 100%, #47B6FF 0%, #1A7CCC 95%) 50% 100%;*/
+		background-size: 1400px, auto;
+		overflow: hidden;
+	}
+
+	.hero h1 {
+		margin: 0;
+		width: min(710px, 90vw);
+		color: #FFFFFF; text-shadow: 0 2px 1px rgba(115,28,0,0.12), 0 4px 3px rgba(115,28,0,0.06);
+	}
+
+	.hero .animatedLine {position: absolute; margin-top: 58px;}
+
+	.hero .download {
+		margin: min(110px, calc(26px + 8vw)) 0 min(20px, calc(10px + 0.8vw)) 0;
+		display: flex; flex-direction: column; align-items: center;
+		flex: 0 0 78px; height: 78px; box-sizing: border-box; padding: 16px 66px 0 66px;
+		background-image: linear-gradient(180deg, #F5F5F5 0%, #E8E8E8 99%);
+		box-shadow: 0 40px 40px 0 rgba(145,41,0,0.20), 0 4px 8px -2px rgba(0,0,0,0.08), 0 1px 1px 0 rgba(0,0,0,0.20), inset 0 -1px 3px 0 rgba(0,0,0,0.10), inset 0 2px 1px 0 #FFFFFF;
+		border-radius: 39px;
+		text-decoration: none; cursor: pointer;
+		transition: box-shadow 120ms, transform 120ms;
+	}
+
+	.hero .download:hover {
+		transform: scale(1.01);
+		box-shadow: 0 45px 50px 0 rgba(145,41,0,0.3), 0 4px 8px -2px rgba(0,0,0,0.11), 0 1px 1px 0 rgba(0,0,0,0.30), inset 0 -1px 3px 0 rgba(0,0,0,0.10), inset 0 2px 1px 0 #FFFFFF;
+	}
+
+	.hero .download:active {
+		transform: scale(0.99);
+		box-shadow: 0 40px 40px 0 rgba(145,41,0,0.4), 0 4px 8px -2px rgba(0,0,0,0.11), 0 1px 1px 0 rgba(0,0,0,0.30), inset 0 -1px 3px 0 rgba(0,0,0,0.10), inset 0 2px 1px 0 #FFFFFF;
+	}
+
+	.hero .download b {
+		font-size: 1.25rem; font-weight: 900; letter-spacing: 0.125rem; color: #F85F30;
+		text-shadow: 0 1px 1px #FFFFFF; text-transform: uppercase;
+	}
+	.hero .download small {font-size: 0.8125rem; color: #838583;}
+
+	.hero .homebrew {
+		font-family: monospace;
+		color: #ffffff; font-weight: 500; margin: 0 0 0 0; opacity: 0.8; /*color: rgba(255, 255, 255, 0.5);*/
+		text-shadow: 0 0 2px rgba(200, 70, 0, 1);
+		background-color: rgba(240, 120, 60, 0.2); border-radius: 11px;
+	}
+
+	.hero .homebrew:hover {opacity: 1;}
+
+	.hero .homebrew b {font-weight: 500;  color: rgba(255, 255, 255, 0.8);}
+
+	.hero .releaseNotes {
+		color: #ffffff; font-weight: 500; margin: 0 0 0 0; opacity: 0.8; /*color: rgba(255, 255, 255, 0.5);*/
+		text-decoration-color: rgba(255 255 255 / 50%);
+		text-underline-offset: 3px;
+		text-shadow: 0 0 2px rgba(200, 70, 0, 0.1);
+		background-color: rgba(240, 120, 60, 0.2); border-radius: 11px;
+	}
+	.hero .releaseNotes:hover {opacity: 1;}
+
+
+	.preview {
+		/*display: flex;*/ font-size: 0; line-height: 0;
+		position: relative; margin-top: -190px;
+		/*background: #ececec url(assets/18-preview.jpg); background-size: contain;*/
+		background: #ececec url(assets/19-preview.jpg); background-size: contain;
+		box-shadow: 0 30px 50px -10px rgba(0, 0, 0, 0.3); border-radius: min(25px, 2.3vw);
+		width: 840px; aspect-ratio: 1680 / 1164;
+	}
+	.preview video {width: 840px; aspect-ratio: 1680 / 1164; border-radius: min(25px, 2.3vw); margin: 0; padding: 0; opacity: 0.005;}
+	.preview video:focus {outline: none;}
+
+	.preview .play-curtain {position: absolute; top: 0; left: 0; right: 0; bottom: 0; cursor: pointer;}
+	.preview .play-curtain .button {
+		position: absolute; top: 45%; left: 50%; width: 144px; height: 144px; margin: -72px 0 0 -72px; border-radius: 50%;
+		background-image: radial-gradient(circle at 50% 120%, #FF9247 0%, #FF763A 47%, #FA5726 86%);
+		transition: 100ms transform;
+	}
+	.preview .play-curtain .button { background: rgba(10, 46,73,0.70);  backdrop-filter: blur(6px); }
+	/* .preview .play-curtain .button { background: rgba(0,59,79,0.60);  backdrop-filter: blur(6px); } */  /* play button style override for backdrop demo */
+	.preview .button svg {position: absolute; top: 50%; left: 50%; margin: -29px 0 0 -18px;}
+	.preview .play-curtain:hover .button {transform: scale(1.04);}
+
+	.section-intro {
+		font-size: 1.19em; line-height: 1.5; text-align: center;
+		width: min(600px, 86vw); margin: min(120px, calc(4vw + 77px)) 0 0 0;
+	}
+
+	.section-about {
+		display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;
+		width: 1040px; margin: min(70px, calc(2vw + 50px)) 0 40px 0; padding: 40px 0 0 0;
+	}
+
+	.section-about .card {width: 293px; margin-bottom: 80px;}
+	.section-about img {width: 130px; height: 100px; margin-bottom: 22px;}
+	.section-about h3 {margin: 0 0 8px 0; font-size: 1.25rem; letter-spacing: -0.2px; color: #121412;}
+	.section-about p {margin: 0; font-size: 1rem;}
+
+	.section-tips {
+		align-self: stretch; display: flex; flex-direction: column; align-items: center;
+		margin: 0 0 20px 0; padding: 0 0 60px 0;
+		background: #F8F9F9 url(assets/pattern.svg) repeat 50% 0%;
+	}
+
+
+	.section-beta {
+		display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between;
+		width: min(800px, 92vw); margin: 80px 0 2px 0; padding: 20px 28px;
+		background-color: #f9f9f9; border-radius: 6px;
+	}
+	.section-beta .beta-text {}
+	.section-beta h2 {color: #F75523; font-size: 24px; line-height: 32px; margin: 0; text-align: left;}
+
+	.section-beta .beta-button {flex: 0 0 256px; margin: 4px 0 0 24px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+	.section-beta .beta-button a.download {
+		display: flex; flex-direction: column; padding: 12px 0;
+		max-width: 340px; min-width: 256px;
+		border-radius: 4px; background-image: linear-gradient(1deg, #FC642E 0%, #FF7C3C 100%); color: #FFFFFF;
+		text-decoration: none; font-size: 20px; line-height: 24px; letter-spacing: 0.7px; font-weight: 500;
+		text-align: center;
+		transition: transform 200ms;
+	}
+	.section-beta .beta-button a.download:hover {transform: scale(1.01);}
+	.section-beta .beta-button a small {
+		display: block; font-size: 13px; line-height: 20px; letter-spacing: 0.2px; opacity: 0.7;
+	}
+
+	.section-about {
+		display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-content: center;
+		width: 1000px; margin: 60px 0 40px 0; padding: 40px 0 0 0;
+	}
+
+	.section-about h3 {margin: 0 0 8px 0; font-size: 1.25rem; letter-spacing: -0.2px; color: #121412;}
+	.section-about p {margin: 0; line-height: 1.625rem;}
+
+
+	/*.section-tips h2 {margin-top: 80px;}*/
+
+	.tips-slider {
+		display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;
+		max-width: 1040px;
+		padding-bottom: 20px;
+		gap: 40px;
+	}
+
+	.spacer {flex: 0 0 20px; display: none;}
+
+	a.button {
+		box-sizing: border-box; line-height: 40px; padding: 0 20px;
+		color: #525960; text-decoration: none;
+		border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 50px;
+	}
+
+	a.button:hover {border: 1px solid rgba(0, 0, 0, 0.25);}
+
+	.tipbox {
+		flex: 0 0 310px;
+		margin-bottom: 40px;
+
+		height: 370px; padding: 28px 32px;
+		background: #FFFFFF; box-shadow: 0 10px 20px -4px rgba(0,0,0,0.05), 0 2px 4px 0 rgba(0,0,0,0.05); border-radius: 6px;
+	}
+	.tipbox:first-child {margin-left: 0;}
+
+	.tipbox.hidden {display: none;}
+
+	.tipbox h3 {height: 52px; margin-bottom: 16px; text-align: center;}
+	.tipbox p {}
+	.tipbox b, .card b {position: relative; top: -1px; padding: 0 4px; text-transform: uppercase; font-weight: 600; font-size: 12px; line-height: 19px; height: 23px; border: 1px solid #bfc3bc; border-radius: 3px;}
+
+	.section-faq {width: min(800px, 86vw);}
+	.section-faq .question {margin: 0 0 10px 0;}
+	.section-faq .answer {margin: 0 0 40px 0;}
+
+	.section-releasenotes {padding-bottom: 100px;}
+	.section-releasenotes a {color: #525960;}
+	.section-releasenotes .table {
+		display: grid; grid-template-columns: 180px 65px 100fr; grid-row-gap: 18px;
+		width: min(800px, 86vw);
+	}
+	.section-releasenotes .table .colDate, .section-releasenotes .table .colVersion {font-weight: 500;}
+	.section-releasenotes .hiddenChangeLog {display: none;}
+
+	ul {margin: 0; padding: 0 0 0 13px; list-style-type: '– ';}
+
+	footer {
+		flex: 0 0 80px; align-self: stretch; gap: 40px;
+		display: flex; flex-direction: row;
+		padding: 0 40px;
+		justify-content: space-between; align-items: center;
+		font-size: 0.875rem;
+		background-color: #484A48; color: rgba(255, 255, 255, 0.5);
+		line-height: 1.5rem;
+	}
+	
+	footer.left {padding-top: 0.75rem; padding-bottom: 0.5rem;}
+
+	footer a {text-decoration: none; color: rgba(255, 255, 255, 0.5); border-bottom: 1px solid rgba(255, 255, 255, 0.2);}
+	footer a:hover {color: rgba(255, 255, 255, 0.8); border-bottom-color: rgba(255, 255, 255, 0.5);}
+	footer a.svg {border-bottom: none; font-size: 0; line-height: 0; margin-top: 2px;}
+	footer a svg path {fill: rgba(255, 255, 255, 0.4); margin-top: 14px;}
+	footer a:hover svg path {fill: rgba(255, 255, 255, 0.7);}
+
+
+	.modalWall {
+		position: fixed; top: 0; left: 0; bottom: 0; right: 0; background-color: rgba(0, 0, 0, 0.15);
+		display: none; align-items: center; justify-content: center;
+		visibility: hidden;
+	}
+	.popup {
+		display: flex; flex-direction: column; align-items: center;
+		width: min(520px, 90vw); margin-top: -10vh; padding: 0 30px 0 30px;
+		background-color: #fff; border-radius: 10px;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 40px 60px -10px rgba(0, 0, 0, 0.2);
+		opacity: 0; transform: scale(0.9) translateY(-20px); transition: opacity 300ms, transform 150ms;
+	}
+	.popup h2 {margin: 32px 0 16px; max-width: 360px;}
+	.popup p {max-width: 340px; text-align: center;}
+	.popup a.button {margin: 40px 0 40px;}
+	.modalWall.shown {visibility: visible; display: flex;}
+	.modalWall.shown .popup {opacity: 1; transform: scale(1) translateY(0);}
+
+
+	@media only screen and (max-width: 1180px) {
+		header {width: 86vw;}
+		header menu {display: none;}
+		.section-about {width: 86vw;}
+		.section-about .card {width: 39vw; margin-bottom: calc(40px + 3vw);}
+
+		.hero {
+			/*background: url(assets/bg-pattern.png) 50% 110% no-repeat, radial-gradient(900px circle at 50% 100%, #47B6FF 0%, #1A7CCC 95%) 50% 100%;*/
+			background: url(assets/bg-pattern.png) 50% 100% no-repeat, radial-gradient(farthest-corner circle at 50% 100%, #FF9247 0%, #FF763A 57%, #FA5726 95%) 50% 100%;
+			background-size: 1400px, auto;
+		}
+		.section-tips {padding-bottom: 0;}
+		.tips-slider {padding-left: 60px; flex-wrap: nowrap; max-width: 100%; overflow-x: scroll;}
+		.tips-slider .tipbox {margin-right: 40px;}
+		.tips-slider .hidden {display: block;}
+		.tips-slider .spacer {display: block;}
+		#tipsShowMore {display: none;}
+		.tips-slider::-webkit-scrollbar {height: 28px; background: transparent; border: 0 none transparent;}
+		.tips-slider::-webkit-scrollbar-thumb {background-color: #DEDFDD; border-radius: 14px; border: 10px solid #f8f9f9;}
+	}
+
+	@media only screen and (max-width: 889px) {
+		.preview {width: 92vw; margin-top: -21.4vw;}
+		.preview video {width: 92vw;}
+		.hero {padding-bottom: calc(30px + 27.7vw);
+			background-size: 157vw, auto;
+
+		}
+		.hero .animatedLine {margin-top: calc(4.2vw + 21.1px);}
+	}
+
+	@media only screen and (max-width: 750px) {
+		header {justify-content: center;}
+		.section-about {flex-direction: column; align-items: center;}
+		.section-about .card {width: 86vw; max-width: 360px;}
+		.hero .animatedLine {margin-top: 46px;}
+		.hero h1 {font-size: calc(4vw + 18px); line-height: 1.22;}
+		.hero h1.long {font-size: calc(6.3vw);}
+
+		.section-releasenotes .table {grid-template-columns: 180px 1fr; grid-row-gap: 0;}
+		.section-releasenotes .table .colText {grid-column-start: 1; grid-column-end: 3; padding-bottom: 18px;}
+
+		.section-beta {flex-direction: column; margin-top: 15vw;}
+		.section-beta .beta-button {flex: 1 1 auto; margin: 20px 0 0 0;}
+	}
+
+	@media only screen and (max-width: 600px) {
+		h2 {font-size: calc(3.3vw + 12px); margin: 13.3vw 0 10vw 0;}
+		.hero h1 {font-size: 7.3vw; line-height: 1.22;}
+		.hero .animatedLine {margin-top: 7.7vw;}
+
+		.preview .play-curtain .button {transform: scale(0.5);}
+		.preview .play-curtain:hover .button {transform: scale(0.52);}
+	}
+
+	#line1 {animation: line1 15s infinite;}
+	#line2 {animation: line2 15s infinite;}
+	#line3 {animation: line3 15s infinite;}
+	#line4 {animation: line4 15s infinite;}
+	@keyframes line1 {
+		0% {transform: none; opacity: 1;}
+		8% {transform: none; opacity: 1;}
+		10% {transform: translateX(-100px); opacity: 0;}
+		98% {transform: translateX(100px); opacity: 0;}
+		100% {transform: none; opacity: 1;}
+	}
+	@keyframes line2 {
+		0% {opacity: 0;}
+		8% {transform: translateX(100px); opacity: 0;}
+		10% {transform: none; opacity: 1;}
+		18% {transform: none; opacity: 1;}
+		20% {transform: translateX(-100px); opacity: 0;}
+		100% {transform: translateX(-100px); opacity: 0;}
+	}
+	@keyframes line3 {
+		0% {opacity: 0;}
+		18% {transform: translateX(100px); opacity: 0;}
+		20% {transform: none; opacity: 1;}
+		28% {transform: none; opacity: 1;}
+		30% {transform: translateX(-100px); opacity: 0;}
+		100% {transform: translateX(-100px); opacity: 0;}
+	}
+	@keyframes line4 {
+		0% {opacity: 0;}
+		28% {transform: translateX(100px); opacity: 0;}
+		36% {transform: none; opacity: 1;}
+		98% {transform: none; opacity: 1;}
+		100% {transform: translateX(-100px); opacity: 0;}
+	}
+</style>
+<body>
+
+<!--<a href="https://www.producthunt.com/posts/shottr" style="text-align: center; padding: 10px 20px; box-sizing: border-box; width: 100%;line-height: 20px; background-color: #F75524; color: #FFFFFF; font-weight: 600; font-size: 16px; text-decoration: none;">
+	Shottr is live on <u>ProductHunt</u>. I need your support!
+</a>-->
+
+<!--<a href="/purchase.html?utm_source=hero" style="text-align: center; padding: 10px 20px; box-sizing: border-box; width: 100%;line-height: 20px; background-color: #3E5F78; color: #FFFFFF; font-weight: 500; font-size: 16px; text-decoration: none; text-decoration: underline;">
+	Black Friday sale is on, now through Cyber Monday
+</a>-->
+
+<header>
+	<img src="assets/logo.png" width="180" alt="">
+	<menu>
+		<a href="/purchase.html">Buy Shottr</a>
+		<a href="#section-survey" class="gaSectionSurvey">Survey</a>
+		<a href="#section-tips" class="gaSectionTips">Tips & Tricks</a>
+		<a href="#section-faq" class="gaSectionFAQ">FAQ</a>
+		<a href="#section-releasenotes" class="gaSectionReleases">Release Notes</a>
+		<a class="svg" href="https://twitter.com/shottr_cc" class="gaGoToTwitterHeader"><svg width="22" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.894a8.294 8.294 0 01-2.357.636 4.058 4.058 0 001.804-2.235 8.299 8.299 0 01-2.605.98A4.127 4.127 0 0014.847 5c-2.65 0-4.596 2.433-3.998 4.959a11.71 11.71 0 01-8.457-4.22 4.007 4.007 0 001.27 5.393 4.135 4.135 0 01-1.858-.505c-.045 1.87 1.318 3.622 3.291 4.011-.578.154-1.21.19-1.853.07.521 1.604 2.036 2.771 3.833 2.804A8.344 8.344 0 011 19.185 11.75 11.75 0 007.29 21c7.618 0 11.923-6.334 11.663-12.015A8.283 8.283 0 0021 6.895z" fill="#3E413D" fill-rule="nonzero"/></svg></a>
+	</menu>
+</header>
+
+<div class="hero">
+	<!--<h1>Screenshot measurement and annotation app for Mac</h1>-->
+	<h1>Screenshot tool for</h1>
+	<h1 class="animatedLine" id="line1">designers</h1>
+	<h1 class="animatedLine" id="line2">front-end engineers</h1>
+	<h1 class="animatedLine" id="line3">mobile developers</h1>
+	<h1 class="animatedLine long" id="line4">those who care about pixels</h1>
+
+	<a href="/dl/Shottr-1.9.1.dmg" class="download gaDownload" id="downloadButton">
+		<b>Download</b>
+		<small>Shottr for Mac, v1.9.1, 2.3mb</small>
+	</a>
+<!--
+	<a href="/dl/Shottr-1.6.2.dmg" class="download gaDownload" id="downloadButton">
+		<b>Download</b>
+		<small>Shottr for Mac, v1.6, 1.3mb</small>
+	</a>
+-->
+	<!-- <a class="releaseNotes" href="newversion.html">v1.9.1 is out, check release notes!</a> --> 
+	<a class="releaseNotes" href="purchase.html">Check prices</a>
+	<!--a class="releaseNotes" href="purchase.html">Check out Black Friday sale</a-->
+	<!-- a class="releaseNotes" href="purchase.html">The price goes up on Oct 14th. Grab it for cheap!</a -->
+	<!--<div class="homebrew">or $ brew install shottr</div>-->
+</div>
+
+<div class="preview">
+	<video id="demo" class="" controls loop>
+		<!--<source src="assets/v1-8-demo.mp4" type="video/mp4">-->
+		<source src="assets/shottr-new-in-1-9.mp4" type="video/mp4">
+	</video>
+	<div class="play-curtain gaPlay" id="play"><div class="button">
+		<svg width="47" height="57" xmlns="http://www.w3.org/2000/svg"><path d="M7.666.83l36.998 23.316a5 5 0 010 8.46L7.666 55.922A5 5 0 010 51.692V5.06A5 5 0 017.666.83z" fill="#FFF" fill-rule="evenodd"/></svg>
+	</div></div>
+</div>
+
+<div class="section-intro">
+	<!--Shottr is a small, fast, human-sized screenshot app built for those who care about pixels. It was crafted with Swift and optimized for Apple silicon.-->
+	Shottr is a tiny and fast mac screenshot tool with annotations, beautiful backgrounds, scrolling screenshots and S3 upload capabilities. Built with love and optimized for Apple silicon.
+</div>
+
+
+<style>
+	.section-plugins {
+		display: flex; flex-direction: row; flex-wrap: wrap; gap: 60px;
+		width: min(80vw, 1040px); margin: min(70px, calc(2vw + 50px)) 0 40px 0; padding: 40px 0 0 0;
+	}
+	.section-plugins .banner {
+		display: flex; flex-direction: column;
+		padding: 24px 20px 24px 135px;
+		box-sizing: border-box; flex: 1 0 420px; position: relative; border-radius: 10px; color: #FFF;
+		text-decoration: none;
+	}
+	.section-plugins .banner:hover { box-shadow: 0 0 0 2px #fff, 0 0 0 10px rgba(0 0 0 / 10%); }
+	.section-plugins .banner:hover .logo { transform: scale(1.02); }
+
+	.section-plugins .banner .logo { transition: transform 66ms; }
+
+	.section-plugins .banner p { margin: 0; line-height: 24px;}
+	.section-plugins .raycast.banner p.large { margin: 0; line-height: 24px; color: #FF6362; font-weight: 600; font-size: 20px;}
+	.section-plugins .alfred.banner p.large { margin: 0; line-height: 24px; font-weight: 600; font-size: 20px;}
+	.section-plugins .banner p.small { opacity:0.8; }
+
+	.section-plugins .raycast.banner {background: #2D3134 url(assets/raycast-bg.jpg); background-size: cover;}
+	.section-plugins .raycast.banner .logo {width: 104px; height: 104px; position: absolute; top: -22px; left: 15px; background: url(assets/raycast-logo.png); background-size: 104px;}
+
+	.section-plugins .alfred.banner {background: #8236AE url(assets/alfred-bg.jpg); background-size: cover; padding-left: 155px; }
+	.section-plugins .alfred.banner .logo {width: 117px; height: 97px; position: absolute; top: -18px; left: 20px; background: url(assets/alfred-logo.png); background-size: 117px;}
+
+	@media only screen and (max-width: 480px) {
+		.section-plugins .banner { padding: 86px 24px 20px 24px; }
+		.section-plugins .alfred.banner { padding: 90px 24px 20px 24px; }
+	}
+
+</style>
+<!--div class="section-plugins">
+	<a class="raycast banner gaRaycast" href="https://google.com">
+		<div class="logo"></div>
+		<p class="large">Shottr + Raycast</p>
+		<p class="small">Get Raycast Extension for Shottr</p>
+	</a>
+	<a class="alfred banner gaAlfred" href="https://google.com">
+		<div class="logo"></div>
+		<p class="large">Shottr + Alfred</p>
+		<p class="small">Alfred Workflow by Nikola Stojkovic</p>
+	</a>
+</div-->
+
+<!--div class="section-beta">
+	<div class="beta-text">
+		<h2>Shottr Beta</h2>
+		New version has customizable hotkeys, scrolling screenshots, resizable main window and a bunch of smaller UI improvements.
+	</div>
+	<div class="beta-button">
+		<a href="/dl/Shottr-1.4.9-beta.dmg" class="download gaDownloadBeta">
+			<b>Download Beta</b>
+			<small>For MacOS 10.15 and up</small>
+		</a>
+	</div>
+</div-->
+
+<!--div class="section-beta">
+	<div class="beta-text">
+		<h2>macOS 15 Beta</h2>
+		If you have a problem running Shottr<br>on an unstable macOS version
+	</div>
+	<div class="beta-button">
+		<a href="/kb/macos_beta/" class="download">
+			<b>macOS Beta fix</b>
+			<small>It's this time of year, again</small>
+		</a>
+	</div>
+</div-->
+
+
+<div class="section-about" id="section-about">
+	<div class="card">
+		<img src="assets/feature-speed.svg" alt="Lightweight and Fast">
+		<h3>Designed to be lightweight</h3>
+		<p>Shottr is a tiny (2.3mb dmg) native app optimized for Apple Silicon. It takes only 17ms to grab a screenshot, and ~165ms to show it to you. <!-- You can take a screenshot, press Cmd+S and save it before the default macOS preview box would even show up.--></p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-backdrop.svg" alt="Beautiful Backgrounds">
+		<h3>Beautiful Backgrounds</h3>
+		<p>Make your screenshots stand out with gradients backgrounds, shadows and rounded corners.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-scrolling.svg" alt="Scrolling screenshots">
+		<h3>Scrolling Screenshots on Mac</h3>
+		<p>Take a screenshot of a long web page or capture conversation in a chat. Any app, any window.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-erase.svg" alt="Pixelate or remove objects">
+		<h3>Pixelate or remove objects</h3>
+		<p>Hide parts of your screen behind pixelated curtain, or remove sensitive information as if it was never there. Text mode hides text without corrupting anything else.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-ocr.svg" alt="Screenshot Text Recognition (OCR)">
+		<h3>Text recognition (OCR) & QR</h3>
+		<p>Came by a text that won’t select? Press a hotkey and select an area — Shottr will parse the text and copy it to the clipboard. OCR feature also reads QR codes.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-combine.svg" alt="Combine Screenshots">
+		<h3>Combine Screenshots</h3>
+		<p>Take multiple screenshots and put them on the same canvas using the Add Capture button on the toolbar.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-resize.svg" alt="Resize Screenshots">
+		<h3>Resize Screenshots</h3>
+		<p>Make your screenshots bigger or smaller, right in the app (click on the image size in the upper right corner).</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-pin.svg" alt="Pin Screenshots">
+		<h3>Pin Screenshots</h3>
+		<p>Pin images as floating always-on top borderless windows. Convenient for keeping references, or as a temporary screenshots storage.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-annotate.svg" alt="Screenshot Annotation">
+		<h3>Markup screenshots</h3>
+		<p>Add text, freehand drawings, highlights, spotlights and other visual effects to your drawings.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-overlay.svg" alt="Overlay Images">
+		<h3>Overlay Images</h3>
+		<p>Paste images on top of your screenshots. Make overlays semi-transparent to highlight the differences, or generate two-frame before/after animations.</p>
+	</div>	
+	<div class="card">
+		<img src="assets/feature-mesaure.svg" alt="Screen Ruler">
+		<h3>Use it as a Screen Ruler</h3>
+		<p>Press <b>↑</b> or <b>↓</b> key and move your mouse to measure vertical size, <b>←</b> or <b>→</b> for horizontal size. Click to imprint the measurement on the screenshot.</p>
+	</div>
+	<div class="card">
+		<img src="assets/feature-save.svg" alt="Unclutter your desktop">
+		<h3>Unclutter your desktop</h3>
+		<p>Select a dedicated folder to save screenshots on <b>⌘</b> <b>s</b>. Great for purchase receipts, reminders, archive items, random images, etc.</p>
+	</div>
+	<div class="card" style='margin-left: auto; margin-right: auto;'>
+		<img src="assets/feature-zoom.svg" alt="Screen Magnifier">
+		<h3>Zoom in on your pixels</h3>
+		<p>Think of Shottr as your digital magnifying glass. If you need to have a closer look at something, take a screenshot and zoom in.</p>
+	</div>
+	<div class="card" style='margin-right: auto;'>
+		<img src="assets/feature-color.svg"  alt="Screen color picker">
+		<h3>Color picker</h3>
+		<p>Take a screenshot, zoom in, move your mouse over the pixel and press the <b>TAB</b> key to copy color under the cursor.</p>
+	</div>
+<!-- 	<div class="card"> </div> -->
+</div>
+
+<style>
+	.section-survey {margin: 0 0 120px 0; display: flex; flex-direction: column; align-items: center;}
+	.section-survey h2 {margin-top: 0;}
+
+	.survey-finish {
+		display: none;
+		box-sizing: border-box; width: 86vw; max-width: 800px;
+		padding: 24px 32px;
+		background-color: #f8f9f9; border-radius: 8px; text-align: center;
+	}
+
+	.survey-form {display: flex; flex-direction: column; align-items: center;}
+
+	.survey-options {display: flex; gap: 30px; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 86vw; max-width: 1040px;}
+	.survey-options .box {
+		flex: 0 1 237px;
+		box-sizing: border-box; min-height: 86px; padding: 16px;
+		color: #3E413D; text-decoration: none; font-size: 1rem; line-height: 25px;
+		border: 1px solid #E8E8E8; border-radius: 8px; text-align: center; vertical-align: center;
+		cursor: pointer;
+		transition: transform 120ms cubic-bezier(1,3.0,.65,.99), border-color 100ms;
+	}
+
+	.survey-options .voted {font-weight: 500; color: #007DE1; border-color: #0093FF; box-shadow: inset 0 0 0 1px #0093FF;}
+	.survey-options .voted:hover {border-color: #0093FF; box-shadow: inset 0 0 0 1px #0093FF;}
+
+	.survey-options :hover {border-color: #b0b0b0;/* box-shadow: inset 0 0 0 0.5px #b0b0b0;*/}
+	.survey-options :active {transform: scale(0.99); transition: transform 20ms;}
+
+	textarea.survey-suggestion {display: none; margin: 30px 0 0 0; box-sizing: border-box; padding: 6px 8px; border-color: #0093FF; box-shadow: inset 0 0 0 1px #0093FF; border-radius: 8px; width: 86vw; max-width: 600px; height: 86px;}
+	textarea.survey-suggestion:placeholder-shown {border-color: #E8E8E8; box-shadow: none;}
+	textarea.survey-suggestion:focus {outline: none; }
+	textarea.survey-suggestion::placeholder {color: #999999;}
+
+	.survey-submit {
+		display: none; margin: 30px 0 0 0; border: 0 none; padding: 14px 30px;
+		font-size: 13px; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase;
+		border-radius: 50px;
+		color: #FFFFFF; background-image: radial-gradient(circle at 50% -60%, #FF9247 0%, #FF763A 47%, #FA5726 86%);
+		transition: background-color 200ms, transform 100ms; cursor: pointer;
+	}
+	.survey-submit:hover {/*background-color: #eaeaea;*/ transform: scale(1.02);}
+	.survey-submit:active {background-color: #e6e6e6; transform: scale(0.96);}
+
+	@media only screen and (max-width: 600px) {
+		.survey-options {gap: 14px;}
+		.survey-options .box {flex: 1 0 86vw; padding: 12px 16px; min-height: auto;}
+	}
+</style>
+
+<!-- old survey
+<div class="section-survey" id="section-survey">
+	<h2>What feature should I build next?</h2>
+	<div class="survey-finish" id="survey-finish">
+		Thank you for taking time to answer our question! I carefully consider every suggestion. Follow Shottr_cc on Twitter to be the first to know when your suggestion is implemented.
+		<br><br><a href="https://twitter.com/intent/user?screen_name=shottr_cc" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @shottr_cc</a>
+	</div>
+	<div class="survey-form">
+		<div class="survey-options">
+			<div class="box survey-vote">Text bubbles with multiple pointy arrows</div>
+			<div class="box survey-vote">Font Recognition</div>
+			<div class="box survey-vote">Video or GIF recordings</div>
+			<div class="box survey-vote">Upload image to iCloud</div>
+			<div class="box survey-vote">Screenshots organizer</div>
+			<div class="box survey-vote">Screenshot name template</div>
+			<div class="box survey-vote">Hide desktop icons</div>
+			<div class="box survey-text">Suggest your feature</div>
+		</div>
+		<textarea id="survey-suggestion" class="survey-suggestion" placeholder="Suggest your feature"></textarea>
+		<button id="survey-submit" class="survey-submit gaSurvey">Submit</button>
+	</div>
+</div>
+-->
+
+<!-- new survey -->
+<div class="section-survey" id="section-survey">
+	<h2 style="margin-bottom: 0;">What feature should I build next?</h2>
+	<p style="margin: 16px 0 40px 0;">(Check the <a href="/request/" class="gray">Feature Request Form</a> for the other popular requests)</p>
+	<div class="survey-finish" id="survey-finish">
+		Thank you for taking time to answer our question!
+	</div>
+	<div class="survey-form">
+		<div class="survey-options" id="survey-options-new"></div>
+		<button id="survey-submit-new" class="survey-submit gaSurvey">Submit</button>
+	</div>
+</div>
+<script>
+(async function() {
+	const res = await fetch('/request/epAdmin.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({action: 'random-tickets'})
+	});
+	const data = await res.json();
+	if (!data.ok || !data.tickets) return;
+
+	const container = document.getElementById('survey-options-new');
+	data.tickets.forEach(ticket => {
+		const box = document.createElement('div');
+		box.className = 'box survey-vote';
+		box.dataset.tid = ticket.tid;
+		box.textContent = ticket.title;
+		container.appendChild(box);
+	});
+
+	document.addEventListener('click', function(evt) {
+		if (evt.target.classList.contains('survey-vote') && evt.target.closest('#section-survey')) {
+			evt.target.classList.toggle('voted');
+			const anyVoted = document.querySelectorAll('#survey-options-new .voted').length > 0;
+			document.getElementById('survey-submit-new').style.display = anyVoted ? 'block' : 'none';
+			evt.stopPropagation();
+			return false;
+		}
+
+		if (evt.target.id === 'survey-submit-new') {
+			const votes = [];
+			const context = [];
+			document.querySelectorAll('#survey-options-new .voted').forEach(el => {
+				votes.push(parseInt(el.dataset.tid));
+			});
+			document.querySelectorAll('#survey-options-new .survey-vote').forEach(el => {
+				context.push(parseInt(el.dataset.tid));
+			});
+
+			fetch('/request/index.php', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({email: null, votes, ideas: [], context})
+			});
+
+			document.querySelector('#section-survey .survey-form').style.display = 'none';
+			document.getElementById('survey-finish').style.display = 'block';
+		}
+	});
+})();
+</script>
+<!-- /new survey -->
+
+<style>
+	.section-email {max-width: 86vw; padding: 0; margin: 0 0 100px 0;}
+	.section-email h2 {margin: 0 0 24px 0;}
+	.section-email p {text-align: center;}
+	.section-email #subscriptionForm {
+		display: flex; flex-direction: row; gap: 20px; margin: 0; align-items: start; justify-content: center;
+		background-color: #f8f9f9; border-radius: 6px; padding: 20px 32px;
+	}
+	.section-email #subscriptionThankyou {display: none; text-align: center; background-color: #f8f9f9; border-radius: 6px; padding: 20px 32px;}
+	.section-email input {
+		width: min(300px, 80vw);
+		box-sizing: border-box; padding: 8px 10px; border: 1px solid #E8E8E8; border-radius: 5px;
+		font-size: 16px; line-height: 24px; font-family: Avenir, "Avenir Next", Century Gothic, "Trebuchet MS", sans-serif; color: #3E413D;
+	}
+	.section-email button {
+		max-width: 100px;
+		margin: 0; border: 0 none; padding: 14px 24px;
+		font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
+		border-radius: 50px;
+		color: #FFFFFF; background-image: radial-gradient(circle at 50% -60%, #FF9247 0%, #FF763A 47%, #FA5726 86%);
+		transition: background-color 200ms, transform 100ms; cursor: pointer;
+	}
+	.section-email input:focus { outline: none; border-color: #0093FF; box-shadow: inset 0 0 0 1px #0093FF;}
+</style>
+<div class="section-email" id="section-email">
+	<h2>Get Shottr Updates</h2>
+	<div id="subscriptionForm">
+		<input type="text" id="subscriptionEmail" value="" placeholder="Email"><button id="submitEmail" class="gaSubscribe">Send</button>
+	</div>
+	<div id="subscriptionThankyou">Thank you! I will be discreet, it's a promise.</div>
+	<p id="subscriptionText">Don't worry, I'm too lazy for spam<!--don't have an annoying marketing team--></p>
+</div>
+<script>
+	window.addEventListener('click', function(evt) {
+		if (evt.target.id == 'submitEmail') {
+
+			let email = document.getElementById('subscriptionEmail').value.trim()
+
+			const formData  = new FormData()
+			formData.append('email', email)
+			formData.append('topic', 'auto: email')
+			formData.append('message', email)
+
+			fetch('/api/feedback.php', {
+				method: 'POST', mode: 'no-cors', cache: 'no-cache', credentials: 'same-origin',
+				headers: {'Content-Type': 'form/multipart'},
+				redirect: 'follow', referrerPolicy: 'no-referrer',
+				body: formData
+			})
+
+			document.getElementById('subscriptionForm').style.display = 'none'
+			document.getElementById('subscriptionText').style.display = 'none'
+			document.getElementById('subscriptionThankyou').style.display = 'block'
+			return false;
+		}
+	})
+</script>
+
+
+	<div class="section-tips" id="section-tips">
+	<h2>Tips and Tricks</h2>
+	<div class="tips-slider">
+		<div class="tipbox">
+			<h3>Quick zoom on the selection</h3>
+			<p>
+				Press <b>cmd</b> + <b>2</b> to quickly zoom on the selected region.
+				<br><br>
+				Other helpful shortcuts:<br>
+				<b>Q</b> – Zoom on the top left corner of the selection.<br>
+				<b>W</b> – Zoom on the bottom right corner of the selection.<br>
+				<b>cmd</b> + <b>1</b> – Zoom to fit.<br>
+				<b>cmd</b> + <b>0</b> – Zoom to 100%.<br>
+				<b>cmd</b> + <b>+</b> / <b>–</b> – Zoom in / out.
+			</p>
+		</div>
+		<div class="tipbox">
+			<h3>Crop the image</h3>
+			<p>
+				Just select the area you would like to crop and hit <b>Enter</b>. It's that simple!
+			</p>
+		</div>
+		<div class="tipbox">
+			<h3>Quickly select monotone objects</h3>
+			<p>
+				If you want to select a monotone object, to check its size or to crop it, hold <b>⌘</b> and click on it.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Smart selection mode</h3>
+			<p>
+				Press <b>A</b> after you selected an area to auto-adjust selection.
+				Hold <b>⌥</b> while selecting to see the instant preview of what the selection will adjust to.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Copy text color</h3>
+			<p>
+				Move your mouse over a line of text and press <b>Shift</b> + <b>TAB</b>. No need to be precise, the darkest pixel of the 20×20px area will be copied.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Copy average color</h3>
+			<p>
+				Select an area and press C to copy average color of the area.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Measuring objects on retina display</h3>
+			<p>
+				All sizes on Retina screens are measured in logical (non-retina) pixels. If you want to see sizes in physical (retina) pixels, click on the dimension box at the top right corner.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>How to enlarge the screenshot</h3>
+			<ol>
+				<li>Make a screenshot.</li>
+				<li>Zoom in.</li>
+				<li>Make a screenshot of the zoomed area.</li>
+				<li>Crop.</li>
+			</ol>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Quick zoom in</h3>
+			<p>
+				Press <b>Z</b> and click on the screenshot – Shottr will zoom in on that spot.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Pan with the mouse</h3>
+			<p>
+				Drag with the right mouse button to move the screenshot around. <br><br> You can also press Space and use the left button.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Manipulate selection with the keyboard</h3>
+			<p>
+				<b>Arrows</b> – Nudge selection (1px)<br>
+				<b>Shift</b> + <b>Arrows</b> – Nudge (10px)<br>
+				<b>Cmd</b> + <b>Arrows</b> – Resize (1px)<br>
+				<b>Cmd</b> + <b>Shift</b> + <b>Arrows</b> – Resize (10px)<br>
+				<b>[</b>, <b>]</b> – Enlarge selection by 1px on each side.<br>
+				<b>Shift</b> + <b>[</b>, <b>]</b> – Enlarge by 10px.
+			</p>
+		</div>
+		<div class="tipbox hidden">
+			<h3>Measure distance between objects</h3>
+			<p>
+				Move your mouse in between two objects on a screenshot and press an arrow key – left or right for horizontal distance, up or down for vertical.
+			</p>
+		</div>
+		<div class="spacer"></div>
+	</div>
+	<a href="#" id="tipsShowMore" class="button gaShowMoreTips" onclick="document.querySelectorAll('.tipbox.hidden').forEach(el => el.classList.remove('hidden')); this.style.display = 'none'; return false;">Show More</a>
+</div>
+
+<div class="section-faq" id="section-faq">
+	<h2>Frequently Asked Questions</h2>
+
+	<h3 class="question">Is Shottr free?</h3>
+	<div class="answer">
+		Shottr can be used for free for as long as you want. Most of its features are available to free users; the main caveat is that the app will ask you to consider buying it every once in a while. Shottr generally provides a better overall experience in the activated version, and I plan to add more features and raise its price in the future.
+	</div>
+	
+	<h3 class="question">Can Shottr upload the image online and copy link?</h3>
+	<div class="answer">
+		Shottr has the upload feature, but it needs to be activated. Here are <a href="https://shottr.cc/kb/upload/">more details</a> on how it works.
+	</div>
+
+	<!--h3 class="question">Why does it take a screenshot of an empty desktop?</h3>
+	<div class="answer">Shottr will ask you to grant permission for screen recording when you take the first screenshot. If it didn't, go to System Preferences → Security & Privacy → Screen Recording, and check the checkbox next to the Shottr app (you may have to unlock a little lock icon at the bottom left first).</div>
+
+	<h3 class="question">I granted permissions, my screenshots are still empty</h3>
+	<div class="answer">MacOS grants permission to a single copy of the app, and if you happen to have multiple copies of the app on the disk, or ran it from different places, permission may be granted to a wrong copy. Try to remove the permission, restart the app, and grant the permission again.</div-->
+
+	<!--<h3 class="question">Is web sharing supported?</h3>
+	<div class="answer">Yes! You can upload the screenshot online by pressing CMD+E shortcut. To do so, you need a security token. Contact <a href="mailto:shottr.cc@gmail.com">shottr.cc@gmail.com</a> to get one.</div>-->
+
+	<!--h3 class="question">Is there a version for Windows?</h3>
+	<div class="answer">At this moment Shottr is available for Mac only.</div-->
+
+	<h3 class="question">Which macOS versions are supported?</h3>
+	<div class="answer">Shottr runs on macOS Catalina (10.15) and up.</div>
+
+	<!--h3 class="question">How to submit a feature request?</h3>
+	<div class="answer">Use this <a href="suggestion.html">quick form</a>. Contact information is optional. </div-->
+
+	<h3 class="question" id="section-faq-network">When and why does Shottr contact Shottr.cc?</h3>
+	<div class="answer">After launch Shottr contacts <a href="https://shottr.cc/api/version.json">https://shottr.cc/api/version.json</a> to check for an update. It won't download a new version, but will notify you with a red icon in the toolbar. Shottr needs an internet connection to validate and activate the license. It also sends home telemetry to help me find bugs, measure performance and gauge popularity of certain features. Telemetry does not contain any personal or identifiable information. It's not used for advertising or retargeting purposes, and is never sold to the third parties. There's an option to turn off telemetry collection in the app Preferences. Earlier versions of Shottr included Google Analytics code, but it was removed in v1.5.1. </div>
+
+	<div style="display: flex; justify-content: center;">
+		<a class="button gaFAQPage" href="/kb/faq">Other Frequently Asked Questions</a>
+	</div>
+</div>
+
+<div class="section-releasenotes" id="section-releasenotes">
+	<h2>Release Notes</h2>
+	<div class="table">
+
+		<div class="colDate">Dec 17, 2025</div>
+		<div class="colVersion">v1.9.1</div>
+		<div class="colText">S3 Improvements, minor polishing and bug fixes
+			<br><a href="#" class="showmore gaChangelog181">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Expanded support for third-party S3 services (Tencent, Yandex, Minio, etc).</li>
+					<li>Print dialog now allows changing print orientation.</li>
+					<li>Freehand tool: brought back an ability to draw a point with a single click.</li>
+					<li>Aesthetic adjustments to both hand-drawn and classic rectangle styles.</li>
+				</ul>
+
+				<br>
+				<b>Bug Fixes</b>
+				<ul>
+					<li>Bug fix: the app used to show the editor along with the preview thumbnail when macOS failed to grant the permission to activate the app.</li>
+					<li>Bug fix: S3 upload on the systems with non-gregorian calendar.</li>
+					<li>Bug fix: app freezing on affected computers.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">Nov 23, 2025</div>
+		<div class="colVersion">v1.9</div>
+		<div class="colText">S3 Upload, Magnifier tool, hand-drawn annotation style, bendable arrows.
+			<br><a href="#" class="showmore gaChangelog181">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>New Features</b>
+				<ul>
+					<li>S3 Upload (any S3-compatible storage).</li>
+					<li>Magnifier tool (zoomed-in callout).</li>
+					<li>Hand-drawn style option for Text, Arrow, Oval and Rectangle objects.</li>
+					<li>Every arrow type can now be bent in an arch.</li>
+					<li>Configurable object snapping (check the Draw menu).</li>
+				</ul>
+
+				<br>
+				<b>Improvements</b>
+				<ul>
+					<li>All 16 tools are now shown in the toolbar if the window is large enough.</li>
+					<li>Custom-styled Notification could now be dismissed by dragging it out (drag up).</li>
+					<li>Menubar icon shows a quick confirmation animation when copying, saving or uploading files.</li>
+				</ul>
+
+				<br>
+				<b>Bug Fixes</b>
+				<ul>
+					<li>Copy to clipboard may have had a delay on busy computers. Not anymore.</li>
+					<li>The option to prefer large window had an issue in v1.8. It's fixed now, and renamed to Default zoom level: Prefer 100%.</li>
+					<li>On the computers affected by macOS scrolling capture issue, the app should deploy a workaround.</li>
+					<li>Shottr now uses a workaround when macOS blocks its request to activate on hotkey.</li>
+					<li>Fixed a rare crash in the auto-adjust feature when the selection touches the lower edge of the image.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">Nov 28, 2024</div>
+		<div class="colVersion">v1.8.1</div>
+		<div class="colText">Support for OKLCH and APCA, and a few bug fixes
+			<br><a href="#" class="showmore gaChangelog181">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>OCR prevents accidental appearance of double spaces in the output.</li>
+					<li>Backdrop tool: Shadows rendering algorithm was tweaked to produce a neater shadow for smaller intensity values.</li>
+					<li>Added OKLCH to the list of available colors in the color inspector
+						<img src="/release-files/1-8-1/oklch.webp" style="margin: 4px 0 8px 0; max-width: min(100%, 441px); width: 100%; border-radius: 10px; border: 1px solid rgba(0 0 0 / 10%);">
+					</li>
+					<li>Added APCA measurement to the color contrast checker (switch between the WCGA 2.0 and APCA by Opt+Click on the contrast value)
+						<img src="/release-files/1-8-1/apca.webp" style="margin: 4px 0 8px 0; max-width: min(100%, 441px); width: auto; display: block;  border-radius: 10px; border: 1px solid rgba(0 0 0 / 10%);">
+					</li>
+				</ul>
+				<br>
+				<b>Bug Fixes</b>
+				<ul>
+					<li>Fixed a bug when the previous image would occasionally stay in the clipboard after Cmd+C or Esc.</li>
+					<li>Fixed a bug when the large (a few megapixel) backdrop would take a long time to render on Save or Copy.</li>
+					<li>If on your computer Cmd+Z affects more than one text object at once, that bug is now fixed.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">Sep 29, 2024</div>
+		<div class="colVersion">v1.8</div>
+		<div class="colText">Backdrop tool: add gradient backgrounds, shadows and rounded corners to your screenshots.
+			<br><a href="#" class="showmore gaChangelog180">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>New Features</b>
+				<video playsinline loop autoplay muted style="max-width:520px; width: 100%; border-radius: 10px; border: 1px solid rgba(0 0 0 / 10%);" src='/kb/content/files/backdrop-preview.mp4'></video>
+				<ul>
+					<li>Backdrop Tool</li>
+					<li>Support for Raycast Extension and Alfred Workflow</li>
+					<li>URL Schemes API: <a href="/kb/urlschemes">more info</a></li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Custom annotation colors</li>
+					<li>More sizes for Text labels, Arrows, and other annotations</li>
+					<li>Setting to hide the splash screen</li>
+					<li>Better handling of thumbnails on top of the Fullscreen windows</li>
+					<li>Numerous smaller improvements and fixes</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">Nov 4, 2023</div>
+		<div class="colVersion">v1.7.2</div>
+		<div class="colText">Expandable canvas, side-by-side screenshots, and new experimental features</div>
+		
+		<div class="colDate">July 27, 2023</div>
+		<div class="colVersion">v1.7.1</div>
+		<div class="colText">Fixed bugs introduced by the recent macOS update</div>
+
+		<div class="colDate">May 28, 2023</div>
+		<div class="colVersion">v1.7.0</div>
+		<div class="colText">Screenshot resize and new tools: freehand drawing, highlighter and spotlight
+			<br><a href="#" class="showmore gaChangelog170">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>New Features</b>
+				<video playsinline loop autoplay muted style="max-width:520px; width: 100%;" src='/kb/content/files/v170-teaser.mp4'></video>
+				<ul>
+					<li>Freehand Drawing tool (change stroke variability with cmd+enter, smoothness with opt+up/down)</li>
+					<li>Text Highlighter tool (change cap style with cmd+enter)</li>
+					<li>Spotlight tool (change background opacity with keys 1..9)</li>
+					<li>Image resizer (click on the image size in the upper right corner)</li>
+					<li>An option to hide the menubar icon (only available with the license)</li>
+					<li>A button to remove linebreaks from the OCR text after it was recognized, and a setting to remove
+						linebreaks by default
+						<img src="/kb/content/files/v170-cutbreaks.png" style="max-width: min(100%, 441px); widtth: 100%;">
+					</li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Fixed an issue when scrolling capture would include a cursor in the middle of the screenshot on some
+						computers</li>
+					<li>Scroll Capture will show a message if it fails to scroll, or if it reaches the max-height limit</li>
+					<li>A setting to reverse auto-scroll direction (may help if you're using an app like Scroll Reverser)</li>
+					<li>Ability to blur selected area by pressing key B</li>
+					<li>The editor window now always opens on the screen on which the screenshot was taken</li>
+					<li>Holding Shift while selecting the image area will produce a square selection</li>
+					<li>Starting the app when it's already running will bring the original app forward instead of showing the
+						message</li>
+					<li>If your Shottr icon is pinned in the dock, clicking on it when the app is running but the window is
+						closed will open up the editor</li>
+					<li>Semi-transparent pinned screenshot doesn't have a shadow now. Convenient for overlay comparison.</li>
+					<li>Fixed a bug when the Max Scrolling Height won't persist after the app relaunch</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">February 25, 2023</div>
+		<div class="colVersion">v1.6.2</div>
+		<div class="colText">Auto-update functionality, new in-app shortcuts, scroll-to resize pinned windows, and more.
+			<br><a href="#" class="showmore gaChangelog162">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>New Features</b>
+				<ul>
+					<li>Auto-update functionality</li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Preview thumbnail now opens on top of the Fullscreen and Stage Manager windows
+					<li>Added fill/opacity control to the  Rectangle and Oval instruments
+					<li>Pinned screenshots can be resized with scroll</li>
+					<li>New editor shortcuts: Cmd+Shift+O to open a file, and Cmd+Shift+V to load image from the clipboard</li>
+					<li>Save As shortcut (Cmd+Shift+S) now works in the preview thumbnail as well</li>
+					<li>When you selected an annotation object, it goes to the frontmost level, on top of other drawings</li>
+					<li>Size slider changes objects in real-time</li>
+					<li>BUG Fix: text editing and resizing now works properly on all zoom levels</li>
+					<li>Fixed an issue when a part of the mouse cursor would show up in the corner of the area-capture screenshot</li>
+					<li>Automatic filename timecode changed from alphanumeric to alphabetic, files will now be properly chronologically sorted when sorting by name in Finder</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="colDate">October 22, 2022</div>
+		<div class="colVersion">v1.6.1</div>
+		<div class="colText">Pinned thumbnail, hotkey for "Capture Any Window", auto-padding button, improved work with the third-party clipboard managers.
+			<br><a href="#" class="showmore gaChangelog161">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br/>
+				<b>New Features</b>
+				<ul>
+					<li>A setting to keep the preview thumbnail up until you use the image, or close the thumbnail.</li>
+					<li>Ability to assign hotkeys to "Capture Any Window" and "Reopen Shottr" actions.</li>
+					<li>A button to quickly add padding to selection marquee (convinient after applying Autoadjust):
+						<video playsinline loop autoplay muted style="max-width:520px; width: 100%;" src='release-files/1-6-1/crop-paddings.mp4'></video>
+					</li>
+					<li>Click on a selection marquee edge to auto-adjust this edge only.</li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Fixed a bug when Pinned screenshot will display at 50% on low-dpi displays.</li>
+					<li>Some clipboard managers used to miss certain screenshots copied by Shottr. This should not be happening any more.</li>
+					<li>Saving retina images with 144dpi when applicable.</li>
+					<li>A more prominent notification about the new version.</li>
+					<li>If you drag-and-drop image onto the app like Yoink or Dropover, the file will remain available after the new screenshot is done.</li>
+					<li>Increased max scrolling screenshot height limit to 200,000px (it's still set to 20,000px by default).</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">September 4, 2022</div>
+		<div class="colVersion">v1.6.0</div>
+		<div class="colText">Pin screenshots, image overlays, new confirmations.
+			<br><a href="#" class="showmore gaChangelog160">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br><b>New Features</b>
+				<ul>
+					<li>Pin screenshots: ability to pin the image as a floating always-on-top window.</li>
+					<li>Image overlay: paste images on top of the screenshot.</li>
+					<li>Before/after gifs. Quickly create two-frame animations (paste an "after" image on top of the "before" screengrab, press "5" to enable transpaency, align frames and hit the GIF icon in the top right corner of the app):
+						<video playsinline loop autoplay muted style="max-width:520px; width: 100%;" src='release-files/1-6-0/gif-short.mp4'></video></li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Custom confirmations for OCR, Color Copy, Save and Upload, and an option to turn off notifications completely. System notifications are available in the app settings, but they will only work if Shottr is allowed to show them (System Preferences → Notifications)
+						<img src="release-files/1-6-0/notification.png" style="max-width:381px; widtth: 100%;"></li>
+					<li>Added customizable shortcut for the Repeat Area capture.</li>
+					<li>More robust DPI detection when working with Retina and Non-retina monitors at the same time.</li>
+					<li>Undo/Redo now available from the menu as well.</li>
+					<li>Improved Text-only erase and pixelation accuracy for Chinese.</li>
+					<li>Fixes Text label rendering bug intrpduced by macOS Ventura Beta 4.</li>
+				</ul>
+
+				<br/>
+				<b>Important Changes</b>
+				<br/>
+				Upload button is removed from the toolbar. The feature is still available through the menu and with the shortcuts (Cmd+E, F2)
+			</div>
+		</div>
+
+		<div class="colDate">July 17, 2022</div>
+		<div class="colVersion">v1.5.4</div>
+		<div class="colText">Text-only blur/erase, step counter tool, opt+drag duplication and uploaded files management.
+			<br><a href="#" class="showmore gaChangelog154">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br><b>New Features</b>
+				<ul>
+					<li>Added Step counter annotation tool</li>
+					<li>Text-only mode for Blur/Erase tool
+						<video playsinline loop autoplay muted style="max-width:520px; width: 100%;" src='/kb/content/files/text-erase.mp4'></video></li>
+					<li>Opt+Drag to duplicate drawings</li>
+					<li>Ability to manage uploaded Screenshots (main menu button)</li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Bug fix: crash with auto-copy/auto-save settings</li>
+					<li>More robust Undo functionality</li>
+					<li>Now Shottr copies PNG instead of TIFF on Esc or Cmd+C</li>
+					<li>Shottr keeps selected tool after the object is created (it's quicker now to add multiple arrows, counters, etc.)</li>
+					<li>Object attributes panel doesn't hide the tool selector</li>
+					<li>Default instrument (Select/Crop) now has a button and a shortcut (V)</li>
+					<li>Text label has a pointy arrow by default</li>
+					<li>Cmd+V and Cmd+D insertion position is more predictable now</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">February 10, 2022</div>
+		<div class="colVersion">v1.5.3</div>
+		<div class="colText">Preview thumbnail for Area Capture, a setting to auto-save or auto-copy the screenshot.
+			<br><a href="#" class="showmore gaChangelog153">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br><b>New Features</b>
+				<ul>
+					<li>A setting to automatically Copy and/or Save the image after screenshot. </li>
+					<li>A setting to show Preview instead of the Editor after the Area Capture.
+						<video playsinline loop autoplay muted style="max-width:520px; width: 100%;" src='/kb/content/Shottr%20Beta/Screen%20Recording%202022-01-30%20at%201-46-20%20PM_gifv.mp4'></video></li>
+					<li>Quick zoom by Z+Drag (press Z and drag your mouse around the area that you want to zoom in).</li>
+				</ul>
+				<br/>
+				<b>Improvements</b>
+				<ul>
+					<li>Ability to open files and load clipboard images from the main menu (Shottr icon → More → Open File.)</li>
+					<li>Hold CMD while drawing an arrow to reverse its deirection</li>
+					<li>When part of the image is selected, Cmd+C now copies the selection only, and doesn’t close the window.</li>
+					<li>Drag’n’drop now applies the same settings as regular save (PNG/Jpeg, 1x downscale).</li>
+					<li>Default Folder selection dialogue allows to create New Folder.</li>
+					<li>More robust checking for Screen Recording permissions.</li>
+					<li>Bug fix: Scrolling Capture now works fine when the Hot Corners are enabled.</li>
+					<li>Bug fix: Cmd+C used to rely on the Esc button settings.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">January 9, 2022</div>
+		<div class="colVersion">v1.5.2</div>
+		<div class="colText">Colors and styles for drawings, narrow and curved arrows, guides, convenience settings, QR reader, open PNG and Jpeg, Repeat Area screenshot, Delayed screenshot.
+			<br><a href="#" class="showmore gaChangelog152">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br><b>New Features</b>
+				<ul>
+					<li>Ability to change object styling (color, thickness, line style, pixelation level, etc)	</li>
+					<li>Setting to change behavior of the Escape button when nothing is selected (options to Copy image and/or Save image)	</li>
+					<li>Setting to open Shottr window bigger by default. When selected, the app starts at 80% zoom for the fullscreen screenshot, and area screenshots will open at 100% zoom more often	</li>
+					<li>Setting to turn on/off telemetry collection. Please consider leaving this checkbox on, at least for a while, so that I can verify the app runs smoothly and no exceptions are thrown across variety of devices and OS versions	</li>
+					<li>Ability to open a PNG or Jpeg file in Shottr via the “Open With” context menu. The app needs to be copied to the Application folder for that feature to work. If you save the opened file, it will override the original file	</li>
+					<li>You can also open the image file through the “File” → “Open File” menu item	</li>
+					<li>QR Reader: Text Recognition now detects and decodes QR codes	</li>
+					<li>Guides: hold Opt+S or Opt+D to show a vertical or horizontal guide, click to imprint it on the image	</li>
+					<li>Cmd+C / Cmd+V now works for the annotation objects	</li>
+					<li>Chinese language is supported in Text Recognition. You need to select Chinese as your primary language in the Preferences (Advanced tab)	</li>
+					<li>Added Repeat Area Screenshot – it will retake screenshot of the previously selected area	</li>
+					<li>Added Delayed Screenshot (3s delay)	</li>
+				</ul>
+				<br><b>Improvements</b>
+				<ul>
+					<li>Arrow tool improvements. Longer arrows are now slimmer, more styles are available, including curved arrows and super-slim arrows.	</li>
+					<li>Hold space while drawing an object to move it around.	</li>
+					<li>If you start taking an area capture and hit Esc in the process, the window won’t pop up.	</li>
+					<li>Pixelation algo produces a more uniform pattern, works a tad faster too.	</li>
+					<li>Pixelation on small areas scrambles pixels for better protection.	</li>
+					<li>Improved Ruler rendering on non-retina displays (crisper look).	</li>
+					<li>Window screenshot with Wallpaper or Solid background now have proportionate top and bottom paddings.	</li>
+					<li>Addressed an issue when the cursor is occasionally imprinted in the scrolling screenshot.	</li>
+					<li>Cosmetic improvements to the object handling knobs and helper popovers.	</li>
+					<li>Added new color format: HEX without the sharp (#) character.	</li>
+					<li>Improved stability when doing Cmd+Click raster selection on area screenshots.	</li>
+					<li>Window Screenshot better process edge case scenarios and allows you to select window is Shottr can’t identify which window is currently active.	</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="colDate">October 6, 2021</div>
+		<div class="colVersion">v1.5.1</div>
+		<div class="colText">Added an ability to Drag'n'Drop screenshot file to the other applications and a setting to downscale retina screenshots.</div>
+
+		<div class="colDate">September 21, 2021</div>
+		<div class="colVersion">v1.5.0</div>
+		<div class="colText">Scrolling screenshots, objects removal, preferences, and more.
+			<br><a href="#" class="showmore gaChangelog150">See full changelog</a>
+			<div class="hiddenChangeLog themore">
+				<br><b>Major Features</b>
+				<ul>
+					<li>Scrolling Capture (up and down)</li>
+					<li>Area capture</li>
+					<li>Active window capture</li>
+					<li>Instant text recognition</li>
+					<li>Objects Removal (selection + Delete)</li>
+				</ul>
+				<br><b>Preferences</b>
+				<ul>
+					<li>Hotkeys customization</li>
+					<li>Window Capture modes: keep shadow on a transparent background, trim window shadow, keep shadow on a solid background, keep shadow over a wallpaper</li>
+					<li>Color format setting (click on the current pixel color box in the toolbar)</li>
+					<li>Auto format selection setting for Cmd+S: Shottr will save images with lots of text as PNG and choose JPEG if the screenshot is graphic-heavy</li>
+					<li>A setting to keep the main window always on top</li>
+				</ul>
+				<br><b>Other Improvements</b>
+				<ul>
+					<li>Cmd+Z / Cmd+Shift+Z for Undo/Redo</li>
+					<li>Menu "Edit" → "Reset Crop" undoes cropping</li>
+					<li>Hitting Tab while editing text label will add color under the cursor to the label’s text</li>
+					<li>The main window is now resizable and supports fullscreen</li>
+					<li>Ability to drag’n’drop file on the main window canvas to open an image</li>
+					<li>If you’re using multiple spaces,  the main window will now open in the active space</li>
+					<li>Trackpad and Magic Mouse zoom is smoother</li>
+					<li>Cmd+Q now shows a dialog asking if the app should close or quit, the selection is remembered</li>
+					<li>Shottr remembers OS permissions to access the selected screenshots folder and doesn’t ask for permissions after each restart</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="colDate">July 24, 2021</div>
+		<div class="colVersion">v1.4.8</div>
+		<div class="colText">Shottr was rebuilt from scratch, it's a much smaller and faster app now. Added annotation capabilities.</div>
+
+		<div class="colDate">December 19, 2020</div>
+		<div class="colVersion">v1.3</div>
+		<div class="colText">Improved performance of the fullscreen screenshot. Added Cmd+Shift+2 shortcut to grab a part of the screen. Added New Version notification. Improved Ruler — press Shift to get an outer size of the element, click while measuring to imprint the measurement onto the screenshot.</div>
+
+		<div class="colDate">December 6, 2020</div>
+		<div class="colVersion">v1</div>
+		<div class="colText">Shottr is now signed and notarized by Apple. Added quick measure tool (arrow keys).</div>
+
+		<div class="colDate">November 28, 2020</div>
+		<div class="colVersion">v1.0</div>
+		<div class="colText">Bug fixes (autosave crop issue, toolbar visual glitch); Show icon in the dock when shottr is active.</div>
+
+		<div class="colDate">September 5, 2020</div>
+		<div class="colVersion">v0.1</div>
+		<div class="colText">The private beta release</div>
+	</div>
+</div>
+
+<footer>
+
+	<div class="left">
+		Electric Endeavors LLC © 2025
+		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<a href="/kb/contact">Contact</a>
+		&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+		<a href="/kb/urlschemes">Supported URL Scheme</a>
+		&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+		<a href="/kb/privacy">Privacy Policy</a>
+		&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+		<a href="/kb/terms">Terms of Service</a>
+		&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+		<a href="/purchase.html">Buy Shottr</a>
+	</div>
+
+	
+	<a class="svg" href="https://twitter.com/shottr_cc"><svg width="22" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M21 6.894a8.294 8.294 0 01-2.357.636 4.058 4.058 0 001.804-2.235 8.299 8.299 0 01-2.605.98A4.127 4.127 0 0014.847 5c-2.65 0-4.596 2.433-3.998 4.959a11.71 11.71 0 01-8.457-4.22 4.007 4.007 0 001.27 5.393 4.135 4.135 0 01-1.858-.505c-.045 1.87 1.318 3.622 3.291 4.011-.578.154-1.21.19-1.853.07.521 1.604 2.036 2.771 3.833 2.804A8.344 8.344 0 011 19.185 11.75 11.75 0 007.29 21c7.618 0 11.923-6.334 11.663-12.015A8.283 8.283 0 0021 6.895z" fill="#3E413D" fill-rule="nonzero"/></svg></a>
+
+</footer>
+
+<div class="modalWall" id="popupThankYou">
+	<div class="popup">
+		<h2>Thank you for choosing Shottr</h2>
+
+		<p>Shottr depends on user support, help me to spread the word!</p>
+		<a href="https://twitter.com/intent/user?screen_name=shottr_cc" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @shottr_cc</a>
+		<!--a href="https://www.producthunt.com/posts/shottr" style="text-align: center; max-width:300px; line-height:20px; background-color: #F75524; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; margin: 12px 0 0 0; padding: 5px 16px; border-radius: 15px;">
+			ProductHunt
+		</a-->
+		<a href="#" class="button" onclick="document.getElementById('popupThankYou').classList.remove('shown'); return false;">Close</a>
+	</div>
+</div>
+
+<style>
+	.button.orange {
+		background-image: radial-gradient(circle at 50% 2%, #FF9247 0%, #FF763A 56%, #FA5726 103%); box-shadow: inset 0 -0.7px 2px 0 rgba(173, 43, 0, 0.55); border-radius: 22px;
+		border: 0 none transparent;
+		font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #FFFFFF; line-height: 44px;
+		text-shadow: 0 -1px 0 rgba(173, 43, 0, 0.35);
+	}
+	.button.orange:hover {border: 0 none transparent;}
+
+	.popup input {
+		width: 60px; padding: 0 8px 0 22px; border: 1px solid #e5e5e5; border-radius: 8px; line-height: 40px; font-size: 18px;
+		background: url("assets/dollar-bg.png") 0 50% no-repeat; background-size: 20px;
+		font-family: Avenir, "Avenir Next", Century Gothic, "Trebuchet MS", sans-serif;
+	}
+	.popup input::placeholder {color: #d0d0d0;}
+</style>
+<div class="modalWall" id="popupPayWhatYouWant">
+	<div class="popup">
+		<h2>Pay what you want</h2>
+
+		<p style="max-width: 360px; margin: 0 0 20px 0;">Name your price, or enter $0 to get Shottr for free</p>
+		
+		<input type="text" name="price" value="" id="price" placeholder="0" onkeyup="this.value=this.value.replace(/[^\d\,\.]/,''); this.style.borderColor = '#e5e5e5' ">
+
+		<a href="#" class="button orange" id="btnGetIt" style="margin: 28px 0 40px 0;">Get Shottr</a>
+		<a href="#" class="button" onclick="document.getElementById('popupPayWhatYouWant').classList.remove('shown'); return false;" style="padding: 0 14.5px; position: absolute; top: 10px; right: 10px; margin: 0;">×</a>
+	</div>
+</div>
+
+
+<script>
+	window.addEventListener('click', function(evt) {
+		if (evt.target.id == 'btnGetIt') {
+			let field = document.getElementById('price')
+			if (field.value.length == 0) {
+				field.style.borderColor = '#FF430B'
+				//checkin("skipprice")
+				return;
+			}
+			let price = field.value.trim()*1
+			//checkin("download", {price: price})
+			if (price < 0.01) {
+				window.location.href = '/dl/Shottr-1.6.1.dmg'
+				document.getElementById('popupPayWhatYouWant').classList.remove('shown');
+				document.getElementById("popupThankYou").classList.add("shown")
+			} else {
+				location.href = `https://shottr.gumroad.com/l/shottr?price=${price}&wanted=true`
+			}
+			evt.preventDefault()
+			return false;
+		}
+	})
+	
+	//window.onload = function() { // safari doesn't call it until the video is loaded
+		document.getElementById("play").onclick = evt => {
+			document.getElementById("play").style.display = 'none';
+			document.getElementById("demo").style.opacity = '1';
+			document.getElementById("demo").play();
+		};
+
+		/*document.getElementById("demo").onclick = evt => {
+			document.getElementById("play").style.display = 'block';
+			document.getElementById("demo").pause();
+		};*/ // Opted to show controls instead
+
+		window.addEventListener('click', function(evt) {
+			if (evt.target.classList.contains('showmore')) {
+				evt.target.parentNode.querySelector('.themore').style.display = 'block'
+				evt.target.style.display = 'none'
+				evt.preventDefault()
+				return false
+			}
+		})
+
+		document.getElementById("downloadButton").onclick = evt => {
+			//checkin("download")
+			document.getElementById("popupThankYou").classList.add("shown")
+			/*checkin("attempt")
+			document.getElementById("popupPayWhatYouWant").classList.add("shown")
+			document.getElementById("price").focus()
+			evt.preventDefault()
+			return false;*/
+		}
+		document.getElementById("popupThankYou").onclick = function(evt) {
+			if (evt.target == this) this.classList.remove("shown")
+		}
+
+		window.addEventListener('click', function(evt) {
+			if (evt.target.classList.contains('survey-vote')) {
+				evt.target.classList.toggle('voted')
+				document.getElementById('survey-submit').style.display = 'block'
+				evt.stopPropagation()
+				return false;
+			} else if (evt.target.classList.contains('survey-text')) {
+				//evt.target.classList.toggle('voted')
+				evt.target.style.display = 'none'
+				document.getElementById('survey-suggestion').style.display = 'block' //evt.target.classList.contains('voted') ? 'block' : 'none'
+				document.getElementById('survey-submit').style.display = 'block'
+				document.getElementById('survey-suggestion').focus()
+			}
+
+			if (evt.target.id == 'survey-submit') {
+				let votes = []
+				for (el of document.getElementsByClassName('survey-vote')) {
+					votes.push([el.innerText, el.classList.contains('voted')])
+				}
+				let text = document.getElementById('survey-suggestion').value.trim()
+				if (text.length > 0) votes.push(['text', text])
+
+				const formData  = new FormData()
+				formData.append('email', 'none')
+				formData.append('topic', 'auto: survey')
+				formData.append('message', JSON.stringify(votes))
+
+				fetch('/api/feedback.php', {
+					method: 'POST', mode: 'no-cors', cache: 'no-cache', credentials: 'same-origin',
+					headers: {'Content-Type': 'form/multipart'},
+					redirect: 'follow', referrerPolicy: 'no-referrer',
+					body: formData
+				})
+
+				document.getElementsByClassName('survey-form')[0].style.display = 'none'
+				document.getElementsByClassName('survey-finish')[0].style.display = 'block'
+
+			}
+		})
+	//};
+</script>
+
+</body>
+</html>

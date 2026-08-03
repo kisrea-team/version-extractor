@@ -1,0 +1,1908 @@
+
+	<!DOCTYPE html>
+	<html id="releasenotespage" class="no-js light" lang="en" prefix="og: http://ogp.me/ns#">
+
+	<head>
+		<title>Release Notes - LaunchBar</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Language" content="en">
+        
+		<meta name="description" content="Start with a single keyboard shortcut to access and control every corner of your Mac." />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Objective Development" />
+		<meta property="og:url" content="https://obdev.at/products/launchbar/releasenotes.html" />
+		<meta property="og:description" content="Start with a single keyboard shortcut to access and control every corner of your Mac." />
+		<meta property="og:image" content="https://obdev.at/Images/social-graphs/opengraph-launchbar.jpg" />
+		<meta property="og:title" content="LaunchBar - Unleashed productivity." />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:description" content="Start with a single keyboard shortcut to access and control every corner of your Mac." />
+		<meta name="twitter:image" content="https://obdev.at/Images/social-graphs/opengraph-launchbar.jpg" />
+		<meta name="twitter:site" content="@launchbar" />
+		<meta name="twitter:title" content="LaunchBar - Unleashed productivity." />
+		<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "name": "Objective Development",
+            "url": "https://obdev.at",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Objective Development",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://obdev.at/favicon.ico",
+                    "width": 60,
+                    "height": 60
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://obdev.at/"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "url": "https://obdev.at/products/launchbar/releasenotes.html",
+            "description": "Start with a single keyboard shortcut to access and control every corner of your Mac.",
+            "thumbnailUrl": "https://obdev.at/Images/social-graphs/opengraph-launchbar.jpg",
+            "name": "LaunchBar - Unleashed productivity."
+        }
+    ]
+}
+		</script>
+		<meta name="google-site-verification" content="Rpww5gNCTU0AwbmeNzQ1o73D6GZ9-Ubom5wn4giXVsc" />
+		<script type="text/javascript" src="https://obdev.at/resources/javascript/jquery.js?202606231106"></script>
+		<script type="text/javascript" src="https://obdev.at/resources/javascript/menu.js?202403261003"></script>
+		<script type="text/javascript">
+			$('html').removeClass('no-js');
+		</script>
+
+		
+		<link rel="mask-icon" href="/favicon.svg" color="#2e77af">
+		<link rel="alternate" type="application/rss+xml" title="Objective Development's Blog" href="https://obdev.at/rss/">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.png" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+				<link rel="stylesheet" href="https://obdev.at/resources/css/reset.css?202501310801" type="text/css" />
+		<link rel="stylesheet" href="https://obdev.at/resources/css/base-design-2017.css?202502260802" type="text/css" />
+		<link rel="stylesheet" href="https://obdev.at/resources/css/launchbar.css?202604271404" type="text/css" />
+	</head>
+
+		<body> 		
+		
+		<input type="checkbox" id="mm-trigger" class="mm-trigger">
+		<header>
+						<a href="https://obdev.at/" class="desktop logo">
+				<svg width="146px" height="26px" viewBox="0 0 146 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path id="Shape" fill="#000000" fill-rule="evenodd" d="M59.0746312,4.39397541 C60.2759647,4.39397541 61.2748756,4.68594019 62.0701068,5.27050035 C62.865338,5.85442992 63.2626392,6.58844074 63.2626392,7.47190221 C63.2626392,8.32950935 62.8590515,9.04207999 62.0525048,9.60898353 C61.2459581,10.1758871 60.2300738,10.4596541 59.0061093,10.4596541 C57.8217492,10.4596541 56.8322679,10.1721035 56.0364081,9.59637166 C55.2411769,9.0212704 54.8438756,8.30239383 54.8438756,7.44037254 C54.8438756,6.56952293 55.2455774,5.84434042 56.0496095,5.26419442 C56.8530131,4.68404841 57.8619823,4.39397541 59.0746312,4.39397541 Z M58.989136,5.45463365 C59.7611075,5.45463365 60.4023215,5.64002813 60.911521,6.0108171 C61.4207204,6.38160607 61.6753201,6.84887585 61.6753201,7.41388761 C61.6753201,7.98268293 61.4307786,8.44932211 60.9416957,8.81380515 C60.4526128,9.17765759 59.8246002,9.35989911 59.0576579,9.35989911 C58.2850578,9.35989911 57.6526447,9.18017996 57.1610473,8.82011108 C56.6688212,8.46067279 56.4230224,7.9959254 56.4230224,7.42713007 C56.4230224,6.85329 56.6631634,6.38160607 57.1440739,6.0108171 C57.6243559,5.64002813 58.2397956,5.45463365 58.989136,5.45463365 Z M64.9272813,1.32298513 L66.4888261,1.32298513 L66.4888261,4.83412966 C67.1639868,4.46334069 67.8850383,4.27794621 68.651352,4.27794621 C69.6521489,4.27794621 70.4706398,4.56234387 71.1055675,5.13176978 C71.7404951,5.7011957 72.057959,6.43142296 72.057959,7.32371274 C72.057959,8.28095365 71.6788883,9.04271058 70.9207469,9.60961413 C70.1626056,10.1765177 69.1486072,10.4602847 67.8781233,10.4602847 C67.3689239,10.4602847 66.8326929,10.4192962 66.2688017,10.337319 C65.7049105,10.2553419 65.2573179,10.1519245 64.926024,10.027067 L64.926024,1.32298513 L64.9272813,1.32298513 Z M66.4894548,5.95910844 L66.4894548,9.17891877 C67.0219139,9.29936213 67.5675745,9.35989911 68.1283225,9.35989911 C68.8204565,9.35989911 69.385605,9.17450462 69.8231393,8.80371565 C70.2606736,8.43292668 70.4794408,7.9568286 70.4794408,7.37479081 C70.4794408,6.78392472 70.2745037,6.30341248 69.8658869,5.93262351 C69.4566415,5.56183454 68.922925,5.37644006 68.2653663,5.37644006 C67.6819872,5.37707065 67.0898072,5.57129344 66.4894548,5.95910844 Z M73.7666059,4.40721787 L75.3281507,4.40721787 L75.3281507,11.2031239 C75.3281507,12.232883 74.8032353,12.9624797 73.7534044,13.3881303 L72.5904181,12.5286314 C72.9512582,12.4340423 73.2366613,12.2675657 73.4485134,12.0304625 C73.6603655,11.7933594 73.7659772,11.51779 73.7659772,11.2031239 L73.7659772,4.40721787 L73.7666059,4.40721787 Z M74.5046307,1.90502292 C74.7623736,1.90502292 74.982398,1.97312702 75.1653326,2.10870462 C75.3482673,2.24491281 75.4400489,2.40760593 75.4400489,2.59678397 C75.4400489,2.79479033 75.3526677,2.96126701 75.1779055,3.09495283 C75.0031432,3.22863865 74.7843761,3.29548156 74.521604,3.29548156 C74.2751766,3.29548156 74.0582954,3.22674687 73.8690744,3.08864689 C73.6798534,2.95054692 73.5861858,2.78659261 73.5861858,2.59741457 C73.5861858,2.41643424 73.6785961,2.2556329 73.8646739,2.11564114 C74.0507517,1.97564939 74.2644897,1.90502292 74.5046307,1.90502292 Z M84.3654973,7.48514467 L78.8127092,7.48514467 C78.8523136,8.05394 79.105656,8.50670612 79.5721078,8.84281245 C80.0385596,9.17891877 80.6407979,9.34728724 81.3788228,9.34728724 C82.4085371,9.34728724 83.3577854,9.10576993 84.2278249,8.62336591 L84.2278249,9.77419903 C83.7469143,10.0157163 83.2710329,10.1878684 82.7989233,10.2912857 C82.3268138,10.394703 81.7736095,10.4464117 81.1380532,10.4464117 C80.2680137,10.4464117 79.5645641,10.3108341 79.0270758,10.0390483 C78.4895876,9.7672625 78.0583397,9.40214887 77.7352181,8.94307681 C77.4120965,8.48337416 77.2505357,7.95241445 77.2505357,7.34893648 C77.2505357,6.44340423 77.5906306,5.70750164 78.2720777,5.14122869 C78.9528962,4.57432514 79.8367658,4.29055808 80.9236865,4.29055808 C81.9710028,4.29055808 82.8058384,4.56675802 83.4294505,5.11789673 C84.052434,5.66966603 84.3648687,6.40872159 84.3648687,7.33569402 L84.3648687,7.48514467 L84.3654973,7.48514467 Z M78.8472844,6.78014116 L82.8209258,6.78014116 C82.7806927,6.31034901 82.5946149,5.94838835 82.2626924,5.69362858 C81.9307698,5.43886881 81.4844345,5.31211952 80.9243151,5.31211952 C80.3635671,5.31211952 79.9040304,5.43949941 79.5469622,5.69362858 C79.1886366,5.94838835 78.9560394,6.31034901 78.8472844,6.78014116 Z M91.9777142,8.96577818 L91.9777142,10.1298538 C91.1937986,10.3499309 90.4268563,10.4596541 89.6781445,10.4596541 C88.4422358,10.4596541 87.4565264,10.1834542 86.7216447,9.63231549 C85.9861345,9.08054619 85.6183793,8.34149063 85.6183793,7.4145182 C85.6183793,6.47934806 85.9760762,5.72452766 86.69147,5.15131818 C87.4068637,4.5781087 88.3479397,4.29118867 89.5146978,4.29118867 C89.9208001,4.29118867 90.2860406,4.32019597 90.6085336,4.37884116 C90.9322838,4.43685576 91.3308424,4.54594844 91.8054665,4.70548859 L91.8054665,5.95973903 C91.0158931,5.58012175 90.2835261,5.39094371 89.608994,5.39094371 C88.9049158,5.39094371 88.3271945,5.57759938 87.8752014,5.95028013 C87.4232084,6.32359147 87.1975262,6.79842837 87.1975262,7.376052 C87.1975262,7.98394412 87.4420676,8.46634814 87.9311505,8.82452524 C88.4202334,9.18270234 89.0796781,9.36116029 89.9088559,9.36116029 C90.5104655,9.35989911 91.1988277,9.22873566 91.9777142,8.96577818 Z M92.6465885,5.35121632 L95.5817145,3.17882176 L95.5817145,4.40721787 L98.0793062,4.40721787 L98.0793062,5.46787611 L95.5817145,5.46787611 L95.5817145,8.38437098 C95.5817145,9.06541195 95.9563847,9.40593243 96.7057251,9.40593243 C97.2671017,9.40593243 97.8586531,9.2634183 98.4822652,8.97902064 L98.4822652,10.0781451 C97.8819128,10.3322743 97.22624,10.4596541 96.5171327,10.4596541 C95.8017389,10.4596541 95.2070443,10.3020058 94.7317915,9.98733962 C94.5834322,9.8927506 94.4602185,9.7861803 94.3627791,9.66762873 C94.2659684,9.54907715 94.184245,9.39395115 94.1182377,9.20225073 C94.0522303,9.01055031 94.019541,8.64480609 94.019541,8.10627926 L94.019541,5.46787611 L92.6459599,5.46787611 L92.6459599,5.35121632 L92.6465885,5.35121632 Z M100.413451,1.90502292 C100.671194,1.90502292 100.891219,1.97186583 101.074782,2.10555165 C101.257716,2.23923747 101.349498,2.40319177 101.349498,2.59678397 C101.349498,2.78659261 101.257716,2.95054692 101.074782,3.0880163 C100.891219,3.22611627 100.671194,3.29485096 100.413451,3.29485096 C100.17331,3.29485096 99.9614581,3.22485508 99.7785235,3.08486333 C99.5955889,2.94487158 99.5038073,2.78217846 99.5038073,2.59678397 C99.5038073,2.41580364 99.5955889,2.2550023 99.7785235,2.11501055 C99.9614581,1.9750188 100.17331,1.90502292 100.413451,1.90502292 Z M99.6408511,4.40721787 L101.203025,4.40721787 L101.203025,10.3562368 L99.6408511,10.3562368 L99.6408511,4.40721787 Z M108.297241,4.40721787 L109.990801,4.40721787 L106.503728,10.4596541 L105.97504,10.4596541 L102.404358,4.40721787 L104.113634,4.40721787 L106.244727,8.06718246 L108.297241,4.40721787 Z M117.534496,7.48514467 L111.981707,7.48514467 C112.021312,8.05394 112.275283,8.50670612 112.741106,8.84281245 C113.207558,9.17891877 113.809796,9.34728724 114.547821,9.34728724 C115.578164,9.34728724 116.526784,9.10576993 117.396823,8.62336591 L117.396823,9.77419903 C116.915913,10.0157163 116.440031,10.1878684 115.96855,10.2912857 C115.496441,10.394703 114.942608,10.4464117 114.30768,10.4464117 C113.437641,10.4464117 112.734191,10.3108341 112.196703,10.0390483 C111.659214,9.7672625 111.227967,9.40214887 110.904845,8.94307681 C110.581095,8.48337416 110.420163,7.95241445 110.420163,7.34893648 C110.420163,6.44340423 110.760257,5.70750164 111.441705,5.14122869 C112.122523,4.57432514 113.005764,4.29055808 114.093313,4.29055808 C115.14063,4.29055808 115.975465,4.56675802 116.599077,5.11789673 C117.22269,5.66903543 117.534496,6.40872159 117.534496,7.33569402 L117.534496,7.48514467 Z M112.016283,6.78014116 L115.989924,6.78014116 C115.949691,6.31034901 115.763613,5.94838835 115.431691,5.69362858 C115.099768,5.43949941 114.653433,5.31211952 114.092685,5.31211952 C113.531937,5.31211952 113.073029,5.43949941 112.715332,5.69362858 C112.358264,5.94838835 112.125038,6.31034901 112.016283,6.78014116 Z M60.5676542,13.9348548 L62.138,13.9348548 L62.138,22.9674759 L58.799915,22.9674759 C57.6325282,22.9674759 56.7015105,22.6893842 56.0062333,22.1338313 C55.3115847,21.5770173 54.9633175,20.8322864 54.9633175,19.8958551 C54.9633175,19.0212219 55.3279294,18.3017147 56.0577819,17.736703 C56.7870057,17.1716912 57.7186521,16.8891853 58.8508349,16.8891853 C59.3770077,16.8891853 59.9496998,16.9730543 60.5670256,17.1414227 L60.5670256,13.9348548 L60.5676542,13.9348548 Z M60.5676542,21.9591569 L60.5676542,18.1888385 C60.0817145,18.0040746 59.5894884,17.9113774 59.0916045,17.9113774 C58.3133467,17.9113774 57.694135,18.1037084 57.233341,18.4871092 C56.772547,18.8705101 56.5424643,19.3882273 56.5424643,20.0389998 C56.5424643,20.6513061 56.7423722,21.12299 57.1434453,21.4546822 C57.3835863,21.6526885 57.638186,21.7863743 57.9072444,21.8557396 C58.1763029,21.9251049 58.659728,21.9591569 59.3575198,21.9591569 L60.5676542,21.9591569 Z M70.9861256,20.0970144 L65.4333375,20.0970144 C65.4729419,20.6658097 65.7262843,21.1185758 66.1927361,21.4546822 C66.6585593,21.7907885 67.2607976,21.9591569 67.999451,21.9591569 C69.0291654,21.9591569 69.9790423,21.7176396 70.8484532,21.2352356 L70.8484532,22.3860687 C70.3675426,22.627586 69.8916612,22.7997381 69.4195516,22.9031554 C68.947442,23.0065727 68.3942378,23.0582814 67.7586814,23.0582814 C66.8892706,23.0582814 66.1851924,22.9220732 65.6477041,22.650918 C65.1102159,22.3785016 64.678968,22.013388 64.356475,21.5549465 C64.0327248,21.0952439 63.8717926,20.5649147 63.8717926,19.9614368 C63.8717926,19.0559045 64.2125162,18.3193713 64.8933346,17.7530984 C65.5741531,17.1861949 66.4580227,16.9024278 67.5449434,16.9024278 C68.5922597,16.9024278 69.4270953,17.1786277 70.0507074,17.7297664 C70.6743196,18.2815357 70.9861256,19.0212219 70.9861256,19.9475637 L70.9861256,20.0970144 Z M65.4679127,19.3926415 L69.4415541,19.3926415 C69.401321,18.9228493 69.2152432,18.5608887 68.8833206,18.3061289 C68.5513981,18.0513691 68.1050628,17.9246198 67.5449434,17.9246198 C66.9841954,17.9246198 66.5246587,18.0519997 66.1675904,18.3061289 C65.8098936,18.5602581 65.5766677,18.9228493 65.4679127,19.3926415 Z M77.2480211,17.0190876 L78.9415806,17.0190876 L75.4545076,23.0715239 L74.9258203,23.0715239 L71.355138,17.0190876 L73.0650422,17.0190876 L75.1961361,20.6790522 L77.2480211,17.0190876 Z M86.484647,20.0970144 L80.9324875,20.0970144 C80.9720919,20.6658097 81.2254343,21.1185758 81.6918861,21.4546822 C82.1583379,21.7907885 82.7605762,21.9591569 83.4986011,21.9591569 C84.5283154,21.9591569 85.4781923,21.7176396 86.3482318,21.2352356 L86.3482318,22.3860687 C85.8673213,22.627586 85.3914399,22.7997381 84.9193303,22.9031554 C84.4472207,23.0065727 83.8940164,23.0582814 83.2584601,23.0582814 C82.3890492,23.0582814 81.6855997,22.9220732 81.1474828,22.650918 C80.6099945,22.3785016 80.1787466,22.013388 79.855625,21.5549465 C79.5325034,21.0952439 79.3709426,20.5649147 79.3709426,19.9614368 C79.3709426,19.0559045 79.7116662,18.3193713 80.3924846,17.7530984 C81.0733031,17.1861949 81.9571727,16.9024278 83.0447221,16.9024278 C84.0914098,16.9024278 84.926874,17.1786277 85.5504861,17.7297664 C86.1734696,18.2815357 86.4852756,19.0212219 86.4852756,19.9475637 L86.4852756,20.0970144 L86.484647,20.0970144 Z M80.9670627,19.3926415 L84.9400754,19.3926415 C84.900471,18.9228493 84.7143932,18.5608887 84.381842,18.3061289 C84.0505481,18.0519997 83.6042128,17.9246198 83.0434648,17.9246198 C82.4827168,17.9246198 82.02318,18.0519997 81.6661118,18.3061289 C81.3090436,18.5602581 81.075189,18.9228493 80.9670627,19.3926415 Z M88.2102672,13.9348548 L89.7718121,13.9348548 L89.7718121,22.9674759 L88.2102672,22.9674759 L88.2102672,13.9348548 Z M95.8055108,17.0058451 C97.0068442,17.0058451 98.0051265,17.2978099 98.8003577,17.8823701 C99.5962175,18.4662996 99.9928902,19.2003104 99.9928902,20.0837719 C99.9928902,20.9413791 99.5893025,21.6539497 98.7827558,22.2208532 C97.976209,22.7877568 96.9609534,23.0715239 95.7363603,23.0715239 C94.5520001,23.0715239 93.5618902,22.7839732 92.766659,22.2082414 C91.9714278,21.6331401 91.5741265,20.9142635 91.5741265,20.0516117 C91.5741265,19.1813926 91.9764569,18.4562101 92.7798605,17.8760641 C93.583264,17.2959181 94.5922332,17.0058451 95.8055108,17.0058451 Z M95.7193869,18.0665034 C94.9700466,18.0665034 94.3546068,18.2518978 93.8736962,18.6226868 C93.3934143,18.9934758 93.1532734,19.4657903 93.1532734,20.0389998 C93.1532734,20.6077951 93.3997007,21.0725425 93.8912982,21.4319808 C94.3835243,21.7920497 95.0159374,21.9717688 95.7885375,21.9717688 C96.5548512,21.9717688 97.1828638,21.7895273 97.6719467,21.4256749 C98.1610296,21.0611918 98.405571,20.5945526 98.405571,20.0251267 C98.405571,19.4607456 98.1515999,18.9928452 97.6417719,18.6220562 C97.1325725,18.2518978 96.4913584,18.0665034 95.7193869,18.0665034 Z M101.623586,26 L101.623586,17.0190876 L104.36069,17.0190876 C105.761931,17.0190876 106.853881,17.2820451 107.634653,17.80796 C108.415426,18.333875 108.805812,19.0685164 108.805812,20.0131454 C108.805812,20.9048046 108.438057,21.6381849 107.703175,22.2113943 C106.967665,22.7846038 106.030989,23.0708933 104.89252,23.0708933 C104.38835,23.0708933 103.831374,22.9870243 103.219077,22.8186559 L103.219077,26 L101.623586,26 Z M104.326743,18.118212 L103.219706,18.118212 L103.219706,21.7781766 C103.699988,21.9635711 104.202901,22.0562683 104.729702,22.0562683 C105.462069,22.0562683 106.061164,21.8639373 106.527616,21.4805365 C106.993439,21.0971357 107.226665,20.603381 107.226665,19.9992724 C107.226665,19.6114574 107.116024,19.2690451 106.896628,18.971405 C106.675975,18.6737649 106.376113,18.4574713 105.995157,18.3218937 C105.615457,18.1863161 105.05911,18.118212 104.326743,18.118212 Z M116.985063,18.6485411 L116.985063,22.9681065 L115.414717,22.9681065 L115.414717,19.6574907 C115.414717,18.9978899 115.297161,18.5381873 115.062678,18.2771216 C114.828195,18.0166865 114.41895,17.8861536 113.83557,17.8861536 C113.509306,17.8861536 113.210072,17.9422764 112.938499,18.0545221 C112.666298,18.1667677 112.356378,18.3647741 112.007482,18.6491717 L112.007482,22.9687371 L110.445937,22.9687371 L110.445937,17.0197182 L112.007482,17.0197182 L112.007482,17.8016541 C112.802713,17.2032209 113.580971,16.9030584 114.342255,16.9030584 C115.343052,16.9030584 116.118167,17.2606049 116.667599,17.9763285 C117.502435,17.2524072 118.375618,16.8898159 119.285261,16.8898159 C120.051575,16.8898159 120.682731,17.1010647 121.177472,17.5235624 C121.672212,17.94606 121.919897,18.5905265 121.919897,19.4563314 L121.919897,22.9674759 L120.358352,22.9674759 L120.358352,19.4437195 C120.358352,18.9480731 120.223823,18.5684558 119.954764,18.3054983 C119.685706,18.0425408 119.29972,17.9107468 118.796179,17.9107468 C118.149307,17.9113774 117.545811,18.1573088 116.985063,18.6485411 Z M130.793797,20.0970144 L125.241009,20.0970144 C125.280613,20.6658097 125.533955,21.1185758 126.000407,21.4546822 C126.466859,21.7907885 127.069097,21.9591569 127.807122,21.9591569 C128.836837,21.9591569 129.786085,21.7176396 130.656124,21.2352356 L130.656124,22.3860687 C130.175214,22.627586 129.699332,22.7997381 129.227223,22.9031554 C128.755113,23.0065727 128.201909,23.0582814 127.566353,23.0582814 C126.696942,23.0582814 125.992864,22.9220732 125.455375,22.650918 C124.917887,22.3785016 124.487268,22.013388 124.164146,21.5549465 C123.840396,21.0952439 123.679464,20.5649147 123.679464,19.9614368 C123.679464,19.0559045 124.019559,18.3193713 124.700377,17.7530984 C125.381196,17.1861949 126.265065,16.9024278 127.352615,16.9024278 C128.399302,16.9024278 129.234767,17.1786277 129.858379,17.7297664 C130.481362,18.2815357 130.793797,19.0212219 130.793797,19.9475637 L130.793797,20.0970144 Z M125.274955,19.3926415 L129.247968,19.3926415 C129.208364,18.9228493 129.022286,18.5608887 128.690363,18.3061289 C128.358441,18.0519997 127.912105,17.9246198 127.351357,17.9246198 C126.789981,17.9246198 126.331701,18.0519997 125.974004,18.3061289 C125.616936,18.5602581 125.38371,18.9228493 125.274955,19.3926415 Z M134.046387,17.0190876 L134.046387,17.7751692 C134.74355,17.193762 135.536266,16.9024278 136.423279,16.9024278 C136.914877,16.9024278 137.373156,16.998278 137.796232,17.1899784 C138.219936,17.3823094 138.5418,17.6452669 138.761825,17.9788509 C138.982478,18.3130654 139.091861,18.8421333 139.091861,19.5666853 L139.091861,22.9681065 L137.530316,22.9681065 L137.530316,19.5799277 C137.530316,18.9720356 137.407731,18.5381873 137.161304,18.2771216 C136.914877,18.0166865 136.503117,17.8861536 135.925395,17.8861536 C135.187371,17.8861536 134.560615,18.1636148 134.046387,18.7204288 L134.046387,22.9681065 L132.449638,22.9681065 L132.449638,17.0190876 L134.046387,17.0190876 Z M140.164952,17.963086 L143.100078,15.7906915 L143.100078,17.0190876 L145.597041,17.0190876 L145.597041,18.0797458 L143.100078,18.0797458 L143.100078,20.9962407 C143.100078,21.6772817 143.474748,22.0171715 144.224088,22.0171715 C144.784836,22.0171715 145.377017,21.875288 146,21.5908903 L146,22.6893842 C145.399648,22.944144 144.744603,23.0708933 144.034867,23.0708933 C143.319474,23.0708933 142.724779,22.9138755 142.250155,22.5992093 C142.101167,22.5046203 141.977953,22.3974194 141.881143,22.2788678 C141.783703,22.1603163 141.70198,22.0045597 141.635972,21.8134898 C141.570594,21.6211588 141.537276,21.2560452 141.537276,20.7175184 L141.537276,18.0791152 L140.164323,18.0791152 L140.164323,17.963086 L140.164952,17.963086 Z M47.3511448,11.9617278 C47.3511448,18.5690864 36.7509961,23.9240862 23.6758867,23.9240862 C10.5995201,23.9240862 0,18.5690864 0,11.9617278 C0,5.35563047 10.5995201,0 23.6758867,0 C36.7503674,0.000630593485 47.3511448,5.35626107 47.3511448,11.9617278 Z M18.4273609,19.5130848 C20.0693719,19.804419 21.8358538,19.962698 23.6758867,19.962698 C32.4209152,19.962698 39.5101025,16.380927 39.5101025,11.9617278 C39.5101025,7.54315927 32.4209152,3.96075768 23.6758867,3.96075768 C21.8358538,3.96075768 20.0700005,4.11966724 18.4273609,4.41100143 L18.4273609,19.5130848 Z" id="Combined-Shape"></path>
+				</svg>
+			</a>
+						<a href="https://obdev.at/" class="mobile logo">
+				<svg width="32px" height="16px" viewBox="0 0 32 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path id="Shape" fill="#000000" fill-rule="evenodd" d="M32,7.99978914 C32,12.4186721 24.8363979,16 16.0002124,16 C7.16317725,16 0,12.4186721 0,7.99978914 C0,3.58174965 7.16317725,0 16.0002124,0 C24.8359731,0.000421729619 32,3.58217138 32,7.99978914 Z M12.453248,13.0500013 C13.5629223,13.2448404 14.7567144,13.3506945 16.0002124,13.3506945 C21.9101204,13.3506945 26.7010077,10.9552703 26.7010077,7.99978914 C26.7010077,5.0447297 21.9101204,2.64888373 16.0002124,2.64888373 C14.7567144,2.64888373 13.5633472,2.7551596 12.453248,2.94999868 L12.453248,13.0500013 Z" id="OBDEV-:-Mobile"></path>
+				</svg>
+			</a>
+
+						<label for="mm-trigger">
+				<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<polygon id="ShapeExpanded" stroke="none" fill="#000000" fill-rule="evenodd" points="9.07106781 5.82842712 14.7279221 11.4852814 16.1421356 10.0710678 9.77817459 3.70710678 9.07106781 3 2 10.0710678 3.41421356 11.4852814"></polygon>
+					<path d="M0,0 L18,0 L18,2 L0,2 L0,0 Z M0,6 L18,6 L18,8 L0,8 L0,6 Z M0,12 L18,12 L18,14 L0,14 L0,12 Z" id="ShapeCollapsed" stroke="none" fill="#000000" fill-rule="evenodd"></path>
+				</svg>
+			</label>
+
+			<nav role="main">
+				<a href="https://obdev.at/products/" class="entry desktop">
+					Products				</a>
+
+																				<a href="https://obdev.at/products/littlesnitch" class="entry mobile">
+							<img src="https://obdev.at/Images/product-icons/littlesnitch_32.png" srcset="https://obdev.at/Images/product-icons/littlesnitch_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Little Snitch						</a>
+											<a href="https://obdev.at/products/littlesnitch-mini" class="entry mobile">
+							<img src="https://obdev.at/Images/product-icons/littlesnitch_mini_32.png" srcset="https://obdev.at/Images/product-icons/littlesnitch_mini_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Little Snitch Mini						</a>
+											<a href="https://obdev.at/products/microsnitch" class="entry mobile">
+							<img src="https://obdev.at/Images/product-icons/microsnitch_32.png" srcset="https://obdev.at/Images/product-icons/microsnitch_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Micro Snitch						</a>
+											<a href="https://obdev.at/products/launchbar" class="entry mobile">
+							<img src="https://obdev.at/Images/product-icons/launchbar_32.png" srcset="https://obdev.at/Images/product-icons/launchbar_32@2x.png 2x"  width="32" height="32" border="0" alt="" />LaunchBar						</a>
+											<a href="https://obdev.at/products/iapviewer" class="entry mobile">
+							<img src="https://obdev.at/Images/product-icons/iapviewer_32.png" srcset="https://obdev.at/Images/product-icons/iapviewer_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Internet Access Policy Viewer						</a>
+					
+					<a href="https://obdev.at/products/" class="entry mobile more">
+						<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<defs></defs>
+							<path d="M11,22 C4.92486775,22 0,17.0751322 0,11 C0,4.92486775 4.92486775,0 11,0 C17.0751322,0 22,4.92486775 22,11 C22,17.0751322 17.0751322,22 11,22 Z M11,21 C16.5228475,21 21,16.5228475 21,11 C21,5.4771525 16.5228475,1 11,1 C5.4771525,1 1,5.4771525 1,11 C1,16.5228475 5.4771525,21 11,21 Z M5.5,12.5714286 C4.63212396,12.5714286 3.92857143,11.867876 3.92857143,11 C3.92857143,10.132124 4.63212396,9.42857143 5.5,9.42857143 C6.36787604,9.42857143 7.07142857,10.132124 7.07142857,11 C7.07142857,11.867876 6.36787604,12.5714286 5.5,12.5714286 Z M11,12.5714286 C10.132124,12.5714286 9.42857143,11.867876 9.42857143,11 C9.42857143,10.132124 10.132124,9.42857143 11,9.42857143 C11.867876,9.42857143 12.5714286,10.132124 12.5714286,11 C12.5714286,11.867876 11.867876,12.5714286 11,12.5714286 Z M16.5,12.5714286 C15.632124,12.5714286 14.9285714,11.867876 14.9285714,11 C14.9285714,10.132124 15.632124,9.42857143 16.5,9.42857143 C17.367876,9.42857143 18.0714286,10.132124 18.0714286,11 C18.0714286,11.867876 17.367876,12.5714286 16.5,12.5714286 Z" id="Shape" stroke="none" fill="#000000" fill-rule="evenodd"></path>
+						</svg>
+						More Products					</a>
+
+									
+				<a href="https://obdev.at/shop/" class="entry">Shop</a>
+				<a href="https://obdev.at/support?product=LB" class="entry">Support</a>
+				<a href="https://obdev.at/blog/" class="entry">Blog</a>
+
+				
+							</nav>
+		</header>
+
+							<input type="checkbox" id="sm-trigger" class="sm-trigger">
+			<nav role="sub">
+				<a href="https://obdev.at/products/launchbar/index.html" class="home">LaunchBar</a>
+
+<div class="entries">
+    <a href="https://obdev.at/products/launchbar/index.html">Overview</a>
+    <a href="https://obdev.at/products/launchbar/features.html">Features</a>
+    <a href="https://obdev.at/products/launchbar/actions.html">Actions</a>
+    <a href="https://obdev.at/products/launchbar/videos.html">Videos</a>
+    <a href="https://obdev.at/products/launchbar/download.html">Download</a>
+    <a href="https://obdev.at/products/launchbar/order.html" class="buy-now">Buy</a>
+</div>
+				<label for="sm-trigger">Menu</label>
+			</nav>
+		
+				<div id="menu-overlay"></div>
+		<div class="pageContent">
+
+<section class="header-text-only">
+    <div class="title">
+        <h1>Release Notes</h1>
+    </div>
+</section>
+
+<section class="changelogs">
+<div class="changelog-entry" id="version-6297">
+<div class="date"><span>April 27, 2026</span></div>
+<div class="details">
+<h3 id="first-releasenotes-headline">LaunchBar 6.24 <span class="buildnumber">(6297)</span></h3>
+<div class="changes">
+<h4>New Features and Improvements</h4>
+<ul>
+<li>Browsing Emoji items with the Right-Arrow key now offers a “Look Up in Wikipedia” action.</li>
+<li>The LaunchBar menu is now more conveniently accessible for VoiceOver users via VO-Shift-M.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>The location and size of the LaunchBar window wasn’t preserved across restart of the app.</li>
+<li>Improved “Empty Trash” action to bring the “LaunchBar wants access to control Finder” dialog if necessary to request the required Automation permission. Without this permission the action previously silently failed.</li>
+<li>Search templates unnecessarily percent-encoded colons of the entered search text.</li>
+<li>Fixed incorrect display of “3rd party app integration” warning when 1Password 8 is installed.</li>
+<li>Fixed a couple of layout issues in the index window.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6295">
+<div class="date"><span>March 20, 2026</span></div>
+<div class="details">
+<h3>LaunchBar 6.23 <span class="buildnumber">(6295)</span></h3>
+<div class="changes">
+<h4>New Features and Improvements</h4>
+<ul>
+<li>This release brings substantial improvements to VoiceOver support throughout LaunchBar. For details see the “Accessibility &amp; VoiceOver” section below.</li>
+<li>A new option in <em>Settings &gt; Advanced</em> lets you specify the default sort order of folder contents when browsing folders with the Right-Arrow key.</li>
+<li>You can also enforce a certain sort order on the fly while browsing with modifier keys:
+<ul>
+<li>Command-Right: Sort by Modification Date</li>
+<li>Shift-Command-Right: Sort by Date Added</li>
+<li>Option-Command-Right: Sort by Name</li>
+<li>Option-Shift-Command-Right: Sort by Name, folders on top</li>
+</ul></li>
+<li>Pasting a URL onto a web browser app that’s currently selected in LaunchBar now opens that URL directly in that browser.</li>
+<li>Improved System Settings indexing to include the “Menu Bar” and “iCloud” panes, and to show the correct icon and name for the “Apple Intelligence &amp; Siri” pane.</li>
+<li>On macOS 26, menu icons have been added to the menu bar and to context menus of both LaunchBar and the Action Editor.</li>
+<li>The menu icons are now larger and easier to read.</li>
+<li>The icons in the menu bar of LaunchBar in macOS Tahoe can be hidden via the <code>HideMenuIcons</code> user default in the command line.</li>
+<li>If a custom action returns a single item with <code>alwaysShowsSubtitle</code> set, the item list will be opened automatically.</li>
+<li>Refined Default theme appearance.</li>
+<li>Improved Music library indexing.</li>
+<li>Improved performance of accessing an application’s recent documents.</li>
+<li>“Previous Recipient” has been renamed to “Previous Email Recipient” for clarity.</li>
+<li>The keyboard shortcut for the “Open” action in the action menu has changed from Return to Command-O, so that pressing Return while navigating the menu with arrow keys correctly selects the highlighted item rather than triggering Open.</li>
+<li>Improved compatibility with the latest version of MindNode for accessing MindNode documents via LaunchBar.</li>
+<li>Music items now consistently use the term “song” rather than “track”.</li>
+</ul>
+<h4>Accessibility &amp; VoiceOver</h4>
+<h5>Descriptions &amp; Item Types</h5>
+<ul>
+<li>Albums now include the album artist in their VoiceOver title.</li>
+<li>Song descriptions now include the duration of the song.</li>
+<li>Contacts and contact detail items have improved VoiceOver descriptions.</li>
+<li>Birthday items have improved VoiceOver descriptions.</li>
+<li>Folders without read permission are no longer wrongly described as “empty folder”.</li>
+<li>Certain file types (web apps, services, framework header files) now have accurate type descriptions.</li>
+<li>The “Computer” item now speaks the number of mounted volumes.</li>
+<li>Containers now have more concise descriptions (the word “contains” has been dropped).</li>
+<li>Items whose contents can be browsed via Right-Arrow have an improved default VoiceOver content description.</li>
+<li>Single-word text items now speak the number of characters.</li>
+<li>Info Browsing items have improved VoiceOver descriptions.</li>
+<li>“Hidden Folder Contents” and “Package Contents” now provide a VoiceOver title.</li>
+<li>Added missing VoiceOver title for grouped document items.</li>
+</ul>
+<h5>Navigation &amp; Interaction</h5>
+<ul>
+<li>The VoiceOver-Space keyboard shortcut now opens LaunchBar’s action menu.</li>
+<li>VoiceOver output updates dynamically when modifier keys are pressed or released, which is particularly useful during Send-to operations, where the available action (move/copy/make alias) changes based on which modifiers are held.</li>
+<li>The Send-to target item now has an improved VoiceOver description.</li>
+<li>Instant Info Browsing now works correctly when VoiceOver is enabled.</li>
+<li>A confirmation alert is now shown before moving items to the Trash when VoiceOver is on.</li>
+<li>The VoiceOver description for the “Clipboard History” action now suppresses the redundant “Action” suffix and speaks the number of items in the history.</li>
+<li>Indexing rule items now have an improved VoiceOver title.</li>
+<li>Preventing hotkey input fields in Setting window from incorrectly receiving keyboard focus via VoiceOver.</li>
+<li>Improved VoiceOver output on Instant Send.</li>
+<li>Improved accessibility of the Welcome and License windows.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed an incompatibility with macOS 26.4 that caused the LaunchBar window to appear without a drop shadow.</li>
+<li>Fixed the “Compress (ZIP Archive)” action, which failed out of the box due to missing permission to run third-party Automator actions.</li>
+<li>Fixed intermittent Clipboard History and ClipMerge failures.</li>
+<li>Fixed certain file types (<code>.md</code>, <code>.patch</code>) being incorrectly described as “Package”.</li>
+<li>Fixed indexing rule subtitles to correctly show the number of visible items rather than all items.</li>
+<li>Added missing localizations for Info Browsing labels and the German localization for the “Documents” suffix (e.g. “Numbers-Dokumente”).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6291">
+<div class="date"><span>October 14, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.22.2 <span class="buildnumber">(6291)</span></h3>
+<div class="changes">
+<p>Fixed an issue causing LaunchBar to freeze on some Intel Macs.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6289">
+<div class="date"><span>October 13, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.22.1 <span class="buildnumber">(6289)</span></h3>
+<div class="changes">
+<p>Fixed: Accessing MindNode Next documents (a new feature introduced in version 6.22) didn’t work under some circumstances.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6287">
+<div class="date"><span>October 13, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.22 <span class="buildnumber">(6287)</span></h3>
+<div class="changes">
+<ul>
+<li>Improved compatibility with macOS 26 Tahoe.</li>
+<li>Redesigned index window.</li>
+<li>Redesigned Action Editor app.</li>
+</ul>
+<h4>New Features</h4>
+<ul>
+<li>Added support for accessing MindNode Next documents by browsing the app in LaunchBar with the right-arrow key (or Space bar).</li>
+<li>Added support for accessing repositories managed by Fork.app by browsing the app in LaunchBar with the right-arrow key (or Space bar).</li>
+<li>Contacts can now also be accessed by browsing third party contact managers (Cardhop and BusyContacts) with the right-arrow key (or Space bar).</li>
+<li>Shortcuts that are selected in LaunchBar can now be opened in the Shortcuts app with Command-Return.</li>
+<li>Added “Reverse Line Order” action to reverse the order of lines of a selected text.</li>
+<li>Improved applications indexing to include embedded apps of all installed Xcode versions.</li>
+<li>Clipboard History history items can now be shown in Large Type with Command-Return.</li>
+</ul>
+<h4>Themes</h4>
+<ul>
+<li>Updated appearance of the Default theme to better match the style of macOS Tahoe.</li>
+<li>The previous Default has been renamed to “Modest” and can still be selected in Settings &gt; Appearance.</li>
+<li>Refined some colors in built-in themes.</li>
+<li>Improved dark themes to add a subtle window border.</li>
+</ul>
+<h4>Action Editor</h4>
+<ul>
+<li>Modernized Action Editor user interface.</li>
+<li>Icons of custom actions can now be specified as an SF Symbol using the <code>symbol:some.symbol.name</code> syntax.</li>
+</ul>
+<h4>Other Changes and Improvements</h4>
+<ul>
+<li>The “Display in Large Type” action has been renamed into “Show in Large Type”.</li>
+<li>Subtitles of URLs &amp; bookmarks now only show the hostname instead of the full URL. The full URL is still quickly accessible via Info Browsing, by pressing the right arrow key.</li>
+<li>Improved subtitle of C Header files to include the name of the enclosing framework.</li>
+<li>Improved subtitle of indexing rule items to the show number of items it contains.</li>
+<li>Improved German localization of some action titles.</li>
+<li>Improved some icons of built-in actions.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Recent documents access didn’t work on macOS 26 Tahoe.</li>
+<li>Opening reminders in the Reminders app didn’t work.</li>
+<li>Opening a calendar with Command-Return in order to select it in the Calendar app didn’t work.</li>
+<li>Restoring the Clipboard History at app start didn’t work properly. The items were restored, but were not fully functional.</li>
+<li>Some text services (e.g. New Mail Message) didn’t accept text input.</li>
+<li>Improved URL detection to prevent some false positives in Clipboard History or when invoking Instant Send.</li>
+<li>Downloaded songs were incorrectly shown as invalid (with red text color) in the index window.</li>
+<li>The “Quit All Applications” action didn’t work reliably with web apps.</li>
+<li>In rare cases the Clipboard History failed to correctly identify the originator of a clipboard change.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6270">
+<div class="date"><span>June 4, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.21.1 <span class="buildnumber">(6270)</span></h3>
+<div class="changes">
+<p>This version is a hot fix for yesterday’s release of version 6.21 which caused a crash on app start for some users.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6268">
+<div class="date"><span>June 3, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.21 <span class="buildnumber">(6268)</span></h3>
+<div class="changes">
+<h4>New features and improvements</h4>
+<ul>
+<li>Added support for third-party contact apps (Cardhop and BusyContacts).</li>
+<li>Added “Decode HTML Entities” string conversion action.</li>
+<li>Allow opening of multiple apps or documents at once, even if they are located in different folders.</li>
+<li>Improved browsing of RTF files to show their text content instead of the RTF source code.</li>
+<li>Improved support for third-party file browsers like ForkLift.</li>
+<li>Improved cancelling auto-activation by pressing another modifier key.</li>
+<li>Extended JavaScript API for custom actions.</li>
+<li>Updated some icons (Google Search action, Web browser history items, etc.)</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Some phone number related actions (dialing, large type) didn’t work.</li>
+<li>Browsing a text snippet with right arrow didn’t show the text contents of the snippet.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6265">
+<div class="date"><span>March 5, 2025</span></div>
+<div class="details">
+<h3>LaunchBar 6.20.2 <span class="buildnumber">(6265)</span></h3>
+<div class="changes">
+<ul>
+<li>Improved display of localized app names and Emoji names to support a much larger variety of languages and regional language variants.</li>
+<li>The LaunchBar.app item can now browsed to shows a list of all indexing rules.</li>
+<li>Improved handling of Escape keypress during sub-search.</li>
+<li>Improved deletion of entered abbreviation characters with the Delete key (sometimes didn’t work reliably when using key-repeat).</li>
+<li>Added macOS Passwords.app to list of Ignored Applications of Clipboard History when installing LaunchBar for the first time.</li>
+<li>Fixed: Some system setting panes were not shown with their full name. For example, &quot;Login Items &amp; Extensions&quot; was only shown as &quot;Login Items&quot;, so it wasn’t found when searching for &quot;Extensions&quot;.</li>
+<li>Fixed: Pressing the global keyboard shortcut for Emoji or Snippets again now resets the current search within these items.</li>
+<li>Fixed formatted display of phone numbers.</li>
+<li>Fixed: Some email addresses or phone numbers were shown without a label.</li>
+<li>Fixed: Opening Safari via LaunchBar didn’t bring all Safari windows to front.</li>
+<li>Fixed: Sharing custom actions in Action Editor didn’t work (the “Share” submenu in the context menu didn’t show any share actions).</li>
+<li>Fixed a potential crash when closing the Large Type window showing a calculator result.</li>
+<li>Fixed a potential crash when indexing macOS Services of installed applications.</li>
+<li>Fixed a potential crash when reading an application’s Info.plist file.</li>
+<li>Removed obsolete “Secure Empty Trash” action (this action is no longer available in Finder).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6263">
+<div class="date"><span>October 15, 2024</span></div>
+<div class="details">
+<h3>LaunchBar 6.20.1 <span class="buildnumber">(6263)</span></h3>
+<div class="changes">
+<p>This is a hotfix for a bug introduced in LaunchBar 6.20 causing some JavaScript-based custom actions to fail.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6262">
+<div class="date"><span>October 14, 2024</span></div>
+<div class="details">
+<h3>LaunchBar 6.20 <span class="buildnumber">(6262)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>Using the term “Contact List” instead of “Contact Group” on macOS 13 and later for consistency with the wording used in the Contacts app.</li>
+<li>Improved Quick Look of plain text items in Clipboard History to use a larger font size. </li>
+<li>The activation hotkey now also resets an existing multiple selection.</li>
+<li>Improved Contacts indexing using a newer macOS API.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>When invoking a Service of an app via LaunchBar (e.g. the “Look Up in Dictionary” service of the Dictionary app), the corresponding app sometimes did not come to front. </li>
+<li>Indexing of System Settings didn’t include third party setting panes.</li>
+<li>The Contacts index wasn’t updated automatically when changes were made in the Contacts app.</li>
+<li>Opening a postal address in Maps sometimes caused the web browser to be opened.</li>
+<li>The Quick Look preview window sometimes reopened immediately after being closed.</li>
+<li>The result list sometimes still appeared partially empty (at least for a very short moment). This issue has now been completely resolved.</li>
+<li>Fixed missing localization of file paths shown in the index window.</li>
+<li>Fixed a potential crash when indexing shortcuts from Shortcuts app.</li>
+<li>Fixed a potential crash when indexing Sharing Services.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6257">
+<div class="date"><span>July 5, 2024</span></div>
+<div class="details">
+<h3>LaunchBar 6.19.1 <span class="buildnumber">(6257)</span></h3>
+<div class="changes">
+<h4>Bug Fix</h4>
+<p>Sending text to apps via Send-to sometimes still didn’t bring the target app to front on macOS Sonoma (this bug was supposed to be fixed in version 6.19, so this is another attempt to fix it).</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6254">
+<div class="date"><span>July 4, 2024</span></div>
+<div class="details">
+<h3>LaunchBar 6.19 <span class="buildnumber">(6254)</span></h3>
+<div class="changes">
+<h4>System Settings</h4>
+<p>Indexing and access to System Settings panes have been completely rewritten. It’s now possible to browse and open all System Settings panes directly from LaunchBar, and they are displayed with their respective icons.</p>
+<h4>Improvements</h4>
+<ul>
+<li>Redesigned and modernized lots of icons shown in the result list (contact details, items in the Music Library, and more).</li>
+<li>Info browsing of a folder (with Shift-Right) now also shows the number of items contained in that folder.</li>
+<li>Improved performance when browsing the result list with the up/down arrow keys.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>On macOS Sonoma, the result list sometimes appeared partially empty, with the top match item located somewhere near the bottom of the list.</li>
+<li>Showing items in Finder via Command-Return sometimes didn’t bring the Finder window to front on macOS Sonoma.</li>
+<li>Sending text to apps via Send-to sometimes didn’t bring the target app to front on macOS Sonoma.</li>
+<li>In a multiple display setup with an external monitor, LaunchBar sometimes didn’t appear on the preferred screen at app start.</li>
+<li>Some icons were drawn with their shadows heading in the wrong direction (upwards instead of downwards).</li>
+<li>Info browsing of a folder (with Shift-Right) did not allow to further navigate into the folder’s name to split it into words.</li>
+<li>Resizing the LaunchBar window during text input could cause the text to jump slightly vertically to a different location.</li>
+<li>Various other minor bug fixes and improvements.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6248">
+<div class="date"><span>November 29, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18.5 <span class="buildnumber">(6248)</span></h3>
+<div class="changes">
+<p>We’ve identified and fixed an issue that caused occasional delays during input for some users running versions 6.18.3 and 6.18.4.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6245">
+<div class="date"><span>November 13, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18.4 <span class="buildnumber">(6245)</span></h3>
+<div class="changes">
+<p>This version attempts to resolve perfomance issues that some users have reported after installing the previous version 6.18.3.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6240">
+<div class="date"><span>November 3, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18.3 <span class="buildnumber">(6240)</span></h3>
+<div class="changes">
+<ul>
+<li>Improved “Display in Large Type” for long text that doesn’t fit into a single line.</li>
+<li>Improved category indexing to eliminate duplicates from the result.</li>
+<li>Fixed: Accessing an app’s Recent Documents didn’t work on macOS 14.1.</li>
+<li>Fixed: Indexing of Calendars and Reminders didn’t work on macOS Sonoma.</li>
+<li>Fixed: Finder tags were no longer shown with their colors on macOS Sonoma.</li>
+<li>Several other minor bug fixes and improvements.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6238">
+<div class="date"><span>September 21, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18.2 <span class="buildnumber">(6238)</span></h3>
+<div class="changes">
+<ul>
+<li>Fixed an issue causing the “Eject All Ejectable Volumes” action to inadvertently also eject hidden volumes from Xcode’s iOS Simulator.</li>
+<li>Fixed the ^ operation in Calculator (for calculating integral powers of a number like 7^2=49), which stopped working in one of the recent macOS versions.</li>
+<li>Fixed a layout issue in the confirmation dialog shown when installing a new custom action.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6236">
+<div class="date"><span>September 2, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18.1 <span class="buildnumber">(6236)</span></h3>
+<div class="changes">
+<p>Fixed a bug causing the theme settings to get reset to Default &amp; Automatic at each restart of the app.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-6235">
+<div class="date"><span>August 20, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.18 <span class="buildnumber">(6235)</span></h3>
+<div class="changes">
+<h4>Automatic Theme Switching</h4>
+<ul>
+<li>Added automatic switching between a theme’s dark and light appearance based on the current system appearance.</li>
+<li>The desired theme appearance can be chosen in LaunchBar Settings &gt; Appearance.</li>
+<li>In addition to automatic switching it’s still possible to choose a fixed dark or light appearance.</li>
+<li>The desired appearance can also be chosen in the LaunchBar window. Select a theme (either by browsing the Themes indexing rule or by selecting it directly via abbreviation search), then press Right Arrow (or Space) and choose either Automatic, Light or Dark.</li>
+<li>Added dark variants of built-in themes (except for the “Vintage” theme).</li>
+</ul>
+<h4>Improvements and Bug Fixes</h4>
+<ul>
+<li>Improved appearance of sidebar in index window.</li>
+<li>Improved caching of applications index for better startup performance.</li>
+<li>Improved ranking of system applications when searching via abbreviation search.</li>
+<li>Fixed: Sending files to a shortcut (those created in the macOS Shortcuts app) didn’t work on macOS Ventura. This was caused by a bug in the Shortcuts API on Ventura, which no longer accepts multiple files or folders to be sent to a shortcut. As a consequence it’s currently only possible to send a single file or folder to a shortcut via LaunchBar on Ventura. On macOS Monterey it’s still possible to send multiple files or folders.</li>
+<li>Fixed a bug causing a file path copied from LaunchBar into a Terminal window to be pasted twice.</li>
+<li>Fixed a crash when allowing Calendar/Reminders access after adding or enabling the corresponding indexing rule.</li>
+<li>Fixed an issue causing the shadows in a few custom icons to be headed in the wrong direction.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6233">
+<div class="date"><span>April 17, 2023</span></div>
+<div class="details">
+<h3>LaunchBar 6.17 <span class="buildnumber">(6233)</span></h3>
+<div class="changes">
+<h4>Improved Shortcuts Support</h4>
+<ul>
+<li>If a shortcut accepts files as an input, it’s now possible to send those files to the shortcut via Send-to (select a file in LaunchBar, press Tab, select the shortcut, hit Return).</li>
+<li>Shortcuts are now displayed with the icon that has been defined in Shortcuts.app</li>
+</ul>
+<h4>Other Improvements and Bug Fixes</h4>
+<ul>
+<li>Improved handling of custom script actions which are returning items that are referring to a file.</li>
+<li>Improved Action Editor to preserve custom entries in an action’s Info.plist.</li>
+<li>Updated icons of bookmarks and bookmark folders.</li>
+<li>Fixed indexing of Safari iCloud Tabs.</li>
+<li>Fixed: Accessing contact notes didn’t work on macOS Ventura</li>
+<li>Fixed an issue causing arrow key navigation to fail once, immediately after press Command-Right.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6232">
+<div class="date"><span>November 7, 2022</span></div>
+<div class="details">
+<h3>LaunchBar 6.16 <span class="buildnumber">(6232)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<ul>
+<li>Compatibility with macOS Ventura.</li>
+<li>New built-in “Dark Mode On/Off” action.</li>
+<li>New built-in actions for converting images into PNG or HEIC format.</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>Improved Google Chrome Bookmarks and History indexing to support multiple profiles.</li>
+<li>Improved application indexing to also include Xcode’s Simulator.app.</li>
+<li>Renamed image conversion actions from “Recompress Image” to “Convert Image to JPG”.</li>
+<li>Improved icons of built-in actions.</li>
+<li>Improved appearance of drag &amp; drop highlight while dragging items onto the LaunchBar window.</li>
+<li>Improved browsing of an application’s recent documents to indicate if a document would by default open with a different app.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed indexing of Firefox bookmarks and history.</li>
+<li>Fixed built-in “Set Desktop Background” action.</li>
+<li>Fixed incorrect display of icons with non-square aspect ratios.</li>
+<li>Fixed a layout issue in the Options pane of the index window.</li>
+</ul>
+<h4>Other Changes</h4>
+<ul>
+<li>Changed keyboard shortcut of “Open in Action Editor” from Command-Return to Shift-Command-E.</li>
+<li>Dropped support for Chromium and Opera web browsers.</li>
+<li>Removed “Lock Screen” and Fast User Switching actions on macOS Big Sur and later, because macOS has removed the ability for third party apps to trigger these functions.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6228">
+<div class="date"><span>December 13, 2021</span></div>
+<div class="details">
+<h3>LaunchBar 6.15 <span class="buildnumber">(6228)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<ul>
+<li>Added support for shortcuts defined in the Shortcuts.app of macOS Monterey. Those shortcuts are indexed automatically and can be conveniently invoked from LaunchBar. If a shortcut requires text input, this text can be entered after pressing the Space bar or via Send-to.</li>
+<li>Added „Giphy GIFs“ search template to search for GIFs on giphy.com.</li>
+<li>When the Safari History indexing rule is selected in LaunchBar, pressing Command-Return now invokes the new “Show History in Safari” action, which opens the History page in Safari.</li>
+<li>Added a new “iOS Applications” category containing all iOS apps that can be run natively on Apple Silicon Macs.</li>
+</ul>
+<h4>Appearance</h4>
+<ul>
+<li>The overall appearance has been improved and modernized in many areas of the application.</li>
+<li>Dozens of newly designed or refined icons, meticulously fine tuned to be pixel aligned for a super crisp look.</li>
+<li>Most categories now have dedicated icons instead of the generic cardboard box symbol.</li>
+<li>Refined appearance of many UI elements.</li>
+<li>Refined appearance of built-in Themes.</li>
+<li>The text cursor shown during text input is now more pronounced for better visibility.</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>Improved Instant Open behavior of indexing rules. For example, when you type EM to select the Emoji indexing rule and keep the M key pressed to trigger Instant Open, you now immediately get to the list of all Emoji symbols.</li>
+<li>The Quick Look preview panel is now closed automatically when pressing Tab to invoke Send-to.</li>
+<li>Improved support for 1Password.</li>
+<li>Improved DuckDuckGo action for better compatibility with macOS Monterey.</li>
+<li>Improved item list drawing performance.</li>
+<li>Improved algorithm for determining plural forms used in category names.</li>
+<li>Excluded duplicate Siri.app entry in applications index.</li>
+<li>Script based custom actions that are selected in LaunchBar can now be opened in Action Editor using the new “Show in Action Editor” command from the context menu or by pressing Command-Return.</li>
+<li>Improved layout of index window. The „Add Indexing Rule“ button has been moved to the bottom of the sidebar of the index window.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>The “Skip Subfolders” indexing option is now properly considered for file packages when the „Search file package contents“ option is turned on.</li>
+<li>Fixed: The color of Finder tags was no longer shown on macOS Monterey.</li>
+<li>Corrected capitalization of some Emoji names.</li>
+<li>Fixed: After invoking the “Clear Clipboard History” or “Clear Recent Items” actions, Instant Send was wrongly offered.</li>
+<li>The “Mobile Phone” icon was too large in a pop-up menu of the Preferences window.</li>
+<li>Fixed: Some icons were drawn with a shadow heading in the wrong direction.</li>
+<li>Fixed: Thin grid lines in the search result list were not properly updated on selection changes.</li>
+<li>Corrected text color in Usage window (some labels became invisible in Dark Mode due to their white text color).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6224">
+<div class="date"><span>March 9, 2021</span></div>
+<div class="details">
+<h3>LaunchBar 6.14.1 <span class="buildnumber">(6224)</span></h3>
+<div class="changes">
+<ul>
+<li>Hot Fix: Applications indexing didn’t include iOS apps on Apple Silicon Macs. If you’ve been affected by this bug, please press Option-Command-R in LaunchBar to enforce an index update.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6223">
+<div class="date"><span>March 9, 2021</span></div>
+<div class="details">
+<h3>LaunchBar 6.14 <span class="buildnumber">(6223)</span></h3>
+<div class="changes">
+<h4>Music</h4>
+<ul>
+<li>Added “Add to Playlist” functionality via Send-to. Example: Select a song in LaunchBar, press Tab, select a Playlist, hit Return.</li>
+<li>Music indexing now creates “smart” categories for “Downloaded Songs”, “DRM Protected Songs”,“Unplayed Songs” and “Purchased Songs” making it easy to search for songs of just that kind via sub-search.</li>
+<li>Added “Play in Random Order” action for playlists (accessible from the action menu or opening the playlist with Option-Return).</li>
+<li>Much improved performance of music playback actions.</li>
+<li>Improved display of metadata information when browsing music items (songs, albums, etc.)</li>
+<li>Improved playback of a selected song within a playlist.</li>
+<li>Improved playback of songs from subscribed Apple Music playlists.</li>
+<li>Pressing Space on a selected song items now shows the details for that song (album, artist, genre, etc.).</li>
+<li>Improved “Show in Music” action for playlists.</li>
+<li>Improved “Info browsing” of songs (when pressing Shift-Right) to also show BPM and bitrate information.</li>
+<li>Changed “Show in Music” action shortcut to Command-Return.</li>
+<li>Attempting to start playback of more than 100 songs now asks for confirmation.</li>
+<li>Fixed the “Show in Music” action, which didn’t work anymore.</li>
+<li>Fixed browsing of playlist folders, which didn’t work anymore.</li>
+<li>Fixed an issue causing the “Play in Random Order” action (when opening an album with Option-Return) sometimes not to play the songs in random order.</li>
+<li>Fixed an issue causing the songs of an album to be played back in wrong order under some circumstances.</li>
+</ul>
+<h4>New features</h4>
+<ul>
+<li>Added “Remove All Spaces” text conversion action to built-in actions.</li>
+<li>Added “Acronym Finder” search template.</li>
+<li>Added “DuckDuckGo Images” search template.</li>
+<li>Added “DuckDuckGo Videos” search template.</li>
+<li>Added “Google Translate to English” search template.</li>
+<li>Added “Google Translate to German” search template.</li>
+</ul>
+<h4>Other improvements and bug fixes</h4>
+<ul>
+<li>Improved support of Apple Silicon Macs.</li>
+<li>Improved “Current Safari Page” action. The action now also retrieves the title of the page. Invoking the action now selects the page URL in LaunchBar making it accessible for subsequent actions.</li>
+<li>Improved “Recompress” actions (for creating JPEG files with different compression ratios) to select the resulting JPEG file(s) in LaunchBar to make them accessible for subsequent actions.</li>
+<li>Improved info browsing of text items (when pressing Shift-Right) to also show the number of printable characters.</li>
+<li>Improved app indexing when using the “Search Everywhere” option.</li>
+<li>Changed shortcut for opening a Snippet in the default editor app to Shift-Command-Return.</li>
+<li>Fixed an issue on Apple Silicon Macs causing non-Universal (Apple Silicon only) applications not to be indexed.</li>
+<li>Fixed inadvertent triggering of “Instant Info Browsing” (which can be enabled in Preferences &gt; Shortcuts for showing metadata of an item by pressing and holding the right arrow key).</li>
+<li>Improved display name of indexed System Preferences panes.</li>
+<li>Corrected display of some System Preferences pane icons on macOS Big Sur.</li>
+<li>Corrected “Lucky Google” action, which is performed search when confirming the entered search string with Command-Return (unfortunately, Google now shows an intermediate “Redirect Notice” page, though).</li>
+<li>Various minor bug fixes.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6217">
+<div class="date"><span>September 15, 2020</span></div>
+<div class="details">
+<h3>LaunchBar 6.13.1 <span class="buildnumber">(6217)</span></h3>
+<div class="changes">
+<ul>
+<li>Added “Apple Music” search template.</li>
+<li>Improved song metadata shown in the Info Browsing list.</li>
+<li>Improved browsing of Finder tags (via “Tags” indexing rule or category).</li>
+<li>Improved enforcing of subtitle display while pressing the Control-Option-Command modifier keys.</li>
+<li>Showing a message dialog when an action cannot be performed due to missing permission in System Preferences &gt; Security &gt; Privacy &gt; Accessibility.</li>
+<li>Fixed: Sending text to a search template via Send-to or Instant Send didn’t work.</li>
+<li>Fixed: When copying an email address, a mailto-URL was copied instead.</li>
+<li>Fixed: Missing encoding of #-character in web searches.</li>
+<li>Various minor bug fixes.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6215">
+<div class="date"><span>September 1, 2020</span></div>
+<div class="details">
+<h3>LaunchBar 6.13 <span class="buildnumber">(6215)</span></h3>
+<div class="changes">
+<h4>macOS Big Sur</h4>
+<ul>
+<li>Added support for macOS Big Sur.</li>
+<li>Refined the default theme to blend nicely with the new appearance of macOS Big Sur.</li>
+</ul>
+<h4>Music</h4>
+<ul>
+<li>Re-implemented Music Library indexing.</li>
+<li>Added compatibility with Music.app on macOS Catalina.</li>
+<li>Songs and albums are now displayed with their album artwork.</li>
+<li>Updated Music playback actions.</li>
+</ul>
+<h4>Search Templates</h4>
+<ul>
+<li>Improved management of search templates. There’s now a set of built-in, non-editable search templates, which are kept up to date automatically. And there’s another, separate set of “Custom Search Templates” where you can define your own web searches.</li>
+<li>Updated built-in search templates.</li>
+<li>Added “All Music” search template (<a href="https://allmusic.com">allmusic.com</a>).</li>
+<li>Added “Ecosia” and “Ecosia Images” search templates (<a href="https://ecosia.org">ecosia.org</a>).</li>
+<li>Added German localization of search template names.</li>
+</ul>
+<h4>Search window</h4>
+<ul>
+<li>Improved browsing of sub-search results. When browsing “backwards” (with the left arrow key), a previous sub-search result is preserved.</li>
+<li>Improved handling of empty groups in item list.</li>
+<li>Improved automatic display of subtitles in item list during browsing.</li>
+</ul>
+<h4>Actions</h4>
+<ul>
+<li>Updated and improved image conversion actions (rotate, flip, resize, compress, etc.). They are now better chainable with subsequent actions – the resulting images can be immediately sent to another action.</li>
+<li>Improved help texts of all built-in actions.</li>
+<li>A brief description of each action is now displayed in the action’s subtitle.</li>
+<li>Updated “Search Dash” action.</li>
+</ul>
+<h4>Improvements and bug fixes</h4>
+<ul>
+<li>Some significant “under the hood” modernization of the entire codebase.</li>
+<li>Improved conversion of filename extension to lowercase when renaming a file. The conversion is now performed only if the entire extension is uppercase (example: .JPG → .jpg)</li>
+<li>Reorganized sidebar in index window.</li>
+<li>Improved compatibility with third-party apps trying to figure out if screen recording is allowed.</li>
+<li>Fixed an occasional crash when typing a menu keyboard shortcut.</li>
+<li>Fixed an issue when indexing Finder tags which could result in duplicate tags.</li>
+<li>Fixed: Opening JavaScript files in Action Editor opened them in Safari.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6211">
+<div class="date"><span>September 27, 2019</span></div>
+<div class="details">
+<h3>LaunchBar 6.12 <span class="buildnumber">(6211)</span></h3>
+<div class="changes">
+<ul>
+<li>Added Support for macOS Catalina (10.15)</li>
+<li>Improved drag &amp; drop to close the window automatically when items are dragged from LaunchBar to make sure that the LaunchBar window doesn’t cover the desired dragging destination.</li>
+<li>Improved ClipMerge to more reliably detect copies made by Shift-Clicking a menu item.</li>
+<li>Improved Dark Mode support.</li>
+<li>Fixed an issue causing repeated updates of the iCloud Tabs index.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6209">
+<div class="date"><span>April 24, 2019</span></div>
+<div class="details">
+<h3>LaunchBar 6.11.1 <span class="buildnumber">(6209)</span></h3>
+<div class="changes">
+<ul>
+<li>Re-added missing „Search Dash“ action.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6205">
+<div class="date"><span>April 23, 2019</span></div>
+<div class="details">
+<h3>LaunchBar 6.11 <span class="buildnumber">(6205)</span></h3>
+<div class="changes">
+<h4>Bug fixes and improvements</h4>
+<ul>
+<li>When using actions that show suggestions during text input (like DuckDuckGo, Wikipedia or Google searches) it’s now possible to press Right Arrow to update the suggestions list based on the currently selected suggestion text.</li>
+<li>Fixed an issue causing the Clipboard History to stop working after copying text containing certain characters.</li>
+<li>Fixed an issue causing App Store searches via LaunchBar not to work on macOS Mojave.</li>
+<li>Fixed an issue when entering calendar events spanning several days in the form <em>“event @ jan 12 - 14”</em> causing the event to be created with a date in the past.</li>
+<li>Fixed: The <em>Safari iCloud Tabs</em> indexing rule didn’t work with the most recent versions of Safari.</li>
+<li>Fixed: Opening folders located on iCloud Drive didn’t open that folder in Finder or Path Finder.</li>
+<li>LaunchBar now shows a message when Full Disk Access is required for a particular indexing rule. For example, indexing Safari Bookmarks on macOS Mojave only works if Full Disk Access is granted.</li>
+<li>Improved auto-hiding of LaunchBar when clicking outside the LaunchBar window.</li>
+<li>Fixed: Creating a new search template didn’t work properly when the index window’s search field was not empty.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6200">
+<div class="date"><span>October 11, 2018</span></div>
+<div class="details">
+<h3>LaunchBar 6.10 <span class="buildnumber">(6200)</span></h3>
+<div class="changes">
+<h4>Compatibility with macOS Mojave</h4>
+<p>This version of LaunchBar is compatible with macOS Mojave, but due to improved privacy protection in macOS Mojave, some LaunchBar features require additional permissions to be granted in System Preferences &gt; Security &amp; Privacy &gt; Privacy:</p>
+<ul>
+<li>Indexing of Safari Bookmarks requires LaunchBar to be added to “Full Disk Access”. Otherwise LaunchBar won’t be able to read the bookmarks file, which is located in your Library folder.</li>
+<li><em>Instant Send</em> and <em>Get/Drop Finder Selection</em> require LaunchBar to be added to “Accessibility”. Otherwise LaunchBar won’t be able to simulate a Command-C keystroke, which is necessary for reading the currently selected text or file.</li>
+<li>The <em>Clipboard History</em> also requires LaunchBar to be added to “Accessibility”. Otherwise LaunchBar won’t be able to simulate a Command-V keystroke, which is necessary when inserting data from the <em>Clipboard History</em> in other applications.</li>
+</ul>
+<h4>Dark Mode support</h4>
+<p>LaunchBar now supports Dark Mode in macOS Mojave. Note that the appearance of LaunchBar’s main interface is still determined by the selected theme, independent from the current system appearance. So if you’ve selected the Dark Mode in Mojave, you can choose one of the dark themes in LaunchBar (<em>Dark</em> or <em>Base Dark</em>).</p>
+<p>In a future update there will be an option to automatically change LaunchBar’s theme in accordance with the current system appearance (provided that the chosen theme also provides a dark variant).</p>
+<h4>Other changes</h4>
+<ul>
+<li>LaunchBar 6.10 now requires at least OS X 10.10 or later. If you are running an older OS version, you can <a href="https://www.obdev.at/products/launchbar/download-legacy.html">download a compatible version here</a>.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6168">
+<div class="date"><span>October 11, 2018</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.7 <span class="buildnumber">(6168)</span></h3>
+<div class="changes">
+<ul>
+<li>Improved incrementing/decrementing integers during text input to preserve leading zeros.</li>
+<li>Fixed: Command-clicking didn’t work anymore for staging individual items in the list.</li>
+<li>Fixed a crash when attempting to move the LaunchBar window on macOS 10.11 and earlier.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6166">
+<div class="date"><span>August 30, 2018</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.6 <span class="buildnumber">(6166)</span></h3>
+<div class="changes">
+<h4>Further improved compatibility with 1Password 7</h4>
+<ul>
+<li>[NEW] Info browsing of 1Password Login items (selecting the item in LaunchBar and pressing Right Arrow) now also provides access to the item’s Autofill Link. This link can be copy/pasted to other documents – opening them will then open the corresponding login page in your web browser and autofill the login form.</li>
+<li>It’s now possible (again) to open non-Login items (like credit cards, secure notes, etc.) via LaunchBar to opens 1Password’s summary window showing all the details of that item.</li>
+<li>It’s now possible (again) to trigger a search in 1Password by selecting the 1Password app in LaunchBar and then pressing Shift-Space.</li>
+</ul>
+<h4>New Features and Improvements</h4>
+<ul>
+<li>[NEW] Numeric increments during text input. You can now press Command-Up/Down during text input to increment/decrement a number at the cursor position by one, or press Shift-Command-Up/Down to increment/decrement it by ten. This comes quite handy in LaunchBar’s calculator, but can be used in many other situations as well, whenever numeric text input is involved (in custom actions, when renaming files, etc.).</li>
+<li>[NEW] Indexing of Share Menu Actions can now be turned on/off separately in the Options pane of the Actions indexing rule.</li>
+<li>Improved handling of file items returned by a custom action during text input as a live result. It’s now possible to invoke file actions on these files (like Send-to, Move, Copy, Rename, Duplicate, Get Info, etc.).</li>
+<li>Command-dragging the LaunchBar window now also works during text input.</li>
+<li>Improved “Enter Text” action: Shift-Return (to insert the entered text in the frontmost app) now also explicitly hides the LaunchBar app.</li>
+<li>Spaces in search template arguments are now only encoded with plus (“+”) in case of HTTP(S) and x-launchbar URLs.</li>
+<li>Improved error handling for actions implemented as shell scripts.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: Clipboard History failed to detect images and PDF content copied from Safari.</li>
+<li>Fixed: Clipboard History &gt; Ignore Applications didn’t work for 1Password 7 if it was added manually in the preferences window.</li>
+<li>Fixed an issue with the “Browse Ulysses” action causing sections not to appear.</li>
+<li>Fixed a crash when passing text containing a NULL character to actions implemented as shell scripts.</li>
+<li>Fixed a crash when LaunchBar tried to determine whether another application can open documents and that application’s Info.plist was malformed.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6163">
+<div class="date"><span>June 6, 2018</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.5 <span class="buildnumber">(6163)</span></h3>
+<div class="changes">
+<h4>Compatibility with 1Password 7</h4>
+<ul>
+<li>If you have both version 7 and version 6 of 1Password installed on your computer, LaunchBar will by default index the items from the newer version. If you prefer to access the version 6 data instead, you can uncheck the “Prefer latest version of 1Password” option in the Options pane of the index window.</li>
+</ul>
+<h4>Other improvements and bug fixes</h4>
+<ul>
+<li>Added support for accessing repositories in Tower 3</li>
+<li>Fixed an issue with LaunchBar’s built-in calculator when using custom bc definition files in ~/Library/Application Support/LaunchBar/Calculator</li>
+<li>Fixed: Indexing of birthdays could fail if a contact was linked across multiple accounts.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6160">
+<div class="date"><span>January 11, 2018</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.4 <span class="buildnumber">(6160)</span></h3>
+<div class="changes">
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed various scripts that deal with phone numbers not working on macOS 10.13.2. This includes actions like “Call with iPhone”, “Call with Skype”, “Call with FaceTime”, and “Send iMessage”.</li>
+<li>Fixed an issue introduced in LaunchBar 6.9.3 where actions like “Compose iMessage” would send text as a file attachment instead of, you know, just text.</li>
+<li>Fixed revealing reminder items and clicking notifications after creating a reminder on macOS 10.13 not working.</li>
+<li>Fixed “Run iTerm Command” built-in action not working with newer versions of iTerm.</li>
+<li>Fixed an issue where an empty window would become visible when using SwitchResX.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6155">
+<div class="date"><span>November 30, 2017</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.3 <span class="buildnumber">(6155)</span></h3>
+<div class="changes">
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed an issue causing LaunchBar to hang under some circumstances when browsing the list with the arrow keys.</li>
+<li>Fixed another issue causing LaunchBar to become active when switching spaces.</li>
+<li>Fixed an issue in the Browse Ulysses action.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6154">
+<div class="date"><span>November 29, 2017</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.2 <span class="buildnumber">(6154)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>Updated the built-in “Browse Ulysses” action. It now supports the subscription, non-subscription and Setapp versions of Ulysses.</li>
+<li>Added support for LaunchBar actions to use images stored in an app’s asset catalog (Assets.car file).</li>
+<li>Added support for sending selected text to macOS Sharing Actions that normally only support sending files. You can now AirDrop any text from LaunchBar to another Mac or iOS device.</li>
+<li>Improved 1Password info browsing to allow opening of URLs.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed Recent Documents of apps not updating on macOS High Sierra (10.13).</li>
+<li>Fixed an issue where an additional invisible window would be added to the list of LaunchBar’s windows for VoiceOver users on macOS High Sierra (10.13). This could also cause slowdowns in third-party app and window switchers.</li>
+<li>Fixed an issue where LaunchBar would sometimes steal the active app’s keyboard focus after switching spaces on macOS High Sierra (10.13).</li>
+<li>Fixed a bug that caused the Calculate MD5/SHA1/SHA256 Checksum actions to not work.</li>
+<li>Fixed LaunchBar causing macOS to ask if you want to download the Osaka font.</li>
+<li>Fixed emoji icons being cut off on macOS Sierra (10.12).</li>
+<li>Fixed missing contact images for contact that are stored in multiple accounts.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6151">
+<div class="date"><span>September 23, 2017</span></div>
+<div class="details">
+<h3>LaunchBar 6.9.1 <span class="buildnumber">(6151)</span></h3>
+<div class="changes">
+<p>This version makes LaunchBar compatible with macOS High Sierra (10.13). In particular it addresses compatibility issues in the following areas:</p>
+<ul>
+<li>Emoji indexing</li>
+<li>Recent Documents browsing</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6144">
+<div class="date"><span>June 24, 2017</span></div>
+<div class="details">
+<h3>LaunchBar 6.9 <span class="buildnumber">(6144)</span></h3>
+<div class="changes">
+<h4>Appearance</h4>
+<ul>
+<li>Re-organized Themes.</li>
+<li>Changed Default Theme. The previous default theme is still available (it has been renamed to “Base”).</li>
+<li>Improved legibility in the new Default Theme.</li>
+<li>Modernized design of the index window.</li>
+</ul>
+<h4>Things 3 Integration</h4>
+<ul>
+<li>Added support for Things 3.</li>
+<li>Much improved “Add to Things” action. The action now accepts multiple lines (typically via Send to) to generate multiple to-tos, one for each line. Provides feedback via user notification, describing what has been added.</li>
+<li>Added actions for opening lists in Things 3 (Inbox, Today, Upcoming, Anytime, Someday). These actions are accessible either directly via abbreviation search, or by browsing the Things application (select Things in LaunchBar and press Right Arrow).</li>
+</ul>
+<h4>1Password Integration</h4>
+<ul>
+<li>Improved 1Password indexing.</li>
+<li>Improved opening 1Password logins.</li>
+<li>Removed legacy support for 1Password versions before 6.5.</li>
+</ul>
+<h4>Other Improvements</h4>
+<ul>
+<li>Standard “Natural Scrolling” behavior in search result list.</li>
+<li>Improved URL input when entering a colon while the TLD is selected. This now inserts the colon before the trailing slash. Makes it easier to enter port numbers, like in <a href="http://example.com:80/">http://example.com:80/</a></li>
+<li>Improved searching within results of custom actions.</li>
+<li>Improved Emoji skin tone support.</li>
+<li>Improved Instant Calculate to ignore IPv4 addresses.</li>
+<li>Disabled actions are no longer shown when browsing an application’s associated actions.</li>
+<li>Fixed handling of “actionArgument” in JavaScript based custom actions.</li>
+<li>Improved Safari Tabs action to work with Safari opened full screen on a different space.</li>
+<li>Fixed incorrect display of reminder item priorities.</li>
+<li>Fixed DuckDuckGo action. Due to a bug introduced in macOS 10.12.5 the search result wasn’t opened in the default browser (e.g. Safari) but in some other browser (e.g. Firefox).</li>
+<li>Fixed “Send iMessage” action (stopped working due to a bug in macOS 10.12.5).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6140">
+<div class="date"><span>December 21, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.8 <span class="buildnumber">(6140)</span></h3>
+<div class="changes">
+<h4>Improved 1Password integration</h4>
+<ul>
+<li>Thanks to the enhanced 3rd party integration of 1Password 6.5 we are now able to provide much more comprehensive access to your 1Password items.</li>
+<li>It’s now possible to access all kinds of items (not only logins but also credit cards, secure notes, etc.) from all vaults.</li>
+<li>1Password categories (Logins, Passwords, Secure Notes, Credit Cards, Software Licenses, etc.) are now indexed. You can for example type CC to select 1Password’s “Credit Cards” category. You can then browse that category to get a list of all your credit cards stored in 1Password.</li>
+<li>Browsing 1Password by selecting the 1Password app and pressing Right Arrow now provides a list of all available 1Password categories.</li>
+<li>Opening items that don’t perform a login on a website are now showing a window for viewing and editing that item.</li>
+</ul>
+<h4>Actions</h4>
+<ul>
+<li>New “Safari Tabs” action provides access to all tabs that are currently opened in Safari. Allows to quickly switch to one of those tabs with the keyboard.</li>
+<li>New “Font Awesome Icons” action. Provides a list of all icons available in Font Awesome. You can sub-search that list for a particular icon by name, then press right arrow to access details of that icon (Icon Identifier, Unicode, HTML snippet for inserting that icon in your web-page, a link to the icon’s Font Awesome web-page). Font Awesome icons can also be used in your custom LaunchBar actions. Just specify the icon’s “Icon Identifier” in Action Editor.</li>
+<li>New “Wiktionary” and “Wikiquote” actions with live suggestions.</li>
+<li>New localized “Wikipedia”, “Wiktionary” and “Wikiquote” actions to access those wikis in your preferred non-English language version (according to System Preferences &gt; Language &amp; Region &gt; Preferred languages).</li>
+<li>Existing search templates for Wikipedia and Wiktionary are removed from the configuration. Please use the new actions instead. It may be necessary to re-train your abbreviations for these items.</li>
+<li>Improved indexing of macOS Sharing Service actions.</li>
+<li>Updated Sample Actions (they can be downloaded from <a href="https://obdev.at/launchbar/actions.html">obdev.at/launchbar/actions.html</a>)</li>
+</ul>
+<h4>Improved Emoji support</h4>
+<ul>
+<li>Emoji character names are now the same as those in the macOS Character Palette.</li>
+<li>It’s now possible to search for emoji by alternative names. For example, type SPORT to find the basketball emoji, or type SPOCK to find a greeting gesture from a place where no man has gone before.</li>
+<li>Links to Emojipedia (accessible via Info Browsing of an emoji that’s selected in LaunchBar) now work more reliably with all kinds of emoji, including skin tone modified versions.</li>
+</ul>
+<h4>Other Improvements</h4>
+<ul>
+<li>Improved Calendar input allowing to specify alarms at the time of the event. Example: “Call mom @ 3pm !0min” or just “Call mom @ 3pm !0”</li>
+<li>Browsing the Contacts app now shows the Birthdays category, which provides a chronological list of all upcoming birthdays starting from today.</li>
+<li>Improved Info Browsing of indexing rules (showing number of indexed items, date of last index update and the item’s indexing rule).</li>
+<li>Improved Info Browsing of categories to show the number of items in that category.</li>
+<li>Improved Info Browsing allowing to sub-search the displayed item by their label.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: Browsing into an application to access recent documents or other items related to that app sometimes stopped working.</li>
+<li>Fixed: Calendar events and reminders were created without time zone information.</li>
+<li>The Clipboard History now shows the correct number of characters if the copied text contains emoji characters.</li>
+<li>Fixed: Blinking text cursor disappeared while typing in LaunchBar Calculator or while browsing suggestions during text input.</li>
+<li>Disabling an indexing rule now frees the memory occupied by items of that rule.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6136">
+<div class="date"><span>August 21, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.7.2 <span class="buildnumber">(6136)</span></h3>
+<div class="changes">
+<h4>New Features and Improvements</h4>
+<ul>
+<li>Added “Preferred Input Source” preference option, allowing to choose a keyboard input source that will be used in favor of the currently active input source while LaunchBar is active.</li>
+<li>Improved compatibility with macOS Sierra (10.12).</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed an incompatibility with <a href="https://www.git-tower.com">Tower</a> version 2.5.</li>
+<li>Fixed a bug in the built-in MD5, SHA1, and SHA256 checksum actions causing a wrong checksum being calculated for data larger than 4 GB. Furthermore the performance of these action has been significantly improved for large files.</li>
+<li>Fixed: The “Browse Ulysses” action did not work on OS X 10.9 and OS X 10.10.</li>
+<li>Fixed a crash in LaunchBar’s Action Editor.</li>
+<li>Fixed an issue causing the “Select Folder” contextual menu action in the Options pane of a folder indexing rule to stop working under some circumstances.</li>
+<li>Fixed a potential crash in the Clipboard History when copying RTF or RTFD data (happened in particular when copying data in Accordance.app).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6135">
+<div class="date"><span>July 12, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.7.1 <span class="buildnumber">(6135)</span></h3>
+<div class="changes">
+<h4>Improved character icons for custom actions</h4>
+<ul>
+<li>LaunchBar Actions and their result items that use a character as an icon using the previously introduced <a href="https://developer.obdev.at/launchbar-developer-documentation/#/action-info-plist/info-plist-CFBundleIconFile">character:X</a> syntax can now specify the font in which the character should be rendered using a pseudo-URL-query like syntax or the <a href="https://developer.obdev.at/launchbar-developer-documentation/#/script-output/property-iconFont">iconFont</a> property (result items only). Example: character:X?font=Futura</li>
+<li>For characters that cannot be rendered in the system font LaunchBar now uses a fallback mechanism to find an appropriate font.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed a potential crash when an action returned a result item that had a <em>path</em> and <em>icon</em> set.</li>
+<li>Fixed an issue on OS X 10.9 causing the index window to fail opening the Options pane of some indexing rules.</li>
+<li>Fixed: Sorting by “date added” by pressing Shift-Command-Right didn’t work anymore. This also affected browsing the Downloads folder, which sorts by “date added” automatically.</li>
+<li>Fixed a crash when editing the “Skip Subfolders” or “Exclude Items” options of a folder indexing rule.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6134">
+<div class="date"><span>June 13, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.7 <span class="buildnumber">(6134)</span></h3>
+<div class="changes">
+<ul>
+<li>Added support for Emoji, <a href="https://fontawesome.com">Font Awesome</a> icons, and arbitrary characters as icons for LaunchBar Actions and their result items. More information is available in our <a href="https://developer.obdev.at/launchbar-developer-documentation/#/action-info-plist/info-plist-CFBundleIconFile">developer documentation</a>.</li>
+<li>Added <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/method-setClipboardString"><code>setClipboardString()</code></a> and <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/method-clearClipboard"><code>clearClipboard()</code></a> functions to LaunchBar JavaScript.</li>
+<li>New LaunchBar AppleScript property “expects abbreviation input”.</li>
+<li>Added <a href="https://ulysses.app">Ulysses</a> support. Conveniently browse your Ulysses library with LaunchBar.</li>
+<li>Added support for iTerm 2 version 2.9 or newer.</li>
+<li>Improved phone number handling in “Call with iPhone”, “Call with FaceTime” and “Call with Facetime Audio” actions.</li>
+<li>Improved handling of hanging action scripts written in AppleScript.</li>
+<li>Improved 1Password integration.</li>
+<li>Improved Clipboard History behavior with <a href="https://c-command.com/eaglefiler/">EagleFiler</a>.</li>
+<li>Fixed: “Call with FaceTime Audio” action triggered video instead of audio call.</li>
+<li>Fixed: Shift-Return didn’t always open items in the current window.</li>
+<li>Fixed: Under certain circumstances, modifier keys in script-based actions did not work as expected.</li>
+<li>Fixed: Unexpected subtitle, label and badge behavior if script-based actions returned items with path.</li>
+<li>Fixed: Issues with resolving tilde and symlinks in paths of script-based actions’ result items.</li>
+<li>Other bugfixes and improvements.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6130">
+<div class="date"><span>April 11, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.6.2 <span class="buildnumber">(6130)</span></h3>
+<div class="changes">
+<ul>
+<li>Fixed an incompatibility with OS X 10.9 and 10.10.</li>
+<li>Improved sort order of folder contents when browsing with the left/right arrow keys.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6127">
+<div class="date"><span>April 6, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.6.1 <span class="buildnumber">(6127)</span></h3>
+<div class="changes">
+<ul>
+<li>Restored the previous behavior of ⌘V to paste clipboard data onto LaunchBar.</li>
+<li>Added “Drop From Clipboard” action (⌥⌘V). Applies the clipboard data (file, URL, text) to the currently selected item (opens a copied URL in the selected application, searches for a copied text with the selected search template, etc.)</li>
+<li>The DuckDuckGo action now supports ⇧↩ to instantly perform a search using the last entered text.</li>
+<li>Custom Actions can now declare to support ⇧↩ by turning on the new “Reapply last string argument with ⇧↩” option in Action Editor.</li>
+<li>Fixed: Alert Panels could be obscured by the LaunchBar input window.</li>
+<li>Fixed: Dragging files onto a folder that’s selected in LaunchBar didn’t work (the list of available file operations wasn’t shown, the LaunchBar window just disappeared).</li>
+<li>Fixed: When sending a file to a folder via Send To (by pressing the Tab key), the list of available file operations didn’t recognize the numeric keyboard shortcuts 1-6.</li>
+<li>Fixed: Issue when dragging text or files to the LaunchBar window.</li>
+<li>Other bug fixes and stability improvements.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6126">
+<div class="date"><span>March 23, 2016</span></div>
+<div class="details">
+<h3>LaunchBar 6.6 <span class="buildnumber">(6126)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<ul>
+<li>Added optional Modifier Tap for accessing Snippets. Can be configured in Preferences &gt; Shortcuts.</li>
+<li>The iCloud Drive item can now be used as a target for Send To operations.</li>
+<li>Info Browsing of images in the Clipboard History now shows metadata like image dimensions, resolution, color profile, etc.</li>
+<li>Back browsing with the Left-Arrow key after invoking an action that returns new items now brings back the previous selection – either the action itself (if it was opened via Return or via Text Input), or the source item of a Send To operation (the item that was sent to the action via Tab).</li>
+<li>Improved Send To (pressing Tab) in Calculator. If there’s no text selected (i.e. the cursor is blinking), the result of the current calculation is sent, as before. But if you select a part of the calculation, only that selected text is sent.</li>
+</ul>
+<h4>iTunes</h4>
+<ul>
+<li>Attempting to play a remote track while the computer is offline now shows a message explaining why the playback is currently not possible.</li>
+<li>When browsing the Albums category (which shows a list of all albums) the display now includes the album artist in addition to the album title.</li>
+<li>The iTunes/Now Playing info (shown when pressing Right Arrow while iTunes is selected) now displays artist or album information for the currently playing track.</li>
+<li>Improved heuristics to determine which tracks belong to the same album (should now work same as in iTunes).</li>
+<li>Fixed an issue causing some iTunes actions to fail if the iTunes Today Widget was enabled in Notification Center.</li>
+<li>Fixed an issue when re-indexing the iTunes Library.</li>
+<li>Fixed an issue with Identically Named Songs.</li>
+</ul>
+<h4>Improved Emoji Support</h4>
+<ul>
+<li>Added a dedicated hotkey for opening the list of Emoji (Default is Shift-Command-Space).</li>
+<li>Browsing the Emoji indexing rule with Right Arrow now first shows a list of all Emoji Categories (like “Activity”, “Objects”, “Smileys &amp; People”, etc.). Pressing Right Arrow again then only shows Emoji from the selected category. To get a flat list of all Emoji, browse the Emoji rule with the Space key.</li>
+<li>Emoji are now sorted by “last access”. The most recently used Emoji are therefore shown at the top of the list. You can still get all Emoji sorted alphabetically by browsing the Emoji rule with Command-Right.</li>
+<li>Added “Skin Colored Emoji” category. This category contains all Emoji whose skin tone can be modified.</li>
+<li>Info Browsing now provides a link to <a href="http://📙.la/">Emojipedia</a> for the selected Emoji.</li>
+</ul>
+<h4>New Actions</h4>
+<ul>
+<li>Added “Calculate SHA256 Checksum” action.</li>
+<li>Added actions for removing line breaks from text
+<ul>
+<li>Join Lines</li>
+<li>Join Lines With Space</li>
+<li>Join Lines With Comma</li>
+</ul></li>
+<li>Added “Send Little Snitch Feedback” action.</li>
+<li>Added “Send Micro Snitch Feedback” action.</li>
+</ul>
+<h4>Custom Actions</h4>
+<ul>
+<li>Added support for Quick Look in the Resources tab of Action Editor.</li>
+<li>Improved <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-global-functions/method-include">include()</a> JavaScript function: Now accepts absolute paths, resolves tilde (~) in path and resolves symbolic links in path.</li>
+<li>Added support for <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-http/method-loadRequests">parallel HTTP requests</a> in JavaScript.</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>“Copy (and Paste) File Contents” now works with more plain text file formats (including Markdown).</li>
+<li>Improved backwards browsing (with the Left-Arrow key) when switching between different input modes (Text Input, Send To).</li>
+<li>Instant Calculate (sending an arithmetic expression to LaunchBar via Send To) now ignores currency symbols in the sent expression.</li>
+<li>Applying file path(s) via ⌘V (Paste) or ⌘D (Drop Finder Selection) to a selected item now behaves the same as when these path(s) are sent to that item via Send To, i.e. a list of available file operations is shown (instead of the former pop-up menu).</li>
+<li>Improved dragging of files onto LaunchBar. Dragging to right end of the bar selects the dragged file in LaunchBar. Dragging to the left side of the bar applies the dragged file to the selected item.</li>
+<li>Improved “Duplicate” action.</li>
+</ul>
+<h4>Other Changes</h4>
+<ul>
+<li>Removed “Show text input title” option from preferences.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: After running an AppleScript “LaunchBar AppleScript Runner” would sometimes not terminate properly and instead run indefinitely.</li>
+<li>Fixed: Missing color of Finder Tags when running on OS X 10.11.</li>
+<li>Fixed: When dragging the LaunchBar window, snap to center / snap to default position didn’t work on external displays.</li>
+<li>Fixed an issue causing 1Password bookmarks indexing to fail.</li>
+<li>iTunes indexing now ignores iOS apps, iPad apps and iBooks.</li>
+<li>Fixed: Instant Send of whitespace string no longer triggers Calculator.</li>
+<li>Fixed wrong Merriam Webster Search Template URLs in factory configuration.</li>
+<li>Fixed an issue causing rules that were configured to not search subfolders to be never re-indexed.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6122">
+<div class="date"><span>September 25, 2015</span></div>
+<div class="details">
+<h3>LaunchBar 6.5 <span class="buildnumber">(6122)</span></h3>
+<div class="changes">
+<h4>Support for OS X El Capitan</h4>
+<ul>
+<li>Added two new El Capitan themes that use of the new system font.</li>
+<li>Recent document indexing is finally reliable again, but only when running on OS X El Capitan.</li>
+</ul>
+<h4>Other Improvements</h4>
+<ul>
+<li>Added diversity options for emojis. Also, the Emoji rule now lets you choose your preferred skin tone color.
+Requires OS X 10.10.3 or newer.                    </li>
+<li>LaunchBar window now snaps to vertical and horizontal positions when dragged.</li>
+<li>LaunchBar window now works better with hidden menu bars.</li>
+<li>iTunes tracks: Computed ratings are no longer displayed.</li>
+<li>LaunchBar Actions: Added support for template images in result items independent from the image’s name (<a href="https://developer.obdev.at/launchbar-developer-documentation/#/script-output/property-iconIsTemplate">iconIsTemplate</a>).</li>
+<li>Applications indexing rule is now a valid Send-to target. </li>
+<li>Updated Google icon in search action.</li>
+</ul>
+<h4>Bugfixes</h4>
+<ul>
+<li>Fixed bug causing LaunchBar’s window to stay on screen after finishing text input with suggestions.</li>
+<li>Fixed bug causing texts to be truncated on OS X 10.9.</li>
+<li>Lots of other bugfixes.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6121">
+<div class="date"><span>July 6, 2015</span></div>
+<div class="details">
+<h3>LaunchBar 6.4.1 <span class="buildnumber">(6121)</span></h3>
+<div class="changes">
+<ul>
+<li>Minor improvements to LaunchBar Action Editor.</li>
+<li>Added support for searching in Dash 3.</li>
+<li>Extended list of currency symbols that are ignored in calculator expressions.</li>
+<li>Google suggestions now use HTTPS.</li>
+<li>Fixed: LaunchBar crashed when opening some files or folders in iCloud Drive.</li>
+<li>Fixed: The actions indexing rule was continuously re-indexed because the OS X Action Extensions seemed to have changed (this resulted in high CPU usage by LaunchBar and “pkd”).</li>
+<li>Fixed: LaunchBar did not find Emojis with a long name when typing only a short abbreviation.</li>
+<li>Fixed: Opening a location in Maps launched Safari as a side effect if the “Open URLs in current Safari window or tab” option was enabled</li>
+<li>Fixed: After Send-to, some operations acted on the previous target item instead of on the visible item.</li>
+<li>Fixed: Wrong number of visible items being shown when typing an abbreviation after Instant Send.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6120">
+<div class="date"><span>May 21, 2015</span></div>
+<div class="details">
+<h3>LaunchBar 6.4 <span class="buildnumber">(6120)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<ul>
+<li>LaunchBar now includes a new Action Editor, making it easier than ever to create incredible actions. Start developing with script templates, configure your action’s runtime behavior, manage localizations and more. Find a detailed feature list <a href="#action-editor">below</a>.</li>
+<li>“New Folder with Selection” action for multiple selections. The action can be triggered via Shortcut (Control-Command-N) and it’s also accessible via Send-To.</li>
+<li>Shared Snippets: You can now select one or more additional snippets folders. Especially useful when synced via cloud services to share certain snippets with other computers, co-workers or friends. Works with any kind of syncing service such as iCloud, Dropbox, SparkleShare, OmniPresence, BitTorrent Sync, etc.</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>Currency symbols are ignored during calculations.</li>
+<li>Instant Calculate: Sending a single number to Calculator now selects the entire number, which makes it easier to apply functions like <em>sin()</em>, <em>sqrt()</em>, etc.</li>
+<li>Improved detection of plain text files.</li>
+<li>Info Browsing can now also be triggered with Shift-Right if there are currently no staged items.</li>
+<li>iCloud documents are now opened with the default application.</li>
+<li>Improved list of an application’s recent documents.</li>
+</ul>
+<h4>Bugfixes</h4>
+<ul>
+<li>Fixed unreliable music playback with iTunes 12 when shuffle mode is active.</li>
+<li>Fixed an issue causing “Search Dash” action to crash on OS X Mavericks.</li>
+</ul>
+<h4>[NEW] Action Editor</h4>
+<p>The Action Editor is included in LaunchBar 6.4 and can be easily opened via shortcut (Option-Command-E), abbreviation search or LaunchBar menu.</p>
+<h5>Get an overview of all your installed actions</h5>
+<ul>
+<li>Several filter options: Built-in Actions, Custom Actions, My Actions, Recently Modified</li>
+<li>Search for actions with certain properties.</li>
+<li>Share actions via E-Mail, Messages, AirDrop</li>
+</ul>
+<h5>Create new or modify existing actions</h5>
+<ul>
+<li>
+<p>Easily create new actions from scratch or duplicate existing actions for customization.</p>
+</li>
+<li>
+<p>Configure action properties, runtime behavior, and more. Values are pre-filled where possible.</p>
+</li>
+<li>
+<p>Configure and modify action scripts with various scripting languages.</p>
+<ul>
+<li>Script templates provided for AppleScript, JavaScript, Python, Ruby, Shell script and Swift.</li>
+<li>Easily add or remove Suggestions Scripts and Action URL scripts.</li>
+<li>Configure script properties.</li>
+<li>Open scripts in default editor for editing.</li>
+</ul>
+</li>
+<li>
+<p>Manage action resources</p>
+<ul>
+<li>Add, rename or delete resources.</li>
+<li>Set image as action icon.</li>
+</ul>
+</li>
+<li>
+<p>Manage localization</p>
+<ul>
+<li>Add or remove localizations.</li>
+<li>Manage localizable strings.</li>
+</ul>
+</li>
+</ul>
+<h5>Other Features</h5>
+<ul>
+<li>Drag &amp; Drop support for scripts, resources, action icon and more.</li>
+<li>Easily open existing actions in Action Editor
+<ul>
+<li>From LaunchBar’s indexing window.</li>
+<li>By sending the action via Send-To.</li>
+<li>By double-clicking already installed actions in Finder.</li>
+</ul></li>
+<li>Preferences to configure reused information like preferred script type, own bundle identifier prefix, contact information.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6118">
+<div class="date"><span>April 17, 2015</span></div>
+<div class="details">
+<h3>LaunchBar 6.3 <span class="buildnumber">(6118)</span></h3>
+<div class="changes">
+<h4>Improved Tags support</h4>
+<p>We’ve improved our support for Finder tags, allowing you to better work with multiple tags. You can search for files that have multiple tags set, and you can apply multiple tags (add, remove or replace them) in one go. To select multiple tags, you can use <a href="https://obdev.at/blog/the-sixth-sense/">LaunchBar’s staging feature</a>.</p>
+<ul>
+<li>Sending one or more files to the Add/Remove/Replace Tags actions presents a list of all available tags (as it did before), but you can now select multiple tags from that list.</li>
+<li>Items can now be sent to multiple tags to add, remove or replace all existing tags in one go.</li>
+<li>When multiple tags are selected in LaunchBar, pressing Return now presents a list of items that have all these tags set. To search for these multi-tagged items in Finder instead, you can press Command-Return.</li>
+<li>The tags of an item, that are shown during Info Browsing (by pressing Option-Right) can now be removed conveniently just by pressing Command-Delete. This also works for multiple tags.</li>
+<li>Fixed some tag indexing issues: Items with multiple tags or with legacy color labels were not properly indexed under some circumstances.</li>
+</ul>
+<h4>Multiple Selection Dragging</h4>
+<p>Well, we announced this feature already in our 6.2 release notes. But due to an embarrassing mistake in our build process, the feature was not enabled in the released version. But now it finally works and you can drag multiple items from LaunchBar to other applications!</p>
+<h4>Other Improvements</h4>
+<ul>
+<li>Added “Detect Search Templates” bookmarks indexing option. This restores the previous behavior of the bookmarks indexer to automatically detect search templates (URLs containing an asterisk) in your web browser’s bookmarks. If you rather want these URLs to be indexed as regular bookmarks, you can turn off this option.</li>
+<li>Added “Instant Calculate” option to Calculator preferences. When you Instant-Send an arithmetic expression to LaunchBar, it automatically calculates and shows the result. When you send a plain number, it’s automatically opened in LaunchBar’s calculator. With this new option you can turn off this behavior, if you prefer to just send the text without any calculator magic.</li>
+<li>The dict.cc action now performs its queries via https.</li>
+<li>Fixed: The “Move to Trash” action didn’t work for multiple items in conjunction with Path Finder.</li>
+<li>Improved display of action result items.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6117">
+<div class="date"><span>March 30, 2015</span></div>
+<div class="details">
+<h3>LaunchBar 6.2 <span class="buildnumber">(6117)</span></h3>
+<div class="changes">
+<h4>New Features and Improvements</h4>
+<ul>
+<li>Staging: Multiple items in the result list can now also be selected by dragging with the mouse.</li>
+<li>Multiple selections (i.e. staged items) can now be dragged from LaunchBar to other applications.</li>
+<li>Added support for Fantastical 2.</li>
+<li>Improved iCloud Documents / iCloud Drive indexing.</li>
+<li>Improved appearance of large type window on OS X Yosemite.</li>
+<li>User account items now show the user’s account image.</li>
+<li>Added support for showing multiple paths in Large Type.</li>
+<li>Improved “Search Dash” action and added support for Dash Beta.</li>
+<li>Improved background execution of AppleScripts.</li>
+<li>Improved Info Browsing of contact details (phone numbers, email addresses, social profiles, etc.).</li>
+<li>Improved subtitle display of contact details that have been selected via full index search.</li>
+<li>The “Display in Large Type” action now also works for file paths.</li>
+<li>Software Update checks are now performed via https.</li>
+</ul>
+<h4>Calculator</h4>
+<ul>
+<li>Improved Instant Calculate to better distinguish between phone numbers and arithmetic expressions.</li>
+<li>Improved Instant Calculate for multiple lines of selected text.</li>
+<li>Sending a plain number via Instant Send to LaunchBar now opens that number in Calculator.</li>
+<li>Improved automatic insertion of plus operator.</li>
+<li>Improved number detection.</li>
+</ul>
+<h4>Configuration Interface</h4>
+<ul>
+<li>Improved information on invalid rules in index window.</li>
+<li>The index window now shows the full path of Custom Lists items, and their path is now editable.</li>
+</ul>
+<h4>LaunchBar Actions</h4>
+<ul>
+<li>If two actions have the same bundle identifier, only the one with the higher version will be included in the index. This is important if you’re an Action Developer: Make sure all your actions have a unique bundle identifier and a valid version in the format “major.minor.bugfix”, e.g. “1.4.12”.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: Pasting clipboard items into Safari form fields sometimes didn’t work.</li>
+<li>Fixed an issue causing the Clipboard History to stop working.</li>
+<li>Fixed: When deleting iCloud documents, Finder did not become active reliably to show its confirmation dialog.</li>
+<li>Fixed: Developer Resources indexing.</li>
+<li>Fixed a crash that occurred when using the current WebKit nightly.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6113">
+<div class="date"><span>December 15, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1.6 <span class="buildnumber">(6113)</span></h3>
+<div class="changes">
+<ul>
+<li>Fixed a crash when using the Wikipedia search action.</li>
+<li>Fixed an issue where rounded corners were not updated in some themes.</li>
+<li>Fixed an issue when adding OmniWeb or Opera bookmarks rule to the index.</li>
+<li>Web bookmarks indexing no longer creates search templates for URLs containing an asterisk.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6112">
+<div class="date"><span>November 12, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1.5 <span class="buildnumber">(6112)</span></h3>
+<div class="changes">
+<ul>
+<li>Added support for third party sharing services (accessible via Actions indexing rule).</li>
+<li>Automatic formatting of displayed phone numbers (same format as in Contacts.app).</li>
+<li>Fixed an incompatibility with 1Password 5.</li>
+<li>Fixed an issue when indexing the latest Developer Documentation.</li>
+<li>Fixed some issues when hovering the action menu button with the mouse on OS X Yosemite.</li>
+<li>Fixed an issue causing LaunchBar to sometimes become visible when a volume got mounted or unmounted.</li>
+<li>Fixed: Automatic index updates sometimes didn’t work reliably for some indexing rules (Safari History, Chrome History, Firefox Bookmarks and History, Contacts/Previous Recipients).</li>
+<li>Improved actions indexing to follow symbolic links.</li>
+<li>Command-A no longer creates a multiple selection when the item list ist closed.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6110">
+<div class="date"><span>October 16, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1.3 <span class="buildnumber">(6110)</span></h3>
+<div class="changes">
+<ul>
+<li>Wikipedia Search now shows more detailed suggestions while typing the search term.</li>
+<li>Fixes a bug that caused certain applications not to appear in the index.</li>
+<li>Improves left/right navigation during auto-activation (for example, while browsing running applications with Command-Space,Space).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6108">
+<div class="date"><span>October 2, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1.2 <span class="buildnumber">(6108)</span></h3>
+<div class="changes">
+<h4>Improvements &amp; Bug Fixes</h4>
+<ul>
+<li>List navigation with vi/Emacs shortcuts (Control-N, Control-P, Control-I, Control-J, Control-K) now also works during text input.</li>
+<li>To prevent conflicts with Emacs shortcuts, the “vi” arrow keys (Control-H/J/K/L) can now be turned off completely in LaunchBar Preferences &gt; Shortcuts.</li>
+<li>Fixed: Browsing with Control-L didn’t work.</li>
+<li>Info Browsing by pressing and holding the right arrow key is now turned off by default. It can be turned on via LaunchBar Preferences &gt; Shortcuts &gt; Instant Info Browsing.</li>
+<li>Improved application indexing to better exclude certain irrelevant apps inside the Xcode.app file package.</li>
+<li>Improved Calculator history browsing (select LaunchBar’s Calculator, then press right arrow). Opening a history item with ↩ opens the result in Calculator (same as before). But opening the item with Space now opens the expression instead.</li>
+<li>LaunchBar no longer appears on screen when it’s opened automatically at login.</li>
+<li>Fixed an issue causing LaunchBar to appear when unlocking the screen after wake from sleep.</li>
+<li>Fixed indexing of previous email recipients.</li>
+<li>Fixed: ⌘W for closing the LaunchBar window didn’t work during text input.</li>
+</ul>
+<h4>LaunchBar Actions</h4>
+<ul>
+<li>Actions implemented as workflows can now return files.</li>
+<li>Action result items now open their URL or path if no action was set.</li>
+<li>An action’s result items can now optionally specify a “label” and/or a “badge” which will be displayed at the right side of the result list.</li>
+<li>Quick Look can now be triggered with ⌘Y during text input. Useful for previewing the results of some custom actions.</li>
+<li>The new “alwaysShowsSubtitle” attribute can be used to enforce the display of subtitles, even if the “Show all subtitles” option is turned off in LaunchBar Preferences &gt; Appearance.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6106">
+<div class="date"><span>September 22, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1.1 <span class="buildnumber">(6106)</span></h3>
+<div class="changes">
+<h4>General</h4>
+<ul>
+<li>
+<p>Info Browsing can now be triggered by pressing and holding the right arrow key. This allows triggering Info Browsing without an additional modifier key.</p>
+</li>
+<li>
+<p>New Yosemite Dark theme.</p>
+</li>
+<li>
+<p>Improve Yosemite theme.</p>
+</li>
+<li>
+<p>Additional OS X Yosemite related UI improvements.</p>
+</li>
+<li>
+<p>New “Call with iPhone” action for OS X Yosemite (requires an iPhone running iOS 8).</p>
+</li>
+<li>
+<p>LaunchBar now properly supports pasting into TextExpander fill-in windows.</p>
+</li>
+<li>
+<p>Improved actions for ejecting volumes:</p>
+<ul>
+<li>New “Eject” action to eject volumes via Send To</li>
+<li>Improved “Eject All Ejectable Volumes” action</li>
+<li>Both actions are browsable, allowing to choose the volume(s) to be ejected.</li>
+</ul>
+</li>
+<li>
+<p>Improved opening of multiple disk images.</p>
+</li>
+<li>
+<p>Improved Info Browsing of file paths.</p>
+</li>
+<li>
+<p>The Calculator history is now also accessible by browsing the Calculator action.</p>
+</li>
+<li>
+<p>Improved date parsing for entering Calendar and Reminder events.</p>
+</li>
+<li>
+<p>Improved “Move to Trash” behavior (including new confirmation alerts when attempting to trash many items or items from different folders).</p>
+</li>
+<li>
+<p>Improved display of Tower repositories.</p>
+</li>
+<li>
+<p>Improved display of Cyberduck bookmark files (and removed support for Cyberduck versions prior 3.8).</p>
+</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: Unreliable Instant Open behavior on OS X Yosemite.</li>
+<li>Fixed: Usage counters were not properly incremented for Tower repositories and Development Resources.</li>
+</ul>
+<h4>LaunchBar Actions</h4>
+<ul>
+<li>Added <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/method-executeAppleScriptFile"><code>LaunchBar.executeAppleScriptFile()</code></a> JavaScript function.</li>
+<li>Improved handling of executable path in <code>LaunchBar.execute()</code></li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6103">
+<div class="date"><span>August 26, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.1 <span class="buildnumber">(6103)</span></h3>
+<div class="changes">
+<h4>General</h4>
+<ul>
+<li>[NEW] Staging Area for creating multiple selections (see below for details).</li>
+<li>Changed keyboard shortcuts for Info Browsing from ⇧→ to ⌥→ and “Show Siblings” from ⇧← to ⌥←. These changes became necessary to allow a more consistent set of shortcut used for staging.</li>
+<li>Added support for Tower 2 repository bookmark indexing and browsing.</li>
+<li>Improved “Compress (ZIP Archive)” action to support multiple selections.</li>
+<li>Improved “Move to Trash” action with undo support.</li>
+<li>Improved “Sort Lines” actions to preserve the string’s trailing newline.</li>
+<li>Improved calculator to properly handle large numbers up to 1,189731495e+4932.</li>
+<li>Improved “New Folder” action to suggest a different folder name if an “untitled folder” already exists.</li>
+<li>Improved Info Browsing to show download date if available.</li>
+<li>Improved “Duplicate” action (⇧⌘D) to also trigger “Rename” so you can immediately apply a reasonable name to the duplicate.</li>
+<li>Improved accessibility support.</li>
+</ul>
+<h4>[NEW] Staging Area</h4>
+<ul>
+<li>
+<p>Concept of multiple selections in LaunchBar. To learn more about this new feature, read our <a href="https://obdev.at/blog/the-sixth-sense/">blog post</a>.</p>
+</li>
+<li>
+<p>Shortcuts to create multiple selections:</p>
+<ul>
+<li>⇧↑ or ⇧↓ stages/unstages a range of items.</li>
+<li>⌘↑ or ⌘↓ toggles staging of the selected item.</li>
+<li>Comma stages the selected item.</li>
+<li>⌘-Click toggles staging of the clicked item.</li>
+<li>⇧-Click stages/unstages a range of items.</li>
+<li>⌘-A stages all items in current list.</li>
+<li>⌫ unstages the selected item.</li>
+<li>Escape or ⇧⌫ clears the entire staging area.</li>
+</ul>
+</li>
+<li>
+<p>Acting on multiple selections</p>
+<ul>
+<li>Open multiple items with ↩ (apps, files &amp; folders, contacts &amp; email addresses, bookmarks, emoji, snippets, songs, albums, …).</li>
+<li>Press ⇥ to invoke Send To:
+<ul>
+<li>Open files with a particular application</li>
+<li>Send files to a contact as email attachments</li>
+<li>Move or copy files to a folder</li>
+<li>Compress (ZIP Archive)</li>
+</ul></li>
+<li>Use actions on multiple selections, for instance:
+<ul>
+<li>Move to Trash (⌘⌫)</li>
+<li>Duplicate (⇧⌘D)</li>
+<li>Eject (⌘E)</li>
+<li>Copy (⌘C)</li>
+<li>Get Info (⌘I)</li>
+<li>Show in Finder (⌘↩)</li>
+</ul></li>
+</ul>
+</li>
+<li>
+<p>Inspecting and reviewing staged items</p>
+<ul>
+<li>⇧→ shows all currently staged items.</li>
+<li>⌫ unstages the selected item and removes it from the list.</li>
+<li>While the list is displayed, the items can be rearranged with ⌥↑ or ⌥↓. Useful if the order is relevant (contacts, songs, attachments, …).</li>
+</ul>
+</li>
+<li>
+<p>Fetching staged items</p>
+<ul>
+<li>⇧← turns all selected items into a single “multiple selection” item (rarely necessary, though).</li>
+<li>Necessary when opening multiple files from different folders (this is a safety measure, to prevent accidental opening of such a scattered selection).</li>
+</ul>
+</li>
+</ul>
+<h4>Calendars &amp; Reminders</h4>
+<ul>
+<li>Calendar input is now more flexible and accepts description, location and date/time in arbitrary order (only the location must always be after the description):
+<ul>
+<li>&lt;description&gt; @ &lt;date/time&gt;</li>
+<li>&lt;date/time&gt; @ &lt;description&gt;</li>
+<li>&lt;description&gt; @ &lt;location&gt; @ &lt;date/time&gt;</li>
+<li>&lt;description&gt; @ &lt;date/time&gt; @ &lt;location&gt;</li>
+<li>&lt;date/time&gt; @ &lt;description&gt; @ &lt;location&gt;</li>
+</ul></li>
+<li>Date &amp; Time can now also be specified relative to “now”, for example: “Call Susan @ 20min” to create a reminder that’s due in 20 minutes.</li>
+</ul>
+<h4>Contacts</h4>
+<ul>
+<li>Birthday browsing: Showing contacts born on the same day or in the same year.</li>
+<li>Contact labels are permanently visible while browsing.</li>
+<li>Dedicated icons for social media profiles.</li>
+</ul>
+<h4>LaunchBar Actions</h4>
+<ul>
+<li>
+<p>URL-Scheme support for LaunchBar Actions. Actions can now optionally define a script that is called when a URL like <em>x-launchbar:action/com.example.action</em> is opened anywhere in OS X. See the <a href="https://developer.obdev.at/launchbar-developer-documentation/#/action-script-types">Script Types</a> for more details.</p>
+</li>
+<li>
+<p>Added support for LaunchBar Actions implemented as Automator Workflows.</p>
+</li>
+<li>
+<p>Added “Play Sound Effect” Automator action and AppleScript command.</p>
+</li>
+<li>
+<p>When an action returns a single item, Instant Send is turned on by default.</p>
+</li>
+<li>
+<p>Added an option that indicates when a script is run for the purpose of generating live feedback (<a href="https://developer.obdev.at/launchbar-developer-documentation/#/script-environment/environment-LB_OPTION_LIVE_FEEDBACK">LB_OPTION_LIVE_FEEDBACK</a>).</p>
+</li>
+<li>
+<p>Added new JavaScript methods:</p>
+<ul>
+<li>Added support for working with Base64 data and binary data. See <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-binary-data">Working with Binary Data</a> for more information.</li>
+<li>Added support for loading HTTP requests with <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-http/method-loadRequest">arbitrary HTTP methods</a>. Also added a convenience method for <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-http/method-post">POST</a> requests.</li>
+<li>Added <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-file/method-fileURLForPath">File.fileURLForPath()</a> and <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-file/method-pathForFileURL">File.pathForFileURL()</a>.</li>
+<li>Added methods for <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/method-openQuickLook">opening</a> and <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/method-closeQuickLook">closing</a> LaunchBar’s QuickLook window for any URL.</li>
+<li>Added <a href="https://developer.obdev.at/launchbar-developer-documentation/#/javascript-launchbar/property-systemVersion">LaunchBar.systemVersion</a>.</li>
+</ul>
+</li>
+<li>
+<p>Fixed: LaunchBar Actions implemented in AppleScript caused launch of applications during indexing. Also, these actions now must specifically declare in their Info.plist the fact that they accept or require arguments (previously, implementing the appropriate handler in the script was sufficient).</p>
+</li>
+<li>
+<p>Fixed: Action result items that only have a path or URL set didn’t appear in LaunchBar.</p>
+</li>
+<li>
+<p>Fixed: If LBResultType was set to path and that path contained the tilde character (˜), it was not expanded for the resulting items.</p>
+</li>
+<li>
+<p>Updated <a href="https://developer.obdev.at/launchbar-developer-documentation/">Developer Documentation</a> to reflect changes and provide information on how to use the new features.</p>
+</li>
+</ul>
+<h4>Other improvements and bug fixes</h4>
+<ul>
+<li>x-launchbar URLs can now optionally contain a double forward slash after the scheme.</li>
+<li>Fixed an issue with “Open Location” where the TLD was not removed when entering a dot.</li>
+<li>Fixed ClipMerge behavior in iTerm 2 when its “Copy Selection” preference is enabled.</li>
+<li>Minor bug fixes and improvements.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6015">
+<div class="date"><span>July 4, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.0.2 <span class="buildnumber">(6015)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<ul>
+<li>The “Enter Color” action now supports <a href="https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html">rebeccapurple</a> (in honor of <a href="https://meyerweb.com/eric/thoughts/2014/06/09/in-memoriam-2/">Rebecca Meyer</a>).</li>
+<li>Added support for Safari History indexing on OS X Yosemite.</li>
+<li>Added “Encode to Base64” and “Decode as Base64” string transformation actions.</li>
+<li>⌥-Escape can now be used to end sub-search without closing the item list.</li>
+<li>The Small theme is now attached to the menu bar by default. Of course, you can still move it to wherever you like it to be.</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>Additional mixed case conversion suggestions are now shown during Enter/Edit Text (scroll down the suggestion list to see them all).</li>
+<li>Improved uppercase/lowercase case conversion titles.</li>
+<li>Browsing the ~/Downloads folder now automatically sorts by Date Added.</li>
+<li>Reduced indexing frequency of some folder rules by ignoring changes in ~/Library unless the rule explicitly has its path set to a folder inside ~/Library.</li>
+<li>Minor wording and localization improvements.</li>
+</ul>
+<h4>Fixes</h4>
+<ul>
+<li>Fixed: The default “Desktop” indexing rule didn’t index any subfolders.</li>
+<li>Fixed: “Sort Lines Descending” did sort ascending instead of descending.</li>
+<li>Fixed: ⇧↩ to paste in frontmost app didn’t work for browseable info items.</li>
+<li>Fixed: Play in Random Order didn’t work for albums.</li>
+</ul>
+<h4>LaunchBar Actions</h4>
+<ul>
+<li>Improved JavaScript’s <code>LaunchBar.execute()</code> to accept an array of arguments.</li>
+<li>Added option for script action result items with an “action” set to specify whether their action should run in background (“actionRunsInBackground”).</li>
+<li>Fixed: Actions didn’t receive modifier flags while browsing with arrow keys.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6013">
+<div class="date"><span>June 20, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6.0.1 <span class="buildnumber">(6013)</span></h3>
+<div class="changes">
+<h4>General</h4>
+<ul>
+<li>
+<p>Added beautiful new icons to many built-in actions.</p>
+</li>
+<li>
+<p>New Prepend Text action (⇧⌘P).</p>
+</li>
+<li>
+<p>New built-in text transformation actions:</p>
+<ul>
+<li>Case Conversions (UPPERCASE, lowercase, Titlecase, CamelCase, dromedaryCase, spinal-case, Train-Case, snake_case, SNAKE_CASE)</li>
+<li>Calculate SHA1 Checksum</li>
+<li>Calculate MD5 Checksum</li>
+<li>Expand Tilde in Path</li>
+<li>Abbreviate With Tilde in Path</li>
+<li>Remove Percent Encoding</li>
+<li>Add Percent Encoding</li>
+<li>Remove Multiple Spaces</li>
+<li>Sort Lines Ascending</li>
+<li>Sort Lines Descending</li>
+</ul>
+</li>
+<li>
+<p>Improved plain text file content search (⌘F) to show live results.</p>
+</li>
+<li>
+<p>Added shortcut (⇧⌘→) to sort folder contents by Date Added.</p>
+</li>
+<li>
+<p>Added bookmarks indexing option allowing to index bookmarks from Safari’s Favorites Bar only.</p>
+</li>
+<li>
+<p>Extended Clipboard History capacity (up to 100 items or for a certain amount of days).</p>
+</li>
+<li>
+<p>Rearranged “New Indexing Rule” menu to reflect the structure of the sidebar</p>
+</li>
+<li>
+<p>Improved Theme switching: Default width will be applied only if different from the currently active theme.</p>
+</li>
+<li>
+<p>Added missing localizations.</p>
+</li>
+<li>
+<p>“Run Terminal Command” action only opens a second Terminal window if necessary.</p>
+</li>
+<li>
+<p>Fixed issue causing last calculator result variable “a” to be not updated.</p>
+</li>
+<li>
+<p>Fixed issue causing Append Text not to work via Send To (when sending text to a file).</p>
+</li>
+<li>
+<p>Fixed issue causing welcome window not to appear in front.</p>
+</li>
+<li>
+<p>Fixed issue causing iOS Simulator not to appear in LaunchBar’s index.</p>
+</li>
+<li>
+<p>Various other bug fixes and stability improvements.</p>
+</li>
+</ul>
+<h4>LaunchBar JavaScript Actions</h4>
+<ul>
+<li>Added LaunchBar.homeDirectory property for JavaScript actions.</li>
+<li>Added support for parsing plist content stored as JavaScript String – Plist.parse()</li>
+<li>Fixed issue causing JavaScript actions not being able to return plain text.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-6011">
+<div class="date"><span>June 11, 2014</span></div>
+<div class="details">
+<h3>LaunchBar 6 <span class="buildnumber">(6011)</span></h3>
+<div class="changes">
+<h4>[NEW] Brand-new User Interface with Themes</h4>
+<ul>
+<li>Larger default interface</li>
+<li>Several built-in alternative themes</li>
+<li>Theme switching via abbreviation search</li>
+<li>Plenty of new, beautifully designed icons</li>
+<li>New app icon</li>
+</ul>
+<h4>[NEW] Improved Configuration Interface</h4>
+<ul>
+<li>Streamlined configuration UI</li>
+<li>Rules in the sidebar are now organized in groups.</li>
+<li>Configuration changes are now saved automatically.</li>
+<li>Index updates now happen fully automatically. The Schedule pane for configuring index updates is therefore no longer necessary.</li>
+<li>Deleting/adding rules is now the recommended way to select the desired set of features. Disabling of indexing rules is still possible, but only via contextual menu (no more checkboxes).</li>
+</ul>
+<h4>[NEW] Additional Indexing Rules</h4>
+<ul>
+<li>Reminder Lists</li>
+<li>Emoji</li>
+<li>Finder Tags</li>
+<li>Safari iCloud Tabs</li>
+<li>Safari Top Sites</li>
+<li>Safari Reading List</li>
+<li>LaunchBar Themes </li>
+<li>Transmit Bookmarks</li>
+</ul>
+<h4>[NEW] Additional Built-in Actions</h4>
+<ul>
+<li>Add/Remove/Replace Finder Tag</li>
+<li>Remove All Finder Tags</li>
+<li>Clear Text Input History</li>
+<li>Current Safari Page</li>
+<li>Enter Color</li>
+<li>Open AirDrop Window</li>
+<li>Send via AirDrop</li>
+<li>Send LaunchBar Feedback</li>
+</ul>
+<h4>[NEW] Powerful custom, script-based actions</h4>
+<ul>
+<li>Extend LaunchBar’s feature set with custom actions written in your favorite scripting language (JavaScript, AppleScript, Python, Ruby, Shell Script, PHP, …)</li>
+<li>Custom actions can return arbitrary result items or suggestions that are displayed immediately, while entering text.</li>
+<li>Embedded resources like icons, helper scripts, audio files, binaries, …</li>
+<li>Optional execution in background.</li>
+<li>Simple double click installation of third-party actions.</li>
+<li>Optionally only allow execution of actions that have a valid code signature.</li>
+</ul>
+<h4>[NEW] Text Input Live Results</h4>
+<ul>
+<li>Calendar &amp; Reminder input live feedback.</li>
+<li>Calculator live results and history of previous calculations.</li>
+<li>“Open Location” provides suggestions while entering URLs.</li>
+</ul>
+<h4>[NEW] Live Web Searches</h4>
+<ul>
+<li>Google</li>
+<li>Wikipedia</li>
+<li>DuckDuckGo</li>
+<li>dict.cc</li>
+<li>Support for custom live web searches via LaunchBar Actions.</li>
+</ul>
+<h4>[NEW] Info Browsing</h4>
+<ul>
+<li>
+<p>Press Shift-Right Arrow to access information about a selected item like:</p>
+<ul>
+<li>Image Properties (dimensions, color profile, …)</li>
+<li>File Size</li>
+<li>Modification Date, Creation Date</li>
+<li>Finder Tags</li>
+<li>Disk Capacity &amp; Usage</li>
+<li>Plain text file contents</li>
+<li>XML/plist file contents</li>
+<li>An application’s user defaults</li>
+<li>and more, …</li>
+</ul>
+</li>
+<li>
+<p>Info Browsing can also be triggered with ⌃⌥⌘-Right Arrow</p>
+</li>
+<li>
+<p>For many items it can also be triggered just by pressing Right Arrow.</p>
+</li>
+</ul>
+<h4>[NEW] Usage Statistics</h4>
+<ul>
+<li>Statistics about:
+<ul>
+<li>Superpower Usage</li>
+<li>Saved Time</li>
+<li>LaunchBar Invocations</li>
+</ul></li>
+<li>Accessible via ⌥⌘U shortcut or action menu.</li>
+</ul>
+<h4>Other Features</h4>
+<ul>
+<li>Fully automatic index updates.</li>
+<li>Improved Send To target item suggestions (e.g. File Operations, Tag Actions, …)</li>
+<li>Improved presentation of contact cards, including contact images.</li>
+<li>Support for FaceTime Audio as caller script.</li>
+<li>Support for AirMail as default email client.</li>
+<li>Sending text to an item accepting text input (e.g. search actions) and pressing the space key opens text input to allow editing the search term.</li>
+<li>Improved Recent Documents browsing. Now includes all documents that can be opened with the selected application, sorted by access date. This allows you to access recently used documents even for apps that do not support the standard Cocoa API (like Adobe applications).</li>
+<li>Subtitle display is now turned off by default. Subtitles can be shown temporarily by holding down the ⌃⌥⌘ modifier keys.</li>
+<li>Back-tab (⇧⇥) during Send To now selects the previous item in the list (⇥ selects the next one).</li>
+<li>LaunchBar 6 requires OS X 10.9 Mavericks.</li>
+</ul>
+<h4>Removed and Replaced Features</h4>
+<ul>
+<li>The index window’s Schedule pane has been removed because it’s no longer needed. All index updates are now performed automatically.</li>
+<li>Removed <em>.clip.rtf</em> / <em>.clip.txt</em> support. The same functionality can be accomplished with the Snippets indexing rule.</li>
+<li>Replaced color label actions with corresponding actions for Finder tags.</li>
+<li>Removed support for legacy contacts applications (Entourage, Eudora, …)</li>
+<li>Removed support for legacy web browsers (Internet Explorer, Mozilla, Camino, Shiira)</li>
+<li>Removed search templates that were replaced by live search actions.</li>
+</ul>
+</div></div></div>
+</section>
+
+
+			</div> 
+			
+			<footer class="light">
+				<div class="footer-links">
+										<div class="col">
+						<h4>Little Snitch</h4>
+						<a href="https://obdev.at/products/littlesnitch">Features</a>
+						<a href="https://obdev.at/products/littlesnitch/whatsnew.html">What’s New</a>
+						<a href="https://obdev.at/products/littlesnitch/download.html">Download</a>
+						<a href="https://obdev.at/products/littlesnitch/releasenotes.html">Release Notes</a>
+						<a href="https://obdev.at/products/littlesnitch/order.html#upgrades">Upgrade</a>
+						<h4>Little Snitch Mini</h4>
+						<a href="https://obdev.at/products/littlesnitch-mini">Features</a>
+						<a href="https://obdev.at/products/littlesnitch-mini/compare.html">Compare</a>
+					</div>
+
+					<div class="col">
+						<h4>Other Products</h4>
+						<a href="https://obdev.at/products/launchbar">LaunchBar</a>
+						<a href="https://obdev.at/products/microsnitch">Micro Snitch</a>
+						<a href="https://obdev.at/products/iapviewer">IAP Viewer</a>
+						<h4 class="v-tablet">Resources</h4>
+						<a class="v-tablet" href="https://obdev.at/iap">Internet Access Policy</a>
+						<a class="v-tablet" href="https://obdev.at/blog/">Blog</a>
+						<a class="v-tablet" href="https://obdev.at/support">Support</a>
+						<a class="v-tablet" href="https://obdev.at/support/contact">Contact Us</a>
+						<a class="v-tablet" href="https://obdev.at/support/index.html#lost-license">Lost License</a>
+					</div>
+
+					<div class="col v-desktop">
+						<h4>Resources</h4>
+						<a href="https://obdev.at/iap">Internet Access Policy</a>
+						<a href="https://obdev.at/blog/">Blog</a>
+						<a href="https://obdev.at/support">Support</a>
+						<a href="https://obdev.at/support/contact">Contact Us</a>
+						<a href="https://obdev.at/support/index.html#lost-license">Lost License</a>
+					</div>
+
+					<div class="col">
+						<h4>Company</h4>
+						<a href="https://obdev.at/about.html">About Us</a>
+						<a href="https://obdev.at/press">Press</a>
+						<a href="https://obdev.at/privacy">Privacy Policy</a>
+						<a href="https://obdev.at/terms-and-conditions.html">Terms</a>
+						<h4>&nbsp;</h4>
+						<a class="social-link" href="https://mastodon.obdev.at/@littlesnitch" target="_blank"><svg width="74" height="79" viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.7014 17.4323C72.5616 9.05152 65.1774 2.4469 56.424 1.1671C54.9472 0.950843 49.3518 0.163818 36.3901 0.163818H36.2933C23.3281 0.163818 20.5465 0.950843 19.0697 1.1671C10.56 2.41145 2.78877 8.34604 0.903306 16.826C-0.00357854 21.0022 -0.100361 25.6322 0.068112 29.8793C0.308275 35.9699 0.354874 42.0498 0.91406 48.1156C1.30064 52.1448 1.97502 56.1419 2.93215 60.0769C4.72441 67.3445 11.9795 73.3925 19.0876 75.86C26.6979 78.4332 34.8821 78.8603 42.724 77.0937C43.5866 76.8952 44.4398 76.6647 45.2833 76.4024C47.1867 75.8033 49.4199 75.1332 51.0616 73.9562C51.0841 73.9397 51.1026 73.9184 51.1156 73.8938C51.1286 73.8693 51.1359 73.8421 51.1368 73.8144V67.9366C51.1364 67.9107 51.1302 67.8852 51.1186 67.862C51.1069 67.8388 51.0902 67.8184 51.0695 67.8025C51.0489 67.7865 51.0249 67.7753 50.9994 67.7696C50.9738 67.764 50.9473 67.7641 50.9218 67.7699C45.8976 68.9569 40.7491 69.5519 35.5836 69.5425C26.694 69.5425 24.3031 65.3699 23.6184 63.6327C23.0681 62.1314 22.7186 60.5654 22.5789 58.9744C22.5775 58.9477 22.5825 58.921 22.5934 58.8965C22.6043 58.8721 22.621 58.8505 22.6419 58.8336C22.6629 58.8167 22.6876 58.8049 22.714 58.7992C22.7404 58.7934 22.7678 58.794 22.794 58.8007C27.7345 59.9796 32.799 60.5746 37.8813 60.5733C39.1036 60.5733 40.3223 60.5733 41.5447 60.5414C46.6562 60.3996 52.0437 60.1408 57.0728 59.1694C57.1983 59.1446 57.3237 59.1233 57.4313 59.0914C65.3638 57.5847 72.9128 52.8555 73.6799 40.8799C73.7086 40.4084 73.7803 35.9415 73.7803 35.4523C73.7839 33.7896 74.3216 23.6576 73.7014 17.4323ZM61.4925 47.3144H53.1514V27.107C53.1514 22.8528 51.3591 20.6832 47.7136 20.6832C43.7061 20.6832 41.6988 23.2499 41.6988 28.3194V39.3803H33.4078V28.3194C33.4078 23.2499 31.3969 20.6832 27.3894 20.6832C23.7654 20.6832 21.9552 22.8528 21.9516 27.107V47.3144H13.6176V26.4937C13.6176 22.2395 14.7157 18.8598 16.9118 16.3545C19.1772 13.8552 22.1488 12.5719 25.8373 12.5719C30.1064 12.5719 33.3325 14.1955 35.4832 17.4394L37.5587 20.8853L39.6377 17.4394C41.7884 14.1955 45.0145 12.5719 49.2765 12.5719C52.9614 12.5719 55.9329 13.8552 58.2055 16.3545C60.4017 18.8574 61.4997 22.2371 61.4997 26.4937L61.4925 47.3144Z" fill="white"/>
+</svg><p>Little Snitch</p></a><a class="social-link" href="https://mastodon.obdev.at/@launchbar" target="_blank"><svg width="74" height="79" viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.7014 17.4323C72.5616 9.05152 65.1774 2.4469 56.424 1.1671C54.9472 0.950843 49.3518 0.163818 36.3901 0.163818H36.2933C23.3281 0.163818 20.5465 0.950843 19.0697 1.1671C10.56 2.41145 2.78877 8.34604 0.903306 16.826C-0.00357854 21.0022 -0.100361 25.6322 0.068112 29.8793C0.308275 35.9699 0.354874 42.0498 0.91406 48.1156C1.30064 52.1448 1.97502 56.1419 2.93215 60.0769C4.72441 67.3445 11.9795 73.3925 19.0876 75.86C26.6979 78.4332 34.8821 78.8603 42.724 77.0937C43.5866 76.8952 44.4398 76.6647 45.2833 76.4024C47.1867 75.8033 49.4199 75.1332 51.0616 73.9562C51.0841 73.9397 51.1026 73.9184 51.1156 73.8938C51.1286 73.8693 51.1359 73.8421 51.1368 73.8144V67.9366C51.1364 67.9107 51.1302 67.8852 51.1186 67.862C51.1069 67.8388 51.0902 67.8184 51.0695 67.8025C51.0489 67.7865 51.0249 67.7753 50.9994 67.7696C50.9738 67.764 50.9473 67.7641 50.9218 67.7699C45.8976 68.9569 40.7491 69.5519 35.5836 69.5425C26.694 69.5425 24.3031 65.3699 23.6184 63.6327C23.0681 62.1314 22.7186 60.5654 22.5789 58.9744C22.5775 58.9477 22.5825 58.921 22.5934 58.8965C22.6043 58.8721 22.621 58.8505 22.6419 58.8336C22.6629 58.8167 22.6876 58.8049 22.714 58.7992C22.7404 58.7934 22.7678 58.794 22.794 58.8007C27.7345 59.9796 32.799 60.5746 37.8813 60.5733C39.1036 60.5733 40.3223 60.5733 41.5447 60.5414C46.6562 60.3996 52.0437 60.1408 57.0728 59.1694C57.1983 59.1446 57.3237 59.1233 57.4313 59.0914C65.3638 57.5847 72.9128 52.8555 73.6799 40.8799C73.7086 40.4084 73.7803 35.9415 73.7803 35.4523C73.7839 33.7896 74.3216 23.6576 73.7014 17.4323ZM61.4925 47.3144H53.1514V27.107C53.1514 22.8528 51.3591 20.6832 47.7136 20.6832C43.7061 20.6832 41.6988 23.2499 41.6988 28.3194V39.3803H33.4078V28.3194C33.4078 23.2499 31.3969 20.6832 27.3894 20.6832C23.7654 20.6832 21.9552 22.8528 21.9516 27.107V47.3144H13.6176V26.4937C13.6176 22.2395 14.7157 18.8598 16.9118 16.3545C19.1772 13.8552 22.1488 12.5719 25.8373 12.5719C30.1064 12.5719 33.3325 14.1955 35.4832 17.4394L37.5587 20.8853L39.6377 17.4394C41.7884 14.1955 45.0145 12.5719 49.2765 12.5719C52.9614 12.5719 55.9329 13.8552 58.2055 16.3545C60.4017 18.8574 61.4997 22.2371 61.4997 26.4937L61.4925 47.3144Z" fill="white"/>
+</svg><p>LaunchBar</p></a>					</div>
+				</div>
+				<div class="bottom">
+					<p class="copyright">&copy; 2026 Objective Development Software GmbH</p>
+					<div class="languages"><strong>English</strong><a href='https://obdev.at/de/products/launchbar/releasenotes.html'>Deutsch</a></div>
+									</div>
+			</footer>
+					</body>
+	</html>
+

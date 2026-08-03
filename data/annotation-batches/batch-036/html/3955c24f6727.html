@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home of the Mageia project</title>
+    <meta name="description" content="Mageia is a community-based Linux distribution, for desktop & server.">
+    <meta name="keywords" content="linux, mageia, free software, operating system, computer, laptop, desktop, server, headless, device, mobile, mandriva, mandrake">
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link rel="alternate" hreflang="af" href="//www.mageia.org/af/"><link rel="alternate" hreflang="ar" href="//www.mageia.org/ar/"><link rel="alternate" hreflang="ast" href="//www.mageia.org/ast/"><link rel="alternate" hreflang="bg" href="//www.mageia.org/bg/"><link rel="alternate" hreflang="bn" href="//www.mageia.org/bn/"><link rel="alternate" hreflang="ca" href="//www.mageia.org/ca/"><link rel="alternate" hreflang="cy" href="//www.mageia.org/cy/"><link rel="alternate" hreflang="cs" href="//www.mageia.org/cs/"><link rel="alternate" hreflang="da" href="//www.mageia.org/da/"><link rel="alternate" hreflang="de" href="//www.mageia.org/de/"><link rel="alternate" hreflang="el" href="//www.mageia.org/el/"><link rel="alternate" hreflang="en-gb" href="//www.mageia.org/en-gb/"><link rel="alternate" hreflang="eo" href="//www.mageia.org/eo/"><link rel="alternate" hreflang="es" href="//www.mageia.org/es/"><link rel="alternate" hreflang="et" href="//www.mageia.org/et/"><link rel="alternate" hreflang="eu" href="//www.mageia.org/eu/"><link rel="alternate" hreflang="fi" href="//www.mageia.org/fi/"><link rel="alternate" hreflang="fr" href="//www.mageia.org/fr/"><link rel="alternate" hreflang="he" href="//www.mageia.org/he/"><link rel="alternate" hreflang="hi" href="//www.mageia.org/hi/"><link rel="alternate" hreflang="hr" href="//www.mageia.org/hr/"><link rel="alternate" hreflang="hu" href="//www.mageia.org/hu/"><link rel="alternate" hreflang="ia" href="//www.mageia.org/ia/"><link rel="alternate" hreflang="id" href="//www.mageia.org/id/"><link rel="alternate" hreflang="it" href="//www.mageia.org/it/"><link rel="alternate" hreflang="ja" href="//www.mageia.org/ja/"><link rel="alternate" hreflang="lo" href="//www.mageia.org/lo/"><link rel="alternate" hreflang="lv" href="//www.mageia.org/lv/"><link rel="alternate" hreflang="lt" href="//www.mageia.org/lt/"><link rel="alternate" hreflang="nb" href="//www.mageia.org/nb/"><link rel="alternate" hreflang="nl" href="//www.mageia.org/nl/"><link rel="alternate" hreflang="pl" href="//www.mageia.org/pl/"><link rel="alternate" hreflang="pms" href="//www.mageia.org/pms/"><link rel="alternate" hreflang="pt" href="//www.mageia.org/pt/"><link rel="alternate" hreflang="pt-br" href="//www.mageia.org/pt-br/"><link rel="alternate" hreflang="ro" href="//www.mageia.org/ro/"><link rel="alternate" hreflang="ru" href="//www.mageia.org/ru/"><link rel="alternate" hreflang="sco" href="//www.mageia.org/sco/"><link rel="alternate" hreflang="sk" href="//www.mageia.org/sk/"><link rel="alternate" hreflang="sl" href="//www.mageia.org/sl/"><link rel="alternate" hreflang="sq" href="//www.mageia.org/sq/"><link rel="alternate" hreflang="sr" href="//www.mageia.org/sr/"><link rel="alternate" hreflang="sv" href="//www.mageia.org/sv/"><link rel="alternate" hreflang="tg" href="//www.mageia.org/tg/"><link rel="alternate" hreflang="th" href="//www.mageia.org/th/"><link rel="alternate" hreflang="tr" href="//www.mageia.org/tr/"><link rel="alternate" hreflang="uk" href="//www.mageia.org/uk/"><link rel="alternate" hreflang="ur" href="//www.mageia.org/ur/"><link rel="alternate" hreflang="zh-cn" href="//www.mageia.org/zh-cn/"><link rel="alternate" hreflang="zh-tw" href="//www.mageia.org/zh-tw/">    <link rel="alternate" type="application/rss+xml" title="Mageia Blog (English)" href="https://blog.mageia.org/en/?feed=rss">
+    <link rel="icon" type="image/png" href="/g/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/g/style/bootstrap.min.css">
+    <link rel="stylesheet" href="/g/style/bootstrap_theme.css">
+    <link rel="stylesheet" href="/g/style/common_footer.css">
+    <style>
+
+    hr { display: none; }
+    ol, ul { margin: 0; padding: 0; list-style: none; }
+    h1, h2 { font-size: 3rem; margin-top: 0; color: #fff !important; }
+    #b1 { color: #fff !important; }
+
+    a[hreflang]:after { color:#d0d0ff; font-style:italic; content: "\A0["attr(hreflang)"]"; }
+
+    body {background:  #1c5f89;}
+    #down {background:  #ffffff;}
+
+    #master {
+        padding: 2em;
+        border: 1px solid red;
+        margin: 2em;
+        display: none;
+    }
+
+    #up, #down { margin: 0; padding: 0; }
+
+    #up {
+        padding-bottom: 0px;
+        color: #fff;
+        text-shadow: 0 0 1px #333;
+        background:  #1c5f89;
+    /*
+        background: -webkit-radial-gradient(20% 350px, circle cover, #3494D3 0%, #2383C2 50%);
+        background: -moz-radial-gradient(26% 370px, circle cover, #3494D3 0%, #2383C2 50%);
+        background: -o-radial-gradient(20% 350px, circle cover, #3494D3 0%, #2383C2 50%);
+        background: radial-gradient(20% 350px, circle cover, #3494D3 0%, #2383C2 50%);
+    */
+    }
+
+    #up .container {
+        padding-bottom: 40px;
+    }
+
+    ul#dl li { margin-bottom: 14px; }
+    #dl-btn {
+        display: block;
+        color: #000;
+        text-decoration: none;
+        width: 280px;
+        background: #E8EBEE;
+        padding: 20px 20px 15px 20px;
+        border-radius: 4px;
+        text-shadow: none;
+        box-shadow: 0 0 1px #333;
+        /*
+        background: #ff6020;
+        background: -webkit-linear-gradient(top, #ff6600 0%, orange 100%);
+        background: -moz-linear-gradient(top, #ff3000 0%, orange 100%);
+        background: -o-linear-gradient(top, #ff3000 0%, orange 100%);
+        background: linear-gradient(top, #ff3000 0%, orange 100%);
+        /**/
+    }
+    #dl-btn-mageia {
+        width: 204px;
+        height: 82px;
+        display: block;
+        color: transparent;
+        margin-bottom: 10px;
+    }
+    span.dl-btn {
+        display: block;
+    }
+    span.dl-btn span.low {
+        color: #777;
+    }
+    p.dl-info {
+        padding: 0 20px;
+        font-size: 85%;
+    }
+    p.dl-info a {
+        color: #fff;
+        text-shadow: none;
+        text-decoration: none;
+    }
+    .dl-btn-other {
+        display: block;
+        width: 280px;
+        padding: 10px 20px 10px 20px;
+        background: rgba(255,255,255, 0.15);
+        border-radius: 4px;
+        color: #ddeeff;
+        text-shadow: none;
+        text-decoration: none;
+        font-size: 85%;
+    }
+    .dl-btn-other:hover {
+        background: rgba(255,255,255, 0.3);
+        color: #fff;
+    }
+    #dl-btn:hover { box-shadow: 0 0 10px rgba(255,255,255,1); }
+    #dl-btn:active { border-radius: 0; }
+
+    #fnotes {
+        text-align: center;
+        font: 85%/1.2 Verdana,Arial,sans-serif;
+        color: #f0f0f0;
+    }
+    #fnotes a { color: #aaa; text-decoration: none; }
+    .free-dl { color: green; font-weight: bold; }
+    
+    #newslist {
+        display: block;
+        padding: 5px 10px;
+        margin: 0px 70px;
+        background: rgba(255,255,255, 0.1);
+        border-radius: 4px;
+        color: #ddeeff;
+        text-shadow: none;
+        font-size: 120%;
+    }
+    #newslist a {
+        color: #ddeeff;
+        text-decoration: none;
+    }
+    #newslist a:hover { color: #ffffff; }
+    
+
+    /* Landscape phones and down */
+    @media (max-width: 480px) {}
+
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 768px) {
+        #newslist { margin: 0px; }
+    }
+
+    /* Portrait tablet to landscape and desktop */
+    @media (max-width: 1000px) {
+        h2 { margin: 0 0 .3em; line-height: 1.2; font-size: 200%; }
+
+        ul#p { font-size: 90%; list-style: circle; padding: 0 0 0 2em; margin: 0; }
+        #up { padding-bottom: 0; }
+        #up > .container { padding: 1em; }
+        #b1 { margin: 0; padding: 0 0 1em 0; }
+        #navb li { margin: 1em 0 0 1em; float: left; }
+        #navb li a {
+            display: block;
+            width: 222px;
+            padding: 10px 20px 10px 20px;
+            background: rgba(50,160,200, 0.1);
+            border-radius: 4px;
+            color: #68a;
+            text-shadow: none;
+            text-decoration: none;
+            font-size: 75%;
+        }
+        .dl-btn-other:hover {
+            background: rgba(255,255,255, 0.2);
+            color: #fff;
+        }
+        #fnotes { clear: both; padding: 2em; text-align: left; }
+    }
+
+    @media (min-width: 1000px) {
+        h2 { margin-bottom: 0.3em; }
+        ul#p li:before { content: " > "; }
+        #up {
+            background: url(/g/9/background.png) no-repeat center;
+            background-size: cover
+        }
+        #b1 { padding: 33px 70px 70px 70px; }
+        #b2 { padding-left: 70px; padding-right: 70px; }
+
+        #navb {
+            padding: 0;
+            margin: 0 auto;
+            display: table;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        #navb li {
+            display: table-cell;
+            padding: 0;
+            border-right: 1px solid #f0f0f0;
+        }
+        #navb li:last-child { border: none; }
+        #navb a {
+            text-decoration: none;
+            padding: 20px 1em 20px 1em;
+            display: block;
+            min-width: 80px;
+            text-align: center;
+            color: #444;
+        }
+        #navb a:hover {
+            color: #2383C2;
+        }
+    }
+    @media (min-width: 1200px) {}
+
+    @keyframes float {
+    0% {
+        transform: translateY(0em);
+    }
+    100% {
+        transform: translateY(2em);
+    }
+    }
+    @keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0.10;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+
+    @keyframes fade-out {
+    0%,85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+    }
+
+    #dl-btn-mageia .bubble {
+        opacity: 1;
+        animation: fade-in 1.4s infinite, float 1.4s ease infinite reverse ;
+    }
+
+    #dl-btn-mageia .bubble:nth-of-type(1) {
+        animation-delay: 0.2s;
+    }
+    #dl-btn-mageia .bubble:nth-of-type(2) {
+        animation-delay: 0.4s;
+    }
+    #dl-btn-mageia .bubble:nth-of-type(3) {
+        animation-delay: 0.6s;
+    }
+    #dl-btn-mageia .bubble:nth-of-type(4) {
+        animation-delay: 0.8s;
+    }
+    #dl-btn-mageia .bubble:nth-of-type(5) {
+        animation-delay: 1s;
+    }
+
+    #dl-btn-mageia .text {
+        opacity: 1;
+        animation: fade-out 9s ease infinite ;
+    }
+
+    #dl-btn-mageia .text:nth-of-type(1) {
+        animation-delay: 0.15s;
+    }
+    #dl-btn-mageia .text:nth-of-type(2) {
+        animation-delay: 0.30s;
+    }
+    #dl-btn-mageia .text:nth-of-type(3) {
+        animation-delay: 0.45s;
+    }
+    #dl-btn-mageia .text:nth-of-type(4) {
+        animation-delay: 0.6s;
+    }
+    #dl-btn-mageia .text:nth-of-type(5) {
+        animation-delay: 0.75s;
+    }
+    #dl-btn-mageia .text:nth-of-type(6) {
+        animation-delay: 0.9s;
+    }
+    #dl-btn-mageia .text:nth-of-type(8) {
+        animation-delay: 1.05s;
+    }
+    #dl-btn-mageia .text:nth-of-type(7) {
+        animation-delay: 1.2s;
+    }
+    </style>
+    <link rel="stylesheet" href="/g/fa/css/font-awesome.css">
+</head>
+<body >
+    <header id="hmgn" class="sticky-top"><!--googleoff: all-->
+    <div class="mganav">
+        <nav id="mgnav" class="container navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand text-hide" href="//www.mageia.org/en">Mageia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" style="text-align: left;" id="navbarNav">
+                    <ul class="navbar-nav mr-auto"><li class="nav-item"><a href="//www.mageia.org/en/about/" class="about nav-link" title="Learn more about Mageia.">About&nbsp;us</a></li><li class="nav-item"><a href="//www.mageia.org/en/downloads/" class="downloads nav-link" title="Download Mageia ISO and updates.">Downloads</a></li><li class="nav-item"><a href="//www.mageia.org/en/support/" class="support nav-link" title="Get support from Mageia community.">Support</a></li><li class="nav-item"><a href="//wiki.mageia.org/" class="wiki nav-link" title="Wiki of the Mageia Community">Wiki</a></li><li class="nav-item"><a href="//www.mageia.org/en/doc/" class="doc nav-link" title="Documentations of Mageia">Docs</a></li><li class="nav-item"><a href="//www.mageia.org/en/community/" class="community nav-link" title="">Community</a></li><li class="nav-item"><a href="//www.mageia.org/en/contribute/" class="contribute nav-link" title="You too can build Mageia with us!">Contribute</a></li><li class="nav-item"><a href="//www.mageia.org/en/donate/" class="donate nav-link" title="">Donate</a></li><li class="nav-item"><a href="//identity.mageia.org/" class="you nav-link" title="Your Mageia online account.">You</a></li><li class="nav-item"><a href="//www.mageia.org/en/contact/" class="contact nav-link" title="Contact Us">Contact</a></li></ul><ul class="navbar-nav"><li class="nav-item"><a class="nav-link globe-icon" href="#langsModal" data-toggle="modal" data-target="#langsModal">English</a></li></ul>
+                </div>
+            </nav>
+    </div><!--googleon: all-->
+</header><div class="modal fade" id="langsModal">
+   <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+       <div class="modal-body">
+            <form class="form-group" id="lang_form" dir="ltr" method="get" action="/">
+            <input class="form-control" type="hidden" name="furl" value="/en/" />
+                <select class="form-control custom-select" id="flang" name="flang" dir="ltr" onchange="this.form.submit()">
+                <option value="af">Afrikaans</option><option value="ar">العربية/عربي</option><option value="ast">Asturianu</option><option value="bg">Български</option><option value="bn">বাংলা</option><option value="ca">Català</option><option value="cy">Cymraeg</option><option value="cs">Čeština</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="en" selected="selected">English</option><option value="en-gb">English GB</option><option value="eo">Esperanto</option><option value="es">Español</option><option value="et">Eesti</option><option value="eu">Euskara</option><option value="fi">Suomeksi</option><option value="fr">Français</option><option value="he">עברית</option><option value="hi">हिन्दी</option><option value="hr">Hrvatski</option><option value="hu">Magyar</option><option value="ia">Interlingua</option><option value="id">Bahasa Indonesia</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="lo">ພາສາລາວ</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="nb">Bokmål</option><option value="nl">Nederlands</option><option value="pl">Polski</option><option value="pms">Piemontèis</option><option value="pt">Português</option><option value="pt-br">Português do Brasil</option><option value="ro">Română</option><option value="ru">Русский</option><option value="sco">Scots</option><option value="sk">Slovenčina</option><option value="sl">Slovenščina</option><option value="sq">Gjuha shqipe</option><option value="sr">Српски</option><option value="sv">Svenska</option><option value="tg">Тоҷикӣ</option><option value="th">ภาษาไทย</option><option value="tr">Türkçe</option><option value="uk">Українська</option><option value="ur">اردو</option><option value="zh-cn">简体中文</option><option value="zh-tw">正體中文</option>
+                </select>
+            <noscript><div><input type="submit" id="lang_submit" value="Hop!" /></div></noscript>
+            </form>
+        </div>
+      </div>
+    </div>
+</div> <!--end modal --><div id="master">
+    <h1><a href="about/">Mageia, a free, community-based Linux distribution for desktop & server.</a></h1>
+</div>
+
+<div  id="up">
+    <div class="container">
+        <div>
+        <ul id="newslist"><li><span style="font-weight: bold;">Latest news from our <a href="https://planet.mageia.org/en/">English planet</a>:</span> <a href="https://blog.mageia.org/en/2026/06/30/the-power-of-10/">The power of 10</a> | <span class="dt">Jun 30 2026</span></li></ul>        </div>
+        <div class="row">
+        <div class="col">
+        <div id="b1">
+            <h2  >Change your perspective</h2>
+            <ul id="p"><li>Stable, secure operating system for desktop &amp; server</li><li>Free Software, coproduced by hundreds of people</li><li>Elected governance, nonprofit organization</li><li>You can be part of it</li></ul>
+        </div>
+        <div id="b2">
+            <ul id="dl">
+                <li><a href="/en/10/" id="dl-btn">
+
+                        <span id="dl-btn-mageia">
+                        <svg version="1.1" viewBox="0 0 774 236.92" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata><g transform="translate(-125 -521.36)"><g transform="translate(-.20804 7.0001)" fill="#2397d4"><path class="bubble" d="m177.89 597.13h-0.01c-6.6729 0-12.107-5.4267-12.114-12.095-0.01-6.6905 5.4251-12.125 12.104-12.132 6.683 0 12.116 5.4267 12.124 12.095 0 6.6905-5.4251 12.126-12.104 12.133z"/><path class="bubble" d="m210.61 588.24c-6.2309 0-11.302-5.0662-11.307-11.292-0.01-6.242 5.0612-11.316 11.296-11.321 6.2392 0 11.311 5.0651 11.317 11.291 0 6.242-5.0622 11.316-11.296 11.323h-0.01z"/><path class="bubble" d="m201.3 555.96c0 5.5755-4.5198 10.095-10.095 10.095s-10.095-4.5199-10.095-10.095c0-5.5756 4.5198-10.095 10.095-10.095s10.095 4.5198 10.095 10.095z" stroke-width="1.4422"/><path class="bubble" d="m216.65 539c0 5.1294-4.1581 9.2875-9.2875 9.2875s-9.2875-4.1581-9.2875-9.2875 4.1581-9.2875 9.2875-9.2875 9.2875 4.1581 9.2875 9.2875z" stroke-width=".80761"/><path class="bubble" d="m195.65 522.44c0 4.4603-3.6158 8.0761-8.0761 8.0761s-8.0761-3.6158-8.0761-8.0761 3.6158-8.0761 8.0761-8.0761 8.0761 3.6158 8.0761 8.0761z" stroke-width=".76915"/></g><path class="cauldron" d="m143.93 615.04c-10.45 13.545-18.926 28.781-18.926 47.238 0 40.006 30.358 73 68 73 37.64 0 68-32.993 68-73 0-18.461-8.4889-33.212-19.53-47.238-4.1402-4.3446-10.118-3.6986-14.469-0.91856-12.733 6.5886-19.606 9.2209-34.001 9.1565-13.922-0.0624-21.237-2.336-33.97-9.2774-4.3514-2.6592-10.964-3.3052-15.104 1.0394zm9.0742 11.238c13.198 7.2975 24.969 11 40 11 15.044 0 26.795-3.7025 40-11 7.2055 10.16 14 22.758 14 36 0 32.801-24.175 59-54 59-29.826 0-55-26.199-55-59 0-13.225 7.7788-25.832 15-36z" color="#000000" fill="#262f45" style="text-indent:0;text-transform:none"/><path class="text" d="m346 632.28c-24 0-42 18-42 42v40h12v-40c0-18 12-30 30-30s30 12 30 30v40h12v-40c0-18 12-30 30-30s30 12 30 30v40h12v-40c0-24-18-42-42-42-15.665 0-28.784 7.6868-36 19.687-7.2157-12.001-20.335-19.687-36-19.687z" fill="#262f45"/><path class="text" d="m521 632.28c-24 0-42 18-42 42s18 42 42 42c12 0 22.5-4.5 30-12v10h12v-40c0-24-18-42-42-42zm0 12c18 0 30 12 30 30s-12 30-30 30-30-12-30-30 12-30 30-30z" fill="#262f45"/><path class="text" d="m623 632.28c-24 0-42 18-42 42s18 42 42 42c12 0 22.5-4.5 30-12v12c0 18-12 30-30 30v12c24 0 42-18 42-42v-42c0-24-18-42-42-42zm0 12c18 0 30 12 30 30s-12 30-30 30-30-12-30-30 12-30 30-30z" fill="#262f45"/><path class="text" d="m725 632.28c-24 0-42 18-42 42s18 42 42 42v-12c-15.908 0-27.106-9.3968-29.5-24h71.125c0.25558-1.9564 0.375-3.9482 0.375-6 0-24-18-42-42-42zm0 12c15.908 0 27.106 9.397 29.5 24h-59c2.3939-14.603 13.592-24 29.5-24z" fill="#262f45"/><path class="text" d="m785 634.28h12v80h-12z" fill="#262f45"/><path class="text" d="m791 745.28c-4.9706 0-9-4.0294-9-9 0-4.9705 4.0294-8.9999 9-8.9999 4.9705 0 9 4.0294 9 8.9999 0 4.9706-4.0295 9-9 9z" fill="#2397d4"/><path class="text" d="m857 632.28c-24 0-42 18-42 42s18 42 42 42c12 0 22.5-4.5 30-12v10h12v-40c0-24-18-42-42-42zm0 12c18 0 30 12 30 30s-12 30-30 30-30-12-30-30 12-30 30-30z" fill="#262f45"/></g></svg>
+                        </span>
+                        <span style="font-size: 32px; color: green; float: right;" class="icon-download-alt"></span>
+                        <span class="dl-btn free-dl">Mageia 10</span>
+                        <span class="dl-btn">released in July 2026</span>
+                    </a>
+                    <p class="dl-info">
+                    <p class="dl-info">
+                        <a href="https://wiki.mageia.org/en/Mageia_10_Release_Notes" hreflang="en">Release notes</a>,
+			<a href="https://wiki.mageia.org/en/Mageia_10_Errata" hreflang="en">errata</a>,
+                    </p>
+                </li>
+                <li><a href="contribute/" class="dl-btn-other"><strong>Get involved</strong> in the next version</a>
+        </li> 
+        <!--<li><a href="/en/10/" class="dl-btn-other">Test Mageia 10</a></li>-->
+
+            </ul>
+        </div>
+       </div><!--col-->
+  </div><!--row-->
+    </div>
+</div>
+<hr class="divider">
+<div id="down">
+    <div class="container">
+        <ul id="navb"><li><a class="nav-support" href="/en/support/">Support</a></li><li><a class="nav-community" href="/en/community/">Community</a></li><li><a class="nav-about" href="/en/about/">About&nbsp;Mageia.Org</a></li></ul>
+        <hr class="divider">
+        <p id="fnotes">
+            <a href="/en/map/">Sitemap</a>
+            | <a href="/en/about/policies/privacy/">Privacy policy</a>
+        </p>
+    </div>
+</div>
+<script src="/g/js/jquery.min.js"></script>
+<script src="/g/js/popper.min.js"></script>
+<script src="/g/js/bootstrap.min.js"></script>
+</body>
+</html>

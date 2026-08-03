@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+ 
+ 
+ <link rel="shortcut icon" href="https://gcc.gnu.org/favicon.ico">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="google-site-verification" content="FUv_3eEIkimd6LAoWned4TPMqmKKQmw3aA2_PBJ5SAY">
+<title>
+GCC, the GNU Compiler Collection
+- GNU Project</title>
+<link rel="stylesheet" type="text/css" href="https://gcc.gnu.org/gcc.css">
+   </head>
+ 
+
+
+<body>
+
+  <table class="border0">
+  <tr>
+
+  <td class="top border0">                                <!-- main frame -->
+ 
+
+
+<h1 class="no-margin-top">GCC, the GNU Compiler Collection</h1>
+
+<img src="img/gccegg-65.png" alt="" class="right">
+
+<p>The GNU Compiler Collection includes front ends for
+<a href="projects/c-status.html">C</a>,
+<a href="projects/cxx-status.html">C++</a>,
+Objective-C, Objective-C++, <a href="fortran/">Fortran</a>,
+Ada, Go, D, Modula-2, COBOL, Rust, and Algol 68
+as well as libraries for these languages (libstdc++,...).
+GCC was originally written as the compiler for the <a
+href="http://www.gnu.org/gnu/thegnuproject.html">GNU operating system</a>.
+The GNU system was developed to be 100% free software, free in the sense
+that it <a  href="http://www.gnu.org/philosophy/free-sw.html">respects
+the user's freedom</a>.</p>
+
+<p>We strive to provide regular, high quality
+<a href="releases.html">releases</a>, which we want to work well on a variety
+of native and cross targets (including GNU/Linux), and encourage everyone 
+to <a href="contribute.html">contribute</a> changes or help
+<a href="testing/">testing</a> GCC.
+Our sources are readily and freely available via
+<a href="git.html">Git</a> and weekly
+<a href="snapshots.html">snapshots</a>.</p>
+
+<p>Major decisions about GCC are made by the <a href="steering.html">
+steering committee</a>, guided by the <a href="gccmission.html">
+mission statement</a>.</p>
+
+
+<hr>
+<!-- ==================================================================== -->
+
+
+<table class="border0"><tr>
+
+<!-- Note: We usually want to rotate news to the "old news" page when
+     it's more than 12 months old or the News pane on this page has
+     become longer than the parallel one, whatever happens first. 
+-->
+
+<td class="news border0">
+<h2 id="news"><a href="#news">News</a></h2>
+<dl>
+
+<dt><span><a href="https://gnu-tools-cauldron.org/">GNU Tools Cauldron 2026</a></span>
+    <span class="date">[2026-04-30]</span></dt>
+    <dd>Prague, Czech Republic, October 2-4 2026</dd>
+
+<dt><span><a href="gcc-14/">GCC 14.4</a> released</span>
+    <span class="date">[2026-06-26]</span></dt>
+    <dd></dd>
+
+<dt><span><a href="gcc-15/">GCC 15.3</a> released</span>
+    <span class="date">[2026-06-12]</span></dt>
+    <dd></dd>
+
+<dt><span><a href="gcc-16/">GCC 16.1</a> released</span>
+    <span class="date">[2026-04-30]</span></dt>
+    <dd></dd>
+
+<dt><span><a href="https://gcc.gnu.org/wiki/fossy2026">FOSSY 2026 toolchain track North America: Call for Participation</a></span>
+    <span class="date">[2026-04-17]</span></dt>
+    <dd>FOSSY 2026: Vancouver, Canada, Aug 6 - Aug 9, 2026</dd>
+
+<dt><span><a href="https://fosdem.org/2026/schedule/track/gcc-gnu-toolchain/">GCC developer room at FOSDEM 2026: Schedule Available</a></span>
+    <span class="date">[2025-12-15]</span></dt>
+    <dd>FOSDEM 2026: Brussels, Belgium, Jan 31 - Feb 1, 2026</dd>
+
+<dt><span><a href="gcc-16/changes.html#algol68">Algol 68 front end added</a></span>
+    <span class="date">[2025-11-30]</span></dt>
+    <dd>An experimental Algol 68 programming language front end has been added
+    to GCC.</dd>
+
+<dt><span><a href="https://inbox.sourceware.org/gcc/DDZ33YE13W8K.3GW0F1S381V0T@adacore.com/">GCC developer room at FOSDEM 2026: Call for Participation</a></span>
+    <span class="date">[2025-11-03]</span></dt>
+    <dd>FOSDEM 2026: Brussels, Belgium, Jan 31 - Feb 1, 2026</dd>
+
+<dt><span><a href="gcc-15/">GCC 15.2</a> released</span>
+    <span class="date">[2025-08-08]</span></dt>
+    <dd></dd>
+
+<dt><span><a href="https://gnu-tools-cauldron.org/opo25/">GNU Tools Cauldron 2025</a></span>
+    <span class="date">[2025-08-01]</span></dt>
+    <dd>Porto, Portugal, September 26-28 2025</dd>
+
+</dl>
+
+<div >
+<a href="news.html">Older news</a> |
+<span class="smaller">
+More news? Let gerald@pfeifer.com know!
+</span>
+</div>
+
+
+
+</td><td class="status border0">
+<h2>Supported Releases</h2>
+<dl>
+
+<dt><span class="version"><a href="gcc-16/">GCC 16.1</a></span>
+  (<a href="gcc-16/changes.html">changes</a>)
+</dt><dd>
+  Status:
+  <!--GCC 16 status below-->
+  <a href="https://gcc.gnu.org/pipermail/gcc/2026-July/248646.html">2026-07-31</a>
+  <!--GCC 16 status above-->
+  (frozen for release).
+  <div class="regress">
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*16%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;target_milestone=16.2&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;priority=P1&amp;priority=P2&amp;priority=P3&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">Serious
+  regressions</a>.
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*16%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;target_milestone=16.2&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">All
+  regressions</a>.
+  </div>
+</dd>
+
+<dt><span class="version"><a href="gcc-15/">GCC 15.3</a></span>
+  (<a href="gcc-15/changes.html">changes</a>)
+</dt><dd>
+  Status:
+  <!--GCC 15 status below-->
+  <a href="https://gcc.gnu.org/pipermail/gcc/2026-June/248332.html">2026-06-12</a>
+  <!--GCC 15 status above-->
+  (regression fixes & docs only).
+  <div class="regress">
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*15%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;priority=P1&amp;priority=P2&amp;priority=P3&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">Serious
+  regressions</a>.
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*15%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">All
+  regressions</a>.
+  </div>
+</dd>
+
+<dt><span class="version"><a href="gcc-14/">GCC 14.4</a></span>
+  (<a href="gcc-14/changes.html">changes</a>)
+</dt><dd>
+  Status:
+  <!--GCC 14 status below-->
+  <a href="https://gcc.gnu.org/pipermail/gcc/2026-June/248377.html">2026-06-19</a>
+  <!--GCC 14 status above-->
+  (regression fixes & docs only).
+  <div class="regress">
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*14%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;priority=P1&amp;priority=P2&amp;priority=P3&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">Serious
+  regressions</a>.
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*14%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">All
+  regressions</a>.
+  </div>
+</dd>
+
+<dt><span class="version"><a href="gcc-13/">GCC 13.4</a></span>
+  (<a href="gcc-13/changes.html">changes</a>)
+</dt><dd>
+  Status:
+  <!--GCC 13 status below-->
+  <a href="https://gcc.gnu.org/pipermail/gcc/2025-June/246132.html">2025-06-05</a>
+  <!--GCC 13 status above-->
+  (regression fixes & docs only).
+  <div class="regress">
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*13%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;priority=P1&amp;priority=P2&amp;priority=P3&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">Serious
+  regressions</a>.
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*13%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">All
+  regressions</a>.
+  </div>
+</dd>
+
+<dt><span class="version">Development:</span>
+  GCC 17.0 (<a href="gcc-17/criteria.html">release criteria</a>, <a href="gcc-17/changes.html">changes</a>)
+</dt><dd>
+  Status:
+  <!--GCC 17 status below-->
+  <a href="https://gcc.gnu.org/pipermail/gcc/2026-April/247981.html">2026-04-22</a>
+  <!--GCC 17 status above-->
+  (general development).
+  <div class="regress">
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*17%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;target_milestone=16.2&amp;target_milestone=17.0&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;priority=P1&amp;priority=P2&amp;priority=P3&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">Serious
+  regressions</a>.
+  <a
+  href="https://gcc.gnu.org/bugzilla/buglist.cgi?query_format=advanced&amp;short_desc_type=regexp&amp;short_desc=%5C%5B(%5B%200-9.%2F%5D*%5B%20%2F%5D)*17%5B%20%2F%5D%5B%200-9.%2F%5D*%5BRr%5Degression%20*%5C%5D&amp;target_milestone=13.5&amp;target_milestone=14.5&amp;target_milestone=15.4&amp;target_milestone=16.2&amp;target_milestone=17.0&amp;known_to_fail_type=allwordssubstr&amp;known_to_work_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">All
+  regressions</a>.
+  </div>
+</dd>
+
+</dl>
+
+
+<h2>Search our site</h2>
+
+<div >
+
+<form method="get" action="https://gcc.gnu.org/cgi-bin/search.cgi">
+<input type="text" size="30" name="q" value="" class="smaller">
+<input type="hidden" name="cmd" value="Search">
+<input type="submit" value="Search" class="smaller">
+<br>
+<span class="smaller">Match: <select name="m" class="smaller">
+  <option value="all">All words</option>
+  <option value="any">Any word</option>
+  <option value="bool">Boolean expression</option>
+  </select></span>
+<span class="smaller">Sort by: <select name="s" class="smaller">
+  <option value="DRP">Newest</option>
+  <option value="RPD">Best Match</option>
+  </select></span>
+</form>
+
+<p class="smaller">There is also a
+<a href="search.html">detailed search form</a>.</p>
+
+</div>
+
+
+
+<h2>Get our announcements</h2>
+
+  <form method="get" action="https://gcc.gnu.org/cgi-bin/ml-request">
+    <input type="hidden" name="digest"    value="off">
+    <input type="hidden" name="operation" value="subscribe">
+    <input type="hidden" name="listname"  value="gcc-announce">
+    <input type="text"   name="username"  value="your e-mail address"
+      size="20" class="smaller">
+    <input type="submit" name="submit"    value="Subscribe"
+      class="smaller">
+  </form>
+
+
+</td>
+</tr></table>
+
+
+  </td>                                            <!-- end of main frame -->
+
+  <td class="top border0">                                 <!-- nav frame -->
+  <table class="nav">
+
+  <tr><td><table class="navitem">
+  <tr><td>About GCC</td></tr>
+  <tr><td>
+  <a href="gccmission.html">Mission</a><br>
+  <a href="releases.html">Releases</a><br>
+  <a href="snapshots.html">Snapshots</a><br>
+  <a href="lists.html">Mailing lists</a><br>
+  <a href="https://gcc.gnu.org/onlinedocs/gcc/Contributors.html">Contributors</a><br>
+  <a href="https://gcc.gnu.org/wiki/GCConIRC">IRC</a><br>
+  <div class="center">
+  <a href="https://x.com/gnutools">
+    <img src="twitter-bird-light-bgs.png"
+      height="42" width="42" class="middle"
+      alt="@gnutools on Twitter">@gnutools</a>
+  </div>
+  <div class="center">
+  <a rel="me" href="https://fosstodon.org/@gnutools">Mastodon</a>
+  </div>
+  <div class="center">
+  <a href="https://my.fsf.org/civicrm/contribute/transact?reset=1&amp;id=57">
+    <img src="donate-110-23.png"
+      height="23" width="100" alt="Donate to GNU Toolchain Fund"></a>
+  </div>
+  </td></tr>
+  </table></td></tr>
+
+  <tr><td><table class="navitem">
+  <tr><td>Documentation</td></tr>
+  <tr><td>
+  <a href="https://gcc.gnu.org/install/">Installation</a><br>
+  &middot;&nbsp;<a href="https://gcc.gnu.org/install/specific.html">Platforms</a><br>
+  <a href="onlinedocs/">Manual</a><br>
+  <a href="faq.html">FAQ</a><br>
+  <a href="https://gcc.gnu.org/wiki/">Wiki</a><br>
+  <a href="readings.html">Pointers</a>
+  </td></tr>
+  </table></td></tr>
+ 
+  <tr><td><table class="navitem">
+  <tr><td>Download</td></tr>
+  <tr><td>
+  <a href="mirrors.html">Mirrors</a><br>
+  <a href="https://gcc.gnu.org/install/binaries.html">Binaries</a>
+  </td></tr>
+  </table></td></tr>
+
+  <tr><td><table class="navitem">
+  <tr><td>Sources</td></tr>
+  <tr><td>
+  <a href="git.html">Git</a><br>
+  <a href="gitwrite.html">...write access</a><br>
+  <a href="rsync.html">Rsync</a><br>
+  </td></tr>
+  </table></td></tr>
+
+  <tr><td><table class="navitem">
+  <tr><td>Development</td></tr>
+  <tr><td>
+  <a href="develop.html">Plan</a>
+  &amp; <a href="develop.html#timeline">Timeline</a><br>
+  <a href="contribute.html">Contributing</a><br>
+  <a href="contributewhy.html">Why&nbsp;contribute?</a><br>
+  <a href="projects/">Open projects</a><br>
+  <a href="frontends.html">Front ends</a><br>
+  <a href="backends.html">Back ends</a><br>
+  <a href="extensions.html">Extensions</a><br>
+  <a href="testing/">Testing</a><br>
+  <a href="benchmarks/">Benchmarks</a><br>
+  <a href="translation.html">Translations</a><br>
+  </td></tr>
+  </table></td></tr>
+
+  <tr><td><table class="navitem">
+  <tr><td>Bugs</td></tr>
+  <tr><td>
+  <a href="bugs/#known">Known bugs</a><br>
+  <a href="bugs/">How to report</a><br>
+  <a href="https://gcc.gnu.org/bugzilla/">Bug&nbsp;tracker</a><br>
+  &middot;&nbsp;<a href="bugs/management.html">Management</a>
+  </td></tr>
+  </table></td></tr>
+
+  </table>
+  </td>                                             <!-- end of nav frame -->
+
+  </tr>
+  </table>
+ 
+
+<!-- ==================================================================== -->
+
+<div class="copyright">
+
+<address>For questions related to the use of GCC,
+please consult these web pages and the
+<a href="https://gcc.gnu.org/onlinedocs/">GCC manuals</a>. If that fails,
+the <a href="mailto:gcc-help@gcc.gnu.org">gcc-help@gcc.gnu.org</a>
+mailing list might help.
+Comments on these web pages and the development of GCC are welcome on our
+developer list at <a href="mailto:gcc@gcc.gnu.org">gcc@gcc.gnu.org</a>.
+All of <a href="https://gcc.gnu.org/lists.html">our lists</a>
+have public archives.
+</address>
+
+<p>Copyright (C)
+<a href="https://www.fsf.org">Free Software Foundation, Inc.</a>
+Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+  
+
+<p>These pages are
+<a href="https://gcc.gnu.org/about.html">maintained by the GCC team</a>.
+Last modified 2026-07-31.</p><!-- IGNORE DIFF -->
+
+</div>
+
+<!-- ==================================================================== -->
+
+</body>
+</html>

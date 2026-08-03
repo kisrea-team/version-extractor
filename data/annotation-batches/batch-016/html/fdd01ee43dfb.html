@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../_app/immutable/assets/2.CShZuLqV.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/main.DgakXc13.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/3.BJdqDXbV.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/6.p_aZJzRV.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.DX2tk7Wj.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.BGWExhOU.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.DQkMsCme.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.DXzOHq6C.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.BN8yp0nr.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.DidmSOuj.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.hNR2-YDE.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.gptmBXlJ.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/PageFooter.Bh4EX9LI.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CommonHelper.ucxL7p6H.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preferences.DKIoM6dL.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/tooltip.RC_5fCRL.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.7OP1iPcb.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.BAnxiaAa.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/each.DStbqIFS.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/6.bMCJm4r2.js"><title>Introduction - Docs - PocketBase</title><!-- HEAD_svelte-1az7yaz_START --><!-- HEAD_svelte-1az7yaz_END -->
+
+    <script src="/pagefind/pagefind-ui.js"></script>
+</head>
+<body>
+    <div class="page-body">  <header class="page-header"><div class="wrapper wrapper-lg"><div class="header-section left"><a href="/" class="logo logo-sm" data-sveltekit-preload-data><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40"> <span class="txt" data-svelte-h="svelte-omx7fd">Pocket<strong>Base</strong></span> <span class="version">v0.39.10</span></a></div> <div class="header-section center"> <div tabindex="-1" class="form-field searchbar"><div class="form-field-addon prefix" data-svelte-h="svelte-4xuxr"><i class="ri-search-line"></i></div>  <input type="text" class="searchbar-input" placeholder="Search..." value=""> <div tabindex="-1" class="dropdown searchbar-dropdown"><div class="tabs-header compact"><button type="button" class="tab-item active" data-svelte-h="svelte-1gcu78o">Go</button> <button type="button" class="tab-item" data-svelte-h="svelte-1oz4ee9">JavaScript</button></div>  <div id="pagefind_searchkmjJf"></div></div></div></div> <div class="header-section right"><button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span> <i class="ri-menu-3-fill"></i>  <div class="toggler-container" tabindex="-1" role="menu"></div></button> <nav class="main-menu" data-svelte-h="svelte-1w5krcj"><a href="/faq" class="btn btn-secondary" data-sveltekit-preload-data>FAQ</a> <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a> <a href="/docs" class="btn btn-outline" data-sveltekit-preload-data><span class="txt">Documentation</span></a></nav></div></div></header> <main class="wrapper wrapper-lg page-content-wrapper"> <aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-kkdbbm"><div class="sidebar-content"><nav class="sidebar-list">  <a href="/docs" class="list-item active"> <span class="icon"><i class="ri-home-2-line"></i></span> <span class="txt">Introduction</span> </a>  <a href="/docs/how-to-use" class="sub-list-item"> <span class="tree-node">├</span>   How to use PocketBase  </a> <a href="/docs/collections" class="sub-list-item"> <span class="tree-node">├</span>   Collections  </a> <a href="/docs/api-rules-and-filters" class="sub-list-item"> <span class="tree-node">├</span>   API rules and filters  </a> <a href="/docs/authentication" class="sub-list-item"> <span class="tree-node">├</span>   Authentication  </a> <a href="/docs/files-handling" class="sub-list-item"> <span class="tree-node">├</span>   Files upload and handling  </a> <a href="/docs/working-with-relations" class="sub-list-item"> <span class="tree-node">├</span>   Working with relations  </a> <a href="/docs/use-as-framework" class="sub-list-item"> <span class="tree-node">└</span>   Extending PocketBase  </a>  <a href="/docs/going-to-production" class="list-item"> <span class="icon"><i class="ri-check-double-line"></i></span> <span class="txt">Going to production</span> </a>   <a href="/docs/api-records" class="list-item"> <span class="icon"><i class="ri-file-list-2-line"></i></span> <span class="txt">Web APIs reference</span> </a> </nav> <div class="clearfix m-t-base"></div> <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview" data-svelte-h="svelte-1qkrccu"><div class="block">Extend with
+                            <br> <strong>Go</strong></div></a> <a class="tab-item" href="/docs/js-overview" data-svelte-h="svelte-qrgnnx"><div class="block">Extend with
+                            <br> <strong>JavaScript</strong></div></a></div> <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">  <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Overview</span> </a>   <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Event hooks</span> </a>   <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Routing</span> </a>   <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Database</span> </a>   <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Record operations</span> </a>   <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Collection operations</span> </a>   <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Migrations</span> </a>   <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Jobs scheduling</span> </a>   <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Sending emails</span> </a>   <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Rendering templates</span> </a>   <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Console commands</span> </a>   <a href="/docs/go-realtime" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Realtime messaging</span> </a>   <a href="/docs/go-filesystem" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Filesystem</span> </a>   <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Logging</span> </a>   <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Testing</span> </a>   <a href="/docs/go-miscellaneous" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Miscellaneous</span> </a>   <a href="/docs/go-record-proxy" class="list-item"><span class="label label-sm label-info svelte-kkdbbm" data-svelte-h="svelte-w71e23">Go</span>  <span class="txt">Record proxy</span> </a> </nav></div> <div class="tab-item"><nav class="sidebar-list">  <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Overview</span> </a>   <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Event hooks</span> </a>   <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Routing</span> </a>   <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Database</span> </a>   <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Record operations</span> </a>   <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Collection operations</span> </a>   <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Migrations</span> </a>   <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Jobs scheduling</span> </a>   <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Sending emails</span> </a>   <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Rendering templates</span> </a>   <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Console commands</span> </a>   <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Sending HTTP requests</span> </a>   <a href="/docs/js-realtime" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Realtime messaging</span> </a>   <a href="/docs/js-filesystem" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Filesystem</span> </a>   <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Logging</span> </a>   <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-kkdbbm" data-svelte-h="svelte-13cfr2c">JS</span>  <span class="txt">Types reference</span> </a> </nav></div></div></div></div></div> </aside> <div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Introduction</div></nav> <div class="content" data-pagefind-body data-tag-javascript="javascript" data-tag-go="go" data-tag-other="other" data-pagefind-filter="tag[data-tag-javascript],tag[data-tag-go],tag[data-tag-other]"><span class="hidden" data-pagefind-meta="title">Introduction</span> <div class="alert alert-danger m-b-sm" data-svelte-h="svelte-adb8av"><div class="icon"><i class="ri-alert-line"></i></div> <div class="content"><p>Please keep in mind that PocketBase is still under active development and full backward
+            compatibility is not guaranteed before reaching v1.0.0. PocketBase is NOT recommended for
+            production critical applications yet, unless you are fine with reading the
+            <a href="https://github.com/pocketbase/pocketbase/blob/master/CHANGELOG.md" class="txt-bold" target="_blank" rel="noopener noreferrer">changelog</a>
+            and applying some manual migration steps from time to time.</p></div></div> <p data-svelte-h="svelte-wagc87">PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
+    builtin auth management, convenient dashboard UI and simple REST-ish API. It can be used both as Go
+    framework and as standalone application.</p> <p data-svelte-h="svelte-k5o6b7">The easiest way to get started is to download the prebuilt minimal PocketBase executable:</p> <div class="tabs compact tabs-architecture m-b-sm svelte-q6wypr"><div class="tabs-header left"><button type="button" class="tab-item svelte-q6wypr active" data-svelte-h="svelte-177f19e">x64</button> <button type="button" class="tab-item svelte-q6wypr" data-svelte-h="svelte-gxpiiw">ARM64</button></div> <div class="tabs-content"><div class="tab-item svelte-q6wypr active"><ul><li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_linux_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-qq-fill"></i> <span class="txt">Download v0.39.10 for Linux x64</span></a> <small class="txt-hint">(~12MB zip)</small></div></li> <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_windows_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-windows-fill"></i> <span class="txt">Download v0.39.10 for Windows x64</span></a> <small class="txt-hint">(~12MB zip)</small></div></li> <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_darwin_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-apple-fill"></i> <span class="txt">Download v0.39.10 for macOS x64</span></a> <small class="txt-hint">(~12MB zip)</small></div></li></ul></div> <div class="tab-item svelte-q6wypr"><ul><li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_linux_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-qq-fill"></i> <span class="txt">Download v0.39.10 for Linux ARM64</span></a> <small class="txt-hint">(~11MB zip)</small></div></li> <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_windows_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-windows-fill"></i> <span class="txt">Download v0.39.10 for Windows ARM64</span></a> <small class="txt-hint">(~11MB zip)</small></div></li> <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.39.10/pocketbase_0.39.10_darwin_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-apple-fill"></i> <span class="txt">Download v0.39.10 for macOS ARM64</span></a> <small class="txt-hint">(~11MB zip)</small></div></li></ul></div></div></div> <p class="txt-sm txt-hint" data-svelte-h="svelte-1momfdh">See the
+    <a href="https://github.com/pocketbase/pocketbase/releases" target="_blank" rel="noreferrer noopener">GitHub Releases page</a>
+    for other platforms and more details.</p> <hr> <p data-svelte-h="svelte-1v2nc9y">Once you&#39;ve extracted the archive, you could start the application by running
+    <code><strong>./pocketbase serve</strong></code> in the extracted directory.</p> <p data-svelte-h="svelte-vpbt2k"><strong>And that&#39;s it!</strong>
+    The first time it will generate an installer link that should be automatically opened in the browser to set
+    up your first superuser account
+    <small class="txt-hint">(you can also create the first superuser manually via
+        <code>./pocketbase superuser create EMAIL PASS</code>)
+    </small>.</p> <p data-svelte-h="svelte-umtohu">The started web server has the following default routes:</p> <div class="alert m-t-10 m-b-xs" data-svelte-h="svelte-1e6lwtp"><div class="content"><ul><li class="m-b-5"> <a href="http://127.0.0.1:8090" target="_blank"><code>http://127.0.0.1:8090</code></a>
+                - if <code>pb_public</code> directory exists, serves the static content from it (html, css, images,
+                etc.)</li> <li class="m-b-5"> <a href="http://127.0.0.1:8090/_/" target="_blank"><code>http://127.0.0.1:8090/_/</code></a>
+                - superusers dashboard</li> <li> <a href="http://127.0.0.1:8090/api/" target="_blank"><code>http://127.0.0.1:8090/api/</code></a>
+                - REST-ish API</li></ul></div></div> <p data-svelte-h="svelte-1b7ycmh">The prebuilt PocketBase executable will create and manage 2 new directories alongside the executable:</p> <ul data-svelte-h="svelte-1jwnyel"><li><code>pb_data</code> - stores your application data, uploaded files, etc. (usually should be added in
+        <code>.gitignore</code>).</li> <li><code>pb_migrations</code> - contains JS migration files with your collection changes (can be safely
+        committed in your repository).
+        <br> <div class="txt-hint m-b-xs">You can even write custom migration scripts. For more info check the
+            <a href="/docs/js-migrations">JS migrations docs</a>.</div></li></ul> <p data-svelte-h="svelte-pd3yee">You could find all available commands and their options by running
+    <code>./pocketbase --help</code> or
+    <code>./pocketbase [command] --help</code> </p></div> <hr> <div class="docs-footer svelte-1dbn67j" data-pagefind-ignore> <a href="/docs/how-to-use" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: How to use PocketBase</span> <i class="ri-arrow-right-line"></i></a> </div></div></main> <footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links" data-svelte-h="svelte-3s56aa"><a href="/faq" class="link-item">FAQ</a> <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions</a> <a href="/docs" class="link-item">Documentation</a></nav> <nav class="footer-col links" data-svelte-h="svelte-1ie6rey"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK</a> <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK</a></nav> <div class="footer-col socials"><div class="watermark-logo" data-svelte-h="svelte-tfgzzj">Pocket<strong>Base</strong></div> <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a> <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub" data-svelte-h="svelte-liy1aj"><i class="ri-github-line"></i></a></div></div> <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2026 Pocket<strong data-svelte-h="svelte-1d8skxd">Base</strong></span> <span class="gopher-credit" data-svelte-h="svelte-3v1v6q">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers</a></span></div> <div class="flex-fill"></div> <div class="credit" data-svelte-h="svelte-18tjksi">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>  <button type="button" class="btn btn-lg btn-circle btn-secondary scroll-to-top svelte-1fubo8o" arial-label="Go to top" data-svelte-h="svelte-tty6dx"><i class="ri-arrow-up-line"></i> </button> 
+			
+			<script>
+				{
+					__sveltekit_2djzwc = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.DX2tk7Wj.js"),
+						import("../_app/immutable/entry/app.BN8yp0nr.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 6],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

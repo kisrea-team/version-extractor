@@ -1,0 +1,50 @@
+[
+  {
+    "pageId": "de456040e148",
+    "name": "可易 ClawYi",
+    "url": "https://www.clawyi.com/download/",
+    "pageStatus": "product-page",
+    "version": "1.0.0",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "json-ld",
+      "structured"
+    ],
+    "evidenceQuote": "softwareVersion\":\"v1.0.0\",\"datePublished\":\"2026-04-20\"",
+    "confidence": "high",
+    "note": "Official JSON-LD softwareVersion.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:35:34.704216+00:00",
+    "htmlFile": "data/annotation-batches/batch-028/html/de456040e148.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "ac30c1a919401ffa2d3a4863eb9ce9eaa4b3977189c4f55e5a83664f9e4a2224"
+  },
+  {
+    "pageId": "51b91bf578bd",
+    "name": "HermesAgent CN",
+    "url": "https://desktop.hermesagent.org.cn/",
+    "pageStatus": "product-page",
+    "version": "0.7.0",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "json-ld",
+      "download-link"
+    ],
+    "evidenceQuote": "softwareVersion\":\"0.7.0\",\"downloadUrl\":[...Hermes.Agent.CN.Desktop_0.7.0_x64-setup.exe",
+    "confidence": "high",
+    "note": "Official site structured version and installer link.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:35:35.762777+00:00",
+    "htmlFile": "data/annotation-batches/batch-028/html/51b91bf578bd.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "cfa97334bfcafbbc72f4879bd085d65e22a95becb95869cf8e4a478d4d0b991f"
+  }
+]

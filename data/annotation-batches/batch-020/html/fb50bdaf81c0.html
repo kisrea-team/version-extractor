@@ -1,0 +1,1873 @@
+<html>
+
+
+
+
+
+<head><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"8a04f73a09","applicationID":"34858702","transactionName":"NlQBZxQDXxFWBUZZWg8eJUYIAUULWAgdXVQIX01FDwdGEQ0UV1FRBEM8XwcMVQtZAQ==","queueTime":1,"applicationTime":17,"agent":""};
+(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]},feature_flags:["soft_nav"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:"8a04f73a09",applicationID:"34858702",browserID:"34858721"};;/*! For license information please see nr-loader-rum-1.319.0.min.js.LICENSE.txt */
+(()=>{var e={8122(e,t,r){"use strict";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||"object"!=typeof e)return(0,n.R)(3);if(!t||"object"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),s=0===Object.keys(r).length?e:r;for(let o in s)if(void 0!==e[o])try{if(null===e[o]){r[o]=null;continue}Array.isArray(e[o])&&Array.isArray(t[o])?r[o]=Array.from(new Set([...e[o],...t[o]])):e[o]instanceof Map||e[o]instanceof Set||e[o]instanceof Date||e[o]instanceof RegExp?r[o]=e[o]:"object"==typeof e[o]&&null!==t[o]&&"object"==typeof t[o]?r[o]=i(e[o],t[o]):r[o]=e[o]}catch(e){r[o]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){"use strict";r.d(t,{f:()=>o});var n=r(384),i=r(8122);const s={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function o(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,["D",0,e=>(0,i.a)(e,s)])},7699(e,t,r){"use strict";var n=r(860);const i={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,["It",0,1e6,"KC",0,i,"qh",0,"SESSION_ERROR"])},9324(e,t,r){"use strict";r.d(t,["xv",0,"1.319.0"])},981(e,t,r){"use strict";r.d(t,["R",0,{AJAX:"AjaxRequest",PA:"PageAction",UA:"UserAction",BP:"BrowserPerformance",WS:"WebSocket",SPV:"SecurityPolicyViolation",JSE:"JavaScriptError",LOG:"Log",PVE:"PageView",PVT:"PageViewTiming",SR:"SessionReplay",ST:"SessionTrace",BI:"BrowserInteraction"}])},6154(e,t,r){"use strict";var n=r(1863);const i="undefined"!=typeof window&&!!window.document,s="undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),o=i?window:"undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),a=Boolean("hidden"===o?.document?.visibilityState),c=""+o?.location,u=/iPad|iPhone|iPod/.test(o.navigator?.userAgent),d=u&&"undefined"==typeof SharedWorker,l=((()=>{const e=o.navigator?.userAgent?.match(/Firefox[/\s](\d+\.\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,["OF",0,u,"RI",0,i,"WN",0,l,"bv",0,s,"gm",0,o,"m",0,c,"mw",0,a,"sb",0,d,"zk",0,()=>{const e=o?.performance?.getEntriesByType?.("navigation")?.[0];if(e&&e.responseStart>0&&e.responseStart<o.performance.now())return e}])},3241(e,t,r){"use strict";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent("newrelic",{detail:e}))}catch(e){}}},1687(e,t,r){"use strict";r.d(t,{Ak:()=>a,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),s=r(860),o=r(2646);function a(e,t){if(!e)return;const r={staged:!1,priority:s.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t="feature",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const s=e.ee,a=i.i.handlers;if(s&&!s.aborted&&s.backlog&&a){if((0,n.W)({type:"lifecycle",name:"drain",feature:t}),r){const e=s.backlog[t],r=a[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof o.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}s.isolatedBacklog||delete a[t],s.backlog[t]=null,s.emit("drain-"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],s=e[2];n.apply(i,s)}})}},7836(e,t,r){"use strict";var n=r(384),i=r(8990),s=r(2646),o=r(5607);const a="nr@context:".concat(o.W),c=function e(t,r){var n={},o={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,s){!1!==s&&(s=!0);if(c.aborted&&!i)return;t&&s&&t.emit(e,r,n);var a=g(n);m(e).forEach(e=>{e.apply(a,r)});var u=v()[o[e]];u&&u.push([f,e,r,a]);return a},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||"feature",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{o[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[o[e]]},debugId:r,backlog:l?{}:t&&"object"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,"aborted",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof s.y?e:e?(0,i.I)(e,a,()=>new s.y(a)):new s.y(a)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,"globalEE"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,["P",0,a,"ee",0,c])},2646(e,t,r){"use strict";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){"use strict";r.d(t,{d:()=>n,p:()=>i});var n=r(7836).ee.get("handle");function i(e,t,r,i,s){s?(s.buffer([e],i),s.emit(e,t,r)):(n.buffer([e],i),n.emit(e,t,r))}},3606(e,t,r){"use strict";r.d(t,{i:()=>s});var n=r(9908);s.on=o;var i=s.handlers={};function s(e,t,r,s){o(s||n.d,i,e,t,r)}function o(e,t,r,i,s){s||(s="feature"),e||(e=n.d);var o=t[s]=t[s]||{};(o[r]=o[r]||[]).push([e,i])}},3878(e,t,r){"use strict";function n(e,t){return{capture:e,passive:!1,signal:t}}function i(e,t,r=!1,i){window.addEventListener(e,t,n(r,i))}function s(e,t,r=!1,i){document.addEventListener(e,t,n(r,i))}r.d(t,{DD:()=>s,jT:()=>n,sp:()=>i})},5607(e,t,r){"use strict";const n=(0,r(9566).bz)();r.d(t,["W",0,n])},9566(e,t,r){"use strict";r.d(t,{LA:()=>o,bz:()=>s});var n=r(6154);function i(e,t){return e?15&e[t]:16*Math.random()|0}function s(){const e=n.gm?.crypto||n.gm?.msCrypto;let t,r=0;return e&&e.getRandomValues&&(t=e.getRandomValues(new Uint8Array(30))),"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".split("").map(e=>"x"===e?i(t,r++).toString(16):"y"===e?(3&i()|8).toString(16):e).join("")}function o(e){const t=n.gm?.crypto||n.gm?.msCrypto;let r,s=0;t&&t.getRandomValues&&(r=t.getRandomValues(new Uint8Array(e)));const o=[];for(var a=0;a<e;a++)o.push(i(r,s++).toString(16));return o.join("")}},2614(e,t,r){"use strict";r.d(t,["BB",0,18e5,"Wt",0,"NRBA_SESSION::","iL",0,{SAME_TAB:"same-tab",CROSS_TAB:"cross-tab"},"tS",0,{STARTED:"session-started",PAUSE:"session-pause",RESET:"session-reset",RESUME:"session-resume",UPDATE:"session-update"},"wk",0,144e5])},1863(e,t,r){"use strict";function n(){return Math.floor(performance.now())}r.d(t,{t:()=>n})},944(e,t,r){"use strict";r.d(t,{R:()=>i});var n=r(3241);function i(e,t){"function"==typeof console.debug&&(console.debug("New Relic Warning: https://github.com/newrelic/newrelic-browser-agent/blob/main/docs/warning-codes.md#".concat(e),t),(0,n.W)({drained:null,type:"data",name:"warn",feature:"warn",data:{code:e,secondary:t}}))}},8990(e,t,r){"use strict";r.d(t,{I:()=>i});var n=Object.prototype.hasOwnProperty;function i(e,t,r){if(n.call(e,t))return e[t];var i=r();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:i,writable:!0,enumerable:!1}),i}catch(e){}return e[t]=i,i}},6389(e,t,r){"use strict";function n(e,t=500,r={}){const n=r?.leading||!1;let i;return(...r)=>{n&&void 0===i&&(e.apply(this,r),i=setTimeout(()=>{i=clearTimeout(i)},t)),n||(clearTimeout(i),i=setTimeout(()=>{e.apply(this,r)},t))}}function i(e){let t=!1;return(...r)=>{t||(t=!0,e.apply(this,r))}}r.d(t,{J:()=>i,s:()=>n})},1910(e,t,r){"use strict";r.d(t,{i:()=>s});var n=r(944);const i=new Map;function s(...e){return e.every(e=>{if(i.has(e))return i.get(e);const t="function"==typeof e?e.toString():"",r=t.includes("[native code]"),s=t.includes("nrWrapper");return r||s||(0,n.R)(64,e?.name||t),i.set(e,r),r})}},5289(e,t,r){"use strict";r.d(t,{GG:()=>o,Qr:()=>c,sB:()=>a});var n=r(3878),i=r(6389);function s(){return"undefined"==typeof document||"complete"===document.readyState}function o(e,t){if(s())return e();const r=(0,i.J)(e),o=setInterval(()=>{s()&&(clearInterval(o),r())},500);(0,n.sp)("load",r,t)}function a(e){if(s())return e();(0,n.DD)("DOMContentLoaded",e)}function c(e){if(s())return e();(0,n.sp)("popstate",e)}},384(e,t,r){"use strict";r.d(t,{Zm:()=>c,bQ:()=>d,dV:()=>u,pV:()=>l});var n=r(6154),i=r(1863),s=r(944),o=r(1910);const a={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"};function c(){return n.gm.NREUM||(n.gm.NREUM={}),void 0===n.gm.newrelic&&(n.gm.newrelic=n.gm.NREUM),n.gm.NREUM}function u(){let e=c();return e.o||(e.o={ST:n.gm.setTimeout,SI:n.gm.setImmediate||n.gm.setInterval,CT:n.gm.clearTimeout,XHR:n.gm.XMLHttpRequest,REQ:n.gm.Request,EV:n.gm.Event,PR:n.gm.Promise,MO:n.gm.MutationObserver,FETCH:n.gm.fetch,WS:n.gm.WebSocket},(0,o.i)(...Object.values(e.o))),e}function d(e,t){let r=c();r.initializedAgents??={},t.initializedAt={ms:(0,i.t)(),date:new Date},r.initializedAgents[e]=t,2===Object.keys(r.initializedAgents).length&&(0,s.R)(69)}function l(){return function(){let e=c();const t=e.info||{};e.info={beacon:a.beacon,errorBeacon:a.errorBeacon,...t}}(),function(){let e=c();const t=e.init||{};e.init={...t}}(),u(),function(){let e=c();const t=e.loader_config||{};e.loader_config={...t}}(),c()}r.d(t,["NT",0,a])},2843(e,t,r){"use strict";r.d(t,{G:()=>s,u:()=>i});var n=r(3878);function i(e,t=!1,r,i){(0,n.DD)("visibilitychange",function(){if(t)return void("hidden"===document.visibilityState&&e());e(document.visibilityState)},r,i)}function s(e,t,r){(0,n.sp)("pagehide",e,t,r)}},3969(e,t,r){"use strict";const n=r(860).K7.metrics;r.d(t,["TZ",0,n,"XG",0,"storeEventMetrics","xV",0,"storeSupportabilityMetrics"])},6630(e,t,r){"use strict";const n=r(860).K7.pageViewEvent;r.d(t,["T",0,n])},782(e,t,r){"use strict";const n=r(860).K7.pageViewTiming;r.d(t,["T",0,n])},4234(e,t,r){"use strict";r.d(t,{W:()=>i});var n=r(1687);class i{constructor(e,t){this.agentRef=e,this.ee=e?.ee,this.featureName=t,this.blocked=!1}deregisterDrain(){(0,n.x3)(this.agentRef,this.featureName)}}},7767(e,t,r){"use strict";var n=r(6154);r.d(t,["V",0,e=>n.RI&&!0===e?.privacy.cookies_enabled])},8362(e,t,r){"use strict";r.d(t,{d:()=>s});var n=r(9566),i=r(1741);class s extends i.W{agentIdentifier=(0,n.LA)(16)}},1741(e,t,r){"use strict";r.d(t,{W:()=>s});var n=r(944),i=r(4261);class s{#e(e,...t){if(this[e]!==s.prototype[e])return this[e](...t);(0,n.R)(35,e)}addPageAction(e,t){return this.#e(i.hG,e,t)}register(e){return this.#e(i.eY,e)}recordCustomEvent(e,t){return this.#e(i.fF,e,t)}setPageViewName(e,t){return this.#e(i.Fw,e,t)}setCustomAttribute(e,t,r){return this.#e(i.cD,e,t,r)}noticeError(e,t){return this.#e(i.o5,e,t)}setUserId(e,t=!1){return this.#e(i.Dl,e,t)}setApplicationVersion(e){return this.#e(i.nb,e)}setErrorHandler(e){return this.#e(i.bt,e)}addRelease(e,t){return this.#e(i.k6,e,t)}log(e,t){return this.#e("log",e,t)}start(){return this.#e("start")}finished(e){return this.#e(i.BL,e)}recordReplay(){return this.#e(i.CH)}pauseReplay(){return this.#e(i.Tb)}addToTrace(e){return this.#e(i.U2,e)}setCurrentRouteName(e){return this.#e(i.PA,e)}interaction(e){return this.#e(i.dT,e)}wrapLogger(e,t,r){return this.#e(i.Wb,e,t,r)}measure(e,t){return this.#e(i.V1,e,t)}consent(e){return this.#e(i.Pv,e)}}},4261(e,t,r){"use strict";r.d(t,["BL",0,"finished","CH",0,"recordReplay","Dl",0,"setUserId","Fw",0,"setPageViewName","PA",0,"setCurrentRouteName","Pv",0,"consent","Tb",0,"pauseReplay","U2",0,"addToTrace","V1",0,"measure","Wb",0,"wrapLogger","bt",0,"setErrorHandler","cD",0,"setCustomAttribute","dT",0,"interaction","eY",0,"register","fF",0,"recordCustomEvent","hG",0,"addPageAction","k6",0,"addRelease","nb",0,"setApplicationVersion","o5",0,"noticeError"])},1738(e,t,r){"use strict";r.d(t,{U:()=>l,Y:()=>d});var n=r(3241),i=r(9908),s=r(1863),o=r(944),a=r(3969),c=r(8362),u=r(860);function d(e,t,r,s){const d=s||r;!d||d[e]&&d[e]!==c.d.prototype[e]||(d[e]=function(){(0,i.p)(a.xV,["API/"+e+"/called"],void 0,u.K7.metrics,r.ee),(0,n.W)({drained:!!r.runtime?.activatedFeatures,type:"data",name:"api",feature:"api-"+e,data:{}});try{return t.apply(this,arguments)}catch(e){(0,o.R)(23,e)}})}function l(e,t,r,n,o){const a=e.info;null===r?delete a.jsAttributes[t]:a.jsAttributes[t]=r,(o||null===r)&&(0,i.p)("api-"+n,[(0,s.t)(),t,r],void 0,"session",e.ee)}},8374(e,t,r){r.nc=(()=>{try{return document?.currentScript?.nonce}catch(e){}return""})()},860(e,t,r){"use strict";const n="events",i="jserrors",s="browser/blobs",o="browser/logs",a={ajax:"ajax",genericEvents:"generic_events",jserrors:i,logging:"logging",metrics:"metrics",pageAction:"page_action",pageViewEvent:"page_view_event",pageViewTiming:"page_view_timing",sessionReplay:"session_replay",sessionTrace:"session_trace",softNav:"soft_navigations"},c={[a.pageViewEvent]:1,[a.pageViewTiming]:2,[a.metrics]:3,[a.jserrors]:4,[a.softNav]:5,[a.ajax]:6,[a.sessionTrace]:7,[a.sessionReplay]:8,[a.logging]:9,[a.genericEvents]:10},u={[a.pageViewEvent]:"rum",[a.pageViewTiming]:n,[a.ajax]:n,[a.softNav]:n,[a.metrics]:i,[a.jserrors]:i,[a.sessionTrace]:s,[a.sessionReplay]:s,[a.logging]:o,[a.genericEvents]:"ins"};r.d(t,["$J",0,u,"K7",0,a,"P3",0,c,"XX",0,i,"Yy",0,o,"df",0,s])}};const t={};function r(n){const i=t[n];if(void 0!==i)return i.exports;const s=t[n]={exports:{}};return e[n](s,s.exports,r),s.exports}r.m=e,r.d=(e,t)=>{if(Array.isArray(t))for(var n=0;n<t.length;){var i=t[n++],s=t[n++];r.o(e,i)?0===s&&n++:0===s?Object.defineProperty(e,i,{enumerable:!0,value:t[n++]}):Object.defineProperty(e,i,{enumerable:!0,get:s})}else for(var i in t)r.o(t,i)&&!r.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},r.f={},r.e=e=>Promise.all(Object.keys(r.f).reduce((t,n)=>(r.f[n](e,t),t),[])),r.u=e=>"nr-rum-1.319.0.min.js",r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),(()=>{const e={},t="NRBA-1.319.0.PROD:";r.l=(n,i,s,o)=>{if(e[n])return void e[n].push(i);let a,c;if(void 0!==s){const e=document.getElementsByTagName("script");for(var u=0;u<e.length;u++){const r=e[u];if(r.getAttribute("src")==n||r.getAttribute("data-webpack")==t+s){a=r;break}}}if(!a){c=!0;var d={296:"sha512-AjMYlPlHGtonfj4LWnnP4dVoLRowrBrm4lRfeuRr88daClWRPCh62aASF1JsR277iWOhlLcoggRr9BulWGKOyQ=="};a=document.createElement("script"),a.charset="utf-8",r.nc&&a.setAttribute("nonce",r.nc),a.setAttribute("data-webpack",t+s),a.src=n,0!==a.src.indexOf(window.location.origin+"/")&&(a.crossOrigin="anonymous"),d[o]&&(a.integrity=d[o])}e[n]=[i];const l=(t,r)=>{a.onerror=a.onload=null,clearTimeout(f);const i=e[n];if(delete e[n],a.parentNode?.removeChild(a),i?.forEach(e=>e(r)),t)return t(r)},f=setTimeout(l.bind(null,void 0,{type:"timeout",target:a}),12e4);a.onerror=l.bind(null,a.onerror),a.onload=l.bind(null,a.onload),c&&document.head.appendChild(a)}})(),r.r=e=>{Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.p="https://js-agent.newrelic.com/",(()=>{const e={374:0,840:0};r.f.j=(t,n)=>{let i=r.o(e,t)?e[t]:void 0;if(0!==i)if(i)n.push(i[2]);else{const s=new Promise((r,n)=>i=e[t]=[r,n]);n.push(i[2]=s);const o=r.p+r.u(t),a=new Error,c=n=>{if(r.o(e,t)&&(i=e[t],0!==i&&(e[t]=void 0),i)){const e=n&&("load"===n.type?"missing":n.type),r=n&&n.target&&n.target.src;a.message="Loading chunk "+t+" failed: ("+e+": "+r+")",a.name="ChunkLoadError",a.type=e,a.request=r,i[1](a)}};r.l(o,c,"chunk-"+t,t)}};const t=(t,n)=>{let[i,s,o]=n;var a,c,u=0;if(i.some(t=>0!==e[t])){for(a in s)r.o(s,a)&&(r.m[a]=s[a]);if(o)o(r)}for(t&&t(n);u<i.length;u++)c=i[u],r.o(e,c)&&e[c]&&e[c][0](),e[c]=0},n=self["webpackChunk:NRBA-1.319.0.PROD"]=self["webpackChunk:NRBA-1.319.0.PROD"]||[];n.forEach(t.bind(null,0)),n.push=t.bind(null,n.push.bind(n))})(),(()=>{"use strict";r(8374);var e=r(8362),t=r(860);const n=Object.values(t.K7);var i=r(384),s=r(1741);var o=r(2555),a=r(981);t.K7.genericEvents,a.R.PA,a.R.UA,a.R.BP;const c="experimental.resources",u="register",d=(t.K7.ajax,"none"),l=e=>{if(!e||"string"!=typeof e)return!1;try{document.createDocumentFragment().querySelector(e)}catch{return!1}return!0};var f=r(2614),g=r(944),p=r(8122);const m="[data-nr-mask]",h=e=>(0,p.a)(e,(()=>{const e={feature_flags:[],experimental:{register:!1,resources:!1},mask_selector:"*",block_selector:"[data-nr-block]",mask_input_options:{color:!1,date:!1,"datetime-local":!1,email:!1,month:!1,number:!1,range:!1,search:!1,tel:!1,text:!1,time:!1,url:!1,week:!1,textarea:!1,select:!1,password:!0}};return{ajax:{deny_list:void 0,block_internal:!0,enabled:!0,autoStart:!0,capture_payloads:d},api:{register:{get enabled(){return e.feature_flags.includes(u)||e.experimental.register},set enabled(t){e.experimental.register=t},duplicate_data_to_container:!1}},browser_consent_mode:{enabled:!1},distributed_tracing:{enabled:void 0,exclude_newrelic_header:void 0,cors_use_newrelic_header:void 0,cors_use_tracecontext_headers:void 0,allowed_origins:void 0},get feature_flags(){return e.feature_flags},set feature_flags(t){e.feature_flags=t},generic_events:{enabled:!0,autoStart:!0},harvest:{interval:30},jserrors:{enabled:!0,autoStart:!0},logging:{enabled:!0,autoStart:!0},metrics:{enabled:!0,autoStart:!0},obfuscate:void 0,page_action:{enabled:!0},page_view_event:{enabled:!0,autoStart:!0},page_view_timing:{enabled:!0,autoStart:!0},performance:{capture_marks:!1,capture_measures:!1,capture_detail:!0,resources:{get enabled(){return e.feature_flags.includes(c)||e.experimental.resources},set enabled(t){e.experimental.resources=t},asset_types:[],first_party_domains:[],ignore_newrelic:!0}},privacy:{cookies_enabled:!0},proxy:{assets:void 0,beacon:void 0},session:{expiresMs:f.wk,inactiveMs:f.BB},session_replay:{autoStart:!0,enabled:!1,preload:!1,sampling_rate:10,error_sampling_rate:100,collect_fonts:!1,inline_images:!1,fix_stylesheets:!0,mask_all_inputs:!0,get mask_text_selector(){return e.mask_selector},set mask_text_selector(t){l(t)?e.mask_selector="".concat(t,",").concat(m):""===t||null===t?e.mask_selector=m:(0,g.R)(5,t)},get block_class(){return"nr-block"},get ignore_class(){return"nr-ignore"},get mask_text_class(){return"nr-mask"},get block_selector(){return e.block_selector},set block_selector(t){l(t)?e.block_selector+=",".concat(t):""!==t&&(0,g.R)(6,t)},get mask_input_options(){return e.mask_input_options},set mask_input_options(t){t&&"object"==typeof t?e.mask_input_options={...t,password:!0}:(0,g.R)(7,t)}},session_trace:{enabled:!0,autoStart:!0},soft_navigations:{enabled:!0,autoStart:!0},ssl:void 0,user_actions:{enabled:!0,elementAttributes:["id","className","tagName","type"]},web_sockets:{enabled:!1}}})());var v=r(6154),b=r(9324);let y=0;const _={buildEnv:"PROD",distMethod:"CDN",version:b.xv,originTime:v.WN},w={consented:!1},R={activatedFeatures:void 0,appMetadata:{},configured:!1,get consented(){return this.session?.state?.consent||w.consented},set consented(e){w.consented=e},customTransaction:void 0,denyList:[],disabled:!1,drainRegistry:new Map,harvester:void 0,isolatedBacklog:!1,isRecording:!1,loaderType:void 0,maxBytes:3e4,obfuscator:void 0,onerror:void 0,ptid:void 0,releaseIds:{},session:void 0,timeKeeper:void 0,registeredEntities:[],jsAttributesMetadata:{bytes:0},get harvestCount(){return++y}};var x=r(7836),A=r(3241);const k={accountID:void 0,trustKey:void 0,agentID:void 0,licenseKey:void 0,applicationID:void 0,xpid:void 0};function S(e,t={},n,a){let{init:c,info:u,loader_config:d,runtime:l={},exposed:f=!0}=t;if(!u){const e=(0,i.pV)();c=e.init,u=e.info,d=e.loader_config}var g;e.init=h(c||{}),e.loader_config=(g=d||{},(0,p.a)(g,k)),u.jsAttributes??={},v.bv&&(u.jsAttributes.isWorker=!0),e.info=(0,o.D)(u);const m=e.init;e.runtime??=(e=>{const t=(0,p.a)(e,R),r=Object.keys(_).reduce((e,t)=>(e[t]={value:_[t],writable:!1,configurable:!0,enumerable:!0},e),{});return Object.defineProperties(t,r)})(l),m.proxy.assets&&(e=>{const t=e.startsWith("http");e+="/",r.p=t?e:"https://"+e})(m.proxy.assets),e.runtime.configured||(Object.defineProperty(e,"beacons",{get:()=>[e.info.beacon,e.info.errorBeacon,e.init.proxy.assets,e.init.proxy.beacon].filter(Boolean)}),Object.defineProperty(e.runtime,"denyList",{get:()=>[...e.init.ajax.deny_list||[],...e.init.ajax.block_internal?e.beacons:[]]}),e.runtime.ptid=e.agentIdentifier,function(e){const t=(0,i.pV)();Object.getOwnPropertyNames(s.W.prototype).forEach(r=>{const n=s.W.prototype[r];if("function"!=typeof n||"constructor"===n)return;let i=t[r];e[r]&&!1!==e.exposed&&"micro-agent"!==e.runtime?.loaderType&&(t[r]=(...t)=>{const n=e[r](...t);return i?i(...t):n})})}(e),e.runtime.loaderType=n,e.ee=x.ee.get(e.agentIdentifier),e.exposed=f,(0,A.W)({drained:!!e.runtime.activatedFeatures,type:"lifecycle",name:"initialize",feature:void 0,data:e.config}),e.runtime.configured=!0)}var T=r(9908),E=r(1863),j=r(4261),P=r(1738);var N=r(1687),O=r(4234),M=r(5289),I=r(7767);function V(e){return!!(0,i.dV)().o.MO&&(0,I.V)(e)&&!0===e?.session_trace.enabled}var D=r(6389),W=r(7699);const B=new WeakSet;class K extends O.W{constructor(e,t){super(e,t),this.abortHandler=void 0,this.featAggregate=void 0,this.loadedSuccessfully=void 0,this.onAggregateImported=new Promise(e=>{this.loadedSuccessfully=e}),this.deferred=Promise.resolve(),!1===e.init[this.featureName].autoStart?this.deferred=new Promise((t,r)=>{this.ee.on("manual-start-all",(0,D.J)(()=>{(0,N.Ak)(e,this.featureName),t()}))}):(0,N.Ak)(e,t)}importAggregator(e,t,n={}){if(this.featAggregate)return;const i=async()=>{if(await this.deferred,this.#t(e),!(0,o.f)(e.info))return(0,g.R)(43),e.ee.abort(),void this.loadedSuccessfully(!1);let i;try{if((0,I.V)(e.init)){const{setupAgentSession:t}=await r.e(296).then(r.bind(r,8391));i=t(e)}}catch(e){(0,g.R)(20,e),this.ee.emit("internal-error",[e]),(0,T.p)(W.qh,[e],void 0,this.featureName,this.ee)}try{if(!this.#r(this.featureName,i,e.init))return(0,N.Ze)(this.agentRef,this.featureName),void this.loadedSuccessfully(!1);const{Aggregate:r}=await t();this.featAggregate=new r(e,n),e.runtime.harvester.initializedAggregates.push(this.featAggregate),this.loadedSuccessfully(!0)}catch(e){(0,g.R)(34,e),this.abortHandler?.(),(0,N.Ze)(this.agentRef,this.featureName,!0),this.loadedSuccessfully(!1),this.ee&&this.ee.abort()}};v.RI?(0,M.GG)(()=>i(),!0):i()}#r(e,r,n){if(this.blocked)return!1;switch(e){case t.K7.sessionReplay:return V(n)&&!!r;case t.K7.sessionTrace:return!!r;default:return!0}}#t(e){if(!B.has(e)&&(B.add(e),!(0,o.f)(e.info))){const t=(0,i.pV)();let r={...t.info?.jsAttributes};try{r={...r,...e.info?.jsAttributes}}catch(e){}S(e,{...t,info:{...t.info,jsAttributes:r},runtime:e.runtime},e.runtime.loaderType)}}}var C=r(6630);class U extends K{static featureName=C.T;constructor(e){var t;super(e,C.T),this.setupInspectionEvents(),t=e,(0,P.Y)(j.Fw,function(e,r){"string"==typeof e&&("/"!==e.charAt(0)&&(e="/"+e),t.runtime.customTransaction=(r||"http://custom.transaction")+e,(0,T.p)("api-"+j.Fw,[(0,E.t)()],void 0,void 0,t.ee))},t),this.importAggregator(e,()=>r.e(296).then(r.bind(r,1324)))}setupInspectionEvents(){const e=(e,t)=>{e&&(0,A.W)({timeStamp:e.timeStamp,loaded:"complete"===e.target.readyState,type:"window",name:t,data:e.target.location+""})};(0,M.sB)(t=>{e(t,"DOMContentLoaded")}),(0,M.GG)(t=>{e(t,"load")}),(0,M.Qr)(t=>{e(t,"navigate")}),this.ee.on(f.tS.UPDATE,(e,t)=>{(0,A.W)({type:"lifecycle",name:"session",data:t})})}}class L extends e.d{constructor(e){var t;(super(),v.gm)?(this.features={},(0,i.bQ)(this.agentIdentifier,this),this.desiredFeatures=new Set(e.features||[]),this.desiredFeatures.add(U),S(this,e,e.loaderType||"agent"),t=this,(0,P.Y)(j.cD,function(e,r,n=!1){if("string"==typeof e){if(["string","number","boolean"].includes(typeof r)||null===r)return(0,P.U)(t,e,r,j.cD,n);(0,g.R)(40,typeof r)}else(0,g.R)(39,typeof e)},t),function(e){(0,P.Y)(j.Dl,function(t,r=!1){if("string"!=typeof t&&null!==t)return void(0,g.R)(41,typeof t);const n=e.info.jsAttributes["enduser.id"];r&&null!=n&&n!==t?(0,T.p)("api-setUserIdAndResetSession",[t],void 0,"session",e.ee):(0,P.U)(e,"enduser.id",t,j.Dl,!0)},e)}(this),function(e){(0,P.Y)(j.nb,function(t){if("string"==typeof t||null===t)return(0,P.U)(e,"application.version",t,j.nb,!1);(0,g.R)(42,typeof t)},e)}(this),function(e){(0,P.Y)("start",function(){e.ee.emit("manual-start-all")},e)}(this),function(e){(0,P.Y)(j.Pv,function(t=!0){if("boolean"==typeof t){if((0,T.p)("api-"+j.Pv,[t],void 0,"session",e.ee),e.runtime.consented=t,t){const t=e.features.page_view_event;t.onAggregateImported.then(e=>{const r=t.featAggregate;e&&!r.sentRum&&r.sendRum()})}}else(0,g.R)(65,typeof t)},e)}(this),this.run()):(0,g.R)(21)}get config(){return{info:this.info,init:this.init,loader_config:this.loader_config,runtime:this.runtime}}get api(){return this}run(){try{const e=function(e){const t={};return n.forEach(r=>{t[r]=!!e[r]?.enabled}),t}(this.init),r=[...this.desiredFeatures];r.sort((e,r)=>t.P3[e.featureName]-t.P3[r.featureName]),r.forEach(r=>{if(!e[r.featureName]&&r.featureName!==t.K7.pageViewEvent)return;const n=function(e){switch(e){case t.K7.ajax:return[t.K7.jserrors];case t.K7.sessionTrace:return[t.K7.ajax,t.K7.pageViewEvent];case t.K7.sessionReplay:return[t.K7.sessionTrace];case t.K7.pageViewTiming:return[t.K7.pageViewEvent];default:return[]}}(r.featureName).filter(e=>!(e in this.features));n.length>0&&(0,g.R)(36,{targetFeature:r.featureName,missingDependencies:n}),this.features[r.featureName]=new r(this)})}catch(e){(0,g.R)(22,e);for(const e in this.features)this.features[e].abortHandler?.();const t=(0,i.Zm)();delete t.initializedAgents[this.agentIdentifier]?.features,delete this.sharedAggregator;return t.ee.get(this.agentIdentifier).abort(),!1}}}var G=r(2843),F=r(782);class H extends K{static featureName=F.T;constructor(e){super(e,F.T),v.RI&&((0,G.u)(()=>(0,T.p)("docHidden",[(0,E.t)()],void 0,F.T,this.ee),!0),(0,G.G)(()=>(0,T.p)("winPagehide",[(0,E.t)()],void 0,F.T,this.ee)),this.importAggregator(e,()=>r.e(296).then(r.bind(r,2117))))}}var z=r(3969);class Y extends K{static featureName=z.TZ;constructor(e){super(e,z.TZ),this.importAggregator(e,()=>r.e(296).then(r.bind(r,9623)))}}new L({features:[U,H,Y],loaderType:"lite"})})()})();</script>
+  <title>Readwise Reader | The first read-it-later app built for power readers.</title>
+  <meta name="description"
+        content="Save everything to one place to overcome content overload, search instantly, and highlight like a pro.">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+  
+
+  <!-- Social meta tags -->
+  <meta property="og:site_name" content="Readwise Reader"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Readwise Reader: The first read-it-later app built for power readers."/>
+  <meta property="og:description"
+        content="Save everything to one place to overcome content overload, search instantly, and highlight like a pro."/>
+  <meta property="og:url" content="https://readwise.io/read"/>
+  <meta property="og:image" content="https://d34adp677peecb.cloudfront.net/static/images/reader/OG-Reader.9fe9ca92418f.jpg">
+
+  <!-- Twitter -->
+  <meta name='twitter:card' content='summary_large_image'>
+  <meta name='twitter:creator' content='@readwise'>
+  <meta name='twitter:title' content='Readwise Reader: The first read-it-later app built for power readers.'>
+  <meta name='twitter:description'
+        content='Save everything to one place to overcome content overload, search instantly, and highlight like a pro.'>
+  <meta name='twitter:image' content='https://d34adp677peecb.cloudfront.net/static/images/reader/OG-Reader.9fe9ca92418f.jpg'>
+
+  <!-- Apple auth stuff -->
+  <meta name="appleid-signin-client-id" content="io.readwise.web">
+  <meta name="appleid-signin-scope" content="name email">
+  <meta name="appleid-signin-redirect-uri" content="https://readwise.io/apple_callback/">
+  <meta name="appleid-signin-state" content="a">
+  <meta name="appleid-signin-use-popup" content="true">
+
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link href="https://d34adp677peecb.cloudfront.net/static/sass/pages/reader/reader_landing.f8102935ae54.css" media="screen and (min-width: 100px)"
+        rel="stylesheet" type="text/css"/>
+  <style>
+    .theme-slider:before {
+      background-image: url("https://d34adp677peecb.cloudfront.net/static/images/reader/icons/light-mode.ec942a7530ce.svg") !important;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .theme--light.theme-slider:before {
+      background-image: url("https://d34adp677peecb.cloudfront.net/static/images/reader/icons/dark-mode.5749d6c92954.svg") !important;
+    }
+  </style>
+
+</head>
+
+  <body>
+  <div class="container">
+    
+      <div class="original-readwise-app-banner-wrapper" style="display: none;">
+        <div class="original-readwise-app-banner">
+          <div class="left">
+            <h1>Looking for the original&nbsp;Readwise?</h1>
+            <h2>Readwise makes it easy to revisit and learn from your digital highlights.</h2>
+            <button class="close-original-readwise-banner">&times;</button>
+          </div>
+          <div class="right">
+            <a href="/" class="learn-more">Learn more about Readwise</a>
+          </div>
+        </div>
+      </div>
+    
+    <div class="navbar-container ">
+      <nav class="navbar">
+        <div class="navbar__left">
+          <img class="navbar__icon readwise-logo" src="https://d34adp677peecb.cloudfront.net/static/images/new_icons/logo-standalone-white.c8a74d936590.svg"
+               alt="logo" height="30" width="30">
+          <a class="navbar__title" href="/">
+            Readwise
+          </a>
+          <a class="navbar__title active">
+            Reader
+          </a>
+        </div>
+        <div class="navbar__right">
+          
+            <button class="button sign-in-button" onclick="onClickSignin('#signup-area-top')">Sign in</button>
+            <button class="button signup-button" onclick="onClickSignup('#signup-area-top')">Sign up</button>
+          
+        </div>
+        <div class="navbar-background"></div>
+      </nav>
+    </div>
+    <section class="first-section">
+      <div class="bubbles bubbles--antifragile">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
+      <div class="title-container">
+
+        <h1 class="title">
+          <div class="first-line">
+            <span class="title-text">The first&nbsp;</span>
+            <span id='title-header-highlight' class="header-highlight">
+        <div class="header-highlight__text_container">
+          <span class="header-highlight__text"> read-it-later </span>
+          <span class="header-highlight__text"> newsletters </span>
+          <span class="header-highlight__text"> RSS reading </span>
+          <span class="header-highlight__text"> web highlighting </span>
+          <span class="header-highlight__text"> read-it-later </span>
+        </div>
+      </span>
+            <span class="title-text">&nbsp;app</span>
+          </div>
+          <div class="second-line">
+            <span class="title-text">for power readers.</span>
+          </div>
+        </h1>
+        <p class="subheading title-subheading">Save everything to one place, highlight like a pro, and replace several
+          apps with Reader.</p>
+        <div class="signup-area" id="signup-area-top">
+          <button class="button signup-button" onclick="onClickSignup('#signup-area-top')">Get started for free
+          </button>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <img
+                alt="The inbox"
+                class="landing-photo img--dark"
+                height="807"
+                srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Screen@1x.72ad6bf1deaa.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Screen@2x.f141e5a122de.webp 2x"
+                src="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Screen@1x.72ad6bf1deaa.webp"
+                width="1205">
+        <img
+                alt="Mobile app"
+                class="landing-photo-phone img--dark"
+                height="662"
+                srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Phone@1x.f61ef28b293d.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Phone@2x.2ffe333ffd69.webp 2x"
+                src="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Phone@1x.f61ef28b293d.webp"
+                width="324">
+      </div>
+      <div class="first-section-bottom-gradient"></div>
+    </section>
+    <section class="second-section has-section-background">
+      <h1 class="heading">All your reading in one place.</h1>
+      <div class="body-lg subheading">No more juggling dozens of reading apps. Just one: we call it Reader.</div>
+      <div class="reading-sources-container has-animation">
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-highlighting.6e605ef33fb6.svg"
+               aria-hidden="true"
+               height="32" width="32">
+          <h3>Web highlighting</h3>
+        </span>
+          <p class="feature-text">
+            Sometimes you need to highlight on the spot. Freely highlight and annotate the open web using the Reader
+            browser extension.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-rss.19c46950dc2a.svg"
+               aria-hidden="true"
+               height="32" width="32">
+          <h3>RSS</h3>
+        </span>
+          <p class="feature-text">
+            RSS is in a renaissance. Easily subscribe to the RSS feeds of your favorite websites in Reader to never miss
+            a post.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-pdf.0b1ecc4360be.svg"
+               aria-hidden="true"
+               height="32" width="32">
+          <h3>PDFs</h3>
+        </span>
+          <p class="feature-text">
+            Everyone has a forgotten folder of PDFs. Upload yours to Reader to finally integrate PDFs into your reading
+            workflow.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-youtube.644a3ef088cf.svg"
+               aria-hidden="true"
+               height="32"
+               width="32">
+          <h3>YouTube</h3>
+        </span>
+          <p class="feature-text">
+            YouTube has become one of the best learning platforms out there. Watch YouTube videos and highlight the
+            transcript in Reader.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-twitter.56797acd8a88.svg"
+               aria-hidden="true"
+               height="32"
+               width="32">
+          <h3>Twitter threads</h3>
+        </span>
+          <p class="feature-text">
+            Twitter threads are the new blog posts. Compile hard-to-read threads into proper long-form articles inside
+            Reader.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-later.7b556daa2e12.svg"
+               aria-hidden="true"
+               height="32"
+               width="32">
+          <h3>Read-it-later</h3>
+        </span>
+          <p class="feature-text">
+            Most websites aren't made for reading. Save articles to Reader for a distraction-free reading experience
+            with powerful highlighting.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-epub.05de62915e28.svg"
+               aria-hidden="true" height="32"
+               width="32">
+          <h3>EPUBs</h3>
+        </span>
+          <p class="feature-text">
+            Readwise was built on a foundation of ebook highlights. Upload EPUBs to Reader to enjoy ebooks alongside
+            everything else.
+          </p>
+        </div>
+        <div class="reading-sources-card">
+        <span class="feature-title">
+          <img loading="lazy" class="feature-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-newsletter.7604e3d46d89.svg"
+               aria-hidden="true" height="32"
+               width="32">
+          <h3>Newsletters</h3>
+        </span>
+          <p class="feature-text">
+            Newsletters connect you directly to your favorite writers. Subscribe to your newsletters in Reader to spare
+            your email inbox.
+          </p>
+        </div>
+      </div>
+      <div class="call-to-action">
+      <span>
+        <img loading="lazy" class="feature-icon"
+             src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/readwise-logo.2f170ec69bdf.svg" alt="logo"
+             height="30" width="30">
+        Why we built Reader
+      </span>
+        <a class="button" href="https://blog.readwise.io/readwise-reading-app/" style="text-decoration: none"
+           target="_blank">
+          Read More
+        </a>
+      </div>
+    </section>
+    <section class="value-section powerful-highlighting">
+      <div class="value-container">
+        <div class="value-content has-animation ">
+          <h1 class="heading">Powerful highlighting for power readers</h1>
+          <p class="value-text">
+            Annotation should be the killer feature of digital reading. Instead, highlighting, tagging, & note-taking
+            are neglected afterthoughts in other reading apps.
+            <br/>
+            <br/>
+            We believe that annotations are the key to getting more out of what you read. So we've developed
+            highlighting as a first-class feature. Highlight images, tables, rich text, and more. On any device.
+          </p>
+        </div>
+        <div class="image-container has-animation">
+          <img
+                  alt="A document with a highlight and note"
+                  class="powerful-highlighting-image img--dark"
+                  height="610"
+                  srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Highlight-Alpha-No-Note@1x.28c2c4cc2706.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Highlight-Alpha-No-Note@2x.937c2f70c5d0.webp 2x"
+                  src="https://d34adp677peecb.cloudfront.net/static/images/reader/Highlight-Alpha-No-Note@1x.28c2c4cc2706.webp"
+                  width="1017">
+          <img
+                  alt="A document note"
+                  class="powerful-highlighting-image-note img--dark"
+                  srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Note@1x.5a367d96fcba.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Note@2x.88307af712fd.webp 2x"
+                  src="https://d34adp677peecb.cloudfront.net/static/images/reader/Note@1x.5a367d96fcba.webp"
+          >
+
+        </div>
+      </div>
+    </section>
+    <section class="original-readwise-app-integration-section">
+      <div class="section-wrapper">
+        <div class="text-wrapper">
+          <h2 class="subtitle">UNIQUE & UNIFIED</h2>
+          <h1 class="title">Fully integrated with the original Readwise app</h1>
+          <p class="description">Readwise makes it easy to revisit and learn from your digital highlights.</p>
+        </div>
+        <div class="features-wrapper">
+          <div class="feature content-right revisit">
+            <img alt="" src="https://d34adp677peecb.cloudfront.net/static/images/reader/highlight.1fa46e3ecc35.webp">
+            <div class="gradient-background">
+              <h1 class="title">Revisit your best highlights</h1>
+              <p class="description">Highlighting is great, but what's the point if you never see those highlights again? Readwise liberates all your highlights into one place, ensuring you'll actually use them.</p>
+            </div>
+          </div>
+          <div class="feature content-left remember">
+            <img alt="" src="https://d34adp677peecb.cloudfront.net/static/images/reader/remember.10b3b83cc5b4.webp">
+            <div class="gradient-background">
+              <h1 class="title">Remember what you&nbsp;read</h1>
+              <p class="description">How often do you finish a book, only to forget the key ideas a few weeks later? Readwise resurfaces the right highlight at the right time through the Daily Review.</p>
+            </div>
+          </div>
+          <div class="feature content-right sync">
+            <img alt="" src="https://d34adp677peecb.cloudfront.net/static/images/reader/sync.7512a0fc2a71.webp">
+            <div class="gradient-background">
+              <h1 class="title">Sync to your favorite note-taking apps</h1>
+              <p class="description">Connect Readwise to your favorite tools such as Evernote, Notion, and Obsidian. Your enriched highlights will automatically export to right where you need them.</p>
+            </div>
+          </div>
+        </div>
+        <div class="daily-review">
+          <div class="gradient-background">
+            <h1 class="title">The Daily Review: A simple habit leading to lasting insight</h1>
+            <p class="description">Readwise helps you remember more of what you read using the scientific principle of spaced repetition. The Daily Review resurfaces the right highlight at the right time via email or app.</p>
+          </div>
+          <div class="devices">
+            <img class="phone" alt="" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Phone.cbccd037b344.webp">
+            <img class="screen" alt="" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Hero-Screen.a4e3e4c5e4d6.webp">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="testimonials-section">
+      <h1 class="title">
+        <div class="first-line">
+          <span>Loved by&nbsp;</span>
+          <span id="founder-testimonials-header-highlight" class="header-highlight">
+        <div class="header-highlight__text_container">
+          <span class="header-highlight__text"> founders </span>
+          <span class="header-highlight__text"> professionals </span>
+          <span class="header-highlight__text"> academics </span>
+        </div>
+      </span>
+        </div>
+      </h1>
+      <div class="slider">
+        <div class="slides" id="professionals-slides">
+          <div id="slide-1">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/rahul.772063c3147a.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Readwise has completely redesigned the read-it-later app. It's gorgeous and blazingly fast. In many
+                  ways, it's the Superhuman of reading — you won't want to read anywhere else.
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Rahul Vohra
+                  </p>
+                  <p class="occupation">
+                    Founder, Superhuman
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/packy.ebf11564c1ed.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  I spend my entire day reading, researching, & writing and Readwise is the reading tool I've been
+                  waiting for. The perfect complement to my writing workflow. Absolute game changer.
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Packy Mccormick
+                  </p>
+                  <p class="occupation">
+                    Founder, Not Boring
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="slide-2">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/peter.0f824e30985e.webp" height="236" width="216">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  The Reader is another home run from the Readwise team. Having sampled all the reader apps, it's
+                  refreshing to finally find the one that fits into my knowledge workflow!
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Peter Duffy
+                  </p>
+                  <p class="occupation">
+                    Innovation Lead, DWF Law
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/fitz.1fcf13cdf9e9.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  The Readwise reading app is the first read-it-later app that enables a true workflow for serious
+                  readers. As an ex-Pocket / Instapaper power user, it's hard to imagine ever going back.
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Fitz Maro
+                  </p>
+                  <p class="occupation">
+                    Creative Technology Lead, Pinterest
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="slide-3">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/eliska.cefb08ea730a.webp" height="236" width="216">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  I've searched far and wide for the perfect reading app. Reader has
+                  already replaced my previous read-it-later app. (And I always think twice about switching!)
+                </p>
+                <div class="author-occupation eliska">
+                  <p class="author">
+                    Eliška Šestáková
+                  </p>
+                  <p class="occupation">
+                    Professor, Czech Technical University
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/akiff.44db78067295.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  In addition to building an incredible reading experience, the Readwise team is constantly iterating on
+                  user feedback and delivering the fastest product updates I have ever seen.
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Akiff Premjee
+                  </p>
+                  <p class="occupation">
+                    Medical Student, Tufts University
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="slide-icon slide-icon--current" data-target="#slide-1" data-slides-id="#professionals-slides"></a>
+        <a class="slide-icon" data-target="#slide-2" data-slides-id="#professionals-slides"></a>
+        <a class="slide-icon" data-target="#slide-3" data-slides-id="#professionals-slides"></a>
+      </div>
+    </section>
+    <section class="value-section features-section">
+      <h1 class="heading">Reader will change the way you read</h1>
+      <div class="subheading">We've reinvented the digital reading experience to apply the power of software to the
+        printed word.
+      </div>
+      <div class="features-container">
+        <div class="feature-card keyboard-card has-animation">
+          <div class="feature-card-image">
+            <div class="keyboard">
+              <div class="row">
+                <div class="key">P</div>
+                <div class="key">O</div>
+                <div class="key">W</div>
+                <div class="key">E</div>
+                <div class="key">R</div>
+                <div class="key">F</div>
+                <div class="key">U</div>
+                <div class="key">L</div>
+              </div>
+              <div class="row">
+                <div class="key">R</div>
+                <div class="key">E</div>
+                <div class="key">A</div>
+                <div class="key">D</div>
+                <div class="key">W</div>
+                <div class="key">I</div>
+                <div class="key">S</div>
+              </div>
+              <div class="row">
+                <div class="key">R</div>
+                <div class="key">E</div>
+                <div class="key">A</div>
+                <div class="key">D</div>
+                <div class="key">E</div>
+                <div class="key">R</div>
+              </div>
+              <div class="row">
+                <div class="key space"></div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-card-content">
+          <span class="feature-title">
+            <h3>Keyboard-based reading</h3>
+          </span>
+            <p class="feature-text">
+              Glide through your documents without ever using the mouse. Keyboard-based reading enables you to navigate,
+              highlight, and annotate with grace.
+            </p>
+          </div>
+        </div>
+        <div class="feature-card ghost-card has-animation">
+          <div class="feature-card-image">
+            <div class="ghost-image-container">
+              <img
+                      class="ghost"
+                      src="https://d34adp677peecb.cloudfront.net/static/images/reader/Ghost.67ff0a62aec1.svg" alt="ghostreader logo"
+              >
+              <img
+                      class="glasses"
+                      src="https://d34adp677peecb.cloudfront.net/static/images/reader/Glasses.6a5729fb0c56.svg" alt="ghostreader glasses"
+              >
+            </div>
+          </div>
+          <div class="feature-card-content">
+          <span class="feature-title">
+            <h3>Ghostreader</h3>
+          </span>
+            <p class="feature-text">
+              Ghostreader is your GPT copilot of reading. Ask questions. Define terms. Simplify complex language. And
+              so much more.
+            </p>
+          </div>
+        </div>
+        <div class="feature-card search-card has-animation">
+          <div class="feature-card-image">
+            <div class="search-image-container">
+              <img
+                      alt="A search field"
+                      class="search-image"
+                      srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Search@1x.247e69d4e357.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Search@2x.2edc448ebf0c.webp 2x"
+                      src="https://d34adp677peecb.cloudfront.net/static/images/reader/Search@1x.247e69d4e357.webp"
+              >
+            </div>
+          </div>
+          <div class="feature-card-content">
+          <span class="feature-title">
+            <h3>Blazingly fast full text&nbsp;search</h3>
+          </span>
+            <p class="feature-text">
+              Find whatever you're looking for. Even if you only remember a single word. Even offline.
+            </p>
+          </div>
+        </div>
+        <div class="feature-card tts-card has-animation">
+          <div class="feature-card-image">
+            <div class="tts-image-container">
+              <img
+                      alt="text to speech"
+                      class="tts-image"
+                      srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Text-to-Speech@1x.e922eece4e1a.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Text-to-Speech@2x.98964edf5057.webp 2x"
+                      src="https://d34adp677peecb.cloudfront.net/static/images/reader/Text-to-Speech@1x.e922eece4e1a.webp"
+              >
+            </div>
+          </div>
+          <div class="feature-card-content">
+          <span class="feature-title">
+            <h3>Text to speech</h3>
+          </span>
+            <p class="feature-text">
+              Listen to any document narrated with the lifelike voice of a real human.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="try-reader-row has-animation">
+        <h3>
+          Upgrade your reading workflow.
+        </h3>
+        <h3>
+          Eliminate multiple apps.
+        </h3>
+        <button class="button signup-button" onclick="onClickSignup('#signup-area-top')">Get started for free
+        </button>
+        <span class="signup-button-subheading">
+          For web, desktop, iOS, and Android.
+        </span>
+      </div>
+    </section>
+    <section class="value-section black-value-section">
+      <div class="value-container">
+        <div class="value-content has-animation">
+          <h1 class="heading">Flexible software fits your unique needs</h1>
+          <p class="value-text">
+            Your personal interests, your professional projects, your way of doing things — they're unique. Reader is
+            your home base for the varied documents in your life, customizable to match the way your brain works.
+            <br/>
+            <br/>
+            PDFs for work, articles for your newsletter, and ebooks for pleasure all live comfortably side-by-side. No
+            more juggling dozens of&nbsp;apps.
+          </p>
+        </div>
+        <div class="value-photo has-animation">
+          <img
+                  alt="The inbox with the command palette open"
+                  class="photo-desktop"
+                  height="700"
+                  loading="lazy"
+                  srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-Screen@1x.1988564fcb5c.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-Screen@2x.2a36f7465673.webp 2x"
+                  src="https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-Screen@1x.1988564fcb5c.webp"
+                  width="869">
+          <img
+                  alt="Mobile app"
+                  class="photo-phone img--dark"
+                  height="662"
+                  srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-phone@1x.e1421f629c35.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-phone@2x.627f399bc3c7.webp 2x"
+                  src="https://d34adp677peecb.cloudfront.net/static/images/reader/Flexible-phone@1x.e1421f629c35.webp"
+                  width="324">
+        </div>
+      </div>
+    </section>
+    <section class="integrations-section">
+      <div class="integrations-container">
+        <h1 class="heading">Integrated with your favorite tools</h1>
+        <p class="subheading integrations-subheading">
+          Your annotations should flow effortlessly from your reading app into your writing tool of choice. Instead you
+          waste hours reformatting, reorganizing, and repeating. Reader eliminates this hassle.
+        </p>
+        <div class="external-integrations-row">
+          <div class="integrations-images">
+            <div class="integrations-images-container">
+              <img alt="Readwise-integration" loading="lazy"
+                   src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-readwise.82595621570e.webp"
+                   class="integrations-image" height="50" width="50">
+              <img alt="Obsidian" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-obsidian.e02bcc4062e6.webp"
+                   class="integrations-image" height="50" width="50">
+              <img alt="Notion" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-notion.0d1555945246.webp"
+                   class="integrations-image" height="50" width="50">
+              <img alt="Roam Research" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-roam.fc2d0e73ab8d.webp"
+                   class="integrations-image" height="50" width="50">
+              <img alt="Logseq" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-logseq.2828d0167f06.webp"
+                   class="integrations-image" height="50" width="50">
+              <img alt="Evernote" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/Integration-evernote.b98401b99781.webp"
+                   class="integrations-image" height="50" width="50">
+            </div>
+          </div>
+          <div>
+            <p class="integrations-description">
+              Reader seamlessly connects to Readwise which exports to Obsidian, Notion, Roam Research, Evernote, Logseq,
+              and more
+            </p>
+          </div>
+        </div>
+        <div class="integrations-cards-row">
+          <div class="integrations-card small">
+            <img aria-hidden="true" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-api.ec1feeebb8c2.svg"
+                 class="integrations-image integrations-icon" height="32" width="32">
+            <div>
+              <span class="integrations-heading">
+                Integrate with our public API
+              </span>
+              <p class="integrations-description">
+                Reader is built API-first: roll your own solutions and integrate your tools using our API.
+              </p>
+            </div>
+          </div>
+          <div class="integrations-card small">
+            <img aria-hidden="true" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/icon-review.50560fa4cb19.svg"
+                 class="integrations-image integrations-icon" height="32" width="32">
+            <div>
+              <span class="integrations-heading">
+                Easy consistent review with Readwise
+              </span>
+              <p class="integrations-description">
+                Reader automatically syncs to Readwise: making it easy to revisit and learn from your highlights with
+                Daily Review.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bubbles bubbles--beginning-of-infinity">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
+    </section>
+
+    <section class="devices-section">
+      <h3 class="title">
+        Read anywhere, anytime
+      </h3>
+      <p class="subheading">
+        Access all of your content from any of your devices with everything in sync. Even offline. Reader syncs across a
+        powerful, local-first web app, iOS app, and Android app. You can even highlight the open web with the Reader
+        browser extensions.
+      </p>
+      <div class="image-container has-animation">
+        <img
+                alt="The inbox"
+                class="device-photo img--dark"
+                height="752"
+                srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-Screen@1x.b29949e88a81.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-Screen@2x.89071452136e.webp 2x"
+                src="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-Screen@1x.b29949e88a81.webp"
+                width="1080">
+        <img
+                alt="Mobile app"
+                class="device-photo-mobile device-photo-phone img--dark"
+                height="660"
+                srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-phone@1x.0f2863c7dee5.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-phone@2x.e064611d0e1d.webp 2x"
+                src="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-phone@1x.0f2863c7dee5.webp"
+                width="323">
+        <img
+                alt="ipad app"
+                class="device-photo-mobile device-photo-ipad img--dark"
+                height="665"
+                srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-iPad@1x.58f67690fbbb.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-iPad@2x.b213642c953d.webp 2x"
+                src="https://d34adp677peecb.cloudfront.net/static/images/reader/Anywhere-iPad@1x.58f67690fbbb.webp"
+                width="451">
+      </div>
+      <div class="first-section-bottom-gradient"></div>
+    </section>
+
+    <section class="testimonials-section has-section-background">
+      <h1 class="title">
+        <div class="first-line">
+          <span>Loved by&nbsp;</span>
+          <span id="testimonials-header-highlight" class="header-highlight">
+        <div class="header-highlight__text_container">
+          <span class="header-highlight__text"> autodidacts </span>
+          <span class="header-highlight__text"> engineers </span>
+          <span class="header-highlight__text"> technologists </span>
+        </div>
+      </span>
+        </div>
+        </span>
+      </h1>
+      <div class="slider">
+        <div class="slides" id="researchers-slides">
+          <div id="testimonial-slide-1">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/ramses.e85284935033.webp" height="236" width="216">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Having tried every read-it-later app out there, I cried tears of joy once I got my hands on Reader.
+                  It's the smoothest experience to turn highlights into insights. Plus, I can finally highlight images!
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Ramses Oudt
+                  </p>
+                  <p class="occupation">
+                    Founder, RoamStack
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/eric.fc5ecc0af9f7.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Readwise is the reading, highlighting, archiving tool I've been long for: the Superhuman of reading. I
+                  was a top 1% Pocket user for many years and switched instantly.
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Eric Jorgenson
+                  </p>
+                  <p class="occupation">
+                    Author, Almanack of Naval Ravikant
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="testimonial-slide-2">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/nicole.1c5aade62911.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Reader is the first reading app that helps you process information rather than hoard it. The keyboard
+                  nav and minimalist interface lead you into a deep flow state. A must for any knowledge worker!
+                </p>
+                <div class="author-occupation">
+                  <p class="author">
+                    Nicole Van Der Hoeven
+                  </p>
+                  <p class="occupation">
+                    Developer Advocate, k6
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/tom.ec449b71d5e6.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  I used to dump links into Pocket, but I never went back. Reader changes that. Now I feel on top of my
+                  reading. Plus the pace of execution of the Readwise team is insane.
+                <div class="author-occupation">
+                  <p class="author">
+                    Tom Taubkin
+                  </p>
+                  <p class="occupation">
+                    EIR, Diagram
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="testimonial-slide-3">
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/edwin.012b73da72c3.webp" height="200" width="184">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Reader makes it easy to manage all the content coming at me. I'm no longer overwhelmed. Now I feel
+                  like I actually have enough time to read everything I want to.
+                <div class="author-occupation">
+                  <p class="author">
+                    Edwin Wee
+                  </p>
+                  <p class="occupation">
+                    Communications, Stripe
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="photo-container">
+                <img alt="" loading="lazy" src="https://d34adp677peecb.cloudfront.net/static/images/reader/trevor.4497afc856ee.webp" height="231" width="216">
+                <div class="photo-mask"></div>
+              </div>
+              <div class="quote-container">
+              <span class="quote-icon">
+                “
+              </span>
+                <p class="quote">
+                  Readwise is one of my favorite products of the last 5 years. Reader takes it to the next level. I no
+                  longer have to duct-tape together 7 different tools. Readwise just leapfrogged the status quo.
+                <div class="author-occupation">
+                  <p class="author">
+                    Trevor McKendrick
+                  </p>
+                  <p class="occupation">
+                    Founder, Seis
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="slide-icon slide-icon--current" data-target="#testimonial-slide-1"
+           data-slides-id="#researchers-slides"></a>
+        <a class="slide-icon" data-target="#testimonial-slide-2" data-slides-id="#researchers-slides"></a>
+        <a class="slide-icon" data-target="#testimonial-slide-3" data-slides-id="#researchers-slides"></a>
+      </div>
+    </section>
+    <section class="value-section black-value-section">
+      <div class="value-container has-animation">
+        <div class="value-content">
+          <h1 class="heading">Content overload, conquered.</h1>
+          <p class="value-text">
+            Our read-it-later apps should improve over time. Instead, they worsen. Why? Because we save more stuff than
+            we have time to deal with.
+            <br/>
+            <br/>
+            We fell in love with Superhuman's fun, game-like triage for clearing our email inboxes of clutter. So we've
+            built the same for reading. Weed your digital garden with delight.
+          </p>
+        </div>
+        <div class="value-photo has-animation">
+          <img
+                  alt="The inbox with the command palette open"
+                  class="photo-desktop"
+                  height="700"
+                  loading="lazy"
+                  srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/Overload-Screen@1x.9fcf13536fe5.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/Overload-Screen@2x.e15044e65166.webp 2x"
+                  src="https://d34adp677peecb.cloudfront.net/static/images/reader/Overload-Screen@1x.9fcf13536fe5.webp"
+                  width="869">
+        </div>
+      </div>
+    </section>
+    <section class="faq-section">
+      <div class="faq-container">
+        <h1 class="heading">Frequently asked questions</h1>
+        <div class="questions">
+
+          <button type="button" class="collapsible" data-height="235">
+            <div class="faq-chevron">
+            </div>
+            <span>How much does Reader cost?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              You can try Reader and Readwise with a free 30-day trial, no credit card required. After your trial expires, you can continue using Reader as part of a full <a href="/pricing" target="_blank">Readwise subscription</a>: $9.99/month billed annually, or $12.99/month billed monthly. We also offer a 50% discount for students, educators, non-profits, military, first responders, and anyone living in a country where US pricing doesn't translate fairly. Just email us at <a href="mailto:hello@readwise.io">hello@readwise.io</a>.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="235">
+            <div class="faq-chevron">
+            </div>
+            <span>What's the difference between Reader and Readwise?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Reader is where you read: the full content of your articles, PDFs, EPUBs, email newsletters, RSS feeds, YouTube videos, X threads, and more, all in one place. Readwise is where you get more out of what you read: save every highlight from over 20 sources, resurface the best ones daily, and sync them to note-taking apps like Obsidian and Notion. Your account is shared, so every highlight you make in Reader lands in Readwise instantly.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="235">
+            <div class="faq-chevron">
+            </div>
+            <span>What devices does Reader work on?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Reader is cross-platform, with mobile apps for iOS and Android; web apps &amp; browser extensions for Chrome, Firefox, and Safari; desktop apps for Mac &amp; Windows; and a dedicated viewing mode for e-ink devices such as BOOX and Daylight Computer. Everything syncs continuously across your devices. Reader also works offline, and if you love reading on a Kindle, Reader can send documents there too.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="130">
+            <div class="faq-chevron">
+            </div>
+            <span>Can Reader read articles aloud (text-to-speech)?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Yes. Reader turns any article, PDF, or ebook into audio with natural AI voices, adjustable speed, and support for dozens of languages, on every platform.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="175">
+            <div class="faq-chevron">
+            </div>
+            <span>Can I import my library from Instapaper, Pocket, or another app?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Yes. Reader imports directly from Instapaper, accepts your Pocket export file if you saved one before the shutdown, and takes any CSV of URLs for everything else. Your RSS subscriptions carry over in one step with an OPML file, and your ebooks and PDFs can simply be dragged in.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="130">
+            <div class="faq-chevron">
+            </div>
+            <span>Can I export my data if I ever want to leave?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Yes. Anytime, in full. You can download every document as a CSV, your feeds as an OPML, your uploaded files as a zip, and every highlight and annotation as Markdown.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="235">
+            <div class="faq-chevron">
+            </div>
+            <span>Pocket shut down. How do I know Reader won't?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Fair question, especially these days. Readwise has been bootstrapped and profitable since 2017, funded by subscribers rather than venture capital. This means we survive by making software readers love, not by pleasing investors. We wrote more about that in <a href="https://blog.readwise.io/why-were-bootstrapping-readwise/" target="_blank">Why We're Bootstrapping Readwise</a>. And if you're ever unsure, see the answer above: your reading always remains yours to take with you if anything does happen.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="235">
+            <div class="faq-chevron">
+            </div>
+            <span>Does Reader work with AI assistants like ChatGPT and Claude?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Yes, and it's becoming one of Reader's most powerful features. The <a href="https://readwise.io/mcp" target="_blank">Readwise MCP server</a> connects Claude, ChatGPT, Cursor, or any MCP-compatible assistant directly to your library. Your AI can easily utilize the full content of your documents to answer questions grounded in your own reading, and the MCP can even organize your documents for you. There's also a full <a href="https://readwise.io/cli" target="_blank">command line interface</a> for the terminally inclined.
+            </p>
+          </div>
+          <button type="button" class="collapsible" data-height="90">
+            <div class="faq-chevron">
+            </div>
+            <span>Is Reader being actively updated?</span>
+          </button>
+          <div class="faq-content">
+            <p>
+              Yes. Improvements ship nearly every week. You can follow every release in <a href="https://docs.readwise.io/changelog" target="_blank">our changelog</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does Reader cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can try Reader and Readwise with a free 30-day trial, no credit card required. After your trial expires, you can continue using Reader as part of a full Readwise subscription: $9.99/month billed annually, or $12.99/month billed monthly. We also offer a 50% discount for students, educators, non-profits, military, first responders, and anyone living in a country where US pricing doesn't translate fairly. Just email us at hello@readwise.io."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Reader and Readwise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reader is where you read: the full content of your articles, PDFs, EPUBs, email newsletters, RSS feeds, YouTube videos, X threads, and more, all in one place. Readwise is where you get more out of what you read: save every highlight from over 20 sources, resurface the best ones daily, and sync them to note-taking apps like Obsidian and Notion. Your account is shared, so every highlight you make in Reader lands in Readwise instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What devices does Reader work on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reader is cross-platform, with mobile apps for iOS and Android; web apps & browser extensions for Chrome, Firefox, and Safari; desktop apps for Mac & Windows; and a dedicated viewing mode for e-ink devices such as BOOX and Daylight Computer. Everything syncs continuously across your devices. Reader also works offline, and if you love reading on a Kindle, Reader can send documents there too."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Reader read articles aloud (text-to-speech)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Reader turns any article, PDF, or ebook into audio with natural AI voices, adjustable speed, and support for dozens of languages, on every platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import my library from Instapaper, Pocket, or another app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Reader imports directly from Instapaper, accepts your Pocket export file if you saved one before the shutdown, and takes any CSV of URLs for everything else. Your RSS subscriptions carry over in one step with an OPML file, and your ebooks and PDFs can simply be dragged in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export my data if I ever want to leave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Anytime, in full. You can download every document as a CSV, your feeds as an OPML, your uploaded files as a zip, and every highlight and annotation as Markdown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pocket shut down. How do I know Reader won't?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fair question, especially these days. Readwise has been bootstrapped and profitable since 2017, funded by subscribers rather than venture capital. This means we survive by making software readers love, not by pleasing investors. We wrote more about that in Why We're Bootstrapping Readwise. And if you're ever unsure, see the answer above: your reading always remains yours to take with you if anything does happen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Reader work with AI assistants like ChatGPT and Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it's becoming one of Reader's most powerful features. The Readwise MCP server connects Claude, ChatGPT, Cursor, or any MCP-compatible assistant directly to your library. Your AI can easily utilize the full content of your documents to answer questions grounded in your own reading, and the MCP can even organize your documents for you. There's also a full command line interface for the terminally inclined."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Reader being actively updated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Improvements ship nearly every week. You can follow every release in our changelog."
+      }
+    }
+  ]
+}
+      </script>
+    </section>
+    <section class="email-section">
+      <img alt="logo" loading="lazy"
+           srcset="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/Reader-Icon@1x.9348d5930d95.webp, https://d34adp677peecb.cloudfront.net/static/images/reader/icons/Reader-Icon@2x.050535d40393.webp 2x"
+           src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/Reader-Icon@1x.9348d5930d95.webp"
+           height="96" width="96"
+      >
+      <h1 class="heading heading--no-text-shadow">Experience the future of reading</h1>
+      <button class="button signup-button" onclick="onClickSignup('#signup-area-bottom')">Get started for free
+      </button>
+      <span class="signup-button-subheading">
+        For web, desktop, iOS, and Android.
+      </span>
+      <div class="bubbles bubbles--antifragile">
+        <div class="bubble"></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="readerSignupModal" class="standard-modal reader-modal" style="display: none;">
+    <!-- Modal content -->
+    <div class="standard-modal-content">
+      <div class="modal-top-section">
+        <img src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/logo-white-with-border.b61f331edbe6.svg" alt="logo"
+             height="40" width="40">
+        <div class="signup-header-texts">
+          <h1 class="signup-header">Sign up</h1>
+          <span class="signup-subheader">Create an account to continue</span>
+        </div>
+      </div>
+      <div class="modal-middle-section">
+        <a href="/accounts/signup/" id="show-email-signup" class="button blue-button">Sign up with Email</a>
+        <div class="signup-div" style="display: none;">
+          <form id="signup-form" class="form" method="POST" action="/accounts/signup/?next=/read/authed">
+            <input type="hidden" name="csrfmiddlewaretoken" value="bKFiqfZKNEKWb1bjCP4Zndzs8W9UwmfINv2mzDacbIDK930ADFXsdMTbOyGzMZxP">
+            <div class="field">
+              <label class="label">First Name:</label>
+              <div class="field-body">
+                <div class="control">
+                  <input class="input" id="id_first_name" name="first_name" type="text" required autocomplete="off"
+                         placeholder="Your first name">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Email:</label>
+              <div class="field-body">
+                <div class="control">
+                  <input class="input" id="id_email" name="email" type="email" required autocomplete="username"
+                         placeholder="Your username">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password:</label>
+              <div class="field-body">
+                <div class="control">
+                  <input class="input" id="id_password1" name="password1" type="password" required pattern=".{8,}"
+                         title="Your password should be at least 8 characters long" placeholder="Your password"
+                         autocomplete="new-password">
+                  
+                </div>
+              </div>
+            </div>
+            
+            
+
+  <div class="field">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAADjvAwVoYazfM69U"></div>
+  </div>
+
+
+            <div class="field">
+              <div class="field-label">
+                <!-- Left empty for spacing -->
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button blue-button" type="submit">Sign up with Email</button>
+                  </div>
+                </div>
+              </div>
+              <div class="separator">
+                <div class="bar"></div>
+                <span>or</span>
+                <div class="bar"></div>
+              </div>
+            </div>
+            <div>
+            </div>
+          </form>
+          
+
+  <script>
+    (function () {
+      function render() {
+        if (!window.turnstile || !window.turnstile.render) {
+          window._turnstilePending = true;
+          return;
+        }
+        var els = document.querySelectorAll(".cf-turnstile:not([data-rendered])");
+        for (var i = 0; i < els.length; i++) {
+          var el = els[i];
+          if (el.offsetParent === null) continue; // inside a display:none modal — leave inert
+          window.turnstile.render(el, {
+            sitekey: el.getAttribute("data-sitekey"),
+            appearance: "interaction-only",
+            size: "flexible",
+          });
+          el.setAttribute("data-rendered", "1");
+        }
+      }
+      window.renderTurnstile = render;
+      window._onTurnstileLoad = function () {
+        if (window._turnstilePending) {
+          window._turnstilePending = false;
+          render();
+        }
+      };
+      // Render when the signup modal is revealed; setTimeout lets the reveal run
+      // first. This #show-email-signup selector is asserted by a test against the
+      // signup UI so the two can't drift apart.
+      document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("#show-email-signup")) setTimeout(render, 0);
+      });
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", render);
+      else render();
+    })();
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=_onTurnstileLoad" async defer></script>
+
+
+        </div>
+        <div class="mb-3">
+          <a style="font-size: 1rem;" class="button signup-with-amazon has-text-black w-10"
+             href="/accounts/amazon/login/?next=/read/authed">
+            <img src="https://d34adp677peecb.cloudfront.net/static/images/new_icons/amazon-icon.223c54d1782a.svg" alt="amazon-signup-button"
+                 style="height:16px; padding-right: 5px; padding-top: 1px"/>
+            Sign up with Amazon</a>
+        </div>
+        
+          <a class="sign-in-link" href="#" onclick="onClickSignin()">Already have a Readwise account? Sign in</a>
+        
+      </div>
+      <div class="modal-bottom-section">
+        <p>Click "Sign up" above to accept <br/>
+          <a href="/tos" target="_blank">Readwise's Terms of Service</a> & <a href="/privacy" target="_blank">Privacy
+            Policy</a>.</p>
+
+        <p>Readwise is free for the first 30 days, <br/>
+          after which it costs a small monthly fee.</p>
+      </div>
+      <span class="close">&times;</span>
+    </div>
+  </div>
+
+  <div id="readerLoginModal" class="standard-modal reader-modal" style="display: none;">
+    <div class="standard-modal-content">
+      <div class="modal-top-section">
+        <img src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/logo-white-with-border.b61f331edbe6.svg" alt="logo"
+             height="40" width="40">
+        <div class="signup-header-texts">
+          <h1 class="signup-header">Welcome back!</h1>
+          <span class="signup-subheader">Sign in to use your account</span>
+        </div>
+      </div>
+      <div class="modal-middle-section">
+        <div id="appleid-signin" class="button apple-signin-button" data-color="black" data-border="true"
+             data-type="sign in"></div>
+        <a style="font-size: 1rem;" class="button signup-with-amazon has-text-black w-10"
+           href="/amazon_login?next=/read/authed">
+          <img class="amazon-icon" src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/amazon.223c54d1782a.svg" alt="logo" height="18"
+               width="18">
+          Sign in with Amazon
+        </a>
+        <form class="form" method="POST" action="/accounts/login/?next=/read/authed">
+          <input type="hidden" name="csrfmiddlewaretoken" value="bKFiqfZKNEKWb1bjCP4Zndzs8W9UwmfINv2mzDacbIDK930ADFXsdMTbOyGzMZxP">
+          <div class="field">
+            <label class="label">Email:</label>
+            <div class="field-body">
+              <div class="control">
+                <input class="input" id="id_login" name="login" type="email" placeholder="Email" required>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password:</label>
+            <div class="field-body">
+              <div class="control">
+                <input class="input mb-1" id="id_password" name="password" type="password" placeholder="Password"
+                       required>
+              </div>
+            </div>
+          </div>
+          <button class="button blue-button" type="submit">Sign in with Email</button>
+          <a class="pwd-reset" href="/accounts/password/reset/">Forgot password?</a>
+        </form>
+      </div>
+      <div class="modal-bottom-section">
+        <a class="sign-in-link" href="#" onclick="onClickSignup()">Don't have an account? Sign up</a>
+      </div>
+      <span class="close">&times;</span>
+    </div>
+  </div>
+
+  <div id="readerTrialModal" class="standard-modal reader-modal unclosable" style="display: none;">
+    <div class="standard-modal-content">
+      <div class="modal-top-section">
+        <img src="https://d34adp677peecb.cloudfront.net/static/images/reader/icons/logo-white-with-border.b61f331edbe6.svg" alt="logo"
+             height="40" width="40">
+        <div class="signup-header-texts">
+          <h1 class="signup-header"> </h1>
+          <span class="signup-subheader"> - <a class="logout-link"
+                                                                                    href="/logout?next=/read">log out</a></span>
+        </div>
+      </div>
+      <div class="modal-warning-section">
+        Your 30-day trial expired on 
+      </div>
+      <div class="modal-middle-section trial-offer">
+        <h2>Need some more time?</h2>
+        <p>With the release of Reader, we are offering you another opportunity to try Readwise. After this free trial,
+          you'll need a Readwise Full subscription to continue using Reader.</p>
+
+        <a href="/read/trial/accept" class="button blue-button">Start new 30-day trial</a>
+      </div>
+      <span class="close">&times;</span>
+    </div>
+  </div>
+
+
+  <input type="hidden" name="csrfmiddlewaretoken" value="bKFiqfZKNEKWb1bjCP4Zndzs8W9UwmfINv2mzDacbIDK930ADFXsdMTbOyGzMZxP">
+
+  <!-- Google Tag Manager -->
+  <script async>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-5XMQFPT');</script>
+  <script async>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://d34adp677peecb.cloudfront.net/static/js/js.cookie.1d40376a0bdc.js"></script>
+  <script>
+  function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+  $(document).ready(function(){
+    
+      var landingId  = Cookies.get('landingId') || uuidv4();
+      let searchParams = new URLSearchParams(window.location.search)
+      if (searchParams.has('gclid')) {
+        Cookies.set("gclid", searchParams.get('gclid'));
+      }
+
+      if (searchParams.has('dclid')) {
+        Cookies.set("dclid", searchParams.get('dclid'));
+      }
+
+      if (Cookies.get('landingReferrerUrl') === undefined && document.referrer) {
+        Cookies.set("landingReferrerUrl", document.referrer);
+      }
+      Cookies.set("landingId", landingId);
+
+      if (Cookies.get('initialLandingUrl') === undefined) {
+        Cookies.set('initialLandingUrl', document.URL)
+      }
+
+      // I don't want to update Latest Landing URL if it is already set
+      // to something like /ali and the user then goes to /
+      var latestLandingUrl = Cookies.get('latestLandingUrl');
+      var currentPathParser = document.createElement('a');
+      currentPathParser.href = document.URL;
+      var currentPath = currentPathParser.pathname;
+      if (!latestLandingUrl || currentPath !== "/") {
+        Cookies.set("latestLandingUrl", document.URL);
+      }
+
+    
+  });
+</script>
+
+
+  <script async>
+    function addTopToNavbar() {
+      const showBanner = hasShowBannerParameter();
+
+      if (!showBanner) {
+        return
+      }
+
+      const originalReadwiseBanner = $('.original-readwise-app-banner-wrapper');
+
+      if (!originalReadwiseBanner.length) {
+        return;
+      }
+
+      const originalReadwiseBannerHeight = originalReadwiseBanner.outerHeight() + 4;
+      let newNavbarTop = originalReadwiseBannerHeight - document.body.scrollTop;
+
+      if (newNavbarTop <= 0) {
+        newNavbarTop = 4;
+      }
+
+      $('.navbar-container').css('top', newNavbarTop);
+    }
+
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Item is visible when more than half of it is exposed to the user from the bottom
+      const itemHeight = rect.height;
+      const itemTop = rect.top;
+      return (
+          itemTop + (windowHeight * 0.3) < windowHeight
+      );
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    setCookie('wasOnReaderLanding', "true", 7);
+
+    window.onload = function () {
+      const firstSection = document.querySelector('.first-section');
+      const allAnimatedElements = [
+        ...document.querySelectorAll('section:not(.animate)'),
+        ...document.querySelectorAll('.has-animation:not(.animate)'),
+      ];
+      allAnimatedElements.forEach((section) => {
+        if (isInViewport(section)) {
+          section.classList.add('animate');
+        }
+      });
+      const nav = document.querySelector('.navbar');
+      document.addEventListener('scroll', (e) => {
+        const allAnimatedElements = [
+          ...document.querySelectorAll('section:not(.animate)'),
+          ...document.querySelectorAll('.has-animation:not(.animate)'),
+        ];
+        allAnimatedElements.forEach((section) => {
+          if (isInViewport(section)) {
+            section.classList.add('animate');
+          }
+        });
+
+        addTopToNavbar();
+
+        if (document.body.scrollTop > firstSection.clientHeight - 200) {
+          if (!nav.classList.contains('show-all')) {
+            nav.classList.add('show-all');
+          }
+          document.querySelector('.navbar-background').classList.add('is-opaque');
+        } else {
+          nav.classList.remove('show-all');
+          document.querySelector('.navbar-background').classList.remove('is-opaque');
+        }
+      });
+      const coll = document.getElementsByClassName("collapsible");
+      for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          console.log(this);
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          const height = this.dataset.height;
+          if (content.style.height === `${height}px`) {
+            content.style.height = "0px";
+          } else {
+            content.style.height = `${height}px`;
+          }
+        });
+      }
+      // submit forms on enter:
+      ["#signup-area-top", "#signup-area-bottom"].forEach(function (areaSelector) {
+        const inputEl = document.querySelector(areaSelector + " input");
+        if (!inputEl) {
+          return;
+        }
+        inputEl.onkeydown = function (e) {
+          if (e.keyCode == 13) {
+            submitSignupForm(areaSelector);
+          } else {
+            inputEl.classList.remove("invalid");
+          }
+        };
+      });
+
+      function smoothHorizontalScrolling(e, time, amount, start) {
+        var eAmt = amount / 100;
+        var curTime = 0;
+        var scrollCounter = 0;
+        while (curTime <= time) {
+          window.setTimeout(SHS_B, curTime, e, scrollCounter, eAmt, start);
+          curTime += time / 100;
+          scrollCounter++;
+        }
+      }
+
+      function SHS_B(e, sc, eAmt, start) {
+        e.scrollLeft = (eAmt * sc) + start;
+      }
+
+      const onSlideIconUsed = (slideIcon) => {
+        for (const icon of slideIcon.parentElement.querySelectorAll('.slide-icon--current')) {
+          if (!icon.isEqualNode(slideIcon)) {
+            icon.classList.remove('slide-icon--current');
+          }
+        }
+        slideIcon.classList.add('slide-icon--current');
+        const frameId = slideIcon.getAttribute('data-target');
+        const slidesId = slideIcon.getAttribute('data-slides-id');
+        const frameOffset = slideIcon.parentElement.querySelector(frameId).offsetLeft;
+        const slides = slideIcon.parentElement.querySelector(slidesId);
+        smoothHorizontalScrolling(slides, 200, frameOffset - slides.scrollLeft, slides.scrollLeft);
+      };
+      const fragmentIdentifier = window.location.hash.replace(/^.*#/, '');
+      const activeSlideIcon = document.querySelector(`a[data-target$="#${fragmentIdentifier}"]`);
+      if (activeSlideIcon) {
+        onSlideIconUsed(activeSlideIcon);
+      }
+
+      const testimonialsHeaderHighlight = document.querySelector('#testimonials-header-highlight');
+      const foundersHeaderHighlight = document.querySelector('#founder-testimonials-header-highlight');
+
+      const scrollIndexMap = {};
+      const onCarouselScrollGetter = (headerHighlight) => {
+        if (!scrollIndexMap[headerHighlight.id]) {
+          scrollIndexMap[headerHighlight.id] = 0;
+        }
+        let timer;
+        return (e) => {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          const slides = e.target;
+          const offset = slides.scrollLeft;
+          const width = slides.offsetWidth;
+          const leftIndex = Math.floor(offset / width);
+          const rightIndex = Math.ceil(offset / width);
+          const transitionPercent = offset / width - parseInt(offset / width);
+          let index = leftIndex;
+          if (transitionPercent > 0.5) {
+            index = rightIndex;
+          }
+          if (index === scrollIndexMap[headerHighlight.id]) {
+            return;
+          }
+          const icons = slides.parentElement.querySelectorAll('.slide-icon');
+          for (const icon of icons) {
+            icon.classList.remove('slide-icon--current');
+          }
+          icons[index].classList.add('slide-icon--current');
+          animateText(headerHighlight, index);
+          scrollIndexMap[headerHighlight.id] = index;
+        };
+      };
+
+      for (const slideIcon of document.querySelectorAll('.slide-icon')) {
+        slideIcon.addEventListener('click', () => {
+          onSlideIconUsed(slideIcon);
+        });
+      }
+      document.querySelector('#professionals-slides').addEventListener('scroll', onCarouselScrollGetter(foundersHeaderHighlight));
+      document.querySelector('#researchers-slides').addEventListener('scroll', onCarouselScrollGetter(testimonialsHeaderHighlight));
+      animateText(foundersHeaderHighlight, 0);
+      animateText(testimonialsHeaderHighlight, 0);
+    };
+
+    const animateText = (parentHeaderHighlight, index, preventReturnAnimation = false) => {
+      const headerContainer = parentHeaderHighlight.querySelector('.header-highlight__text_container');
+      const headerHighlightTexts = headerContainer.querySelectorAll('.header-highlight__text');
+      if (preventReturnAnimation) {
+        if (index === 0) {
+          headerContainer.style.transition = 'transform 0s';
+        }
+        if (index >= 1) {
+          headerContainer.style.transition = 'transform 0.5s ease';
+        }
+      }
+      const currentText = headerHighlightTexts[index];
+      parentHeaderHighlight.style.width = currentText.clientWidth;
+      parentHeaderHighlight.style.height = currentText.clientHeight;
+      headerContainer.style.transform = `translateY(-${index * currentText.clientHeight}px)`;
+    };
+
+
+    function validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+    async function submitSignupForm(areaSelector) {
+      window.submitted = true;
+      const inputEl = document.querySelector(areaSelector + ' input');
+      const email = inputEl.value;
+      if (!validateEmail(email)) {
+        inputEl.classList.add("invalid");
+        window.submitted = false;
+        return;
+      }
+
+      try {
+        const csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        await fetch('/api/reader_register/', {
+          body: JSON.stringify({email}),
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+          },
+          method: 'POST',
+        });
+        inputEl.disabled = true;
+        document.querySelector(areaSelector + ' .signup-button').textContent = "You're all set :)";
+        inputEl.blur();
+      } catch (e) {
+        console.error(e);
+        window.submitted = false;
+        alert("Failed to sign up -- shoot us an email at hello@readwise.io and we'll get this sorted for you ASAP!");
+      }
+    }
+
+    function onModalResize(entries) {
+      const windowHeight = window.innerHeight;
+      entries.forEach((entry) => {
+        if (entry.contentRect.height < windowHeight) {
+          entry.target.style.bottom = 0;
+        } else {
+          entry.target.style.bottom = 'initial';
+        }
+      });
+    }
+
+
+    function openModal(modalId) {
+      const modal = $(modalId);
+      modal.show();
+    }
+
+    function closeAllModals() {
+      $("#readerSignupModal").hide();
+      $("#readerLoginModal").hide();
+      $("#readerTrialModal").hide();
+    }
+
+    function onClickSignup(areaSelector) {
+      closeAllModals();
+      openModal("#readerSignupModal");
+    }
+
+    function onClickSignin(areaSelector) {
+      closeAllModals();
+      openModal("#readerLoginModal");
+    }
+
+
+    let headerHighlightTextIndex = 1;
+    const titleHeaderHighlight = document.querySelector('#title-header-highlight');
+    const titleHeaderContainer = titleHeaderHighlight.querySelector('.header-highlight__text_container');
+    const titleHeaderHighlightTexts = titleHeaderContainer.querySelectorAll('.header-highlight__text');
+
+    function onResize() {
+      const currentText = titleHeaderHighlightTexts[headerHighlightTextIndex];
+      titleHeaderHighlight.style.width = currentText.clientWidth;
+      titleHeaderHighlight.style.height = currentText.clientHeight;
+      titleHeaderContainer.style.transform = `translateY(-${headerHighlightTextIndex * currentText.clientHeight}px)`;
+      addTopToNavbar();
+    }
+
+    window.onresize = onResize;
+    setInterval(() => {
+      animateText(titleHeaderHighlight, headerHighlightTextIndex, true);
+      headerHighlightTextIndex += 1;
+      if (headerHighlightTextIndex >= titleHeaderHighlightTexts.length) {
+        headerHighlightTextIndex = 0;
+      }
+    }, 3000);
+
+    function setupModals() {
+      $("#show-email-signup").click(function (e) {
+        e.preventDefault();
+        $('#show-email-signup').hide();
+        $('.signup-div').show();
+      });
+      // When the user clicks on <span> (x), close the modal
+      $("span.close").click(function () {
+        $(".standard-modal").css("display", "none");
+        $(".modal").css("display", "none");
+      });
+      // When the user clicks anywhere outside of the modal, close it
+      $(".modal-content").click(function (e) {
+        e.stopPropagation();
+      });
+
+      const modalContents = document.querySelectorAll('.standard-modal-content');
+      modalContents.forEach(contentElement => {
+        new ResizeObserver(onModalResize).observe(contentElement);
+      });
+
+      $(".modal-background").click(function (e) {
+        if ($(this).hasClass('unclosable')) {
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        $(".modal").css("display", "none");
+      });
+      window.onclick = function (event) {
+        if (event.target && event.target.className && typeof event.target.className.indexOf === "function" && event.target.className.indexOf("standard-modal") !== -1 && event.target.className.indexOf("standard-modal-content") === -1) {
+          $(".standard-modal").not('.unclosable').css("display", "none");
+        }
+      };
+    }
+
+    function hasShowBannerParameter() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      return urlParams.get('showBanner')
+    }
+
+    function setupOriginalReadwiseBanner() {
+      const showBanner = hasShowBannerParameter();
+
+      if (!showBanner) {
+        return
+      }
+
+      const originalReadwiseBanner = $('.original-readwise-app-banner-wrapper');
+
+      if (!originalReadwiseBanner.length) {
+        return
+      }
+
+      const shouldShowOriginalReadwiseBannerLocalStorageKey = 'shouldShowOriginalReadwiseBanner';
+      const shouldShowOriginalReadwiseBanner = window.localStorage.getItem(shouldShowOriginalReadwiseBannerLocalStorageKey);
+      const bodyClassWithOriginalReadwiseBanner = 'has-original-readwise-banner';
+
+      if (shouldShowOriginalReadwiseBanner === null || shouldShowOriginalReadwiseBanner === 'true') {
+        window.localStorage.setItem(shouldShowOriginalReadwiseBannerLocalStorageKey, 'true')
+        $('body').addClass(bodyClassWithOriginalReadwiseBanner);
+        originalReadwiseBanner.show();
+        addTopToNavbar();
+      }
+
+      $(".close-original-readwise-banner").click(function () {
+        $('body').removeClass(bodyClassWithOriginalReadwiseBanner);
+        if (originalReadwiseBanner) {
+          originalReadwiseBanner.slideUp(150, function() {
+              $(this).remove();
+              $('.navbar-container').css({ top: 0, paddingTop: 0 });
+          });
+        }
+        window.localStorage.setItem(shouldShowOriginalReadwiseBannerLocalStorageKey, 'false')
+      });
+    }
+
+    // New Reader Access stuff here:
+    $(document).ready(function () {
+      setupModals();
+      setupOriginalReadwiseBanner();
+
+      // Prevent double-click on signup/login forms - targets all forms posting to /accounts/
+      $('form[action*="/accounts/"], #signup-form').submit(function(){
+        var $btn = $(this).find(':submit');
+        $btn.attr('disabled','disabled');
+        // Re-enable after 10s as fallback in case submission is blocked by other handlers
+        setTimeout(function(){ $btn.removeAttr('disabled'); }, 10000);
+      });
+      
+    });
+
+  </script>
+
+  
+
+  </body>
+
+<script>
+  function urlParam(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+      return null;
+    } else {
+      return decodeURI(results[1]) || 0;
+    }
+  }
+
+  $(document).ready(function () {
+    // Apple auth setup:
+    document.addEventListener('AppleIDSignInOnSuccess', function (credential) {
+      var loginDetail = credential.detail;
+      loginDetail.isWebLogin = true;
+
+      // We don't allow apple signups on web, as we want to discourage users making duplicate accounts.
+      // If we did want to, we'd use:
+      // loginDetail.isSignup = true;
+
+      $.ajax({
+        type: "POST",
+        method: "POST",
+        jsonp: false,
+        contentType: 'application/json',
+        dataType: "json",
+        url: '/appleauth/login/',
+        data: JSON.stringify(loginDetail),
+        success: function (data) {
+          if (data.status && data.status === "doesnotexist") {
+            alert("Could not log in to an existing Readwise account. Are you sure you didn't sign up with a different method?");
+          } else {
+            window.location = "/read/authed";
+          }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          alert("Could not log in to an existing Readwise account. Are you sure you didn't sign up with a different method?");
+        }
+      });
+    });
+  });
+</script>
+<script type="text/javascript"
+        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+</html>

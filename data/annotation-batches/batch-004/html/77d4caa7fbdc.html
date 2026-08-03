@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shirt Pocket Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css?v=1784744508">
+<link rel="stylesheet" href="/css/blog.css?v=1784744508"></head>
+<body class="" style="background:#eef1f6;">
+<div class="sp-page" style="background:#eef1f6;">
+  <!-- NAV -->
+  <div class="sp-nav">
+    <a href="/" class="sp-nav-logo">
+      <svg viewBox="0 0 44 48" width="30" height="33" class="sp-logo-mark" aria-label="Shirt Pocket">
+        <path d="M7 11 H33 A4 4 0 0 1 37 15 V31 A10 10 0 0 1 27 41 H17 A10 10 0 0 1 7 31 Z" fill="#eef4fa" stroke="#2c6fa8" stroke-width="2.6" stroke-linejoin="round"></path>
+        <path d="M7 19 H37" fill="none" stroke="#2c6fa8" stroke-width="2.3"></path>
+        <path d="M27 25 L32 9" fill="none" stroke="#232b38" stroke-width="3" stroke-linecap="round"></path>
+        <circle cx="32.6" cy="8" r="2.5" fill="#2c6fa8"></circle>
+      </svg>
+      <span class="sp-brand--nav">Shirt&nbsp;Pocket</span>
+    </a>
+    <div class="sp-nav-links">
+      <a href="/superduper4.php" class="sp-nav-link">SuperDuper! 4</a><a href="/classic.php" class="sp-nav-link">Classic</a><a href="/blog/" class="sp-nav-link is-active" aria-current="page">Blog</a>      <a href="mailto:support@shirt-pocket.com" class="sp-nav-link">Support</a>
+      <a href="/downloads/SuperDuper.dmg" class="sp-btn-primary sp-nav-download">Download</a>
+    </div>
+  </div>
+  <header class="sp-blog-header">
+    <div class="sp-eyebrow">Shirt Pocket Watch</div>
+    <h1 class="sp-blog-title">The blog</h1>
+    <p class="sp-blog-intro">Where I humiliate myself in public: release notes, backup deep-dives, and various and sundry other things that strike my fancy.</p>
+  </header>
+    <div class="sp-blog-tools" aria-label="Blog tools">
+    <div class="sp-tool-links">
+      <a class="sp-tool-link is-active" href="/blog/">Latest</a>
+      <a class="sp-tool-link " href="/blog/archives">Archives</a>
+      <a class="sp-tool-link " href="/blog/categories">Categories</a>
+      <a class="sp-tool-link" href="/blog/feed">RSS</a>
+    </div>
+    <form class="sp-search-form" method="get" action="/blog/search">
+      <label for="sp-search">Search the blog</label>
+      <input class="sp-search-input" id="sp-search" type="search" name="q" value="" placeholder="Search the blog">
+      <button class="sp-search-submit" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="sp-content">
+    <div class="sp-post-list">
+        <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2026-08-02">August 2, 2026</time>
+              <a class="sp-category" href="/blog/category/News">News</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Usability">Usability</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/dog_dazed">Dog Dazed</a></h1>
+    <div class="sp-post-body"><h1>Executive Summary</h1>
+
+<p>SuperDuper! 4.0.1 now available in-app, and as a <a href="/downloads/SuperDuper.dmg">direct download</a>.</p>
+
+<h1>Never have I ever</h1>
+
+<p>Never have I ever released a major version without following it up with a &#8220;quick fix&#8221; release. The saying is true: no plan survives an encounter with the public.</p>
+
+<p>Or, as Mike Tyson said, everyone has a plan &#8216;til they get punched in the mouth.</p>
+
+<p>So, thanks for punching me, oh-so-lightly, in the mouth. More like a love tap. Because things are working better than I&#8217;d hoped, given the sheer amount and complexity of the new code (namely, <strong>all</strong> of it).</p>
+
+<p>Also, and I don&#8217;t say this enough, thank you to everyone who reached out to send a kind word. Developing something like this in relative secrecy can be lonely, as you wonder whether changes <strong>this</strong> extensive are going to hit folks as a good thing, Release day itself is full of detail work, and I was doing a lot more than just posting a build: a whole new website, self-implemented blog engine, dynamic page release notes&#8230;it was quite a lot!</p>
+
+<p>But now that it&#8217;s all finally out in the wild, the positive feedback has been encouraging, and I really appreciate the time each of you spent to send it in. Thanks.</p>
+
+<h1>The windup, and the pitch</h1>
+
+<p>So, you might ask, with all that said, what&#8217;s wrong, then? Well:</p>
+
+<ul>
+<li>There was a timing related issue with <code>Backup on connect</code> that caused a backup to fail, before it started, if the APFS container mounted quickly, but its volumes mounted slowly.</li>
+<li>In some situations, <code>Backup on connect</code> would only work once until the server was restarted.</li>
+<li>An encrypted drive would fail to unlock if there were bad credentials in the keychain along with good ones.</li>
+<li>I missed a few time localizations (embarrassing; sorry, non-US folks).</li>
+</ul>
+
+<p>And that&#8217;s it. So far. Let&#8217;s hope it stays that way!</p>
+
+<p>The new update is available in-app, of course, or you can <a href="/downloads/SuperDuper.dmg">download and install manually</a>.</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/dog_dazed">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2026-08-01">August 1, 2026</time>
+              <a class="sp-category" href="/blog/category/News">News</a>
+              <a class="sp-category" href="/blog/category/Personal">Personal</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/supererduperer">SupererDuperer</a></h1>
+    <div class="sp-post-body"><h3>Executive Summary</h3>
+
+<p>Brand new, top-to-bottom rewrite of SuperDuper <a href="/downloads/SuperDuper.dmg">now available</a>.</p>
+
+<h3>All the Details</h3>
+
+<p>22 years.</p>
+
+<p>SuperDuper has had an impressive run. It has lasted, in its original form, for longer than any other product I&#8217;ve ever been involved with over the (so far) 43 years of my working career. Somehow, Shirt Pocket—and SuperDuper—has been more than half of that.
+Over those years, most of the design decisions made way back in 2004 have proven to withstand the test of time:</p>
+
+<ul>
+<li>The text-based <strong>What&#8217;s going to happen?</strong> section;</li>
+<li>The status view that clearly shows the process that&#8217;s taking place during the copy, ticking off the steps as it goes along;</li>
+<li>The minimal number of options that let you stay focused on the task at hand.</li>
+</ul>
+
+<p>At the same time, some choices constrained what the program could do:</p>
+
+<ul>
+<li>It was document-based, which made sense at the time, but wasn&#8217;t really how users thought about the process;</li>
+<li>Scheduling was a bit of a bolt-on (and suffered from a <a href="/blog/index.php/shadedgrey/comments/the_usability_test/"><strong>disastrous</strong> initial usability test</a> before release), driving the interface through scripting (RIP AppleScript, hello direct event dispatch from Swift) and isolating its details in a separate window, divorced from the source;</li>
+<li>Copy failures, while rare, basically gave a &#8220;whoops&#8221; and asked users to examine a log filled with technical details of the error;</li>
+<li>Only &#8220;native&#8221; Apple file systems were supported (HFS+ and APFS);</li>
+<li>And some concepts, like the Sandbox—great in the days of macOS before the Sealed System Volume—were rendered obsolete, sent to the <a href="https://youtu.be/KJDDrKX4xOw">land of wind and ghosts</a> by Apple&#8217;s relentless forward march.</li>
+</ul>
+
+<p>I could go on: products are a combination of good and bad, of success and failure, and I learned to live with the (mostly good!) balance.</p>
+
+<h3>Dreams Become Reality</h3>
+
+<p>Back in 2007, I designed what was intended to be SuperDuper v3.0. It was a rewrite that greatly expanded its capabilities while retaining its essence.</p>
+
+<p>But, in those days, it just wasn&#8217;t possible for us to implement those grand plans. The new UI was much more complex, the logic more elaborate, and the systems we had then didn&#8217;t support the things needed to make it a reality without a lot of complex coding we didn&#8217;t have time for.</p>
+
+<p>On top of that, macOS itself was a moving target (and still is!): adding and deprecating features; completely changing the file system; locking down the OS; supporting not just one change in CPU, but <strong>three</strong>.</p>
+
+<p>With a tool so tied to how the system operated at a low level, it was a lot of work just <strong>keeping up</strong> with what Apple was doing.</p>
+
+<p>So, I put the notebook with that design in it on a shelf.</p>
+
+<p>For nearly 20 years.</p>
+
+<p>Today, I&#8217;m happy to say that I&#8217;ve <strong>finally</strong> been able to carve out enough time to grab that &#8220;old&#8221; redesign, flesh it out further, modernize it, and make that dream a reality.</p>
+
+<h3>Welcome to SuperDuper! 4</h3>
+
+<p><img src="/blog/assets/media/2026/07/shot-hero.png" alt="SuperDuper! 4" /></p>
+
+<p>The new version of SuperDuper is a ground-up rewrite, a tip-to-tail reinvention of what SuperDuper looks like, how it works, what it can do, and where I can take it in the future.</p>
+
+<p>The new version feels different, yet familiar. The successful elements of SuperDuper&#8217;s design, like <strong>What&#8217;s going to happen?</strong> and the status view, are still there, but they&#8217;ve been refreshed and modernized.</p>
+
+<p>Documents have been retired and replaced with <strong>Copy Jobs</strong>, which are stored internally and organized by source. If you want to copy <code>Macintosh HD</code>, that&#8217;s where you start. Click, and you&#8217;re presented with one or more template copy operations, or you can start from scratch.</p>
+
+<p>Configuration is done right inline by clicking bold, underlined link elements and selecting options from pop-ups. The effect of your choices is immediately reflected in <strong>What&#8217;s going to happen?</strong>, ensuring you know what to expect when you click Copy Now.</p>
+
+<h3>Preview</h3>
+
+<p>And if you&#8217;re still unsure, you can safely see what&#8217;s going to happen&#8230;for <strong>real</strong>. Click the Preview button and SuperDuper will run the copy <strong>without making changes</strong> and present you with a report that shows exactly what <strong>would</strong> have been updated, added, deleted, etc., had this been a real run.</p>
+
+<h3>Blazing Speed!</h3>
+
+<p>Once you decide it&#8217;s time to make the copy, SuperDuper 4 is <strong>much</strong> faster than before. And I&#8217;m not just talking 20% or 30% faster. Smart Updates are between 2x and, with the new <strong>Turbo</strong> feature, <strong>an order of magnitude</strong> faster.</p>
+
+<p>As an example, my typical nightly Smart Update, of an 8-million-file volume, about 2.5TB of data, used to take around 40 minutes to run.</p>
+
+<p>Without Turbo, it now takes about 20 minutes. But with Turbo&#8230;it&#8217;s only about a <strong>minute</strong>.</p>
+
+<p><strong>One minute</strong>. OK, <strong>yes</strong>, sticklers—that&#8217;s actually quite a bit <strong>more</strong> than an order of magnitude. ¯&#92;&#95;(ツ)&#95;/¯</p>
+
+<h3>History</h3>
+
+<p>Successful and failed runs are shown at the bottom of the copy job, with color-coded dots that can be clicked to display details.</p>
+
+<p>If scheduled, a clear indication of when the next run will occur is there as well. And for those going for the Guinness Book of Backup Records, there&#8217;s an indication of how many successful runs this job has done in a row.</p>
+
+<h3>No UI Needed</h3>
+
+<p>At a technical level, SuperDuper has been split into a &#8220;helper&#8221; or &#8220;server&#8221;, which runs the copy, and an interface, which is the part you interact with. That means that, once registered, you can quit the SuperDuper application and your backups will still run. They&#8217;ll even run if you log out!</p>
+
+<p>It also means that a scheduled copy doesn&#8217;t suddenly show the interface. It just happens, in the background.</p>
+
+<p>If a copy is in progress, re-opening the app will show you the status and progress of the copy—and while a copy is going on, a menu bar item is present to show a compressed view of the same information.</p>
+
+<h3>Many Copies at Once</h3>
+
+<p>You can run any number of copies at the same time. If you have four backups you need to do, just click Copy Now for each, and they&#8217;ll all run simultaneously.</p>
+
+<p>Have four backups scheduled to run at 4am? They&#8217;ll all run at that time, rather than back to back.</p>
+
+<h3>File Systems and Folders</h3>
+
+<p>SuperDuper 4 now supports copying to and from any file system the Mac supports.
+Using a &#8220;Photos&#8221; drive with both Windows and Mac that&#8217;s formatted as exFAT? No problem: you can copy it.</p>
+
+<p>Need to copy your Documents folder to &#8220;Documents Backup&#8221; on a NAS? Now you can.</p>
+
+<p>Have a network volume that you want to copy to a local folder? SuperDuper 4 can do it.</p>
+
+<h3>Copy Rules</h3>
+
+<p>Copy Scripts have been replaced by Copy Rules. Now, you can easily create rules that can select files and folders from the source or destination for special handling. Need to ensure that a specific folder is never written to or deleted? You can do that with a few clicks.</p>
+
+<p>Want to exclude any folder named <code>Caches</code> in <code>/Library</code>? No problem. And you can see the effect of your rule as you create it, so you can be sure you&#8217;ve done the right thing.</p>
+
+<h3>No More Shell Scripts</h3>
+
+<p>I&#8217;ve added Shortcuts support, so you can create a shortcut that runs before or after a copy, on success, or on error. Want to send an email on success or failure? Beep when copies are done? It&#8217;s now easy, and with Golden Gate&#8217;s Apple Intelligence shortcut support, anyone can do it.</p>
+
+<p>Or, at least, probably anyone.</p>
+
+<p>And if you still want to run a shell script, you can&#8230;from the shortcut.</p>
+
+<h3>Speaking of Shortcuts</h3>
+
+<p>Not only does SuperDuper let you call a shortcut from a copy—you can create, run, and check on a copy job <strong>from a shortcut</strong>!</p>
+
+<p>If you have an unusual workflow—say, you want to copy any SD card with photos on it to a folder named after that card—you can now do it with a few clicks.</p>
+
+<h3>&#8230;And So Much More</h3>
+
+<p>This is already (much) too long, but there&#8217;s so much new stuff that I&#8217;ve been wanting to show you. I hope you&#8217;re as excited to use this as I am to get it into your hands after all this time.</p>
+
+<h3>System Requirements</h3>
+
+<p>SuperDuper 4 requires macOS 14 (Sonoma) or later. SuperDuper 3 is still available for those who need to copy under macOS 13 (Ventura) or earlier.</p>
+
+<h3>Upgrades</h3>
+
+<p>In all the years SuperDuper has been on the market, we&#8217;ve never charged for updates and never even raised the price. That&#8217;s 22 years of free updates.</p>
+
+<p>SuperDuper 4 is a totally new version, far more capable than before, and as such, I&#8217;ve decided this is going to be its first paid upgrade. I&#8217;ve also adjusted the price for inflation since 2004. So it&#8217;s still the same bargain it was back when it was first released, but in today&#8217;s dollars.</p>
+
+<p>SuperDuper 4 is <strong>free</strong> for qualifying recent purchases. Other SuperDuper 3 customers who purchased after July 31, 2020, receive an upgrade discount of up to 30%, based on purchase date.</p>
+
+<p>As before, even without a license, you can make full, bootable backups for free, and I (yes, it&#8217;s really me, I work too much) provide support for both registered and unregistered users.</p>
+
+<h3>Dinner&#8217;s Served</h3>
+
+<p>I&#8217;ve been looking forward to this day for a <strong>long</strong> time, and now that the day has finally arrived, I&#8217;m excited to see what you think. Reach out to support if you have any questions, praise, or, if you must, complaints.</p>
+
+<p>And please register or upgrade! The only way I can continue to do this is with your financial support. If you like SuperDuper, share the love and tell your friends!</p>
+
+<p>With that:</p>
+
+<p><a href="/downloads/SuperDuper.dmg">Download SuperDuper 4</a></p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/supererduperer">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2026-01-29">January 29, 2026</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/superduper_v312_now_available">SuperDuper v3.12 Now Available!</a></h1>
+    <div class="sp-post-body"><p>We&#8217;re happy to announce the release of SuperDuper v3.12 (with a forthcoming, identical update to the v3.20 Beta), which has a number of improvements, bug fixes, and a fix for security issue CVE-2025-69604. This version is available through the normal update mechanism in SuperDuper, or you can download it from <a href="/downloads/SuperDuper!.dmg">here</a>.</p>
+
+<h3>Security First - CVE-2025-69604</h3>
+
+<p>Let&#8217;s discuss the security issue first. In SuperDuper v3.11 and earlier, a 3rd party could construct an installer package that did something malicious. They could then modify the settings to install this package, allowing root access.</p>
+
+<p>The package install step was initially designed to be a convenient way to install an OS update on a copy. This is rarely done these days, so rather than fix this the way we fixed &#8220;shell script&#8221; execution and force &#8220;root&#8221; ownership of the installer package, we decided to remove the option completely.</p>
+
+<p>As with the &#8220;shell script&#8221; fixes in v3.11, a user can see that this has happened because it&#8217;s specifically referenced in &#8220;What&#8217;s going to happen?&#8221;, so if you&#8217;re running a version of SuperDuper prior to v3.12, and see an unexpected section saying a package will be installed, turn that option off in the Advanced tab of Options.</p>
+
+<p>We&#8217;ve added this CVE information to the <a href="/blog/index.php/shadedgrey/comments/superduper_security_update_v311/">security discussion</a> posted earlier.</p>
+
+<h3>Improvements Second</h3>
+
+<p>Due to the accelerated release of v3.11, which was a mid-development &#8220;branch&#8221; to address the security issues involved, in our haste to get the update out, we were unable to fully test some of the changes in that release. Alas, this resulted in some corner-case crashes, which we&#8217;ve fixed.</p>
+
+<p>We also found a longstanding issue where, in some unusual circumstances, we weren&#8217;t reliably detecting a read error on some source files. We&#8217;ve fixed that as well.</p>
+
+<p>We&#8217;ve made some improvements to our scheduler to help mitigate some of the Tahoe &#8220;stalling during Dark Wake&#8221; problems. They&#8217;re not 100%, but things are better, and we&#8217;re investigating additional improvements for the next update.</p>
+
+<p>Finally. there are some other little fixes in there (a Dark Mode issue, a goof in the &#8220;amount of data deleted&#8221; statistic) as well.</p>
+
+<h3>Work Continues</h3>
+
+<p>We&#8217;re still hard at work on additional Tahoe improvements&#8230;so back to it.</p>
+
+<p>Thanks, as always, for using SuperDuper!</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/superduper_v312_now_available">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-11-18">November 18, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/superduper_security_update_v311">SuperDuper Security Update v3.11</a></h1>
+    <div class="sp-post-body"><p>Mistakes are a part of life.</p>
+
+<p>They&#8217;re not a great part, but when viewed &#8220;correctly&#8221;, they&#8217;re an opportunity.</p>
+
+<p>Well, we have three opportunities, brought to our attention by a security researcher. They&#8217;re security vulnerabilities that have been in SuperDuper! since the very first version, released almost 22 years ago.</p>
+
+<p>Today, we&#8217;re releasing fixes for the current release (the SuperDuper! v3.20 Beta is already fixed), a discussion of the problems, and the steps users can take to mitigate the issues if they cannot install the update.</p>
+
+<p>We don&#8217;t know of any bad actors making use of these exploits as of this post.</p>
+
+<h3>Mistake #1 (CVE-2025-61228)</h3>
+
+<p>Our auto-update mechanism can be hijacked and convinced to install a package that isn&#8217;t SuperDuper.</p>
+
+<p>Even though we signed and notarized our installer package, Gatekeeper is not checking that notarization when installed by macOS&#8217;s package installer. As such, the download could be changed, and we&#8217;d install that instead. Since the install is being done with escalated privileges, that could allow a malicious 3rd party&#8217;s program, which you would also have to install, to gain administrator access to your system.</p>
+
+<p>This can only happen if a program running on your system is <strong>looking</strong> for SuperDuper to perform an update, a <strong>real</strong> update is presented through legitimate means, and you click <strong>Upgrade</strong>.</p>
+
+<p>To fix this, we&#8217;ve done three things:</p>
+
+<ol>
+<li><p>We&#8217;ve put out an update, which you may have seen before reading this post, that explains that the fixed version of SuperDuper, v3.11, should be downloaded and installed directly from the Shirt Pocket web site&#8230;and the <strong>Upgrade</strong> button, at the bottom of the window, should <em>not</em> be pressed.</p></li>
+<li><p>We&#8217;ve changed our updater to validate the signature and notarization of the install package ourselves before installing the update.</p></li>
+<li><p>After this announcement, we will not present update notices for any version of SuperDuper prior to v3.11 unless absolutely necessary, and in those cases we will clearly indicate, as we have here, that the user should <em>not</em> click <strong>Upgrade</strong>. Users who cannot install the update can prevent these notices from appearing  by turning off automatic updates in SuperDuper&#8217;s preferences.</p></li>
+</ol>
+
+<h3>Mistake #2 (CVE-2025-57489)</h3>
+
+<p>When the lock in SuperDuper is unlocked to allow execution to occur without having to enter an administrator password, a 3rd party program could make use of our authorization to run something other than a backup with administrator privileges.</p>
+
+<p>Again, this can only happen if you install something that is, itself, malicious. And it&#8217;s one mechanism of many that could be used by a bad actor to gain &#8220;root&#8221; access on your system. But this one is due to our error.</p>
+
+<p>To fix it, as above, we&#8217;ve done three things:</p>
+
+<ol>
+<li><p>In the same update notice, we&#8217;ve instructed people to install SuperDuper v3.11, downloaded directly from the web site.</p></li>
+<li><p>We&#8217;ve changed our program to validate that the commands being executed with escalated privileges are actually coming from our own, known, sealed, signed source.</p></li>
+<li><p>Users who <strong>cannot</strong> run the new version can lock the lock in the main window, which closes the security hole.</p></li>
+</ol>
+
+<p>While the new SuperDuper v3.11, released today, ensures that all users who could run v3.10 are no longer vulnerable, one problem remains: we cannot fix older versions of SuperDuper. There are versions of SuperDuper available for macOS versions as early as 10.1, and we have no way to rebuild them. On top of that, we cannot &#8220;patch&#8221; the faulty element, because SuperDuper itself ensures that it&#8217;s unmodified before running, and would refuse to run at all if patched.</p>
+
+<p>Unfixed versions can be made secure by locking the lock in the main window. However, doing so means scheduled backups will not run: with the lock locked, all backups must be made by manually running SuperDuper.</p>
+
+<h3>Mistake #3 (CVE-2025-61229)</h3>
+
+<p>User-settable Before/After shell scripts run escalated, with SuperDuper&#8217;s TCC Full Disk Access permissions. Since those shell scripts are referenced by the settings files for the copy or schedule, a malicious actor could modify those settings to run their own script.</p>
+
+<p>As before, this would require another malicious program to be installed.</p>
+
+<p>To mitigate this vulnerability, in v3.11 we&#8217;ve made two changes:</p>
+
+<ol>
+<li><p>Before/After shell scripts are forced to run with the user&#8217;s ID and privileges. Individuals who require alternative execution contexts can do so through normal Unix methods such as <code>suid</code>.</p></li>
+<li><p>Scripts must be owned by the root user, even when run in the normal user&#8217;s context. This ensures that any script that would run has been explicitly authorized by an administrative user.</p></li>
+</ol>
+
+<p>Note that these Before/After scripts are explicitly referenced in the <strong>What&#8217;s going to happen?</strong> section of the main window. Users who cannot update to v3.11 are advised to review that information before pressing <strong>Copy Now</strong> to ensure no unexpected entries are present.</p>
+
+<h3>Mistake #4 (CVE-2025-69604, addressed in v3.12)</h3>
+
+<p>In SuperDuper v3.11 and earlier, a 3rd party could construct an installer package that did something malicious. They could then modify the user&#8217;s settings to install this package, allowing root access.</p>
+
+<p>The package install step was initially designed to be a convenient way to install an OS update on a copy. This is rarely done these days, so rather than fix this the way we fixed &#8220;shell script&#8221; execution and force &#8220;root&#8221; ownership of the installer package, we decided to remove the option completely.</p>
+
+<p>As with the &#8220;shell script&#8221; fixes above, a user can see that this has happened because it&#8217;s specifically referenced in &#8220;What&#8217;s going to happen?&#8221;, so if you&#8217;re running a version of SuperDuper prior to v3.12, and see an unexpected section saying a package will be installed, turn that option off in the <strong>Advanced</strong> tab of <strong>Options</strong>.</p>
+
+<h3>Practical Considerations</h3>
+
+<p>People running old versions of macOS, with old versions of SuperDuper, on old Macs, are exposed to <em>many</em> security vulnerabilities, from web pages that can gain escalated privileges due to bugs in Safari or its sandbox, to other errors in the kernel that can do the same. These errors, when found, are fixed, but those fixes are not available to earlier macOS versions. Once a Mac becomes &#8220;vintage&#8221;, or a version of macOS is no longer supported, security updates are no longer provided, and those issues persist.</p>
+
+<p>On a system where we cannot provide a fix, you have to make a judgement call after balancing the risks of this flaw being exploited, in your personal situation, versus the inconvenience of having to manually perform backups.
+If you do not install malicious programs from sketchy sources after these vulnerabilities have been disclosed, you are at the same level of risk you were at before, especially since you were <strong>already</strong> at risk from actors who could exploit your unsupported OS without installing another application, such as by simply visiting a web page.</p>
+
+<p>However, if you feel the additional risk is too great, you can lock the lock, set a scheduled reminder via iCal, and perform your backups manually (and, of course, you can, and should, use Time Machine as well).</p>
+
+<h3>Arrgh-arrgh-arrgh-arrgh (argh)</h3>
+
+<p>This post obviously uses a more serious tone than you may be used to on the blog.</p>
+
+<p>We take security and safety extremely seriously here—if we didn&#8217;t, we wouldn&#8217;t have made a backup program—and, to be frank, feel frustrated and ashamed that our program can be exploited to make your system less safe.</p>
+
+<p>We&#8217;ve taken the steps needed to fix the bugs, inform our valued users, registered or not, about the problems, and have explained how to mitigate them on any version of SuperDuper, old or new. As previously mentioned, and as far as we are aware, these vulnerabilities have not been exploited by a bad actor (which does not mean they can&#8217;t be, of course).</p>
+
+<p>We&#8217;d like to thank the anonymous security researcher who brought these bugs to our attention, and for working with us to verify that our fixes have corrected the errors they found.</p>
+
+<p>Finally, we&#8217;d like to take this opportunity to apologize to all our users for these bugs. We <strong>hate</strong> making mistakes. We&#8217;re truly sorry for these, and will continue to do our best to put out versions of SuperDuper that you can trust as one method, of many, to keep your data safe.</p>
+
+<p>Thanks for reading, and for using SuperDuper. We couldn&#8217;t continue to do this without you.</p>
+
+<p>&#8212;Dave Nanian &amp; Bruce Lacey</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/superduper_security_update_v311">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-09-10">September 10, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/three_steps_forward">Three Steps Forward</a></h1>
+    <div class="sp-post-body"><p>So, Tahoe.</p>
+
+<p>As you&#8217;ve seen here, we&#8217;ve had a series of Betas that have focused on compatibility, fixing some longstanding-but-minor bugs, and adding some enhancements.</p>
+
+<h3>The Best Laid Plans</h3>
+
+<p>We had some additional things in mind for this cycle, which is why we had given it a major version number change - v4.0.</p>
+
+<p>This beta version, though, is v3.20, and the reason is quite simple: we ran into enough compatibility roadblocks and similar things in Tahoe that we just didn&#8217;t have enough time to create a reliable version of the new stuff.</p>
+
+<h3>That Said&#8230;</h3>
+
+<p>This new Beta is another nice little advancement over the last one, with some fixes for low-contrast items in dark mode, internal changes that improve compatibility, some little tweaks like adding the ability to open the <code>Copy Scripts</code> folder (which is in <code>~/Library/Application Support/SuperDuper!</code>) from the File menu (rather than dealing with the hidden <code>Library</code> folder mess).</p>
+
+<h3>Coverage</h3>
+
+<p>You may have noticed, if you&#8217;re running under pre-release versions of Tahoe, that you were offered the Beta automatically, so that you could continue to use SuperDuper! without running into compatibility issues during the Tahoe Beta.</p>
+
+<p>This was enthusiastically welcomed, which is nice, and also ensured we had as much testing coverage possible during the Developer and Public Beta periods.</p>
+
+<p>So, thanks to everyone who installed it - you helped make a better release.</p>
+
+<h3>Automagic</h3>
+
+<p>As always, this update will be offered automatically if you&#8217;re running a Beta version of SuperDuper! or Tahoe. Or, you can</p>
+
+<p><a href="/downloads/SuperDuper!+v3.20+B3.dmg">Download SuperDuper! v3.20 B3</a></p>
+
+<p>Thanks for using SuperDuper!</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/three_steps_forward">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-08-13">August 13, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/deeper_into_tahoe">Deeper Into Tahoe</a></h1>
+    <div class="sp-post-body"><p>A quick update with some minor changes, but one thing we&#8217;ve never done before.</p>
+
+<p>We&#8217;ve automatically offering this Beta update to any user who is running SuperDuper! <strong>and</strong> a Tahoe Beta.</p>
+
+<p>We think it&#8217;s important for <strong>all</strong> users running Tahoe to run the SuperDuper Beta, since there are specific fixes in there that deal with Tahoe peculiarities. Since they&#8217;ve already opted in to the Tahoe Beta, we figure they should also opt in to the SuperDuper Beta that supports it.</p>
+
+<p>It&#8217;s not forced, of course: it&#8217;s just an update like any other. But we <strong>strongly encourage</strong> all Tahoe users to install it.</p>
+
+<p>Of course, you can also install it manually, if you:</p>
+
+<p><a href="/downloads/SuperDuper!+v4.0+B2.dmg">Download SuperDuper! v4.0 B2</a></p>
+
+<p>Enjoy!</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/deeper_into_tahoe">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-07-25">July 25, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/v40_beta_1_now_available">v4.0 Beta 1 Now Available</a></h1>
+    <div class="sp-post-body"><p>When I write a blog post, I try to put some generally useful information along with the &#8220;required&#8221; stuff. And when it came to writing the v3.10 post, I just couldn&#8217;t come up with anything worth writing about; everything was discussed in the previous posts.</p>
+
+<p>But today, we&#8217;ve got our first Beta of v4.0 (trumpets)!</p>
+
+<p><a href="/downloads/SuperDuper!+v4.0+B1.dmg">Download SuperDuper v4.0 B1</a></p>
+
+<p>A little tidbit first, though.</p>
+
+<h3>Flooding the Zone</h3>
+
+<p>As I&#8217;ve discussed <a href="/blog/index.php/shadedgrey/comments/wgth_ssds_redux/">in the past</a>, we&#8217;ve noticed situations where folders with a lot of files in them are <strong>extremely</strong> slow to deal with.</p>
+
+<p>We&#8217;ve seen this on pre-BigSur systems with the mdworker folders, which can have millions of folders and files in them.</p>
+
+<p>We&#8217;ve also seen it with people who had Fitbit installed: their drivers crashed constantly on later OS versions and filled their folder with crash logs.</p>
+
+<p>Today, we&#8217;ve found a new case. A user with Sequoia 15.4.1 on Intel, completely up to date, reported SuperDuper was running slowly. Our new <a href="/blog/index.php/shadedgrey/comments/wrapping_up_v310/">trace capability</a> showed quite clearly that the folder we were working on was</p>
+
+<p><code>~/Pictures/Photos Library.photoslibrary/database/search/Spotlight/SpotlightKnowledgeEvents/index.V2/journals/12/cs_default</code></p>
+
+<p>And that&#8217;s a folder I don&#8217;t have. When the user navigated to it at first, he said it was &#8220;empty&#8221;&#8230;which was weird. But later, he noticed that there was a spinner at the bottom of the Finder window. I asked him to wait, and >24 hours later, he finally got a list of files.</p>
+
+<p><strong>6,166,838 of them.</strong></p>
+
+<p>That&#8217;s right. 6,166,838 files. Generated by Spotlight. In one folder. Growing daily.</p>
+
+<p>So, the new <a href="/blog/index.php/shadedgrey/comments/wrapping_up_v310/">&#8220;WTFIH&#8221; feature</a>, in introduced in v3.10, is proving useful. What&#8217;s going on with that user&#8217;s Spotlight, though&#8230; yikes.</p>
+
+<h3>Back to Beta</h3>
+
+<p>This first Beta version is primarily focused on Tahoe compatibility. Things are looking good, and bootable backups work as expected.</p>
+
+<p>Of course, we&#8217;ve been polishing and improving a number of things over the past few months as well.</p>
+
+<p>For example, we added the number of files being deleted from the destination to the &#8220;runtime statistics&#8221; in the Status View. Of course, we&#8217;ve always know that we were &#8220;deleting files&#8221; (after all, that&#8217;s part of a Smart Update when files are removed from the source), but left it out of the stats so we didn&#8217;t panic users.</p>
+
+<p>We&#8217;ve added it in (for now) to see how people react. It&#8217;s useful in that deletion is a (surprisingly) slow operation, and if we&#8217;re deleting a folder of stuff, it may look like SuperDuper is &#8220;stuck&#8221; when it&#8217;s not.</p>
+
+<p>This new count allow users to see that something is happening&#8230;and hopefully they won&#8217;t think it&#8217;s something scary.</p>
+
+<h3>Window (?) Menu</h3>
+
+<p>We also made another change that we&#8217;ve been resisting for some time, but actually makes sense.</p>
+
+<p>The <strong>Window</strong> menu has a <strong>Show Log</strong> command that was designed to show the logs for the current copy window (i.e. the &#8220;Main Window&#8221;). That&#8217;s easy enough.</p>
+
+<p>But when the Scheduled Copies window is active, each schedule (and you can have any number of them) has its own log, and it always felt like you weren&#8217;t getting the &#8220;log for the window&#8221;, but rather the log &#8220;for the selected copy&#8221;, and so there&#8217;s a <strong>Show Log</strong> that operates on the selection&#8230;as opposed to the window.</p>
+
+<p>People, though, would often use <strong>Window > Show Log</strong>, the &#8220;wrong&#8221; log would come up (from the main window), and get confused.</p>
+
+<p>So, now, it brings up the log for the main window, if it&#8217;s in front, or the selected schedule, if that&#8217;s in front.</p>
+
+<p>I think that meets user expectations better, even if it&#8217;s a bit conceptually weird.</p>
+
+<h3>Liquid (Gl)ass</h3>
+
+<p>There are obviously a kajillion (= 100 bazillion) changes in Tahoe, and the most visible one is the new Liquid Glass theme.</p>
+
+<p>You may notice that SuperDuper does not implement it.</p>
+
+<p>There are some controls in SuperDuper (such as the Copy Now button with the snapshot selector) that don&#8217;t render well in the new, ass-ified theme.  Apple&#8217;s own use of a similar control (the PDF selector in the Print menu) looks better when it&#8217;s not the default button (because the blobs aren&#8217;t weird and oversized), but you can see things going wrong when you click on the pop-up, where the highlight exceeds the button size, has a &#8220;waist&#8221;, etc. Blergh.</p>
+
+<p>We&#8217;re trying to find a solution, but until then, enjoy the fact that your window has more space for content that isn&#8217;t covered up by weird translucent blobs.</p>
+
+<p><a href="https://mas.to/@dnanian/114847119747544172">I</a> <a href="https://mas.to/@dnanian/114837355960453580">guess</a> <a href="https://mas.to/@dnanian/114813166480300659">I</a> <a href="https://mas.to/@dnanian/114739499150359028">have</a> <a href="https://mas.to/@dnanian/114735829890772863">opinions</a> <a href="https://mas.to/@dnanian/114700313752687002">about</a> <a href="https://mas.to/@dnanian/114696123287304609">Liquid</a> <a href="https://mas.to/@dnanian/114695546445028389">(Gl)ass</a>&#8230;</p>
+
+<h3><a href="/blog/index.php/shadedgrey/comments/the_best_ui_is_no_ui/">Waking the Neighbors</a> Redux</h3>
+
+<p>Another thing we&#8217;ve found during the Developer Beta period is that scheduled copies will sometimes bring up the main window, start the backup, but never be able to launch the actual copy process.</p>
+
+<p>This seems to have to do with &#8220;Dark Wake&#8221;: if the system is in, basically, &#8220;Power Nap&#8221; and is running dark processes, and SuperDuper starts, we&#8217;re unable to run properly/completely, because the system doesn&#8217;t transition out of Dark Wake, and there are special requirements and entitlements needed to run in that mode.</p>
+
+<p>As a workaround, SuperDuper will turn on the screen, if it&#8217;s off-but-awake&#8230;until we find a better solution.</p>
+
+<h3>More to Come</h3>
+
+<p>That&#8217;s part of what we&#8217;ve been working on, with more to come. And I&#8217;ll have more to say about that as the summer winds on&#8230;but until then</p>
+
+<p><a href="/downloads/SuperDuper!+v4.0+B1.dmg">Download SuperDuper v4.0 B1</a></p>
+
+<p>Enjoy, and let us know if you have any problems, suggestions, issues, or just want to say hi.</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/v40_beta_1_now_available">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-04-16">April 16, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/wrapping_up_v310">Wrapping Up v3.10</a></h1>
+    <div class="sp-post-body"><h3>tl;dr</h3>
+
+<p>SuperDuper! v3.10 B5 now available with minimal changes.</p>
+
+<h3>Medium Hanging Fruit</h3>
+
+<p>I discussed the speed of drives in the last post, not just to suggest that people use SSDs (which you should), but also to bring up the issue of &#8220;stalling&#8221;: situations where it looks like SuperDuper! isn&#8217;t doing anything, because accessing the drive is going slowly.</p>
+
+<p>We&#8217;ve been thinking about this situation for some time. Coming up with a reasonable heuristic to detect what the user might consider &#8220;stalling&#8221; is a particular problem, as is doing something &#8220;sensible&#8221; when a stall is detected.</p>
+
+<p>When this happens in a support case, I&#8217;ll often provide a user with a few <strong>Terminal</strong> commands that interrogate the file system calls to show what we&#8217;re doing, both to reassure the user that something is, indeed, happening&#8230;but also to provide a path that indicates what we&#8217;re working on.</p>
+
+<p>That process is clumsy and can be confusing, though. So, it was time to take a baby step towards a solution.</p>
+
+<h3>Minimal But Useful</h3>
+
+<p>To that end, rather than change the status view when a stall is detected (which, again, isn&#8217;t easy to detect in a useful way), we&#8217;ve decided to add an &#8220;on-demand&#8221; bit of logging that I&#8217;ve named &#8220;WTFIH&#8221;, in honor of &#8220;What&#8217;s Going to Happen&#8221;.</p>
+
+<p>Basically, if the user opens the log window (thus asking the question &#8220;What&#8217;s going on?&#8221;), we ask the copy engine what it&#8217;s doing and add a line to the log that indicates where we&#8217;re operating &#8220;right now&#8221;.</p>
+
+<p>We&#8217;ll do this every time they open the log window, and that entry remains part of the log for the copy.</p>
+
+<p>In addition, if the user ever asks the copy process to stop, we log the same info.</p>
+
+<h3>Information is Power</h3>
+
+<p>This new logging gives the user information about what&#8217;s happening on demand <strong>and</strong> adds detail to the log that gives <strong>me</strong> more data without requiring them to run a <strong>Terminal</strong> command&#8230;and with that, assurance that things are operating as desired.</p>
+
+<h3>Every Little Thing</h3>
+
+<p>There are other small changes in this release, most of which you probably won&#8217;t notice. As is our way, as we get close to an official release.</p>
+
+<h3>Download Away</h3>
+
+<p>And with that, it&#8217;s time to</p>
+
+<p><a href="/downloads/SuperDuper&#x21;+v3.10+B5.dmg">Download SuperDuper! v3.10 B5</a></p>
+
+<p>As usual, this update will be offered to people who already have a previous Beta version installed. When the final release is made available, that will also be offered to Beta users, after which you&#8217;ll only be offered normal updates until you manually install a future Beta.</p>
+
+<p>So that&#8217;s it! Let me know if you have any issues, and thanks for using SuperDuper!</p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/wrapping_up_v310">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-04-10">April 10, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/wgth_ssds_redux">WGTH &amp; SSDs, Redux</a></h1>
+    <div class="sp-post-body"><p>tl;dr—Beta 4 of v3.10 is now available, and can be downloaded with the link at the bottom of this post, or via the auto-updater inside SuperDuper itself.</p>
+
+<h3>Progress Report</h3>
+
+<p>So, our last update was a big one, internally, and the results, so far, are quite promising, with nearly 100% boot success.</p>
+
+<p>People who are having trouble are typically using slow destination devices. If they&#8217;re too slow, not only does the boot process take a very long time, it can fail due to kernel watchdog timeout errors. (It&#8217;s quite clear that these watchdogs are expecting fast storage operation.)</p>
+
+<h3>Quantification</h3>
+
+<p>Every so often, we run into a user who is seeing extended &#8220;stalls&#8221; when working with large folders of data. Inevitably, the folders have a <strong>lot</strong> of files in them, and they&#8217;re using an HDD either for the source (for much older Macs) or the destination.</p>
+
+<p>For example, let&#8217;s take a some cases of a million or so objects. (This happens more than you might think.) We have three folders - one with just files, one with folders, and one with files with basic metadata (Safari attributes and Quarantine).</p>
+
+<p>Unpacking a <code>tar</code> archive with those folders to an SSD takes a few minutes. Unpacking the same archive to an HDD takes a few&#8230;<strong>hours</strong> (in fact, more than a few - we&#8217;re talking over four).</p>
+
+<p>Both freshly formatted, both fast USB-C devices.</p>
+
+<p><strong>Minutes vs. hours.</strong></p>
+
+<p>That&#8217;s just creating the test case. Now, just to use pure, unadulterated, standard Mac commands that make use of the standard iteration calls, we&#8217;ve tried doing a timed <code>ls</code> (list files) on those folders and counting the result:</p>
+
+<h2>SSD</h2>
+
+<p><code>time ls -1 dirWithAlotOfEntries | wc -l</code><br>
+ <code>1000000</code><br>
+ <code>real 0m11.152s</code><br>
+ <code>user 0m3.152s</code><br>
+ <code>sys 0m2.774s</code><br></p>
+
+<p><code>time ls -1 dirWithAlotOfFolders | wc -l</code><br>
+ <code>1000000</code><br>
+ <code>real Om9.420s</code><br>
+ <code>user 0m2.713s</code><br>
+ <code>sys Om2.822s</code><br></p>
+
+<p><code>time ls -1 dirWithAlot0fMetadataFiles | wc -l</code><br>
+ <code>1098579</code><br>
+ <code>real Om11.254s</code><br>
+ <code>user Om5.371s</code><br>
+ <code>sys 0m2.296s</code><br></p>
+
+<h2>HDD</h2>
+
+<p><code>time ls -1 dirWithAlotOfEntries | wc -l</code><br>
+ <code>1000000</code><br>
+ <code>real Om54.112s</code><br>
+ <code>user Om2.898s</code><br>
+ <code>sys Om3.473s</code><br></p>
+
+<p><code>time ls -1 dirWithAlotOfFolders | wc -l</code><br>
+ <code>1000000</code><br>
+ <code>real 13m6.616s</code><br>
+ <code>user Om2.512s</code><br>
+ <code>sys Om4.594s</code><br></p>
+
+<p><code>time ls -1 dirWithAlot0fMetadataFiles | wc -l</code><br>
+ <code>1098579</code><br>
+ <code>real 42m1.864s</code><br>
+ <code>user Om5.359s</code><br>
+ <code>sys Om11.220s</code><br></p>
+
+<h3>Interpret That For Me, Please</h3>
+
+<p>Just take the metadata example: to list the contents of the folder stored on the SSD, it takes about 11 <strong>seconds</strong>. With the HDD, it takes 42 <strong>minutes</strong>. And that&#8217;s just to <strong>list files</strong>. We obviously have to do more than that.</p>
+
+<h3>Conclusion</h3>
+
+<p>At this point, I think it&#8217;s wise to use an external SSD for your backups. They&#8217;re affordable, reliable, and significantly faster. They&#8217;re not flawless, and fail just like everything does, but you&#8217;ll likely be a <strong>much</strong> happier camper with one.</p>
+
+<h3>Small Changes (Are Still Changes)</h3>
+
+<p>This new Beta is mostly a &#8220;cleanup&#8221; update.</p>
+
+<p>We noticed during aspects of testing, in certain combinations, the &#8220;What&#8217;s going to happen?&#8221; section of the main window didn&#8217;t always give <em>quite</em> the right information in some edge cases (the sizes would be missing and stuff like that).</p>
+
+<p>So, it&#8217;s been extensively reworked internally, and all the various bits and pieces should appear in the expected way, in the expected order, and at the expected time.</p>
+
+<p>Or so we expect.</p>
+
+<h3>Cough/Hack</h3>
+
+<p>Here at SPHQ, I&#8217;ve been a bit under the weather with my first (!) Covid-19 case (ah, I thought I was a lucky, lucky unicorn, but it seems not). Definitely out of the &#8220;woods&#8221;, so to speak, with only general tiredness and an annoying cough remaining, but if support requests seem a little slower and/or loopier than normal, let&#8217;s just chalk it up to that and not my senescence, eh?</p>
+
+<h3>Have At It</h3>
+
+<p>That&#8217;s about it! We&#8217;ve got some plans for some other things for the next significant update, but for this beta, this should do.</p>
+
+<p>As always, if you already have a Beta installed, this will be offered as an update. If not, and you download and install the linked version, it will update to the next beta (etc) until the &#8220;final release&#8221; of v3.10 is out.</p>
+
+<p>At that point, once that final is installed, you&#8217;ll be on the &#8220;regular&#8221; update unless you manually install a future Beta version.</p>
+
+<p><a href="/downloads/SuperDuper!+v3.10+B4.dmg">Download v3.10 Beta 4</a></p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/wgth_ssds_redux">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+  <article class="sp-post">
+    <div class="sp-post-meta">
+            <time datetime="2025-03-26">March 26, 2025</time>
+              <a class="sp-category" href="/blog/category/SuperDuper%21">SuperDuper!</a>
+              <a class="sp-category" href="/blog/category/Shirt%20Pocket">Shirt Pocket</a>
+              <a class="sp-category" href="/blog/category/News">News</a>
+          </div>
+    <h1 class="sp-post-title"><a href="/blog/improving_boot_on_ventura_and_later">Improving Boot on Ventura and later</a></h1>
+    <div class="sp-post-body"><h3>tl;dr</h3>
+
+<p>SuperDuper v3.10 B3 is now available, with various improvements, including significantly improved bootabilty for users who previously had problems. A download is available at the bottom of this post.</p>
+
+<p>Or you can continue to read&#8230;</p>
+
+<h3>The Story</h3>
+
+<p>As you know, since Big Sur or so, external boot has become more difficult. Apple stopped allowing 3rd parties to copy the OS for security reasons, and enhanced <code>asr</code>, a command-line tool, so that it could be used to copy the OS.</p>
+
+<p>Since Apple controls both the OS and <code>asr</code>, and can verify that chain of trust, this ensures that OS access remains secure and read-only. Combining that with various forms of cryptographic security and server-side checks allows detection of a modified OS after the fact.</p>
+
+<p>Everyone who makes &#8220;bootable copies&#8221; of macOS above the sector level, since Big Sur, <strong>must</strong> use <code>asr</code> to make the copy.</p>
+
+<h3>Worthy Goals</h3>
+
+<p>The intention here, of course, is a good one. None of us want our system to get hacked (put your hand down, you in the back).</p>
+
+<p>But we do want to be able to maintain a reliable, testable backup strategy, and many of us want to be able to run from an external drive both when  diagnosing issues, to roll back some non-OS changes, or when time is of the essence, and we need to get back up and running immediately—not after doing a multi-hour restoration.</p>
+
+<h3>Changes</h3>
+
+<p>In Ventura, Apple made some new changes to allow for rapid security responses. Part of the previously described security setup—Cryptexes—also started showing up where <code>asr</code> no longer copied it: a new location in Preboot.</p>
+
+<p>What was (and is) weird about this change requires a little discussion of how Preboot is laid out.</p>
+
+<p>Since a given APFS container can hold multiple copies of the OS, Preboot and Recovery have folder structures that include UUIDs corresponding to the  volume that &#8220;owns&#8221; that part of their shared volumes in the group. Inside that UUID-named folder are the files that &#8220;pair&#8221; with the system you&#8217;re trying to boot.</p>
+
+<p>In Ventura and later, for some reason, one set of Cryptexes <strong>also</strong> appear <strong>outside</strong> this structure, at the top of Preboot.</p>
+
+<h3>Wait, What?</h3>
+
+<p>This is quite&#8230;strange. If the Cryptexes folder isn&#8217;t inside the appropriate UUID-based folder, then it&#8217;s shared between all of them. And if there are different systems in the same container, the Cryptexes would also be different. So they <strong>can&#8217;t</strong> be shared. (And, indeed, each Preboot sub volume also has its own Cryptexes&#8230;which we expected to be sufficient.)</p>
+
+<h3>What We Thought</h3>
+
+<p>On top of that, <code>asr</code> didn&#8217;t (and doesn&#8217;t) copy the Cryptexes. So we thought &#8220;well, there&#8217;s got to be a reason for this; they&#8217;re probably generating and grafting the right folder during the boot process&#8221;. And, indeed, that&#8217;s what it does.</p>
+
+<p>Or seems to do.</p>
+
+<p><em>Sometimes</em>.</p>
+
+<h3><a href="http://montypython.50webs.com/scripts/Series_3/46.htm">The Theory, by A. Elk (<em>Miss</em>)</a></h3>
+
+<p>Here&#8217;s the thing. For many users, the straight up copy, as above, seems to work <strong>just fine</strong>. Internally, on some of our test systems, backups boot as expected without trouble. Others, like my own development system, do not do so consistently.</p>
+
+<p>The difference <strong>seems</strong> to have to do with what&#8217;s installed. Maybe.</p>
+
+<p>On our test systems, we&#8217;re using a straight install of macOS. On my development system, which has been carried forward for years, I have some apps that require 3rd party kernel extensions.</p>
+
+<p>Those extensions are necessary for some things I run, but they seem to interfere with boot. On the &#8220;plain&#8221; systems, you don&#8217;t even need the &#8220;root level&#8221; Cryptexes folder and yet it boots (using, I assume, the existing Cryptexes inside the UUID-based folder). But on others, you absolutely do need them at the top of Preboot, or you get a kernel panic.</p>
+
+<p>A kernel panic we see too often, and that we&#8217;ve reported to The Powers That Be. And we&#8217;ve been waiting, for quite a while, for a fix.</p>
+
+<h3>That&#8217;s nice. What now?</h3>
+
+<p>So, what have we done? We&#8217;ve decided to not wait for <code>asr</code> to be fixed by TBTB. And we don&#8217;t want to continue to tell people to install the OS over the backup (which lets Apple fix the issue).</p>
+
+<p>Instead, to improve bootability, and save user&#8217;s time (not to mention sanity), we&#8217;re decided to copy over the Cryptexes to the root of Preboot.</p>
+
+<p>This shouldn&#8217;t be necessary&#8230;but it is. Sometimes. And in the cases where it isn&#8217;t, it doesn&#8217;t hurt anything.</p>
+
+<h3>Beta 3!</h3>
+
+<p>With no further ado, here&#8217;s Beta 3 of SuperDuper! v3.10. There are various other improvements in this beta (including much faster Diagnostics collection; see the Release Notes), with more to come in future Beta releases.</p>
+
+<p>As always, if you install this Beta, subsequent v3.10 Beta releases will automatically be offered via the normal update mechanism.</p>
+
+<p>When the final v3.10 comes out, you will receive that, and then you&#8217;ll be on the non-Beta release cycle again&#8230;unless you subsequently install a later Beta.</p>
+
+<p>Enjoy!</p>
+
+<p><a href="/downloads/SuperDuper!+v3.10+B3.dmg">Download SuperDuper! v3.10 Beta 3</a></p>
+</div>
+    <div class="sp-post-footer">
+      <span><a href="/blog/improving_boot_on_ventura_and_later">Permalink</a></span>
+      <span>Comments closed</span>
+    </div>
+  </article>
+    </div>
+          <nav class="sp-pagination" aria-label="Post pages">
+                <span class="sp-page-count">Page 1 of 31</span>
+        <a href="/blog/page/2">Older →</a>      </nav>
+      </div>
+  <!-- FOOTER -->
+  <div class="sp-footer">
+    <div class="sp-footer-intro">
+      <div class="sp-footer-brand">
+        <svg viewBox="0 0 44 48" width="24" height="26" class="sp-logo-mark" aria-hidden="true">
+          <path d="M7 11 H33 A4 4 0 0 1 37 15 V31 A10 10 0 0 1 27 41 H17 A10 10 0 0 1 7 31 Z" fill="#eef4fa" stroke="#2c6fa8" stroke-width="2.6" stroke-linejoin="round"></path>
+          <path d="M7 19 H37" fill="none" stroke="#2c6fa8" stroke-width="2.3"></path>
+          <path d="M27 25 L32 9" fill="none" stroke="#232b38" stroke-width="3" stroke-linecap="round"></path>
+          <circle cx="32.6" cy="8" r="2.5" fill="#2c6fa8"></circle>
+        </svg>
+        <span class="sp-brand--footer">Shirt Pocket</span>
+      </div>
+      <div class="sp-footer-tagline">Software for an audience of one. You.</div>
+    </div>
+    <div class="sp-footer-links">
+      <div class="sp-footer-column"><strong>Products</strong><a href="/superduper4.php">SuperDuper! 4</a><a href="/classic.php">Classic</a><a href="/hall-of-fame.php">Hall of Fame</a></div>
+      <div class="sp-footer-column"><strong>Learn</strong><a href="/faq-superduper4.php">FAQ</a><a href="/guide.php">User's Guide</a><a href="/blog/">Blog</a></div>
+      <div class="sp-footer-column"><strong>Company</strong><a href="/about.php">About</a><a href="mailto:support@shirt-pocket.com">Support</a></div>
+    </div>
+  </div>
+  <div class="sp-footer-copyright">© 2002–2026 Shirt Pocket. All rights reserved.</div>
+
+</div><!-- /.sp-page -->
+<script src="/js/site.js?v=1785608967"></script>
+</body>
+</html>

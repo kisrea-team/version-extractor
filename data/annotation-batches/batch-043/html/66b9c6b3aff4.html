@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><script src="https://cdn.cookielaw.org/consent/224b28b6-c7e2-45ef-9c82-fe34c2648b5a/OtAutoBlock.js" async=""></script><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" async="" data-domain-script="224b28b6-c7e2-45ef-9c82-fe34c2648b5a" data-language="en"></script><script id="ga4-loader" type="text/plain" class="optanon-category-C0002" src="https://www.googletagmanager.com/gtag/js?id=G-V01X6F3X1P" async=""></script><meta http-equiv="X-UA-Compatible" content="IE=edge"/><link rel="shortcut icon" href="/microsite/favicon.ico?v=2"/><link rel="icon" type="image/png" sizes="32x32" href="/microsite/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/microsite/favicon-16x16.png"/><link rel="apple-touch-icon" sizes="180x180" href="/microsite/apple-touch-icon.png"/><link rel="mask-icon" href="/microsite/favicon.ico"/><meta name="theme-color" content="#000000"/><meta name="dcterms.rightsHolder" content="Ubiquiti Inc."/><meta name="dcterms.dateCopyrighted" content="2024"/><meta name="format-detection" content="telephone=no"/><meta name="format-detection" content="date=no"/><meta name="format-detection" content="address=no"/><meta name="format-detection" content="email=no"/><meta name="keywords" content="ubiquiti, networks, networking, wifi, wi-fi, wireless, AP, access point, enterprise, radio, antenna, camera, video, surveillance, security, ip, voip, voice,  unifi, router, routers, routing, switch, switches, switching, port, ports, poe, power, ethernet, LAN, WLAN, control, radio, multi-radio, rf, radio frequency, frequency, latency, noise, mbps, kbps, gigabit, transmit, isp, wisp, internet service, provider, CPE, backhaul, link, broadband,  antennas, amplifiers, uwn, world network, ubnt, ubiquity, airmax, airfiber, unifi, nanostation, picostation, edgemax, 802.11, bridge, iot, internet-of-things, automation, machine to machine, m2m, wan, gateway, scalable, handoff, packet, packet inspection"/><meta property="fb:app_id" content="140563119297621"/><meta name="application-name" content="UI"/><meta name="msapplication-TileColor" content="#0193d7"/><meta name="apple-mobile-web-app-title" content="UI"/><meta name="google-site-verification" content="SWRaOPCfEwvvxQ4uUus4DPAP83E7Y7N28UFSDzxjlrY"/><meta name="google-site-verification" content="LwUCtY8664FC-jJuHyVKg47yCRro0I2Q345FRZStV-E"/><meta name="google-site-verification" content="w6CAkmjwSOiLMllMVg8ZhCl_8YCr8-OKFEv0zQIoG8k"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="dns-prefetch" href="//www.google-analytics.com"/><link rel="manifest" href="/microsite/manifest.json"/><title data-react-helmet="true">UniFi - Rethinking IT - Ubiquiti</title><meta data-react-helmet="true" name="description" content="UniFi is rethinking IT with industry-leading products for enterprise networking, security, and more unified in an incredible software interface."/><meta data-react-helmet="true" property="og:url" content="https://ui.com"/><meta data-react-helmet="true" property="og:title" content="UniFi - Rethinking IT - Ubiquiti"/><meta data-react-helmet="true" property="og:description" content="UniFi is rethinking IT with industry-leading products for enterprise networking, security, and more unified in an incredible software interface."/><meta data-react-helmet="true" property="og:image" content="https://www.ui.com/microsite/og-image.homepage.jpg"/><link rel="dns-prefetch" href="//cdn.cookielaw.org"/><link rel="dns-prefetch" href="//geolocation.onetrust.com"/><script id="optanon-wrapper">function OptanonWrapper() {
+  if (typeof Optanon === "undefined" || typeof Optanon.GetDomainData !== "function") {
+    return;
+  }
+  if (typeof OnetrustActiveGroups === "undefined") {
+    return;
+  }
+
+  if (typeof window.__ubntOtWrapperCount === "undefined") {
+    otGetInitialGrps();
+  }
+
+  otDeleteCookie(window.__ubntOtIniGrps);
+
+  function otGetInitialGrps() {
+    window.__ubntOtWrapperCount = "";
+    window.__ubntOtIniGrps = OnetrustActiveGroups;
+  }
+
+  function otDeleteCookie(iniOptGrpId) {
+    var otDomainGrps = JSON.parse(JSON.stringify(Optanon.GetDomainData().Groups));
+    var otDeletedGrpIds = otGetInactiveId(iniOptGrpId, OnetrustActiveGroups);
+    if (otDeletedGrpIds.length != 0 && otDomainGrps.length != 0) {
+      for (var i = 0; i < otDomainGrps.length; i++) {
+        if (otDomainGrps[i].CustomGroupId != "" && otDeletedGrpIds.includes(otDomainGrps[i].CustomGroupId)) {
+          for (var j = 0; j < otDomainGrps[i].Cookies.length; j++) {
+            eraseCookie(otDomainGrps[i].Cookies[j].Name);
+          }
+        }
+        if (otDomainGrps[i].Hosts.length != 0) {
+          for (var j = 0; j < otDomainGrps[i].Hosts.length; j++) {
+            if (otDeletedGrpIds.includes(otDomainGrps[i].Hosts[j].HostId) && otDomainGrps[i].Hosts[j].Cookies.length != 0) {
+              for (var k = 0; k < otDomainGrps[i].Hosts[j].Cookies.length; k++) {
+                eraseCookie(otDomainGrps[i].Hosts[j].Cookies[k].Name);
+              }
+            }
+          }
+        }
+      }
+    }
+    otGetInitialGrps();
+  }
+
+  function otGetInactiveId(customIniId, otActiveGrp) {
+    customIniId = customIniId.split(",").filter(Boolean);
+    otActiveGrp = otActiveGrp.split(",").filter(Boolean);
+    var result = [];
+    for (var i = 0; i < customIniId.length; i++) {
+      if (otActiveGrp.indexOf(customIniId[i]) <= -1) {
+        result.push(customIniId[i]);
+      }
+    }
+    return result;
+  }
+
+  function buildDomainCandidates() {
+    var host = window.location.hostname;
+    // Bare IPv4 or single-label host (e.g. "localhost"): nothing to walk.
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(host) || host.indexOf(".") === -1) {
+      return [host];
+    }
+    var parts = host.split(".");
+    var out = [];
+    // Stop at parts.length - 2 so the loop never emits the single-label
+    // TLD ("com", "uk", ...) — browsers reject those as Domain values
+    // anyway, and walking one level further is pointless.
+    for (var i = 0; i <= parts.length - 2; i++) {
+      out.push(parts.slice(i).join("."));
+    }
+    return out;
+  }
+
+  function eraseCookie(name) {
+    var domains = buildDomainCandidates();
+    var pathParts = window.location.pathname.split("/");
+    var paths = ["/"];
+    for (var i = 1; i < pathParts.length; i++) {
+      if (pathParts[i]) {
+        var built = pathParts.slice(0, i + 1).join("/");
+        paths.push(built);
+        paths.push(built + "/");
+      }
+    }
+    for (var d = 0; d < domains.length; d++) {
+      for (var p = 0; p < paths.length; p++) {
+        document.cookie = name + "=; Max-Age=-99999999; Path=" + paths[p] + ";Domain=" + domains[d];
+        document.cookie = name + "=; Max-Age=-99999999; Path=" + paths[p] + ";Domain=." + domains[d];
+        document.cookie = name + "=; Max-Age=-99999999; Path=" + paths[p] + ";";
+      }
+    }
+    try { localStorage.removeItem(name); } catch (_) {}
+  }
+}</script><script id="ga4-init" type="text/plain" class="optanon-category-C0002">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', "G-V01X6F3X1P");
+  </script><script id="hotjar" type="text/plain" class="optanon-category-C0002">
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:2411088,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script><script id="vwo" type="text/plain" class="optanon-category-C0002">
+     window._vwo_code || (function () {
+          var account_id = 914143,
+            version = 2.1,
+            settings_tolerance = 2000,
+            hide_element = "body",
+            hide_element_style =
+              "opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important",
+            /* DO NOT EDIT BELOW THIS LINE */
+            f = false,
+            w = window,
+            d = document,
+            v = d.querySelector("#vwoCode"),
+            cK = "_vwo_" + account_id + "_settings",
+            cc = {};
+          try {
+            var c = JSON.parse(
+              localStorage.getItem("_vwo_" + account_id + "_config"),
+            );
+            cc = c && typeof c === "object" ? c : {};
+          } catch (e) {}
+          var stT = cc.stT === "session" ? w.sessionStorage : w.localStorage;
+          code = {
+            use_existing_jquery: function () {
+              return typeof use_existing_jquery !== "undefined"
+                ? use_existing_jquery
+                : undefined;
+            },
+            library_tolerance: function () {
+              return typeof library_tolerance !== "undefined"
+                ? library_tolerance
+                : undefined;
+            },
+            settings_tolerance: function () {
+              return cc.sT || settings_tolerance;
+            },
+            hide_element_style: function () {
+              return "{" + (cc.hES || hide_element_style) + "}";
+            },
+            hide_element: function () {
+              if (performance.getEntriesByName("first-contentful-paint")[0]) {
+                return "";
+              }
+              return typeof cc.hE === "string" ? cc.hE : hide_element;
+            },
+            getVersion: function () {
+              return version;
+            },
+            finish: function (e) {
+              if (!f) {
+                f = true;
+                var t = d.getElementById("_vis_opt_path_hides");
+                if (t) t.parentNode.removeChild(t);
+                if (e)
+                  new Image().src =
+                    "https://dev.visualwebsiteoptimizer.com/ee.gif?a=" +
+                    account_id +
+                    e;
+              }
+            },
+            finished: function () {
+              return f;
+            },
+            addScript: function (e) {
+              var t = d.createElement("script");
+              t.type = "text/javascript";
+              if (e.src) {
+                t.src = e.src;
+              } else {
+                t.text = e.text;
+              }
+              d.getElementsByTagName("head")[0].appendChild(t);
+            },
+            load: function (e, t) {
+              var i = this.getSettings(),
+                n = d.createElement("script"),
+                r = this;
+              t = t || {};
+              if (i) {
+                n.textContent = i;
+                d.getElementsByTagName("head")[0].appendChild(n);
+                if (!w.VWO || VWO.caE) {
+                  stT.removeItem(cK);
+                  r.load(e);
+                }
+              } else {
+                var o = new XMLHttpRequest();
+                o.open("GET", e, true);
+                o.withCredentials = !t.dSC;
+                o.responseType = t.responseType || "text";
+                o.onload = function () {
+                  if (t.onloadCb) {
+                    return t.onloadCb(o, e);
+                  }
+                  if (o.status === 200) {
+                    _vwo_code.addScript({ text: o.responseText });
+                  } else {
+                    _vwo_code.finish("&e=loading_failure:" + e);
+                  }
+                };
+                o.onerror = function () {
+                  if (t.onerrorCb) {
+                    return t.onerrorCb(e);
+                  }
+                  _vwo_code.finish("&e=loading_failure:" + e);
+                };
+                o.send();
+              }
+            },
+            getSettings: function () {
+              try {
+                var e = stT.getItem(cK);
+                if (!e) {
+                  return;
+                }
+                e = JSON.parse(e);
+                if (Date.now() > e.e) {
+                  stT.removeItem(cK);
+                  return;
+                }
+                return e.s;
+              } catch (e) {
+                return;
+              }
+            },
+            init: function () {
+              if (d.URL.indexOf("__vwo_disable__") > -1) return;
+              var e = this.settings_tolerance();
+              w._vwo_settings_timer = setTimeout(function () {
+                _vwo_code.finish();
+                stT.removeItem(cK);
+              }, e);
+              var t;
+              if (this.hide_element() !== "body") {
+                t = d.createElement("style");
+                var i = this.hide_element(),
+                  n = i ? i + this.hide_element_style() : "",
+                  r = d.getElementsByTagName("head")[0];
+                t.setAttribute("id", "_vis_opt_path_hides");
+                v && t.setAttribute("nonce", v.nonce);
+                t.setAttribute("type", "text/css");
+                if (t.styleSheet) t.styleSheet.cssText = n;
+                else t.appendChild(d.createTextNode(n));
+                r.appendChild(t);
+              } else {
+                t = d.getElementsByTagName("head")[0];
+                var n = d.createElement("div");
+                n.style.cssText =
+                  "z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;";
+                n.setAttribute("id", "_vis_opt_path_hides");
+                n.classList.add("_vis_hide_layer");
+                t.parentNode.insertBefore(n, t.nextSibling);
+              }
+              var o =
+                "https://dev.visualwebsiteoptimizer.com/j.php?a=" +
+                account_id +
+                "&u=" +
+                encodeURIComponent(d.URL) +
+                "&vn=" +
+                version;
+              if (w.location.search.indexOf("_vwo_xhr") !== -1) {
+                this.addScript({ src: o });
+              } else {
+                this.load(o + "&x=true");
+              }
+            },
+          };
+          w._vwo_code = code;
+          code.init();
+        })();
+    </script><script id="reddit-pixel" type="text/plain" class="optanon-category-C0004">
+          !(function (w, d) {
+    if (!w.rdt) {
+      var p = (w.rdt = function () {
+        p.sendEvent
+          ? p.sendEvent.apply(p, arguments)
+          : p.callQueue.push(arguments);
+      });
+      p.callQueue = [];
+      var t = d.createElement("script");
+      (t.src = "https://www.redditstatic.com/ads/pixel.js"), (t.async = !0);
+      var s = d.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(t, s);
+    }
+  })(window, document);
+  rdt("init", "a2_eydi8zk4g1zo");
+  rdt("track", "PageVisit");
+  </script><script type="module" crossorigin src="/microsite/static/index-BVuiycZD.js"></script><link rel="modulepreload" crossorigin href="/microsite/static/rolldown-runtime-8BhlS34s.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-data-CcEqz83_.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-carousel-kUCNgD5d.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-react-CCqD0cf8.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-router-Cave8wST.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-styled-C1ZtnVZ8.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-utils-CwWilM4D.js"><link rel="modulepreload" crossorigin href="/microsite/static/useTranslation-5ZS_uA9B.js"><link rel="modulepreload" crossorigin href="/microsite/static/close-BeBOBoZ3.js"><link rel="modulepreload" crossorigin href="/microsite/static/mapping-vmG11vDM.js"><link rel="modulepreload" crossorigin href="/microsite/static/MicrositeProductPageContext-31jSkOgH.js"><link rel="modulepreload" crossorigin href="/microsite/static/SiteSettingsContext-B4ILNbXk.js"><link rel="modulepreload" crossorigin href="/microsite/static/proxyError-sqmGp3Dg.js"><link rel="modulepreload" crossorigin href="/microsite/static/utils-CN4Nv2Vj.js"><link rel="modulepreload" crossorigin href="/microsite/static/resolvePropWithContext-BjrhnpIE.js"><link rel="modulepreload" crossorigin href="/microsite/static/ScrollArea_Default-C1cf9UJs.js"><link rel="modulepreload" crossorigin href="/microsite/static/Button-DZ6L_SrP.js"><link rel="modulepreload" crossorigin href="/microsite/static/Truncate-2VC4Lt08.js"><link rel="modulepreload" crossorigin href="/microsite/static/Tooltip_Default-DKfNXAJf.js"><link rel="modulepreload" crossorigin href="/microsite/static/classnames-ClddGhp9.js"><link rel="modulepreload" crossorigin href="/microsite/static/Tooltip-BhS8eP9y.js"><link rel="modulepreload" crossorigin href="/microsite/static/Text-S-_d6ytb.js"><link rel="modulepreload" crossorigin href="/microsite/static/CloseTertiaryIcon-Bh2Tq2Q6.js"><link rel="modulepreload" crossorigin href="/microsite/static/Text-PZcDD8qT.js"><link rel="modulepreload" crossorigin href="/microsite/static/Text_Block-CPO1ZnuT.js"><link rel="modulepreload" crossorigin href="/microsite/static/useEvaluateTruncation-Dnd1CYGp.js"><link rel="modulepreload" crossorigin href="/microsite/static/utils-CDLZD3Ws.js"><link rel="modulepreload" crossorigin href="/microsite/static/palette-CTmeiyb6.js"><link rel="modulepreload" crossorigin href="/microsite/static/Popover-4cTMBrru.js"><link rel="modulepreload" crossorigin href="/microsite/static/Heading_Block-C045sWNA.js"><link rel="modulepreload" crossorigin href="/microsite/static/style-inject.es-c1209dab-c-kVcslc.js"><link rel="modulepreload" crossorigin href="/microsite/static/iconWrapper-5415974f-CSgyDjLe.js"><link rel="modulepreload" crossorigin href="/microsite/static/Button-BqykxPt2.js"><link rel="modulepreload" crossorigin href="/microsite/static/ButtonIcon-BatVMO2I.js"><link rel="modulepreload" crossorigin href="/microsite/static/StyleableSvgImage-DdOxRbjf.js"><link rel="modulepreload" crossorigin href="/microsite/static/useInert-DR_Ht3Is.js"><link rel="modulepreload" crossorigin href="/microsite/static/Button-CkXNPK12.js"><link rel="modulepreload" crossorigin href="/microsite/static/Container-Dd8D0WCP.js"><link rel="modulepreload" crossorigin href="/microsite/static/Header.styles-AUTISL3v.js"><link rel="modulepreload" crossorigin href="/microsite/static/ScrollWrapper-DGiEXsyv.js"><link rel="modulepreload" crossorigin href="/microsite/static/asset-ebhKD5zd.js"><link rel="modulepreload" crossorigin href="/microsite/static/Tooltip-CC0sWZlB.js"><link rel="modulepreload" crossorigin href="/microsite/static/constants-DmZ14rax.js"><link rel="modulepreload" crossorigin href="/microsite/static/vendor-gsap-BGKExPzK.js"><link rel="modulepreload" crossorigin href="/microsite/static/types-D6UB5fQp.js"><link rel="modulepreload" crossorigin href="/microsite/static/layout-g2-iLmLn.js"><link rel="modulepreload" crossorigin href="/microsite/static/index.esm-BPPFOjQL.js"><link rel="stylesheet" crossorigin href="/microsite/static/index-UP5Jj8Bg.css"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>

@@ -1,0 +1,1445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
+
+    <!-- Metadata -->
+    <link rel="icon" type="image/png" href="/img/sensu-logo.png" />
+      <title>Sensu | Observability Pipeline</title>
+      <meta name="description" content="The Observability Pipeline that delivers monitoring as code on any cloud" />
+      <link rel="canonical" href="https://sensu.io/"></link>
+
+    <!-- / OpenGraph Metadata -->
+    <!-- / "See http://ogp.me/ for more information" -->
+    <meta content="website" name="og:type" />
+    <meta content="https://sensu.io" name="og:url" />
+    <meta content="Sensu" name="og:site_name" />
+      <meta content="Sensu | Observability Pipeline" name="og:title" />
+      <meta content="The Observability Pipeline that delivers monitoring as code on any cloud" name="og:description" />
+    <!-- <meta name="og:image" /> -->
+    <!-- <meta name="og:audio" /> -->
+    <!-- <meta name="og:video" /> -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/forms2.min.js"></script> <!-- Sumo Logic Marketo Form JS -->
+    <script src="/js/forms2.js"></script> <!-- Sumo Logic Marketo Form JS -->
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P3MRHLZ');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Start of CrazyEgg Embed Code -->
+    <script 
+      type="text/javascript" 
+      src="//script.crazyegg.com/pages/scripts/0087/0389.js" 
+      defer>
+    </script>
+    <!-- End of CrazyEgg Embed Code -->
+
+    <!-- Start of HubSpot Embed Code -->
+    <script 
+      type="text/javascript" 
+      id="hs-script-loader" 
+      async 
+      defer 
+      src="//js.hs-scripts.com/4428327.js">
+    </script>
+    <!-- End of HubSpot Embed Code -->
+
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+      a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o1043');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+
+    <!-- Linkedin universal website tag code -->
+    <script type="text/javascript">
+      _linkedin_partner_id = "409770";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+      (function(){
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript";b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);
+      })();
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=409770&fmt=gif" />
+    </noscript>
+    <!-- End Linkedin universal website tag code -->
+
+    <!-- User Data -->
+    <meta name="metadata" id="metadata" platform="default" />
+
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MRHLZ"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->    <section class="content-section nav theme-gray-color-scheme">
+      <div class="registration-confirmation notification announcement hidden">
+        <div class="content-section no-margin">
+          <div class="content-container no-margin">
+            <input type="hidden" class="announcement-data" name="registration-confirmation" value="success">
+            <div class="content-row one-column center no-margin">
+              <div class="announcement-wrapper">
+                <span class="announcement-text">Your registration has been confirmed. Thank you for signing up!</span>
+                <span class="announcement-acknowledgement fas fa-check-square" onclick="acknowledgeAnnouncement(this)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-container header-nav">
+        <div class="navbar-upper hidden-md-down">
+          <div class="navbar-links">
+              <a class="navbar-link " href="https://docs.sensu.io/sensu-go/latest/" target="_blank" rel="noreferrer noopener">
+                <span>Docs</span>
+              </a>
+              <a class="navbar-link " href="/download" target="" rel="">
+                <span>Download</span>
+              </a>
+              <a class="navbar-link " href="/" target="" rel="">
+                <span>Resources</span>
+              </a>
+              <a class="navbar-link " href="/" target="" rel="">
+                <span>Contact</span>
+              </a>
+              <a class="navbar-link " href="https://account.sensu.io/" target="_blank" rel="noreferrer noopener">
+                <span>Account Login</span>
+              </a>
+          </div>
+        </div>
+        <div class="navbar-lower hidden-md-down">
+          <div class="navbar-title">
+              <a class="navbar-link " href="/">
+                <img class="navbar-logo" src="/img/sensu-by-sumologic-logo.png" title="Sensu Homepage" />
+              </a>
+          </div>
+
+          <div class="navbar-links">
+              <a class="navbar-link " href="/features" target="" rel="">
+                <span class="">Features</span>
+              </a>
+              <a class="navbar-link " href="/pricing" target="" rel="">
+                <span class="">Pricing</span>
+              </a>
+              <a class="navbar-link " href="/learn" target="" rel="">
+                <span class="">Learn</span>
+              </a>
+              <a class="navbar-link " href="https://discourse.sensu.io" target="_blank" rel="noopener">
+                <span class="">Community</span>
+              </a>
+            <div class="navbar-icon-links">
+                <a class="navbar-link " href="/download" target="" rel="" title="">
+                  <span class="fas fa-download"></span>
+                </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-mobile hidden-lg-up">
+          <div class="navbar-title">
+              <a class="navbar-link " href="/">
+                <img class="navbar-logo" src="/img/sensu-by-sumologic-logo.png" title="Sensu Homepage"/>
+              </a>
+          </div>
+          <div class="navbar-links">
+            <a class="navbar-link" id="hamburger-menu">
+              <span class="fas fa-bars"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-underlay"></div>
+      <div class="sidebar">
+        <div class="sidebar-container">
+          <div class="sidebar-title">
+              <a class="navbar-link center " href="/">
+                <img class="navbar-logo" src="/img/sensu-by-sumologic-logo.png" title="Sensu Homepage"/>
+              </a>
+          </div>
+          <div class="sidebar-links center">
+              <a class="navbar-link " href="/features" target="" rel="">
+                <span class="">Features</span>
+              </a>
+              <a class="navbar-link " href="/pricing" target="" rel="">
+                <span class="">Pricing</span>
+              </a>
+              <a class="navbar-link " href="/learn" target="" rel="">
+                <span class="">Learn</span>
+              </a>
+              <a class="navbar-link " href="https://discourse.sensu.io" target="_blank" rel="noopener">
+                <span class="">Community</span>
+              </a>
+            <div class="sidebar-icon-links">
+                <a class="navbar-link icon-link fas fa-download" href="/download" target="" rel="" title="">
+                  <span class=""></span>
+                </a>
+            </div>
+              <a class="navbar-link " href="https://docs.sensu.io/sensu-go/latest/" target="_blank" rel="noreferrer noopener">
+                <span>Docs</span>
+              </a>
+              <a class="navbar-link " href="/download" target="" rel="">
+                <span>Download</span>
+              </a>
+              <a class="navbar-link " href="/" target="" rel="">
+                <span>Resources</span>
+              </a>
+              <a class="navbar-link " href="/" target="" rel="">
+                <span>Contact</span>
+              </a>
+              <a class="navbar-link " href="https://account.sensu.io/" target="_blank" rel="noreferrer noopener">
+                <span>Account Login</span>
+              </a>
+          </div>
+        </div>
+      </div>
+    </section>
+      <section class="content-section theme-light-color-scheme" id="hero">
+
+          <div class="content-container">
+            <div class="content-row hero responsive-grid sixty-forty double-wide">
+                <div class="content-item content" id="hero">
+                    <div class="content-text">
+                      <h1 id="the-observability-pipeline-that-delivers-monitoring-as-code-on-any-cloud">The <strong>Observability Pipeline</strong> that delivers <strong>monitoring as code</strong> on <br> any cloud <a class="header-anchor" href="#the-observability-pipeline-that-delivers-monitoring-as-code-on-any-cloud" aria-hidden="true"></a></h1>
+<p>Consolidate monitoring tools &amp; fill gaps in observability. Eliminate data silos &amp; automate diagnosis &amp; self-healing — from bare metal <br> to Kubernetes.</p>
+
+                    </div>
+                  <div class="content-meta">
+                        <a class="button get-faded xs-full-width" href="#getting-started" target="" rel="">
+                          Get Started
+                        </a>
+                        <a class="button get-faded xs-full-width" href="/downloads" target="" rel="">
+                          Download 6.14.2
+                        </a>
+                        <a class="button get-faded xs-full-width" href="/features/monitoring-integrations" target="_blank" rel="noreferrer">
+                          Browse Integrations
+                        </a>
+                  </div>
+                </div>
+                <div class="window illustration align-self-centered">
+                  <div class="window-chrome">
+                    <div class="window-chrome-button"></div>
+                    <div class="window-chrome-button"></div>
+                    <div class="window-chrome-button"></div>
+                    <div class="window-platform-toggles">
+                      <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                      <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                      <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                    </div>
+                  </div>
+                  <div class="window-body">
+                    <div class="window-body-content">
+                        <pre platform="default" class="hidden window-body-code">$ sensuctl create -r -f monitoring/
+check "node-exporter" created
+check "tls-cert" created
+asset "sensu-plugins/sensu-plugins-ssl:1.0.0" created
+filter "oncall" created
+handler "slack" created 
+handler "ansible-tower" created 
+</pre>
+                        <pre platform="linux" class="hidden window-body-code">$ sensuctl create -r -f monitoring/
+check "node-exporter" created
+check "tls-cert" created
+asset "sensu-plugins/sensu-plugins-ssl:1.0.0" created
+filter "oncall" created
+handler "slack" created 
+handler "ansible-tower" created 
+</pre>
+                        <pre platform="macos" class="hidden window-body-code">$ sensuctl create -r -f monitoring/
+check "node-exporter" created
+check "tls-cert" created
+asset "sensu-plugins/sensu-plugins-ssl:1.0.0" created
+filter "oncall" created
+handler "slack" created 
+handler "ansible-tower" created 
+</pre>
+                        <pre platform="windows" class="hidden window-body-code">C:\> sensuctl create -r -f monitoring/
+check "node-exporter" created
+check "tls-cert" created
+asset "sensu-plugins/sensu-plugins-ssl:1.0.0" created
+filter "oncall" created
+handler "slack" created 
+handler "ansible-tower" created 
+</pre>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-light-color-scheme" id="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="illustration-container hero">
+            <div class="hero-background illustration-layer">
+              <img src="/img/illustration/SNS_Header_Plant_1920@3x.png"></img>
+            </div>
+            <div class="hero-foreground illustration-layer">
+              <img src="/img/illustration/SNS_Header_People_1920@3x.png"></img>
+            </div>
+          </div>
+
+
+
+      </section>
+      <section class="content-section " id="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-light-color-scheme" id="">
+
+
+
+          <div class="content-container">
+            <div class="content-row one-column center slim-margin">
+              <div class="content-item content align-self-centered" id="">
+                <div class="content-text">
+                  <h2 id="why-choose-sensu%3F-because-the-rules-have-changed.">Why choose Sensu? Because the rules have changed. <a class="header-anchor" href="#why-choose-sensu%3F-because-the-rules-have-changed." aria-hidden="true"></a></h2>
+<p>The shift from static to dynamic infrastructure requires a change in approach to monitoring, from host-based to functional role-based. Connectivity moves from remote polling to publish-subscribe, the control plane moves from point-and-click interfaces to infrastructure as code workflows and self-service developer APIs.</p>
+
+                </div>
+              </div>
+            </div>
+            <div class="content-row slim-margin">
+              <div class="highlight-panel hidden-md-down content-row responsive-grid three-columns hover-toggle-wrapper">
+                  <div class="panel highlight hover-toggle-active theme-light-color-scheme" theme-default="theme-light-color-scheme" theme-active="theme-green-color-scheme">
+                    <div class="content-item">
+                        <span class="big-icon far fa-conveyor-belt-alt"></span>
+                      <div class="content-text">
+                        <h3 id="observability-pipeline">Observability Pipeline <a class="header-anchor" href="#observability-pipeline" aria-hidden="true"></a></h3>
+<p>With Sensu Go, you can fill gaps in observability between metrics, logging, &amp; tracing. Consolidate existing monitoring tools, including Nagios, StatsD, Telegraf, Prometheus, &amp; more.</p>
+
+                      </div>
+                      <div class="content-meta">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel highlight hover-toggle-active theme-light-color-scheme" theme-default="theme-light-color-scheme" theme-active="theme-green-color-scheme">
+                    <div class="content-item">
+                        <span class="big-icon far fa-laptop-code"></span>
+                      <div class="content-text">
+                        <h3 id="monitoring-as-code">Monitoring as code <a class="header-anchor" href="#monitoring-as-code" aria-hidden="true"></a></h3>
+<p>Sensu Go codifies monitoring workflows into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.</p>
+
+                      </div>
+                      <div class="content-meta">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel highlight hover-toggle-active theme-light-color-scheme" theme-default="theme-light-color-scheme" theme-active="theme-green-color-scheme">
+                    <div class="content-item">
+                        <span class="big-icon far fa-clouds"></span>
+                      <div class="content-text">
+                        <h3 id="multi-cloud">Multi-cloud <a class="header-anchor" href="#multi-cloud" aria-hidden="true"></a></h3>
+<p>Embrace auto-scaling with confidence &amp; real-time visibility. Sensu automates the registration and de-registration of servers, containers, services, apps, functions, and connected devices.</p>
+
+                      </div>
+                      <div class="content-meta">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="hidden-lg-up content-row responsive-grid three-columns hover-toggle-wrapper">
+                  <div class="content-item">
+                      <span class="big-icon far fa-conveyor-belt-alt"></span>
+                    <div class="content-text">
+                      <h3 id="observability-pipeline">Observability Pipeline <a class="header-anchor" href="#observability-pipeline" aria-hidden="true"></a></h3>
+<p>With Sensu Go, you can fill gaps in observability between metrics, logging, &amp; tracing. Consolidate existing monitoring tools, including Nagios, StatsD, Telegraf, Prometheus, &amp; more.</p>
+
+                    </div>
+                    <div class="content-meta">
+                    </div>
+                  </div>
+                  <div class="content-item">
+                      <span class="big-icon far fa-laptop-code"></span>
+                    <div class="content-text">
+                      <h3 id="monitoring-as-code">Monitoring as code <a class="header-anchor" href="#monitoring-as-code" aria-hidden="true"></a></h3>
+<p>Sensu Go codifies monitoring workflows into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.</p>
+
+                    </div>
+                    <div class="content-meta">
+                    </div>
+                  </div>
+                  <div class="content-item">
+                      <span class="big-icon far fa-clouds"></span>
+                    <div class="content-text">
+                      <h3 id="multi-cloud">Multi-cloud <a class="header-anchor" href="#multi-cloud" aria-hidden="true"></a></h3>
+<p>Embrace auto-scaling with confidence &amp; real-time visibility. Sensu automates the registration and de-registration of servers, containers, services, apps, functions, and connected devices.</p>
+
+                    </div>
+                    <div class="content-meta">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="content-row one-column center slim-margin">
+              <div class="content-item">
+                <div class="content-meta">
+                    <a class="button get-faded xs-full-width" href="/features" target="" rel="">
+                      See Sensu Go Features
+                    </a>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-light-color-scheme" id="demo">
+
+
+
+
+
+
+
+
+
+          <div class="content-container" id="demo">
+              <div class="content-row embedded-media-wrapper responsive-grid one-column">
+                <div class="media-content responsive">
+                    <div class="youtube-embed">
+                      <iframe class="youtube-video" style="margin-top:15px;border:0" src="https://www.youtube.com/embed/eUZTMdYtCmg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-light-color-scheme" id="getting-started">
+
+
+
+
+
+          <div class="content-container">
+            <div class="content-row tutorial-content responsive-grid one-column">
+              <div class="content-item content" id="getting-started">
+                  <div class="content-text">
+                    <h3 id="getting-started-is-easy">Getting Started is easy <a class="header-anchor" href="#getting-started-is-easy" aria-hidden="true"></a></h3>
+<p>Get Sensu up and running in as little as 15 minutes. In fact, you may be able to take the first steps in under a minute! Don’t believe us? Give the following quick start guide a try, and let us know if we can help!</p>
+
+                  </div>
+                <div class="content-meta">
+                </div>
+              </div>
+            </div>
+            <div class="content-row hidden-md-down step-by-step responsive-grid forty-sixty">
+              <div class="guide-sidebar">
+                <ul class="guide-toc" id="guide-toc">
+
+                </ul>
+              </div>
+              <div class="guide-steps">
+                  <div class="guide-step">
+                    <div class="content-item content align-self-centered">
+                      <div class="content-text">
+                        <h4 id="install-sensu-go">Install Sensu Go <a class="header-anchor" href="#install-sensu-go" aria-hidden="true"></a></h4>
+<p>Deploy our official Docker container to get up and running in seconds. Follow these steps, then visit your Sensu Go dashboard at <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
+<p>(You can click on the copy icon on bottom right to copy and paste into a terminal shell window).</p>
+
+                      </div>
+                    </div>
+                    <div class="window illustration align-self-centered">
+                      <div class="window-chrome">
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-platform-toggles">
+                          <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                          <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                          <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                        </div>
+                      </div>
+                      <div class="window-body">
+                        <div class="window-body-content">
+                            <pre platform="default" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                              <pre platform="linux" class="hidden window-body-clipboard">sudo docker network create sensu
+sudo docker volume create sensu-backend-data
+sudo docker run -d --rm --name sensu-backend \
+--network sensu -p 8080:8080 -p 3000:3000 \
+-v sensu-backend-data:/var/lib/sensu \
+sensu/sensu:6.14.2 sensu-backend start
+sudo docker run -d --rm --network sensu -p :3030 \
+sensu/sensu:6.14.2 sensu-agent start \
+--backend-url ws://sensu-backend:8081 --deregister \
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+curl -s http://localhost:8080/version</pre>
+                              <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="macos" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                              <pre platform="macos" class="hidden window-body-clipboard">sudo docker network create sensu
+sudo docker volume create sensu-backend-data
+sudo docker run -d --rm --name sensu-backend \
+--network sensu -p 8080:8080 -p 3000:3000 \
+-v sensu-backend-data:/var/lib/sensu \
+sensu/sensu:6.14.2 sensu-backend start
+sudo docker run -d --rm --network sensu -p :3030 \
+sensu/sensu:6.14.2 sensu-agent start \
+--backend-url ws://sensu-backend:8081 --deregister \
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+curl -s http://localhost:8080/version</pre>
+                              <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="windows" class="hidden window-body-code">C:\> docker.exe network create sensu
+C:\> docker.exe volume create sensu-backend-data
+C:\> docker.exe run -d --rm --name sensu-backend `
+  -p 8080:8080 -p 3000:3000 `
+  -v sensu-backend-data:/var/lib/sensu `
+  --network sensu `
+  sensu/sensu:6.14.2 sensu-backend start
+C:\> docker.exe run -d --rm --network sensu -p :3030 `
+  sensu/sensu:6.14.2 sensu-agent start `
+  --backend-url ws://sensu-backend:8081 --deregister `
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+C:\> Invoke-RestMethod -Method Get -Uri http://localhost:8080/version {"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+C:\> _</pre>
+                              <pre platform="windows" class="hidden window-body-clipboard">docker.exe network create sensu
+docker.exe volume create sensu-backend-data
+docker.exe run -d --rm --name sensu-backend `
+-p 8080:8080 -p 3000:3000 `
+-v sensu-backend-data:/var/lib/sensu `
+--network sensu `
+sensu/sensu:6.14.2 sensu-backend start
+docker run.exe -d --rm --network sensu -p :3030 `
+sensu/sensu:6.14.2 sensu-agent start `
+--backend-url ws://sensu-backend:8081 --deregister `
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux</pre>
+                              <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/operations/deploy-sensu/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Complete installation guide</span>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <div class="content-item content align-self-centered">
+                      <div class="content-text">
+                        <h4 id="install-the-sensu-go-cli">Install the Sensu Go CLI <a class="header-anchor" href="#install-the-sensu-go-cli" aria-hidden="true"></a></h4>
+<p>Sensuctl is a command line interface for running commands against Sensu clusters. Install sensuctl on your laptop to gain access to your multi-cloud monitoring control plane.</p>
+
+                      </div>
+                    </div>
+                    <div class="window illustration align-self-centered">
+                      <div class="window-chrome">
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-platform-toggles">
+                          <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                          <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                          <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                        </div>
+                      </div>
+                      <div class="window-body">
+                        <div class="window-body-content">
+                            <pre platform="default" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password "P@ssw0rd!" \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password "P@ssw0rd!" \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                              <pre platform="linux" class="hidden window-body-clipboard">curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+sensuctl configure -n --url http://127.0.0.1:8080 \
+--username admin \
+--password "P@ssw0rd!" \
+--namespace default
+sensuctl cluster health
+sensuctl cluster id</pre>
+                              <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="macos" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_darwin_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_darwin_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password 'P@ssw0rd!' \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                              <pre platform="macos" class="hidden window-body-clipboard">curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_darwin_amd64.tar.gz
+sudo tar -xzf sensu-go_6.14.2_darwin_amd64.tar.gz -C /usr/local/bin/
+sensuctl configure -n --url http://127.0.0.1:8080 \
+--username admin \
+--password 'P@ssw0rd!' \
+--namespace default
+sensuctl cluster health
+sensuctl cluster id</pre>
+                              <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="windows" class="hidden window-body-code">C:\> Invoke-WebRequest -Uri https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_windows_amd64.zip  `
+  -OutFile sensu-go_6.14.2_windows_amd64.zip
+C:\> Expand-Archive -LiteralPath sensu-go_6.14.2_windows_amd64.zip -DestinationPath .
+C:\> ./sensuctl.exe configure -n --url http://127.0.0.1:8080 `
+  --username admin `
+  --password "P@ssw0rd!" `
+  --namespace default
+C:\> ./sensuctl.exe cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+C:\> ./sensuctl.exe cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+C:\> _</pre>
+                              <pre platform="windows" class="hidden window-body-clipboard">Invoke-WebRequest -Uri https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_windows_amd64.zip  `
+  -OutFile sensu-go_6.14.2_windows_amd64.zip
+Expand-Archive -LiteralPath sensu-go_6.14.2_windows_amd64.zip -DestinationPath .
+./sensuctl.exe configure -n --url http://127.0.0.1:8080 `
+--username admin `
+--password "P@ssw0rd!" `
+--namespace default
+./sensuctl.exe cluster health
+./sensuctl.exe cluster id</pre>
+                              <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/installation/verify/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Verify your Sensu CLI installation</span>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <div class="content-item content align-self-centered">
+                      <div class="content-text">
+                        <h4 id="configure-your-first-monitor">Configure your first monitor <a class="header-anchor" href="#configure-your-first-monitor" aria-hidden="true"></a></h4>
+<p>Sensu makes it easy to deploy instrumentation (e.g. plugins or scripts) and configure new monitors. This example shows how to monitor NTP system clock drift.</p>
+
+                      </div>
+                    </div>
+                    <div class="window illustration align-self-centered">
+                      <div class="window-chrome">
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-chrome-button"></div>
+                        <div class="window-platform-toggles">
+                          <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                          <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                          <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                        </div>
+                      </div>
+                      <div class="window-body">
+                        <div class="window-body-content">
+                            <pre platform="default" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                              <pre platform="linux" class="hidden window-body-clipboard">sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+sensuctl check create ntp \
+--runtime-assets "sensu/monitoring-plugins" \
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+--output-metric-format nagios_perfdata \
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+sensuctl event list</pre>
+                              <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="macos" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                              <pre platform="macos" class="hidden window-body-clipboard">sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+sensuctl check create ntp \
+--runtime-assets "sensu/monitoring-plugins" \
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+--output-metric-format nagios_perfdata \
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+sensuctl event list</pre>
+                              <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                            <pre platform="windows" class="hidden window-body-code">C:\> ./sensuctl.exe asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+C:\> ./sensuctl.exe check create ntp `
+  --runtime-assets "sensu/monitoring-plugins" `
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" `
+  --output-metric-format nagios_perfdata `
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+C:\> ./sensuctl.exe event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+C:\> _</pre>
+                              <pre platform="windows" class="hidden window-body-clipboard">./sensuctl.exe asset add sensu/monitoring-plugins:2.2.0-1
+./sensuctl.exe check create ntp `
+--runtime-assets "sensu/monitoring-plugins" `
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" `
+--output-metric-format nagios_perfdata `
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+./sensuctl.exe event list</pre>
+                              <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/reference/assets/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Learn more about Sensu Assets</span>
+                        </a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+              <div class="content-row hidden-lg-up responsive-grid one-column">
+                  <div class="content-item content" id="getting-started">
+                      <div class="content-text">
+                        <h4 id="install-sensu-go">Install Sensu Go <a class="header-anchor" href="#install-sensu-go" aria-hidden="true"></a></h4>
+<p>Deploy our official Docker container to get up and running in seconds. Follow these steps, then visit your Sensu Go dashboard at <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
+<p>(You can click on the copy icon on bottom right to copy and paste into a terminal shell window).</p>
+
+                      </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/operations/deploy-sensu/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Complete installation guide</span>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="window illustration align-self-centered">
+                    <div class="window-chrome">
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-platform-toggles">
+                        <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                        <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                        <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                      </div>
+                    </div>
+                    <div class="window-body">
+                      <div class="window-body-content">
+                          <pre platform="default" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                          <pre platform="linux" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-clipboard">sudo docker network create sensu
+sudo docker volume create sensu-backend-data
+sudo docker run -d --rm --name sensu-backend \
+--network sensu -p 8080:8080 -p 3000:3000 \
+-v sensu-backend-data:/var/lib/sensu \
+sensu/sensu:6.14.2 sensu-backend start
+sudo docker run -d --rm --network sensu -p :3030 \
+sensu/sensu:6.14.2 sensu-agent start \
+--backend-url ws://sensu-backend:8081 --deregister \
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+curl -s http://localhost:8080/version</pre>
+                            <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="macos" class="hidden window-body-code">$ sudo docker network create sensu
+$ sudo docker volume create sensu-backend-data
+$ sudo docker run -d --rm --name sensu-backend \
+  --network sensu -p 8080:8080 -p 3000:3000 \
+  -v sensu-backend-data:/var/lib/sensu \
+  sensu/sensu:6.14.2 sensu-backend start
+11bbb27c3
+$ sudo docker run -d --rm --network sensu -p :3030 \
+  sensu/sensu:6.14.2 sensu-agent start \
+  --backend-url ws://sensu-backend:8081 --deregister \
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+$ curl -s http://localhost:8080/version
+{"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+$ _</pre>
+                            <pre platform="macos" class="hidden window-body-clipboard">sudo docker network create sensu
+sudo docker volume create sensu-backend-data
+sudo docker run -d --rm --name sensu-backend \
+--network sensu -p 8080:8080 -p 3000:3000 \
+-v sensu-backend-data:/var/lib/sensu \
+sensu/sensu:6.14.2 sensu-backend start
+sudo docker run -d --rm --network sensu -p :3030 \
+sensu/sensu:6.14.2 sensu-agent start \
+--backend-url ws://sensu-backend:8081 --deregister \
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+curl -s http://localhost:8080/version</pre>
+                            <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="windows" class="hidden window-body-code">C:\> docker.exe network create sensu
+C:\> docker.exe volume create sensu-backend-data
+C:\> docker.exe run -d --rm --name sensu-backend `
+  -p 8080:8080 -p 3000:3000 `
+  -v sensu-backend-data:/var/lib/sensu `
+  --network sensu `
+  sensu/sensu:6.14.2 sensu-backend start
+C:\> docker.exe run -d --rm --network sensu -p :3030 `
+  sensu/sensu:6.14.2 sensu-agent start `
+  --backend-url ws://sensu-backend:8081 --deregister `
+  --keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux
+C:\> Invoke-RestMethod -Method Get -Uri http://localhost:8080/version {"etcd":{"etcdserver":"3.3.13","etcdcluster":"3.3.0"},"sensu_backend":"6.14.2"}
+C:\> _</pre>
+                            <pre platform="windows" class="hidden window-body-clipboard">docker.exe network create sensu
+docker.exe volume create sensu-backend-data
+docker.exe run -d --rm --name sensu-backend `
+-p 8080:8080 -p 3000:3000 `
+-v sensu-backend-data:/var/lib/sensu `
+--network sensu `
+sensu/sensu:6.14.2 sensu-backend start
+docker run.exe -d --rm --network sensu -p :3030 `
+sensu/sensu:6.14.2 sensu-agent start `
+--backend-url ws://sensu-backend:8081 --deregister `
+--keepalive-interval=5 --keepalive-warning-timeout=10 --subscriptions linux</pre>
+                            <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="content-row hidden-lg-up responsive-grid one-column">
+                  <div class="content-item content" id="getting-started">
+                      <div class="content-text">
+                        <h4 id="install-the-sensu-go-cli">Install the Sensu Go CLI <a class="header-anchor" href="#install-the-sensu-go-cli" aria-hidden="true"></a></h4>
+<p>Sensuctl is a command line interface for running commands against Sensu clusters. Install sensuctl on your laptop to gain access to your multi-cloud monitoring control plane.</p>
+
+                      </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/installation/verify/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Verify your Sensu CLI installation</span>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="window illustration align-self-centered">
+                    <div class="window-chrome">
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-platform-toggles">
+                        <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                        <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                        <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                      </div>
+                    </div>
+                    <div class="window-body">
+                      <div class="window-body-content">
+                          <pre platform="default" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password "P@ssw0rd!" \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                          <pre platform="linux" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password "P@ssw0rd!" \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-clipboard">curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_linux_amd64.tar.gz
+sudo tar -xzf sensu-go_6.14.2_linux_amd64.tar.gz -C /usr/local/bin/
+sensuctl configure -n --url http://127.0.0.1:8080 \
+--username admin \
+--password "P@ssw0rd!" \
+--namespace default
+sensuctl cluster health
+sensuctl cluster id</pre>
+                            <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="macos" class="hidden window-body-code">$ curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_darwin_amd64.tar.gz
+$ sudo tar -xzf sensu-go_6.14.2_darwin_amd64.tar.gz -C /usr/local/bin/
+$ sensuctl configure -n --url http://127.0.0.1:8080 \
+  --username admin \
+  --password 'P@ssw0rd!' \
+  --namespace default
+$ sensuctl cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+$ sensuctl cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+$ _</pre>
+                            <pre platform="macos" class="hidden window-body-clipboard">curl -LO https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_darwin_amd64.tar.gz
+sudo tar -xzf sensu-go_6.14.2_darwin_amd64.tar.gz -C /usr/local/bin/
+sensuctl configure -n --url http://127.0.0.1:8080 \
+--username admin \
+--password 'P@ssw0rd!' \
+--namespace default
+sensuctl cluster health
+sensuctl cluster id</pre>
+                            <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="windows" class="hidden window-body-code">C:\> Invoke-WebRequest -Uri https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_windows_amd64.zip  `
+  -OutFile sensu-go_6.14.2_windows_amd64.zip
+C:\> Expand-Archive -LiteralPath sensu-go_6.14.2_windows_amd64.zip -DestinationPath .
+C:\> ./sensuctl.exe configure -n --url http://127.0.0.1:8080 `
+  --username admin `
+  --password "P@ssw0rd!" `
+  --namespace default
+C:\> ./sensuctl.exe cluster health
+ID                NAME     ERROR   HEALTHY
+8927110dc66458af  default          true
+C:\> ./sensuctl.exe cluster id
+sensu cluster id: "227b26eb-26c4-46b2-bc7c-8c080b072e6b"
+C:\> _</pre>
+                            <pre platform="windows" class="hidden window-body-clipboard">Invoke-WebRequest -Uri https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.14.2/sensu-go_6.14.2_windows_amd64.zip  `
+  -OutFile sensu-go_6.14.2_windows_amd64.zip
+Expand-Archive -LiteralPath sensu-go_6.14.2_windows_amd64.zip -DestinationPath .
+./sensuctl.exe configure -n --url http://127.0.0.1:8080 `
+--username admin `
+--password "P@ssw0rd!" `
+--namespace default
+./sensuctl.exe cluster health
+./sensuctl.exe cluster id</pre>
+                            <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="content-row hidden-lg-up responsive-grid one-column">
+                  <div class="content-item content" id="getting-started">
+                      <div class="content-text">
+                        <h4 id="configure-your-first-monitor">Configure your first monitor <a class="header-anchor" href="#configure-your-first-monitor" aria-hidden="true"></a></h4>
+<p>Sensu makes it easy to deploy instrumentation (e.g. plugins or scripts) and configure new monitors. This example shows how to monitor NTP system clock drift.</p>
+
+                      </div>
+                    <div class="content-meta">
+                        <a class="content-link" href="https://docs.sensu.io/sensu-go/latest/reference/assets/" target="_blank" rel="">
+                            <span class="content-link-prefix-icon far fa-external-link-square"></span>
+                          <span>Learn more about Sensu Assets</span>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="window illustration align-self-centered">
+                    <div class="window-chrome">
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-chrome-button"></div>
+                      <div class="window-platform-toggles">
+                        <div class="window-platform-toggle fab fa-linux" platform="linux"></div>
+                        <div class="window-platform-toggle fab fa-apple" platform="macos"></div>
+                        <div class="window-platform-toggle fab fa-windows" platform="windows"></div>
+                      </div>
+                    </div>
+                    <div class="window-body">
+                      <div class="window-body-content">
+                          <pre platform="default" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                          <pre platform="linux" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                            <pre platform="linux" class="hidden window-body-clipboard">sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+sensuctl check create ntp \
+--runtime-assets "sensu/monitoring-plugins" \
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+--output-metric-format nagios_perfdata \
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+sensuctl event list</pre>
+                            <div platform="linux" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="macos" class="hidden window-body-code">$ sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+$ sensuctl check create ntp \
+  --runtime-assets "sensu/monitoring-plugins" \
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+  --output-metric-format nagios_perfdata \
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+$ sensuctl event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+$ _</pre>
+                            <pre platform="macos" class="hidden window-body-clipboard">sensuctl asset add sensu/monitoring-plugins:2.2.0-1
+sensuctl check create ntp \
+--runtime-assets "sensu/monitoring-plugins" \
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" \
+--output-metric-format nagios_perfdata \
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+sensuctl event list</pre>
+                            <div platform="macos" class="hidden window-clipboard-button far fa-clipboard"></div>
+                          <pre platform="windows" class="hidden window-body-code">C:\> ./sensuctl.exe asset add sensu/monitoring-plugins:2.2.0-1
+fetching bonsai asset: sensu/monitoring-plugins:2.2.0-1
+added asset: sensu/monitoring-plugins:2.2.0-1
+C:\> ./sensuctl.exe check create ntp `
+  --runtime-assets "sensu/monitoring-plugins" `
+  --command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" `
+  --output-metric-format nagios_perfdata `
+  --publish="true" --interval 30 --timeout 10 --subscriptions linux
+C:\> ./sensuctl.exe event list
+ENTITY        CHECK      OUTPUT                                                                    STATUS  SILENCED   TIMESTAMP
+a749e3a10d86  keepalive  Keepalive last sent from a749e3a10d86 at 2019-09-11 15:34:25 +0000 UTC    0       false      2019-09-11 08:34:25 -0700 PDT
+a749e3a10d86  ntp        NTP OK: Offset -0.03375908732 secs|offset=-0.033759s;0.500000;1.000000;   0       false      2019-09-11 08:34:22 -0700 PDT
+C:\> _</pre>
+                            <pre platform="windows" class="hidden window-body-clipboard">./sensuctl.exe asset add sensu/monitoring-plugins:2.2.0-1
+./sensuctl.exe check create ntp `
+--runtime-assets "sensu/monitoring-plugins" `
+--command "check_ntp_time -H time.nist.gov --warn 0.5 --critical 1.0" `
+--output-metric-format nagios_perfdata `
+--publish="true" --interval 30 --timeout 10 --subscriptions linux
+./sensuctl.exe event list</pre>
+                            <div platform="windows" class="hidden window-clipboard-button far fa-clipboard"></div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            <script src="/js/tutorial.js"></script>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-light-color-scheme" id="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="illustration-container illustration-getting-started" >
+            <img src="/img/illustration/SNS_Getting-Started_Illustration_1920.png">
+          </div>
+
+      </section>
+      <section class="content-section theme-green-color-scheme" id="">
+
+
+
+
+
+
+          <div class="content-container">
+            <div class="content-row cta-banner responsive-grid one-column">
+              <div class="content-item content" id="">
+                  <div class="content-text">
+                    <h3 id="supercharge-your-ops-%26-sre-teams-at-a-fraction-of-the-cost-of-other-solutions.">Supercharge your Ops &amp; SRE teams at a fraction of the cost of other solutions. <a class="header-anchor" href="#supercharge-your-ops-%26-sre-teams-at-a-fraction-of-the-cost-of-other-solutions." aria-hidden="true"></a></h3>
+<p>Traditional monitoring tools are cost-prohibitive to operate at even moderate scale, and legacy monitoring tools are incompatible with the ephemeral nature of public cloud and cloud-native platforms. Upgrade to Sensu today to embrace your multi-cloud operation with confidence – and without breaking the budget! Keep your existing custom plugins or use new ones, integrate best of breed products and transition seamlessly!</p>
+
+                  </div>
+                <div class="content-meta">
+                      <a class="button get-faded xs-full-width" href="/pricing" target="" rel="">
+                        See Pricing
+                      </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+      <section class="content-section theme-green-color-scheme" id="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="illustration-container illustration-cta">
+            <img src="/img/illustration/SNS_Main-CTA_Plant_1920.png">
+          </div>
+
+
+      </section>
+    <section class="content-section theme-dark-color-scheme">
+      <div class="content-container navbar-footer">
+        <div class="content-row five-columns footer-nav responsive-grid">
+            <div class="footer-nav-link-group logo">
+              <img class="footer-nav-logo" src="/img/sensu-by-sumologic-white.png" />
+            </div>
+            <div class="footer-nav-link-group ">
+              <h4>Product</h4>
+                <a class="navbar-link" href="/features" target="" rel="">
+                  <span>Features</span>
+                </a>
+                <a class="navbar-link" href="/use-cases" target="" rel="">
+                  <span>Use Cases</span>
+                </a>
+                <a class="navbar-link" href="/oops" target="" rel="">
+                  <span>Integrations</span>
+                </a>
+                <a class="navbar-link" href="/downloads" target="" rel="">
+                  <span>Download</span>
+                </a>
+                <a class="navbar-link" href="/pricing" target="" rel="">
+                  <span>Pricing</span>
+                </a>
+                <a class="navbar-link" href="/support" target="" rel="">
+                  <span>Support</span>
+                </a>
+                <a class="navbar-link" href="/oops" target="" rel="">
+                  <span>Register</span>
+                </a>
+            </div>
+            <div class="footer-nav-link-group ">
+              <h4>Resources</h4>
+                <a class="navbar-link" href="/oops" target="" rel="">
+                  <span>Blog</span>
+                </a>
+                <a class="navbar-link" href="/learn" target="" rel="">
+                  <span>Learn</span>
+                </a>
+                <a class="navbar-link" href="/get-started" target="" rel="">
+                  <span>Get Started</span>
+                </a>
+                <a class="navbar-link" href="https://docs.sensu.io/sensu-go/latest/" target="_blank" rel="noreferrer noopener">
+                  <span>Docs</span>
+                </a>
+                <a class="navbar-link" href="https://docs.sensu.io/sensu-go/latest/api/" target="_blank" rel="noreferrer noopener">
+                  <span>API</span>
+                </a>
+                <a class="navbar-link" href="https://discourse.sensu.io" target="_blank" rel="noopener">
+                  <span>Community</span>
+                </a>
+                <a class="navbar-link" href="/" target="" rel="">
+                  <span>Resources</span>
+                </a>
+                <a class="navbar-link" href="https://account.sensu.io/" target="_blank" rel="noreferrer noopener">
+                  <span>Account Login</span>
+                </a>
+                <a class="navbar-link" href="https://github.com/sensu/sensu-go" target="_blank" rel="noreferrer noopener">
+                  <span>GitHub</span>
+                </a>
+            </div>
+            <div class="footer-nav-link-group ">
+              <h4>Company</h4>
+                <a class="navbar-link" href="/about" target="" rel="">
+                  <span>About</span>
+                </a>
+                <a class="navbar-link" href="/" target="" rel="">
+                  <span>Contact</span>
+                </a>
+                <a class="navbar-link" href="https://investor.sumologic.com/static-files/51fd1f5a-9ffc-402a-bedb-cf35308c0af3" target="" rel="">
+                  <span>Code of Business Conduct</span>
+                </a>
+                <a class="navbar-link" href="https://www.sumologic.com/company/careers/" target="_blank" rel="">
+                  <span>Careers</span>
+                </a>
+            </div>
+        </div>
+        <div class="content-row one-column copyright">
+            <p>Made with <a href="https://twitter.com/hashtag/monitoringlove">#monitoringlove</a><span class="fas fa-heart"></span> by Sensu<sup>TM</sup> in Canada 🇨🇦 and the USA 🇺🇸. ©  2017-2021 – <a href="https://www.sumologic.com/privacy-statement/">Privacy Statement</a> – <a href="https://www.sumologic.com/terms-conditions/">Terms &amp; Conditions</a></p>
+
+        </div>
+      </div>
+    </section>
+    <div class="tail hidden">
+        <script>
+  console.log("Hello Javascript embed world!");
+</script>
+      <script>
+        window.intercomSettings = {
+          app_id: "abr73apk"
+        };
+      </script>
+      <script>
+        (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/abr73apk';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+      </script>
+    </div>
+  </body>
+</html>

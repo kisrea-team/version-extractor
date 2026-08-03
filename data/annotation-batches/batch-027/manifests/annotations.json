@@ -1,0 +1,73 @@
+[
+  {
+    "pageId": "0fb05eac2648",
+    "name": "Keysilk",
+    "url": "https://www.keysilk.com.cn/release.html",
+    "pageStatus": "release-history",
+    "version": null,
+    "label": "ambiguous",
+    "noiseType": null,
+    "temporalStatus": "unclear",
+    "subject": "unknown",
+    "evidenceTypes": [
+      "visible"
+    ],
+    "evidenceQuote": "No version text extracted from raw page (JS-rendered); needs browser check",
+    "confidence": "low",
+    "note": "No version guessed.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "needs-review",
+    "fetchedAt": "2026-08-03T17:33:35.131138+00:00",
+    "htmlFile": "data/annotation-batches/batch-027/html/0fb05eac2648.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "1f946afa0b6a81b2b64a6631c75df1731eba3f9d2af7d214ea4464951bd5cb61"
+  },
+  {
+    "pageId": "226ae5c8aab3",
+    "name": "有道翻译",
+    "url": "https://fanyi.youdao.com/download-history/",
+    "pageStatus": "release-history",
+    "version": null,
+    "label": "ambiguous",
+    "noiseType": null,
+    "temporalStatus": "unclear",
+    "subject": "unknown",
+    "evidenceTypes": [
+      "visible"
+    ],
+    "evidenceQuote": "No version text extracted from raw page",
+    "confidence": "low",
+    "note": "No version guessed.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "needs-review",
+    "fetchedAt": "2026-08-03T17:33:36.311290+00:00",
+    "htmlFile": "data/annotation-batches/batch-027/html/226ae5c8aab3.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "5ada402341d3fe61a0d019574b5e8e326e8e7554ed795c7e50560a0d33475dec"
+  },
+  {
+    "pageId": "e8e7a6434bc4",
+    "name": "禅道",
+    "url": "https://www.zentao.net/zentaoversion-history.html",
+    "pageStatus": "release-history",
+    "version": "22.4",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "heading",
+      "visible",
+      "download-link"
+    ],
+    "evidenceQuote": "开源版22.4 php7.0",
+    "confidence": "high",
+    "note": "Official version history current open-source release.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:33:37.238361+00:00",
+    "htmlFile": "data/annotation-batches/batch-027/html/e8e7a6434bc4.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "e7660d396ab4974695268aecc983977cb6b80065bc3896a10cfdf822aaf0c2bf"
+  }
+]

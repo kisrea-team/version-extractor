@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Download HeidiSQL</title>
+    <meta name="description" content="Download your free copy of HeidiSQL here. Or download the sources." />
+    <link rel="canonical" href="/download.php" />
+    <meta name="Content-Language" content="en" />
+    <meta name="author" content="Ansgar Becker" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="search" type="application/opensearchdescription+xml" title="HeidiSQL Board Search" href="/searchboard.xml" />
+    <link rel="stylesheet" type="text/css" href="/basic.css?1774880756" />
+    <script src="/jquery-3.5.1.min.js" onload="window.jQueryLoaded=true"></script>
+    <script src="/xads.js" defer></script>
+    <script src="/jquery.selection.js"></script>
+    <script src="/helpers.js?v2"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4114345487694759" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function() {
+            window.download_started = false;
+
+            let links = document.querySelectorAll('.download-link'), i;
+            for (i=0; i<links.length; i++) {
+                links[i].onclick = function() {
+                    window.download_started = true;
+                };
+            }
+
+            // auto download?
+            
+            // Forum preview and handle paste
+            if(window.jQueryLoaded) {
+                let postMessage = $('#post_message');
+                postMessage.keyup(debounce(postPreview, 250, {maxWait: 3000}));
+                postMessage.on('paste', handlePaste);
+            }
+
+        };
+    </script>
+</head>
+<body>
+
+
+    <div id="header">
+        <div id="inner-header">
+            <a href="/">
+                <img src="/images/heidisql_logo_mwd.png" id="logo" alt="HeidiSQL Logo" width="260" height="66" />
+            </a>
+            <div id="inner-right-header">
+                <!-- horizontal -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:640px;height:100px"
+                     data-ad-client="ca-pub-4114345487694759"
+                     data-ad-slot="2718443743"></ins><script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>            </div>
+
+            <ul id="menu">
+            <li><a href="/">Home</a></li>
+<li class="highlight"><a href="/download.php">Downloads</a><ul><li><a href="/download.php#notes">Installation notes</a></li>
+<li><a href="/download.php#preview-windows-v13">Preview v13 Windows version</a></li>
+</ul></li>
+<li><a href="/screenshots.php">Images</a><ul><li><a href="/screenshots.php">Screenshots</a></li>
+<li><a href="/themes.php">Themes</a></li>
+</ul></li>
+<li><a href="/forum.php">Forum</a><ul><li><a href="/forum.php?t=45236#p45280">
+                                    02 Aug - scottnz: PostgreSQL: grid edits cast uuid column <span title="... to ::text in WHERE clause">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45271#p45279">
+                                    01 Aug - ansgar: discrepancies in database exports
+                                </a></li>
+<li><a href="/forum.php?t=45270#p45278">
+                                    01 Aug - ansgar: Export (Clipboard)
+                                </a></li>
+<li><a href="/forum.php?t=45265#p45269">
+                                    27 Jul - Alldo: Executable not found? SSH Tunnel on FreeB <span title="... SD 15.1 and KDE 6.6.6">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45263#p45264">
+                                    27 Jul - ansgar: Cannot Pasted intop Query Editor
+                                </a></li>
+<li><a href="/forum.php?t=45261#p45262">
+                                    25 Jul - ansgar: How about adding AI to the UI ?
+                                </a></li>
+<li><a href="/forum.php?t=39584#p45260">
+                                    23 Jul - ansgar: can&#039;t see new databases for postresql
+                                </a></li>
+<li><a href="/forum.php?t=45241#p45255">
+                                    20 Jul - lukinhaspm: Nightly builds
+                                </a></li>
+<li><a href="/forum.php?t=45136#p45254">
+                                    20 Jul - alan4910: Upon Export, Old Table/Field Names are <span title="... Listed in Export">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45252">
+                                    20 Jul - hanqing: sqlserver alter column bug
+                                </a></li>
+<li><a href="/forum.php?t=45247">
+                                    17 Jul - dmikester1: Please add Delimiters to mySQL creat <span title="... e code">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45233#p45235">
+                                    13 Jul - ansgar: Dark Mode
+                                </a></li>
+<li><a href="/forum.php?t=45232#p45234">
+                                    13 Jul - ansgar: @@sql_notes
+                                </a></li>
+<li><a href="/forum.php?t=45192#p45231">
+                                    08 Jul - ansgar: Could not initialize OpenSSL library in <span title="... Linux version">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45209#p45229">
+                                    08 Jul - ansgar: Header height in data grid (Linux version)
+                                </a></li>
+<li><a href="/forum.php?t=41819#p45225">
+                                    05 Jul - azielnik: Suggestion: Spread the number of attac <span title="... hed databases please">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45222#p45224">
+                                    02 Jul - FeverBeaver: Install HeidiSQL 12.20 fails on Ubu <span title="... ntu due to dependencies">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=39949#p45221">
+                                    02 Jul - ansgar: Lost connection to server at &#039;hands <span title="... hake: reading initial communication packet&amp;#039;, system error: 0">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=45212#p45218">
+                                    30 Jun - ansgar: Heidi becomes unresponsive when running <span title="... LIKE &amp;quot;%XY%&amp;quot; queries on large text fields">...</span>
+                                </a></li>
+<li><a href="/forum.php?t=44973#p45210">
+                                    29 Jun - ansgar: Can&#039;t scroll vertically nor horizon <span title="... tally with mouse clicks">...</span>
+                                </a></li>
+</ul></li>
+<li><a href="/donate.php">Donate</a><ul><li><a href="/donate.php#howto">How to donate</a></li>
+<li><a href="/donate.php#donors">List of donors</a></li>
+</ul></li>
+<li><a href="https://github.com/HeidiSQL/HeidiSQL/issues">Bugtracker</a><ul><li><a href="https://github.com/HeidiSQL/HeidiSQL/milestones">Milestone Roadmap</a></li>
+<li><a href="https://github.com/HeidiSQL/HeidiSQL/issues?q=is%3Aissue+is%3Aopen+label%3Abug">Bug reports</a></li>
+<li><a href="https://github.com/HeidiSQL/HeidiSQL/issues?q=is%3Aissue+is%3Aopen+label%3Afeature">Feature requests</a></li>
+<li><a href="https://github.com/HeidiSQL/HeidiSQL/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement">Enhancement requests</a></li>
+</ul></li>
+<li><a href="/help.php">Help</a><ul><li><a href="/help.php#requirements">Requirements</a></li>
+<li><a href="/help.php#connecting">Connecting to a server</a></li>
+<li><a href="/help.php#commandline">Command line switches</a></li>
+<li><a href="/help.php#dbtree">The database tree</a></li>
+<li><a href="/help.php#createtable">Creating a table</a></li>
+<li><a href="/help.php#createview">Creating a view</a></li>
+<li><a href="/help.php#createroutine">Creating a stored procedure</a></li>
+<li><a href="/help.php#createtrigger">Creating a trigger</a></li>
+<li><a href="/help.php#createevent">Creating a scheduled event</a></li>
+<li><a href="/help.php#data">The Data tab</a></li>
+<li><a href="/help.php#queries">Running SQL queries</a></li>
+<li><a href="/help.php#sqlexport">SQL export</a></li>
+<li><a href="/help.php#import">Importing files</a></li>
+<li><a href="/help.php#compatibility">Compatibility</a></li>
+<li><a href="/help.php#portable">HeidiSQL portable</a></li>
+<li><a href="/help.php#license">License</a></li>
+<li><a href="/help.php#credits">Credits</a></li>
+</ul></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div id="content">
+
+
+    
+
+
+    <h1>Download HeidiSQL v12.20, released on 22 Jun 2026</h1>
+    <ul style="float:left;" class="downloads">
+        <li class="li-icon windows"  id="download-windows-primary">
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/HeidiSQL_12.20.0.7320_Setup.exe">Windows x64 Installer</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:b811c5fcc43a8703dc567e0b9b3b86e01cf7a05a53b05addc38c5055549387fa" data-digest="sha256:b811c5fcc43a8703dc567e0b9b3b86e01cf7a05a53b05addc38c5055549387fa">&TildeEqual;</a>
+                </li>        <li class="li-icon windows" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/HeidiSQL_12.20_64_Portable.zip">Windows x64 Portable</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:d84742736e4508c206c28c58018bbd934319c941dc9d68ff4673737a3f4df731" data-digest="sha256:d84742736e4508c206c28c58018bbd934319c941dc9d68ff4673737a3f4df731">&TildeEqual;</a>
+                </li>        <li class="li-icon windows">
+            <a href="#" onclick="$('.winget-cmd').toggle(400);">
+                Windows Package Managers
+            </a>
+            <ul class="winget-cmd hide">
+                <li>
+                    <code>winget install HeidiSQL.HeidiSQL</code>
+                    / <a href="https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/HeidiSQL/HeidiSQL">Release archive</a>
+                </li>
+                <li>
+                    <code>choco install heidisql</code> or <code>choco upgrade heidisql</code>
+                    / <a href="https://community.chocolatey.org/packages/HeidiSQL">Chocolatey website</a>
+                </li>
+            </ul>
+        </li>
+        <li class="li-icon windows"><a href="#preview-windows-v13">Windows x64 v13 Preview, new codebase</a></li>
+        <li class="li-icon linux"  id="download-linux-primary">
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/heidisql_12.20_amd64.deb">Linux x64 Debian package with QT6 build</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:f805a1ad0bf6c500a101e9b76a1a64b504779384f2b7413957535019a5c3e221" data-digest="sha256:f805a1ad0bf6c500a101e9b76a1a64b504779384f2b7413957535019a5c3e221">&TildeEqual;</a>
+                </li>        <li class="li-icon linux" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/heidisql-12.20-1.x86_64.rpm">Linux x64 RPM package with QT6 build</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:7f8ce175f00cca12d5cfefa13f42e0a8fbe29f290bb29cbd89e5e87118013455" data-digest="sha256:7f8ce175f00cca12d5cfefa13f42e0a8fbe29f290bb29cbd89e5e87118013455">&TildeEqual;</a>
+                </li>        <li class="li-icon linux" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/build-gtk2-v12.20.tgz">Linux x64 GTK2 build</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:f8fb6a2a61a5c3c659490bc202cf10133136c693342fba40da35d809f8190bf7" data-digest="sha256:f8fb6a2a61a5c3c659490bc202cf10133136c693342fba40da35d809f8190bf7">&TildeEqual;</a>
+                </li>        <li class="li-icon linux" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/build-qt5-v12.20.tgz">Linux x64 QT5 build</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:e0ee2839b4ecee440debc6d7e071e214b13cd3f3383fc41a507a877d7aff1acf" data-digest="sha256:e0ee2839b4ecee440debc6d7e071e214b13cd3f3383fc41a507a877d7aff1acf">&TildeEqual;</a>
+                </li>        <li class="li-icon linux" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/build-qt6-v12.20.tgz">Linux x64 QT6 build</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:62364e46227a9f27fc8a68bffee736765d092461f6bc19837ecdd3bfee054a50" data-digest="sha256:62364e46227a9f27fc8a68bffee736765d092461f6bc19837ecdd3bfee054a50">&TildeEqual;</a>
+                </li>        <li class="li-icon linux" >
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/build-qt6-arm64-v12.20.tgz">Linux arm64 QT6 build (Raspberry Pi OS)</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:83f21834ccd0f54adb6c542d13528bcecfef876f25270c939b1d0717cb490551" data-digest="sha256:83f21834ccd0f54adb6c542d13528bcecfef876f25270c939b1d0717cb490551">&TildeEqual;</a>
+                </li>        <li class="li-icon linux">
+            <a href="https://aur.archlinux.org/packages/heidisql">
+                Arch Linux packages
+            </a>
+        </li>
+        <li class="li-icon freebsd">
+            <a href="https://www.freshports.org/databases/heidisql">
+                FreeBSD packages
+            </a>
+        </li>
+        <li class="li-icon macos"  id="download-macos-primary">
+                    <a href="https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.20/heidisql_12.20_macos_app.zip">macOS arm64 App bundle</a>
+                    <a class="checksum" href="#" title="Click to copy digest: sha256:6cba8c2c71deccf9e9072ca8792d105e5dda52408775d971f210a4d8d1e1f6f7" data-digest="sha256:6cba8c2c71deccf9e9072ca8792d105e5dda52408775d971f210a4d8d1e1f6f7">&TildeEqual;</a>
+                </li>        <li class="li-icon archive">
+            <a href="/downloads/locale/HeidiSQL-locale.zip">
+                Translation files, zipped
+            </a>
+            Unpack in <code>locale</code> subdirectory in case they are missing or outdated.
+        </li>
+        <li class="li-icon">
+            <a href="https://github.com/HeidiSQL/HeidiSQL/releases/tag/v12.20">
+                Release page with changelog
+            </a>
+        </li>
+    </ul>
+
+
+<script>
+    // Emphasize preferred download by user agent
+    const platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
+    const macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"];
+    const windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"];
+    let dwnId;
+    if (windowsPlatforms.indexOf(platform) !== -1) {
+        dwnId = 'download-windows-primary';
+    }
+    else if (macosPlatforms.indexOf(platform) !== -1) {
+        dwnId = 'download-macos-primary';
+    }
+    else if(/Linux/.test(platform)) {
+        dwnId = 'download-linux-primary';
+    }
+    if(dwnId) {
+        document.getElementById(dwnId).classList.add('download-primary');
+    }
+</script>
+
+
+<p style="float:right;">
+    <a href="/donatebutton.php?place=downloadpage">
+        <img src="/images/donatebutton.svg" alt="Donate" style="width:250px;" title="Lets you hide the donate buttons, plus you get a sponsor link from 100€+" />
+    </a>
+</p>
+
+
+<p class="error" id="download-error" style="clear:both; display:none;  overflow: auto;">
+    Please disable your adblocker and reload the page to enable HeidiSQL downloads.<br><br>
+    Or, if you can't overcome the temptation, rightclick the anchor and click "copy link" to get it.
+</p>
+
+
+<h2 id="notes" style="clear:both;">Installation notes</h2>
+<ul style="clear:both;">
+    <li><a href="/help.php#compatibility">Compatibility notes</a></li>
+    <li>Windows:
+        <ul>
+            <li>Microsoft Visual C++ Redistributable libraries are required for some drivers. Download and install them from
+                <a href="https://learn.microsoft.com/de-de/cpp/windows/latest-supported-vc-redist">Microsoft</a> if you get errors
+                saying "vcruntimeXYZ.dll missing".</li>
+            <!-- <li>Connecting to TLS 1.2 enabled MS SQL Servers requires an updated
+                <a href="https://www.microsoft.com/en-us/download/confirmation.aspx?id=56730">OLE DB Driver 18 for SQL Server</a>
+                to be installed.</li> -->
+            <!-- <li>Connecting to PostgreSQL may require to have
+                <a href="https://support.microsoft.com/en-us/help/3179560/update-for-visual-c-2013-and-visual-c-redistributable-package">Visual
+                    C++ Redistributable Package</a> installed</li> -->
+            <li id="preview-windows-v13">A preview of v13 can be <a href="/downloads/releases/HeidiSQL_13_64_Preview35.zip">downloaded here</a>
+                (updated on 2026-08-03 08:32).
+                Unzip it in your existing HeidiSQL directory, and you can use both version in parallel.</li>
+        </ul>
+    </li>
+    <li>Linux:
+        <ul>
+            <li>For the .deb and QT releases, Ubuntu 24.04 needs <a href="https://github.com/davidbannon/libqt6pas/">libqt6pas</a> (not in the repos yet):
+                <ul>
+                    <li><code>curl -L -o /tmp/libqt6pas6_6.2.10-1_amd64.deb https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6_6.2.10-1_amd64.deb</code></li>
+                    <li><code>sudo apt install /tmp/libqt6pas6_6.2.10-1_amd64.deb</code></li>
+                </ul>
+            </li>
+            <li>Install package:
+                <ul>
+                    <li>DEB: <code>sudo apt install ~/Downloads/heidisql...deb</code></li>
+                    <li>RPM: <code>sudo yum install Downloads/heidisql...rpm</code></li>
+                </ul>
+            </li>
+            <li>Settings are stored in a .json file. You may migrate your settings from a Windows registry:
+                <ol>
+                    <li>click File &gt; "Export settings" (to .txt file) in the Windows version</li>
+                    <li>click File &gt; "Import settings" in the Linux version</li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
+<h1 id="nightlybuilds-head">Latest changes and nightly builds</h1>
+
+<p>
+    Latest automatically compiled main executable and installers for HeidiSQL. Just download and overwrite
+    your existing <em>C:\Program Files\HeidiSQL\heidisql.exe</em>.
+    Be aware that these builds are not official
+    releases and therefore probably have more bugs, possibly serious ones.
+</p>
+
+<table id="nightlybuilds">
+    <tr>
+        <th style="width:48%;">Classic Windows version</th>
+        <th style="width:48%;">v13 Preview, Current Linux and macOS versions</th>
+    </tr>
+    <tr>
+        <td>
+            <!-- classic windows version -->
+            <div id="r7343">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>chore: update SQLite libraries to v3.53.4</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/05c57aa8009fdc04451d862e780350f8fbf90a4f">05c57aa</a>: 03 Aug 2026 13:37</span>
+                            <span>v12.20.0.7343</span></p></div><div id="r7342">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: sporadic crash in DBtreePaintText with columns<br />
+<br />
+    Also, do not init column nodes in FindDBObjectNode, after dblclick on a table in ListTables<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/59ea39a2b0777ee6a748f42b601fd4f375d8c6c4">59ea39a</a>: 03 Aug 2026 08:24</span>
+                            <span>v12.20.0.7342</span><span><a href="/downloads/builds/heidisql64.r7342.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7342.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7342_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7342_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7341">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: enable foreign key drop down on grid field in MS SQL mode<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2567"> #2567</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/cbdc78d0f7ef2d0ab50bbacf86942829f1882a42">cbdc78d</a>: 03 Aug 2026 08:21</span>
+                            <span>v12.20.0.7341</span></p></div><div id="r7340">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: remove column nodes from tree in table tools dialog<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2563"> #2563</a> and<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/57905b08e19c0a2872ab1b564c689919355e662c">57905b0</a>: 28 Jul 2026 19:02</span>
+                            <span>v12.20.0.7340</span><span><a href="/downloads/builds/heidisql64.r7340.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7340.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7340_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7340_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7339">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>feat: create opt-in option for displaying columns in database tree<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/bb5e724d4f92b1068a838c8968a4c8f9c17a3315">bb5e724</a>: 27 Jul 2026 19:59</span>
+                            <span>v12.20.0.7339</span><span><a href="/downloads/builds/heidisql64.r7339.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7339.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7339_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7339_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7338">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: handle MONEY column types as float<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2564"> #2564</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/d15df71717bcceea532a4e0af852556d9dda8016">d15df71</a>: 27 Jul 2026 12:49</span>
+                            <span>v12.20.0.7338</span></p></div><div id="r7337">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: invalid folder path for SQL export cannot be created if it contains a duplicated path delimiter<br />
+<br />
+    Custom output dir may already have a trailing path delimiter, only add when not<br />
+    Broken in <a href="https://github.com/HeidiSQL/HeidiSQL/commit/2e290f1be155e09ef4edb50df9ed05a772f50c5c">2e290f1be155e09ef4edb50df9ed05a772f50c5c</a><br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2558"> #2558</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/152ab70df6354f9749feffab976a32424abcd196">152ab70</a>: 22 Jul 2026 09:10</span>
+                            <span>v12.20.0.7337</span><span><a href="/downloads/builds/heidisql64.r7337.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7337.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7337_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7337_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7336">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: various CVEs regarding libssl and libcrypto<br />
+<br />
+    Related to a bunch of critical and high rated security issues:<br />
+    High                         CVE-2026-28388<br />
+    High                         CVE-2026-28389<br />
+    High                         CVE-2026-28390<br />
+    High                         CVE-2026-31790<br />
+    High                         CVE-2026-45447<br />
+    Critical                       CVE-2025-15467<br />
+    Critical                       CVE-2026-28387<br />
+    Critical                       CVE-2026-31789</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/9917a4cdc6221fb9bc53a1c3c1eefc79c6a943b6">9917a4c</a>: 20 Jul 2026 15:34</span>
+                            <span>v12.20.0.7336</span><span><a href="/downloads/builds/heidisql64.r7336.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7336.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7336_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7336_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7335">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: crash when opening textfile import dialog, with 0 tables in database<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2556"> #2556</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/03c005a4841eaebc7bba84359168c98ff377b709">03c005a</a>: 20 Jul 2026 13:59</span>
+                            <span>v12.20.0.7335</span></p></div><div id="r7334">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>feat: show table columns in tree, as child nodes<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/fc222fb6b611e2ab6ac24db2085ce47bd2c2820a">fc222fb</a>: 17 Jul 2026 14:39</span>
+                            <span>v12.20.0.7334</span><span><a href="/downloads/builds/heidisql64.r7334.exe" rel="nofollow" class="download-link">64bit build</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/builds/heidisql64.r7334.exe.sha1.txt">&TildeEqual;</a>
+                            </span><span><a href="/downloads/installers/HeidiSQL_12.20.0.7334_Setup.exe" rel="nofollow" class="download-link">Installer</a>
+                                <a class="checksum" title="SHA1 checksum" href="/downloads/installers/HeidiSQL_12.20.0.7334_Setup.exe.sha1.txt">&TildeEqual;</a>
+                            </span></p></div><div id="r7333">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: prevent SQL error &quot;Property &#039;MS_Description&#039; already exists&quot;<br />
+<br />
+    Fire either sp_addextendedproperty or sp_updateextendedproperty for setting a MS SQL column comment<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2552"> #2552</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/0014f1ba9735c28a22d284966001fe0cd1b49509">0014f1b</a>: 17 Jul 2026 08:31</span>
+                            <span>v12.20.0.7333</span></p></div><div id="r7332">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>feat: auto-adjust width of various combo boxes<br />
+<br />
+    refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2551"> #2551</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/3fca2860360185a14e0e1b5cf08adc82556b2344">3fca286</a>: 16 Jul 2026 07:21</span>
+                            <span>v12.20.0.7332</span></p></div><div id="r7331">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>Update MariaDB Connector/C to v3.4.9. See <a href="https://mariadb.com/docs/release-notes/connectors/c/3.4/3.4.9">https://mariadb.com/docs/release-notes/connectors/c/3.4/3.4.9</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/8644cd79d88c1898188f77979db40a7fa98f606d">8644cd7</a>: 07 Jul 2026 20:25</span>
+                            <span>v12.20.0.7331</span></p></div><div id="r7330">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: do not paint size bar in nodes of level 2, and do not show &quot;-&quot; text there neither<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/1500"> #1500</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/5441379bdc35417864d2c3bb6de3bcde75c90617">5441379</a>: 06 Jul 2026 16:09</span>
+                            <span>v12.20.0.7330</span></p></div><div id="r7329">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>feat: query size of all indexes in one query<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/1500"> #1500</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/499ee4165ebb233d6de7e7c5990fadc753753c11">499ee41</a>: 05 Jul 2026 15:15</span>
+                            <span>v12.20.0.7329</span></p></div><div id="r7328">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>feat: display size of each index and paint a color bar behind it<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/1500"> #1500</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/f1d0eb6a4c69baa37d2febccace973eadf942bb2">f1d0eb6</a>: 05 Jul 2026 12:24</span>
+                            <span>v12.20.0.7328</span></p></div><div id="r7327">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: EXPLAIN &lt;query&gt; actions either disabled or non-working for PostgreSQL and SQLite<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2540"> #2540</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/a4340662f5140aca2082b6feca58b06a068e43de">a434066</a>: 03 Jul 2026 10:47</span>
+                            <span>v12.20.0.7327</span></p></div><div id="r7326">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: hanging in a loop over result nodes by right-click on query result<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2539"> #2539</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/1cbdf77f6fcfed2afb98d90f503c96ad9eca87e5">1cbdf77</a>: 03 Jul 2026 09:10</span>
+                            <span>v12.20.0.7326</span></p></div><div id="r7325">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>refactor: prefer Delphi friendly SysUtils.PathDelim over hard-coded backslash</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/2e290f1be155e09ef4edb50df9ed05a772f50c5c">2e290f1</a>: 29 Jun 2026 16:06</span>
+                            <span>v12.20.0.7325</span></p></div><div id="r7324">
+                        <img src="//www.gravatar.com/avatar/61266a1d3dc66d2abac69df7c07cbbb3?d=identicon&s=20" alt="Ansgar Becker " title="Author: Ansgar Becker " width="20">
+                        <cite>fix: use default library of connection when the one from a stored session contains an invalid path/file<br />
+<br />
+    Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2501"> #2501</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/68785782eca9fd3550b6c80f12677d02bdd7ce92">6878578</a>: 29 Jun 2026 14:23</span>
+                            <span>v12.20.0.7324</span></p></div>        </td>
+        <td>
+            <!-- lazarus branch -->
+            <div>
+                        Ansgar Becker:
+                        <cite>chore: update SQLite libraries to v3.53.4</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/7bfd91df3551f37a770f08b4c5b109ccb2fe8af7">7bfd91d</a>: 03 Aug 2026 13:36</span>
+                            <span><a href="https://nightly.link/HeidiSQL/HeidiSQL/workflows/lazarus.yaml/lazarus">Builds</a></span>
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: sporadic crash in DBtreePaintText with columns<br />
+<br />
+Also, do not init column nodes in FindDBObjectNode, after dblclick on a table in ListTables<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/f76c54fbd056bd10c04113a913776cb50ad2408e">f76c54f</a>: 03 Aug 2026 08:29</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: enable foreign key drop down on grid field in MS SQL mode<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2567"> #2567</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/9f83561d791fb868c86ec486b0648a5f2124366f">9f83561</a>: 03 Aug 2026 08:27</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: remove column nodes from tree in table tools dialog<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2563"> #2563</a> and<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/b09823e1cb35ad666cf363abbd8009f499bcd82c">b09823e</a>: 28 Jul 2026 18:59</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>feat: create opt-in option for displaying columns in database tree<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/f492bedf917252daa51e23902769a377d21f33a6">f492bed</a>: 27 Jul 2026 19:40</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: empty command line part for sshpass on FreeBSD<br />
+<br />
+<a href="https://www.heidisql.com/forum.php?t=45265">https://www.heidisql.com/forum.php?t=45265</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/ed881b34d149372f49e22f6fb03b7aebf8680a28">ed881b3</a>: 27 Jul 2026 16:05</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: handle MONEY column types as float<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2564"> #2564</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/67521d4a40d00e046bec67df2527fe1862cbc8d6">67521d4</a>: 27 Jul 2026 12:48</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>feat: enhance order of items in completion proposal, so exact matches are at the top<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2534"> #2534</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/c1b817b2e9795caa6149fd08a594f79f6a9c4ffb">c1b817b</a>: 25 Jul 2026 08:52</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>chore: ignore auto-created IntelliJ project files</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/64613cfdcb1b034112c1063b545963e76d12331e">64613cf</a>: 23 Jul 2026 18:36</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>feat: for keyboard navigation on the completion proposal, wrap around the item list<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2534"> #2534</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/db952f87a7123492aafd3461c91310efd8e45754">db952f8</a>: 23 Jul 2026 18:31</span>
+                            
+                        </p>
+                    </div><div>
+                        twinn1013:
+                        <cite>fix: hang and wrong check states in data grid column selection on macOS<br />
+<br />
+Fixes the reported hang (issue 2554): closing the column selection popup<br />
+with OK could run FormClose twice on macOS, freeing FCheckedColumns two<br />
+times. The resulting access violation raised the crash dialog inside a<br />
+paint cycle, freezing the application. FCheckedColumns is now freed in<br />
+FormDestroy, which runs exactly once.<br />
+<br />
+While verifying that fix, a second bug in the same popup showed up:<br />
+checked columns were not applied correctly to the grid. The click<br />
+handler used ItemIndex to detect the toggled item, but on Cocoa the<br />
+check event fires before the list selection is updated, so the wrong<br />
+item was added or removed. The handler now syncs the check states of<br />
+all displayed items instead.</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/6c5b66c4571868f044f568d7c0d293b1354fdd5e">6c5b66c</a>: 23 Jul 2026 06:46</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: invalid folder path for SQL export cannot be created if it contains a duplicated path delimiter<br />
+<br />
+Custom output dir may already have a trailing path delimiter, only add when not<br />
+Broken in <a href="https://github.com/HeidiSQL/HeidiSQL/commit/84104d093d3ea5d24dd7007eeeee8a84632c3f0c">84104d093d3ea5d24dd7007eeeee8a84632c3f0c</a><br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2558"> #2558</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/45552743200b5d3cb9387b7e21f81341340c00ca">4555274</a>: 22 Jul 2026 09:08</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: various CVEs regarding libssl and libcrypto<br />
+<br />
+Related to a bunch of critical and high rated security issues:<br />
+High                         CVE-2026-28388<br />
+High                         CVE-2026-28389<br />
+High                         CVE-2026-28390<br />
+High                         CVE-2026-31790<br />
+High                         CVE-2026-45447<br />
+Critical                       CVE-2025-15467<br />
+Critical                       CVE-2026-28387<br />
+Critical                       CVE-2026-31789</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/379d28aa7996f69aefdfbbd5bf1548b670addc07">379d28a</a>: 20 Jul 2026 15:35</span>
+                            
+                        </p>
+                    </div><div>
+                        twinn1013:
+                        <cite>perf: avoid full string scans in StrEllipsis<br />
+<br />
+UTF8Length and UTF8Copy walk every byte of the input, and StrEllipsis<br />
+runs for each rendered grid cell, so large TEXT/BLOB values were fully<br />
+scanned on every paint. Exit early when the byte count already proves<br />
+there is nothing to cut, and resolve the left-hand cut position with<br />
+UTF8CodepointToByteIndex, which only walks the first MaxLen codepoints.<br />
+<br />
+Output is unchanged - verified against the previous implementation with<br />
+10k randomized mixed ASCII/Korean/emoji strings plus boundary cases.<br />
+Still cuts on UTF-8 codepoint boundaries.</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/32f3bd0c2c4a71a0c49585e843f80c1be164e6fa">32f3bd0</a>: 20 Jul 2026 11:43</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: context menu does not appear at right-click on a tree node text<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2069"> #2069</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/8befce343877f7e0f9cbbabd11d3bc78c611f42e">8befce3</a>: 19 Jul 2026 19:47</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: crash when opening textfile import dialog, with 0 tables in database<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2556"> #2556</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/83c4947e427839277be8545da3ee2fc8aeb0f24e">83c4947</a>: 19 Jul 2026 19:27</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>feat: first attempt to create a user manager for PostgreSQL<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/80"> #80</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/f0d7103a71f82263471c9a4490d045a8d233fa41">f0d7103</a>: 19 Jul 2026 13:42</span>
+                            
+                        </p>
+                    </div><div>
+                        twinn1013:
+                        <cite>fix: crash when cancelling session manager while a session rename is active<br />
+<br />
+Two independent crashes on macOS were hidden behind this repro, since<br />
+cancelling the session manager at startup also exits the application:<br />
+<br />
+1. The session manager starts an inline rename right after creating a<br />
+   new session. When the form was closed via Cancel, the edit link&#039;s<br />
+   queued async EndEditNode call fired after the tree was already<br />
+   destroyed, and its focus restoration ran into<br />
+   &quot;[TCustomForm.SetFocus] connform:Tconnform Can not focus&quot;.<br />
+   Remove pending async edit calls when an editor link is destroyed,<br />
+   cancel a pending inline rename before the form closes, and let<br />
+   TrySetFocus test CanSetFocus, which - unlike CanFocus - also checks<br />
+   the parent form itself, so it does not raise in the first place.<br />
+<br />
+2. On shutdown, TSynBaseCompletionForm.Destroy (SynEdit) first frees its<br />
+   SizeDrag panel and then destroys the window handle. The Cocoa<br />
+   widgetset queries Focused during DestroyHandle, and SynEdit&#039;s Focused<br />
+   override dereferences the freed SizeDrag, raising<br />
+   &quot;EObjectCheck: Object reference is Nil&quot; on every macOS shutdown.<br />
+   Work around it by destroying the completion form&#039;s handle in<br />
+   FormDestroy while the form is still intact.<br />
+<br />
+Fixes issue 2433</cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/1da86833850e004a3fb2587eb8db780f25c1133c">1da8683</a>: 14 Jul 2026 04:31</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: prevent crashes from SetFocus on various controls<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2433"> #2433</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/bf468213cbb115c80ba27347a6bcef7d9338a558">bf46821</a>: 17 Jul 2026 15:39</span>
+                            
+                        </p>
+                    </div><div>
+                        Ansgar Becker:
+                        <cite>fix: data grid header keeps showing previous table&#039;s columns on macOS<br />
+<br />
+Most changes done by @twinn1013<br />
+<br />
+Refs<a href="https://github.com/HeidiSQL/HeidiSQL/issues/2549"> #2549</a></cite>
+                        <p class="downloads">
+                            <span><a href="https://www.github.com/HeidiSQL/HeidiSQL/commit/255695dc30429f43cd08367ec2dab6f87a46d3a9">255695d</a>: 17 Jul 2026 15:08</span>
+                            
+                        </p>
+                    </div>        </td>
+    </tr>
+</table>
+
+
+
+    </div>
+
+
+	<div id="footer">
+        <ul class="grid-2">
+            <li><a href="https://www.embarcadero.com/de/case-study/heidisql-case-study?utm_source=Eloqua&utm_medium=web&utm_content=HeidiSQL-website-footer">
+                <!-- <img src="/images/delphi-icon.png" alt="Embarcadero Delphi" class="icon" /> -->
+                HeidiSQL is built with Embarcadero Delphi
+            </a></li>
+            <li><a href="https://www.lazarus-ide.org/">
+                <!-- <img src="/images/lazarus-ide-icon.png" alt="Lazarus cross-platform IDE for Rapid Application Development" class="icon" /> -->
+                Linux and macOS versions built with Lazarus and FreePascal
+            </a></li>
+            <li>
+                Ansgar Becker<br/>
+                Falkenstr. 10, 48485 Neuenkirchen<br/>
+                Germany
+            </li>
+        </ul>
+        <!-- <a href="//mariadb.org">
+            <img src="/images/icons/server-mariadb.png" alt="MariaDB" />
+            Database powered by MariaDB</a> -->
+        <ul class="grid-2">
+        <!-- <a href="https://www.facebook.com/HeidiSQL" title="HeidiSQL on Facebook"><img src="/images/facebook-icon.png" alt="Facebook" /></a> -->
+            <li><a href="https://www.instagram.com/heidisql.official/" title="HeidiSQL on Instagram">
+                <!-- <img src="/images/instagram-icon.png" alt="Instagram" class="icon" /> -->
+                HeidiSQL on Instagram
+            </a></li>
+            <li><a href="https://bsky.app/profile/heidisql.com" title="HeidiSQL on Bluesky">
+                <!-- <img src="/images/bluesky-icon.png" class="icon" alt="Bluesky Icon" /> -->
+                HeidiSQL on Bluesky
+            </a></li>
+            <li><a href="/imprint.php">Imprint</a></li>
+            <li><a href="https://www.manitu.de/webhosting/?affiliate_partner_id=sRumhkdxnEb9d1ZSrQnKWcvsyZkTpeqYmzAjwtnQGRBbbDCM1fzPecNxCED8DkFy">
+                <!-- <img src="images/manitu_hostedby-120_60.png" alt="Manitu Hosting" title="Manitu" style="width:60px;height:30px;" /> -->
+                Website hosted by Manitu
+            </a></li>
+        </ul>
+	</div>
+
+
+    <div class="sticky-right">
+            </div>
+
+  </body>
+</html>

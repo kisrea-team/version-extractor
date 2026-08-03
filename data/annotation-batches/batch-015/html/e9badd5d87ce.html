@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JupyterLab Documentation &#8212; JupyterLab 4.6.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=f0199216" />
+    <link rel="stylesheet" type="text/css" href="https://docs.jupyter.org/en/latest/_static/jupyter.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="_static/documentation_options.js?v=5f0a4c00"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://plausible.io/js/pa-Tem97Eeu4LJFfSRY89aW1.js"></script>
+    <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init({hashBasedRouting:true})</script>
+    <script src="_static/js/plugin_playground_embed.js?v=a0dbedc9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get Started" href="getting_started/overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.6" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/" /><meta name="readthedocs-http-status" content="200" /></head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">🚀 JupyterLab 4.6.0 is now available · <a href="https://jupyterlab.rtfd.io/en/latest/getting_started/installation.html">INSTALL</a> · <a href="https://jupyterlab.rtfd.io/en/latest/getting_started/changelog.html#v4-6">RELEASE NOTES</a></div>
+</aside>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i><span class="visually-hidden">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/#narrow/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i><span class="visually-hidden">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/#narrow/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="jupyterlab-documentation">
+<h1>JupyterLab Documentation<a class="headerlink" href="#jupyterlab-documentation" title="Link to this heading">#</a></h1>
+<p>Welcome to the <strong>JupyterLab</strong> documentation site. JupyterLab is a highly
+extensible, feature-rich notebook authoring application and editing environment,
+and is a part of <a class="reference external" href="https://docs.jupyter.org/en/latest/">Project Jupyter</a>, a
+large umbrella project centered around the goal of providing tools (and <a class="reference external" href="https://docs.jupyter.org/en/latest/#sub-project-documentation">standards</a>) for interactive
+computing with <a class="reference external" href="https://docs.jupyter.org/en/latest/#what-is-a-notebook">computational notebooks</a>.</p>
+<p>A <a class="reference external" href="https://docs.jupyter.org/en/latest/#what-is-a-notebook">computational notebook</a>
+is a shareable document that combines computer code, plain language descriptions,
+data, rich visualizations like 3D models, charts, graphs and figures, and interactive
+controls. A notebook, along with an editor like JupyterLab, provides a fast interactive
+environment for prototyping and explaining code, exploring and visualizing data, and sharing
+ideas with others.</p>
+<p>JupyterLab is a sibling to other notebook authoring applications under
+the <a class="reference external" href="https://docs.jupyter.org/en/latest/">Project Jupyter</a> umbrella, like
+<a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebook</a> and
+<a class="reference external" href="https://github.com/jupyterlab/jupyterlab-desktop">Jupyter Desktop</a>. JupyterLab
+offers a more advanced, feature rich, customizable experience compared to
+Jupyter Notebook.</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/HEAD?urlpath=lab/tree/demo">Try JupyterLab on Binder</a>. JupyterLab follows the Jupyter <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/community/content-community.html">Community Guides</a>.</p>
+<img alt="true" class="jp-screenshot shadow align-center" src="_images/jupyterlab.png" />
+<p>See the sections below (and the top-level links above) for more information about using, extending, and contributing to JupyterLab.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/overview.html">Get Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/overview.html#what-will-happen-to-the-classic-notebook">What will happen to the Classic Notebook?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/announcements.html">Announcements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/interface.html">The JupyterLab Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/urls.html">JupyterLab URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/files.html">Working with Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/file_editor.html">Text Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/notebook.html">Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/code_console.html">Code Consoles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/completer.html">Completer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/terminal.html">Terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/running.html">Managing Kernels and Terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/commands.html#commands-in-markdown-output-and-files">Commands in Markdown Output and Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/documents_kernels.html">Documents and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/file_formats.html">File and Output Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/debugger.html">Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/toc.html">Table Of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/extensions.html">Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/workspaces.html">Workspaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/jupyterhub.html">JupyterLab on JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/export.html">Exporting Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/language.html">Localization and language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/rtc.html">Real Time Collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/lsp.html">Language Server Protocol support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/interface_customization.html">Interface Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/interface_customization.html#applying-custom-css">Applying Custom CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/interface_customization.html#settings-editor-plugin-filtering">Settings Editor Plugin Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/directories.html">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/binder.html">JupyterLab on Binder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extension/extension_dev.html">Develop Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/ui_components.html">Reusing JupyterLab UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/components.html">Using JupyterLab components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/documents.html">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/notebook.html">Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/virtualdom.html">React</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/ui_helpers.html">User Interface Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/identity.html">Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/css.html">CSS Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_tutorial.html">Extension Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_multiple_ui.html">Targeting Multiple Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_migration.html">Extension Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#other-resources">Other resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#overview-of-extensions">Overview of Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#plugins">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#source-extensions">Source Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#prebuilt-extensions">Prebuilt Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#development-workflow-for-source-extensions">Development workflow for source extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extension/extension_dev.html#testing-your-extension">Testing your extension</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer/contributing.html">Contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#general-guidelines-for-contributing">General Guidelines for Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#languages-tools-and-processes">Languages, Tools and Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#submitting-a-pull-request-contribution">Submitting a Pull Request Contribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#contributing-from-within-the-browser">Contributing from within the browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#setting-up-a-local-development-environment">Setting up a local development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#installing-jupyterlab">Installing JupyterLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#internationalization">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#performance-testing">Performance Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#visual-regression-and-ui-tests">Visual Regression and UI Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#contributing-to-the-debugger-front-end">Contributing to the debugger front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#build-and-run-the-stand-alone-examples">Build and run the stand-alone examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#debugging-in-the-browser">Debugging in the Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#high-level-architecture">High level Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#the-npm-packages">The NPM Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#writing-documentation">Writing Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#the-jupyter-server-extension">The Jupyter Server Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#build-utilities">Build Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#testing-changes-to-external-packages">Testing Changes to External Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#screenshots-and-animations">Screenshots and Animations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/contributing.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer/api.html">API Reference</a></li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="getting_started/overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Get Started</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.6.x/docs/source/index.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/index.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2026, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+    <p>
+        <a href="privacy_policies.html">Privacy Policies</a>
+    </p>
+</div></div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

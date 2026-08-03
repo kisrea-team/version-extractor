@@ -1,0 +1,1642 @@
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+<script defer="defer" type="text/javascript" src="https://rum.hlx.page/.rum/@adobe/helix-rum-js@%5E2/dist/rum-standalone.js" data-routing="env=prod,tier=publish,ams=Broadcom Corporation TechDocs2" integrity="" crossorigin="anonymous" data-enhancer-version="" data-enhancer-hash=""></script>
+<script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',"GTM-KF7XWD");
+</script>
+<!-- End Google Tag Manager -->
+    <title>VMware Workstation Pro 25H2u1 Release Notes</title>
+    <!-- add more -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    
+    
+    
+      <meta name="division" content="VMware® Cloud Infrastructure Software"/>
+    
+    
+      <meta name="category" content="VMware Desktop Hypervisors"/>
+    
+    
+      <meta name="product" content="VMware Workstation Pro"/>
+    
+    
+      <meta name="language" content="en"/>
+    
+    
+    
+      <meta name="resource" content="/content/broadcom/techdocs/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html"/>
+    
+    
+      <meta name="toc" content="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/_jcr_content.toc.html"/>
+    
+    
+      <meta name="searchpage" content="/content/broadcom/techdocs/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/search.html"/>
+    
+    
+      <meta name="spacename" content="VMware Workstation Pro 25H2"/>
+    
+    
+      <meta name="instance" content="TD2"/>
+    
+
+    
+    
+
+    
+    <link rel="preload" href="/etc.clientlibs/techdocs-next/clientlibs/clientlib-inter-font/resources/webfonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+<link rel="preload" href="/etc.clientlibs/techdocs-next/clientlibs/clientlib-inter-font/resources/webfonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+<link rel="preload" href="/etc.clientlibs/techdocs-next/clientlibs/clientlib-inter-font/resources/webfonts/Inter-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+    
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="6a5fee8c-80be-4b9a-ab7e-b607e3f8ad3e" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+    <script type="text/javascript" nonce="brcmtd2409pThL2s9R8o9Q==">
+        function OptanonWrapper() {
+            const activeGroups = window.OnetrustActiveGroups ? OnetrustActiveGroups.split(',') : [];
+            const targetingEnabled = activeGroups.includes('4');
+
+            const $message = $('.onetrust-message-4');
+            const $objects = $('object');
+
+            // Always enable videos regardless or cookie options
+            if (targetingEnabled || true) {
+                $message.hide();
+
+                $objects.filter('[data-onetrust]').each(function () {
+                    const $el = $(this);
+                    $el.attr('data', $el.attr('data-onetrust')).removeAttr('data-onetrust');
+                });
+            } else {
+                $message.show();
+
+                $objects.filter('[data]').each(function () {
+                    const $el = $(this);
+                    $el.attr('data-onetrust', $el.attr('data')).removeAttr('data');
+                });
+            }
+        }
+    </script>
+
+
+    
+    
+<link rel="stylesheet" href="/etc.clientlibs/techdocs-next/clientlibs/clientlib-base.min.2712561930b1bc6d4f517f087bf4e425.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/techdocs-next/clientlibs/clientlib-components.min.243a0bc46b4395a44f290fa84cbcb475.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/techdocs-next/components/dita/topicpage/clientlibs.min.37f3de05fc2bb03579a800d5cfa4146d.css" type="text/css">
+
+
+
+
+    
+      
+    <script>
+        (function () {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                html.setAttribute('data-bs-theme', savedTheme);
+
+                /* Swagger UI */
+                const swaggerUiClass = savedTheme === "light" ? 'light-mode' : "dark-mode";
+                const swaggerUiClassToRemove = savedTheme === "light" ? 'dark-mode' : "light-mode";
+                html.classList.add(swaggerUiClass);
+                html.classList.remove(swaggerUiClassToRemove);
+            }
+        })();
+    </script>
+
+    
+
+    
+      <script type="application/ld+json" nonce="brcmtd2409pThL2s9R8o9Q==">
+        {"spacename":"VMware Workstation Pro 25H2","keywords":"","@type":"Article","author":"CA Inc","alternateName":"","dateModified":"Fri Mar 06 2026 09:40:11 GMT+0000","language":"en","mainEntityOfPage":{"@type":"Webpage","URL":"/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes"},"@context":"http://schema.org","url":"/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes","datePublished":"2026-03-06T09:47:43.062Z","spacekey":"","currentpagetitle":"VMware Workstation Pro 25H2u1 Release Notes","appname":[],"appid":["WORKST-25H2"],"name":"VMware Workstation Pro 25H2u1 Release Notes","siteversion":"25H2","publisher":{"@type":"Organization","name":"CA INC","logo":{"@type":"ImageObject","url":"https://static.broadcom.com/static/css/img/logo-broadcom-bw.png"}},"productname":"VMware Workstation Pro","searchurl":"/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/search.html","supportid":["1600790","1600034"],"ux-context-string":[],"headline":"VMware Workstation Pro 25H2u1 Release Notes"}
+      </script>
+    
+  </head>
+
+  <body class="cmp-topicpage">
+    <!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF7XWD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+
+
+<nav class="cmp-header navbar">
+  <div class="navbar-left">
+    <a href="/">
+      <i class="broadcom-logo"></i>
+      <i class="broadcom-logo-dark"></i>
+    </a>
+    <a class="brand-label" href="/">
+      TechDocs
+    </a>
+  </div>
+
+
+  <div class="navbar-right">
+    
+
+    
+      <a class="navbar-action" href="https://access.broadcom.com/default/saml/v1/idp/login?appId=49ad37d2-6e0f-42f2-aca7-337a63abc2e4">Login</a>
+      <span>|</span>
+      <a class="navbar-action" href="https://profile.broadcom.com/web/registration">Register</a>
+    
+
+   
+  </div>
+</nav>
+
+<div class="header-gradient"></div>
+
+    <div class="main">
+      <div class="main-left">
+        <button class="main-left-toggle btn btn-sm">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <div class="main-left-upper">
+          <div class="main-left-upper-title">VMware Workstation Pro 25H2</div>
+          
+
+
+  <div class="cmp-version-dropdown">
+    <div class="version-dropdown-label">CHANGE VERSION</div>
+    <select class="form-select" id="version-select">
+      
+        <option class="version-option" data-link="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/26H1">26H1
+        </option>
+      
+        <option class="version-option" selected data-link="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes">25H2
+        </option>
+      
+        <option class="version-option" data-link="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/17-0">17.0
+        </option>
+      
+    </select>
+  </div>
+
+
+<!-- <script>
+  window.versionDropdown = JSON.parse("");
+</script> -->
+          
+
+
+  <div class="cmp-language-select">
+    <select class="form-select" id="language-select">
+      
+        <option class="language-option" selected data-link="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes">English
+        </option>
+      
+        <option class="language-option" data-link="/fr/fr/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes">Français
+        </option>
+      
+        <option class="language-option" data-link="/es/es/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes">Español
+        </option>
+      
+        <option class="language-option" data-link="/jp/ja/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes">日本語
+        </option>
+      
+    </select>
+  </div>
+
+
+          
+            
+            
+    <div class="cmp-brand-input input-group" id="toc-filter">
+        <input type="text" class="form-control border-end-0" placeholder="Filter by title" autocomplete="off"/>
+        <div class="input-right border-start-0 rounded-start-0">
+        <button class="btn clear-btn is-hidden" type="button" aria-label="Clear search">
+            <span class="fa fa-xmark"></span>
+        </button>
+        <div class="vertical-divide"></div>
+        <button type="submit" class="btn search-btn" aria-label="Search">
+            <span class="fa fa-search"></span>
+        </button>
+        </div>
+    </div>
+
+          
+        </div>
+        <div class="main-left-toc">
+          
+
+<div class="cmp-tableofcontents">
+    <div class="toc-heading"> <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2.html" class="toc-link">Overview</a></div>
+    <ul class="top-list">
+        
+    <li>
+        <div class="top-entry  ancestor-active">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes.html" class="toc-link">Release Notes</a>       
+            <span class="toggle-icon" data-bs-toggle="collapse" data-bs-target="#260061b2-a30a-45c5-a80a-f3b9bcd2ffb7" aria-expanded="true">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </div>
+        <ul class="nested-list collapse show" id="260061b2-a30a-45c5-a80a-f3b9bcd2ffb7">
+            
+    
+    <li>
+        <div class="nested-entry active">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html" class="toc-link">VMware Workstation Pro 25H2u1 Release Notes</a>
+        </div>
+    </li>
+
+        
+            
+    
+    <li>
+        <div class="nested-entry ">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2-release-notes.html" class="toc-link">VMware Workstation Pro 25H2 Release Notes</a>
+        </div>
+    </li>
+
+        </ul>
+    </li>
+    
+
+    
+        
+    <li>
+        <div class="top-entry  ">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/using-vmware-workstation-pro.html" class="toc-link">Using VMware Workstation Pro</a>       
+            <span class="toggle-icon" data-bs-toggle="collapse" data-bs-target="#67c42288-0298-45b0-8502-03e130e0772a" aria-expanded="false">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </div>
+        <ul class="nested-list collapse " id="67c42288-0298-45b0-8502-03e130e0772a">
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        </ul>
+    </li>
+    
+
+    
+        
+    <li>
+        <div class="top-entry  ">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/using-vmware-workstation-player-for-windows-17-0.html" class="toc-link">Using VMware Workstation Player for Windows</a>       
+            <span class="toggle-icon" data-bs-toggle="collapse" data-bs-target="#aeaf3101-1404-4b5f-bbb3-18f79ed853f1" aria-expanded="false">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </div>
+        <ul class="nested-list collapse " id="aeaf3101-1404-4b5f-bbb3-18f79ed853f1">
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        </ul>
+    </li>
+    
+
+    
+        
+    <li>
+        <div class="top-entry  ">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/using-vmware-workstation-player-for-linux-17-0.html" class="toc-link">Using VMware Workstation Player for Linux</a>       
+            <span class="toggle-icon" data-bs-toggle="collapse" data-bs-target="#bc51b13d-f45d-4950-b9e7-931d1640556f" aria-expanded="false">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </div>
+        <ul class="nested-list collapse " id="bc51b13d-f45d-4950-b9e7-931d1640556f">
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        
+            
+    
+    
+
+        </ul>
+    </li>
+    
+
+    
+        
+    
+    <li>
+        <div class="top-entry ">
+            <a href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/documentation-legal-notice-english-public.html" class="toc-link">Documentation Legal Notice</a>
+        </div>
+    </li>
+
+    </ul>
+</div>
+
+        </div>
+      </div>
+
+      <div class="main-mid container">
+        <div class="main-mid-top">
+          
+
+<nav class="cmp-breadcrumbs">
+    <ol class="breadcrumb">
+        
+            <li class="breadcrumb-item"><a href='/'>Home</a></li>
+        
+
+        
+            <li class="breadcrumb-item">
+                <a href='/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2.html'>VMware Workstation Pro 25H2</a>
+            </li>
+        
+
+        
+            <li class="breadcrumb-item dropdown">
+                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown">...</a>
+
+                <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a class="dropdown-item" href='/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes.html'>Release Notes</a>
+                        </li>
+                    
+                </ul>
+            </li>
+        
+
+        
+            <li class="breadcrumb-item last">
+                <span>VMware Workstation Pro 25H2u1 Release Notes</span>
+            </li>
+        
+    </ol>
+</nav>
+
+          <h1 class="main-mid-top-title">VMware Workstation Pro 25H2u1 Release Notes</h1>
+          <div class="main-mid-top-description">
+            
+              
+            
+            
+          </div>
+
+          <div class="main-mid-top-search-pdf">
+            <div class="left-section">
+              
+                <a class="position-absolute" href="/content/dam/broadcom/techdocs/us/en/pdf/vmware/desktop-hypervisors/workstation/vmware-workstation-pro-25h2.pdf" target="_blank">
+                  <button type="button" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-file-arrow-down fa-lg"></i>
+                    <span>Download PDF</span>
+                  </button>
+                </a>
+              
+            </div>
+            <div class="right-section">
+                
+                  
+                  
+    <div class="cmp-brand-input input-group" id="product-search">
+        <input type="text" class="form-control border-end-0" placeholder="Search this product" autocomplete="off"/>
+        <div class="input-right border-start-0 rounded-start-0">
+        <button class="btn clear-btn is-hidden" type="button" aria-label="Clear search">
+            <span class="fa fa-xmark"></span>
+        </button>
+        <div class="vertical-divide"></div>
+        <button type="submit" class="btn search-btn" aria-label="Search">
+            <span class="fa fa-search"></span>
+        </button>
+        </div>
+    </div>
+
+                
+
+                <button type="button" class="btn product-search-tooltip" data-bs-custom-class="product-search-tooltip-box" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" data-bs-title="<p>Broadcom recently implemented an agentic search tool on <a href='https://techdocs.broadcom.com'>techdocs.broadcom.com</a>. To help you navigate the search tool and improve your search experience, we recommend the following best practices when entering your search request:<p><ul><li>Use natural, conversational language while also including product-specific terms.</li><li>Ask complete questions. (or a declarative statement of need)</li><li>Ask for links to specific content. Avoid brief keyword searches</li><li>Ask follow-up questions.</li></ul><p>Examples:</p><ul><li>Can you provide a link to message ACF01001?</li><li>I need a list of articles that explain how to use the REST API?</li><li>Create a list with links to all topics about how to configure cerificates.</li></ul>">
+                  <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="main-content">
+          
+            <div class="dita">
+                <div class="topic section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="topic topic concept" id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en" >
+
+    <h1 class="title"><div  style="display: inline;">VMware Workstation Pro 25H2u1 Release Notes</div></h1>
+
+    <div  style="display: inline;"><div class="p"><div  style="display: inline;">This document contains the following sections</div></div><ul class="ul"><div  style="display: inline;"><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-0c40326b-db4b-47a5-98ec-2f63f8f307dc" title="" data-scope="local" data-format="dita" data-type="" target="_self">Introduction</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e2bbd703-fa4e-4f4d-832e-457784632ab8" title="" data-scope="local" data-format="dita" data-type="" target="_self">What&#39;s New</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-619dd0a6-a729-4cc9-ada2-92f401990a53" title="" data-scope="local" data-format="dita" data-type="" target="_self">About VMware Workstation Pro</a>
+        <ul class="ul"><div  style="display: inline;"><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-f12b280c-0013-4d7e-8f86-5b87211832b0" title="" data-scope="local" data-format="dita" data-type="" target="_self">Downloads</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-245b8f71-6755-4617-aefd-d8cbf38ec251" title="" data-scope="local" data-format="dita" data-type="" target="_self">System Requirements</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-7dcf74a6-0e7f-4b99-8584-bef4bfd09e2d" title="" data-scope="local" data-format="dita" data-type="" target="_self">Product Support Notice</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-5d2a530e-49b3-4f4f-be50-b9bae5ffdc24" title="" data-scope="local" data-format="dita" data-type="" target="_self">Internationalization</a></div></li></div></ul></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-c692a6f8-6c1c-4120-a65c-5d3a74f49651" title="" data-scope="local" data-format="dita" data-type="" target="_self">Resolved Issues</a></div></li><li class="li"><div  style="display: inline;"><a class="xref" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2u1-release-notes.html#GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-31a60e9e-228b-4388-aad5-98e74ea828d9" title="" data-scope="local" data-format="dita" data-type="" target="_self">Known Issues</a></div></li></div></ul><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-0c40326b-db4b-47a5-98ec-2f63f8f307dc" class="section"><div  style="display: inline;"><h2 class="title"><div  style="display: inline;">Introduction</div></h2>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <table  class="table" >
+    <div  style="display: inline;">
+
+
+
+
+
+
+
+<!--cq:include script="../../common/tablestack.jsp" /-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<colgroup >
+  <col style="width: 100.0%" /></colgroup>
+<div  style="display: inline;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tbody class="tbody"><div  style="display: inline;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="row"><div  style="display: inline;"><td  id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-ffd50938-e900-4fcc-b070-07f25994acc2" class="entry" class="entry relcol" ><div  style="display: inline;">
+                <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b0d78f42-edf1-4f22-ab46-20036b91d9c1" class="p"><div  style="display: inline;">VMware Workstation Pro 25H2u1 | 26 FEB 2026 | Build 25219725</div></div>
+                <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-f7092949-aa9f-46ee-8fb0-35370b7a0a8b" class="p"><div  style="display: inline;">Check for additions and updates to these release notes.</div></div>
+              </div></td></div></tr>
+</div></tbody>
+</div>
+</div> 
+  </table>
+</div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e2bbd703-fa4e-4f4d-832e-457784632ab8" class="section"><div  style="display: inline;"><h2 class="title"><div  style="display: inline;">What&#39;s New</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-0de3702f-5e96-4f6e-9bf7-e5b8fd159c5d" class="p"><div  style="display: inline;">VMware Workstation Pro 25H2u1 contains security and bug fixes.</div></div><ul id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-6ff3f6c3-e4e4-49fb-8353-30b0694786bf" class="ul"><div  style="display: inline;"><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-171b96a2-e72e-4f77-aec9-ddc57f55a8f6" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b753ec8d-de68-44c5-ae60-ee1075ddef0b" class="p"><div  style="display: inline;">Re-enabled the <span id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-80bb0167-796b-43c5-9724-6bb667ccb34d" class="ph uicontrol"><div  style="display: inline;">Check for updates</div></span> option to check for new releases.</div></div></div></li><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-7db98c60-99e4-4d7a-82c0-ecf4a9d5f361" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b168ef32-ab36-458f-fe1e-1a5cab2c9833" class="p"><div  style="display: inline;">This release resolves <a class="xref" href="https://www.cve.org/CVERecord?id=CVE-2026-22715" title="" data-scope="external" data-format="html" data-type="" target="_blank">CVE-2026-22715</a>, <a class="xref" href="https://www.cve.org/CVERecord?id=CVE-2026-22716" title="" data-scope="external" data-format="html" data-type="" target="_blank">CVE-2026-22716</a>, <a class="xref" href="https://www.cve.org/CVERecord?id=CVE-2026-22717" title="" data-scope="external" data-format="html" data-type="" target="_blank">CVE-2026-22717</a>, and <a class="xref" href="https://www.cve.org/CVERecord?id=CVE-2026-22722" title="" data-scope="external" data-format="html" data-type="" target="_blank">CVE-2026-22722</a>. For more information on these vulnerabilities and their impact on Broadcom products, see <a class="xref" href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36986" title="" data-scope="external" data-format="html" data-type="" target="_blank">VMSA-2026-0002</a>.</div></div></div></li></div></ul></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-619dd0a6-a729-4cc9-ada2-92f401990a53" class="section"><div  style="display: inline;"><h2 class="title"><div  style="display: inline;">About VMware Workstation Pro</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-288bb76f-aa57-479b-94e9-55ff023738d2" class="p"><div  style="display: inline;">VMware Workstation Pro™ enables technical professionals to develop, test, demonstrate, and deploy software by running multiple x86-based Windows, Linux, and other operating systems simultaneously on the same PC.</div></div><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-28c9ffac-fa43-46b7-9f78-af04c83fcea6" class="p"><div  style="display: inline;">You can replicate server, desktop, and tablet environments in a virtual machine and allocate multiple processor cores, gigabytes of main memory, and graphics memory to each virtual machine, whether the virtual machine resides on a personal PC or on a private enterprise cloud.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-f12b280c-0013-4d7e-8f86-5b87211832b0" class="section"><div  style="display: inline;"><h2 data-outputclass="bc-h3" class="title"><div  style="display: inline;">Downloads</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-c5a2239a-228f-41af-b2de-c26de6fab36b" class="p"><div  style="display: inline;">Log in to the <a class="xref" href="https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true" title="" data-scope="external" data-format="html" data-type="" target="_blank">Broadcom Support Portal</a> and download the latest version of VMware Workstation for Windows and Linux.</div></div><div class="note important" data-label="IMPORTANT"> <div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-da8dbff8-52d6-4f89-b743-ed22f1157d06" class="p"><div  style="display: inline;">VMware Workstation Pro is now free for commercial, educational, and personal use. You no longer require a license key.</div></div></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-245b8f71-6755-4617-aefd-d8cbf38ec251" class="section"><div  style="display: inline;"><h2 data-outputclass="bc-h3" class="title"><div  style="display: inline;">System Requirements</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-1959e7d1-ba5e-4b4f-a8d5-3b0e54619769" class="p"><div  style="display: inline;">For information about the system requirements of VMware Workstation Pro, see <a class="xref" href="https://techdocs.broadcom.com/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/using-vmware-workstation-pro/introduction-and-system-requirements/host-system-requirements-for-workstation-pro.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">Introduction and System Requirements</a> in the <cite id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-1cc1fba5-8bce-46ac-8b08-545e9918c8a6" class="cite"><div  style="display: inline;">Using VMware Workstation Pro</div></cite> documentation.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-7dcf74a6-0e7f-4b99-8584-bef4bfd09e2d" class="section"><div  style="display: inline;"><h2 data-outputclass="bc-h3" class="title"><div  style="display: inline;">Product Support Notice</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-a44a4e9f-0eb5-4486-9991-3c991c8ccf1c" class="p"><div  style="display: inline;">Starting with the next release of Workstation Pro, Workstation Player binaries will no longer be bundled with Workstation Pro.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-5d2a530e-49b3-4f4f-be50-b9bae5ffdc24" class="section"><div  style="display: inline;"><h2 data-outputclass="bc-h3" class="title"><div  style="display: inline;">Internationalization</div></h2>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-80b2bd33-0a2e-4ab0-b316-0479614e8ba4" class="p"><div  style="display: inline;">VMware Workstation Pro 25H2u1 is available in the following languages:</div></div><ul id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-11685087-f339-4e3d-9c8d-168947759ce7" class="ul"><div  style="display: inline;"><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e051a4a6-db84-478e-ab26-02663a0920e0" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-ce65bb34-6089-4655-9bbb-6a2510bc3f82" class="p"><div  style="display: inline;">English</div></div></div></li><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-4530fad1-674a-4601-9a04-b4bafe94f724" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e5ef5581-9564-4971-a28c-6cfb2ad49b06" class="p"><div  style="display: inline;">French</div></div></div></li><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-953ec83b-2e47-4585-a217-2e4f223fcf35" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-6f869d1d-d61a-4c05-b5a3-ddeb775a2c11" class="p"><div  style="display: inline;">Japanese</div></div></div></li><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-0632d69d-dae6-4bbc-ad5b-4a1fdbe9b605" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b957c93e-1629-4014-8b35-c8b4a33add35" class="p"><div  style="display: inline;">Spanish</div></div></div></li></div></ul></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-c692a6f8-6c1c-4120-a65c-5d3a74f49651" class="section"><div  style="display: inline;"><h2 class="title"><div  style="display: inline;">Resolved Issues</div></h2></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b8616e9a-970d-4951-a501-9e9176e5b153" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-056e4caf-46ef-40e5-9ef7-709fb481e0a0" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-c1904a10-eea5-4216-a632-aa5f9920fe68" class="ph b"><div  style="display: inline;">When running on a Windows host with Hyper-V enabled, VMs might quit unexpectedly</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-a00e4c11-1bc9-4004-90c0-b5d7c3ba4272" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-8807c6e1-8d4a-477b-b5bd-c12ae5ae8562" class="p"><div  style="display: inline;">When running on а Windows host with Hyper-V enabled, Workstation Pro 25H2 does not support nested virtualization. Virtual machines configured with &#34;vhv.enable = TRUE&#34; might possibly report &#34;unrecoverable error&#34;. This issue is resolved in this release. When powering on a VM that is configured to use nested virtualization on a host with Hyper-V, an error message is displayed.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-151e599c-abe9-4592-a543-60ca0c054b0f" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-4b73d5e7-4a82-42d6-aa68-288d92453655" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-19f5e94f-12a2-478d-9de2-be312b8a4865" class="ph b"><div  style="display: inline;">On Windows hosts, guest operating systems sometimes appear to be slow and unresponsive to input</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-75cdec86-1acf-46f3-bf43-e6d309a7e5cb" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-8685a687-6ac4-4635-b9df-0416f2608e86" class="p"><div  style="display: inline;">When receiving input by the guest operating system, VMware Workstation on Windows hosts might fail to redraw the guest screen, creating the perception of the guest operating system being slow. Therefore, when updating visual elements, the guest operating systems might seem unresponsive to user input or the guest screen seems to lag. This issue is fixed in this release.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-6305d92a-7936-4444-90b5-8d8edee9cfb9" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-8c3c4086-85a3-45ef-8be4-b24686b9f4eb" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-ecc7e972-802b-4922-85f6-3fbbfa0192bb" class="ph b"><div  style="display: inline;">When moving the mouse cursor between monitors in full screen mode, the mouse cursor disappears</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-ef97adec-0338-4beb-9146-4245965db77f" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-def7169f-1904-433c-a457-e9695ea03db1" class="p"><div  style="display: inline;">When using Workstation Pro on a Windows host that has focus follows mouse enabled and a virtual machine is in full screen mode with multiple monitors, moving the mouse cursor between monitors results in the mouse cursor disappearing. This issue is resolved in this release.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-30cecc77-37e6-48d0-8c16-65708e2ee725" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-c28de2d7-dd04-447b-821d-b2191ec23ab7" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-bb309b3a-8670-4440-8391-2ae30948b201" class="ph b"><div  style="display: inline;">Vulkan presentation mode might cause several bugs in some Windows host hardware configurations</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-753c2658-6372-4f8e-9dc0-0bc995bff755" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-722f123a-21cc-4491-9a1e-cad558dc0179" class="p"><div  style="display: inline;">VMware Workstation Pro 25H2 enabled a new Vulkan presentation mode that exhibited several bugs in some host hardware configurations, for example:</div></div><ul id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-4c033179-fc9d-477f-db95-2321dc9968b4" class="ul"><div  style="display: inline;"><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-eec896df-acb0-4cba-f60b-8290e1aee2e3" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-fe47294e-084f-4cdd-99b1-dbd3150173ad" class="p"><div  style="display: inline;">When powering on a virtual machine, the display of the Windows host might permanently dim until the host is rebooted.</div></div></div></li><li id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-14ee329b-c083-4c62-e115-6d019c820456" class="li"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-4bca6588-5fd8-4900-bd7c-7a10abb1b5e9" class="p"><div  style="display: inline;">When entering full screen mode on a Windows host, the toolbar is no longer visible.</div></div></div></li></div></ul>
+      <div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e36c311d-72cf-483b-fc2e-74c50f450b91" class="p"><div  style="display: inline;">This issue is resolved in this release and the Vulkan and DirectX 12 presentation modes are deactivated by default.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e1e65d3a-ef4b-4d0e-85b9-83fa52b7307f" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-46670d52-6d75-404f-a084-911c7581b46e" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-6933774e-37b2-460a-b800-cffed213e20a" class="ph b"><div  style="display: inline;">On Windows hosts, full screen mode displays a 1 pixel white border around the screen of the guest operating system</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-aea821fb-7700-4bba-aed3-ab37d1221e0b" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-10522975-185b-452c-bbc3-af892e8a0e5c" class="p"><div  style="display: inline;">This issue is resolved in this release.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-2e187471-cfdb-46f9-bdc8-fbdaaa9ca77d" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-e2282086-e895-4c93-bcd6-93618a5bab86" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-8f72ce27-d967-465e-b3c9-7262ce58456f" class="ph b"><div  style="display: inline;">After rebooting a host, virtual machines with Windows XP or Windows Vista operating systems that have 3D graphics acceleration enabled display a black screen or a low-resolution screen without full color support</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-abc09126-37be-43cc-8353-032e1853da16" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-ea5deed5-827e-4cfa-88b8-3f4684db952f" class="p"><div  style="display: inline;">This issue is resolved in this release.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-28ab848b-ba2f-4701-b0e8-2698ce9c6653" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b86b9d84-b619-4f11-8a03-95e00411fa97" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-678cc924-5919-4360-88ce-1ae770c855f5" class="ph b"><div  style="display: inline;">When attempting USB pass-through on Windows hosts, the USB devices might not be listed, intermittently disconnect, or fail to connect</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-bb8e0d41-3605-4c31-b8a4-0d5e8a6c795e" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-b7ef1376-c4be-45a3-a47f-b566410418e2" class="p"><div  style="display: inline;">When attempting USB pass-through on a Windows host, a sudden disconnection from <span id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-4c936669-cf69-4253-fcd6-28a3cf52a8f6" class="ph codeph"><div  style="display: inline;">USBArbitrator</div></span> might occur and the enumerated device information is not available. This issue is fixed in this release.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-31a60e9e-228b-4388-aad5-98e74ea828d9" class="section"><div  style="display: inline;"><h2 class="title"><div  style="display: inline;">Known Issues</div></h2></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-92eb558a-d2be-4aa2-bac7-ec375e0ca669" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-54dad69f-d57f-491b-b0bb-a69902c39867" class="p"><div  style="display: inline;"><b id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-87ec66c8-0ffb-460b-b3a0-2546df8374d9" class="ph b"><div  style="display: inline;">After downgrading the hardware compatibility of an encrypted virtual machine with vTPM from hardware version 22, the virtual machine fails to start</div></b></div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-3ab6fa6b-cdff-436e-a53a-a124d8eb5701" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-54523b5f-2e81-404e-a251-1426cd5f4d1e" class="p"><div  style="display: inline;">Downgrading the hardware compatibility of an encrypted virtual machine with vTPM, that was created by using VMware Workstation 25H2 and configured with hardware version 22 to any lower version is not supported. A new vTPM version is introduced with hardware version 22 that is incompatible with older hardware versions. If downgrade is attempted, the virtual machine fails to start.</div></div></div></section><section id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-867864bb-3eb8-4a77-a521-f3aafd6099ed" class="section"><div  style="display: inline;"><div id="GUID-d579eb39-4a27-49c9-b615-de6fda109020-en_id-aa2f815d-aded-482f-f3dc-e82051ca9bc4" class="p"><div  style="display: inline;">Workaround: None.</div></div></div></section></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="linklist relatedlinks" data-label="Related information" ><div><div class="linkpool linklist">
+
+
+
+
+
+
+
+
+<div data-scope="" data-format="" data-type="" ><a class="link" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes.html" title="The release notes provide product improvements and various bug fixes." data-scope="local" data-format="dita" data-type="topic" target="_self"><span class="linktext"><div  style="display: inline;">Release Notes</div></span></a></div>
+</div>
+</div></div>
+
+
+</div>
+</div>
+
+
+            </div>
+          
+          
+          
+    
+
+
+
+        </div>
+
+        <div class="previous-next-navigation">
+
+<div class="cmp-previous-next-navigation">
+    <div class="previous">
+        <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="previous-container">
+            <div class="previous-label">PREVIOUS</div>
+            <a class="previous-link" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes.html">Release Notes</a>
+        </div>
+    </div>
+    
+    <div class="next">
+        <div class="next-container">
+            <div class="next-label">NEXT</div>
+            <a class="next-link" href="/us/en/vmware-cis/desktop-hypervisors/workstation-pro/25H2/release-notes/vmware-workstation-pro-25h2-release-notes.html">VMware Workstation Pro 25H2 Release Notes</a>
+        </div>
+        <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+    </div>
+    
+</div></div>
+
+        <div class="main-right-mobile">
+          <div class="cmp-feedback">
+  <div class="feedback-header">Was this page helpful?</div>
+  <div class="feedback-buttons">
+    <button id="feedback-button" type="button" class="btn btn-sm btn-outline-primary feedback-button">
+      Documentation Feedback
+    </button>
+  </div>
+  <div class="feedback-footer">
+      <p>Last Updated March 6, 2026</p>
+  </div>
+
+  <!-- Modal injected in <body> -->
+  <div class="modal fade feedback-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">Feedback and Comments</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Feedback Form -->
+          <form id="feedback-form" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="required-label">First Name</label>
+                <input type="text" class="form-control" name="firstName" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Last Name</label>
+                <input type="text" class="form-control" name="lastName" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Email</label>
+                <input type="email" class="form-control" name="email" maxlength="256" pattern=".*\S+.*" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Product</label>
+                <input type="text" class="form-control" name="product" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Country</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option>Afghanistan</option>
+                  <option>Africa</option>
+                  <option>Albania</option>
+                  <option>Algeria</option>
+                  <option>Andorra</option>
+                  <option>Angola</option>
+                  <option>Antigua and Barbuda</option>
+                  <option>Argentina</option>
+                  <option>Armenia</option>
+                  <option>Asean</option>
+                  <option>Asia Pacific</option>
+                  <option>Australia</option>
+                  <option>Austria</option>
+                  <option>Azerbaijan</option>
+                  <option>Bahamas</option>
+                  <option>Bahrain</option>
+                  <option>Bangladesh</option>
+                  <option>Barbados</option>
+                  <option>Belarus</option>
+                  <option>Belgium</option>
+                  <option>Belize</option>
+                  <option>Benin</option>
+                  <option>Bhutan</option>
+                  <option>Bolivia</option>
+                  <option>Bosnia Herzegovina</option>
+                  <option>Botswana</option>
+                  <option>Brazil</option>
+                  <option>Brunei</option>
+                  <option>Bulgaria</option>
+                  <option>Burkina Faso</option>
+                  <option>Burundi</option>
+                  <option>Cambodia</option>
+                  <option>Cameroon</option>
+                  <option>Canada</option>
+                  <option>Cape Verde</option>
+                  <option>Central African Republic</option>
+                  <option>Chad</option>
+                  <option>Chile</option>
+                  <option>China</option>
+                  <option>Colombia</option>
+                  <option>Comoros</option>
+                  <option>Congo (Brazzaville)</option>
+                  <option>Congo, Democratic Republic of</option>
+                  <option>Costa Rica</option>
+                  <option>Cote d Ivoire (Ivory Coast)</option>
+                  <option>Croatia</option>
+                  <option>Curacao</option>
+                  <option>Cyprus</option>
+                  <option>Czech Republic</option>
+                  <option>Denmark</option>
+                  <option>Djibouti</option>
+                  <option>Dominica</option>
+                  <option>Dominican Republic</option>
+                  <option>East Timor</option>
+                  <option>Ecuador</option>
+                  <option>Egypt</option>
+                  <option>El Salvador</option>
+                  <option>Equatorial Guinea</option>
+                  <option>Eritrea</option>
+                  <option>Estonia</option>
+                  <option>Ethiopia</option>
+                  <option>Europe</option>
+                  <option>Fiji</option>
+                  <option>Finland</option>
+                  <option>France</option>
+                  <option>Gabon</option>
+                  <option>Gambia</option>
+                  <option>Georgia</option>
+                  <option>Germany</option>
+                  <option>Ghana</option>
+                  <option>Greece</option>
+                  <option>Grenada</option>
+                  <option>Guatemala</option>
+                  <option>Guinea</option>
+                  <option>Guinea-Bissau</option>
+                  <option>Guyana</option>
+                  <option>Haiti</option>
+                  <option>Honduras</option>
+                  <option>Hong Kong, China</option>
+                  <option>Hungary</option>
+                  <option>Iceland</option>
+                  <option>India</option>
+                  <option>Indonesia</option>
+                  <option>Iraq</option>
+                  <option>Ireland</option>
+                  <option>Israel</option>
+                  <option>Italy</option>
+                  <option>Jamaica</option>
+                  <option>Japan</option>
+                  <option>Jordan</option>
+                  <option>Kazakhstan</option>
+                  <option>Kenya</option>
+                  <option>Kiribati</option>
+                  <option>Korea North</option>
+                  <option>Korea South</option>
+                  <option>Kuwait</option>
+                  <option>Kyrgyzstan</option>
+                  <option>Laos</option>
+                  <option>Latin America</option>
+                  <option>Latvia</option>
+                  <option>Lebanon</option>
+                  <option>Lesotho</option>
+                  <option>Liberia</option>
+                  <option>Libya</option>
+                  <option>Liechtenstein</option>
+                  <option>Lithuania</option>
+                  <option>Luxembourg</option>
+                  <option>Macedonia</option>
+                  <option>Madagascar</option>
+                  <option>Malawi</option>
+                  <option>Malaysia</option>
+                  <option>Maldives</option>
+                  <option>Mali</option>
+                  <option>Malta</option>
+                  <option>Maroc</option>
+                  <option>Marshall Islands</option>
+                  <option>Mauritania</option>
+                  <option>Mauritius</option>
+                  <option>Mexico</option>
+                  <option>Micronesia</option>
+                  <option>Middle East</option>
+                  <option>Moldova</option>
+                  <option>Monaco</option>
+                  <option>Mongolia</option>
+                  <option>Montenegro</option>
+                  <option>Morocco</option>
+                  <option>Mozambique</option>
+                  <option>Myanmar</option>
+                  <option>Namibia</option>
+                  <option>Nauru</option>
+                  <option>Nepal</option>
+                  <option>Netherlands</option>
+                  <option>New Zealand</option>
+                  <option>Nicaragua</option>
+                  <option>Niger</option>
+                  <option>Nigeria</option>
+                  <option>Norway</option>
+                  <option>Oman</option>
+                  <option>Pakistan</option>
+                  <option>Palau</option>
+                  <option>Panama</option>
+                  <option>Papua New Guinea</option>
+                  <option>Paraguay</option>
+                  <option>Peru</option>
+                  <option>Philippines</option>
+                  <option>Poland</option>
+                  <option>Portugal</option>
+                  <option>Puerto Rico</option>
+                  <option>Qatar</option>
+                  <option>Romania</option>
+                  <option>Russia</option>
+                  <option>Rwanda</option>
+                  <option>Saint Kitts and Nevis</option>
+                  <option>Saint Lucia</option>
+                  <option>Saint Vincent and The Grenadines</option>
+                  <option>Samoa</option>
+                  <option>San Marino</option>
+                  <option>Sao Tome and Principe</option>
+                  <option>Saudi Arabia</option>
+                  <option>Senegal</option>
+                  <option>Serbia</option>
+                  <option>Seychelles</option>
+                  <option>Sierra Leone</option>
+                  <option>Singapore</option>
+                  <option>Slovakia</option>
+                  <option>Slovenia</option>
+                  <option>Solomon Islands</option>
+                  <option>Somalia</option>
+                  <option>South Africa</option>
+                  <option>Spain</option>
+                  <option>Sri Lanka</option>
+                  <option>Suriname</option>
+                  <option>Swaziland</option>
+                  <option>Sweden</option>
+                  <option>Switzerland</option>
+                  <option>Taiwan, China</option>
+                  <option>Tajikistan</option>
+                  <option>Tchad</option>
+                  <option>Thailand</option>
+                  <option>Togo</option>
+                  <option>Tonga</option>
+                  <option>Trinidad and Tobago</option>
+                  <option>Tunisia</option>
+                  <option>Turkey</option>
+                  <option>Turkmenistan</option>
+                  <option>Tuvalu</option>
+                  <option>Uganda</option>
+                  <option>Ukraine</option>
+                  <option>United Arab Emirates</option>
+                  <option>United Kingdom</option>
+                  <option>United Republic of Tanzania</option>
+                  <option>United States</option>
+                  <option>Uruguay</option>
+                  <option>Uzbekistan</option>
+                  <option>Vanuatu</option>
+                  <option>Vatican City</option>
+                  <option>Venezuela</option>
+                  <option>Vietnam</option>
+                  <option>Western Sahara</option>
+                  <option>Yemen</option>
+                  <option>Zambia</option>
+                  <option>Zimbabwe</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="required-label">I have questions/feedback about</label>
+                <select class="form-select" name="feedbackAbout" required>
+                  <option value="" selected disabled>Choose an option...</option>
+                  <option>Broken hyperlink or page not found</option>
+                  <option>Incorrect or Missing Content</option>
+                  <option>Other/General Feedback</option>
+                  <option>Slow Web Performance</option>
+                  <option>Where to find something</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label>For comments about a specific page, enter URL</label>
+                <input type="text" class="form-control" name="url" maxlength="512" pattern="^(?!.*<[^>]*>)(?!\s*$).+"/>
+              </div>
+              <div class="col-12 my-2">
+                <label class="required-label d-block">Would you like us to respond to your
+                  comments?</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="respond" id="respYes" value="yes" required/>
+                  <label class="form-check-label" for="respYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="respond" id="respNo" value="no"/>
+                  <label class="form-check-label" for="respNo">No</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <label>Comments</label>
+                <textarea class="form-control" name="comments" maxlength="6000" rows="4"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="terms" id="termsCheck" required/>
+                  <label class="form-check-label small required-label" for="termsCheck">
+                    I understand and agree to the <a href="https://www.broadcom.com/company/legal/terms-of-use">Broadcom
+                      Terms of Use</a> and <a href="https://www.broadcom.com/company/legal/privacy-policy">Privacy
+                      Statement</a>.
+                  </label>
+                </div>
+              </div>
+
+              <!-- INLINE CAPTCHA -->
+              <div class="col-12 mt-4">
+                <div class="captcha-box">
+                  <label class="required-label mb-3">Security Check</label>
+                  <div class="captcha-row">
+                    <span id="captcha-question" class="captcha-question-text"></span>
+                    <input type="text" id="captcha-answer" class="form-control captcha-input" name="answer" placeholder="" required/>
+                    <button type="button" class="btn-refresh-icon" id="refreshCaptcha" title="Refresh">↻</button>
+                  </div>
+                  <div id="captcha-fail" class="text-danger small mt-2" style="display:none;">Incorrect
+                    security answer.</div>
+                </div>
+              </div>
+
+              <div class="col-12 d-none">
+                <button type="submit" id="submit-btn" class="btn btn-danger">
+                  <span>Submit Feedback</span>
+                  <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Thank You Message (Hidden by default) -->
+          <div id="thank-you-message" class="text-center py-5">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+            <h2 class="mt-3">Thank You!</h2>
+            <p class="lead">Thank you for your interest in Broadcom. Your submission has been received.</p>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary modal-submit-button">
+            <span class="btn-text">Submit Feedback</span>
+            <span class="spinner-border spinner-border-sm btn-spinner" role="status" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+        </div>
+        <div class="border-top cmp-support-resources">
+    <div class="support-resources-container container">
+        <div class="support-resources-title">
+            Other Product Support Resources
+        </div>
+
+        <div class="support-hyperlinks-container">
+            <div class="hyperlinks-container">
+                <div class="hyperlinks-container-title">Support</div>
+                <div class="hyperlinks-container-body">
+                    <a class="resource-link" href="https://support.broadcom.com">Support Portal</a>
+                    <a class="resource-link" href="https://community.broadcom.com">Product Communities</a>
+                    <a class="resource-link" href="https://www.broadcom.com/support/knowledgebase">Knowledge Base</a>
+                </div>
+            </div>
+            <div class="hyperlinks-container">
+                <div class="hyperlinks-container-title">Learning</div>
+                <div class="hyperlinks-container-body">
+                    <a class="resource-link" href="https://www.broadcom.com/support/education/brocade">Brocade Education</a>
+                    <a class="resource-link" href="https://www.broadcom.com/support/education/mainframe/education-program">Mainframe Software Education</a>
+                    <a class="resource-link" href="https://www.broadcom.com/support/education/software">Software Education</a>
+                    <a class="resource-link" href="https://www.broadcom.com/support/education/vmware">VMware Learning</a>
+                </div>
+            </div>
+            <div class="hyperlinks-container">
+                <div class="hyperlinks-container-title">Need more help?</div>
+                <div class="hyperlinks-container-body">
+                    <a class="resource-link" href="https://support.broadcom.com">Virtual Agent</a>
+                    <a class="resource-link" href="https://www.broadcom.com/support/services-support/ca-support/support-programs">Advanced Support</a>
+                    <a class="resource-link" href="https://support.broadcom.com/web/ecx/contact-support">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      </div>
+
+      <div class="main-right">
+        <button class="main-right-toggle btn btn-sm">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <div class="main-right-navigation"><div class="cmp-navigation" data-heading="On this page">
+
+</div></div>
+        <div class="main-right-feedback">
+          <div class="cmp-feedback">
+  <div class="feedback-header">Was this page helpful?</div>
+  <div class="feedback-buttons">
+    <button id="feedback-button" type="button" class="btn btn-sm btn-outline-primary feedback-button">
+      Documentation Feedback
+    </button>
+  </div>
+  <div class="feedback-footer">
+      <p>Last Updated March 6, 2026</p>
+  </div>
+
+  <!-- Modal injected in <body> -->
+  <div class="modal fade feedback-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">Feedback and Comments</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Feedback Form -->
+          <form id="feedback-form" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="required-label">First Name</label>
+                <input type="text" class="form-control" name="firstName" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Last Name</label>
+                <input type="text" class="form-control" name="lastName" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Email</label>
+                <input type="email" class="form-control" name="email" maxlength="256" pattern=".*\S+.*" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Product</label>
+                <input type="text" class="form-control" name="product" maxlength="256" pattern="^(?!.*<[^>]*>)(?!\s*$).+" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="required-label">Country</label>
+                <select class="form-select" name="country" required>
+                  <option value="" selected disabled>Select Country</option>
+                  <option>Afghanistan</option>
+                  <option>Africa</option>
+                  <option>Albania</option>
+                  <option>Algeria</option>
+                  <option>Andorra</option>
+                  <option>Angola</option>
+                  <option>Antigua and Barbuda</option>
+                  <option>Argentina</option>
+                  <option>Armenia</option>
+                  <option>Asean</option>
+                  <option>Asia Pacific</option>
+                  <option>Australia</option>
+                  <option>Austria</option>
+                  <option>Azerbaijan</option>
+                  <option>Bahamas</option>
+                  <option>Bahrain</option>
+                  <option>Bangladesh</option>
+                  <option>Barbados</option>
+                  <option>Belarus</option>
+                  <option>Belgium</option>
+                  <option>Belize</option>
+                  <option>Benin</option>
+                  <option>Bhutan</option>
+                  <option>Bolivia</option>
+                  <option>Bosnia Herzegovina</option>
+                  <option>Botswana</option>
+                  <option>Brazil</option>
+                  <option>Brunei</option>
+                  <option>Bulgaria</option>
+                  <option>Burkina Faso</option>
+                  <option>Burundi</option>
+                  <option>Cambodia</option>
+                  <option>Cameroon</option>
+                  <option>Canada</option>
+                  <option>Cape Verde</option>
+                  <option>Central African Republic</option>
+                  <option>Chad</option>
+                  <option>Chile</option>
+                  <option>China</option>
+                  <option>Colombia</option>
+                  <option>Comoros</option>
+                  <option>Congo (Brazzaville)</option>
+                  <option>Congo, Democratic Republic of</option>
+                  <option>Costa Rica</option>
+                  <option>Cote d Ivoire (Ivory Coast)</option>
+                  <option>Croatia</option>
+                  <option>Curacao</option>
+                  <option>Cyprus</option>
+                  <option>Czech Republic</option>
+                  <option>Denmark</option>
+                  <option>Djibouti</option>
+                  <option>Dominica</option>
+                  <option>Dominican Republic</option>
+                  <option>East Timor</option>
+                  <option>Ecuador</option>
+                  <option>Egypt</option>
+                  <option>El Salvador</option>
+                  <option>Equatorial Guinea</option>
+                  <option>Eritrea</option>
+                  <option>Estonia</option>
+                  <option>Ethiopia</option>
+                  <option>Europe</option>
+                  <option>Fiji</option>
+                  <option>Finland</option>
+                  <option>France</option>
+                  <option>Gabon</option>
+                  <option>Gambia</option>
+                  <option>Georgia</option>
+                  <option>Germany</option>
+                  <option>Ghana</option>
+                  <option>Greece</option>
+                  <option>Grenada</option>
+                  <option>Guatemala</option>
+                  <option>Guinea</option>
+                  <option>Guinea-Bissau</option>
+                  <option>Guyana</option>
+                  <option>Haiti</option>
+                  <option>Honduras</option>
+                  <option>Hong Kong, China</option>
+                  <option>Hungary</option>
+                  <option>Iceland</option>
+                  <option>India</option>
+                  <option>Indonesia</option>
+                  <option>Iraq</option>
+                  <option>Ireland</option>
+                  <option>Israel</option>
+                  <option>Italy</option>
+                  <option>Jamaica</option>
+                  <option>Japan</option>
+                  <option>Jordan</option>
+                  <option>Kazakhstan</option>
+                  <option>Kenya</option>
+                  <option>Kiribati</option>
+                  <option>Korea North</option>
+                  <option>Korea South</option>
+                  <option>Kuwait</option>
+                  <option>Kyrgyzstan</option>
+                  <option>Laos</option>
+                  <option>Latin America</option>
+                  <option>Latvia</option>
+                  <option>Lebanon</option>
+                  <option>Lesotho</option>
+                  <option>Liberia</option>
+                  <option>Libya</option>
+                  <option>Liechtenstein</option>
+                  <option>Lithuania</option>
+                  <option>Luxembourg</option>
+                  <option>Macedonia</option>
+                  <option>Madagascar</option>
+                  <option>Malawi</option>
+                  <option>Malaysia</option>
+                  <option>Maldives</option>
+                  <option>Mali</option>
+                  <option>Malta</option>
+                  <option>Maroc</option>
+                  <option>Marshall Islands</option>
+                  <option>Mauritania</option>
+                  <option>Mauritius</option>
+                  <option>Mexico</option>
+                  <option>Micronesia</option>
+                  <option>Middle East</option>
+                  <option>Moldova</option>
+                  <option>Monaco</option>
+                  <option>Mongolia</option>
+                  <option>Montenegro</option>
+                  <option>Morocco</option>
+                  <option>Mozambique</option>
+                  <option>Myanmar</option>
+                  <option>Namibia</option>
+                  <option>Nauru</option>
+                  <option>Nepal</option>
+                  <option>Netherlands</option>
+                  <option>New Zealand</option>
+                  <option>Nicaragua</option>
+                  <option>Niger</option>
+                  <option>Nigeria</option>
+                  <option>Norway</option>
+                  <option>Oman</option>
+                  <option>Pakistan</option>
+                  <option>Palau</option>
+                  <option>Panama</option>
+                  <option>Papua New Guinea</option>
+                  <option>Paraguay</option>
+                  <option>Peru</option>
+                  <option>Philippines</option>
+                  <option>Poland</option>
+                  <option>Portugal</option>
+                  <option>Puerto Rico</option>
+                  <option>Qatar</option>
+                  <option>Romania</option>
+                  <option>Russia</option>
+                  <option>Rwanda</option>
+                  <option>Saint Kitts and Nevis</option>
+                  <option>Saint Lucia</option>
+                  <option>Saint Vincent and The Grenadines</option>
+                  <option>Samoa</option>
+                  <option>San Marino</option>
+                  <option>Sao Tome and Principe</option>
+                  <option>Saudi Arabia</option>
+                  <option>Senegal</option>
+                  <option>Serbia</option>
+                  <option>Seychelles</option>
+                  <option>Sierra Leone</option>
+                  <option>Singapore</option>
+                  <option>Slovakia</option>
+                  <option>Slovenia</option>
+                  <option>Solomon Islands</option>
+                  <option>Somalia</option>
+                  <option>South Africa</option>
+                  <option>Spain</option>
+                  <option>Sri Lanka</option>
+                  <option>Suriname</option>
+                  <option>Swaziland</option>
+                  <option>Sweden</option>
+                  <option>Switzerland</option>
+                  <option>Taiwan, China</option>
+                  <option>Tajikistan</option>
+                  <option>Tchad</option>
+                  <option>Thailand</option>
+                  <option>Togo</option>
+                  <option>Tonga</option>
+                  <option>Trinidad and Tobago</option>
+                  <option>Tunisia</option>
+                  <option>Turkey</option>
+                  <option>Turkmenistan</option>
+                  <option>Tuvalu</option>
+                  <option>Uganda</option>
+                  <option>Ukraine</option>
+                  <option>United Arab Emirates</option>
+                  <option>United Kingdom</option>
+                  <option>United Republic of Tanzania</option>
+                  <option>United States</option>
+                  <option>Uruguay</option>
+                  <option>Uzbekistan</option>
+                  <option>Vanuatu</option>
+                  <option>Vatican City</option>
+                  <option>Venezuela</option>
+                  <option>Vietnam</option>
+                  <option>Western Sahara</option>
+                  <option>Yemen</option>
+                  <option>Zambia</option>
+                  <option>Zimbabwe</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="required-label">I have questions/feedback about</label>
+                <select class="form-select" name="feedbackAbout" required>
+                  <option value="" selected disabled>Choose an option...</option>
+                  <option>Broken hyperlink or page not found</option>
+                  <option>Incorrect or Missing Content</option>
+                  <option>Other/General Feedback</option>
+                  <option>Slow Web Performance</option>
+                  <option>Where to find something</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label>For comments about a specific page, enter URL</label>
+                <input type="text" class="form-control" name="url" maxlength="512" pattern="^(?!.*<[^>]*>)(?!\s*$).+"/>
+              </div>
+              <div class="col-12 my-2">
+                <label class="required-label d-block">Would you like us to respond to your
+                  comments?</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="respond" id="respYes" value="yes" required/>
+                  <label class="form-check-label" for="respYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="respond" id="respNo" value="no"/>
+                  <label class="form-check-label" for="respNo">No</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <label>Comments</label>
+                <textarea class="form-control" name="comments" maxlength="6000" rows="4"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="terms" id="termsCheck" required/>
+                  <label class="form-check-label small required-label" for="termsCheck">
+                    I understand and agree to the <a href="https://www.broadcom.com/company/legal/terms-of-use">Broadcom
+                      Terms of Use</a> and <a href="https://www.broadcom.com/company/legal/privacy-policy">Privacy
+                      Statement</a>.
+                  </label>
+                </div>
+              </div>
+
+              <!-- INLINE CAPTCHA -->
+              <div class="col-12 mt-4">
+                <div class="captcha-box">
+                  <label class="required-label mb-3">Security Check</label>
+                  <div class="captcha-row">
+                    <span id="captcha-question" class="captcha-question-text"></span>
+                    <input type="text" id="captcha-answer" class="form-control captcha-input" name="answer" placeholder="" required/>
+                    <button type="button" class="btn-refresh-icon" id="refreshCaptcha" title="Refresh">↻</button>
+                  </div>
+                  <div id="captcha-fail" class="text-danger small mt-2" style="display:none;">Incorrect
+                    security answer.</div>
+                </div>
+              </div>
+
+              <div class="col-12 d-none">
+                <button type="submit" id="submit-btn" class="btn btn-danger">
+                  <span>Submit Feedback</span>
+                  <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Thank You Message (Hidden by default) -->
+          <div id="thank-you-message" class="text-center py-5">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+            <h2 class="mt-3">Thank You!</h2>
+            <p class="lead">Thank you for your interest in Broadcom. Your submission has been received.</p>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary modal-submit-button">
+            <span class="btn-text">Submit Feedback</span>
+            <span class="spinner-border spinner-border-sm btn-spinner" role="status" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-gradient"></div>
+
+<footer class="cmp-footer">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo"></div>
+                <div class="footer-left-body">
+                    <div class="navigation">
+                        <a class="navigation-link" target="_self" href="https://www.broadcom.com/products">Products</a>
+                        <a class="navigation-link" target="_self" href="https://www.broadcom.com/solutions">Solutions</a>
+                        <a class="navigation-link" target="_self" href="https://www.broadcom.com/support">Support and Services</a>
+                        <a class="navigation-link" target="_self" href="https://www.broadcom.com/company">Company</a>
+                        <a class="navigation-link" target="_self" href="https://www.broadcom.com/how-to-buy">How To Buy</a>
+                    </div>
+                    <div class="copyright-text">Copyright © 2005-2026 Broadcom. All Rights Reserved. The term
+                        “Broadcom”
+                        refers to Broadcom Inc. and/or its subsidiaries.</div>
+                    <div class="secondary-navigation">
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/company/legal/accessibility">Accessibility</a>
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/company/legal/privacy">Privacy</a>
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/sitemap">Site Map</a>
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/company/corporate-responsibility/supplier-responsibility">Supplier Responsibility</a>
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/company/legal/terms-of-use">Terms of Use</a>
+                        <a class="secondary-navigation-link" target="_self" href="https://www.broadcom.com/topics">Topics</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="social-nav">
+                    <div class="social-item">
+                        <a target="_self" rel="noreferrer" href="https://www.linkedin.com/company/broadcom">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="social-item">
+                        <a target="_self" rel="noreferrer" href="https://x.com/Broadcom">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    </div>
+                    <div class="social-item">
+                        <a target="_self" rel="noreferrer" href="https://www.youtube.com/user/BroadcomCorporation">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.cf5bdf053ce8fb11dd5d95ebdc71b234.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.899004cc02c33efc1f6694b1aee587fd.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/utils.min.3b86602c4e1e0b41d9673f674a75cd4b.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.011c0fc0d0cf131bdff879743a353002.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery/granite.min.011c0fc0d0cf131bdff879743a353002.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.dd9b395c741ce2784096e26619e14910.js"></script>
+<script src="/etc.clientlibs/techdocs-next/clientlibs/clientlib-base.min.ed748cdc710e318ace8c4d575b7d9a99.js"></script>
+<script src="/etc.clientlibs/techdocs-next/clientlibs/clientlib-components.min.08ba6a5fd3e911bf6988d3991f06d486.js"></script>
+<script src="/etc.clientlibs/techdocs-next/components/dita/topicpage/clientlibs.min.0e818c67718772403245de3538f9d522.js"></script>
+
+
+
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2568d362857c8ce',t:'MTc4NTc3Mjk5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
+
+

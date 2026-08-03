@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+	<title>Xfce Desktop Environment</title>
+	<link rel="icon" href="//cdn.xfce.org/images/favicon.ico" />
+	<link rel="stylesheet" media="screen" href="//cdn.xfce.org/style/css.php?site=www" type="text/css" />
+	<link rel="apple-touch-icon" href="//cdn.xfce.org/images/logo_apple-touch-icon.png" />
+	<link rel="me" href="https://floss.social/@xfce" />
+	<meta name="content-language" content="en" />
+	<meta name="description" content="Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly." />
+	<meta name="keywords" content="desktop environment, window manager, desktop, speed, lightweight, gtk+, open source, xforms common environment" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://xfce.org/feed?lang=en" />
+	<style type="text/css">
+@media screen and (max-width:830px) {
+#slide div#slide-thunar { background-image: url(//cdn.xfce.org/slider/thunar_mobile.png) !important; }
+#slide div#slide-settings { background-image: url(//cdn.xfce.org/slider/settings_mobile.png) !important; }
+#slide div#slide-xfwm4 { background-image: url(//cdn.xfce.org/slider/xfwm4_mobile.png) !important; }
+#slide div#slide-panel { background-image: url(//cdn.xfce.org/slider/panel_mobile.png) !important; }
+#slide div#slide-apps { background-image: url(//cdn.xfce.org/slider/apps_mobile.png) !important; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<header id="xfce-header">
+	<h1 id="xfce-header-title">Xfce</h1>
+	<h2 id="xfce-header-subtitle">Subdomains</h2>
+	&nbsp;
+	<ul>
+		<li><a href="https://xfce.org" title="Go to the homepage" class="active">Home</a></li>
+		<li><a href="https://docs.xfce.org" title="Official documentation">Docs</a></li>
+		<li><a href="http://archive.xfce.org" title="Download location of tarballs">Archive</a></li>
+		<li><a href="https://wiki.xfce.org" title="Community documentation">Wiki</a></li>
+		<li><a href="https://forum.xfce.org" title="Community forums">Forum</a></li>
+		<li><a href="https://gitlab.xfce.org" title="Report and track bugs">Bugs</a></li>
+		<li><a href="https://blog.xfce.org" title="Visit the blog">Blog</a></li>
+		<li><a href="https://docs.xfce.org/contribute/translate/start" title="Help translating the Xfce project">Translate</a></li>
+		<li><a href="https://gitlab.xfce.org" title="Project repositories">Git</a></li>
+	</ul>
+	<div id="xfce-header-clear"></div>
+</header>
+
+<div id="main">
+	<div id="mainnav" class="group">
+
+		<h5 class="hidden">Categories</h5>
+		<div>
+			<a href="#" id="mainnav-icon">Navigate</a>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/download">Download</a></li>
+				<li><a href="/community">Community</a></li>
+				<li><a href="/getinvolved">Get Involved</a></li>
+				<li><a href="/projects">Projects</a></li>
+			</ul>
+		</div>
+		<form id="languageform" action="" method="get">
+			<select name="lang" onchange="document.getElementById('languageform').submit(); return true;" title="Change language">
+				<option value="sq">Albanian</option>
+				<option value="ar">Arabic</option>
+				<option value="ca">Catalan</option>
+				<option value="zh_CN">Chinese (Simplified)</option>
+				<option value="zh_TW">Chinese (Traditional)</option>
+				<option value="cs">Czech</option>
+				<option value="da">Danish</option>
+				<option value="nl">Dutch</option>
+				<option value="en" selected="selected">English</option>
+				<option value="en_AU">English (Australia)</option>
+				<option value="en_GB">English (United Kingdom)</option>
+				<option value="fr">French</option>
+				<option value="gl">Galician</option>
+				<option value="de">German</option>
+				<option value="el">Greek</option>
+				<option value="he">Hebrew</option>
+				<option value="hu">Hungarian</option>
+				<option value="id">Indonesian</option>
+				<option value="it">Italian</option>
+				<option value="ja">Japanese</option>
+				<option value="ko">Korean</option>
+				<option value="lt">Lithuanian</option>
+				<option value="ms">Malay</option>
+				<option value="nb">Norwegian Bokmal</option>
+				<option value="oc">Occitan</option>
+				<option value="pl">Polish</option>
+				<option value="pt">Portuguese</option>
+				<option value="pt_BR">Portuguese (Brazilian)</option>
+				<option value="ro">Romanian</option>
+				<option value="ru">Russian</option>
+				<option value="sr">Serbian</option>
+				<option value="sk">Slovak</option>
+				<option value="es">Spanish (Castilian)</option>
+				<option value="sv">Swedish</option>
+				<option value="th">Thai</option>
+				<option value="tr">Turkish</option>
+				<option value="uk">Ukrainian</option>
+			</select>
+			<button type="submit" class="hidden">Change language</button>
+		</form>
+	</div>
+
+	<div id="content">
+	<div id="article" class="file_frontpage">
+
+<div id="slidewrap">
+<div id="slide">
+	<div id="slide-desktop" alt="Xfce Desktop" title="The default Xfce Desktop provides a simple and attractive desktop for Unix users.">
+		<span id="slide-desktop-panel" style="background-image: url(//cdn.xfce.org/slider/panel_bg.png);"><span id="slide-desktop-panel-left" style="background-image: url(//cdn.xfce.org/slider/panel_left.png);"></span><span id="slide-desktop-panel-right" style="background-image: url(//cdn.xfce.org/slider/panel_right.png);"></span></span>
+		<span id="slide-desktop-icons" style="background-image: url(//cdn.xfce.org/slider/desktop_icons.png);"></span>
+		<span id="slide-desktop-thunar" style="background-image: url(//cdn.xfce.org/slider/thunar_windows.png);"></span>
+	</div>
+	<div id="slide-settings" style="background-image: url(//cdn.xfce.org/slider/settings.png);" alt="Settings" title="The Xfce Desktop provides all the required settings to configure your hardware, desktop appearance and other desktop-critical settings allowing you to easily manage your system."></div>
+	<div id="slide-xfwm4" style="background-image: url(//cdn.xfce.org/slider/xfwm4.png);" alt="Window Manager" title="The Xfce Window Manager is the core of the desktop. It can be tuned to make window management quick and predictable. It also features around 100 border styles giving it the look you want!"></div>
+	<div id="slide-panel" style="background-image: url(//cdn.xfce.org/slider/panel.png);" alt="Panel" title="The Xfce Panel can be customized in numerous ways so it provides all the items you need right where you need them. It has three different display modes, transparency and a few dozen different plugins.">
+		<span id="slide-panel-notifyd" style="background-image: url(//cdn.xfce.org/slider/notifyd-settings.png);"></span>
+	</div>
+	<div id="slide-apps" style="background-image: url(//cdn.xfce.org/slider/apps.png);" alt="Applications" title="Beside the core desktop functionality, a number of other applications are developed in the Xfce repositories, like an image viewer, task manager, notes plugin and calendar."></div>
+</div>
+<div id="slidenav"></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var s_timeout=10000;
+var s_timer=window.setInterval(s_adv,s_timeout);
+var slider=document.getElementById('slide');
+var slides=slider.getElementsByTagName('div');
+var buttonhtml='';
+var s_cur=0;
+for(var i=0;i<slides.length;i++) {
+	buttonhtml+='<a onclick="s_adv('+i+')"></a>';
+}
+document.getElementById('slidenav').innerHTML=buttonhtml;
+var navitems=document.getElementById('slidenav').getElementsByTagName('a');
+navitems.item(s_cur).className='current';
+function s_adv(pos){
+	var cur=slider.getElementsByClassName('current').item(0);
+	if(cur==null){
+		cur=slides.item(0);
+		if(pos==0){
+			return;
+		}
+	}
+	navitems.item(s_cur).className='';
+	if(pos!=null){
+		next=slides.item(pos);
+		window.clearTimeout(s_timer);
+		s_timer=window.setInterval(s_adv,s_timeout);
+		s_cur=pos;
+	} else {
+		next=cur.nextElementSibling;
+		s_cur+=1;
+		if(next==null) {
+			next=slides.item(0);
+			s_cur=0;
+		}
+	}
+	cur.className='prev';
+	next.className='current';
+	navitems.item(s_cur).className='current';
+}
+//]]>
+</script>
+
+<div class="frontpage_cols">
+
+<div class="column">
+	<h2>Xfce Desktop Environment</h2>
+	<p>Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.</p>
+	<ul>
+		<li>
+			<a href="/download">Download				<span>&ndash; get the source tarballs</span>
+			</a>
+		</li>
+		<li>
+			<a href="/download/changelogs/4.20">ChangeLog				<span>&ndash; read the full release notes</span>
+			</a>
+		</li>
+		<li>
+			<a href="/about/tour420">4.20 Tour				<span>&ndash; take a visual tour of new features</span>
+			</a>
+		</li>
+		<li>
+			<a href="/about/screenshots">Screenshots				<span>&ndash; see examples of Xfce desktops</span>
+			</a>
+		</li>
+	</ul>
+    <p></p>
+</div>
+
+<div class="column">
+	<h2>On the Xfce Blog</h2>
+	<span class="rss"><a href="https://blog.xfce.org/feed">Subscribe to RSS feed</a></span>
+	<ul class="feeds group"><li><strong><a href="https://www.spurint.org/journal/2026/07/llms-and-xfwl4">LLMs and xfwl4</a></strong><br /><span class="meta">Brian Tarricone &amp;#124; Xfce on Jul 28 2026</span></li><li><strong><a href="https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release">Xfwl4’s First Preview Release</a></strong><br /><span class="meta">Brian Tarricone &amp;#124; Xfce on Jun 21 2026</span></li><li><strong><a href="https://alexxcons.github.io/blogpost_15.html">Xfwl4 – The roadmap for a Xfce Wayland Compositor</a></strong><br /><span class="meta">Alexander Schwinn on Jan 27 2026</span></li><li><strong><a href="https://alexxcons.github.io/blogpost_14.html">Xfce 4.20 Released</a></strong><br /><span class="meta">Alexander Schwinn on Dec 15 2024</span></li><li><strong><a href="https://alexxcons.github.io/blogpost_13.html">Xfce 4.20 Pre2 Released</a></strong><br /><span class="meta">Alexander Schwinn on Dec 01 2024</span></li></ul><p><a href="https://blog.xfce.org/">Read more articles on the Xfce Blog &rarr;</a></p></div>
+
+<div class="column">
+	<h2>Xfce Release Updates</h2>
+	<span class="rss"><a href="https://xfce.org/feed?lang=en">Subscribe to RSS feed</a></span>
+	<div class="newsitem group"><h3>Xfce 4.20 released</h3><div class="post-wrap"><p>After almost two years of work, we are happy to announce the release of Xfce 4.20 ! <br><a href="/about/news/?post=1734220800">Learn&nbsp;More&nbsp;&rarr;</a></p></div><div class="post-date"><span class="post-month">Dec</span> <span class="post-day"><span class="day">15</span><br /><span class="year">2024</span></span></div></div><div class="newsitem group"><h3>Xfce 4.18 released</h3><div class="post-wrap"><p>After almost two years of work, we are happy to announce the release of Xfce 4.18 ! <br><a href="/about/news/?post=1671062400">Learn&nbsp;More&nbsp;&rarr;</a></p></div><div class="post-date"><span class="post-month">Dec</span> <span class="post-day"><span class="day">15</span><br /><span class="year">2022</span></span></div></div></div>
+
+</div>
+	</div> <!-- page-contents -->
+	</div> <!-- content-wrap -->
+	</div> <!-- page-wrap -->
+	<footer>
+		<hr class="hidden" />
+			<div>Copyright 2003-2026 <a href="/about/credits">Xfce Development Team</a>. This page was last modified on 2024/12/15.</div>
+			<div>Hosted by <a href="https://gandi.net" target="_blank">Gandi</a>.</div>
+	</footer>
+</body>
+</html>
+<!-- Execution time: 0.0108 second -->

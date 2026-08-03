@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Bandisoft">
+<meta name="keywords" content="Bandisoft,Bandizip,Bandizip mac,Honeycam,Honeyview">
+<meta name="description" content="Home of Bandisoft">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandizip - Version history, Changelog</title>
+<link rel="stylesheet" href="/css/pretendard.css">
+<link rel="stylesheet" href="/css/main.css?260729">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bandisoft.com/bandizip/history/">
+<meta property="og:image" content="https://www.bandisoft.com/img/og/og_bandizip.png">
+<meta property="og:title" content="Bandizip - Version history, Changelog">
+<meta property="og:description" content="Home of Bandisoft" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="yandex-verification" content="f04ca2e77593964d">
+<link rel="canonical" href="https://www.bandisoft.com/bandizip/history/">
+<link rel="alternate" href="https://www.bandisoft.com/bandizip/history/" hreflang="x-default">
+<link rel="alternate" href="https://kr.bandisoft.com/bandizip/history/" hreflang="ko">
+<link rel="alternate" href="https://en.bandisoft.com/bandizip/history/" hreflang="en">
+<link rel="alternate" href="https://cn.bandisoft.com/bandizip/history/" hreflang="zh-hans">
+<link rel="alternate" href="https://tw.bandisoft.com/bandizip/history/" hreflang="zh-hant">
+<link rel="alternate" href="https://jp.bandisoft.com/bandizip/history/" hreflang="ja">
+<link rel="alternate" href="https://ru.bandisoft.com/bandizip/history/" hreflang="ru">
+<link rel="alternate" href="https://ro.bandisoft.com/bandizip/history/" hreflang="ro">
+<link rel="alternate" href="https://sk.bandisoft.com/bandizip/history/" hreflang="sk">
+<link rel="alternate" href="https://da.bandisoft.com/bandizip/history/" hreflang="da">
+<link rel="alternate" href="https://cs.bandisoft.com/bandizip/history/" hreflang="cs">
+<link rel="alternate" href="https://vi.bandisoft.com/bandizip/history/" hreflang="vi">
+<link rel="alternate" type="application/rss+xml" title="Bandisoft News" href="/rss.xml">
+<script>
+(function() {
+var rawProPrice = "$30 USD";
+var rawEntPrice = "$20 USD"; 
+var cleanProPrice = rawProPrice.replace(/[^0-9]/g, '');
+var cleanEntPrice = rawEntPrice.replace(/[^0-9]/g, '');
+function parseVersionFromHtml(html) {
+var versionMatch = html.match(/"softwareVersion"\s*:\s*"(?:[^"']*?v\s*)?([0-9]+(?:\.[0-9]+)*)"/i);
+if (versionMatch && versionMatch[1])
+return versionMatch[1].trim();
+var itempropMatch = html.match(/itemprop=["']softwareVersion["'][^>]*>[^<]*v\s*([0-9]+(?:\.[0-9]+)*)/i);
+if (itempropMatch && itempropMatch[1])
+return itempropMatch[1].trim();
+return null;
+}
+function parseDateFromHtml(html) {
+var datetimeMatch = html.match(/datetime=["'](\d{4}[\/.-]\d{2}[\/.-]\d{2})["']/i);
+if (datetimeMatch && datetimeMatch[1])
+return datetimeMatch[1].replace(/[\.\/]/g, '-');
+var dateTextMatch = html.match(/(\d{4})[\/.-](\d{2})[\/.-](\d{2})/);
+if (dateTextMatch)
+return dateTextMatch[1] + '-' + dateTextMatch[2] + '-' + dateTextMatch[3];
+return null;
+}
+async function injectSchema() {
+var finalVersion = "7.42";
+var finalDate = new Date().toISOString().split('T')[0];
+try {
+var response = await fetch('/bandizip/');
+if (!response.ok) throw new Error('Fetch failed: ' + response.status);
+var html = await response.text();
+var versionFromHtml = parseVersionFromHtml(html);
+if (versionFromHtml)
+finalVersion = versionFromHtml;
+var dateFromHtml = parseDateFromHtml(html);
+if (dateFromHtml)
+finalDate = dateFromHtml;
+} catch (e) {
+console.warn("Bandizip meta data fetch failed. Using default values.", e);
+}
+var bandiSchema = [
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name": "Bandisoft",
+"url": "https://www.bandisoft.com",
+"logo": "https://www.bandisoft.com/img/og/bandisoft_logo.png"
+},
+{
+"@context": "http://schema.org",
+"@type": "SoftwareApplication",
+"name": "Bandizip",
+"operatingSystem": "Windows 7, 8, 8.1, 10, 11 (32bit, x64, ARM64)",
+"applicationCategory": "MultimediaApplication",
+"softwareVersion": "v" + finalVersion,
+"datePublished": finalDate,
+"downloadUrl": "https://www.bandisoft.com/bandizip/dl.php?web",
+"image": "https://www.bandisoft.com/img/og/og_bandizip.png",
+"offers": {
+"@type": "AggregateOffer",
+"lowPrice": "0",
+"highPrice": cleanEntPrice || cleanProPrice,
+"priceCurrency": "USD",
+"offerCount": "3",
+"offers": [
+{
+"@type": "Offer",
+"name": "Standard Edition",
+"price": "0",
+"priceCurrency": "USD"
+},
+{
+"@type": "Offer",
+"name": "Professional Edition",
+"price": cleanProPrice,
+"priceCurrency": "USD"
+},
+{
+"@type": "Offer",
+"name": "Enterprise Edition",
+"price": cleanEntPrice,
+"priceCurrency": "USD"
+}
+]
+}
+}
+];
+var script = document.createElement('script');
+script.type = 'application/ld+json';
+script.text = JSON.stringify(bandiSchema);
+document.head.appendChild(script);
+}
+injectSchema();
+})();
+</script>
+<script>
+// 쿠키 유틸리티
+function setCookie(name, value, days = 365) {
+const expires = new Date();
+expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
+function getCookie(name) {
+const nameEQ = name + "=";
+const ca = document.cookie.split(';');
+for (let i = 0; i < ca.length; i++) {
+let c = ca[i];
+while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+}
+return null;
+}
+function onload() {
+// 언어 선택메뉴 볼드 만들기
+var langID = location.host.substr(0, 3) == "www" ? "www" : location.host.substr(0, 2); // xx.host.com -> xx
+setBold("lang_" + langID);
+setSubmenuActive("bandizip_history");
+setSubmenuActive("history");
+setSubmenuActive("history_");
+// 메인 테이블 속성 바꾸기
+var maintable = document.getElementById("main_table");
+if (maintable)
+maintable.style.tableLayout = "fixed";
+}
+function setBold(itemID) {
+var obj = document.getElementById(itemID);
+if (obj) {
+obj.style.fontWeight = "700";
+obj.style.color = "var(--bluelink)";
+}
+}
+function setSubmenuActive(itemID) {
+var obj = document.getElementById(itemID);
+if (obj) {
+obj.style.color = "var(--bluelink)";
+}
+}
+// 다크모드 / 라이트모드 적용
+function applyTheme(theme) {
+document.body.classList.remove('darkmode');
+let isDark = false;
+if (theme === 'dark') {
+document.body.classList.add('darkmode');
+isDark = true;
+} else if (theme === 'auto') {
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (prefersDark) {
+document.body.classList.add('darkmode');
+isDark = true;
+}
+}
+// 테마 아이콘 변경
+const themeBtn = document.querySelector('.theme-dropdown .dropdown-btn');
+const themeIcon = themeBtn ? themeBtn.querySelector('svg') : null;
+if (themeIcon) {
+let iconId = 'icon-theme-auto';
+if (theme === 'dark') iconId = 'icon-theme-moon';
+else if (theme === 'light') iconId = 'icon-theme-sun';
+themeIcon.innerHTML = `<use href="#${iconId}"></use>`;
+}
+// localnav-dark 페이지에서 body.darkmode와 동기화
+// (darkmode 적용 시 localnav 클래스를 제거하여 일관된 스타일 유지)
+if (window._hcNavThemeUpdate) {
+window._hcNavThemeUpdate();
+}
+}
+document.addEventListener('DOMContentLoaded', function () {
+const hamburgerMenu = document.querySelector('.burger');
+const navLinks = document.querySelector('#nav_right');
+const langDropdown = document.querySelector('.lang-dropdown');
+const langbtn = langDropdown?.querySelector('.dropbtn');
+const langs = langDropdown?.querySelector('.dropdown-content');
+const themeDropdown = document.querySelector('.theme-dropdown');
+let _savedScrollY = 0;
+let _isScrollLocked = false;
+function lockScroll() {
+if (_isScrollLocked) return; // 이미 잠긴 상태면 재진입 방지 (scroll 위치 덮어쓰기 방지)
+_savedScrollY = window.scrollY;
+document.body.style.top = `-${_savedScrollY}px`;
+document.body.classList.add('no-scroll');
+document.body.classList.add('nav-drawer-open');
+_isScrollLocked = true;
+}
+function unlockScroll() {
+if (!_isScrollLocked) return; // 잠기지 않은 상태면 무시
+document.body.classList.remove('no-scroll');
+document.body.classList.remove('nav-drawer-open');
+document.body.style.top = '';
+window.scrollTo(0, _savedScrollY);
+_isScrollLocked = false;
+}
+function updateBodyOverflow() {
+if (navLinks?.classList.contains('active') && window.innerWidth <= 520) {
+lockScroll();
+} else {
+unlockScroll();
+}
+}
+// Safari synthetic click 방어 플래그
+// 드롭다운 열린 직후 Safari가 발생시키는 synthetic click을 무시
+let _suppressClose = false;
+let _suppressCloseTimer = null;
+function suppressNextClose() {
+if (_suppressCloseTimer) clearTimeout(_suppressCloseTimer);
+_suppressClose = true;
+// 버튼 클릭 직후 생성되는 synthetic click을 무시하고, 실제 외부 클릭은 감지하기 위해 짧은 타임아웃 사용
+_suppressCloseTimer = setTimeout(() => { _suppressClose = false; }, 50);
+}
+// ================================================ 햄버거 메뉴 ================================================//
+if (hamburgerMenu && navLinks) {
+hamburgerMenu.addEventListener('click', function (e) {
+e.stopPropagation();
+langs?.classList.remove('active');
+navLinks.classList.toggle('active');
+if (navLinks.classList.contains('active')) suppressNextClose();
+updateBodyOverflow();
+});
+}
+// ================================================ 닫기 버튼 ================================================//
+const navCloseBtn = document.querySelector('.nav_close_btn');
+if (navCloseBtn && navLinks) {
+navCloseBtn.addEventListener('click', function (e) {
+e.stopPropagation();
+navLinks.classList.remove('active');
+unlockScroll();
+});
+navCloseBtn.addEventListener('touchend', function (e) {
+e.preventDefault();
+e.stopPropagation();
+navLinks.classList.remove('active');
+unlockScroll();
+});
+}
+window.addEventListener('resize', function () {
+if (navLinks?.classList.contains('active')) {
+updateBodyOverflow();
+}
+});
+// 모바일용 close 버튼 델리게이트: 520px 이하에서만 바깥 클릭/close 처리 보강
+document.addEventListener('click', function (e) {
+if (window.innerWidth > 520) return;
+const target = e.target.closest('.nav_close_btn');
+if (target && navLinks?.classList.contains('active')) {
+navLinks.classList.remove('active');
+unlockScroll();
+}
+});
+document.addEventListener('touchend', function (e) {
+if (window.innerWidth > 520) return;
+const target = e.target.closest('.nav_close_btn');
+if (target && navLinks?.classList.contains('active')) {
+navLinks.classList.remove('active');
+unlockScroll();
+}
+});
+// 언어 ================================================ //
+if (langbtn && langs) {
+langbtn.addEventListener('click', function (e) {
+e.preventDefault();
+e.stopPropagation();
+if (navLinks?.classList.contains('active')) {
+navLinks.classList.remove('active');
+unlockScroll();
+}
+langs.classList.toggle('active');
+if (langs.classList.contains('active')) suppressNextClose();
+});
+}
+// ================================================ 다크모드 ================================================ //
+{
+const btn = themeDropdown?.querySelector('.dropdown-btn');
+const input = themeDropdown?.querySelector('input[name="theme"]');
+const themeToggle = document.querySelector('[data-theme-toggle]');
+// 쿠키에서 저장된 테마 불러오기
+const savedTheme = getCookie('theme-preference') || 'auto';
+applyTheme(savedTheme);
+if (input) input.value = savedTheme;
+// 데스크탑: 원클릭 토글 (현재 상태 기준으로 반전)
+btn?.addEventListener('click', function (e) {
+e.stopPropagation();
+const isDarkNow = document.body.classList.contains('darkmode');
+const nextTheme = isDarkNow ? 'light' : 'dark';
+applyTheme(nextTheme);
+setCookie('theme-preference', nextTheme);
+if (input) input.value = nextTheme;
+updateToggleChecked(nextTheme);
+});
+// 모바일 토글 UI 활성 표시
+function updateToggleChecked(theme) {
+if (!themeToggle) return;
+themeToggle.querySelectorAll('button[data-value]').forEach(b => {
+b.classList.toggle('is-active', b.dataset.value === theme);
+});
+}
+updateToggleChecked(savedTheme);
+// 모바일 토글 버튼 클릭
+if (themeToggle) {
+themeToggle.querySelectorAll('button[data-value]').forEach(button => {
+button.addEventListener('click', function (e) {
+e.stopPropagation();
+const value = button.dataset.value;
+applyTheme(value);
+setCookie('theme-preference', value);
+if (input) input.value = value;
+updateToggleChecked(value);
+});
+});
+}
+}
+// lang 드롭다운 click 이벤트 전파 차단 (bubble phase)
+if (langs) {
+langs.addEventListener('click', function (e) {
+e.stopPropagation();
+});
+}
+// nav_right click 이벤트 전파 차단 (bubble phase)
+if (navLinks) {
+navLinks.addEventListener('click', function (e) {
+e.stopPropagation();
+});
+}
+// 외부 클릭 시 드롭다운 닫기
+document.addEventListener('click', function (e) {
+// suppress close 플래그가 활성화되어 있으면 무시
+if (_suppressClose) return;
+// 바깥 영역 클릭 여부 확인
+const clickedElement = e.target;
+const isClickInHamburger = hamburgerMenu?.contains(clickedElement);
+const isClickInNavLinks = navLinks?.contains(clickedElement);
+const isClickInLangDropdown = langDropdown?.contains(clickedElement);
+// navLinks 열려있고 바깥 영역 클릭시 닫기
+if (navLinks?.classList.contains('active')) {
+if (!isClickInHamburger && !isClickInNavLinks) {
+navLinks.classList.remove('active');
+unlockScroll();
+}
+}
+// lang dropdown 열려있고 바깥 영역 클릭시 닫기
+if (langs?.classList.contains('active')) {
+if (!isClickInLangDropdown) {
+langs.classList.remove('active');
+if (!navLinks?.classList.contains('active')) {
+unlockScroll();
+}
+}
+}
+});
+// 시스템 테마 변경 감지 (자동 모드일 때)
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+mediaQuery.addEventListener('change', function () {
+const currentTheme = getCookie('theme-preference') || 'auto';
+if (currentTheme === 'auto') {
+applyTheme('auto');
+}
+});
+// ================================================ 클립보드에 복사 ================================================ //
+var copyButtons = document.querySelectorAll('.codebox_btn');
+copyButtons.forEach(function (copyButton) {
+var originalButtonText = copyButton.innerHTML;
+copyButton.addEventListener('click', function () {
+var codebox = copyButton.closest('.codebox');
+if (!codebox) {
+console.error('No .codebox element found.');
+return;
+}
+var codeboxContent = '';
+codebox.childNodes.forEach((node) => {
+if (node.nodeType === Node.TEXT_NODE) {
+codeboxContent += node.textContent.trim();
+} else if (node.nodeType === Node.ELEMENT_NODE) {
+if (node.tagName === 'BR') {
+codeboxContent += '\n';
+} else if (node.className !== 'codebox_btn') {
+codeboxContent += node.textContent.trim();
+}
+}
+});
+codeboxContent = codeboxContent.replace(/\n+/g, '\n').trim();
+if (navigator.clipboard && window.isSecureContext) {
+navigator.clipboard.writeText(codeboxContent).then(() => {
+copyButton.innerHTML = 'Copied <img src="/img/icon_check_white.svg" alt="Success Icon" style="width:14px; height:14px;">';
+setTimeout(function () {
+copyButton.innerHTML = originalButtonText;
+}, 3000);
+}).catch(() => {
+// Fallback to old method
+fallbackCopyText(codeboxContent, copyButton, originalButtonText);
+});
+} else {
+// Fallback for older browsers
+fallbackCopyText(codeboxContent, copyButton, originalButtonText);
+}
+});
+});
+// 클립보드 복사 fallback
+function fallbackCopyText(text, button, originalText) {
+var tempTextarea = document.createElement('textarea');
+tempTextarea.value = text;
+tempTextarea.style.position = 'fixed';
+tempTextarea.style.left = '-999999px';
+tempTextarea.style.top = '-999999px';
+document.body.appendChild(tempTextarea);
+tempTextarea.focus();
+tempTextarea.select();
+try {
+var successful = document.execCommand('copy');
+if (successful) {
+button.innerHTML = 'Copied <img src="/img/icon_check_white.svg" alt="Success Icon" style="width:14px; height:14px;">';
+setTimeout(function () {
+button.innerHTML = originalText;
+}, 3000);
+}
+} catch (err) {
+console.error('Failed to copy text:', err);
+}
+document.body.removeChild(tempTextarea);
+}
+// ================================================ 커스텀 셀렉트 박스 ================================================ //
+document.querySelectorAll('.inputselect').forEach(dropdown => {
+const selected = dropdown.querySelector('.inputselected');
+const selectedText = selected?.querySelector('.selectedtext');
+const options = dropdown.querySelector('.options');
+const input = dropdown.querySelector('input[type="hidden"]');
+const optionItems = options?.querySelectorAll('.option');
+if (!selected || !selectedText || !options || !input || !optionItems) {
+return; // 필수 요소가 없으면 건너뛰기
+}
+// 첫 번째 옵션을 기본값으로 설정
+if (optionItems.length > 0) {
+const firstOption = optionItems[0];
+input.value = firstOption.dataset.value || '';
+selectedText.textContent = firstOption.textContent || '';
+firstOption.classList.add('checked');
+}
+// 선택된 항목 클릭 시 옵션 표시/숨김
+selected.addEventListener('click', (e) => {
+e.stopPropagation();
+// 다른 모든 셀렉트 박스 닫기
+document.querySelectorAll('.inputselect .options').forEach(opt => {
+if (opt !== options) {
+opt.classList.remove('active');
+}
+});
+options.classList.toggle('active');
+});
+// 옵션 선택 시
+optionItems.forEach(option => {
+option.addEventListener('click', () => {
+input.value = option.dataset.value || '';
+selectedText.textContent = option.textContent || '';
+// 체크 표시 업데이트
+optionItems.forEach(o => o.classList.remove('checked'));
+option.classList.add('checked');
+// 옵션 닫기
+options.classList.remove('active');
+});
+});
+// 외부 클릭 시 옵션 닫기
+document.addEventListener('click', (e) => {
+if (!dropdown.contains(e.target)) {
+options.classList.remove('active');
+}
+});
+});
+});
+// 페이지 가시성 변경 시 테마 다시 적용 (탭 전환 등)
+document.addEventListener('visibilitychange', function () {
+if (!document.hidden) {
+const currentTheme = getCookie('theme-preference') || 'auto';
+if (currentTheme === 'auto') {
+applyTheme('auto');
+}
+}
+});
+</script>
+</head>
+<body onload="onload();">
+<div style="position: sticky; top: 0; z-index: 10;">
+<div class="nav_bar">
+<div id="nav_bar_inner">
+<div class="nav_left">
+<a class="mainmenu_home" href="https://www.bandisoft.com" style="z-index: 1;">
+<div id="home_logo">
+<img src="https://bandisoft.app/img/bandisoftlogo.png" alt="Bandisoft logo"
+id="logo_light" />
+<img src="/img/logo.png?25" alt="Bandisoft logo" id="logo_dark" />
+</div>
+</a>
+</div>
+<div id="nav_right">
+<a class="nav_home_btn" href="https://www.bandisoft.com" aria-label="Home" aria-hidden="true">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path
+d="M15.0003 20V16C15.0003 15.0681 15.0003 14.6022 14.8481 14.2346C14.6451 13.7446 14.2557 13.3552 13.7657 13.1522C13.3981 13 12.9322 13 12.0003 13C11.0684 13 10.6025 13 10.2349 13.1522C9.74488 13.3552 9.35554 13.7446 9.15255 14.2346C9.00031 14.6022 9.00031 15.0681 9.00031 16V20M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4801 20 17.9201 20 16.8V12.4C20 11.52 20 11.08 19.8847 10.6762C19.7825 10.3185 19.6147 9.9829 19.3899 9.68657C19.136 9.35199 18.784 9.08799 18.08 8.55999L14.88 6.16C13.8472 5.38542 13.3308 4.99813 12.7637 4.84884C12.2631 4.71706 11.7369 4.71706 11.2363 4.84884C10.6692 4.99813 10.1528 5.38542 9.12 6.16001L5.92 8.56001C5.216 9.08801 4.864 9.35201 4.61013 9.68659C4.38527 9.98292 4.21749 10.3185 4.11534 10.6762C4 11.08 4 11.52 4 12.4V16.8C4 17.9201 4 18.4801 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z"
+stroke="var(--text)" stroke-width="1.5" stroke-linecap="round"
+stroke-linejoin="round" />
+</svg>
+</a>
+<div class="nav_close_btn" style="cursor: pointer; align-self: flex-end;" aria-hidden="true">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text)"
+stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="18" y1="6" x2="6" y2="18"></line>
+<line x1="6" y1="6" x2="18" y2="18"></line>
+</svg>
+</div>
+<div id="nav_center" style="text-align:center;">
+<a class="mainmenubold main_menu_font" href="/bandizip/">Bandizip (Win)</a>
+<a class="mainmenu main_menu_font" href="/bandizip.mac/">Bandizip (Mac)</a>
+<a class="mainmenu main_menu_font" href="/bandiview/">BandiView</a>
+<a class="mainmenu main_menu_font" href="/honeycam/">Honeycam</a>
+<a class="mainmenu main_menu_font" href="/honeyview/">Honeyview</a>
+<a class="mainmenu main_menu_font" id="newtagmenu" href="/bandicamera/">BandiCamera<div
+class="tag_new">N</div></a>
+<a class="mainmenu main_menu_font" href="/forum/forum.php">Forum</a>
+</div>
+<div class="theme-toggle" data-theme-toggle>
+<button type="button" aria-label="Light" data-value="light">
+<svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+fill="none" viewBox="0 0 24 24">
+<use href="#icon-theme-sun"></use>
+</svg>
+</button>
+<button type="button" aria-label="Dark" data-value="dark">
+<svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+fill="none" viewBox="0 0 24 24">
+<use href="#icon-theme-moon"></use>
+</svg>
+</button>
+</div>
+</div>
+<div class="theme-dropdown">
+<button aria-label="theme" class="button icon dropdown-btn">
+<svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+viewBox="0 0 24 24">
+<use href="#icon-theme-auto"></use>
+</svg>
+</button>
+<input type="hidden" name="theme" value="auto">
+</div>
+<div class="dropdown lang-dropdown">
+<button class="button icon dropbtn" aria-label="Language selection">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+<path stroke="var(--text)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+d="M4 12h16m-8-8q3 3.4 3 8t-3 8q-3-3.4-3-8t3-8" />
+<circle cx="12" cy="12" r="8" stroke="var(--text)" stroke-linecap="round"
+stroke-linejoin="round" stroke-width="1.5" />
+</svg>
+<span class="dropdownlabel">English</span>
+</button>
+<span class="dropdown-content">
+<a id="lang_en" href="https://en.bandisoft.com/bandizip/history/">English</a>
+<a id="lang_cn" href="https://cn.bandisoft.com/bandizip/history/">中文(简体)</a>
+<a id="lang_tw" href="https://tw.bandisoft.com/bandizip/history/">中文(繁體)</a>
+<a id="lang_jp" href="https://jp.bandisoft.com/bandizip/history/">日本語</a>
+<a id="lang_ru" href="https://ru.bandisoft.com/bandizip/history/">Русский</a>
+<a id="lang_sk" href="https://sk.bandisoft.com/bandizip/history/">Slovenčina</a>
+<a id="lang_da" href="https://da.bandisoft.com/bandizip/history/">Dansk</a>
+<a id="lang_cs" href="https://cs.bandisoft.com/bandizip/history/">Čeština</a>
+<a id="lang_nl" href="https://nl.bandisoft.com/bandizip/history/">Nederlands</a>
+<a id="lang_ro" href="https://ro.bandisoft.com/bandizip/history/">Romanian</a>
+<a id="lang_vi" href="https://vi.bandisoft.com/bandizip/history/">Tiếng Việt</a>
+<a id="lang_kr" href="https://kr.bandisoft.com/bandizip/history/">한국어</a>
+<hr /> <a href='https://translate.bandisoft.com' target='_blank'>User Translation <img src='/img/arrow_external.svg' /></a>
+</span>
+<div class="burger" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path d="M8 10H24M8 16H24M8 22H24" stroke="var(--text)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="div_submenu">
+<a class="submenu" href="/bandizip/" id="bandizip_">Download</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/ent/" id="ent">Enterprise</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/buy/" id="buy">Buy Now</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/screenshots/" id="screenshots">Screenshots</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/history/" id="history">History</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/help/" id="help">Help</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/bandizip/howto/" id="howto">How-to</a><span class="submenuSplit"> | </span>
+<a class="submenu" href="/forum/forum.php?id=bandizip" id="forum">Forum</a>
+</div>
+
+<div class="main_content" dir="ltr" style="max-width:960px;  ;">
+<section>
+<div class="subpage_format">
+<div class="subpage_img" style="background-image:url(/img/history_img.svg);"></div>
+<h1>Bandizip Version History</h1>
+<div class="trow">
+<div class="cell1 r1">Version</div>
+<div class="cell2 r1">Date</div>
+<div class="cell3 r1">Modifications</div>
+</div>
+<div class="row"><div class="cell1">v7.45</div><div class="cell2">July 20, 2026</div><ul class="cell3">
+<li>Fixed a vulnerability that may occur when processing some ZIP (packMP3) archives (KVE-2026-1221)</li>
+<li>Fixed a vulnerability that may occur when processing some TGZ archives (KVE-2026-1504)</li>
+<li>Fixed a vulnerability that may occur when processing some TBZ archives</li>
+<li>Fixed a vulnerability that could occur during hard link processing (KVE-2026-1450, KVE-2026-1488)</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.44</div><div class="cell2">June 9, 2026</div><ul class="cell3">
+<li>Fixed a vulnerability that certain file extensions are not recognized as executable files (KVE-2026-0830)</li>
+<li>Fixed a vulnerability that could occur when processing hard links in some (specially crafted) TAR archives (KVE-2026-0925)</li>
+<li>Fixed a vulnerability that could occur when processing symbolic links in some TAR archives (KVE-2026-0932, Thanks to pwnstar of 78researchlab)</li>
+<li>Fixed a vulnerability related to some ISZ files (Thanks to zzoru)</li>
+<li>Fixed a vulnerability related to some UDF files (Thanks to zzoru)</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.43</div><div class="cell2">May 4, 2026</div><ul class="cell3">
+<li>Fixed a vulnerability that could occur during the parallel decompression of ZIP format files (KVE-2026-0742, Thanks to p4p3r)</li>
+<li>Fixed a vulnerability where MoTW (Mark-of-the-Web) information could be removed due to issues with filename normalization (KVE-2026-0743, Thanks to p4p3r)</li>
+<li>Fixed a memory leak bug that could occur in the PEA format</li>
+<li>Fixed a vulnerability that could occur when processing the RAR5 format</li>
+<li>Fixed a vulnerability that could occur when processing the EGG format</li>
+<li>Fixed a vulnerability that could occur when processing extended fields in the ZIP format</li>
+<li>Fixed a vulnerability that could occur when processing the CAB format</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.42</div><div class="cell2">Apr 15, 2026</div><ul class="cell3">
+<li>Fixed a vulnerability that occurs when creating hard-linked files (Thanks to CubicPopCorn, p4p3r of CYBERONE(KVE-2026-0606))</li>
+<li>Fixed a vulnerability that occurs when handling file names in the TAR format (Thanks to storm).</li>
+<li>Fixed a vulnerability related to MoTW</li>
+<li>Improved detection accuracy of the codepage auto-detection</li>
+<li>Fixed a bug with the Password Recovery</li>
+<li>Fixed a bug related to the right-click menu</li>
+<li>Corrected an error message related to hard link creation</li>
+<li>Modified the d command in the CLI to operate not recursively</li>
+<li>Fixed a bug that antimalware scanning by AMSI does not work correctly for some archive formats</li>
+<li>Fixed a bug related to handling of NFD filenames in some ZIP archives</li>
+<li>Fixed a bug related to drag-n-drop handling</li>
+<li>Improved BandiView association for archived image files</li>
+<li>Fixed a bug that some file paths are processed incorrectly when archiving files</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.40</div><div class="cell2">Sep 10, 2025</div><ul class="cell3">
+<li>Fixed a vulnerability with the processing of a RAR file's ADS (CVE-2025-8088, KVE-2025-0650)</li>
+<li>Fixed a vulnerability related to MoTW</li>
+<li>Fixed a bug that the app cannot recognize some archives</li>
+<li>Added a feature processing symbolic links in a 7Z archive</li>
+<li>Deleted some untranslated languages from the installer</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.39</div><div class="cell2">July 8, 2025</div><ul class="cell3">
+<li>Improved decompression speed for the LZMA algorithm</li>
+<li>Fixed a bug that the app cannot open some ZIP files</li>
+<li>Fixed a bug that a warning message is duplicated when using an overlong filename to create an ISO file</li>
+<li>Fixed a bug that a success notification is duplicated when extracting files under certain conditions</li>
+<li>Improved the app's overall stability</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.38</div><div class="cell2">May 28, 2025</div><ul class="cell3">
+<li>Fixed a bug that the MoTW of WSF files are not copied (Thanks to: Lee Jung Uk of AhnLab A-FIRST)</li>
+<li>Fixed a vulnerability related to MoTW (CVE-2025-33027)</li>
+<li>Fixed a bug that UI appears incorrectly when the app window are moved to a display with a different scaling factor</li>
+<li>Fixed a bug that archive comments are not saved when creating an archive in the ZIPX format</li>
+<li>Fixed a bug with the Password Recovery</li>
+<li>Fixed a bug that occurs when handling MSI (Compound) files</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.37</div><div class="cell2">Feb 11, 2025</div><ul class="cell3">
+<li>Fixed a vulnerability that the app does not process the MoTW information when extracting files from an archive through a double click - Thanks to Sjors van Gogh</li>
+<li>Added a feature processing ADS(Alternative Data Stream) in a RAR5 archive</li>
+<li>Fixed a bug that the app shows no error message when an error occurs by clicking "New Folder" in "Select the Extract Path" window</li>
+<li>Fixed a bug that the app cannot support HiDPI under certain conditions</li>
+<li>Fixed a bug that the progress bar for some 7Z archive extraction gets stuck at 99%</li>
+<li>Fixed a vulnerability occurring with JXR files</li>
+<li>Fixed a bug that the Antimalware Scan sometimes shows the wrong message</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.36</div><div class="cell2">Jun 24, 2024</div><ul class="cell3">
+<li>Fixed a vulnerability occurring with RAR files (KVE-2024-0290)</li>
+<li>Fixed a bug with the Parallel Extraction (Thanks to 伊斯塔凛)</li>
+<li>Added a feature decompressing LZ4 archives</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.35</div><div class="cell2">May 21, 2024</div><ul class="cell3">
+<li>Disabled the Parallel Extraction owing to a bug in the feature</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.33</div><div class="cell2">May 9, 2024</div><ul class="cell3">
+<li>Added a feature decompressing RAR7 archives</li>
+<li>Improved features associated with BandiView</li>
+<li>Improved the window asking how to handle duplicate files when decompressing an archive to be always above other windows</li>
+<li>Added a feature showing the exact error code when Fast Drag & Drop fails</li>
+<li>Fixed a bug in the internal image viewer</li>
+<li>Fixed a bug in the console application (bz.exe)</li>
+<li>Fixed a bug in the SFX compression</li>
+<li>Added support for Latvian language</li>
+<li>Fixed a bug in the codepage auto-detection</li>
+<li>Fixed a bug that occurs with HiDPI</li>
+<li>Improved the processing speed of the Password Recovery under certain conditions</li>
+<li>Fixed a bug that occurs with OneDrive</li>
+<li>Changed the font used in dialog boxes to MS Shell Dlg 2</li>
+<li>Fixed a bug that creating TAR archives takes too much time</li>
+<li>Fixed a bug that preset SFX settings do not apply when creating an EXE file through the context menu</li>
+<li>Improved the app to ask the user whether to disable Fast Drag & Drop when the task fails</li>
+<li>Fixed a bug that the app cannot open a ZIP64 file whose dummy data in front of the original data is larger than 4MB</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.32</div><div class="cell2">September 14, 2023</div><ul class="cell3">
+<li>Fixed a vulnerability occurring with WebP files (CVE-2023-4863)</li>
+<li>Added a feature to change the fonts for tree controls and archive comments</li>
+<li>Fixed a bug that the decompression becomes slower under certain conditions</li>
+<li>Fixed a bug that occurs when compressing files by drag & drop</li>
+<li>Improved the reliability of the program</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.31</div><div class="cell2">August 30, 2023</div><ul class="cell3">
+<li>Added the "Run as administrator" option to the SFX settings</li>
+<li>Improved the way how the program deals with corrupted ZIP archives</li>
+<li>Fixed a bug that the program cannot open some corrupted ZIP archives</li>
+<li>Added a feature to delete original files after dragging and dropping them to an archive.</li>
+<li>Improved the code page auto-detection</li>
+<li>Fixed a bug that the program crashes when handling some TIFF files</li>
+<li>Added a feature setting BandiView as the internal image viewer</li>
+<li>Modified the program: If you click the New Folder button when selecting the extraction path, now the archive's name is given by default as the new folder's name</li>
+<li>Added a function showing the sum of CRC of files in a folder</li>
+<li>Fixed a bug that the program caanot decompress some archives compressed with WinzipJpeg algorithm</li>
+<li>Updated UnRAR to 6.2.10</li>
+<li>Added support for the 7Z format's ARM64 filter</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.30</div><div class="cell2">January 19, 2023</div><ul class="cell3">
+<li>Improved the internal image viewer to be compatible with the QOI format</li>
+<li>Added a feature decompressing ASAR archives</li>
+<li>Fixed a bug that bz.exe displays a false error message when processing a resource fork</li>
+<li>Fixed a bug that the dialog box asking how to handle a file conflict appears twice under certain conditions</li>
+<li>Fixed a bug that the progress bar works incorrectly when the program decompresses some ZIP archives</li>
+<li>Fixed a bug that the program's context menu duplicates itself when using Everything, the third-party manager</li>
+<li>Fixed a bug that the program cannot process a ZPAQ archives encrypted with an empty password</li>
+<li>Added a feature "Compress to FileName.ZPAQ" to the Settings > Context Menu</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.29</div><div class="cell2">Nov 21, 2022</div><ul class="cell3">
+<li>Added a feature decompressing UU/UUE/XXE/PEA archives</li>
+<li>Fixed a security issue that may occur when processing Zone.Identifier information (Thanks to Nobutaka Mantani)</li>
+<li>Fixed a bug that "Extract each archive here (Smart)" and "Extract to separate folders" do not work correctly when you select multiple files and right-click them under certain conditions</li>
+<li>Added a feature that can give a sparse property to the extracted files when the program extracts files from TAR archives having a sparse property</li>
+<li>Added a feature copying full paths of selected files and folders to the clipboard</li>
+<li>Fixed a bug that the program crashes when decompressing ZPAQ archives on a device with 32 plus logical processors</li>
+<li>Fixed a bug that occurs when using the feature "Delete the archive after extraction" with an encrypted archive</li>
+<li>Fixed a buffer overflow vulnerability occurring under certain conditions</li>
+<li>Added a feature recognizing an empty string as an archive's password</li>
+<li>Fixed a bug that when adding a folder to an archive by drag & drop on File Explorer, only files are added with no folder name</li>
+<li>Fixed a bug that the tooltip over the ad space does not disappear</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.27</div><div class="cell2">July 7, 2022</div><ul class="cell3">
+<li>Fixed a bug that if the parallel extraction is enabled, extracting only some of the files from an archive creates other folders you did not extract</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.26</div><div class="cell2">July 5, 2022</div><ul class="cell3">
+<li>Added a feature decompressing ZIPX archives compressed with PACKMP3 algorithm</li>
+<li>Added a feature decompressing ZIPX archives compressed with Reference algorithm</li>
+<li>Added a feature "Do not use Rich Edit control" to the Settings > Advanced</li>
+<li>Fixed a bug that the program cannot process some UDF files</li>
+<li>Fixed a vulnerability occurring with PSD files (CNVD-C-2022-239953)</li>
+<li>Fixed a vulnerability occurring with JXR files (CNVD-C-2022-185824)</li>
+<li>Fixed a bug that the program freezes when a network location is selected as the extraction path</li>
+<li>Fixed a bug that the context menu of the program does not work correctly if Explorer's tabs feature is enabled in Windows 11</li>
+<li>Modified the program: Now only the Latin alphabet characters, numbers, and special characters can be used for a ZIP archive's password</li>
+<li>Added /cmdfile command available on CLI</li>
+<li>Added a feature "Add to FileName.ZIP" to the Settings > Context Menu</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.25</div><div class="cell2">Apr 13, 2022</div><ul class="cell3">
+<li>Fixed a bug that files cannot be added to a ZIP archive by drag & drop on Explorer</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.24</div><div class="cell2">Apr 11, 2022</div><ul class="cell3">
+<li>Fixed a bug that the program cannot open a ZIP archive whose Unix file attributes have been incorrectly stored</li>
+<li>Improved the internal image viewer to be compatible with the JXR format</li>
+<li>Improved the program to be able to set a password when creating a ZPAQ archive</li>
+<li>Improved the program to be able to decompress a J2J archive with a password</li>
+<li>Added a feature storing symbolic links in the advanced ZIP compression settings</li>
+<li>Fixed a bug that the program cannot open a TAR archive containing a file larger than 8 GB</li>
+<li>Improved the program not to output an unnecessary message when decompressing split-archived RAR files</li>
+<li>Improved the compatibility with a HiDPI display of an SFX file created by the program</li>
+<li>The program is now also distributed via Microsoft Store. <a href="/bandizip/help/ms-store-app" target="_blank"><svg width="13" height="14" aria-hidden="true"><use xlink:href="/img/icons.svg#arrow-external"></use></svg></a></li>
+<li>Improved the function changing file associations</li>
+<li>Added a feature decompressing UU archives</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.23</div><div class="cell2">Jan 4, 2022</div><ul class="cell3">
+<li>Improved the program to decompress an archive containing symbolic links without showing a dialog box asking for administrative previleges when the developer mode is turned on in Windows 10</li>
+<li>Fixed a bug that occurs with the feature "Delete the archive after extraction" under certain conditions</li>
+<li>Fixed a bug that the context menu of the program duplicates itself when using a third-party manager (e.g. Total Commander) in Windows 11</li>
+<li>Fixed a bug that the progress bar does not reach 100% when the program decompresses a TAR archive containing a hard-linked files</li>
+<li>Fixed a bug that the program crashes sometimes when parallel extraction is canceled in the midst</li>
+<li>Fixed some issues that occur with the performance and UI of the program during parallel extraction</li>
+<li>Improved the compatibility of the internal image viewer with HiDPI</li>
+<li>Improved the comaptibility of the Password Recovery with HiDPI</li>
+<li>Fixed some security issues (KVE-2021-0517, KVE-2021-1018, KVE-2021-1019)</li>
+<li>Fixed a bug that the program cannot decompress some TAR archives</li>
+<li>Added a feature creating a new ZPAQ archive</li>
+<li>Fixed some bugs that occur with File Explorer in Windows 11</li>
+<li>Fixed a bug that the program cannot open some EGG archives</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.22</div><div class="cell2">Nov 18, 2021</div><ul class="cell3">
+<li>Some changes have been made to the End User License Agreement.</li>
+<li>The program is now compatible with a new stlye of context menu offered in Windows 11.</li>
+<li>Fixed a bug that advertisements are not displayed correctly on the Standard Edition</li>
+<li>Fixed a bug that icons of some files contained in an archive are not displayed correctly</li>
+<li>Improved the program to have no limit to the message output when decompressing an archive</li>
+<li>Fixed a bug that some UI components of the program are not displayed correctly when HiDPI is enabled</li>
+<li>Fixed vulnerabilities that may occur when handling TIFF files (CNVD-C-2021-352866, CNVD-C-2021-352868)</li>
+<li>Other modifications</li>
+<center><img src="/bandizip/history/7.0/win11.context.en.png" alt="win11menu" class="auto" /></center>
+</ul></div>
+<div class="row"><div class="cell1">v7.21</div><div class="cell2">Oct 13, 2021</div><ul class="cell3">
+<li>Improved the processing speed of the parallel extraction</li>
+<li>Fixed a bug that the program cannot open some corrupted ZIP archives</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.20</div><div class="cell2">Oct 6, 2021</div><ul class="cell3">
+<li>Fixed a security issue that may occur when decompressing NSIS and TAR archives (KVE-2021-1017)</li>
+<li>Added the feature "parallel extraction" for ZIP archives</li>
+<li>Fixed a bug that some split-archived ZIP files cannot be opened</li>
+<li>Fixed a bug that some NSIS files cannot be opened</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.19</div><div class="cell2">Sep 8, 2021</div><ul class="cell3">
+<li>Improved the feature "Repair Archive"</li>
+<li>Improved the program's stability</li>
+<li>Fixed a bug that the progress bar does not reach 100% sometimes when the program decompresses ARC, LZMA, TBZ, TGZ, XZ, and Z archives</li>
+<li>Improved the processing speed when decompressing a ZPAQ archive</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.17</div><div class="cell2">Jun 16, 2021</div><ul class="cell3">
+<li>Added a feature decompressing DAA (v1.0) archives</li>
+<li>Fixed a bug that the progress bar is not displayed correctly when the program handles an XZ archive</li>
+<li>Fixed a compatibility issue with screen-reading apps for visually impaired users</li>
+<li>Fixed a bug that the Honeyview requires the password again when opening image files in an encrypted archive (Honeyview v5.36 or later required)</li>
+<li>Fixed a bug that occurs with the "Compress to custom filename" feature</li>
+<li>Fixed a compatibility issue between the installer and screen-reading apps</li>
+<li>Added -date switch inserting the current system time in an archive's path</li>
+<li>Improved the program not to create an empty archive when compressing a locked (being used by another process) file</li>
+<li>Added a feature decompressing DEB archives</li>
+<li>Improved the program not to delete a newly created archive when "Test archive" is canceled in the midst</li>
+<li>Fixed a bug that the program does not automatically handle the request for administrative privileges when decompressing a ZIP archive containing symbolic links</li>
+<li>Improved the installer and updater</li>
+<li>Fixed a bug related to the image preview in an archive</li>
+<li>Added a feature testing an archive after its compression</li>
+<li>Added a feature scanning malware in an archive before its decompression</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.16</div><div class="cell2">Apr 5, 2021</div><ul class="cell3">
+<li>Fixed a security issue that may occur when decompressing archives in some formats</li>
+<li>Fixed a bug that some split-compressed RAR archives cannot be decompressed</li>
+<li>Fixed buffer overflow and buffer overrun vulnerabilities that may occur when handling ALZ, ARJ, EGG, RAR, TAR, and ZIP archives</li>
+<li>Fixed a bug that the program may crash when handling ACE, ALZ, BH, and RAR archives</li>
+<li>Fixed a bug that some data remain in the registry even after the program's uninstallation</li>
+<li>Improved the feature undoing file associations</li>
+<li>Improved the "New Folder" on the right-click menu to create a folder at the point of the Desktop where the user right-clicks (System restart required)</li>
+<li>Fixed a bug that symbolic links in a ZIP archive are incorrectly processed</li>
+<li>Added support for the split-archive formats created by HaoZip (.haozip01.zip, .haozip02.zip, ...)</li>
+<li>Fixed an issue that the program may crash when used with some antivirus software supporting AMSI</li>
+<li>Fixed some bugs that occur in the "Snap Window" feature</li>
+<li>Fixed a bug that the program may crash if the dialog box closes in the midst of opening an archive</li>
+<li>Improved the program's stability</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.15</div><div class="cell2">Mar 3, 2021</div><ul class="cell3">
+<li>Added the feature decompressing 7Z archives compressed with LZ4, LZ5, Lizard, and Deflate64 algorithms</li>
+<li>Fixed a bug that the program crashes when compressing files under certain conditions</li>
+<li>Improved the feature decompressing a UDF archive</li>
+<li>Fixed a bug that decompression cannot be done if a filename inside the archive contains some special characters</li>
+<li>Improved the program's stability</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.14</div><div class="cell2">Feb 22, 2021</div><ul class="cell3">
+<li>Fixed a bug that occurs when decompressing an archive whose name ends with a blank space</li>
+<li>Improved the handling of a program crash</li>
+<li>Added a feature storing symbolic links in a TAR archive</li>
+<li>Fixed the web browser control to make it run at a low integrity level</li>
+<li>Added a feature decompressing ZIPX archives compressed with ZSTD algorithm</li>
+<li>Improved the processing speed when decompressing a UDF archive</li>
+<li>Fixed a bug that the program crashes when opening an archive under certain conditions</li>
+<li>Fixed a bug that the program cannot decompress a ZIP archive whose local file header does not include the filename</li>
+<li>Added a feature storing an archive comment in the advanced ZIP compression settings</li>
+<li>Added a feature turning on and off filename encryption in the advanced 7Z compression settings</li>
+<li>Improved the preview of thumbnail images</li>
+<li>Added a feature storing hard links in a TAR archive</li>
+<li>Fixed a bug related to -ex: switch</li>
+<li>Added a feature applying ICC profiles to the internal image viewer</li>
+<li>Fixed a DLL hijacking vulnerability (CNVD-C-2021-22156)</li>
+<li>Added a feature processing junctions in a RAR5 archive</li>
+<li>Improved the error message displayed with AMSI initialization failure</li>
+<li>Fixed a bug that some TAR files cannot be processed</li>
+<li>Fixed a bug that files without extensions cannot be processed on CLI</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.13</div><div class="cell2">Nov 30, 2020</div><ul class="cell3">
+<li>Added the feature decompressing hard-linked and symbolic-linked (Unix) files in a RAR5 archive</li>
+<li>Added the feature decompressing 7Z archives compressed with ZSTD and Brotli algorithms</li>
+<li>Improved the processing of hard-linked and symbolic-linked files in a TAR archive</li>
+<li>Fixed a bug that some UDF files (.iso) of large sizes cannot be decompressed</li>
+<li>Fixed a bug that some NSIS files (.exe) cannot be decompressed</li>
+<li>Improved the processing of command-line commands</li>
+<li>Improved the feature repairing a ZIP archive</li>
+<li>Improved the processing of 7Z compression</li>
+<li>Improved the processing of an app crash</li>
+<li>Improved the Password Recovery</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.12</div><div class="cell2">Oct 28, 2020</div><ul class="cell3">
+<li>Stability improvements and bugfixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.11</div><div class="cell2">Oct 27, 2020</div><ul class="cell3">
+<li>Fixed a bug that some split-archived RAR5 files cannot be opened</li>
+<li>Fixed a bug that setting a password is unavailable when creating an SFX file</li>
+<li>Fixed a bug that some TAR files are incorrectly processed</li>
+<li>Fixed a bug that the processing speed is low when compressing files of small sizes in 7Z format</li>
+<li>Improved the processing speed when decompressing a 7Z archive</li>
+<li>Added the feature "Select toolbar buttons"</li>
+<li>Fixed a bug that translation using a code page does not work properly when decompression needs administrative privileges</li>
+<li>Improved the feature "Image Preview in Archive" for a solid-compressed 7Z archive</li>
+<li>Added -cp:NN switch specifying the code page for opening or extracting files</li>
+<li>Added the feature setting the font for a file list from an archive</li>
+<li>Fixed a bug that the program crashes when opening some RAR5 files</li>
+<li>Fixed a bug that the program crashes when opening some UDF files</li>
+<li>Fixed a bug that the program crashes if the system clock is before the year 1970</li>
+<li>Fixed a bug that the program crashes under certain conditions</li>
+<li>Other improvements in the program's stability</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.10</div><div class="cell2">Sep 8, 2020</div><ul class="cell3">
+<li>Fixed a buffer overrun vulnerability (KVE-2020-0652)</li>
+<li>Fixed a bug that the context menus on the File Explorer are displayed only in English when signing in with another Windows account in which the program has never been run</li>
+<li>Added -t:NN switch specifying the number of CPU threads to be used for compression</li>
+<li>Fixed a bug that a folder created by the "New folder" context menu on the File Explorer is not displayed properly sometimes</li>
+<li>Fixed a bug that -r switch does not work when decompressing an archive</li>
+<li>Fixed a bug that HiDPI support does not work on older versions of Windows 10</li>
+<li>Fixed a bug that -cmtfile: switch is ignored when creating an SFX file</li>
+<li>Improved the feature "Image Preview in Archive"</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.09</div><div class="cell2">Jun 26, 2020</div><ul class="cell3">
+<li>Fixed a bug that the Password Recovery does not work on the Standard Edition</li>
+<li>Added /D: switch to the installer, which enables the user to select the installation folder</li>
+<li>Fixed a bug that (de)compression on CLI cannot be done if the full path exceeds 260 characters</li>
+<li>Fixed a bug that the program crashes when decompressing some CAB files</li>
+<li>Fixed a bug that decompression is not done properly if the size of the original file is exactly 4294967295 bytes</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.08</div><div class="cell2">Jun 10, 2020</div><ul class="cell3">
+<li>Added "Skip this version" on the update notification</li>
+<li>Fixed a bug that the program sometimes crashes when using "Compress to each File/FolderName.zip"</li>
+<li>Fixed a bug that the program sometimes crashes on a high DPI system</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.07</div><div class="cell2">Jun 4, 2020</div><ul class="cell3">
+<li>Fixed a bug that font size in a dialog box becomes too large when displaying languages of the Latin alphabets</li>
+<li>New feature that a user can resize thumbnails of "View large icons" by using [Ctrl + Scrolling the mousewheel] or [Ctrl and +/-]</li>
+<li>Fixed a bug that occurs when processing an extended header of TAR format</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.06</div><div class="cell2">May 20, 2020</div><ul class="cell3">
+<li>Support for Per-Monitor V2 DPI Awareness <a href="https://docs.microsoft.com/en-us/windows/win32/hidpi/high-dpi-desktop-application-development-on-windows" target="_blank"><svg width="13" height="14" aria-hidden="true"><use xlink:href="/img/icons.svg#arrow-external"></use></svg></a><br>( The new feature of Windows 10 allowing apps to be scaled automatically whenever the resolution changes )</li>
+<li>Fixed a bug that a ZIP archive comment cannot be deleted</li>
+<li>Fixed a bug that "Test Archive" does not work when adding a file to an archive</li>
+<li>Fixed a bug that an encrypted 7Z archive cannot be opened even with the valid password if the password is entered incorrectly once</li>
+<li>Fixed a bug that the image preview in an archive shows a wrong image under certain conditions</li>
+<li>Fixed a bug associated with a self-extracting archive (SFX)</li>
+<li>Fixed a bug that a file in a TGZ archive's subfolder cannot be decompressed when using Ctrl+F and drag & drop</li>
+<li>New feature that a user can specify the number of CPU threads to be used for 7Z compression in the advanced compression settings</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.04</div><div class="cell2">Apr 17, 2020</div><ul class="cell3">
+<li>Fixed a bug that the File Explorer crashes when right-clicking on a TGZ file</li>
+<li>Fixed a bug that "Test Archive" does not work sometimes when creating an archive</li>
+<li>Improved the installer</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.03</div><div class="cell2">Apr 14, 2020</div><ul class="cell3">
+<li>Fixed a bug that extended headers of TAR format are incorrectly processed</li>
+<li>Fixed a bug that folder timestamps are incorrectly processed when decompressing an archive</li>
+<li>Fixed a bug that processing speed is low when previewing images on a folder which has a large number of images</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.02</div><div class="cell2">Apr 3, 2020</div><ul class="cell3">
+<li>Fixed an error which occurs when decompressing multiple archives of small sizes individually on the File Explorer</li>
+<li>Improved the registration of paid editions</li>
+<li>Updated the multi-language files</li>
+<li>Fixed bugs in the installer</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.01</div><div class="cell2">Mar 16, 2020</div><ul class="cell3">
+<li>Fixed a bug that some types of hard-linked files in TAR format cannot be processed</li>
+<li>Fixed bugs in the internal image viewer</li>
+<li>Fixed bugs in the password manager</li>
+<li>Fixed bugs in the UI</li>
+<li>Fixed bugs in the command line processing</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v7.0</div><div class="cell2">Mar 3, 2020</div><ul class="cell3">
+<li>New license system</li>
+<li>Many new features and modifications</li>
+<li>Visit <a href="/bandizip/history/7.0"><b>Bandizip 7.0 History</b></a> for details.</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.26</div><div class="cell2">Jan 23, 2020</div><ul class="cell3">
+<li>Fixed: Crash issue when opening a certain type of CAB file</li>
+<li>New code signing certificate has been installed.</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.25</div><div class="cell2">Aug 27, 2019</div><ul class="cell3">
+<li>Fixed: Security issue when using "Open file location" feature</li>
+<li>Improved: Installer</li>
+<li>Other modifications</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.24</div><div class="cell2">June 27, 2019</div><ul class="cell3">
+<li>SFX-related bug fixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.23</div><div class="cell2">June 24, 2019</div><ul class="cell3">
+<li>Added support for GARBLE algorithm of ARJ format</li>
+<li>Added support for obfuscated-deflate algorithm of ALZ format</li>
+<li>Added support for HTTP Proxy when you update manually</li>
+<li>Fixed a bug where some damaged ISO files cannot be opened</li>
+<li>Fixed a bug where file time information of specific ISO is not handled correctly</li>
+<li>Fixed a bug where Bandizip cannot open SFX(RAR, LZH, ARJ) files that are compressed in DOS</li>
+<li>Some minor bug fixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.22</div><div class="cell2">Mar 18, 2019</div><ul class="cell3">
+<li>New: Support for ACE extraction (Based on Public UnAce Package. unacev2.dll is not used)</li>
+<li>Fixed: Crash under a certain condition on low memory systems</li>
+<li>Fixed: The compressed archive is not shown under a specific condition</li>
+<li>Fixed: Error message is not shown when closing the explorer window during a drag and drop</li>
+<li>Fixed: Invalid file-time when extracting some specific RAR5</li>
+<li>Fixed: Cannot extract specific ARJ</li>
+<li>Fixed: Memory leaks in ZPAQ module</li>
+<li>Some minor bug fixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.21</div><div class="cell2">Feb 23, 2019</div><ul class="cell3">
+<li>Stopped ACE archive format support due to vulnerability (CVE-2018-20250)</li>
+<li>Fixed: Crash problem while extracting specific NSIS</li>
+<li>Fixed: Shell extension does not work for the specific case</li>
+<li>Some minor bug fixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.20</div><div class="cell2">Jan 4, 2019</div><ul class="cell3">
+<li>Fixed: Toolbar image related issue</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.19</div><div class="cell2">Jan 2, 2019</div><ul class="cell3">
+<li>New: EGG/AZO algorithm extraction support</li>
+<li>Fixed: Recognize some zip files that are compressed with Mac Finder as corrupted files</li>
+<li>Improved: Enhanced stability during multicore compression</li>
+<li>Stability improvements and bugfixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.18</div><div class="cell2">Oct 18, 2018</div><ul class="cell3">
+<li>New: "Windows 10 on ARM" support <a href="/bandizip/help/windows-10-on-arm/" target=_blank><svg width="13" height="14" aria-hidden="true"><use xlink:href="/img/icons.svg#arrow-external"></use></svg></a></li>
+<li>Improved: Installer improvements</li>
+<li>Improved: Precise file time processing for RAR4 format</li>
+<li>Fixed: File time is changed while processing Zone.Identifier</li>
+<li>Fixed: Internal image viewer cannot process password correctly under the specific condition</li>
+<li>Stability improvements and bugfixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.17</div><div class="cell2">Sep 30, 2018</div><ul class="cell3">
+<li>Update Type: Minor update</li>
+<li>Fixed: Vulnerability of the internal image viewer(CNVD-C-2018-107947)</li>
+<li>Stability improvements</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.16</div><div class="cell2">Sep 27, 2018</div><ul class="cell3">
+<li>Fixed: Filename case sensitive related problem when editing ZIP file</li>
+<li>Fixed: Recognize empty ZIP file as a corrupted file</li>
+<li>Fixed: Internal image viewer resizing related problem</li>
+<li>Stability improvements and Bugfixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.15</div><div class="cell2">Sep 19, 2018</div><ul class="cell3">
+<li>New: System security enhancement by copying Zone.Identifier information <a href="https://www.bandisoft.com/bandizip/help/zone-identifier/" target=_blank><svg width="13" height="14" aria-hidden="true"><use xlink:href="/img/icons.svg#arrow-external"></use></svg></a></li>
+<li>Improved: File association process</li>
+<li>Improved: Does not use GDI+ anymore</li>
+<li>Fixed: Cannot read some settings text when using High Contrast</li>
+<li>Fixed: The date of the file is not correctly displayed if it is before January 1, 1970</li>
+<li>Stability improvements and Bugfixes</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.14</div><div class="cell2">June 19, 2018</div><ul class="cell3">
+<li>Fixed: Cannot extract specific RAR5 format file</li>
+<li>Fixed: Cannot extract specific RAR format file</li>
+<li>Fixed: Ace format related bugs</li>
+<li>ZLIB update(1.2.8->1.2.11)</li>
+<li>Improved the stability of the program</li>
+<li>Code refactoring</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.13</div><div class="cell2">May 26, 2018</div><ul class="cell3">
+<li>Updater bug fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.13</div><div class="cell2">May 24, 2018</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>New: Show/Hide Status Bar</li>
+<li>Improved: Updater</li>
+<li>Improved: Installer</li>
+<li>Fixed: 7z handling problem of the internal image viewer</li>
+<li>Fixed: Symbolic link related bugs</li>
+<li>Fixed: Does not process RAR5 format's file attributes</li>
+<li>Fixed: Rare crash during Wavpack extraction</li>
+<li>Fixed: Codesign related problem with SFX file</li>
+<li>Several bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.12</div><div class="cell2">Feb 7, 2018</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Fixed: Show invalid error message while extracting GZ format</li>
+<li>Improved the stability of the program</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.11</div><div class="cell2">Feb 1, 2018</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Fixed: Can't extract RAR5's redirect attributed file</li>
+<li>Fixed: 'Compress to custom file name' related bug</li>
+<li>Fixed: Security problem while processing archive password</li>
+<li>New: 'Use UTF-8 code page when you open a tar file' option</li>
+<li>Fixed: Can't install with /S parameter in PowerShell</li>
+<li>New: Baltic/Thai codepage</li>
+<li>Several minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">v6.10</div><div class="cell2">Sep 18, 2017</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Fixed: Can't extract particular type of encrypted RAR5 format</li>
+<li>Fixed: Crashes when extracting certain type of LZH format</li>
+<li>Several minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.09</div><div class="cell2">Sep 6, 2017</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Improved: Added shortcuts for "Extract Here(Smart), Extract to Current Folder"</li>
+<li>Fixed: Code page auto detect problem when previewing an archive</li>
+<li>Fixed: Can't extract particular type of CAB format</li>
+<li>Fixed: Crash when opening specific type of archive</li>
+<li>Improved internal image viewer and updater</li>
+<li>Several minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.08</div><div class="cell2">Jun 25, 2017</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Fixed: RAR format's VMSF_DELTA related security problem</li>
+<li>Many language files are updated</li>
+<li>Improved Find Files dialog box</li>
+<li>Improved ZPAQ version history processing</li>
+<li>Improved file open speed</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.07</div><div class="cell2">May 14, 2017</div><ul class="cell3">
+<li>Update Type: Minor update</li>
+<li>Fixed: Can't extract TGZ that is multiple GZ files are concatenated</li>
+<li>Changed: Explorer context menu shortcut key of "Compressed to NAME.ZIP" (R->Z)</li>
+<li>Improved the stability of the program</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.06</div><div class="cell2">April 30, 2017</div><ul class="cell3">
+<li>Update Type: Major update</li>
+<li>Fixed: Can't extract subdirectory in an archive with Ctrl+C, Ctrl+V</li>
+<li>Fixed: When modifying a ZIP file, storing filename as UTF8 always</li>
+<li>Improved the stability of the program</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.05</div><div class="cell2">April 23, 2017</div><ul class="cell3">
+<li>Update Type: Minor update</li>
+<li>Simplified Chinese's codepage is changed from CP936 to GB18030</li>
+<li>Fixed: When compressing a 7z file, modified time of folder is not stored</li>
+<li>Fixed: Crashes when creating a multi-volume zip file with 1byte split size</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.04</div><div class="cell2">April 15, 2017</div><ul class="cell3">
+<li>Fixed: Modifying a encrypted ZIP file under certain conditions may corrupt the ZIP file</li>
+<li>Fixed: Asking for a password every time when you extract a encrypted archive with drag and drop</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.03</div><div class="cell2">April 9, 2017</div><ul class="cell3">
+<li>Fixed: Do not recover file time of 0 byte file when decompress.</li>
+<li>Improved the stability of the program.</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.02</div><div class="cell2">April 1, 2017</div><ul class="cell3">
+<li>New: Show folder's Compressed/Original size</li>
+<li>New 'Adding files directly to a ZIP file by drag and drop in Explorer' option</li>
+<li>Fixed: Very slow opening speed under certain conditions</li>
+<li>Minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.01</div><div class="cell2">March 28, 2017</div><ul class="cell3">
+<li>Fixed: Ctrl+C shortcut not working at archive comment window</li>
+<li>Fixed: Installer shows UI when using /S parameter</li>
+<li>Other minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">6.0</div><div class="cell2">March 26, 2017</div><ul class="cell3">
+<li>New UI</li>
+<li>New file icons</li>
+<li>New installer</li>
+<li>New command-line command</li>
+<li>New console program</li>
+<li>Faster extracting and compressing</li>
+<li>Does not support XP anymore</li>
+<li>New: Extract ZPAQ and LZIP</li>
+<li>Other minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">5.17</div><div class="cell2">12/23/2016</div><ul class="cell3">
+<li>Failed to open some split CAB files.</li>
+<li>Improved the stability of the program.</li>
+<li>Other minor bugs fixed.</li>
+</ul></div>
+<div class="row"><div class="cell1">5.16</div><div class="cell2">08/24/2016</div><ul class="cell3">
+<li>Bandizip stopped working when double-clicking the program icon under certain conditions.</li>
+<li>Improved the stability of the program.</li>
+<li>Other minor bugs fixed.</li>
+</ul></div>
+<div class="row"><div class="cell1">5.15</div><div class="cell2">06/23/2016</div><ul class="cell3">
+<li>Improved extracting speed when unpacking RAR5.</li>
+<li>Failed to recover some folders' attributes after extracting.</li>
+<li>Other minor bugs fixed.</li>
+</ul></div>
+<div class="row"><div class="cell1">5.14</div><div class="cell2">05/16/2016</div><ul class="cell3">
+<li>We have included the updated module from 7-Zip which fixes the UDF vulnerability.</li>
+<li>Other minor bugs fixed.</li>
+</ul></div>
+<div class="row"><div class="cell1">5.13</div><div class="cell2">03/28/2016</div><ul class="cell3">
+<li>Bandizip is now able to extract more than 1,000,000 split archives.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract some CAB files.</li>
+<li>Failed to open more than 65,536 split Zip files.</li>
+<li>Bandizip didn't delete temporary files when users clicked the Cancel button in the security warning dialog box.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.12</div><div class="cell2">02/25/2016</div><ul class="cell3">
+<li>Improved compatibility with Windows 10.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to open some RAR files.</li>
+<li>An error occurred while opening some ZIP files.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.11</div><div class="cell2">01/28/2016</div><ul class="cell3">
+<li>Improved support for high resolution DPI.</li>
+<li>The "Handle long path names exceeding 260 characters" option is checked by default.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>The Sparse format of TAR was recognized as a corrupted file.</li>
+<li>An error occurred if ISO files had MBCS in the pathname under certain situations.</li>
+<li>Failed to extract some GZIP files which had annotations.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.10</div><div class="cell2">11/11/2015</div><ul class="cell3">
+<li>Added the Armenian language file by Aram Vardanyan.</li>
+<li>Improved security of Bandizip Updater.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Some .7z files were extracted slowly under certain situations.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.09</div><div class="cell2">09/08/2015</div><ul class="cell3">
+<li>Bandizip is now able to extract i00, i01, i02 files (ISO split archives).</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>DPI AWARE didn't work properly in the Select Folder dialog box.</li>
+<li>Bandizip stopped working while extracting some 7Z files if the user entered the wrong password.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.07</div><div class="cell2">08/13/2015</div><ul class="cell3">
+<li>Improved compatibility with Windows 10.</li>
+<li>Added unicode support for the Info-ZIP header of Zip format.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract some XZ files.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.06</div><div class="cell2">07/17/2015</div><ul class="cell3">
+<li>Added the Japanese language file.</li>
+<li>Bandizip is now available on Japanese Windows.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract some 4 GB or bigger split ZIP files.</li>
+<li>Extracted files' time wasn't set correctly when Bandizip extracted the RAR files (Year 2038 bug).</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.05</div><div class="cell2">02/12/2015</div><ul class="cell3">
+<li>Bug fixed - Some archived files were not displayed when they had been compressed by right clicking in Windows Explorer.</li>
+<li>Added the Belarusian language file by Belarus2578.</li>
+</ul></div>
+<div class="row"><div class="cell1">5.04</div><div class="cell2">01/28/2015</div><ul class="cell3">
+<li>A drop-down menu will be shown when right clicking on the Open and Extract buttons.</li>
+<li>The preset size of Gmail has changed from 26,214,400 bytes to 25,600,000 bytes.</li>
+<li>Improved the UI of message boxes.</li>
+<li>Added the Finnish and Sinhala language files - Many thanks to Henri Jalonen and Randika.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>The progress status bar was not displayed properly when modifying Zip files under certain situations.</li>
+<li>The code page of file names was not saved as UTF-8 when modifying Zip files even if the user checked the "Use unicode file names in Zip files (UTF-8)" option.</li>
+<li>Failed to extract RAR5 archives which were compressed with passwords and the Store method.</li>
+<li>Failed to open certain files with an external editor if the file name in the archive has a blank space.</li>
+<li>Failed to extract CAB archives which were split and compressed with the MSZIP algorithm.</li>
+<li>Failed to handle the SWAP2 and SWAP4 filters of the 7z format.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.03</div><div class="cell2">10/17/2014</div><ul class="cell3">
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract split ZIP/ZIPX/EXE archives which were compressed by Bandizip and included more than two 4 GB or bigger files.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.02</div><div class="cell2">10/07/2014</div><ul class="cell3">
+<li>The unique GZ file format can be extracted.</li>
+<li>Old versions of the TAR format are now supported.</li>
+<li>Image preview is available even if the files were compressed by a solid compression method.</li>
+<li>After installing Bandizip, the Honeyview suggestion window will pop up.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Bandizip couldn't delete temporary files when an associated program was running.</li>
+<li>Bandizip couldn't execute Honeyview as an internal image viewer if the images were compressed by a solid compression method.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.01</div><div class="cell2">08/12/2014</div><ul class="cell3">
+<li>AES Crypt(.AES) file format can be extracted.</li>
+<li>Added the Serbian language file.</li>
+<li>DVD preset split size has been changed from 4,698,669,056(DVD+R) to 4,697,620,480(DVD-R).</li>
+<li>Improved the font visibility of toolbar in dark Windows themes.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>An error occurred if Windows 8 users didn’t check the file associations option in the setup window.</li>
+<li>NSIS Installer stopped working while extracting files under certain situations.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">5.00</div><div class="cell2">06/03/2014</div><ul class="cell3">
+<li>Bandizip is now installed in the Program Files folder instead of the %LOCALAPPDATA% folder. (Administrator's privileges are required.)</li>
+<li>Added support for high-resolution monitors (DPI-Aware)</li>
+<li>Added support for Windows 8 file associations.</li>
+<li>ISZ/BIN file formats can be extracted.</li>
+<li>GIF, PSD, BMP formats can be viewed with the internal image viewer.</li>
+<li>Archived images can be viewed with Honeyview.</li>
+<li>Fixed many bugs.</li>
+</ul></div>
+<div class="row"><div class="cell1">3.11</div><div class="cell2">04/29/2014</div><ul class="cell3">
+<li>Improved the font readability of dialog boxes in Windows 8.</li>
+<li>Added the Ukrainian language file by Vladimir Reshetnuk.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Some MSI files were handled as CAB files.</li>
+<li>Hidden files lost their hidden attribute after extracting.</li>
+<li>Failed to extract some ISO files due to circular referencing.</li>
+<li>Failed to extract some RAR files which use a long password.</li>
+<li>Failed to extract some GZIP files.</li>
+<li>Other minor bugs fixed.</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.10</div><div class="cell2">01/24/2014</div><ul class="cell3">
+<li>Improved security of Bandizip.</li>
+<li>Bugs fixed - Failed to extract split .ace files</li>
+<li>Other minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">3.09</div><div class="cell2">11/20/2013</div><ul class="cell3">
+<li>Bandizip now supports the new RAR 5.0 archive format.</li>
+<li>Added the Uyghur language file by NurMuhemmed Ismaiyil.</li>
+<li>Other minor bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">3.08</div><div class="cell2">08/21/2013</div><ul class="cell3">
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to open a certain ZIP64 file format.</li>
+<li>Mouse pointer moved to the upper left corner when the "Snap-To" function of mouse pointer was enabled.</li>
+<li>Other minor bugs fixed</li>
+</ul>
+</li>	
+</ul></div>
+<div class="row"><div class="cell1">3.07</div><div class="cell2">06/21/2013</div><ul class="cell3">
+<li>Some .7z files were corrupted under certain situations.</li>
+<li>Bandizip now uses LZMA2 instead of LZMA when packing .7z files.</li>
+</ul></div>
+<div class="row"><div class="cell1">3.06</div><div class="cell2">06/18/2013</div><ul class="cell3">
+<li>Added the Hebrew language file by Ronen Nisanov. <br></li>
+<li>Bandizip now uses LZMA instead of LZMA2 when packing .7z files.</li>
+</ul></div>
+<div class="row"><div class="cell1">3.05</div><div class="cell2">06/03/2013</div><ul class="cell3">
+<li>Improved security of Bandizip.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Filenames were not displayed automatically when Bandizip archived the root directory of a hard drive.</li>
+<li>Other minor bugs fixed</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.04</div><div class="cell2">05/16/2013</div><ul class="cell3">
+<li>Added the Catalan language file by Raül Vallès.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract certain RAR archives which were compressed by solid compression and included the store method.</li>
+<li>Other minor bugs fixed</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.03</div><div class="cell2">04/25/2013</div><ul class="cell3">
+<li>Added the Thai language file by Thanapon Namjittrong.</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Some password-protected .7z files were corrupted under certain situations</li>
+<li>Other minor bugs fixed</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.02</div><div class="cell2">04/17/2013</div><ul class="cell3">
+<li>Added the Croatian, Danish, Kurdish, Lithuanian, Romanian language files - Many thanks to I.L.-Jamar, Mathias, Gorran.Kurd, Amenox, and Mircea Voiculescu</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Bandizip didn’t execute for 5 seconds when some users attempted to open it using Windows Explorer</li>
+<li>Other minor bugs fixed</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.01</div><div class="cell2">03/05/2013</div><ul class="cell3">
+<li> Bugs fixed
+<ul class="SubList">
+<li>Some error messages didn't display properly</li>
+<li>Files saved as .zip files when the function, Compress to "each file/folder name.7z", was used</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">3.00</div><div class="cell2">02/28/2013</div><ul class="cell3">
+<li>Added an Internal Image viewer</li></li>
+<li>Create 7Z, ISO, LZH files</li></li>
+<li>Extract 'CAB (Split), WIM (Compressed), EXE (NSIS)' file formats</li>
+<li>Extract 'QUANTUM (CAB), JPEG (ZIPX), WavPack (ZIPX)' algorithm</li>
+<li>Support long path names exceeding 260 characters</li>
+<li>Delete files after archiving/extraction</li>
+<li>Detect code page automatically</li>
+<li>Improved the archiving/extracting speed</li>
+<li>Improved the installer</li>
+<li>Fixed many bugs</li>
+</ul></div>
+<div class="row"><div class="cell1">2.09</div><div class="cell2">01/29/2013</div><ul class="cell3">
+<li> Added the Danish and Kurdish language files
+<ul class="SubList">
+<li>Many thanks to Mathias and Gorran.Kurd</li>
+</ul>
+</li>
+</ul></div>
+<div class="row"><div class="cell1">2.08</div><div class="cell2">12/11/2012</div><ul class="cell3">
+<li>Added the Romanian language file by Mircea Voiculescu</li>
+<li>Bugs fixed</li>
+</ul></div>
+<div class="row"><div class="cell1">2.07</div><div class="cell2">08/23/2012</div><ul class="cell3">
+<li>Added the Slovenian language file by A.B.Prlek SLO</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Failed to extract password protected .RAR files using solid compression</li>
+<li>Some filenames were broken in certain OSes (Greek, etc.)</li>
+<li>Failed to extract certain split files (avi.001, .mkv.001)</li>
+</ul>
+</ul></div>
+<div class="row"><div class="cell1">2.05</div><div class="cell2">06/08/2012</div><ul class="cell3">
+<li>Added the Dutch, Greek, Hungarian and Portuguese language files</li>
+<li>- Many thanks to Marc Holderbeke, George Georgiou, Zodarr, Jonathan Caldeira and Cristiano Gomes<br></li>
+<li>Improved the creating module of TAR format</li>
+<li>Improved extracting compatibility of ALZ, EGG format</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>'Open with' windows popped up when DOS EXE files were double-clicked</li>
+<li>Failed to get the FILE_ATTRIBUTE_ARCHIVE attribute of 7z files</li>
+<li>Failed to open WIM files when security data was contained</li>
+<li>Failed to use the 'Fast Drag&amp;Drop' function in certain versions of Windows XP</li>
+</ul>
+</ul></div>
+<div class="row"><div class="cell1">2.03</div><div class="cell2">03/14/2012</div><ul class="cell3">
+<li><b>Support the delta, deflate algorithms of 7z format</b></li>
+<li><b>Support RTL (Right to Left Text) languages</b></li>
+<li><b>Improved extracting speed when unpacking small files</b></li>
+<li>Improved SFX (Self-extracting archive) file processing</li>
+<li>Fixed many bugs</li>
+</ul></div>
+<div class="row"><div class="cell1">2.01</div><div class="cell2">02/23/2012</div><ul class="cell3">
+<li><b>Support multi-threaded and multi-core processors (6 times faster)</b></li>
+<li><b>Create ZIPX, TAR, and TGZ archives</b></li>
+<li><b>Unpack ACE, TXZ, TLZ, PMA, and J2J archives</b></li>
+<li><b>Improved the toolbar design</b></li>
+<li>Added the Find Files window</li>
+<li>Added the Turkish language file by Devrim Ergin</li>
+<li>Improved the code page for UNIX and Mac</li>
+<li>Improved SFX compression</li>
+<li>Show the latest archive history</li>
+<li>Show the [..] directory in archives</li>
+<li>Support for Windows 8</li>
+<li>Support the LZMA algorithm, UTF-8, and AES encryption in ZipX</li>
+<li>Fixed tons of bugs</li>
+</ul></div>
+<div class="row"><div class="cell1">1.0.4</div><div class="cell2">11/03/2011</div><ul class="cell3">
+<li>Added the 'Bulgarian, Czech, Norwegian, Russian, Slovak, Chinese (Traditional)' language files</li>
+<li>- Many thanks to URIEL, Buchtič, Svein Magne Høiland, Trojan, PEPEK, and Wang Hulen</li>
+<li>Support Silent Installation Usage: bandizip-setup-gl.exe /S</li>
+<li>Bug fixed - Drag & Drop bug when extracting a file from the archive</li>
+<li>Bug fixed - File associations didn't work with Bandizip</li>
+<li>Improved the extraction folder name</li>
+<li>For example) When you extract "AAA.7z.001" file, the folder name will be "AAA"</li>
+</ul></div>
+<div class="row"><div class="cell1">1.0.3</div><div class="cell2">09/20/2011</div><ul class="cell3">
+<li>Added the 'Chinese, French, German, Italian, Polish, Spanish' language files</li>
+<li>- Many thanks to Yang Haibo, Philippe, Balcky, malungu, Styb, S. Freling, Jacek Milecki, Pérez and Toni</li>
+<li>Added automatic language selection when you install</li>
+<li>Blocked the RTLO Unicode hole (RIGHT-TO-LEFT OVERRIDE) - Security improved</li>
+<li>Bug fixed - Resetting error under certain situations</li>
+</ul></div>
+<div class="row"><div class="cell1">1.0.2</div><div class="cell2">09/08/2011</div><ul class="cell3">
+<li>Added 'File Split' types (3/4/5/10/20/650/700MB)</li>
+<li> Bugs fixed
+<ul class="SubList">
+<li>Language setting error in message box</li>
+<li>File adding bug when the same filename exists in archive</li>
+</ul>
+</ul></div>
+<div class="row"><div class="cell1">1.0.1</div><div class="cell2">09/07/2011</div><ul class="cell3">
+<li>Released the Bandizip official version</li>
+</ul></div>
+<div class="row"><div class="cell1">0.2.0</div><div class="cell2">04/07/2011</div><ul class="cell3">
+<li>Released the Bandizip beta version</li>
+</ul></div>
+<div class="row"><div class="cell1">0.0.1</div><div class="cell2">04/06/2009</div><ul class="cell3">
+<li>Started to develop archiving engine</li>
+</ul></div>
+<br />
+<br />
+<br />
+</div>
+
+</section>
+</div>
+<div class="footer_wrap">
+<div class="footer_int" style="line-height:100%;">
+<p style=" display: none ; width: 100%; ">
+<a class="dimcolor" href="https://translate.bandisoft.com/web/" target="_blank">This page is translated
+by ${translators}. Thanks to translators.</a>
+</p>
+<p style="display: none ; width: 100%; ">
+<a class="dimcolor" href="https://translate.bandisoft.com/web/" target="_blank">This page has not been
+translated yet or has been machine-translated. We need your help to improve it :)</a>
+</p>
+<div style="margin:0 0 0 -8px;">
+<a class="textbutton" href="/bandiview/">BandiView</a>
+<a class="textbutton" href="/bandizip/">Bandizip</a>
+<a class="textbutton" href="/honeycam/">Honeycam</a>
+<a class="textbutton" href="/honeyview/">Honeyview</a>
+<a class="textbutton" href="/bandicamera/">BandiCamera</a>
+<a class="textbutton" href="/shutdown8/">Shutdown8</a>
+<a class="textbutton" href="/about/">About</a>
+<a class="textbutton" href="/forum/forum.php">Forum</a>
+<a class="textbutton" href="/about/gdpr/"> GDPR </a>
+<a class="textbutton" href="https://translate.bandisoft.com" target="_blank">User translation</a>
+<a class="textbutton" href="/kb/">KB</a>
+</div>
+<p id="copyright">
+Copyright© 2008-2026 <a href="https://www.bandisoft.com/about/">Bandisoft
+International Inc.</a><br />
+</p>
+</div>
+<div class="footer_kor" style="line-height:160%;">
+</div>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8613616872740540"
+crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K09P7PCSPY"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K09P7PCSPY');
+</script>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;">
+<symbol id="icon-theme-sun" viewBox="0 0 24 24">
+<path fill="none" stroke="var(--text)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8m0-13v2m0 14v2M6 6l1 1m10 10 1 1M3 12h2m14 0h2M6 18l1-1M17 7l1-1" />
+</symbol>
+<symbol id="icon-theme-moon" viewBox="0 0 24 24">
+<path fill="none" stroke="var(--text)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+d="M20 12.7A8 8 0 1 1 11.3 4a6.2 6.2 0 0 0 8.7 8.7" />
+</symbol>
+<symbol id="icon-theme-auto" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="8" stroke="var(--text)" stroke-linecap="round" stroke-linejoin="round"
+stroke-width="1.5" />
+<path fill="var(--text)" d="M12 4a8 8 0 0 0 0 16z" />
+</symbol>
+</svg>
+</body>
+</html>

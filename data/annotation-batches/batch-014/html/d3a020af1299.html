@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Recent Version History :: WinSCP</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://winscp-static-746341.c.cdn77.org/assets/css/bootstrap-modified.css?v=143">
+<link rel="stylesheet" href="https://winscp-static-746341.c.cdn77.org/assets/js/slick/slick.css?v=143">
+<link rel="stylesheet" href="https://winscp-static-746341.c.cdn77.org/assets/css/styles-all.css?v=143">
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/">
+<meta name="robots" content="index,follow">
+<meta name="DCTERMS.modified" content="2026-08-02T11:08:25+0000">
+<meta name="generator" content="DokuWiki">
+<link rel="start" href="/eng/docs/">
+<link rel="canonical" href="https://winscp.net/eng/docs/history">
+<meta name="keywords" content="file manager,sftp client,scp client,ftp client,windows,secure file transfer,ftp,freeware">
+<meta name="description" content="WinSCP is a free file manager for Windows supporting FTP, SFTP, S3 and WebDAV.">
+<meta name="google-site-verification" content="R-0cOllfdlHe93mQzthYHV_GUkAImaodzbyD5--pXOQ">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="Project News" href="/feed.php">
+
+<script>
+  if (top.frames.length!=0)
+  {
+    if (window.location.href.replace)
+      top.location.replace(self.location.href);
+    else
+      top.location.href=self.document.href;
+  }
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-22775137-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-22775137-1');
+</script>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '215157521840905',
+      status           : true,
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script async defer src="https://platform.twitter.com/widgets.js"></script>
+
+</head>
+
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="95" height="15" class="hidden">
+<symbol id="star" viewBox="0 0 85 15" preserveAspectRatio="xMinYMax meet">
+    <path d="M4.108 14.63c-.17-.004-.327-.087-.428-.224-.1-.137-.135-.314-.092-.48L4.806 9.23 1.103 6.156C.925 6.01.855 5.77.926 5.547c.07-.22.267-.373.496-.386L6.2 4.888 7.93.36C8.015.143 8.22 0 8.45 0c.228 0 .434.143.516.36L10.7 4.887l4.776.274c.23.014.426.168.496.388s0 .463-.176.61l-3.703 3.07 1.217 4.698c.06.225-.023.463-.21.6-.184.137-.434.144-.626.017l-4.025-2.63-4.026 2.63c-.094.062-.204.092-.316.088z"  fill-rule="evenodd" />
+</symbol>
+</svg>
+
+<div id="pageDocumentation">
+
+<div class="masthead">
+<div class="container">
+<nav class="navbar">
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span>Menu</span>
+        </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
+            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><title>Toggle search</title><path d="M12.864 11.32h-.813l-.287-.277c1.01-1.173 1.616-2.697 1.616-4.353C13.38 2.995 10.383 0 6.69 0 2.995 0 0 2.995 0 6.69c0 3.694 2.995 6.69 6.69 6.69 1.656 0 3.18-.608 4.353-1.617l.278.288v.814L16.468 18 18 16.467l-5.136-5.146zm-6.174 0c-2.563 0-4.632-2.068-4.632-4.63 0-2.563 2.07-4.632 4.632-4.632s4.63 2.07 4.63 4.632-2.068 4.63-4.63 4.63z" fill="#FFF" fill-rule="evenodd" opacity="1" />
+                <image src="/assets/images/search.png" xlink:href=""><!-- fallback with IE fix -->
+            </svg>
+        </button>
+
+        <a class="navbar-brand" href="https://winscp.net/">
+            <img srcset="https://winscp-static-746341.c.cdn77.org/assets/images/logos/logo.png?v=143, https://winscp-static-746341.c.cdn77.org/assets/images/logos/logo@2x.png?v=143 2x, https://winscp-static-746341.c.cdn77.org/assets/images/logos/logo@3x.png?v=143 3x" src="https://winscp-static-746341.c.cdn77.org/assets/images/logos/logo.png?v=143" width="55" height="54" alt="">
+            <span class="navbar-brand-text">
+                <span class="navbar-brand-main"><span>WinSCP</span></span>
+                <span class="navbar-brand-strapline">
+                    <span>
+                        Free
+                    </span>
+                    <span>SFTP, SCP, S3 and FTP client</span>
+                    for <span>Windows</span>
+                </span>
+            </span>
+        </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav nav-justified">
+            <li id="navbarHome"><a href="/eng/index.php">Home</a></li>
+            <li id="navbarNews"><a href="/eng/news.php">News</a></li>
+            <li id="navbarIntroduction"><a href="/eng/docs/introduction">Introduction</a></li>
+            <li id="navbarDownload"><a href="/eng/download.php">Download</a></li>
+            <li id="navbarInstall"><a href="/eng/docs/guide_install">Install</a></li>
+            <li id="navbarDocumentation"><a href="/eng/docs/">Documentation</a></li>
+            <li id="navbarForum"><a href="/forum/">Forum</a></li>
+        </ul>
+        <button type="button" class="navbar-toggle hidden-sm-block" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">Close</button>
+    </div>
+    <div id="search" class="navbar-collapse collapse">
+        <form action="/search.php" class="navbar-form navbar-right">
+            <div class="input-group">
+                <input name="q" type="text" class="form-control" placeholder="Search..." value="">
+                <span class="input-group-btn">
+                    <button name="sa" class="btn btn-default" type="submit">
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><title>Search</title><path d="M12.864 11.32h-.813l-.287-.277c1.01-1.173 1.616-2.697 1.616-4.353C13.38 2.995 10.383 0 6.69 0 2.995 0 0 2.995 0 6.69c0 3.694 2.995 6.69 6.69 6.69 1.656 0 3.18-.608 4.353-1.617l.278.288v.814L16.468 18 18 16.467l-5.136-5.146zm-6.174 0c-2.563 0-4.632-2.068-4.632-4.63 0-2.563 2.07-4.632 4.632-4.632s4.63 2.07 4.63 4.632-2.068 4.63-4.63 4.63z" fill="#FFF" fill-rule="evenodd" opacity=".5" />
+                            <image src="/assets/images/search.png" xlink:href=""><!-- fallback with IE fix -->
+                        </svg>
+                    </button>
+                </span>
+            </div>
+            <input type="hidden" name="refinement" value="Documentation">
+        </form>
+        <button type="button" class="navbar-toggle hidden-sm-block" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">Close</button>
+    </div>
+</div>
+</nav>
+</div>
+</div>
+
+<main class="container main-content-container cols-2">
+<div class="row">
+<section class="col-md-9">
+
+<!-- wikipage start -->
+<div class="context"><a href="/eng/docs/start" class="context"  title="Documentation">Documentation</a> &raquo; </div>
+
+<header class="content-editable header-and-meta">
+    <h1>Recent Version History</h1>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value=""><input type="submit" value="Edit this page" class="button" title="Edit this page (Alt+Shift+E)" accesskey="e"></form></div>
+</header>
+
+<p>
+This is a full list of changes for each release of WinSCP. See also <a href="/eng/docs/project_history">Project history</a> and <a href="/eng/docs/incompatible_changes">Incompatible changes between versions</a>.
+</p>
+
+<section id="6.6.3_not_released_yet" class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.6.3">6.6.3 (not released yet)</h2>
+    <time class="date-bubble">2026-08-02</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="4-14"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translations completed: Belarusian, Catalan, Croatian, Czech, Danish, Dutch, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Lithuanian, Macedonian, Polish, Portuguese, Romanian, Russian, Serbian, Simplified Chinese, Slovak, Slovenian, Spanish, Swedish, Tamil, Traditional Chinese and Turkish.</li>
+    <li><abbr title="Extensible Markup Language">XML</abbr> parser upgraded to Expat 2.8.2.</li>
+    <li>Source code package build script supports 64-bit target.</li>
+    <li>64-bit build is identified in version information.</li>
+    <li>Resolving version of pwsh installed with MSIX.</li>
+    <li>Bug fix: No error is shown when connection fails.</li>
+    <li>Bug fix: <code>x-name</code> <abbr title="Uniform Resource Locator">URL</abbr> parameter was incorrectly decoded</li>
+    <li>Bug fix: Incorrect number validation.</li>
+</ul>
+
+<div class="promo-block">
+    <p class="promo-block-content">
+        <em>Advertisement</em>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block;min-height: 90px"
+             data-ad-client="ca-pub-1682759925159355"
+             data-ad-slot="5314776528"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </p>
+</div>
+
+</section>
+
+<section id="6.6.2_rc" class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.6.2">6.6.2 RC</h2>
+    <time class="date-bubble">2026-06-17</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="15-46"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Experimental 64-bit version of WinSCP. <a href="/tracker/618" class="ws-icon-bug">618</a></li>
+    <li>Optionally not showing error message when connection is lost while idle. <a href="/tracker/2360" class="ws-icon-bug">2360</a></li>
+    <li><abbr title="Secure Shell">SSH</abbr> core and SSH private key tools (PuTTYgen and Pageant) upgraded to <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html" class="ws-icon-extlink" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html">PuTTY 0.84</a>. <br> It brings the following change:
+        <ul>
+            <li>Security issue: fixed a remotely triggerable double-free in <abbr title="Rivest, Shamir &amp; Adelman">RSA</abbr> key exchange. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/rsakex-double-free.html" class="ws-icon-bug" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/rsakex-double-free.html">rsakex-double-free</a></li>
+            <li>Minor security issue: fixed a remotely triggerable crash in NIST <abbr title="Elliptic Curve Digital Signature Algorithm">ECDSA</abbr> signature verification. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/ecdsa-remotely-triggerable-assertion.html" class="ws-icon-bug" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/ecdsa-remotely-triggerable-assertion.html">ecdsa-remotely-triggerable-assertion</a></li>
+            <li>Bug fix: spurious <em>&#8220;Network error: Socket is not connected&#8221;</em> when authenticating to some <abbr title="Hyper Text Transfer Protocol">HTTP</abbr> proxies. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/http-proxy-auth-wsaenotconn.html" class="ws-icon-bug" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/http-proxy-auth-wsaenotconn.html">http-proxy-auth-wsaenotconn</a></li>
+        </ul>
+    </li>
+    <li><abbr title="Transport Layer Security">TLS</abbr>/<abbr title="Secure Sockets Layer">SSL</abbr> core upgraded to OpenSSL 3.5.7.</li>
+    <li>XML parser upgraded to Expat 2.8.1.</li>
+    <li>Restored faster C TLS/SSL <abbr title="Advanced Encryption Standard">AES</abbr> implementation.</li>
+    <li>Configurable warning when opening large file in an internal editor. <a href="/tracker/2437" class="ws-icon-bug">2437</a></li>
+    <li>Informing that when preserving directory timestamps is enabled, using multiple connections for transfer is not possible. <a href="/tracker/2439" class="ws-icon-bug">2439</a></li>
+    <li>Warning when pasting a session URL with unsafe settings.</li>
+    <li>When opening session in PuTTY to a host for which WinSCP has multiple host keys cached, using the last key or the key that PuTTY has cached. <a href="/tracker/2440" class="ws-icon-bug">2440</a></li>
+    <li>Always (re)registering drag&amp;drop shell extension during installation, even when the extension is not replaced.</li>
+    <li>Allowed Console interface tool to have <code>.exe</code> extension to avoid false positive detections by some antiviruses. <a href="/tracker/2434" class="ws-icon-bug">2434</a></li>
+    <li>Using <em>&#8220;username&#8221;</em> and <em>&#8220;hostname&#8221;</em> as one word.</li>
+    <li>Reading all system settings from 64-bit registry.</li>
+    <li>Allow assigning <code>null</code> to <code>Session.SessionLogPath</code>. <a href="/tracker/2438" class="ws-icon-bug">2438</a></li>
+    <li>Avoiding using <code>SSH_FXF_EXCL</code> together with <code>SSH_FXF_TRUNC</code> <abbr title="SSH File Transfer Protocol">SFTP</abbr> file opening flags. <a href="/tracker/2444" class="ws-icon-bug">2444</a></li>
+    <li>Optimized file system monitoring when looking for dummy directory during drag&amp;drop downloads. <a href="/tracker/2445" class="ws-icon-bug">2445</a></li>
+    <li>Change: Not allowing <abbr title="Web Distributed Authoring and Versioning">WebDAV</abbr> redirects to other hosts by default. <a href="/tracker/2447" class="ws-icon-bug">2447</a></li>
+    <li>Change: Not allowing WebDAV redirects to an unencrypted URL by default. <a href="/tracker/2448" class="ws-icon-bug">2448</a></li>
+    <li>Updated to JCL library 2.9 commit c669fd12.</li>
+    <li>Bug fix: Failure when trying to connect via HTTP proxy to <abbr title="File Transfer Protocol">FTP</abbr> host with excessively long login details. <a href="/tracker/2435" class="ws-icon-bug">2435</a></li>
+    <li>Bug fix: Buffer overflow in Console interface tool. <a href="/tracker/2436" class="ws-icon-bug">2436</a></li>
+    <li>Bug fix: Failure setting <code>Session.DebugLogPath</code> when running in impersonated context. <a href="/tracker/2441" class="ws-icon-bug">2441</a></li>
+    <li>Bug fix: Message boxes from secondary windows (like the internal editor) caused application to move to the background when when the main window was minimized. <a href="/tracker/2443" class="ws-icon-bug">2443</a></li>
+    <li>Bug fix: Heap over-read via crafted encrypted filename. <a href="/tracker/2449" class="ws-icon-bug">2449</a></li>
+    <li>Bug fix: Slashes in filenames can cause path traversal when invalid filename characters replacement is disabled. <a href="/tracker/2450" class="ws-icon-bug">2450</a></li>
+</ul>
+
+<div class="promo-block">
+    <p class="promo-block-content">
+        <em>Advertisement</em>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block;min-height: 90px"
+             data-ad-client="ca-pub-1682759925159355"
+             data-ad-slot="9772896285"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </p>
+</div>
+
+</section>
+
+<section id="6.6.1_beta" class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.6.1">6.6.1 beta</h2>
+    <time class="date-bubble">2026-04-01</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="47-71"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Support for OpenSSH ssh-agent. <a href="/tracker/1682" class="ws-icon-bug">1682</a></li>
+    <li>Optionally connecting all workspace/folder sessions immediately. <a href="/tracker/1026" class="ws-icon-bug">1026</a></li>
+    <li>Preserving panel scroll position after rename. <a href="/tracker/2425" class="ws-icon-bug">2425</a></li>
+    <li><code>Ctrl+C</code> works in list views on &#8216;Server and protocol information&#8217; dialog.</li>
+    <li>Preventing moving or copying a file or folder over ancestor folder with the same name. <a href="/tracker/2427" class="ws-icon-bug">2427</a></li>
+    <li>WebDAV/HTTP core upgraded to neon 0.37.1.</li>
+    <li>XML parser upgraded to Expat 2.7.5.</li>
+    <li>Bug fix: Some menus were not working on displays to the left or above the primary display. <a href="/tracker/2423" class="ws-icon-bug">2423</a></li>
+    <li>Bug fix: Mouse wheel downwards scrolling did not work on toolbar drop down lists.</li>
+    <li>Bug fix: Once any control of permissions popup box was focused the popup no longer closed when user clicked outside of it.</li>
+    <li>Bug fix: Failure when closing Transfer settings dialog with <em>X</em> button while a permissions popup box control is focused. <a href="/tracker/2420" class="ws-icon-bug">2420</a></li>
+    <li>Bug fix: Failure when switching to a session that is being reconnected.</li>
+    <li>Bug fix: Failure when the first bit of an SFTP response is set. <a href="/tracker/2422" class="ws-icon-bug">2422</a></li>
+    <li>Bug fix: Copying to clipboard with <code>Ctrl+C</code> from &#8216;Server and protocol information&#8217; was broken.</li>
+    <li>Bug fix: Protocol additional information scrolling was broken.</li>
+    <li>Bug fix: Master password dialog was missing <em>Help</em> button.</li>
+    <li>Bug fix: Checking if edited/opened file was modified externally didn&#8217;t work for inactive sessions. <a href="/tracker/2426" class="ws-icon-bug">2426</a></li>
+    <li>Bug fix: Wrapped settings values from Raw Site Settings dialog were not preserved.</li>
+    <li>Bug fix: Some files modified by local custom command in <abbr title="Secure Copy Protocol">SCP</abbr> session fail to upload back. <a href="/tracker/2428" class="ws-icon-bug">2428</a></li>
+    <li>Bug fix: Whole <em>Key exchange</em> page was incorrectly hidden when <em>&#8220;Handles SSH key re-exchange badly&#8221;</em> bug was enabled.</li>
+    <li>Bug fix: Some message boxes leak GDI handle. <a href="/tracker/2430" class="ws-icon-bug">2430</a></li>
+    <li>Bug fix: Login dialog leaks GDI handles. <a href="/tracker/2431" class="ws-icon-bug">2431</a></li>
+</ul>
+
+</section>
+
+<section id="6.6_beta" class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.6">6.6 beta</h2>
+    <time class="date-bubble">2026-02-02</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="72-138"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Synchronizing two local directories. <a href="/tracker/2020" class="ws-icon-bug">2020</a></li>
+    <li>Compiler upgraded to Clang/bcc32c. <a href="/tracker/618" class="ws-icon-bug">618</a></li>
+    <li>Inactive sessions can be automatically reconnected. <a href="/tracker/2232" class="ws-icon-bug">2232</a></li>
+    <li>Added dark theme support to: <a href="/tracker/1696" class="ws-icon-bug">1696</a>
+        <ul>
+            <li>Login dialog. <a href="/tracker/2345" class="ws-icon-bug">2345</a></li>
+            <li>Transfer Options dialog.</li>
+            <li>Message boxes.</li>
+            <li>Queue column headers. <a href="/tracker/2356" class="ws-icon-bug">2356</a></li>
+            <li>Progress window.</li>
+            <li>Authentication Progress window. <a href="/tracker/2358" class="ws-icon-bug">2358</a></li>
+            <li>Bug fix: Scrollbar colors did not always reflect the color theme</li>
+        </ul>
+    </li>
+    <li>Using modern directory selection dialog that scales correctly and allows creating new directory. <a href="/tracker/2373" class="ws-icon-bug">2373</a> <a href="/tracker/2389" class="ws-icon-bug">2389</a></li>
+    <li>Optimized <abbr title="Graphical User Interface">GUI</abbr> when working with large subdirectory selection. <a href="/tracker/2396" class="ws-icon-bug">2396</a></li>
+    <li>Change: Default to <abbr title="8-bit Unicode Transformation Format">UTF-8</abbr> encoding in internal editor. <a href="/tracker/2397" class="ws-icon-bug">2397</a></li>
+    <li>New DigiCert EV code signing certificate valid until March 2029 is used for signing binaries.</li>
+    <li>TLS/SSL core upgraded to OpenSSL 3.5.5.</li>
+    <li>WebDAV/HTTP core upgraded to neon 0.36.0.</li>
+    <li>XML parser upgraded to Expat 2.7.4.</li>
+    <li>Installer upgraded to Inno Setup 6.7.0 with dark mode support enabled.</li>
+    <li>Increased WinSCP memory limit to 4 <abbr title="Gigabyte">GB</abbr>. <a href="/tracker/2412" class="ws-icon-bug">2412</a></li>
+    <li>Defined and implemented interface for the .NET library. By @mjkent. <a href="/tracker/856" class="ws-icon-bug">856</a></li>
+    <li>Optimized TLS/SSL AES implementation.</li>
+    <li>Restoring ability to restart Explorer to allow upgrade of drag&amp;drop shell extension, when installing for current user, as after-restart replacement is not possible without Administrator privileges. <a href="/tracker/2381" class="ws-icon-bug">2381</a></li>
+    <li>MSI toolset updated to WiX 5.</li>
+    <li>Commands to copy paths to the clipboard on the Synchronization checklist window.</li>
+    <li>Cryptography optimization.</li>
+    <li>Support long <abbr title="Amazon Web Services">AWS</abbr>/<abbr title="Amazon S3 (Simple Storage Service)">S3</abbr> session tokens. <a href="/tracker/2403" class="ws-icon-bug">2403</a></li>
+    <li>Prevent hang when new device is attached or removed while some mapped network drive is not available. <a href="/tracker/2382" class="ws-icon-bug">2382</a></li>
+    <li>Copy and paste improvements:
+        <ul>
+            <li>Consistently renaming local files dropped or pasted back to their source directory to avoid collisions.</li>
+            <li>Bug fix: When copying local files to clipboard from system context menu, &#8220;cut&#8221; state of previously cut files was not cleared.</li>
+        </ul>
+    </li>
+    <li>Not redundantly verifying WebDAV or S3 certificate in Windows Certificate store if it is already marked as trusted in session settings. <a href="/tracker/2404" class="ws-icon-bug">2404</a></li>
+    <li>Provide <abbr title="Server Name Indication">SNI</abbr> when opening FTP data connection. <a href="/tracker/2410" class="ws-icon-bug">2410</a></li>
+    <li>Optimized synchronization checklist sorting.</li>
+    <li>Support for Beyond Compare 5 in Compare Files extension. <a href="/tracker/2417" class="ws-icon-bug">2417</a></li>
+    <li>Convert unsupported SSH proxy to SSH tunnel when importing site from PuTTY. <a href="/tracker/2408" class="ws-icon-bug">2408</a></li>
+    <li>FTP directory listing falls back to the other active/passive mode, consistently with file transfers.</li>
+    <li>Consistently calling command to open window with specific directory <em>Explore</em>, instead of sometimes <em>Browse</em>.</li>
+    <li>Consistently referring to file last modification timestamp column as <em>Date modified</em>.</li>
+    <li>With INI file provided on command-line, using the same INI file when starting a new instance.</li>
+    <li>Windows shell local file copy status window is centered on the main window.</li>
+    <li>Made taskbar flashing configurable in GUI. <a href="/tracker/2411" class="ws-icon-bug">2411</a></li>
+    <li>Control labels on transfer settings dialogs do not show keyboard accelerator cue, until <code>Alt</code> key is pressed.</li>
+    <li>Not using drag images even with directory trees. <a href="/tracker/1274" class="ws-icon-bug">1274</a></li>
+    <li>Allow configuring checksum commands. <a href="/tracker/2394" class="ws-icon-bug">2394</a></li>
+    <li>Updated to JCL library 2.8.1.</li>
+    <li>Updating jump list only when running with GUI.</li>
+    <li>Made space on permissions box for longer translations. <a href="/tracker/2398" class="ws-icon-bug">2398</a></li>
+    <li>Opening <em>Default Apps</em> <em>Settings</em> page directly to open it in the foreground and avoid flashing <em>Control Panel</em> window.</li>
+    <li>Improving order in which Windows Narrator reads window controls.</li>
+    <li>All edit boxes with history consistently do not auto complete and show 16 entries in the drop down.</li>
+    <li>Removed obsolete <em>Preserve remote timestamp</em> session settings.</li>
+    <li>Bug fix: Local file with invalid characters replaced could not be explored from the Synchronization checklist window.</li>
+    <li>Bug fix: Files modified by local custom command are not always uploaded to the correct remote directory. <a href="/tracker/2370" class="ws-icon-bug">2370</a></li>
+    <li>Bug fix: List of network drives in drive drop down and directory tree did not always match.</li>
+    <li>Bug fix: Host key prompt did not have the default button.</li>
+    <li>Bug fix: When the local path specified on Open directory/Location profile dialog is not existing, when browsing for a new path, the trailing part of the nonexisting path was appended to the new path.</li>
+    <li>Bug fix: Trying to enter an invalid link in local panel fails silently.</li>
+    <li>Bug fix: After FTP data connection fails to open further use of the session is broken.</li>
+    <li>Bug fix: Pasting cut files from the clipboard into a local panel copies them instead of moving them. <a href="/tracker/2400" class="ws-icon-bug">2400</a></li>
+    <li>Bug fix: Some edits did not save their value to history when submitting with <code>Enter</code>.</li>
+    <li>Bug fix: Too long edit history dropdown can overflow monitor bounds. <a href="/tracker/2432" class="ws-icon-bug">2432</a></li>
+    <li>Bug fix: Message box texts and some control labels are not visible to screen readers. <a href="/tracker/2413" class="ws-icon-bug">2413</a></li>
+    <li>Bug fix: Failure when clicking tab close button while the session is already being closed. <a href="/tracker/2416" class="ws-icon-bug">2416</a></li>
+</ul>
+
+<div class="promo-block">
+    <p class="promo-block-content">
+        <em>Advertisement</em>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block;min-height: 90px"
+             data-ad-client="ca-pub-1682759925159355"
+             data-ad-slot="9772896285"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </p>
+</div>
+
+</section>
+
+<section id="6.5.7_not_released_yet" class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.7">6.5.7 (not released yet)</h2>
+    <time class="date-bubble">2026-06-17</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="139-148"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translations completed: Croatian, Finnish, Georgian, Italian and Serbian.</li>
+    <li>TLS/SSL core upgraded to OpenSSL 3.3.7.</li>
+    <li>Back-propagated fixes from 6.6.2 beta release:
+        <ul>
+            <li>Bug fix: Failure setting <code>Session.DebugLogPath</code> when running in impersonated context. <a href="/tracker/2441" class="ws-icon-bug">2441</a></li>
+            <li>Security issue: fixed a remotely triggerable double-free in RSA key exchange. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/rsakex-double-free.html" class="ws-icon-bug" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/rsakex-double-free.html">rsakex-double-free</a></li>
+            <li>Minor security issue: fixed a remotely triggerable crash in NIST ECDSA signature verification. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/ecdsa-remotely-triggerable-assertion.html" class="ws-icon-bug" title="https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/ecdsa-remotely-triggerable-assertion.html">ecdsa-remotely-triggerable-assertion</a></li>
+        </ul>
+    </li>
+    <li>Bug fix: A specially crafted PKCS#7 or S/<abbr title="Multipurpose Internet Mail Extension">MIME</abbr> signed message could trigger a use-after-free during PKCS#7 signature verification. CVE-2026-45447 fix from OpenSSL 3.4.6.</li>
+</ul>
+
+</section>
+
+<section class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.6">6.5.6</h2>
+    <time class="date-bubble">2026-03-25</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="149-158"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translations completed: Macedonian, and updated: Lithuanian, and Russian.</li>
+    <li>TLS/SSL core upgraded to OpenSSL 3.3.6.</li>
+    <li>Back-propagated improvements from 6.6–6.6.1 beta release:
+        <ul>
+            <li>New DigiCert EV code signing certificate valid until March 2029 is used for signing binaries.</li>
+            <li>XML parser upgraded to Expat 2.7.5.</li>
+            <li>Support for Beyond Compare 5 in Compare Files extension. <a href="/tracker/2417" class="ws-icon-bug">2417</a></li>
+            <li>Bug fix: Checking if edited/opened file was modified externally didn&#8217;t work for inactive sessions. <a href="/tracker/2426" class="ws-icon-bug">2426</a></li>
+        </ul>
+    </li>
+</ul>
+
+</section>
+
+<section class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.5">6.5.5</h2>
+    <time class="date-bubble">2025-11-19</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="159-165"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translation updated: Vietnamese.</li>
+    <li>Bug fix: Pasting files using local directory tree context menu pastes them to the current directory, instead of the selected one.</li>
+    <li>Bug fix: Failure when opening site imported from PuTTY with unsupported SSH proxy. <a href="/tracker/2407" class="ws-icon-bug">2407</a></li>
+    <li>Bug fix: Incorrect hostname validation when connecting to S3 endpoint with certificate that does not cover root S3 hostname. <a href="/tracker/2409" class="ws-icon-bug">2409</a></li>
+</ul>
+
+</section>
+
+<section class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.4">6.5.4</h2>
+    <time class="date-bubble">2025-10-16</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="166-178"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translations updated: Belarusian and Georgian.</li>
+    <li>TLS/SSL core upgraded to OpenSSL 3.3.5.</li>
+    <li>XML parser upgraded to Expat 2.7.3.</li>
+    <li>Added new <code>ap-southeast-6</code> AWS region.</li>
+    <li>Bug fix: When restored after operation completed while minimized the window is disabled. <a href="/tracker/2393" class="ws-icon-bug">2393</a></li>
+    <li>Bug fix: Command <code>md5sums</code> is incorrectly used to calculate <abbr title="Message Digest Algorithm 5">MD5</abbr> checksum instead of <code>md5sum</code>. <a href="/tracker/2392" class="ws-icon-bug">2392</a></li>
+    <li>Bug fix: Incomplete FTP upload when the source stream/stdin reads less than requested. <a href="/tracker/2395" class="ws-icon-bug">2395</a></li>
+    <li>Bug fix: <code>Shift</code>-clicking <em>OK</em> button on Synchronization checklist window when synchronization in the background was not possible still closed the window.</li>
+    <li>Bug fix: Failure after reloading file panel when number of files decreases. <a href="/tracker/2402" class="ws-icon-bug">2402</a></li>
+    <li>Bug fix: Failure or silently missing headers when when S3 request headers were too long.</li>
+</ul>
+
+<div class="promo-block">
+    <p class="promo-block-content">
+        <em>Advertisement</em>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block;min-height: 90px"
+             data-ad-client="ca-pub-1682759925159355"
+             data-ad-slot="9772896285"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </p>
+</div>
+
+</section>
+
+<section class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.3">6.5.3</h2>
+    <time class="date-bubble">2025-07-16</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="179-188"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translations updated: Belarusian, Brazilian Portuguese <a href="/tracker/2386" class="ws-icon-bug">2386</a> and Slovenian.</li>
+    <li>TLS/SSL core upgraded to OpenSSL 3.3.4.</li>
+    <li>Temporarily not updating drag&amp;drop shell extension for minor changes when installing for current user. <a href="/tracker/2381" class="ws-icon-bug">2381</a></li>
+    <li>Bug fix: Failure when reading empty certificate authority configuration.</li>
+    <li>Bug fix: Failure when running Maximized. <a href="/tracker/2387" class="ws-icon-bug">2387</a></li>
+    <li>Bug fix: Incorrect scaling of navigation tree on Login and Preferences dialogs. <a href="/tracker/2385" class="ws-icon-bug">2385</a></li>
+    <li>Bug fix: Incorrect scaling of drag&amp;drop shell extension status display on Preferences dialog.</li>
+</ul>
+
+</section>
+
+<section class="upper-divider">
+<header class="content-editable header-and-meta">
+    <h2 id="6.5.2">6.5.2</h2>
+    <time class="date-bubble">2025-06-18</time>
+    <div class="secedit"><form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="lines" value="189-"><input type="submit" value="Edit" class="button" title="Edit"></form></div>
+</header>
+
+<ul>
+    <li>Translation updated: Brazilian Portuguese and Polish.</li>
+    <li>Added new <code>ap-east-2</code> AWS region.</li>
+    <li>Bug fix: Some translations (notably Japanese) are not loaded. <a href="/tracker/2372" class="ws-icon-bug">2372</a></li>
+    <li>Bug fix: Directory tree indentation is scaled incorrectly when starting on scaled display on system with scaled primary monitor. <a href="/tracker/2374" class="ws-icon-bug">2374</a></li>
+    <li>Bug fix: Wrong icon size is used when starting on secondary monitor with different scaling than the primary one.</li>
+    <li>Bug fix: Failure when proxy hostname resolution fails with SFTP/SCP protocols. <a href="/tracker/2376" class="ws-icon-bug">2376</a></li>
+    <li>Bug fix: Avoid replacing <code>%2F</code> with a slash and <code>%2E</code> with a dot in special cases on upload to avoid path traversal. <a href="/tracker/2377" class="ws-icon-bug">2377</a></li>
+    <li>Bug fix: Failure when canceling reconnection on authentication banner, when the connection was already closed by the server. <a href="/tracker/2379" class="ws-icon-bug">2379</a></li>
+    <li>Bug fix: Local directories sometimes cannot be deleted. <a href="/tracker/2380" class="ws-icon-bug">2380</a></li>
+</ul>
+
+<p>
+<a href="/eng/docs/history_old">Older versions</a>
+
+
+</p>
+</section>
+<!-- cachefile ./../data/data/.cache/9afcbd92bab53d96e9763988e62826fe used -->
+<!-- wikipage stop -->
+</section>
+
+<aside class="col-md-3 sidebar">
+    <section class="donations">
+        <div class="row">
+            <h2 class="pull-left">Contribute</h2>
+            <p class="pull-right">
+                <img src="https://winscp-static-746341.c.cdn77.org/assets/images/paypal.svg?v=143" alt="PayPal" style="height: 1.5em; vertical-align: -0.4em; padding-left: 0.1em;">
+            </p>
+        </div>
+
+        <p>
+            <a href="/eng/donate.php" class="btn btn-primary btn-lg">Donate</a>
+        </p>
+
+        <ul class="list-inline">
+            <li><a href="/eng/donate.php?amount=19&amp;currency=USD&amp;class=S" title="Donate $19 via PayPal" rel="nofollow">$19</a></li>
+            <li><a href="/eng/donate.php?amount=29&amp;currency=USD&amp;class=S" title="Donate $29 via PayPal" rel="nofollow">$29</a></li>
+            <li><a href="/eng/donate.php?amount=49&amp;currency=USD&amp;class=S" title="Donate $49 via PayPal" rel="nofollow">$49</a></li>
+            <li><a href="/eng/donate.php?amount=99&amp;currency=USD&amp;class=S" title="Donate $99 via PayPal" rel="nofollow">$99</a></li>
+            <li><a href="/eng/donate.php?amount=249&amp;currency=USD&amp;class=S" title="Donate $249 via PayPal" rel="nofollow">$249</a></li>
+        </ul>
+
+        <p>
+            <img src="https://winscp-static-746341.c.cdn77.org/assets/images/card-logo-visa.svg?v=143" alt="Visa" style="height: 1.2em; vertical-align: -0.2em; padding-left: 0.1em;">
+            <img src="https://winscp-static-746341.c.cdn77.org/assets/images/card-logo-mastercard.svg?v=143" alt="Mastercard" style="height: 1.2em; vertical-align: -0.2em; padding-left: 0.1em;">
+            <img src="https://winscp-static-746341.c.cdn77.org/assets/images/card-logo-amex.svg?v=143" alt="American Express" style="height: 1.2em; vertical-align: -0.2em; padding-left: 0.1em;">
+            <img src="https://winscp-static-746341.c.cdn77.org/assets/images/card-logo-unknown.svg?v=143" alt="Other" style="height: 1.2em; vertical-align: -0.2em; padding-left: 0.1em;">
+        </p>
+    </section>
+
+    <section class="user-approved-software">
+        <h2>User Approved Software</h2>
+
+        <div class="rating-stars">
+            <span class="rating-stars-score">
+                <svg width="95" height="15" class="rating-stars rating-stars-5">
+                    <use xlink:href="#star" fill="#fff" transform="translate(0 0)" />
+                    <use xlink:href="#star" fill="#fff" transform="translate(19 0)" />
+                    <use xlink:href="#star" fill="#fff" transform="translate(38 0)" />
+                    <use xlink:href="#star" fill="#fff" transform="translate(57 0)" />
+                    <use xlink:href="#star" fill="#fff" transform="translate(76 0)" />
+                </svg>
+            </span>
+        </div>
+
+        <h3 class="text-left">Total Downloads:</h3>
+        <p class="special-large">
+            268,296,646
+        </p>
+
+        <h3 class="text-left">Rating:</h3>
+        <p>
+            <span class="special-large">4.8</span>
+            out of
+            <span class="special-large">209</span>
+            reviews
+        </p>
+
+        <p>
+            <a href="https://sourceforge.net/projects/winscp/reviews/" class="ws-icon-arrow soft-link">SourceForge Review</a>
+        </p>
+    </section>
+
+    <section class="social-widgets">
+        <h2>Recommend</h2>
+
+        <ul class="list-inline">
+            <li class="social-widgets-facebook">
+                <div class="fb-like" data-href="https://www.facebook.com/winscp/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+            </li>
+
+            <li class="social-widgets-twitter">
+                <a href="https://x.com/share" class="twitter-share-button" data-count="vertical" data-via="winscpnet">Tweet</a>
+            </li>
+        </ul>
+    </section>
+
+    <div class="promo-block hidden-sm hidden-xs">
+        <p class="promo-block-content">
+            <em>Advertisement</em>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:block;min-height: 90px"
+                 data-ad-client="ca-pub-1682759925159355"
+                 data-ad-slot="2824344559"
+                 data-ad-format="rectangle"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+    </div>
+
+    <section class="latest-forum-topics-list plain-links-list-widget nav">
+        <h2>Most Read</h2>
+
+        <ul class="list-unstyled winscp-list">
+            <li>
+                <a href="/eng/docs/ui_login">Login Dialog – Configuring Session</a>
+            </li>
+            <li>
+                <a href="/eng/docs/ui_commander">Using Commander Interface</a>
+            </li>
+            <li>
+                <a href="/eng/docs/guide_windows_openssh_server">Installing SFTP/SSH Server on Windows using OpenSSH</a>
+            </li>
+            <li>
+                <a href="/eng/docs/ui_authenticate">Authentication Progress</a>
+            </li>
+            <li>
+                <a href="/eng/docs/guide_automation">Automate file transfers or file synchronization</a>
+            </li>
+            <li>
+                <a href="/eng/docs/guide_connect">Connect to FTP server or SFTP server</a>
+            </li>
+            <li>
+                <a href="/eng/docs/ui_opendir">Bookmark Dialog</a>
+            </li>
+            <li>
+                <a href="/eng/docs/guide_public_key">Set up SSH public key authentication</a>
+            </li>
+            <li>
+                <a href="/eng/docs/guide_amazon_s3">Connecting to Amazon AWS S3 cloud storage</a>
+            </li>
+        </ul>
+    </section>
+    <div class="user-page-meta">
+        <ul class="list-unstyled winscp-list">
+            <li>
+                <form class="button" method="post" action="/eng/docs/history"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value=""><input type="submit" value="Edit this page" class="btn btn-lg btn-primary small-mb" title="Alt+Shift+E" accesskey="e"></form>
+            </li>
+            <li>
+                <form class="button" method="get" action="/eng/docs/history"><input type="hidden" name="do" value="revisions"><input type="submit" value="Old revisions" class="btn btn-lg btn-secondary" title="Alt+Shift+O" accesskey="o"></form>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+</div>
+
+<footer class="page-last-edited">
+    <p>Last modified: <time datetime="2026-08-02T11:08:25+0000">2026-08-02</time> by <a href="/forum/profile.php?mode=viewprofile&u=2">martin</a></p>
+</footer>
+
+</main>
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-2 pull-right">
+                <div id="footerLogin">
+                    <a href="/eng/docs/history?do=login" class="btn btn-default btn-footer">Login</a>
+                </div>
+                <div id="footerLanguage" class="btn-group dropup">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-footer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        English <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/chs/">简体中文</a></li>
+                        <li><a href="/cht/">正體中文 (繁體)</a></li>
+                        <li><a href="/cs/">Česky</a></li>
+                        <li><a href="/da/">Danish</a></li>
+                        <li><a href="/de/">Deutsch</a></li>
+                        <li><a href="/eng/">English</a></li>
+                        <li><a href="/es/">Español (Castellano)</a></li>
+                        <li><a href="/et/">Eesti keel</a></li>
+                        <li><a href="/fr/">Français</a></li>
+                        <li><a href="/hr/">Hrvatski</a></li>
+                        <li><a href="/hu/">Magyar</a></li>
+                        <li><a href="/it/">Italiano</a></li>
+                        <li><a href="/jp/">日本語</a></li>
+                        <li><a href="/ko/">한국어</a></li>
+                        <li><a href="/lt/">Lietuvių</a></li>
+                        <li><a href="/nl/">Nederlands</a></li>
+                        <li><a href="/pl/">Polski</a></li>
+                        <li><a href="/ro/">Română</a></li>
+                        <li><a href="/ru/">Русский</a></li>
+                        <li><a href="/sk/">Slovensky</a></li>
+                        <li><a href="/srl/">Srpski</a></li>
+                        <li><a href="/uk/">Українська</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-10">
+                <div class="col-xs-12 col-sm-3">
+                    <h2 class="footer-header">Documentation</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="/eng/docs/getting_started">Quick Start</a></li>
+                        <li><a href="/eng/docs/guides">Guides</a></li>
+                        <li><a href="/eng/docs/free_ftp_client_for_windows">FTP Client</a></li>
+                        <li><a href="/eng/docs/free_sftp_client_for_windows">SFTP Client</a></li>
+                        <li><a href="/eng/docs/free_ssh_client_for_windows">SSH Client</a></li>
+                        <li><a href="/eng/docs/free_s3_client_for_windows">S3 Client</a></li>
+                        <li><a href="/eng/docs/languages">Languages</a></li>
+                        <li><a href="/eng/docs/scripting">Scripting</a></li>
+                        <li><a href="/eng/docs/library">.NET and COM Library</a></li>
+                        <li><a href="/eng/docs/commandline">Command Line Options</a></li>
+                        <li><a href="/eng/docs/portable">Portable Use</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <h2 class="footer-header">Support</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="/eng/docs/support">Get Support</a></li>
+                        <li><a href="/eng/docs/faq">FAQ</a></li>
+                        <li><a href="/eng/docs/troubleshooting">Troubleshooting</a></li>
+                        <li><a href="/forum/">Support Forum</a></li>
+                        <li><a href="/eng/docs/history">History</a></li>
+                        <li><a href="/tracker/">Bug Tracker</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <h2 class="footer-header">Associations</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/winscp/winscp">GitHub</a></li>
+                        <li><a href="https://sourceforge.net/projects/winscp/">SourceForge</a></li>
+                        <li><a href="https://teamforge.net/">TeamForge.net</a></li>
+                        <li><a href="https://www.dokuwiki.org/">DokuWiki</a></li>
+                        <li><a href="https://www.phpbb.com/">phpBB</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <h2 class="footer-header">Follow Us</h2>
+                    <ul class="list-unstyled">
+                        <li><a rel="me" href="https://www.facebook.com/winscp/">Facebook</a></li>
+                        <li><a rel="me" href="https://x.com/winscpnet">X</a></li>
+                        <li><a rel="me" href="https://mastodon.social/@winscp">Mastodon</a></li>
+                        <li><a rel="me" href="https://bsky.app/profile/winscp.net">Bluesky</a></li>
+                        <li><a rel="me" href="https://www.linkedin.com/company/winscp/">LinkedIn</a></li>
+                        <li><a href="/feed.php">RSS News</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>
+                    &copy; All rights reserved 2000&ndash;2026, WinSCP.net
+                </p>
+
+                <ul class="list-inline">
+                    <li>
+                        <a href="/eng/docs/license">WinSCP License</a>
+                    </li>
+                    <li>
+                        <a href="/eng/docs/privacy">WinSCP Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</div>
+
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/jquery.min.js?v=143"></script>
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/bootstrap.min.js?v=143"></script>
+
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/slick/slick.min.js?v=143"></script>
+
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/footer.js?v=143"></script>
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/svg-src-polyfill.js?v=143"></script>
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/slick-init.js?v=143"></script>
+
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/matchMedia.js?v=143"></script>
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/mediaQueryListener.js?v=143"></script>
+<script defer src="https://winscp-static-746341.c.cdn77.org/assets/js/jquery.toggleSections.js?v=143"></script>
+</body>
+</html>

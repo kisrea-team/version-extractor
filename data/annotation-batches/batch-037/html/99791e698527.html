@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<title>Raku®</title>
+<meta content="The Raku® programming language." name="description" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<script integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous" src="https://unpkg.com/htmx.org@1.9.5"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/haskell.min.js"></script>
+
+<script>
+            (function () {
+                const savedTheme = localStorage.getItem("theme");
+
+                let theme;
+                if (savedTheme) {
+                    theme = savedTheme;
+                } else {
+                    theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+                        ? "dark"
+                        : "light";
+                }
+
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+
+<script defer data-website-id="bd5ca56b-3bad-47c7-b0a1-73ba5c3b5713" src="https://cloud.umami.is/script.js"></script>
+
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+<style>.tab-menu {
+    display: block;
+    justify-content: left;
+}
+.tab-links {
+    display: block;
+}
+.tab-links > li.active > a {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .tab-menu {
+        text-align: left;
+    }
+    .tab-links > * {
+        padding-top: 0;
+        padding-bottom:1em;
+    }
+}
+</style>
+
+<style>.tab-menu {
+    display: block;
+    justify-content: left;
+}
+.tab-links {
+    display: block;
+}
+.tab-links > li > a {
+    border-radius: var(--pico-border-radius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+.tab-links > li.active > a {
+    text-decoration: none;
+    border-bottom: var(--pico-border-width) solid var(--pico-primary-hover);
+}
+
+@media (max-width: 768px) {
+    .tab-menu {
+        text-align: center;
+    }
+    .tab-links > * {
+        padding-top: 0;
+        padding-bottom:1em;
+    }
+}
+</style>
+
+<style>dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+</style>
+
+<style>dashboard > article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  /* Responsive sizing */
+  flex: 1 1 600px;
+  max-width: 800px;
+
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  margin-top: 0 !important;
+}
+
+dashboard > article > header {
+  border-bottom-color: darkgray;
+  border-radius: 0px;
+}
+
+dashboard > article > footer {
+  border-top-color: darkgray;
+  border-radius: 0px;
+  margin-top: auto;
+}
+</style>
+
+<style>/* Custom styles for the hamburger menu */
+.menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgba(0, 0, 0, .95);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(128, 128, 128, .2);
+    z-index: 800;
+}
+
+.menu a {
+    display: block;
+}
+
+.menu.show {
+    display: flex;
+}
+
+.hamburger {
+    color: var(--pico-primary);
+    display: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+<header class="container">
+<nav>
+<ul>
+<li class="logo">
+<span>
+<a style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;" href="https://raku.org" target="_self">
+<img width="60px" src="/img/camelia-logo.png" title="Hi, my name is Camelia. I'm the spokesbug for the Raku Programming Language. Raku has been developed by a team of dedicated and enthusiastic open source volunteers, and continues to be developed. You can help too. The only requirement is that you know how to be nice to all kinds of people (and butterflies)." />
+<p style="margin:0">Raku®</p>
+</a></span></li></ul>
+<ul hx-target="#content" hx-swap="outerHTML" class="nav-links">
+<li>
+<a href="/community">community</a></li>
+<li>
+<a href="/learn">learn</a></li>
+<li>
+<a href="/tools">tools</a></li>
+<li>
+<a href="https://docs.raku.org" target="_blank" rel="noopener noreferrer">docs</a></li>
+<li>
+<a target="_blank" rel="noopener noreferrer" href="https://raku.land">modules</a></li>
+<li>
+<a href="https://github.com/rakudo/rakudo" target="_blank" rel="noopener noreferrer">source</a></li>
+<li>
+<a href="/install">install</a></li>
+<li>
+                    <a style="font-variant-emoji: text" id ="sunIcon">&#9728;</a>
+                    <a style="font-variant-emoji: text" id ="moonIcon">&#9790;</a>
+                </li>
+</ul>
+<button class="hamburger" id="hamburger">&#9776;</button>
+<ul hx-swap="outerHTML" hx-target="#content" id="menu" class="menu">
+<li>
+<a href="/community">community</a></li>
+<li>
+<a href="/learn">learn</a></li>
+<li>
+<a href="/tools">tools</a></li>
+<li>
+<a href="https://docs.raku.org" rel="noopener noreferrer" target="_blank">docs</a></li>
+<li>
+<a href="https://raku.land" rel="noopener noreferrer" target="_blank">modules</a></li>
+<li>
+<a href="https://github.com/rakudo/rakudo" target="_blank" rel="noopener noreferrer">source</a></li>
+<li>
+<a href="/install">install</a></li>
+</ul>
+</nav></header>
+<main class="container">
+<div>
+<style>#background {
+    background: url('/img/Butterfly_bottom_PSF_transparent.gif');
+    top: 140px;
+    left: 0vw;
+    width: 100vw;
+    height: 360px;
+    background-size: auto;
+    opacity: 0.1;
+    filter: grayscale(100%);
+    transform: rotate(-9deg);
+    position: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    z-index: -1;
+    pointer-events: none;
+    padding: 20px;
+}
+</style>
+
+<div id="background"></div>
+</div>
+<div align="center">
+<h1>Raku is an expressive, multi&#8209;paradigm, Open Source language that works the way you think!</h1>
+<div style="min-height:1em;"></div>
+<div>
+<a target="_self" href="/install">
+<button>Install</button></a>
+<div style="min-height:0.4em;"></div>
+<p>Linux, macOS, Windows, Docker</p>
+</div>
+<div style="min-height:1em;"></div>
+</div>
+<div>
+<div class="tabs">
+<nav class="tab-menu">
+<ul class="tab-links">
+<li class="active">
+<a hx-target="#buttabs-1-content" data-value="1" hx-get="/buttabs/1/multi-paradigm">multi-paradigm</a></li>
+<li class="">
+<a hx-target="#buttabs-1-content" hx-get="/buttabs/1/strict-gradual" data-value="2">strict-gradual</a></li>
+<li class="">
+<a hx-target="#buttabs-1-content" data-value="3" hx-get="/buttabs/1/interactive-mode">interactive-mode</a></li>
+<li class="">
+<a hx-target="#buttabs-1-content" hx-get="/buttabs/1/command-line" data-value="4">command-line</a></li>
+<li class="">
+<a hx-get="/buttabs/1/thriving-ecosystem" hx-target="#buttabs-1-content" data-value="5">thriving-ecosystem</a></li>
+<li class="">
+<a hx-get="/buttabs/1/one-liners" data-value="6" hx-target="#buttabs-1-content">one-liners</a></li>
+</ul></nav>
+<div id="buttabs-1-content">
+<div class="tab" align="left"><style>
+    #grid-1 {
+        display: grid;
+        grid-template-columns: 2.2fr 3.2fr;
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1.5em;
+        direction: rtl;
+        
+    }
+
+    @media (max-width: 1024px) {
+        #grid-1 {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 0.1em;
+        }
+    }
+</style>
+
+<div id="grid-1">
+<article style="direction:ltr;">
+<h3>Multi Paradigm</h3>
+<p>Smoothly combine coding styles:</p>
+<ul>
+<li>Object-Oriented:
+<code>class Circle</code> encapsulates data and behavior.
+</li>
+<li>Functional: built-ins like
+<code>.map</code> and operators like
+<code>».</code> and
+<code>[+]</code> .
+</li>
+<li>Declarative:
+<code>...</code> infers sequences, such as the powers of two.
+</li>
+<li>Procedural: the overall code flow is straightforward.</li>
+</ul>
+<p style="font-size:small; text-align:right">
+<em>...natural syntax &amp; semantics</em></p>
+</article>
+<article style="direction:ltr;">
+                <div class="raku-code">
+                    <button class="copy-code" title="copy code">⿻</button>
+                    
+                    <div><pre class="nohighlights">
+<span class="rainbow-keyword">class</span>&nbsp;Circle&nbsp;&#123;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-keyword">has</span>&nbsp;<span class="rainbow-name_scalar">$.radius</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-keyword">method</span>&nbsp;area&nbsp;&#123;&nbsp;π&nbsp;<span class="rainbow-operator">*</span>&nbsp;<span class="rainbow-name_scalar">$.radius</span>²&nbsp;&#125;<br>&#125;<br><br><span class="rainbow-keyword">my</span>&nbsp;<span class="rainbow-name_array">@radii</span>&nbsp;<span class="rainbow-operator">=</span>&nbsp;1,2,4...256;<br><br><span class="rainbow-keyword">my</span>&nbsp;<span class="rainbow-name_array">@circles</span>&nbsp;<span class="rainbow-operator">=</span>&nbsp;<span class="rainbow-routine">map</span>&nbsp;&#123;&nbsp;Circle.<span class="rainbow-routine">new</span>(<span class="rainbow-operator">:</span>$^radius)&nbsp;&#125;<span class="rainbow-operator">,</span>&nbsp;<span class="rainbow-name_array">@radii</span>;<br><br><span class="rainbow-keyword">my</span>&nbsp;<span class="rainbow-name_scalar">$total-area</span>&nbsp;<span class="rainbow-operator">=</span>&nbsp;[<span class="rainbow-operator">+</span>]&nbsp;<span class="rainbow-name_array">@circles</span>».area;<br><br><br><span class="rainbow-routine">say</span>&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">Total area: </span><span class="rainbow-name_scalar">$total-area</span><span class="rainbow-string_delimiter">&quot;</span>;
+</pre>
+</div>
+                </div>
+            </article>
+</div></div></div>
+</div>
+<div class="tabs">
+<nav class="tab-menu">
+<ul class="tab-links">
+<li class="active">
+<a hx-target="#buttabs-2-content" hx-get="/buttabs/2/grammars" data-value="1">grammars</a></li>
+<li class="">
+<a hx-get="/buttabs/2/concurrency" hx-target="#buttabs-2-content" data-value="2">concurrency</a></li>
+<li class="">
+<a hx-get="/buttabs/2/lazy-evaluation" hx-target="#buttabs-2-content" data-value="3">lazy-evaluation</a></li>
+<li class="">
+<a hx-get="/buttabs/2/role-composition" data-value="4" hx-target="#buttabs-2-content">role-composition</a></li>
+<li class="">
+<a hx-target="#buttabs-2-content" hx-get="/buttabs/2/mixins" data-value="5">mixins</a></li>
+<li class="">
+<a data-value="6" hx-get="/buttabs/2/multi-dispatch" hx-target="#buttabs-2-content">multi-dispatch</a></li>
+<li class="">
+<a data-value="7" hx-get="/buttabs/2/signatures" hx-target="#buttabs-2-content">signatures</a></li>
+<li class="">
+<a data-value="8" hx-target="#buttabs-2-content" hx-get="/buttabs/2/io">io</a></li>
+</ul></nav>
+<div id="buttabs-2-content">
+<div class="tab" align="left"><style>
+    #grid-7 {
+        display: grid;
+        grid-template-columns: 2.2fr 3.2fr;
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1.5em;
+        direction: ltr;
+        
+    }
+
+    @media (max-width: 1024px) {
+        #grid-7 {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 0.1em;
+        }
+    }
+</style>
+
+<div id="grid-7">
+<article style="direction:ltr;">
+<h3>Grammars</h3>
+<p>Definable grammars for pattern matching and generalized string processing.</p>
+<p style="font-size:small; text-align:right">
+<em>...domain specific languages</em></p>
+</article>
+<article style="direction:ltr;">
+                <div class="raku-code">
+                    <button class="copy-code" title="copy code">⿻</button>
+                    
+                    <div><pre class="nohighlights">
+<span class="rainbow-keyword">grammar</span>&nbsp;Parser&nbsp;&#123;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-keyword">rule</span>&nbsp;&nbsp;TOP&nbsp;&nbsp;<span class="rainbow-regex_delimiter">&#123;</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">I</span><span class="rainbow-regex_special"> &lt;love&gt; &lt;lang&gt; </span><span class="rainbow-regex_delimiter">&#125;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-keyword">token</span>&nbsp;love&nbsp;<span class="rainbow-regex_delimiter">&#123;</span><span class="rainbow-regex_special"> &#39;</span><span class="rainbow-regex_literal">♥</span><span class="rainbow-regex_special">&#39; | </span><span class="rainbow-regex_literal">love</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_delimiter">&#125;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-keyword">token</span>&nbsp;lang&nbsp;<span class="rainbow-regex_delimiter">&#123;</span><span class="rainbow-regex_special"> &lt; </span><span class="rainbow-regex_literal">Raku</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">Rust</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">Go</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">Python</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">Ruby</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">TypeScript</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">PHP</span><span class="rainbow-regex_special"> &gt; </span><span class="rainbow-regex_delimiter">&#125;</span><br>&#125;<br><br><span class="rainbow-routine">say</span>&nbsp;Parser.parse:&nbsp;<span class="rainbow-string_delimiter">&#39;</span><span class="rainbow-string">I ♥ Raku</span><span class="rainbow-string_delimiter">&#39;</span>;<br><span class="rainbow-comment"># OUTPUT: ｢I ♥ Raku｣ love =&gt; ｢♥｣ lang =&gt; ｢Raku｣<br></span><br><span class="rainbow-routine">say</span>&nbsp;Parser.parse:&nbsp;<span class="rainbow-string_delimiter">&#39;</span><span class="rainbow-string">I love Python</span><span class="rainbow-string_delimiter">&#39;</span>;<br><span class="rainbow-comment"># OUTPUT: ｢I love Python｣ love =&gt; ｢love｣ lang =&gt; ｢Python｣</span>
+</pre>
+</div>
+                </div>
+            </article>
+</div></div></div>
+</div>
+<div class="tabs">
+<nav class="tab-menu">
+<ul class="tab-links">
+<li class="active">
+<a hx-target="#buttabs-3-content" hx-get="/buttabs/3/unicode-regexes" data-value="1">unicode-regexes</a></li>
+<li class="">
+<a data-value="2" hx-target="#buttabs-3-content" hx-get="/buttabs/3/hyper-operators">hyper-operators</a></li>
+<li class="">
+<a hx-get="/buttabs/3/feed-operators" hx-target="#buttabs-3-content" data-value="3">feed-operators</a></li>
+<li class="">
+<a hx-get="/buttabs/3/rational-numerics" data-value="4" hx-target="#buttabs-3-content">rational-numerics</a></li>
+<li class="">
+<a data-value="5" hx-target="#buttabs-3-content" hx-get="/buttabs/3/sets-junctions">sets-junctions</a></li>
+<li class="">
+<a hx-target="#buttabs-3-content" hx-get="/buttabs/3/smartmatching" data-value="6">smartmatching</a></li>
+</ul></nav>
+<div id="buttabs-3-content">
+<div class="tab" align="left"><style>
+    #grid-15 {
+        display: grid;
+        grid-template-columns: 2.2fr 3.2fr;
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1.5em;
+        direction: rtl;
+        
+    }
+
+    @media (max-width: 1024px) {
+        #grid-15 {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 0.1em;
+        }
+    }
+</style>
+
+<div id="grid-15">
+<article style="direction:ltr;">
+<h3>Unicode Regexes</h3>
+<p>The most powerful Unicode-aware regular expression engine available, especially for complex text processing.</p>
+<p>It shines in tasks where precision and multilingual support are essential such as Grapheme and Diacritic handling.</p>
+<p style="font-size:small; text-align:right">
+<em>...unicode centric text handling</em></p>
+</article>
+<article style="direction:ltr;">
+                <div class="raku-code">
+                    <button class="copy-code" title="copy code">⿻</button>
+                    
+                    <div><pre class="nohighlights">
+<span class="rainbow-routine">say</span>&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">Cool😎</span><span class="rainbow-string_delimiter">&quot;</span>&nbsp;<span class="rainbow-operator">~~</span>&nbsp;<span class="rainbow-regex_delimiter">/</span><span class="rainbow-regex_special">&lt;:Letter&gt;* &lt;:Block(&quot;Emoticons&quot;)&gt;/; </span><span class="rainbow-comment"># ｢Cool😎｣<br></span><span class="rainbow-regex_literal">say</span><span class="rainbow-regex_special"> &quot;</span><span class="rainbow-regex_literal">Cześć</span><span class="rainbow-regex_special">&quot; ~~ </span><span class="rainbow-regex_literal">m</span><span class="rainbow-regex_special">:</span><span class="rainbow-regex_literal">ignoremark</span><span class="rainbow-regex_delimiter">/</span>&nbsp;Czesc&nbsp;<span class="rainbow-operator">/</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-comment"># ｢Cześć｣<br></span><span class="rainbow-routine">say</span>&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">WEIẞE</span><span class="rainbow-string_delimiter">&quot;</span>&nbsp;<span class="rainbow-operator">~~</span>&nbsp;<span class="rainbow-regex_delimiter">m:ignorecase/</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_literal">weisse</span><span class="rainbow-regex_special"> </span><span class="rainbow-regex_delimiter">/</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rainbow-comment"># ｢WEIẞE｣<br></span><span class="rainbow-routine">say</span>&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">หนูแฮมสเตอร์</span><span class="rainbow-string_delimiter">&quot;</span>&nbsp;<span class="rainbow-operator">~~</span>&nbsp;<span class="rainbow-regex_delimiter">/</span><span class="rainbow-regex_special">&lt;:Letter&gt;+/;                   </span><span class="rainbow-comment"># ｢หนูแฮมสเตอร์｣</span><span class="rainbow-regex_delimiter"></span>
+</pre>
+</div>
+                </div>
+            </article>
+</div></div></div>
+</div>
+</div>
+<div class="tabs">
+<nav class="tab-menu">
+<ul class="tab-links">
+<li class="active">
+<a hx-target="#buttabs-4-content" data-value="1" hx-get="/buttabs/4/L10N">L10N</a></li>
+<li class="">
+<a hx-target="#buttabs-4-content" hx-get="/buttabs/4/LLM" data-value="2">LLM</a></li>
+<li class="">
+<a hx-get="/buttabs/4/CPAN" hx-target="#buttabs-4-content" data-value="3">CPAN</a></li>
+<li class="">
+<a hx-target="#buttabs-4-content" data-value="4" hx-get="/buttabs/4/FFI">FFI</a></li>
+<li class="">
+<a hx-target="#buttabs-4-content" hx-get="/buttabs/4/Web" data-value="5">Web</a></li>
+<li class="">
+<a hx-target="#buttabs-4-content" data-value="6" hx-get="/buttabs/4/ORM">ORM</a></li>
+</ul></nav>
+<div id="buttabs-4-content">
+<div class="tab" align="left"><style>
+    #grid-21 {
+        display: grid;
+        grid-template-columns: 2.2fr 3.2fr;
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1.5em;
+        direction: ltr;
+        
+    }
+
+    @media (max-width: 1024px) {
+        #grid-21 {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 0.1em;
+        }
+    }
+</style>
+
+<div id="grid-21">
+<article style="direction:ltr;">
+<h3>Localization &amp; Internationalization</h3>
+<p>This snippet is written using Japanese identifiers and strings, showcasing localization (L10N) and internationalization (I18N) features.</p>
+<p>Localized Raku code can be automatically translated to any other localization.</p>
+<p style="font-size:small; text-align:right">
+<em>...think global: act local</em></p>
+</article>
+<article style="direction:ltr;">
+                <div class="raku-code">
+                    <button class="copy-code" title="copy code">⿻</button>
+                    
+                    <div><pre class="nohighlights">
+私の&nbsp;<span class="rainbow-name_scalar">$数</span>&nbsp;<span class="rainbow-operator">=</span>&nbsp;プロンプト&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">数を教えてください </span><span class="rainbow-string_delimiter">&quot;</span>;<br>言う&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">数は</span><span class="rainbow-escape">&#123;</span><span class="rainbow-name_scalar">$数</span><span class="rainbow-escape">&#125;</span><span class="rainbow-string">です。</span><span class="rainbow-string_delimiter">&quot;</span>;<br><br>もしも&nbsp;<span class="rainbow-name_scalar">$数</span>&nbsp;<span class="rainbow-operator">&lt;=</span>&nbsp;10&nbsp;&#123;<br>&nbsp;&nbsp;&nbsp;&nbsp;言う&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">数は10以下です</span><span class="rainbow-string_delimiter">&quot;</span>;<br>&#125;&nbsp;その他&nbsp;&#123;<br>&nbsp;&nbsp;&nbsp;&nbsp;言う&nbsp;<span class="rainbow-string_delimiter">&quot;</span><span class="rainbow-string">数は10以上です</span><span class="rainbow-string_delimiter">&quot;</span>;<br>&#125;
+</pre>
+</div>
+                </div>
+            </article>
+</div></div></div>
+</div>
+<div>
+<p>Supported by:</p><style>
+    #grid-27 {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1em;
+        direction: ltr;
+        border-radius:12.75px;
+align-items:center;
+background-color:white;
+padding:10px;
+justify-items:center;
+
+    }
+
+    @media (max-width: 1024px) {
+        #grid-27 {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
+</style>
+
+<div id="grid-27">
+<a href="https://www.dotcom-monitor.com/">
+<img src="static/logos/adjusted/logo-dotcom-monitor.png" /></a>
+<a href="https://www.loadview-testing.com/">
+<img src="static/logos/adjusted/LoadView-logo-alt.png" /></a>
+<a href="https://webhostingbuddy.com/">
+<img src="static/logos/adjusted/web-hosting-buddy-logo.png" /></a>
+<a href="https://www.findmyelectric.com/">
+<img src="static/logos/adjusted/findmyelectric-logo.png" /></a>
+<a href="https://www.synthauto.com/">
+<img src="static/logos/adjusted/synthauto-logo.png" /></a>
+</div>
+<p style="font-size:small; text-align:right">
+<em>if you would like to support Raku, please send a message to 
+<a href="/cdn-cgi/l/email-protection#b2c1c2dddcc1ddc0dbdcd5f2c0d3d9c79cddc0d58dc1c7d0d8d7d1c68f" New Sponsor""><span class="__cf_email__" data-cfemail="b5c6c5dadbc6dac7dcdbd2f5c7d4dec09bdac7d2">[email&#160;protected]</span></a>
+</em></p>
+</div>
+<div>
+<p>Trusted by:</p><style>
+    #grid-28 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 1em;
+        direction: ltr;
+        background-color:white;
+padding:10px;
+border-radius:12.75px;
+justify-items:center;
+align-items:center;
+
+    }
+
+    @media (max-width: 1024px) {
+        #grid-28 {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
+</style>
+
+<div id="grid-28">
+<a href="">
+<img src="static/logos/adjusted/cns-logo.png" /></a>
+<a href="https://www.edument.se">
+<img src="static/logos/adjusted/edument-logo.png" /></a>
+<a href="https://www.haltec.net">
+<img src="static/logos/adjusted/haltec-logo.png" /></a>
+<a href="https://www.oetiker.ch/en_US">
+<img src="static/logos/adjusted/oetiker_partner-logo.png" /></a>
+<a href="https://qbrc.swmed.edu">
+<img src="static/logos/adjusted/qbrc-logo.jpg" /></a>
+<a href="https://virtual.blue">
+<img src="static/logos/adjusted/virtual_blue-logo.png" /></a>
+</div>
+<p style="font-size:small; text-align:right">
+<em>organisations that use Raku in a production setting</em></p>
+</div>
+<div align="center" style="min-width:400px;">
+<div style="min-height:1em;"></div>
+<div>
+<a target="_self" href="/install">
+<button>Install</button></a>
+<div style="min-height:0.4em;"></div>
+<p>Linux, macOS, Windows, Docker</p>
+</div>
+<div style="min-height:1em;"></div>
+</div>
+</main>
+<footer class="container">
+<hr />
+<p>
+            Hypered with <a href="https://htmx.org" target="_blank">htmx</a>.
+            Aloft on <a href="https://harcstack.org" target="_blank"><b>&Aring;ir</b></a>.
+            Constructed in <a href="https://cro.raku.org" target="_blank">cro</a>.
+            Written in <a href="https://raku.org" target="_blank">raku</a>.
+            &nbsp;&amp;&nbsp;
+            Styled by <a href="https://picocss.com" target="_blank">picocss</a>.
+        </p>
+<p>Please report any issues with this site at <a href="https://github.com/Raku/raku.org" target="_blank">Raku/raku.org</a>.</p>
+<p>The Raku® Programming Language</p>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>    // Hilite-helper.js
+
+    function copyCode() {
+        // copy code block to clipboard adapted from solution at
+        // https://stackoverflow.com/questions/34191780/javascript-copy-string-to-clipboard-as-text-html
+        // if behaviour problems with different browsers add stylesheet code from that solution.
+        const copyButtons = Array.from(document.querySelectorAll('.copy-code'));
+        copyButtons.forEach( function( button ) {
+        // this works with / without label
+        var codeElement = button.nextElementSibling;
+        while (codeElement && codeElement.tagName !== 'DIV') {
+          codeElement = codeElement.nextElementSibling;
+        }
+        button.addEventListener( 'click', function(insideButton) {
+            var container = document.createElement('div');
+            container.innerHTML = codeElement.innerHTML;
+                container.style.position = 'fixed';
+                container.style.pointerEvents = 'none';
+                container.style.opacity = 0;
+                document.body.appendChild(container);
+                window.getSelection().removeAllRanges();
+                var range = document.createRange();
+                range.selectNode(container);
+                window.getSelection().addRange(range);
+                document.execCommand("copy", false);
+                document.body.removeChild(container);
+            });
+        });
+    }
+
+    // DOM ready
+    document.addEventListener('DOMContentLoaded', function () {
+        // trigger the highlighter for non-Raku code
+        copyCode();
+        hljs.highlightAll();
+    });
+
+    // HTMX updates
+    document.addEventListener('htmx:afterSwap', function () {
+        copyCode();
+        hljs.highlightAll();
+    });
+</script>
+
+<script>function setupTabLinks() {
+    const links = document.querySelectorAll('.tab-links > *');
+    const hiddenInput = document.getElementById('selectedOption');
+    const display = document.getElementById('selectedDisplay');
+
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            links.forEach(l => l.classList.remove('active'));
+
+            this.classList.add('active');
+
+            const value = this.getAttribute('data-value');
+            if (hiddenInput) hiddenInput.value = value;
+            if (display) display.textContent = `Selected: ${this.textContent}`;
+        });
+    });
+}
+
+// Run on initial load
+document.addEventListener('DOMContentLoaded', setupTabLinks);
+
+// Re-run after HTMX swaps in new content
+document.body.addEventListener('htmx:afterSwap', setupTabLinks);
+</script>
+
+<script>function setupTabLinks() {
+    const links = document.querySelectorAll('.tab-links > *');
+    const hiddenInput = document.getElementById('selectedOption');
+    const display = document.getElementById('selectedDisplay');
+
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            links.forEach(l => l.classList.remove('active'));
+
+            this.classList.add('active');
+
+            const value = this.getAttribute('data-value');
+            if (hiddenInput) hiddenInput.value = value;
+            if (display) display.textContent = `Selected: ${this.textContent}`;
+        });
+    });
+}
+
+// Run on initial load
+document.addEventListener('DOMContentLoaded', setupTabLinks);
+
+// Re-run after HTMX swaps in new content
+document.body.addEventListener('htmx:afterSwap', setupTabLinks);
+</script>
+
+<script>
+            // Show/hide icons
+            function updateIcons(theme) {
+                if (theme === "dark") {
+                    sunIcon.style.display = "none";
+                    moonIcon.style.display = "block";
+                } else {
+                    sunIcon.style.display = "block";
+                    moonIcon.style.display = "none";
+                }
+            }
+            function setTheme(mode) {
+        const htmlElement = document.documentElement;
+        let newTheme = mode;
+
+        if (mode === "toggle") {
+            const currentTheme = htmlElement.getAttribute("data-theme") || "light";
+            newTheme = currentTheme === "dark" ? "light" : "dark";
+        } else if (mode === "system") {
+            newTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        htmlElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme); // Save theme to localStorage
+        updateIcons(newTheme);
+    }
+
+    // update icons on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const theme = document.documentElement.getAttribute("data-theme");
+        updateIcons(theme);
+    });
+
+    // Listen for system dark mode changes and update the theme dynamically
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+        setTheme("system"); // Follow system setting
+    });
+
+            // Attach to icon click
+            const sunIcon  = document.getElementById("sunIcon");
+            const moonIcon = document.getElementById("moonIcon");
+
+            document.getElementById("sunIcon").addEventListener("click", () => setTheme("dark"));
+            document.getElementById("moonIcon").addEventListener("click", () => setTheme("light"));
+        </script>
+
+<script>const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
+
+if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+            menu.classList.remove('show');
+        }
+    });
+}
+
+// Hide the menu when resizing the viewport to a wider width
+window.addEventListener('resize', () => {
+    if (menu && window.innerWidth > 768) {
+        menu.classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

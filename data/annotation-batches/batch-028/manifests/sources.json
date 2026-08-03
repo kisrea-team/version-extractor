@@ -1,0 +1,38 @@
+[
+  {
+    "pageId": "dc068bf30d32",
+    "name": "如意AI",
+    "url": "https://limyai.com/download",
+    "expected": "v1.0.285",
+    "fetchedAt": "2026-08-03T17:35:14.471430+00:00",
+    "status": null,
+    "error": "<urlopen error timed out>",
+    "bytes": 0
+  },
+  {
+    "pageId": "de456040e148",
+    "name": "可易 ClawYi",
+    "url": "https://www.clawyi.com/download/",
+    "expected": "v1.0.0",
+    "fetchedAt": "2026-08-03T17:35:34.704216+00:00",
+    "status": 200,
+    "finalUrl": "https://www.clawyi.com/download/",
+    "contentType": "text/html",
+    "bytes": 82626,
+    "htmlFile": "data/annotation-batches/batch-028/html/de456040e148.html",
+    "snapshotSha256": "ac30c1a919401ffa2d3a4863eb9ce9eaa4b3977189c4f55e5a83664f9e4a2224"
+  },
+  {
+    "pageId": "51b91bf578bd",
+    "name": "HermesAgent CN",
+    "url": "https://desktop.hermesagent.org.cn/",
+    "expected": "v0.7.0",
+    "fetchedAt": "2026-08-03T17:35:35.762777+00:00",
+    "status": 200,
+    "finalUrl": "https://desktop.hermesagent.org.cn/",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 84460,
+    "htmlFile": "data/annotation-batches/batch-028/html/51b91bf578bd.html",
+    "snapshotSha256": "cfa97334bfcafbbc72f4879bd085d65e22a95becb95869cf8e4a478d4d0b991f"
+  }
+]

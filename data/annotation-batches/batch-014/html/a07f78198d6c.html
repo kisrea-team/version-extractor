@@ -1,0 +1,3013 @@
+
+<!doctype html>
+
+<html class="no-js" lang="en-US">
+
+<head>
+	<meta charset="utf-8">
+
+	<!-- Force IE to use the latest rendering engine available -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta class="foundation-mq">
+    	<meta name="theme-color" content="#121212">
+
+	<title>Noodlesoft: Hazel Release Notes</title>	<script>window.mod_pagespeed_start = Number(new Date());</script><link rel='stylesheet' id='site-css-css' href='css/A.style.css.pagespeed.cf.BZ7oml7G3Q.css' type='text/css' media='all'/>
+	<link rel="icon" href="/favicon.png.pagespeed.ce.MLvWZiLaSL.png">
+
+<!--<script type='text/javascript' src='https://www.noodlesoft.com/kb/wp-includes/js/jquery/jquery.js?ver=1.12.3'></script>
+<script type='text/javascript' src='https://www.noodlesoft.com/kb/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0'></script>-->
+
+	<noscript>
+    <style type="text/css">.feature-section,.feature-image{opacity:1}</style>
+</noscript>
+
+</head>
+
+
+<body>
+<body class="page page-id-491 page-template page-template-templates page-template-reviews page-template-templatesreviews-php">
+	<div class="row align-middle top-bar" id="main-menu">
+		<div class="small-12 medium-4 columns">
+			<div class="logo">
+				<a href="https://www.noodlesoft.com/">
+					<img src="images/noodlesoft-logo.svg" width=160px />
+				</a>
+			</div>
+		</div>
+		<div class="small-12 medium-8 columns">
+			<ul id="menu-main" class="menu">
+				<li id="menu-item-494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494"><a href="https://www.noodlesoft.com/store">Store</a></li>
+				<li id="menu-item-496" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-496"><a href="/reviews">Reviews</a></li>
+				<li id="menu-item-495" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495"><a href="/forums">Forum</a></li>
+				<li id="menu-item-497" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-497"><a href="/support">Support</a></li>
+</ul>		</div>
+	</div>
+
+
+<div class="large-12 medium-12 columns" role="main">
+
+<div id="releasenotes">
+
+<h1>Hazel Release Notes</h1>
+
+<h2>Version 6.1.2 (Feb 18, 2026)</h2>
+
+<p>Note: Hazel 6.1.2 requires macOS 13 (Ventura) or later.</p>
+
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed tag colors not showing up on Tahoe.</li>
+<li>Fixed issues with editing custom table attributes. Should work properly now and keep up with changes if an external table is modified.</li>
+<li>Fixed the port field being too small for ssh/scp in the server connection window.</li>
+<li>Resume/Pause icon in menu should update properly.</li>
+<li>Updated look of popovers on Tahoe.</li>
+<li>Fixed some window animations on Tahoe.</li>
+<li>Numerous updates to remote server file browser (upload) including:
+	<ul>
+	<li>Updated look to modern OS standards.</li>
+	<li>Added various features available in regular file dialogs.</li>
+	</ul>
+</li>
+<li>Tons of tweaks and fixes.</li>
+</ul>
+<h2>Version 6.1.1 (Nov 26, 2025)</h2>
+
+<p>Note: Hazel 6.1.1 requires macOS 13 (Ventura) or later.</p>
+
+
+<p>Interface changes:</p>
+<ul>
+<li>Helper and Notifier should have icons now.</li>
+<li>Fixed rule search not working when a rule contained certain conditions.</li>
+<li>Fixed crash related to rule syncing.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed delay in processing files.</li>
+</ul><h2>Version 6.1 (Nov 6, 2025)</h2>
+
+<p>Note: Hazel 6.1 requires macOS 13 (Ventura) or later.</p>
+
+<p>New Features</p>
+<ul>
+<li>Glass look for Tahoe.</li>
+<li>Added menu icons on Tahoe.</li>
+<li>New folder options to tell Hazel how do deal with cloud-only files.</li>
+</ul>
+
+<p>Interface changes:</p>
+<ul>
+<li>Worked around Apple bug which would cause Hazel's icon to be shown for external drives in Finder's sidebar. May still cause problems for items at the top level of drive if they are in the sidebar, in which case it is recommended that Hazel's Finder extension be disabled in System Settings.</li>
+<li>Preview is now done in the background so as to not lock up UI.</li>
+<li>Fixed lack of scrollbar when bringing up text replacement popover.</li>
+<li>Popups in actions that are used to select a file/folder should now all have a "Show in Finder" option.</li>
+<li>Years in date formats now default to 4 digits.</li>
+<li>Fixed width of folder pane becoming too wide and unable to be resized down.</li>
+<li>Fixed rule rows' +/- buttons not laying out properly when window is wide.</li>
+<li>Fixed crash in rule status.</li>
+<li>Numerous tweaks/fixes/workarounds for Tahoe.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed getting wrong version of OCR text in cases where rules in the same ruleset use different OCR options.</li>
+<li>Fixed rare case where preview may show different results than when actually run.</li>
+<li>Misc fixes.</li>
+</ul><h2>Version 6.0.4 (Feb. 20, 2025)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>Added support for Brave and Vivaldi browsers. You should find entries for them in the "Add App Folder" menu.</li>
+<li>Apple/JavaScripts can now export custom list attributes. This can be useful in having a script generate a list which can then be set as tags on a file.</li>
+</ul>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed paused status of folders not being shown correctly in the menubar item menu.</li>
+<li>Fixed bug where using the key equivalent to focus on the search field would not work if there was text in the search field already.</li>
+<li>Bringing up the "Add Smart Folder" menu should no longer indefinitely hang the app if Spotlight itself is blocked.</li>
+<li>Preview should now update when rule options are changed.</li>
+<li>Fixed issue where Rule Status was highlighting the wrong fields.</li>
+<li>Fixed various layout issues with the Rule Status window.</li>
+<li>Functions available in the Finder extension contextual menu are now also available in the menubar item menu, in case you need to disable the Finder extension.</li>
+<li>Fixed rare issue where things would hang if menu key equivalents were used.</li>
+<li>Other tweaks.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed text recognition for files with rotated pages.</li>
+<li>Fixed issue where the wrong version of text (intrinsic vs OCRed) was being used in rulesets with a mix of text recognition options, like a rule always using text recognition and another rule with the option to not use it.</li>
+<li>Misc fixes.</li>
+</ul>
+
+<h2>Version 6.0.3 (Nov. 14, 2024)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed various crashes and hangs.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed using custom list attributes with a dynamic tag.</li>
+<li>Fixed "Open" action bringing the app to front even if the option is unchecked.</li>
+<li>Moving files should be more reliable when moving from cloud drives.</li>
+</ul>
+
+<h2>Version 6.0.2 (Oct. 31, 2024)</h2>
+
+<p>New features:</p>
+<ul>
+<li>New text recognition option to use text recognition even if the file already has searchable text. Using text recognition "as needed" is still the default.</li>
+</ul>
+
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed issue which would sometimes cause rules to not load.</li>
+<li>Misc. tweaks.</li>
+</ul>
+
+<h2>Version 6.0.1 (Oct. 25, 2024)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>When in preview mode, content field is now legible in dark mode.</li>
+<li>Minor tweaks.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Some test code was left in which ended up disabling text recognition. This has been removed and text recognition should now work properly.</li>
+</ul>
+<h2>Version 6.0 (Oct. 23, 2024)</h2>
+
+<p>Note: Hazel 6.0 requires macOS 12 (Monterey) or later.</p>
+
+<p>New Features</p>
+<ul>
+<li>On-the-fly text recognition: When matching against the contents of a non-OCRed file, Hazel can perform text recognition as needed. Note that this does not save the OCR-ed text to the file. You should use a dedicated OCR program for that. You can turn off this option via the new rule options. Button is next to the note button.</li>
+<li>Added ability to specify password to read encrypted PDFs. Accessible via new rule options. Button is next to the note button.</li>
+<li>You can revert files processed by Hazel via Finder's contextual menu. Note that this only reverts attributes on the file and will not undo effects on other apps/locations, like Music, Photos, copies to other locations or servers, etc.</li>
+<li>Added list custom attributes which allow you to match and store lists of items and then reassign them to other lists. Useful for things like copying tags between files.</li>
+<li>Support for locked files. Can now match against whether a file is locked or not. Also, a new action has been added to lock or unlock files.</li>
+<li>Added action to pause for a set amount of time.</li>
+<li>The number token in match patterns can now match numbers with thousands separators and decimals. You can likewise format numbers with the thousands separator. Any decimal values read in will be passed on to the output.</li>
+<li>Added formatting option to set the maximum length of an attribute. Useful for when you need to keep filenames within a certain number of characters.</li>
+<li>Can now reset the counter attribute for a folder via Finder's contextual menu. The option will appear there if the folder currently has a counter from previous rename actions.</li>
+</ul>
+
+<p>Interface changes:</p>
+<ul>
+<li>Rule interface now highlights conditions/actions which have errors when saving.</li>
+<li>Can now use "is/is not blank" with "Contents". If you turn off text recognition, you can use this to determine if a file has text (i.e. has been OCRed)</li>
+<li>Added "Run rules now" as an available item in the toolbar. It is not shown by default but can be added.</li>
+<li>Folder options toolbar item now shown by default.</li>
+<li>New toolbar icons.</li>
+<li>Quick Folders are now under the new "Add App Folder" menu item (under Folders).</li>
+<li>"Saved Search" Quick Folders option is gone. Smart Folders are now listed under the new "Add Smart Folder" menu item (under Folders).</li>
+<li>When previewing a rule, the Contents field is now a scrollable text field that also allows search.</li>
+<li>When in preview mode, now displays the name of the file being previewed.</li>
+<li>When previewing a file and matching against "Contents", the field will now autocomplete based on text in the previewed document.</li>
+<li>Date formatting menus use "1" or "01" instead of the actual number used by the date token. This should better illustrate the formatting options in terms of the number of digits you want to show.</li>
+<li>Run menu in menu bar item now shows groups with group contents contained in submenus.</li>
+<li>AppSweep windows should now appear at the same level as other alerts so they won't get lost behind other windows.</li>
+<li>Fixed the "tail" of popover windows possibly being in the wrong place when resizing the window.</li>
+<li>Fixed not being able to paste rules.</li>
+<li>Fixed scrolling behavior with trackpad.</li>
+<li>Fixed missing text for contextual menu item for number formatting options.</li>
+<li>Numerous other UI tweaks, fixes and improvements.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>"Contents contain" should now be more reliable. While it still uses Spotlight, if it fails, it will fall back to using the same mechanism that "Contents contain match" does.</li>
+<li>Fixed matching rows in a table. Previously, even if there are multiple rows that can match, Hazel would use the first row found. This would prevent being able to narrow down the matched rows by matching against other columns. Things should now work as expected where matching against multiple columns will find the exact row you are looking for. If there happens to still be multiple row matches, the first one of those rows will be used.</li>
+<li>Fixed handling of paths which may be identical but are actually on different volumes.</li>
+<li>Various fixes.</li>
+</ul><h2>Version 5.3.6 (Oct. 7, 2024)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed deployment issue which causes a crash on macOS 11 (Big Sur) and older.</li>
+<li>Tweaked previous fix to moving files which was preventing moves in certain cases.</li>
+</ul>
+<h2>Version 5.3.5 (Oct. 1, 2024)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue resulting in possible loss of files when moving folders with certain ACLs set.</li>
+</ul>
+<h2>Version 5.3.4 (Apr. 25, 2024)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed throwing away of files on external volumes when the volume does not have its own trash. Should now behave like pre-5.3.3 where such files would end up in the home trash instead of failing outright.</li>
+</ul>
+<h2>Version 5.3.3 (Mar. 27, 2024)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed buttons in in-app store not appearing on Sonoma.</li>
+<li>Fixed options button for actions sometimes enabling when it shouldn't.</li>
+</ul
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixes for issues moving items to the trash for cloud folders.</li>
+<li>Worked around Spotlight bug where it would not find files it should have. Should affect "Contents contain" matches.</li>
+<li>Importing into Photos was re-worked to use newer Apple APIs in Hazel 5.3. This has been partially reverted because the newer APIs lack some aspects. Getting a listing of albums in Hazel's UI still uses the newer API and should work without requiring Photos to be launched. Doing the actual import uses older interfaces and will cause Photos to be launched if it isn't already running.</li>
+<li>Misc fixes.</li>
+</ul>
+<h2>Version 5.3.2 (Jan. 25, 2024)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed Shortcuts list being filled with disabled items, none of which are selectable.</li>
+<li>Fixed a case where AppSweep will constantly bring up thrown away files for the same app.</li>
+</ul
+
+
+<p>Core changes:</p>
+<ul>
+<li>Importing videos into Photos should be working again.</li>
+<li>Sounds for notifications should be working again.</li>
+<li>Space characters in match patterns for attributes outside of Contents should now be a bit more flexible, like their Contents counterparts. Space characters should now match other whitespace characters. This will fix cases like screenshot filenames, which changed in Sonoma.</li>
+<li>Various fixes related to trash directories for various Cloud services.</li>
+</ul>
+<h2>Version 5.3.1 (Dec. 6, 2023)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue where using the Move action to move a folder into itself would cause it to be deleted on cloud managed drives.</li>
+</ul>
+<h2>Version 5.3 (Dec. 4, 2023)</h2>
+
+<p>Note: Hazel 5.3 requires macOS 10.15 (Catalina) or later.</p>
+
+<p>Interface changes:</p>
+<ul>
+<li>Added workaround for macOS bug introduced in Ventura where Hazel would not show up in the Notifications list under System Settings. It should now appear as "Hazel Notifier"</li>
+<li>Should now show full list of tags on Sonoma.</li>
+<li>Toolbar will show labels by default now.</li>
+<li>Fixed issue where if there is a custom table attribute on the left hand side of a condition, the first pop-up would appear blank.</li>
+<li>Fixed multiple banners appearing.</li>
+<li>Fixed search field in Replace folder window.</li>
+<li>AppSweep window contents should now resize properly with window.</li>
+<li>Fixed dark mode with AppSweep window.</li>
+<li>In the destination folder pop-up, the "Show in Finder" function will now only enable if there is a selected folder.</li>
+<li>Various tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Now built for Sonoma.</li>
+<li>Worked around issue with copying/moving from/to iCloud to local drive on Sonoma.</li>
+<li>Improved handling of Trash, including changes in Sonoma with respect to iCloud Drive.</li>
+<li>Fixed Upload action not working for cases where non-alphanumeric characters would appear in the URL, like spaces.</li>
+<li>Tweaks to Set Color Label action to be more consistent.</li>
+<li>Fixed non-standard numbers (like Arabic-Indic numerals) getting mangled when renaming files.</li>
+<li>Photos support improved. Photos action should no longer need to bring up the Photos app.</li>
+<li>Miscellaneous fixes.</li>
+</ul><h2>Version 5.2.2 (May 30, 2023)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed not being able to drag volumes into folder list. Note that you could select volumes via "Folders->Add Folder" so this should now be consistent.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added missing arm64 support for certain auxiliary binaries. Not having these meant that certain specialized functions were being run using Rosetta on Apple Silicon Macs.</li>
+</ul><h2>Version 5.2.1 (Mar 30, 2023)</h2>
+
+<p>Interface changes:</p>
+<ul>
+<li>When syncing rules between two folders on the same machine, the active state of each rule is no longer shared between the folders. It should basically behave as it does when syncing across machines.</li>
+<li>When editing/creating a rule that is part of a synced ruleset, if the ruleset was updated elsewhere and synced locally, it may cause you to be unable to save your rule. This has been fixed.</li>
+<li>Fixed crashes in remote server browser.</li>
+<li>In cases where rules were corrupted in a certain way, Hazel would launch with windows only showing outlines. This has been addressed.</li>
+<li>Fixed not being able to cancel out of the Upload connection window.</li>
+<li>Fixed freeze when trying to create a second custom table attribute in the same rule.</li>
+<li>Table and list editing windows no longer grow too wide if the file path is really long.</li>
+<li>Various other fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>When using "Contents contains", Hazel will now fall back to doing a direct scan of the file (as it does with "Contents contain match") if it detects that the file has not been indexed by Spotlight.</li>
+<li>Fixed copying files across volumes where the initial copy would fail because the destination does not support metadata. There was fall back code in place to perform the copy again without attributes which was not working properly.</li>
+<li>Misc fixes.</li>
+</ul><h2>Version 5.2 (Nov 2, 2022)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>Relocate folder now broken out into its own window accessible from the Folders->Replace Folder… menu.</li>
+<li>Added "Show in Finder" to the popup for destination folders.</li>
+</ul>
+
+<p>Interface changes:</p>
+<ul>
+<li>Fixed certain popovers (like the "Other" attributes list) not showing up on Ventura.</li>
+<li>Updated "Full Disk Access" UI for Ventura.</li>
+<li>Various UI tweaks/fixes for Ventura.</li>
+<li>Fixed hang when loading tables with blank lines.</li>
+<li>Fixed hang when loading tables from a non-existent file.</li>
+<li>Fixed crash that could happen when syncing rules.</li>
+<li>Fixed handling of inaccessible folders when using the preview function.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fix for issues with helper process on Ventura that would either prevent the helper from running or cause issues when trying to run rules..</li>
+<li>Fixed Unarchive action not properly handling .tgz files.</li>
+<li>When deleting files from the trash, will now ignore the "secure delete" setting for SSDs and encrypted drives. The secure delete function doesn't work on SSDs and is unneeded on encrypted drives.</li>
+<li>Misc. changes.</li>
+</ul><h2>Version 5.1.4 (July 15, 2022)</h2>
+
+
+<b>If running versions 5.1 or 5.1.1, you may need to update to this version manually. Please click <a href="https://www.noodlesoft.com/Products/Hazel/download">here</a> to download. Open the downloaded file and follow the instructions from there.</b>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>In the file info popover (accessible from the rule status window), fixed a crash if there's an error retrieving certain fields.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug introduced in last release where attributes which return lists, such as keywords, were not being handled properly.</li>
+</ul>
+<h2>Version 5.1.3 (July 8, 2022)</h2>
+
+
+<b>If running versions 5.1 or 5.1.1, you may need to update to this version manually. Please click <a href="https://www.noodlesoft.com/Products/Hazel/download">here</a> to download. Open the downloaded file and follow the instructions from there.</b>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed loading of rules with nested conditions using "Tags do not contain tags".</li>
+<li>Fixed cases where the help tip about not needing to keep Hazel running would come up when already showing.</li>
+<li>Fixed the Relocate Folder feature causing folders between rules to be linked.</li>
+<li>Fixed setting of a rule's active status via AppleScript not sticking.</li>
+<li>Fixed issue with the pattern editor for the next row popping up when dismissing the current one. Would happen if full keyboard navigation was not enabled.</li>
+</li>
+
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug where files were constantly being looped on. Would happen in certain cases where a matching rule would use the Continue action but then not match any subsequent rules.</li>
+<li>Fixed crash when running a rule using text replacements in certain cases.</li>
+<li>Added code to compensate for certain Spotlight importers returning a data type different than what is specified in the schema.</li>
+<li>Other internal fixes.</li>
+</ul>
+<h2>Version 5.1.2 (May 5, 2022)</h2>
+
+
+<b>If running versions 5.1 or 5.1.1, you may need to update to this version manually. Please click <a href="https://www.noodlesoft.com/Products/Hazel/download">here</a> to download. Open the downloaded file and follow the instructions from there.</b>
+
+
+<p>New features:</p>
+<ul>
+<li>On Monterey, Hazel can read the contents of Markdown files for "Contents contain match" conditions.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Folder paused state should be reflected correctly in the menubar menu now.</li>
+<li>Fixed loop when trying to preview an invalid folder.</li>
+<li>Fixed folder groups disappearing.</li>
+<li>Folder group name changes should be properly saved now.</li>
+<li>Fixed main editor not being updated when changes to the rule were saved via a detached editor.</li>
+<li>Fixed preview not updating status when a rule was reverted.</li>
+<li>Fixed case where custom attributes were being orphaned.</li>
+<li>Fixed issue with undo/redo of attribute deletion from a pattern.</li>
+<li>Fixed the Apple/JavaScript input/output attributes editor not updating when attributes were deleted or renamed.</li>
+<li>When editing a number format, the example number should now update to reflect the current setting.</li>
+<li>In the "Insert Element" contextual menu, fixed custom tokens not appearing correctly.</li>
+<li>In the "Insert Element" contextual menu, fixed menu items growing each time the menu was brought up.</li>
+<li>After using a tag field, sometimes other pattern fields would act like a tag field when edited. This should be fixed.</li>
+<li>VoiceOver fixes for the following issues:
+	<ul>
+	<li>Not being able to trigger contextual menu in the folder list.</li>
+	<li>No descriptions/labels for layout buttons in preferences.</li>
+	<li>After dismissing the pattern editor, focus will move to the previous or next element instead of staying on the pattern field, which was not supposed to be editable without the pattern editor popover.</li>
+	<li>VO not working for certain text fields, like the notes field or script editors.</li>
+	</ul>
+</li>
+<li>Numerous cosmetic fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Empty dates now return nothing instead of using a certain date in the past. This should now allow you to set a default value should a date be empty. If your rules rely on showing a date no matter what, set one as the default.</li>
+<li>Fixed "Tags do not contains tags" condition. Was evaluating to true if any one of the tags listed was not set on the file. Now only passes the condition if none of the tags are set.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 5.1.1 (Nov 18, 2021)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed not being able to quit in certain contexts.</li>
+<li>Fixed crash when removing a folder while the rule status window was up.</li>
+<li>Loading of Shortcuts should be faster now.</li>
+<li>Fixed paused state of folders not being saved.</li>
+<li>Fixed text and attribute misalignment in pattern and tag fields on Monterey.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Added ability to query the application as to whether Hazel is running via AppleScript.</li>
+</ul>
+<h2>Version 5.1 (Nov 8, 2021)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Added support for running Shortcuts on Monterey.</li>
+<li>Hazel is now AppleScriptable. You can use AppleScript to control Hazel's run status as well as the active status of any rules.</li>
+<li>Upload action now supports ecdsa and ed25509 keys for SFTP.</li>
+<li>The "Date Taken (Hazel)" attribute now also works with videos files, in addition to images.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed misalignment of tokens and tags in fields on Monterey.</li>
+<li>Fixed colors for tags not showing in the UI on Monterey.</li>
+<li>Fixed custom date attributes showing option for numeric adjustments.</li>
+<li>Rule sync UI should now show an error if the sync file is missing.</li>
+<li>Should no longer be able to select the monitored folder for preview. Preview only makes sense for items inside the monitored folder.</li>
+<li>Fixed crashes in preview and rule status when there's an error evaluating rules.</li>
+<li>Fixed help pop-ups not triggering in certain cases.</li>
+<li>Various minor fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed setting/clearing color label on Monterey.</li>
+<li>Miscellaneous internal fixes.</li>
+</ul>
+<h2>Version 5.0.7 (May 19, 2021)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed issue where rules may not appear when importing or adding in certain cases.</li>
+<li>File dialog should no longer get stuck at old location when using the preview function.</li>
+<li>File dialog for the preview function will now show an alert if you try to navigate outside of the monitored folder.</li>
+<li>Fixed issue where custom attributes may get corrupted when using them in nested conditions.</li>
+<li>Fixed help popover mentioning that the current rule has a note popping up when the current rule doesn't actually have a note, but the first rule in the list does.</li>
+<li>Fixed crash when previewing and there are errors in the preview.</li>
+<li>Various other fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed matches when using a custom date attribute which uses the "anything" token in its pattern.</li>
+<li>Fixed patterns that started with a date attribute from matching text which did not start with a date.</li>
+<li>Fixed custom date attributes not filling in non-specified parts of dates. Should now use components of the current date.</li>
+</ul>
+<h2>Version 5.0.6 (Mar. 3, 2021)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash on launch when using synced rules.</li>
+<li>Fixed synced rules not appearing.</li>
+<li>Fixed crash when dragging rules while there is an active search filter.</li>
+<li>Fixed rule status not updating certain attributes like date last matched when refreshed.</li>
+<li>Fixed sporadic crash when bringing up the pattern editor with custom attributes available.</li>
+<li>Various other fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed not being able to import into Photos Library in some cases.</li>
+<li>Matching month names in dates now ignores diacritics/accents.</li>
+</ul>
+<h2>Version 5.0.5 (Jan. 22, 2021)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed outdated instruction in App Sweep chapter of the user manual.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Last release broke conditions with using the Extension attribute and "starts/ends with", causing crashes in the UI and when executing rules. This should be fixed.</li>
+</ul>
+<h2>Version 5.0.4 (Jan. 19, 2021)</h2>
+
+
+<p>New features:</p>
+<ul>
+<li>New "Treat as Path" option for text-based attributes. In "Sort into subfolder" patterns, you can now tell Hazel to treat the attribute as a path, specifying which character to use as the path separator. This is particularly useful when used in conjunction with the table feature, where you can specify a column which contains various subfolders to file things into.</li>
+</ul>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed various layout issues with the folder list.</li>
+<li>Fixed layout with the search toolbar item. Now takes into account its width when its expanded, which should address issues when using layout 3 for the main window.</li>
+<li>Rule actions should now take up more of the available horizontal space.</li>
+<li>Folder and rule lists now use the "inset" style on Big Sur.</li>
+<li>Fixed certain rule changes not registering.</li>
+<li>Fixed the active flag getting cleared when rule is saved.</li>
+<li>Fixed sync options not being available if the sync file is on a drive that is not available at the time.</li>
+<li>The feature where Hazel would ask to select a new folder if the original folder no longer exists has been added back in. Was lost in the version 4->5 transition.</li>
+<li>Fixed rule save/revert buttons scrolling out of view in certain cases.</li>
+<li>Fixed undo for enabling/disabling rules.</li>
+<li>With a search active, newly created/added rules will remain visible even if they don't match the current search. Will disappear if the search text is changed and they do not match the new search criteria.</li>
+<li>You should no longer be able to create a new rule while the current one is unsaved.</li>
+<li>Alert when leaving an unsaved rule now has an option to save.</li>
+<li>Fixed rules not refreshing after changes to the sync settings.</li>
+<li>Rule status will now be brought forward whenever toolbar/menu item is invoked.</li>
+<li>Fixed some threading issues with Rule Status which would cause various glitches.</li>
+<li>Rule status should show updated file list when it is refreshed.</li>
+<li>Fixed file list in Rule Status not being sorted in some cases.</li>
+<li>Fixed crash when setting a table to use the first row for column names and the table file is empty.</li>
+<li>Fixed crash when using non-custom attributes as inputs to an Apple/JavaScript.</li>
+<li>Keyboard navigation should now work in the "Replace Text" window.</li>
+<li>Fixed display issues when doing "Expand All".</li>
+<li>Numerous other UI fixes and tweaks.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed start/stop state of background process not being observed/saved between machine reboots.</li>
+<li>Several changes made that should address AppSweep not triggering in certain cases.</li>
+<li>Fixed "is among the" type conditions when used in conjunction with certain types of conditions.</li>
+<li>Fixed using "starts with/ends with" with a custom attribute on the left-hand side of a condition.</li>
+<li>Import into TV action should no longer incorrectly report an error when successfully importing into the Library.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 5.0.3 (Dec. 7, 2020)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed bug introduced in last update where actions could not be reordered.</li>
+<li>Fixed not being able to move actions with custom attributes to a previous position in the list.</li>
+<li>Fixed bug introduced in last update which prevented rules from being viewed/edited when a search was active.</li>
+<li>Fixed crash in rule status.</li>
+<li>Sorting by column now works in rule status.</li>
+<li>Possible workaround for bug where folder list starts out too narrow.</li>
+<li>Fixed crash when discarding newly created rule.</li>
+<li>Added menu item under "Help" to access forums.</li>
+<li>Other fixes.</li>
+</ul>
+<h2>Version 5.0.2 (Nov. 30, 2020)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Various fixes and improvements for installation process. Should now hopefully work when the OS mistakenly translocates the app and possibly recover even in cases when the OS neglects to remove the quarantine flag after the app being copied.</li>
+<li>The file dialog when using preview mode should now switch to the current folder instead of being stuck on the old one.</li>
+<li>Fixed some toolbar layout issues on 10.13 as well as some other appearances of black rectangles.</li>
+<li>Reworked aspects of rule saving to address various issues.</li>
+<li>Fixed issues with rule search including search not finding anything when multiple terms are entered.</li>
+<li>Folders can no longer be added more than once to the folders list.</li>
+<li>Fixed crash in rule status.</li>
+<li>Fixed crash when removing last rule in list.</li>
+<li>Fixed crash when adding a folder group.</li>
+<li>Splitter positions using 2nd and 3rd window layout options should now be saved properly.</li>
+<li>Fixed case where condition was not able to be deleted.</li>
+<li>Misc fixes for reordering rule conditions and actions.</li>
+<li>Fixed some types of edit not registering a change.</li>
+<li>Numerous other fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Tables and list files with Windows/DOS line endings should work now.</li>
+<li>Fixed crash when a custom date attribute is used in multiple conditions of the same rule.</li>
+<li>Other internal fixes.</li>
+</ul><h2>Version 5.0.1 (Nov. 19, 2020)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Added "Rule Preview" toolbar item.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed display issues (black regions) on 10.13</li>
+<li>Fixed trial mode ending too quickly.</li>
+<li>Fixed sample rules not loading after being prompted to load them on startup</li>
+<li>Fixed trash settings when setting to % of disk not sticking.</li>
+<li>Folder options should show correct settings now.</li>
+<li>Fixed some issues with dragging folders and folder groups. Should prevent things imploding when you do impossible drags, like dragging a folder group into one of its descendants.</li>
+<li>Disabled autofill of user information in the in-app store to prevent a crash on some systems.</li>
+<li>Modified procedure to remove old pref pane. Added warning alert and prompt for password to remove a machine-wide installation.</li>
+<li>Other fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Possible fix for "unidentified developer" warning. Note that Hazel was always signed and notarized but a misconfiguration somehow got past notarization.</li>
+</ul><h2>Version 5.0 (Nov. 16, 2020)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Hazel is now an app, instead of a preference pane. Note that on first run, Hazel will remove the old preference pane. No settings should be affected and your rules will carry over.</li>
+<li>Hazel features a new user interface. The folder list, rule list and rule editor are all in one window now.</li>
+<li>Added custom list item attributes. These attributes allow you to match against an item in a list that you define. The list can either be entered directly in Hazel or loaded in from a file.</li>
+<li>Added custom table attributes. These attributes allow you to match against an item in a table. Once matched, any subsequent uses of that custom attribute will match against the same row, but it doesn't have to be the same column. You can use this to match one thing and then use a corresponding thing elsewhere, either in a condition or action.</li>
+<li>The folder list supports folder groups.</li>
+<li>Rule editors can be detached so you can view multiple rules at time.</li>
+<li>The rule status interface is now a standalone window. While it does update as you change folders, you will still need to manually refresh it to catch any changes to rules or files.</li>
+<li>Preview mode will stick while navigating between different rules in the same ruleset.</li>
+<li>New UI guide for giving Hazel full disk access.</li>
+<li>Big Sur support.</li>
+<li>Support for Macs with Apple silicon. Note that this has not been tested as thoroughly.</li>
+<li>Bunches of other improvements.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Because of the major UI changes, many things have been moved around, including:</li>
+<ul>
+	<li>Trash options are now in preferences.</li>
+	<li>Folder options have their own window. You can access them via the menu or toolbar item (it is not in the toolbar by default but you can add it).</li>
+	<li>Buttons to add folders/rules have been moved to the toolbar. To delete items, you can hit the delete key or use the "Delete" menu item under "Edit"</li>
+	<li>Rule preview is accessible via the "Rule" menu instead of a dedicated button in the interface.</li>
+</ul>
+<li>Fixed crash when using keyboard navigation in some popovers.</li>
+<li>Fixed rule preview now showing any values for attributes when the condition is a "negative" one (like "is not blank").</li>
+<li>Various other tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug that would sometimes occur when matching month names that have a dot in them. Some regions will use a dot in the abbreviated form of the month.</li>
+<li>Fixed issue with scheduling using "Current time" when trying to catch it within a 5 minute interval.</li>
+<li>When checking whether a thrown-away app is the last copy on the system, AppSweep should ignore secondary drives with macOS installs on them .</li>
+<li>Numerous updates and fixes.</li>
+</ul><h2>Version 4.4.5 (May 28, 2020)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when editing certain fields using non-Latin characters.</li>
+<li>Fixed cosmetic issues with cancel/save buttons in rule editor.</li>
+<li>Fixed display of + buttons in the rule editor on non-retina Mojave systems.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added hidden default to disable querying Spotlight for tags. In some rare cases, this query can take an extraordinary amount of time and can temporarily hang the UI when dealing with tags. To set this default, in Terminal, you can do:<br/><br/>
+<code>
+defaults write com.noodlesoft.Hazel DisableSpotlightTagSearch -bool YES
+</code><br/><br/>
+Note that this is totally unrelated to the bug on Catalina which causes the UI to hang entirely.
+</ul><h2>Version 4.4.4 (Dec 23, 2019)</h2>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug introduced in last patch causing rules to not match in certain cases.</li>
+<li>Made matching "Kind" a bit more lenient to compensate for Spotlight not being accurate/complete in some cases.</li>
+<li>Should now process certain files in the trash that were ignored before.</li>
+</ul><h2>Version 4.4.3 (Dec 17, 2019)</h2>
+
+<p>New features</p>
+<ul>
+<li>New "Import into TV" action. Will import video files into the TV app, new on Catalina</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed cases of the rule status UI not working properly. Would show failure even though the rule preview and rule engine would have no problems.</li>
+<li>Fixed issue with rule search not picking up certain pieces of text in rule actions.</li>
+</ul>
+
+<h2>Version 4.4.2 (Nov 8, 2019)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Worked around Catalina bug where in certain cases fields were not editable after clicking in them.</li>
+<li>Fixed bug in the target pop-up in nested conditions where it would revert to "the current file" no matter what you selected. This would occur if the nested condition was under another nested condition with its target set to either of the "sub-files" targets.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed old errors not getting cleared out of internal database. This would affect the rule status interface that would show an old error indefinitely in some cases.</li>
+</ul>
+
+
+
+
+
+
+<h2>Version 4.4.1 (Nov 1, 2019)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed popover windows not showing up properly on pre-Mojave systems.</li>
+<li>Fixed crash when bringing up certain popover windows (like Replace Text).</li>
+<li>Misc. fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue with not being able to run Automator workflows using third-party actions.</li>
+</ul>
+
+
+
+
+
+
+<h2>Version 4.4 (Oct 29, 2019)</h2>
+
+<p>New Features</p>
+<ul>
+<li>Compatibility with Catalina. This mostly affects handling certain new privacy protections.</li>
+<li>Added support for the new Music app on Catalina. Should work as "Import into iTunes" did before.</li>
+<li>Hazel is now notarized.</li>
+<li>Hazel now requires macOS 10.12.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Tons of workarounds for various Apple bugs concerning preference panes in Catalina.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Worked around bug introduced in Catalina where numbers would get reformatted with a decimal ("1" would become 1.0").</li>
+<li>Fixed various issues with the "Sort into subfolder" action using either wildcards or multiple folder levels.</li>
+<li>Fixed issue when passing numeric attributes to AppleScripts as arguments.</li>
+<li>Fixed a couple of issues regarding custom date attributes being used on the right hand side of a condition.</li>
+<li>Removed Growl support.</li>
+<li>Various other tweaks, fixes and workarounds.</li>
+</ul>
+
+
+
+
+
+
+<h2>Version 4.3.5 (Apr 12, 2019)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>When deleting a custom attribute which is used in multiple places, Hazel was sometimes putting up an alert and then deleting all instances if the alert was confirmed. Fixed such that it only does the alert/delete when the last instance of a custom attribute is deleted.
+<li>On Mojave, when doing cmd-a (select all) or accessing the "Edit" menu while the rules list has focus would cause a crash. This has been fixed.</li>
+<li>Fixed possible crash when dismissing rule status interface.</li>
+<li>Fixed error when doing "Export all" when one of the folders has a slash (/) in its name.</li>
+<li>Fixed sporadic display issue with the "Folders" header when switching panes on Mojave.</li>
+
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Tweaked how "Contents contain" works with Spotlight resulting in slightly more accurate matches.</li>
+</ul>
+
+
+
+<h2>Version 4.3.4 (Jan 24, 2019)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Contextual menu in pattern fields now has a new "Insert Element" item. Allows you to insert tokens and attributes without having to leave the field or use drag and drop. Should be particularly helpful for VoiceOver users.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when dragging tokens.</li>
+<li>Fixed custom attributes not being deleted from other places when its source condition is deleted.</li>
+<li>Fixed wrong custom attributes being removed when original is deleted in some cases.</li>
+<li>Fixed preview not showing correct result of "none" sub-conditions.</li>
+<li>Fixed debug UI turning the debug option on whenever it is brought up.</li>
+<li>Will try and detect when adding a folder that falls under Mojave's privacy protections and provide an alert in such cases.</li>
+<li>Fixed text in the Matched Rule column in the Rule Status interface being cut off.</li>
+<li>Fixed issue where folders in synced rulesets may no longer being tracked properly, showing up as invalid.</li>
+<li>Other improvements.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed "none" conditions not being evaluated properly for targets besides "Current file or folder".</li>
+<li>DMGs inside other archive files (like zips) are no longer uncompressed (and incorrectly at that) when the outer archive is uncompressed.</li>
+<li>Various improvements.</li>
+</ul>
+
+
+
+<h2>Version 4.3.3 (Nov 8, 2018)</h2>
+
+<p>New features:</p>
+<ul>
+<li>You can copy and paste rules now (yeah, I know).</li>
+<li>Rule search field is now resizable, because why not?</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash in rule status window when trying to display certain errors.</li>
+<li>Fixed colors for dark mode including:</li>
+<ul>
+	<li>Replace text interface.</li>
+	<li>Headers in rule preview popovers.</li>
+	<li>Cursor color in Apple/JavaScript editors.</li>
+</ul>
+<li>Various other dark mode tweaks.</li>
+<li>Fixed preview of Apple/JavaScript conditions not working because of Mojave privacy protections. Note that you must still accept the prompt to allow access when it appears.</li>
+<li>Fixed preview popover size wigging out when detached.</li>
+<li>Upload interface now allows empty passwords.</li>
+<li>Added more tool tips to rule UI. Preview button will show name of file being previewed while the folder name and  icon will show the full path of the monitored folder.</li>
+<li>Expanded debug UI. Hold down option in the "Info" pane and click the "Debug..." button. Includes extra logging options as well as a button to reveal the location of HazelHelper, which is useful for adding it to Mojave's Full Disk Access Privacy protections list.</li>
+<li>Fixed keyboard navigation in several places.</li>
+<li>Preview status badges now highlight when hovered over to indicate they are clickable.</li>
+<li>Screenshots in Help scaled down to fit.</li>
+<li>Fixed AppleScript examples in manual.</li>
+<li>Various other fixes and adjustments.</li>
+
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug where matching a time of 12 PM would end up being interpreted as 12 AM.</li>
+<li>Internal cleanup and fixes.</li>
+</ul>
+
+
+
+<h2>Version 4.3.2 (Oct 1, 2018)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when removing a folder.</li>
+<li>Fixed crash with dynamic tags on older OS versions.</li>
+<li>Token colors no longer linked to accent color on Mojave.</li>
+<li>Added help for "Relocate Folder" function.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Miscellaneous fixes and improvements.</li>
+</ul>
+
+
+
+<h2>Version 4.3.1 (Sep 24, 2018)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed bug which would cause AppSweep to trigger at incorrect times, such as when updating Hazel.</li>
+</ul>
+
+
+
+
+<h2>Version 4.3 (Sep 24, 2018)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Support for Dark Mode in Mojave.</li>
+<li>Support for Mojave's new privacy protections. You will be prompted by the OS when accessing certain features. Make sure to give Hazel permissions otherwise your rules may not work.</li>
+<li>New "Relocate folder" function. Allows for re-assigning a specific folder across all your rules, with the option to also relocate any folders underneath it. You can find it in the folder pop-up for actions which specify a destination folder (like Move and Copy).</li>
+<li>You can now drag files into the rule editor to preview them.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Should now adapt to the wider window used for System Preferences in some regions/languages.</li>
+<li>You can now nest "any/all of its sub-files" under a "any/all files in the same folder.</li>
+<li>Improved error display in rule status UI.</li>
+<li>Updates and tweaks for Mojave look and feel.</li>
+<li>Numerous other tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>When matching abbreviated month names, will compensate to match version with and without the period at the end.</li>
+<li>Misc. fixes.</li>
+</ul>
+
+
+
+<h2>Version 4.2.9 (Aug 29, 2018)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue when using multiple rules in the same folder with "is among the" on the same attribute.</li>
+</ul>
+
+<h2>Version 4.2.8 (Jul 19, 2018)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Removed debugging code which slipped into release build. Was adversely affecting how "Kind" was being matched in rules.</li>
+</ul>
+
+<h2>Version 4.2.7 (Jul 16, 2018)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>"Contents contain" fallback method now only kicks in when it can be determined that the file was not indexed by Spotlight. This should reduce CPU usage in some cases.</li>
+<li>Fixed determination of date added for certain filesystems.</li>
+</ul>
+
+<h2>Version 4.2.6 (Jun 12, 2018)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed "Contents contain" fallback method introduced in last version not working on 10.10 systems.</li>
+<li>Fixed "Contents contain" fallback method introduced in last version operating a bit differently than the primary Spotlight-based method which searches for word-prefixes instead of appearances within words.</li>
+<li>Fixed issue in evaluation of conditions where the same custom attribute is used both inside and outside a nested condition.</li>
+<li>Fixed crash/error when using custom attributes in a condition in conjunction with an "is among the" condition.</li>
+</ul>
+
+<h2>Version 4.2.5 (May 24, 2018)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed odd crash after dismissing the remote file chooser (Upload action).</li>
+<li>Fixed possible crash/hang in preview popovers.</li>
+<li>Preview popovers no longer jump in size suddenly when you first resize them.</li>
+<li>Dynamic tag editor field now wraps instead of scrolls (like all other pattern editor fields).</li>
+<li>Various tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Upload action should now work with non-secure WebDAV as well as secure WebDAV on older servers.</li>
+<li>"Contents contain" normally uses Spotlight. Unfortunately, this can be unreliable and cause false negatives. As backup, Hazel will now do a direct scan of the file (which is what "Contents contain match" does).</li>
+<li>Improved ability to detect whether Hazel can read the text contents of files in cases where the Kind categorization is unavailable or incorrect.</li>
+<li>Fixed issue where Hazel was not detecting certain filesystem mounting events.</li>
+<li>Upload action should handle keychain better in cases where there are multiple entries for the same user/server but different protocols.</li>
+<li>Other improvements.</li>
+</ul>
+
+<h2>Version 4.2.4 (Mar 9, 2018)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed preference pane not loading on initial install.</li>
+<li>Fixed message indicating successful registration not being able to be dismissed in certain cases.</li>
+<li>Fixed layout issue with "Recover License" link.</li>
+</ul>
+
+<h2>Version 4.2.3 (Feb 28, 2018)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash that could happen while editing a pattern.</li>
+<li>Fixed various issues with dragging attributes/tokens into patterns.</li>
+<li>Fixed dragging of license files into Hazel's window.</li>
+<li>Rules files can now also be dragged in. Previously, they were only accepted when dragged on folders or into the rule list but now you can just drag it anywhere and Hazel will prompt for which folder to import the rules into.</li>
+<li>Fixed problem when importing rules into the same folder would cause linked duplicate rules. This would result in odd behavior like the active status of one affecting the other.</li>
+<li>Token menus are now accessible via VoiceOver navigation.</li>
+<li>Various other tweaks and improvements.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crash that might trigger when there is an error uploading files. Note that the operation will still fail but now it won't crash and you should get better diagnostics in the logs as to the real error.</li>
+</ul>
+<h2>Version 4.2.2 (Oct 20, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash on startup resulting from bogus login item entries on High Sierra.</li>
+<li>Fixed crash resulting from trash folder being missing or replaced with a file after upgrading to High Sierra.</li>
+</ul>
+
+<h2>Version 4.2.1 (Sep 29, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when dismissing popover in certain cases (like editing a dynamic tag).</li>
+<li>Fixed contents in the rule preview popover disappearing if the popover is resized.</li>
+<li>Added VoiceOver labels for close buttons on popovers that have them.</li>
+<li>Various other internal fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Got rid of check for encrypted PDFs as it was causing a lot of false positives.</li>
+</ul>
+<h2>Version 4.2 (Sep 25, 2017)</h2>
+
+<p>New features:</p>
+<ul>
+<li>The Copy action now uses the cloning feature on APFS. This copies the file quickly without taking up more space. When one of the files is changed, the changed blocks are stored separately. Note that the Sync action does normal copies regardless of filesystem.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when entering comma in tag field</li>
+<li>The "All Photos" album now listed as "Library" in the "Import into Photos" action's pop-up.</li>
+<li>Added voice over support for tokens in pattern fields.</li>
+<li>"Export all" will now give the files more descriptive names if more than one folder shares a name.</li>
+<li>Some fixes to help.</li>
+<li>Misc fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crash on startup when the user's trash folder was inaccessible.</li>
+<li>Fixed case when unarchiving certain RAR files would result in the parent folder being moved to the trash.</li>
+<li>Using "did/did not change" with the "Size" attribute works properly now.</li>
+<li>Fixed matching dates with "am" in them having their hour altered.</li>
+<li>Various internal fixes.</li>
+</ul>
+
+
+
+<h2>Version 4.1.4 (Jun 28, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>When using the search field in the file dialog for choosing a file to preview, it would bug out a bit. Should no longer do that.</li>
+<li>Tweaks to manual/help.</li>
+<li>Internal fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed cases of "anything" token not working when using the "Sort into subfolder" action.</li>
+<li>Fixed conditions evaluating incorrectly in cases where a custom attribute was re-used.</li>
+<li>Fixed interpretation of hour in a date when set to match with a 24-hour clock.</li>
+<li>Various tweaks.</li>
+</ul>
+
+<h2>Version 4.1.3 (Jun 1, 2017)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed trash functions not working on the main trash folder if iCloud Drive was being used.</li>
+<li>Fixed internal issues.</li>
+</ul>
+
+<h2>Version 4.1.2 (May 18, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed a crash when opening rules on 10.10 systems.</li>
+<li>Fixed help not being accessible in-app for certain users.</li>
+<li>Documentation fixes.</li>
+<li>Internal fixes.</li>
+</ul>
+
+<h2>Version 4.1.1 (May 16, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed a crash on launch.</li>
+<li>Fixed crash when dismissing the rule interface.</li>
+<li>Fixed display issue when previewing nested conditions.</li>
+<li>Internal fixes.</li>
+</ul>
+
+<h2>Version 4.1 (May 15, 2017)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>New in-app help/manual. Hazel's help has been reorganized and rewritten. It should be more comprehensive and easier to navigate.</li>
+<li>"Smart" date matching. Custom date attributes now have the option of automatically detecting dates in various formats.</li>
+<li>Can now match a file based on attributes of another file in the same folder. This is accessible via the target pop-up in nested conditions.</li>
+<li>Preview popovers can be torn off, thus allow you to view it while editing a condition. Especially useful for editing/previewing patterns.</li>
+<li>Added new match tokens for "any non-blank character(s)".</li>
+<li>New option to set a default value for attributes. If the attribute ends up being blank, the default value you set will be used in its place.</li>
+<li>Preview of "Contents" will highlight matched text.</li>
+<li>Added "Capture date" attribute for image files. Can be accessed in the list of Spotlight attributes.</li>
+<li>Rule status UI now shows color labels/tags for files like in Finder.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Pop-up for destination folders no longer shows all referenced folders. The list is now limited to the last 8 accessed.</li>
+<li>Fetching iTunes library information should be faster and also no longer requires that iTunes share its XML file.</li>
+<li>Fixed hang when bringing up open panel to select file to preview. Seemed to occur in cases where there were symbolic links in the path.</li>
+<li>Fixed attributes not displaying any adjustment statuses (like if there are any text replacements or numerical adjustments).</li>
+<li>Fixed list of available custom attributes being cut-off after the third one.</li>
+<li>Fixed color label picker in conditions being too large and therefore getting cut off.</li>
+<li>"Replace text" window is no longer cut-off at the bottom when first brought up.</li>
+<li>Selecting "any month" in the recurrence picker now properly resets any other months that were previously selected.</li>
+<li>Updated look of the server browser.</li>
+<li>Dropped support for Flock and Camino as neither are developed anymore.</li>
+<li>Numerous minor fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added support for iCloud trash folder.</li>
+<li>"is (not) among the" now works in conjunction with other conditions it is ANDed with. For instance, if you have "Kind is PDF AND Date added is among the last 1 most recent", the "is among the" condition will match the most recent PDF file. Previously, it would have matched the most recent file, ignoring other conditions.<br/>Existing rules will be converted to preserve the old behavior by putting "is among the" conditions in their own nested conditions. Make sure to edit those rules if you'd like to adopt the new behavior.</li>
+<li>Hazel no longer ignores locked files, allowing rules using non-modifying actions (like copy) to process them. Locked files will fail if the action tries to modify/move the file.</li>
+<li>Fixed log rotation not happening if machine is turned off at the scheduled time.</li>
+<li>Various other fixes.</li>
+</ul>
+
+<h2>Version 4.0.9 (Mar 6, 2017)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash that can occur while editing or saving rule.</li>
+<li>Fixed crash when editing a rule using attributes that are no longer supported.</li>
+<li>Pattern editor window should no longer appear in lower left corner of screen. Happens when one drags (even slightly) instead of clicks on the pattern field.</li>
+<li>Fixed pattern field not expanding when item is dragged in (as opposed to typed or inserted by clicking on them).</li>
+<li>When editing a format pattern, example text now shows a date for custom date attributes.</li>
+<li>Various other fixes and tweaks.</li>
+</ul>
+<h2>Version 4.0.8 (Nov 16, 2016)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed server settings for the Upload action sometimes disappearing.</li>
+<li>Internal fixes.
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Hazel will no longer prevent certain drives from being ejected indefinitely.</li>
+</ul>
+<h2>Version 4.0.7 (Oct 24, 2016)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Worked around Apple bug preventing help from displaying on Sierra.</li>
+<li>Fixed crash in rule preview when an error is caught.</li>
+<li>Fixed crash when either configuring or using the Upload action.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed trash removal not working if secure delete is set on Sierra.</li>
+<li>Sync action should no longer leave temp folders in destination when syncing across drives.</li>
+<li>Other internal fixes.</li>
+</ul>
+<h2>Version 4.0.6 (Sep 20, 2016)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Supports command-dragging of icon out of menu bar to remove it on Sierra.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>No longer shows custom attributes in the attribute pop-up in a condition that is above the one where it is defined when the condition is moved. This was potentially resulting in rule corruption.</li>
+<li>Fixed issues navigating the completion drop down by keyboard in tag fields.</li>
+<li>Fixed not showing status of "any file" conditions in preview mode.</li>
+<li>Visual fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue with rules using shellscripts being executed every time instead of just the first.</li>
+<li>Fixed Opera support.</li>
+<li>Internal fixes.</li>
+</ul>
+<h2>Version 4.0.5 (Aug 3, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed preference pane not being able to load in some cases.</li>
+<li>Fixed errors about corrupted rules.</li>
+<li>Various fixes for the tag field.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed rules using "Sub-file/folder count" not always being triggered.</li>
+<li>Fixed crash in helper app.</li>
+<li>Miscellaneous internal fixes.</li>
+</ul>
+<h2>Version 4.0.4 (Jul 19, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when specifying a path that doesn't start with "/" in the upload interface.</li>
+<li>Fixed the key file button not appearing in the upload interface when editing a server that uses SFTP.</li>
+<li>Fixed the password not being filled in automatically in the upload interface when editing a server.</li>
+<li>Fixed crash when previewing a condition with a custom attribute on the lefthand side when the attribute doesn't match anything.</li>
+<li>Misc fixes.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Last version introduced a bug where the "Set color label" action wouldn't work when setting the color to "none". This has been fixed.</li>
+<li>Fixed crash when evaluating a condition with a custom attribute on the lefthand side when it doesn't match anything.</li>
+<li>Internal fixes.</li>
+</ul>
+<h2>Version 4.0.3 (Jul 12, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed input attributes of scripts being cleared when editing a rule created on version 3. For those affected, you will need to re-add the input attributes on those scripts. This does not affect rules created on version 4.</li>
+<li>Fixed various issues with tag fields, including problems inserting tags with a mix of characters and symbols.</li>
+<li>Now, by default, shows the quick folder pulldown in the file chooser on El Capitan instead of requiring you to click the "Options" button.</li>
+<li>Fixed a couple of crashes when editing rules.</li>
+<li>Fixed tool tips for buttons in the folder interface.</li>
+<li>Miscellaneous fixes and tweaks.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Last patch introduced problems with matching accented characters. This has been remedied.</li>
+<li>Fixed rare bug where some files in subfolders may get skipped.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 4.0.2 (Jun 7, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Added the saved searches folder (default folder for Smart Folders) to the Quick Folders pulldown when using the file chooser to add a folder to Hazel.</li>
+<li>Fixed error saving rules when creating a rule using the iTunes import action, with iTunes not set to share its XML file.</li>
+<li>Fixed discrepancies in iTunes' playlists depending on whether its XML file is shared or not.</li>
+<li>Fixed non-latin characters disappearing when editing a pattern.</li>
+<li>Fixed tokens possibly disappearing when navigating in a pattern field.</li>
+<li>Fixed insertion point oddities when dragging a token into a pattern field.</li>
+<li>Fixed right-clicking "Rename" on a rule not working.</li>
+<li>Certain popovers should now try and flip around to make sure they are visible on screen.</li>
+<li>Can no longer select the monitored folder in preview since rules don't apply to it anyways.</li>
+<li>When browsing a remote server via the upload action, the file chooser should now start at the home folder by default (was starting at /).</li>
+<li>"Week of Year" attribute now shows proper cardinality (53 for Gregorian, 52 for ISO 8601, for instance).</li>
+<li>The pop-up for the occurrence picker in rule conditions no longer grows too large, getting clipped.</li>
+<li>Fixed rule window sometimes widening when hovering over the color label picker.</li>
+<li>In-app store will now pre-populate web store with product and payment method if it transfers control over to it.</li>
+</ul>
+
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed docx files sometimes being categorized as Archives, again.</li>
+<li>Fixed Chrome downloads not being detected.</li>
+<li>Fixed formatting of dates when the system calendar isn't Gregorian. Particularly applicable to the ISO 8601 calendar which means that Hazel should now support ISO 8601 dates if you set your calendar appropriately.</li>
+<li>Fixed duplicate files not being thrown away in a timely manner.</li>
+<li>Re-calibrated parsing of two digit years to produce years between current year - 90 to current year + 10. Previously was assigning all years to the current century.</li>
+<li>Misc. internal fixes.</li>
+</ul>
+<h2>Version 4.0.1 (May 5, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed trial period not resetting when trying 4.0 for the first time.</li>
+<li>The sync settings will no longer carry over the settings it happened to have from the previous time it was brought up.</li>
+<li>Fixed issues with the in-app store not working when the state field is not filled in.</li>
+<li>Updated some old help files referring to Hazel 3.</li>
+</ul>
+
+</ul>
+<h2>Version 4.0 (May 4, 2016)</h2>
+
+<p>New Features</p>
+<ul>
+<li>Live rule preview. When editing a rule, you can pick a file to preview against and see how the rule's conditions match that file while editing.</li>
+<li>Rule syncing. You can now sync rules to a specific file. This can be done for multiple folders on the same machine, or across machines by using a file cloud service (Dropbox, iCloud Drive, etc.). Sync options are available via the gear pulldown.</li>
+<li>Old rule preview interface expanded to a status interface. For files already processed, will show rule that matched and the last matched date. If there was an error, it will be displayed instead.</li>
+<li>Smart folders can now be monitored and have rules applied to their contents. Works like regular folders except that you cannot perform operations involving going into or matching subfiles/subfolders.</li>
+<li>Rule search added. Entering search terms in the field will search across various fields in the rule and filter the rule list as appropriate.</li>
+<li>New "Toggle extension" action to show/hide a file's extension.</li>
+<li>"Display Notification" action now has option to play a sound.</li>
+<li>"anything" (&hellip;) attribute now available in "Sort into subfolder" patterns. This allows you to sort into an existing folder based on only part of the folder name. When using this, note that the folder cannot be created for you automatically.</li>
+<li>Improvements to "counter" attribute:
+	<ul>
+		<li>Added option to use lowest number available. Default is still to always increase.</li>
+		<li>Added option to use letters instead of numbers.</li>
+	</ul>
+</li>
+<li>Added new "monitored folder" as a destination for move/copy operations. Represents the top level folder being monitored by Hazel. Especially useful for rules that are synced, where the monitored folder varies and cannot be hardcoded.</li>
+<li>When using list-based attributes in a format pattern, you can pick any element (1st, 2nd 3rd, etc.) starting from the beginning or end of the list. Previously could only pick all items, the first item or the last item.</li>
+<li>Introduced pop-up help text in a couple places to help point out less-used features.</li>
+<li>Can now show invisible characters when editing patterns. Use command-shift-i to toggle it on and off.</li>
+<li>Requires 10.10 (Yosemite).</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Notification options moved from gear pulldown to the "Info" section. They are app-wide settings, not per-folder, so it made more sense to put them there.</li>
+<li>Rules that are moved between folders will be deactivated. Likewise, if a rule is copied, the copy will be deactivated. This is to prevent cases where you want to move/copy then edit the rule in the new folder. There is a window of time between the copy and the edit where Hazel can run using the temporarily unwanted version of the rule. The rule can be re-enabled by clicking its checkbox at the new location.</li>
+<li>Canceling rule edits will bring up a warning if changes have been made.</li>
+<li>Can now edit server settings for the Upload action.</li>
+<li>Fixed dragging of conditions/actions being glitchy in certain cases on El Capitan. In the process, also made it smoother overall.</li>
+<li>Attributes which are lists of dates now have their own set of operators. Previously used the same operators as single dates which didn't actually work when the rule was evaluated.</li>
+<li>Rule window is now resizable horizontally.</li>
+<li>Replace text window is now resizable.</li>
+<li>Added some instructional notes to sample rules.</li>
+<li>Updated app and document icons.</li>
+<li>"Reveal in Finder" action and contextual menus now "Show in Finder" to reflect current verbiage in OS X.</li>
+<li>When deleting a custom attribute, if it was in use, an alert would be shown. If you clicked cancel, the deleted attribute would not come back. This has been fixed.</li>
+<li>Fixed rare case where the rule window comes up too short, cutting off the action at the bottom.</li>
+<li>Fixes to tag field behavior.</li>
+<li>Fixed a couple of hangs.</li>
+<li>Got rid of duplicate entries in the pop-up for selecting AppleScripts/JavaScripts.</li>
+<li>Various tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed rules using "is among the..." not running in certain cases.</li>
+<li>Text replacements now work on numeric attributes.</li>
+<li>Now uses more specific file events making processing a bit more efficient as only files/folders involved in a change are processed.</li>
+<li>Fixed move/copy across volumes failing when there is an issue being able to acquire a temporary space to copy the file.</li>
+<li>Fixed case where error status on a file was not being cleared if the file ended up matching no rules.</li>
+<li>Rule evaluation engine will now forgo certain optimizations to ensure any custom attributes that can be matched will be.</li>
+<li>Improved loop detection. Should hopefully prevent some cases which will become even more common with the new Smart Folder support.</li>
+<li>Fixed throwing away duplicates function only working on the top level folder and not in subfolders.</li>
+<li>Worker process will now reload rules between loops to catch any changes to rules.</li>
+<li>Fixed case where prediction time may not be assigned correctly.</li>
+<li>Small changes to make rules a bit less dependent on aspects of any specific host when synced or exported.</li>
+<li>Fixed errors in various places where an Apple/JavaScript would export a nil/missing value for a custom attribute.</li>
+<li>Numerous internal fixes, updates and cleanups.</li>
+</ul>
+<h2>Version 3.3.8 (Apr 5, 2016)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>New installer. Previously, Hazel was provided as a pref pane file that when double-clicked would launch System Preferences to install it. Unfortunately, Apple broke Gatekeeper in 10.11.4 where it (incorrectly) rejects any non-app software even when properly signed. Since the installer (being an app) is allowed by Gatekeeper, it will hand off the pref pane to System Preferences to continue the installation.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>The "Bring to front" option in the Open action is now working again.</li>
+<li>Internal updates</li>
+</ul>
+<h2>Version 3.3.7 (Dec 22, 2015)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed rules not triggering for cases where "date last matched" is used.</li>
+<li>Fixed rules not triggering when using "did change".</li>
+<li>Fixed file events being filtered out in cases where a nested condition used a "sub-file..." target and the file event was in a subfolder. This resulted in the rule not being triggered properly.</li>
+<li>Fixed conditions using "this week/this month/this year..." randomly matching when they shouldn’t have.</li>
+</ul>
+<h2>Version 3.3.6 (Oct 23, 2015)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed "did not change" requiring a value.</li>
+<li>Fixed number formatting/adjustment options not showing up for custom attributes with number patterns.</li>
+<li>Fixed option key not bringing up the alternate form of the + button to copy a rule instead of adding it.</li>
+<li>Fixed option key not bringing up the hidden debug switch in the "Info" section.</li>
+<li>Various VoiceOver fixes.</li>
+<li>Misc. UI fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Worked around Apple's broken handling of date formats when the system is set to certain non-US regions.</li>
+<li>Raised IO/process priority. Hopefully this should alleviate instances of slow file operations in some cases while still not interfering with foreground processes.</li>
+<li>Text replacements no longer operate on text already replaced, for reals this time.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 3.3.5 (Apr 21, 2015)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Hazel can now import into the new Photos app. Just use the "Import into Photos" action to import pictures into the album of your choice.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed output attributes for JavaScript being lost.</li>
+<li>Can no longer rename an output attribute of a script to an existing custom attribute name.</li>
+<li>Number adjustments are no longer capped to +/-100</li>
+<li>Fixed multiple instances of a custom attribute appearing.</li>
+<li>Fixed not being able to edit a rule which has a custom attribute in the lefthand side of a nested condition.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Text replacements no longer operate on text already replaced.</li>
+<li>Other fixes.</li>
+</ul>
+<h2>Version 3.3.4 (Feb 10, 2015)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when editing a time recurrence (such as with the "Current Time" attribute).</li>
+<li>Number fields in conditions now allow decimal values.</li>
+<li>Fixed bug where it was possible to delete the last condition/action if you click fast enough.</li>
+<li>When a condition defines a custom attribute, fixed not being able to switch to a different attribute even after confirming the alert that shows up.</li>
+<li>When a condition defines a custom attribute, fixed no alert coming up to warn you when switching operators.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed "Passes JavaScript" condition not working.</li>
+<li>Added workaround for folders pointing to the mount point of the non-boot drive sometimes resolving as the root of the boot drive.</li>
+<li>Fixed Hazel not waking up to delete oversized files in the trash.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 3.3.3 (Dec 8, 2014)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed error/crash when editing rules with a custom attribute on the left hand side of a condition.</li>
+<li>Fixed script input attributes that are Spotlight attributes not being saved properly.</li>
+<li>Fixed incorrectly showing the options button for certain actions.</li>
+<li>Help button in the script input/output attribute editor window now works.</li>
+<li>Fixed number formatting options not showing up for custom text attributes.</li>
+<li>Tag field drop-down menu now dismisses properly when clicking on another tag field.</li>
+<li>Fixed menubar icons sometimes not displaying correctly.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Sort into subfolder action now properly handles sorting a file into a subfolder with the exact same name.</li>
+<li>Now does extra checks for text files so that content matching now works for a wider range of text file types, in particular those without a known type.</li>
+<li>Fixed Upload action not working for accounts that are full email addresses.</li>
+<li>Now supplies date added for filesystems that do not support it.</li>
+<li>Fixed issues with passing of attribute output from one script into another script.</li>
+<li>Fixed Hazel not properly restarting after an update in some cases. May not take effect until next update.</li>
+<li>Fixed case when a duplicate exists at the destination, throwing the file away as directed was being interpreted as an error.</li>
+<li>Numerous engine fixes.</li>
+</ul>
+<h2>Version 3.3.2 (Nov 3, 2014)</h2>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed some rule settings not sticking when edited in isolation.</li>
+<li>Fixed the "stopped" menubar icon in dark mode not being visible.</li>
+<li>Fixed error/crash when dragging conditions around in certain configurations.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed date matching on non-english dates translating to the wrong month.</li>
+<li>Fixed number-based attributes being blank when used in patterns.</li>
+<li>Fixed "did change" operator not working properly with number-based attributes.</li>
+<li>Made Hazel more lenient with scripts used as conditions. If the script does not return anything, then it is considered to be the same as if it had returned "false".</li>
+<li>Sub-conditions that were set to target "any/all of its subfiles" were sometimes incorrectly evaluating to false. This should now be fixed.</li>
+<li>Fixed the throw away duplicates option for certain actions not working.</li>
+<li>Some rule engine fixes.</li>
+<li>Internal fixes.</li>
+</ul>
+<h2>Version 3.3.1 (Oct 27, 2014)</h2>
+
+<strong>Note: this release requires 10.8 (Mountain Lion) or later to run.</strong>
+
+<p>User interface changes:</p>
+<ul>
+<li>Various fixes for the tag field.</li>
+<li>Fixed the preview not showing invisible files when the ScanInvisibles hidden setting is turned on.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed date matching in multiple languages that was broken on Yosemite.</li>
+<li>Fixed worker process hang when trying to match using a certain pattern.</li>
+<li>Other internal fixes.</li>
+</ul>
+<h2>Version 3.3 (Oct 20, 2014)</h2>
+
+<strong>Note: this release requires 10.8 (Mountain Lion) or later to run.</strong>
+
+<p>New features:</p>
+<ul>
+<li>Files can now match multiple rules. Use the new "Continue" action to have Hazel continue evaluating rules if the current rule matches and hasn't been moved out of its folder.</li>
+<li>Conditions can now use custom attributes defined in earlier conditions. This means:
+	<ul>
+	<li>Custom attributes now appear in the attribute pop-up. You can create conditions based on your custom attributes just like the built-in attributes.</li>
+	<li>Custom attributes can be used in match patterns in conditions. When doing this, the first instance of the custom attribute to match has its value captured. Any subsequent usage of that custom attribute must match that captured value. For instance, if you have a custom attribute that matches the text "blah", subsequent conditions which try and match that attribute must match the text "blah" as well, ignoring whatever pattern you set on it. The same goes for custom date attributes, though in that case, the pattern for the date is still used to parse it; the resulting date must be the same as the captured one. See the help for some examples.</li>
+	</ul></li>
+<li>Added "did change" operator. You can now monitor whether an attribute changed without knowing what it changed from or to.</li>
+<li>AppleScripts are now passed in an extra argument, which is a list of custom attribute values. You can specify in the interface which attributes you want Hazel to send in.</li>
+<li>AppleScripts in conditions can now export custom attributes as they already can in actions currently.</li>
+<li>On 10.10, you can now use JavaScript in addition to AppleScript. JavaScript can be used wherever AppleScript can and has the same capabilities.</li>
+<li>The preview now shows how a file matches against all possible rules. Also, if a rule failed to match, the field(s) which caused it to fail will be highlighted in red.</li>
+<li>Pressing the spacebar in the preview brings up QuickLook for the selected file.</li>
+</ul>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>New graphics and icons.</li>
+<li>Cosmetic changes for 10.10 (Yosemite).</li>
+<li>Fixed various erratic behaviors with tag fields.</li>
+<li>Various VoiceOver fixes.</li>
+<li>Numerous tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>The Upload action can now properly upload whole folders, not just individual files.</li>
+<li>Various fixes to upload code.</li>
+<li>Fixed the Unarchive action not working on certain archive files.</li>
+<li>Fixed issue with Hazel not being able to add folders beyond a certain limit.</li>
+<li>Re-worked storage of internal file aliases which should allow Hazel to better track changes when rules/settings are transferred across accounts.</li>
+<li>Fixed engine sometimes not being triggered when events arrive while it is in the midst of processing the folder.</li>
+<li>Tweaked AppSweep algorithm to prevent some false positives.</li>
+<li>Worked around Apple bug where color tag was being re-applied when doing a Remove tag then Add tag action in the same rule on pre-10.10 systems (issue is fixed in 10.10).</li>
+<li>Fixes O'Plenty.</li>
+</ul><h2>Version 3.2.7 (April 8, 2014)</h2>
+
+<p>NOTE: If System Preferences does not restart after the update, just quit and restart System Preferences manually.</p>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed bug introduced in the last version where AppSweep would trigger when updating. If you already updated to 3.2.6 and opted to have AppSweep throw away your files, then please contact support for recovery options.</li>
+</ul>
+<h2>Version 3.2.6 (April 8, 2014)</h2>
+
+<p>New features:</p>
+<ul>
+<li>When matching text content, if the pattern starts with a custom token starting with the "anything" token, then it will match everything from the beginning of the line. If "anything" is at the end of the pattern, it will match everything until the end of the line. You can use this to capture all the text before or after a certain point on a line.</li>
+<li>When matching dates on Mavericks, Hazel will now use the list of languages set in System Preferences to match months.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when editing certain types of rules.</li>
+<li>Fixed crash when App Sweep kicks in.</li>
+<li>Option to not upload a file if the file already exists was incorrectly labelled as "Move to trash". This should be fixed now.</li>
+<li>Fixed various memory leaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed Hazel not processing all folders on a drive in certain cases.</li>
+<li>When unpacking an archive that contains a file whose format also happens to be an archive, but not actually meant to be unpacked, Hazel will leave it alone.</li>
+<li>Should be better about finding iPhoto libraries in non-standard locations.</li>
+<li>Various fixes.</li>
+</ul>
+<h2>Version 3.2.5 (Feb 12, 2014)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed rules matching on a file's comments failing.</li>
+<li>Fixed "HazelHelper is damaged" alert on install.</li>
+<li>Fixed rare crash.</li>
+<li>Internal tweaks.</li>
+</ul>
+<h2>Version 3.2.4 (Feb 6, 2014)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when editing AppleScript export tokens.</li>
+<li>Made finding the iPhoto library a tad more robust in cases where the library is not in the standard location.</li>
+<li>Various fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed "Add comment" action always appending to the existing comment.</li>
+<li>Performance improvements when getting comments. Should greatly speed up move and copy operations in addition to fetching comments for a file.</li>
+<li>Internal fixes.</li>
+</ul>
+<h2>Version 3.2.3 (Dec 16, 2013)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Added "Dynamic Tags". You can now create and remove tags based on a file's metadata and custom attributes.</li>
+<li>Dates attributes can now be matched against days of the week or month just as the "Current Time" attribute currently can. Just use "occurs at", "occurs before", and "occurs after".</li>
+</ul>
+
+<p>User interface changes:</p>
+
+<ul>
+<li>Fixed completion drop-down getting screwed up when navigating by keyboard.</li>
+<li>Fixed "(empty)" getting added to the name of an empty custom token every time it is edited (instead of just the first time).</li>
+<li>Added icon for "any existing tag".</li>
+<li>Various other tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crashes when the trash folder for a volume was missing.</li>
+<li>The "anything" token when matching against non-Content attributes will now match across lines.</li>
+<li>A bunch of internal cleanup.</li>
+</ul>
+<h2>Version 3.2.2 (Nov 20, 2013)</h2>
+
+<p>New features:</p>
+<ul>
+<li>New “Remove tags” action. Can now remove all or specific tags from a file.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>”Add Tags” action no longer has the option to replace existing tags. Instead, use the new “Remove tags” action to remove all the tags then add the new tags. Existing rules which used this option are automatically converted to do a remove then add.</li>
+<li>Fixed certain tags not appearing in tag list.</li>
+<li>Clicking outside the tag field will now dismiss the completion drop-down.</li>
+<li>Fixed crash when bringing up a file’s info in the preview window on pre-10.9 systems.</li>
+<li>When showing a file's info in the preview, tags are now shown in their "token" form (with their associated color), instead of just plain text.</li>
+<li>Smart quotes are no longer enabled in the shell script editor.</li>
+<li>Performance fixes on startup and when bringing up the rule interface for the first time.</li>
+<li>Replaced icons in a couple places with proper resolution-matching versions.</li>
+<li>Numerous fixes and adjustments.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue where, when updating, it would prompt for a password. Note that this fix will only kick in after you have updated to this release so it should be fixed when you update to the next release.</li>
+<li>Fixed issue where matching a date only by month would result in a date one month later. This would occur when the current day was on a day that didn’t exist in the month being matched. For example, if today is Dec 31 and you are matching February (with no day specified), which doesn’t have a 31st, you’d get Mar 31st. Now it should return Feb 28 (or 29 in leap years).</li>
+<li>In certain cases, when processing a file would result in an error, the scheduler would reschedule the file immediately instead of using increasing back-off intervals. This should be fixed now.</li>
+<li>Fixed Create Alias action failing when the destination is "enclosing folder".</li>
+<li>Other internal fixes.</li>
+</ul>
+<h2>Version 3.2.1 (Oct 28, 2013)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed bug on some systems where the tag field would not show all tags or any of the colors.</li>
+<li>Fixed clicking on tags in the dropdown making the dropdown disappear (and not adding the tag to the field).</li>
+<li>Fixed duplicate entries in the tag list.</li>
+<li>Made color label picker resemble the newer round tag look on Mavericks systems.</li>
+<li>On Mavericks systems, the color label picker should now show the proper tag names associated with the color when you hover over the color chits.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed color label action not working for some people on Mavericks.</li>
+<li>Setting the color on a file will now set all tags of that color on the file, and not whichever one it finds first.</li>
+<li>Helper process should switch back to the integrated GPU instead of staying in discrete GPU mode.</li>
+<li>Various fixes.</li>
+</ul>
+<h2>Version 3.2 (Oct 23, 2013)</h2>
+
+<p>New features:</p>
+<ul>
+<li>You can now add conditions based on Mavericks tags.</li>
+<li>New action to add/set Mavericks tags.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Attributes which represented lists of items now have a "contain" and "contain item" operator. "contain item" is what "contain" was before and "contain" now acts more intuitively, which is to match the text within any of the items, and not the whole item itself.</li>
+<li>Fixed crash when using the Kind picker.</li>
+<li>AppleScript editor on Mavericks no longer uses smart quotes, which was messing up scripts.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Even though tags now replace color labels, you can still match on and set color labels. The color label action will clear any colored tags and replace them with the tag associated with the color you set, emulating how it worked before Mavericks.</li>
+<li>Fixed shell scripts using csh/tcsh not working.</li>
+<li>Various internal fixes and clean up.</li>
+</ul><h2>Version 3.1.5 (Aug 21, 2013)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue which could cause high resource utilization. Should get rid of the rampant "predicted fire time is in the past" warnings.</li>
+</ul>
+<h2>Version 3.1.4 (Aug 15, 2013)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed spurious exception that would come up when using the preview in certain cases.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue in scheduler causing Hazel to not fire in time for certain events.</li> 
+<li>Fixed "is among the X most/least recent/lowest/highest" not working correctly in some cases.</li>
+<li>Fixed (for reals this time) custom date tokens using the current date even if the token did not match.</li>
+</ul>
+<h2>Version 3.1.3 (July 25, 2013)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>The connection panel now has a path field to optionally set the initial folder to start in when you browse the server. This should allow you to bypass folders which you may not have permission to view.</li>
+<li>You can now enter an URL in the server field in the connection panel. When you tab out of the field, it will use the elements of the URL to autofill the rest of the fields for you.</li>
+<li>The remote open panel should do a much better job at determining which folders are packages. False positives were making it such that some folders could not be navigated into.</li>
+<li>After creating a new folder in the remote open panel, the new folder should now be selected.</li>
+<li>When matching against contents, a space character now also includes line separators. As a result, patterns can now span lines wherever you use a space character in your pattern.</li>
+<li>Fixed options for certain actions not sticking.</li>
+<li>No longer display an underline in the formatting options for the single digit case for date components as it was confusing people into thinking it would only parse or display a single digit (it actually indicates the minimum number of digits, not maximum). The two digit case still shows an underline under both digits to indicate that single digit values will be zero padded.</li>
+<li>Fixed duplicate entries in the server pop-up for the Upload action.</li>
+<li>Replace text option should now be available for all tokens.</li>
+<li>Added some missing accessibility/VoiceOver labels.</li>
+<li>Miscellaneous tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Numerous fixes to the upload/connection code, including specific fixes for WebDAV support.</li>
+<li>Fixed handling of symlinks.</li>
+<li>Content matching should now work consistently with text with accented characters.</li>
+<li>If the region setting is not English, date tokens will match English months in addition to months in the current region setting.</li>
+<li>Fixed infinite loop when formatting certain odd characters.</li>
+<li>Fixed date/custom tokens which didn't match still having a value.</li>
+<li>Should no longer crash if a script ends up removing the file being processed.</li>
+<li>Fixed an issue with keychain handling.</li>
+<li>Various other fixes.</li>
+</ul>
+<h2>Version 3.1.2 (July 1, 2013)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Added the "anything" token to the list of tokens that can be used in date patterns to compensate for random characters introduced by optical scanning.</li>
+<li>For content matching, added ability to specify which occurrence of a match should be used (1st, 2nd, 3rd, etc.).</li>
+<li>When viewing a file's attributes in the preview, it will now list any values for matched tokens so you can check your match patterns.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when dismissing the preview UI.</li>
+<li>When viewing file attributes, the size value should no longer be stuck on "calculating..."</li>
+<li>Fixed crash when dismissing the rule sheet while the notes pop up window is open.</li>
+<li>Fixed some crashes/instabilities when using the connection UI.</li>
+<li>The server connection UI now allows for password-less SSH key files.</li>
+<li>Tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed date tokens not outputting the correct month when used in an action pattern.</li>
+<li>Fixed not being able to match times using a 24 hour clock (i.e. military time).</li>
+<li>Fixed execution of external shell scripts.</li>
+<li>Fixed the Archive action failing on large (>4GB) archives.</li>
+<li>Re-worked upload procedure to improve reliability and compatibility with various servers. Should fix several issues with uploads.</li>
+<li>Fixed sporadic crash in the worker process.</li>
+<li>Various other fixes.</li>
+</ul>
+<h2>Version 3.1.1 (June 21, 2013)</h2>
+
+<strong>Note: Version 3.1.1 requires OS X 10.7 (Lion) or later</strong>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when clicking on tokens to add them to a pattern.</li>
+<li>Fixed sporadic crash.</li>
+<li>Custom date tokens no longer show text formatting options in action patterns.</li>
+<li>When creating new shell scripts, the default shell is taken from user defaults.</li>
+<li>Fixed option checkbox for the Open action being disabled sometimes.</li>
+<li>Plugged several memory leaks in the UI.</li>
+<li>Other tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Rolled back previous change where the user's default shell was run first. Now, the default shell is specified by default in the UI but it can be changed. Shell scripts should run as they did before 3.1.</li>
+<li>Fixed crash when uploading a file that already exists at the destination.</li>
+<li>Fixed debug logging of connection activities for the worker process.</li>
+</ul>
+<h2>Version 3.1 (June 19, 2013)</h2>
+
+<strong>Note: Version 3.1 requires OS X 10.7 (Lion) or later</strong>
+
+<p>New Features</p>
+<ul>
+<li>Added new "Upload" action to upload files via FTP/SFTP/WebDAV</li>
+<li>Can now use patterns to match against and extract a file's contents. Note that this only works for certain file types like PDF and certain text formats (if it can be properly viewed by TextEdit, chances are it will work).</li>
+<li>Added a custom date token type. Can use it to match dates in text and then be used as a date in other patterns.</li>
+<li>Rules can have notes/descriptions added.</li>
+<li>Move/copy/upload actions now have an option to copy over the folder structure. This is akin to using the "source folder" attribute but the hope is that that attribute can be phased out in the future in favor of this, which is much easier.</li>
+<li>New option to not overwrite the existing file when copying/moving/uploading.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Removed the condition target pop-up from the main rule interface as it was causing too much confusion and was being used incorrectly by novices. It is now only accessible via a nested condition. Rules that currently use it will have an extra nesting level added but should behave the same. Also, as a result of this, there is an extra level of nesting allowed.</li>
+<li>You can now nest "any/all subfiles" underneath an "enclosing folder" target.</li>
+<li>Fixed not being able to nest "enclosing folder" under another "enclosing folder" target.</li>
+<li>Added "this quarter" to date conditions and "quarter" to date formatting options.</li>
+<li>Fixed the Mail quick folder item in the open dialog not working on 10.8</li>
+<li>Notifications now disappear from Notification Center when clicked on.</li>
+<li>Tokens will now indicate if it has text replacements by showing a double-ended arrow symbol at the end.</li>
+<li>Fixed bug where changes to tokens were kept even when canceling a rule edit.</li>
+<li>Edit button no longer is enabled if multiple rules are selected.</li>
+<li>bash is now the default shell for shell scripts.</li>
+<li>Fixed various quirks with custom tokens.</li>
+<li>Numerous other fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added optimizations to only process necessary files in any one pass. Should significantly cut down on files being processed over and over unnecessarily.</li>
+<li>Scripts are now run by executing the user's preferred shell first. This should more closely (but not exactly) simulate the environment that the user experiences when running the script from Terminal.</li>
+<li>Duplicate files are thrown away after a delay. This should prevent Hazel from interfering if you are doing something in the folder, like creating new folders or making a copy manually so you can move it somewhere else.</li>
+<li>Files too big for the trash and marked for immediate deletion now have a grace period of a few minutes before they are deleted.</li>
+<li>iTunes/iPhoto/Aperture timeout is now based on file size. Should prevent Hazel from timing out early when importing huge files.</li>
+<li>Re-worked/updated how metadata and attributes are fetched from files which should result in better performance.</li>
+<li>Fixed text replacement not taking place for custom or exported tokens.</li>
+<li>Shell script output is once again enabled in the logs, but only in debug mode.</li>
+<li>Symlinks should now have the date added of when the link was added, not the date added of the file/folder it is pointing to.</li>
+<li>Fixed numerous issues with custom tokens which would cause crashes or rule corruption.</li>
+<li>Reworked some aspects of the logging system. Certain logs are now filtered out unless enabled via a default.</li>
+<li>Honey bunches of fixes.
+</ul>
+<h2>Version 3.0.18 (Apr 18, 2013)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed in-app store not coming up when Purchase button clicked.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added Sparkle stat for whether Notification Center is the preferred notification service.</li>
+<li>Internal fixes and tweaks.</li>
+</ul>
+<h2>Version 3.0.17 (Apr 8, 2013)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed rare crash.</li>
+<li>Fixed memory leak.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed problem where "Contents contains" would not match reliably.</li>
+<li>Fixed possible lock up in the helper.</li>
+<li>Other miscellaneous fixes.</li>
+</ul>
+<h2>Version 3.0.16 (Dec 4, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed corruption when a rule that used the "Add comment" action with a custom token was copied.</li>
+<li>Fixed sporadic crash while editing rules with custom tokens.</li>
+<li>Commas can now be entered in date patterns.</li>
+<li>Fixed the options button being disabled when using an external script for the "Run Applescript" action.</li>
+<li>When a token is exported from an AppleScript and then used in a pattern, the token is now properly deleted from the pattern if the exporting AppleScript action is deleted.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crashes when trying to apply a match pattern against file names with accented characters in it.</li>
+</ul><h2>Version 3.0.15 (Nov 19, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash in notification options.</li>
+<li>Fixed gear pull-down being disabled when there are no folders but notification options are available.</li>
+</ul>
+<h2>Version 3.0.14 (Nov 13, 2012)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Can now edit notification options if you are on 10.8. You can access them via the gear/cog pull-down. Allows you to select Notification Center or Growl (if the latter is installed) and if using Notification Center, allows you to specify which kinds of notifications should be displayed. Note that the default now is to use Notification Center if both are available.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>In the "Passes AppleScript" condition, fixed the "Edit script" button being enabled when using an external script.</li>
+<li>Tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed Hazel losing track of the trash if it's empty on startup (OS X will sometimes delete the trash folder and reconstruct it later, for some reason).</li>
+<li>Match patterns with accented characters will now match more reliably.</li>
+<li>Various fixes to the rule engine.</li>
+</ul>
+<h2>Version 3.0.13 (Oct 3, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when using "other" attribute in Sort into Subfolder pattern.</li>
+<li>Fixed custom tokens getting renamed over and over when dragging it within the same pattern.</li>
+<li>Fixed resizing issue upon deleting conditions from a rule when transitioning from needing a scrollbar to not.</li>
+<li>Fixed bad help button positioning in the preview when the window is resized.</li>
+<li>Added missing rule and license file icons back in.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added "IgnoreGrowl" hidden default. This will cause Hazel to ignore Growl if it is installed, causing it to use Notification Center instead. To enable, enter in Terminal:<br/>
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;defaults write com.noodlesoft.Hazel IgnoreGrowl -bool YES
+</code></li>
+<li>Fixed "Run rules on folder contents" not crossing mount points (i.e. descending into attached disks).</li>
+<li>When doing "Contents contains", will now no longer bomb on text with quotes in it.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 3.0.12 (Aug 30, 2012)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Added support for Mountain Lion's Notification Center. Note that if Growl is installed, it will use Growl notifications instead.</li>
+<li>Added "current date" attribute for use in patterns.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>All graphics now updated for retina displays.</li>
+<li>Fixed crash when picking Spotlight attributes.</li>
+<li>Fixed resizing issues with script editors and other popovers.</li>
+<li>Fixed scroller not appearing for rules that don't fit on the screen.</li>
+<li>Copy/pasting of custom tokens in a condition will now generate new names for them instead of creating bad copies (the names have to be unique within a rule).</li>
+<li>Various tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crashes in the helper and worker processes.</li>
+<li>Fixed custom tokens with slashes (/) in the captured value not working.</li>
+<li>Documents which also happen to be zip files (iWork and Microsoft Office documents, for example) will no longer match the "Archive" kind.</li>
+<li>When importing into iTunes/iPhoto/Aperture, Hazel will adjust the timeout depending on the size of the file being imported. This should hopefully avoid imports timing out on large files.</li>
+<li>Fixed rules using "date last matched" not triggering in specific circumstances.</li>
+<li>Miscellaenous fixes.</li>
+</ul>
+<h2>Version 3.0.11 (Aug 2, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crashes on 10.8 (Mountain Lion)</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 3.0.10 (Jul 11, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crashing of the in-app store. If you tried purchasing this way and didn't get a license, this is probably why. Email support if you are in doubt about the status of your order.</li>
+<li>Updated in-app store icons with retinized versions.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Miscellaneous fixes and tweaks.</li>
+</ul>
+<h2>Version 3.0.9 (Jul 5, 2012)</h2>
+
+<p>New features:</p>
+<ul>
+<li>Hazel is now code signed, ready for Gatekeeper.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixes various issues when using retina displays.</li>
+<li>Updated some icons for retina displays.</li>
+<li>Preview now shows more accurate errors (was always indicating missing metadata regardless of the real error).</li>
+<li>Fixed the whole pattern getting deleted when you deleted a custom token.</li>
+<li>Fixed attributes added by clicking on them all being the same instance.</li>
+<li>Various tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue with the incomplete downloads setting. Was causing prediction errors.</li>
+<li>Added hidden default "ImportTimeout" to override the timeout when importing to iTunes/iPhoto/Aperture.</li>
+<li>Numerous internal fixes.</li>
+</ul>
+<h2>Version 3.0.8 (Jun 5, 2012)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed some issues with rule conversion in version 3.0.7:
+	<ul>
+	<li>The condition target (current/subfile/etc.) setting was being lost. <b>You must correct these manually if you had it set to anything besides "current file or folder".</b></li>
+	<li>Conditions that compared two dates would not execute correctly until the rule was opened and re-saved. These should be automatically corrected now.</li>
+	<li>Rules using "Any file" were being corrupted. These rules should be automatically corrected.</li>
+	</ul>
+If you did not update to 3.0.7 then you should be unaffected and can update to this version without any side effects (hopefully).
+</li>
+</ul>
+<h2>Version 3.0.7 (Jun 1, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed certain rules that used the Source URL/Domain attribute not being able to be opened/edited.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed various crashes.</li>
+<li>The "all of its sub-files/folders" condition target will now not match if the folder has no sub-files or folders.</li>
+<li>Various internal fixes.</li>
+</ul>
+<h2>Version 3.0.6 (May 21, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed the "contains" operator on "Source URL/Domain" not sticking, reverting back to "is" when edited.</li>
+<li>Fixed text completion not working properly in some places.</li>
+<li>Automatic text completion no longer interferes with text input for foreign character sets.</li>
+<li>Fixed bug when copying certain types of rules.</li>
+<li>Various fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed the replace option not working for copy/moves.</li>
+<li>Fixed handling of network volumes. Hazel should now properly poll in these instances since it cannot get full file events from these types of volumes.</li>
+<li>Fixed Hazel not re-deploying workers when drives are re-mounted.</li>
+<li>Date Last Matched is now set to the time when the file is matched, before executing actions, not when the rule has finished executing actions. This should allow rules to catch file changes if the file is modified while Hazel is performing actions on it.</li>
+<li>Hazel now properly retries after encountering certain errors. A bug was causing it to not reschedule properly.</li>
+<li>Bunch of internal fixes.</li>
+</ul>
+<h2>Version 3.0.5 (Apr 30, 2012)</h2>
+
+<p>Note: Because of some changes to the rules format and the internal database, after upgrading, you may find some of your rules may "re-fire." This should only happen once after the upgrade.</p>
+
+<p>User interface changes:</p>
+<ul>
+<li>Re-added "enclosing folder" as a destination of move/copy operations. Was unintentionally removed in 3.0.</li>
+<li>Re-worded condition targets to make them a tad clearer and less ambiguous.</li>
+<li>Fixed clicking on tokens inserting token at the end instead of at the insertion point.</li>
+<li>Token replacements can now be done on any attribute/token type.</li>
+<li>Pattern field no longer shrinks down to nothing when : is entered.</li>
+<li>Comment and Growl message patterns now allow colons (:). It is still not allowed in rename/subfolder patterns since it is not a valid character in file names.</li>
+<li>Growl options broken out of the pattern interface, instead appearing as its own popover via the Options button. This makes it consistent with the other action interfaces.</li>
+<li>Attributes in Growl patterns can now be formatted like with other patterns.</li>
+<li>Fixed pausing folders sometimes needing to be done twice before the setting stuck.</li>
+<li>Fixed color label picker showing two colors selected at once.</li>
+<li>Fixed keyboard navigation for color label picker.</li>
+<li>Fixed text on pop-ups sometimes spilling into the arrow area.</li>
+<li>Miscellaneous fixes, additions and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed text replacements for normal attributes/tokens being broken in the last release.</li>
+<li>Fixed Hazel not triggering for certain rules, in particular those that were dependent on folder size or subitem count.</li>
+<li>Fixed various problems with the handling of symbolic links.</li>
+<li>Reworked some of the core folder handling. Should clear up some subtle bugs here and there.</li>
+<li>Got rid of false error messages during uninstall.</li>
+<li>Numerous other fixes.</li>
+</ul>
+<h2>Version 3.0.4 (Apr 3, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>When editing patterns, you can now click on the tokens to add them to the pattern at the insertion point in addition to dragging them in.</li>
+<li>Fixed a bug where multiple custom tokens would be able to be created with the same name. If you have any rules with such tokens, you should delete them and reconstruct them to ensure that they are not corrupted.</li>
+<li>Fixed problem where if a custom token is deleted, it was not deleted from any patterns using it.</li>
+<li>Fixed entries in "Run Rules" submenu not becoming re-enabled after a run is triggered while Hazel is stopped.</li>
+<li>Entries in the "Run Rules" submenu now show paused folders. They are indicated with a pause icon.</li>
+<li>Fixed issue with the options button for the AppleScript action initially being disabled when using an external script.</li>
+<li>Fixed the Growl sticky option sometimes not sticking.</li>
+<li>Fixed "Send Profile Info" setting not sticking.</li>
+<li>Fixed AppleScript and shell script editors shrinking every time they are opened.</li>
+<li>Various tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug where when using the copy action with the "throw away duplicates" option set, if the destination is a dupe, the original ends up being thrown in the trash. Now, the file is simply not copied over.</li>
+<li>Fixed crash when opening rules which used the old keywords attribute.</li>
+<li>Fixed mis-formatting of custom tokens with numbers.</li>
+<li>Fixed text replacement on custom tokens.</li>
+<li>Growl messages no longer convert slashes to colons.</li>
+<li>Now properly handles the rare situation where Hazel has to poll but the time required to process a folder is longer than the poll interval. Before, this would cause the worker process to run indefinitely.</li>
+<li>When Hazel is stopped (or a folder paused), if a worker process is already running, it will bail out at the end of the current loop thus terminating a bit quicker, depending.</li>
+<li>Fixed bug where "any/all sub-files" expression was including invisible files in the matching.</li>
+<li>Fixed "run rules now" not working if the folder is paused.</li>
+<li>Numerous other fixes.</li>
+</ul>
+<h2>Version 3.0.3 (Mar 16, 2012)</h2>
+
+<p>New Features</p>
+<ul>
+<li>Added "Sub-file/folder Count" attribute. Similar to Spotlight's "Number of Items" attribute, except that this one filters out hidden files (like .DS_Store) which end up making Spotlight's version not very useful.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Date format and match token editors now grow to accommodate content like the other pattern editors.</li>
+<li>If a blank field is part of a match, it will be shown in the preview now.</li>
+<li>Tweaked layout of UI for conditions.</li>
+<li>Fixed problem of certain things getting shared in duplicated rules. Bug was introduced as a side-effect of last version's fix</li>
+<li>Various fixes and tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed critical bug in scheduler which would cause Hazel to not wake in time to run rules in certain circumstances.</li>
+<li>Miscellaneous internal fixes.</li>
+</ul>
+<h2>Version 3.0.2 (Mar 9, 2012)</h2>
+
+<p>New Features</p>
+<ul>
+<li>Added ability to adjust numeric values in patterns. Tokens for numeric attributes can now have their value adjusted before display.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed bug introduced in last patch where double-clicking on rules files resulting in an invalid license error.</li>
+<li>Fixed when copying a rule with a shellscript as a condition, having that shellscript end up being shared between the two rules.</li>
+<li>Some updates to help.</li>
+<li>Various tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixes to various crashes and instabilities.</li>
+<li>Fixed "subpredicates" error. Would cause problems in various parts depending on your rules.</li>
+<li>Fixed some issues with using the "is among" operator.</li>
+<li>Fixed some memory leaks.</li>
+<li>Fixed some internal engine issues.</li>
+</ul>
+<h2>Version 3.0.1 (Mar 5, 2012)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Made double-clicking license files a bit more reliable.</li>
+<li>Fixed purchase button not showing up in the preference pane (it was still appearing in the menubar icon menu).</li>
+<li>Added reveal button next to license field. Clicking it reveals the license file in Finder.</li>
+<li>Date tokens in the date format editor now reflect their new formatting when edited.</li>
+<li>Fixed cases where if you have multiple copies of the same attribute in a pattern, when you edit them, the popover always points at the first one.</li>
+<li>Fixed the time value when using "Current Time" not keeping its value properly.</li>
+<li>Fixed not being able to edit certain types of rules with nested conditions.</li>
+<li>Fixed file preview showing a date for what are supposed to be blank date fields.</li>
+<li>Fixed subfolder level always showing 0 in the file preview.</li>
+<li>Tweaks</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed a bunch of different crashes, most happening when running in 32-bit mode.</li>
+<li>Fixed AppleScript export tokens.</li>
+<li>Fixed the Unarchive action failing on dmg's that are further archived (e.g. dmg.zip). Since Hazel does not support unpacking dmgs, it fails and rolls back the whole operation. Now, it will unpack as far as possible, leaving the dmg intact. Note that unarchiving bare dmgs will still cause a failure.</li>
+<li>Various edits and fixes to the Help.</li>
+<li>When processing the trash, Hazel no longer ignores hidden files.</li>
+<li>Fixed some memory leaks.</li>
+<li>Misc fixes.</li>
+</ul>
+<h2>Version 3.0 (Mar 1, 2012)</h2>
+
+<p>New Features</p>
+<ul>
+<li>Added Import into Aperture action.</li>
+<li>Added Sync action to sync (one-way) a file or folder to another location.</li>
+<li>Added Current Time attribute. Provides scheduling support for rules.</li>
+<li>Rule preview now features a popover to display a file's attributes. Attributes that contributed to a rule match are highlighted.</li>
+<li>Conditions can now be nested/grouped. You can now do combinations of and's, or's and not's.</li>
+<li>Conditions can be set to match against other files, like subfiles/folders or the parent folder. Note that actions still target the original file.</li>
+<li>You can specify custom conditions via scripts.</li>
+<li>Added new conditions to match files if they are the most/least recent or whether they fall within the top/bottom for a particular attribute.</li>
+<li>The Add Comment action now supports patterns.</ll>
+<li>The Sort into Subfolders action now has options to throw away dupes and rename/replace.</li>
+<li>The Open and Reveal actions now have an option to bring the application or Finder window to the front.</li>
+<li>Tokens in patterns now support textual search and replace.</li>
+<li>Ability to adjust dates in patterns. Tokens for date attributes can now have their value adjusted before display.</li>
+<li>AppleScripts can export custom tokens which can then be used in patterns of subsequent actions.</li>
+<li>Folders can be paused, suspending rule processing on them until resumed again. Allows you to preview rule sets for a particular folder without fear of them running.</li>
+<li>Trash size can now be limited to a percentage of the total disk capacity.</li>
+
+<li>Added support for Google Chrome.</li>
+<li>uTorrent support. The latest version of uTorrent now supports separate folders for complete and incomplete downloads. If set in uTorrent's preferences, Hazel will add uTorrent to the list of quick folders when adding a folder.</li>
+<li>Added month and year to time units.</li>
+<li>Now requires 10.6 (Snow Leopard).</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>New UI, including (but not limited to):
+<ul>
+<li>Conditions and actions are now draggable/reorderable.</li>
+<li>Eliminated expand/collapse UI. Now using popovers, making editing rules more nimble.</li>
+<li>Pattern editors will now grow the pattern field to accommodate the whole contents. Should eliminate frustrations with trying to drag and scroll.</li>
+<li>Script editors are now resizable</li>
+</ul></li>
+<li>The Keywords action has been removed.</li>
+<li>Moved preview function to its own button.</li>
+<li>Fixed bug where deleting a condition defining a custom token did not delete uses of that token in patterns.</li>
+<li>When deleting a condition defining a custom token, will only warn about a token is in use if it actually is in use.</li>
+<li>Entries in the folder list and in other places will now show the parent folder if there are multiple entries with the same name.</li>
+<li>Rule UI should behave better when the sheet runs out of room.</li>
+<li>If a folder goes missing, the folder list tool tip will show the last known path when hovered over.</li>
+
+<li>Numerous tweaks and fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>New engine. Uses newer file events mechanism. What does this mean?
+<ul>
+<li>Hazel will catch more file events.</li>
+<li>It will do so in a much more timely manner.</li>
+<li>Uses a new prediction engine so that it only wakes up when it needs to. No longer polls the disk (except for a couple exception cases).</li>
+<li>As a result, much less resource utilization. For laptop users, this will result in longer battery life and Hazel will be less likely to prevent the disk from spinning down.</li>
+<li>Allows for rule scheduling.</li>
+</ul></li>
+<li>AppSweep now handles unloading launchd agents and login items.</li>
+<li>AppSweep now cleans up Lion's saved state and container folders.</li>
+<li>Hazel will use Lion's Date Added if it's available.</li>
+<li>Hazel should behave better with external drives. If a rule fails because the destination of an action is on an unavailable drive, it won't re-run over and over until it does. Instead it will wait until the drive comes online, at which point, the scheduler will wake it up to run again.</li>
+<li>Changed internal alias format to newer bookmarks. Added workarounds for shortcomings in Lion's implementation of aliases/bookmarks with unmounted drives.</li>
+<li>Fixed problem where trying to rename a file with the same name but different case was failing.</li>
+<li>Fixed problem where asterisks were not getting matched properly when using the "is" or "is not" operators with text attributes (like "Name is ...").</li>
+<li>Fixed issue where the name and extension (as well as full name) attributes were using the POSIX versions of the filenames which may not always match the names presented to the user in Finder. The most obvious difference is whether / or : is accepted in filenames. Hazel should now match against the filename as presented in Finder, which means that : is not allowed. Previous rules that matched against : will be converted to match against /.</li>
+<li>Fixed problem when Spotlight and Launch Services reported a different "Kind" for a file. Usually happens with SMB filesystems.</li>
+<li>Did a significant change in how files/folders are copied/moved. The destination file is now properly locked so that other compliant processes (including Hazel processes) will not interfere with the operation.</li>
+<li>Archive action used to not archive a file if it was already a zip or had a zip extension. Made this restriction tighter such that the file has to be a zip AND have a zip extension. This allows file formats (like MS Office documents) which are zips to be archived.</li>
+<li>Tons of fixes and tweaks.</li>
+</ul>
+<h2>Version 2.3.10 (Oct 5, 2011)</h2>
+
+<p>User interface changes</p>
+<ul>
+<li>No longer shows alert about missing folder when all folders have been removed.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Added workaround for bug in Growl 1.3</li>
+<li>Fixed stall when Hazel is first installed on Lion.</li>
+<li>Misc. fixes.</li>
+</ul>
+
+<h2>Version 2.3.9 (May 23, 2011)</h2>
+
+<p>User interface changes</p>
+<ul>
+<li>Fixed typo in message when deleting a token.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crash on startup for certain Firefox 4 users.</li>
+<li>Added workaround for bug where file may be repeatedly copied when doing a move across filesystems.</li>
+<li>Fixed memory leak.</li>
+<li>Various internal fixes.</li>
+</ul>
+
+<h2>Version 2.3.8 (Nov 18, 2010)</h2>
+
+<p>User interface changes</p>
+<ul>
+<li>Fixed sporadic crash when trying to show trial expiration alert.</li>
+<li>Fixed typo in menu.</li>
+<li>Fixed the example filename not showing any value for the "Date opened" attribute.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed issue where a badly formed bundle id in an uninstalled app would cause AppSweep to report numerous false positives.</li>
+<li>Tweaks.</li>
+</ul>
+<h2>Version 2.3.7 (Apr 26, 2010)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug introduced in last release where busy files were not being detected properly. In the most obvious case, this resulted in Hazel sometimes processing files while they were still being used. One less obvious case resulted in copies of files being made when moving across filesystems (which appears to be an Apple bug). This should now be avoided with this fix.</li>
+</ul>
+<h2>Version 2.3.6 (Apr 1, 2010)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed rules not loading when a rules file was double-clicked.</li>
+<li>Fixed help button being broken in the Trash pane.</li>
+<li>Fixed + button sometimes getting stuck in "duplicate" mode after option key is released (visually, it would show the right icon but clicking it would make it behave as if the option key were being held down).</li>
+<li>Fixed instructional text in script editor not updating properly when loading in a non-sh script.</li>
+<li>Menubar icon darkened to match black levels of other icons. Depending on your monitor's color calibration, it should make it easier to distinguish between active and disabled states.</li>
+<li>Fixed some sporadic crashes in the UI.</li>
+<li>Various cosmetic tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed file counter attribute going wacky once it counts up to 10. Hazel now goes to 11 (and beyond).</li>
+<li>Hazel should now recognize duplicate files with the simple pattern of "File 1", "File 2", etc. It appears Finder/BOMArchiveHelper generates this pattern when unarchiving files so Hazel should be able to clean those up now (provided you have the option checked to purge dupes).</li>
+<li>Fixed a crash in the HazelHelper process.</li>
+<li>File locking now done by opening the file read-only (as opposed to read-write). This fixed the problem where Hazel scanning would inadvertently uncompress files that were using HFS compression.</li>
+<li>Numerous other fixes.</li>
+</ul>
+<h2>Version 2.3.5 (Dec 14, 2009)</h2>
+
+<p>New features</p>
+<ul>
+<li>Added "source folder" attribute to be used in rename/subfolder patterns. Represents the original folder the file/folder was located in. You can set the formatting of the attribute to show the relative path from the watched folder. The upshot of this is you can move/copy a file to another folder and then sort it into a subfolder, basically mirroring the folder structure at the source.</li>
+<li>Added "#" attribute. This represents a counter where it substitutes an ever increasing number each time. Can be used to number files sequentially.</li>
+<li>Now integrates with Speed Download. Its download folder is selectable in the open dialog when adding a folder to monitor. In addition, Hazel will recognize its incomplete downloads and numbering scheme (for the purposes of identifying possible dupes).</li>
+<li>Hazel can now run AppleScript bundles (scptd).</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Added tool tips for most draggable attributes.</li>
+<li>Fixed the crumpled paper icon in the App Sweep window. It would draw incorrectly on certain Mac models.</li>
+<li>Fixed the "enclosing folder" icon in folder pop-ups possibly not drawing optimally on certain Mac models.</li>
+<li>Fixed bug where you couldn't edit any rules after a certain sequence of events.</li>
+<li>Fixed bug where you couldn't edit certain rules containing an embedded AppleScript.</li>
+<li>Fixed the interface bugging out if you clicked on an invalid folder and opted to select a new one then cancelled the open dialog.</li>
+<li>When editing the number of digits for a number, the case for 0 digits is now displayed as "No change", meaning that the number will be displayed as it was given.</li>
+<li>Fixed flakiness when deleting a custom token.</li>
+<li>Various other UI fixes and tweaks.</li>
+<li>Minor tweaks to help files.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>AppSweep now cleans out the -Caches- folder under /var/folders</li>
+<li>AppSweep now cleans out Growl tickets.</li>
+<li>Fixed possible crasher when AppSweep is triggered.</li>
+<li>Fixed case where if a custom token matched text with numbers in it, it would remove any leading zeroes on that text instead of letting it pass through untouched.</li>
+<li>Fixed certain actions failing after a script action if the script swapped the file for a different one.</li>
+<li>Fixed case on Leopard where AppSweep would copy instead of move a file across volumes.</li>
+<li>Fixed the "date opened" attribute. Would bomb when executing the rule if used in a pattern.</li>
+<li>Fixed detection of Finder numbered duplicates (e.g. somefile copy 2).</li>
+<li>Will automatically purge any of the temporary Hazel pref files in the Preferences directory. This should follow a weekly schedule when the logs are rotated. This is a workaround for an Apple bug.</li>
+<li>Plugged memory leak.</li>
+<li>Numerous fixes.</li>
+</ul>
+<h2>Version 2.3.4 (Sep 24, 2009)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed Hazel failing to load in some instances.</li>
+<li>Fixed error when loading sample rules.</li>
+</ul>
+<h2>Version 2.3.3 (Sep 23, 2009)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>[Snow Leopard] Hazel, when running on Snow Leopard, now uses Snow Leopard's data size units. Snow Leopard changed its notion of kilobyte (KB), megabyte (MB), gigabyte (GB) to be base 10 instead of base 2. Hazel now matches this but brings up a warning since this changes the interpretation of file sizes in trash settings and rules.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed the "Library" playlist not showing up in the pop-up for the "Import into iTunes" action with iTunes 9 installed.</li>
+<li>Fixed AppSweep window not showing icons.</li>
+<li>The AppSweep window is now Spaces aware. Should appear in the active Space.</li>
+<li>When rules are imported, if the rules file's name matches a folder, it will be initially selected in the list.</li>
+<li>Fixed the rename function not working when invoked from the contextual or action menus.</li>
+<li>Will now scroll to the selected folder in the folder list on startup if it isn't normally visible.</li>
+<li>UI optimizations.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Improvements/fixes to AppSweep's scanning of PDF services.</li>
+<li>App Sweep will no longer consider apps only on disk images to be installed. As a result, if the last copy of an app is on a disk image, it will not stop App Sweep as it did before.</li>
+<li>Fixed crash of the background process.</li>
+<li>Files with modification dates set too far into the future will no longer be considered "busy".</li>
+<li>[Snow Leopard] Hazel may accumulate numerous temporary files in your preferences folder. This problem has been minimized greatly but will not totally go away until a fix is provided by Apple. You can remove any of the files that end in random characters, but not the ones that end in just .plist</li>
+<li>[Snow Leopard] Added workaround for Apple bug where its move/copy routine would fail for files with slashes (/) in their name (these are the equivalent of colons (:) when using UNIX paths).</li>
+<li>[Snow Leopard] Fixed a couple cases of rule conditions failing on accented characters.</li>
+<li>[Snow Leopard] Fixed various deprecation warnings.</li>
+<li>Fixed error in logs when using the preview function.</li>
+<li>Made improvements to code that handles Firefox (and related browsers) prefs. Should be able to deal with multiple profiles now.</li>
+<li>Various memory optimizations including plugging a memory leak or two.</li>
+<li>Miscellaneous cleanups and fixes for stability.</li>
+</ul>
+<h2>Version 2.3.2 (Aug 21, 2009)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>Snow Leopard compatibility: Hazel is now runnable on Snow Leopard.</li>
+<li>64 bit support: Hazel is now 64-bit. If your CPU supports it, the preference pane will load into System Preferences on Snow Leopard without requiring a restart in 32-bit mode. The background processes will also run in 64-bit on Snow Leopard.</li>
+</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed the menubar menu not updating when a drive was mounted/unmounted.</li>
+<li>Entries in the menubar menu for folders on unmounted/ejected drives will now stay there and just grey out when the drive is unavailable.</li>
+<li>Numeric attributes now show your selected number format in its pop-up if it isn't one of the presets.</li>
+<li>Fixed attributes and tokens getting "linked" across rules when a rule was copied. For example changes to the date format in one would be seen in the other. Copies now should be totally distinct from each other.</li>
+<li>Fixed keyboard navigation in the main pane interface.</li>
+<li>Fixed the focus ring not showing up for the action pull-down button.</li>
+<li>Entries in the Spotlight picker should now sort in a case-insensitive manner.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed bug where the uninstall log was not being created, therefore breaking multiuser App Sweep.</li>
+<li>Fixed App Sweep popping up if a duplicate of a file is thrown away. This usually happens when a copy of the app is already in the Trash resulting in "SomeApp-1.app" thus tricking Hazel into thinking it's a different app.</li>
+<li>Fixed case where a badly formed bundle id would confuse App Sweep into adding the preferences folder to the support file list.</li>
+<li>App Sweep should now be able to clean up after screen savers.</li>
+<li>Fixed text captured by a custom token having spaces stripped out of it.</li>
+<li>Fixed crash when executing a rule which used the "domain" attribute with a special format option (formatting as "example.com" instead of "www.example.com") and the file had no domain set.</li>
+<li>Tweaked trash algorithm in terms of prioritizing and handling oversized files.</li>
+<li>Fixed subtle case in code determining a file's extension when the extension is a number (such as is the case with man pages) and it has a file association with an app.</li>
+<li>Numerous internal fixes.</li>
+
+</ul>
+<h2>Version 2.3.1 (Jul 14, 2009)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed UI hanging if the Spotlight attribute or Kind pickers windows were dismissed via the window's close button.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed hangs/crashes on startup as well as crashes of Hazel's other background processes. This should only have affected some people who upgraded and not new users.</li>
+</ul>
+<h2>Version 2.3 (Jul 13, 2009)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>Added multiuser support for App Sweep. If enabled, when you throw something away, other users on the same machine, when they log in, will also get a chance to also throw away their support files.</li>
+<li>Added autocompletion to fields in the rule interface. Saves typing for common phrases and tags.</li>
+<li>Expanded formatting options for different attributes.
+<ul>
+	<li>Numeric attributes can have number of digits specified.</li>
+	<li>List attributes can be set to select only the first or last item instead of displaying all items.</li>
+	<li>Custom tokens will show formatting options based on what types of characters it consists of.</li>
+</ul>
+</li>
+<li>[Leopard] Added in-app store. Purchase Hazel from the app itself and have the license automatically downloaded and registered. Tiger users will continue to be directed to the website.</li>
+<li>Added syntax highlighting for shell scripts. Works not only for shell (sh/bash) scripts, but for Python, Perl, Ruby and awk as well.</li>
+<li>Miscellaneous improvements to the script editor.</li>
+<li>Added special "enclosing folder" which can be the destination of move/copy operations. Allows one to move/copy a file or folder up one level.</li>
+<li>Growl notification action now has an option to make it "sticky" (it will stay on the screen until clicked on). You can still override this in Growl's preferences.</li>
+<li>Attributes which are lists of items now can use pattern matching in conditions.</li>
+<li>The "Unarchive" action can now handle RAR files (including multipart archives). Upon successful unarchiving, all the RAR parts will be thrown away and replaced with the unarchived contents.</li>
+<li>Added support for Transmission and Opera. If the apps are installed, they will appear in the QuickList drop-down when adding a folder.</li>
+<li>Obsoleting keywords. Keywords are being phased out. If you are using keywords, you should receive a warning about converting your rules as well as a button to take you to a web page that gives more details on why this is being done and how you can migrate over. The page includes a program to convert existing files.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed preview not accurately showing results of rules filtering on "Subfolder depth."</li>
+<li>Fixed custom tokens sometimes not appearing in the attribute lists for actions.</li>
+<li>Multiple App Sweep windows are now consolidated into one with tabs.</li>
+<li>Fixed "Reveal in Finder" contextual menu item not working in the App Sweep window.</li>
+<li>Fixed bugs with the "Kind" menu. Would sometimes get confused when a rule first loaded up, ending up with no "Kind" selected.</li>
+<li>The warning icon for rules with errors should be more reliable as to when it is displayed (or not displayed).</li>
+<li>Added "View Log" to menubar icon menu.</li>
+<li>For unregistered users, menubar icon menu now shows time left in trial.</li>
+<li>Added "hidden" debug mode checkbox. In the "Info" tab, hold down the option key and the checkbox will appear. Checking this option will enable debug logging.</li>
+<li>Fixed hitting return in a pattern field sometimes not registering.</li>
+<li>Error messages in the AppleScript editor are now selectable.</li>
+<li>Fixed visual indicators on folders in folder list. Those that are inaccessible (on an ejected/unmounted drive) show as faded while those that are just gone (deleted) will have a red "x" on them. They should also have different tool tips explaining their status. Also, they should be better at staying up to date.</li>
+<li>If a folder is inaccessible (the drive it is on has been ejected/unmounted), the UI will hide menu items to run rules manually.</li>
+<li>The minute and seconds tokens in the date format interface now default to formatting as two digits.</li>
+<li>Fixed spring-loaded folders not following Finder preferences on Leopard.</li>
+<li>Numerous UI tweaks.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed how custom tokens match text. It won't affect whether a pattern as a whole matches or not. Instead it affects what portion of the text gets "captured" by a custom token. It should now work in a way that makes more intuitive sense. If you use custom tokens, you may want to re-check how things work with the new behavior.</li>
+<li>App Sweep has been improved to catch even more files.</li>
+<li>Performance improvements in App Sweep. Scans should be a tad faster now.</li>
+<li>Should now be able to derive the "Kind" from certain files without extensions that have a Kind assigned to them based on their creator code/file type.</li>
+<li>Fixed Hazel getting confused when a file with the same filename would appear in a folder over and over again. In such cases, Hazel would think it was the same file.</li>
+<li>If a file is going to be renamed to the same name, will now skip it so as to avoid updating any timestamps.</li>
+<li>Fixed Hazel losing track of files on unmounted drives. Hopefully, now, Hazel won't see these files as "new" again when you remount the drive.</li>
+<li>Should be more responsive after a drive is mounted. If Hazel is monitoring a folder on that drive, its rules will run immediately.</li>
+<li>Fixed hours being displayed in the range 0-11 instead of 1-12.</li>
+<li>Fixed crash when trash directory is missing.</li>
+<li>Fixed crash which occurred with certain Spotlight database schemas.</li>
+<li>New FolderScanInterval default to override Hazel's scan interval. The value should be specified in seconds.</li>
+<li>Various other fixes.</li>
+</ul>
+<h2>Version 2.2.4 (Dec 17, 2008)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed attribute picker having partial results when it is dismissed before it is finished loading and then brought back up.</li>
+<li>Fixed bug where duplicating a rule with a shell script would result in the shell scripts being "linked".</li>
+<li>Fixed crash when closing the rule interface after editing an AppleScript. Would happen if Script Assistant was enabled in Script Editor.</li>
+<li>Fixed error logged to console when compiling a blank AppleScript.</li>
+<li>Fixed rule preview not indicating possible dupes.</li>
+<li>Minor UI fixes.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed temporary files filling up the trash over time when an unarchiving operation failed over and over.</li>
+<li>Fixed sporadic crash when logging a failed unarchiving operation.</li>
+<li>Should better deal with the rare situation of a metadata field no longer existing.</li>
+<li>Fixed some memory leaks.</li>
+<li>Miscellaneous fixes.</li>
+</ul>
+<h2>Version 2.2.3 (Oct 20, 2008)</h2>
+
+<p>New Features:</p>
+<ul>
+<li>You can now use the "matches/does not match" operator with "Source URL/Address".</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Fixed crash when dragging the "other" token into a rename/sort pattern.</li>
+<li>The shell script editor now indents continuation lines for readability.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed certain case where license file was not sticking.</li>
+<li>Internal cleanups and fixes.</li>
+</ul>
+<h2>Version 2.2.2 (Sep 25, 2008)</h2>
+
+Note to Tiger users: If you downloaded this soon after the original release and experienced crashes, please re-download. The issue should be patched (build 483).
+
+<p>New Features:</p>
+<ul>
+<li>Added "Export All" function to export all rules for all folders at once. Useful for doing quick backups of all rulesets.</li>
+<li>Growl notification system now less chatty with errors. If a specific notification is already showing, it will not be shown again. If an error keeps happening on the same file over and over, a Growl notification will only be sent once a day for that file. Note that logs will still show every instance of the error.</li>
+<li>Spotlight attributes represented by dates now behave like the built-in date attributes in renaming patterns. You can click on them and edit their format.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Spotlight attribute panel/picker now loads incrementally to give a better sense of progress.</li>
+<li>In the rename/sort into subfolder interfaces, Spotlight attributes should display values in the example text based on their type.</li>
+<li>Fixed crash when canceling the Spotlight attribute panel before it finishes loading.</li>
+<li>Fixed sporadic crash in the AppleScript and shellscript editors.</li>
+<li>[Tiger] Fixed drag and drop of rules.</li>
+<li>[Tiger] Fixed AppleScript editor inserting handler code when the script was compiled.</li>
+<li>Fixed Growl not going to the correct file when the notification was clicked on.</li>
+<li>Fixed highlighting of errors in the AppleScript editor where it would cause an occasional out of bounds error to be logged in the console.</li>
+<li>Fixed glitch where editing a rule and switching to the "move" action did not update the interface.</li>
+<li>Rule interface should now better deal with the case where the rule window gets bigger than the screen. It is a still bit quirky at times but should for the most part work. Will need to re-address this issue in a future release.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Made file renumbering much more intelligent. Should be able to figure out what part of the filename is really the extension and what part just happens to be parts of the name separated by dots. Should now append the number after the correct part.</li>
+<li>Changed internal handling of Finder comments. Should better handle files that are on network filesystems and other cases where Spotlight is disabled or inaccessible.</li>
+<li>Hazel now tries to limit writing its db file to disk when possible.</li>
+<li>Fixed problems with folders/filenames starting with tilde (~).</li>
+<li>Fixed scheduling of log rotations. Should re-adjust after waking from sleep.</li>
+<li>Fixed bug in AppleScript handling where if you returned a record with both the hazelStop and hazelSwitchFile keys, only one of them would be recognized. Not that it makes much sense to have both but it could affect things if more keys are added in the future.</li>
+<li>Added ErrorNotificationFrequency default to control how often (specified in seconds) you'll get a Growl notification for the same error message on the same file (see Growl message throttling in the New Features section above). If not set, the default is once a day. Set it to 0 to only get the notification the first time it happens.</li>
+<li>Log messages that print out error codes should now have a more human-friendly description.</li>
+<li>Numerous cleanups, fixes and tweaks.</li>
+</ul>
+<h2>Version 2.2.1 (Jul 24, 2008)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>Popups for selecting files in the rule interface now have tool tips showing the full paths of the files.</li>
+<li>Fixed instructional text in the AppleScript and shellscript editors being editable.</li>
+<li>Deleting your license brings up a warning alert now.</li>
+<li>Possible fix for permissions error when upgrading. Won't be able to tell if this works until the next update (it depends on the code of the version updated from, not the version being updated to).</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed iTunes importing with iTunes 7.7</li>
+<li>App Sweep improved. Should catch a couple more file types and also should be a bit faster.</li>
+<li>Fixed "double free" error in the helper process.</li>
+<li>Plugged a couple memory leaks.</li>
+</ul>
+<h2>Version 2.2 (Jul 7, 2008)</h2>
+
+<p>This is a free upgrade.</p>
+
+<p>New Features:</p>
+<ul>
+<li>Ability to create patterns for matching. Use the "matches/does not match" operator.</li>
+<li>Ability to create custom tokens. Define them in your match patterns and then use them in your rename/sort/Growl actions.</li>
+<li>AppleScripts and shellscripts can now be embedded into the rules. No external files needed. Scripts can be edited right in Hazel.</li>
+<li>Added new GTD-like date matching. Dates can be compared against "Today", "This Week", "This Month" and "This Year" which align with the calendar concepts of days, weeks, months and year.</li>
+<li>Added "is in the next" operator for dates. Useful for dates in the future (like due dates).</li>
+<li>Added "Subfolder Depth" attribute which is how many levels deep from the top folder (the top folder being at depth 0). Can now control what rules apply to what levels of a folder hierarchy.</li>
+<li>AppleScripts can now return a record with special keys to communicate back to Hazel:</li>
+	<ul>
+		<li>hazelStop: If set to true, Hazel will stop processing the current rule, considering it to have executed successfully. Subsequent actions in this rule will not be run.</li>
+		<li>hazelSwitchFile: If set to an alternate file, subsequent actions will act on this file instead of the original one passed in. You can use this when the file is "transformed" (like turned into an archive) or if you want to re-target another file, like the parent folder.</li>
+	</ul>
+</ul>
+
+
+<p>User interface changes:</p>
+<ul>
+<li>You can now select multiple rules in the rule list (finally).</li>
+<li>Added new formatting options for the "domain" token. Clicking on it will allow you to get its "base" domain or strip it down even further by dropping the TLD. For instance, "www.example.com" can be formatted as "example.com" or "example".</li>
+<li>Script pop-ups now keep track of any currently used scripts.</li>
+<li>Fixed underlining of the "month" token's menu items. While the numerical forms should have underlines to indicate number of digits, they make no sense for the textual forms (Dec & December).</li>
+<li>Tweaked the color label picker on Leopard to more closely resemble Finder's current look. Will also display name and selection frame when moused over.</li>
+<li>Widened rule window to match width of System Preference's window (at least, Leopard's version of it).</li>
+<li>Fixed multiple duster icons appearing. Note, this fixes the problem from this version onwards. You may still experience it when first upgrading to this version.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>App Sweep will prompt for a password if any support files' permissions require it.</li>
+<li>App Sweep now picks up any installed QuickLook plugins.</li>
+<li>Fixed bug where extra hazeldb files were being created.</li>
+<li>Added "ScanInvisibles" default. If set, Hazel will not ignore invisibles, instead processing them like any other file.</li>
+<li>Added "IgnoredBackupDirs" default. It is an array of directories that when determining whether an app is installed, App Sweep will ignore if that app is underneath that directory.</li>
+<li>HFS busy flag is now ignored. Files with this flag set will not be considered busy. It was unclear whether any program uses this correctly and there were cases where programs were setting the flag incorrectly.</li>
+<li>Fixed error messages being logged when uninstalling files even when it was successful.</li>
+<li>Fixed memory leaks.</li>
+</ul>
+<h2>Version 2.1.7 (Jun 19, 2008)</h2>
+
+<p>User Interface changes:</p>
+
+<ul>
+<li>Fixed multiple duster icons appearing. Note, this fixes the problem from this version onwards. You may still experience it when first upgrading to this version.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed crashes when Safari 4 preview is installed.</li>
+</ul>
+<h2>Version 2.1.6 (May 5, 2008)</h2>
+
+<p>User Interface changes:</p>
+
+<ul>
+<li>Fixed crash when enabling/disabling rules with spacebar while navigating with arrow keys.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Critical fix: fixed files disappearing when renamed with same name.</li>
+</ul>
+<h2>Version 2.1.5 (Feb 19, 2008)</h2>
+
+<p>User Interface changes:</p>
+
+<ul>
+<li>[Leopard] Fixed pattern editors being broken in 10.5.2. Spaces were disappearing at the beginning/end of the pattern or right before/after attributes (the lozenge things). Should now work like it did before.</li>
+<li>[Leopard] Fixed plus/minus buttons under the rules list becoming misaligned if Hazel initially loaded any other pane besides the folder pane.</li>
+<li>[Leopard] Fixed problem with alert saying eval period has expired even though app was recently registered. This resulted from a specific timing where app was registered after eval period expired but before user was alerted. On Leopard systems, the alert comes up only after the user has gone idle so the notification can be delayed for some time.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Reduced chance that App Sweep would consider an app being upgraded as being thrown away.</li>
+</ul>
+<h2>Version 2.1.4 (Feb 6, 2008)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>[Tiger] Fixed hang on Tiger systems. Usually started happening after app went into demo mode. Should not have affected those on Leopard. If you are affected, you should download and install this version manually.</li>
+</ul>
+<h2>Version 2.1.3 (Jan 7, 2008)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>[Leopard] Fixed "Other" token in the pattern interface.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>[Leopard] App Sweep should now uninstall apps that are backed up via Time Machine.</li>
+<li>[Leopard] Fixed the "Unarchive" action.</li>
+<li>Fixed problem with Hazel sometimes losing track of folders on external drives when they are unmounted.</li>
+<li>Fixed log/Growl message for the unarchive action showing the destination path as the source.</li>
+<li>Miscellaneous fixes.</li>
+</ul>
+<h2>Version 2.1.2 (Dec 5, 2007)</h2>
+
+<p>User interface changes:</p>
+<ul>
+<li>[Leopard] Fixed missing arrows on pop up buttons in the rule interface.</li>
+<li>[Leopard] Color label picker now resembles Leopard's "square" version on Leopard systems. Tiger version unaffected.</li>
+<li>Fixed UI not being able to edit a rule when it referenced a script that no longer exists.</li>
+<li>New installs are set to check for updates weekly. Note that this was done in a previous release but was broken such that the checks did not actually happen (even though the UI indicated it would). This did not affect anyone who set/changed the frequency after the initial launch.</li>
+<li>Fixed uninstall failing when Hazel was installed machine-wide on Leopard. Leopard tightened permissions on the machine-wide preference pane folder. Should now prompt for a password if necessary.</li>
+<li>Interface should be slightly better about handling folders on external volumes that are unmounted. You will still get failures when moving/copying to such folders. Looking into reducing the occurrences of these messages (at least for Growl) in a future release.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed general issues with Safari and OS X versions. Should now work correctly between different combinations of Safari and OS X, in particular, OS X 10.4.11 which switched to Safari 3.</li>
+<li>Fixed "Date Last Matched" when the attribute was blank, making it less useful when comparing against other dates.</li>
+<li>[Leopard] Background tasks now run at a lower IO level. This aspect was lost in the initial Tiger/Leopard transition.</li>
+<li>Fixed case where hazelfolderwatch was running out of open file descriptors.</li>
+<li>[Leopard] General updating of internal code to use newer Leopard APIs where possible.</li>
+</ul>
+<h2>Version 2.1.1 (Nov 5, 2007)</h2>
+
+<p>Core changes:</p>
+<ul>
+<li>Fixed moving of files between drives/volumes resulting in a copy instead.</li>
+<li>Fixed sporadic reset of Hazel internal metadata on some folders. Would result in rules getting re-run or date added being cleared.</li>
+<li>[Leopard] Fixed Hazel not picking up Safari's or Mail's download folder setting.</li>
+<li>Fixed move/copy failing if Spotlight is disabled on the folder/drive on which the source file resides.</li>
+<li>Tweaked memory characteristics of sizing operations. Should work much better when calculating the size of large file trees.</li>
+<li>Improved performance of Trash size limiting.</li>
+</ul>
+<h2>Version 2.1 (Oct 22, 2007)</h2>
+
+<p>This is a free upgrade.</p>
+
+<p>New Features:</p>
+<ul>
+<li>Leopard (OS X 10.5) compatibility.</li>
+<li>Added "Make alias" action.</li>
+<li>Added "Reveal in Finder" action.</li>
+<li>Expanded support for different file "Kinds". Using the "Other..." option, you can choose from a list of every file type on the system.</li>
+<li>For certain attributes, you can match against whether it is blank or not.</li>
+</ul>
+
+<p>User interface changes:</p>
+<ul>
+<li>Tweaked general layout of the folder pane.</li>
+<li>Re-arranged items in the action pop-up. Also, removed prepositions from action names and moved them into their own label after the pop up. Should be more consistent now.</li>
+<li>Re-arranged and added items to the pop-up of "Kind" values.</li>
+<li>Re-arranged a couple items in the attribute pop up.</li>
+<li>Fixed rule preview erroneously indicating that Hazel would descend into non-folders (aliases and symbolic links, for example).</li>
+<li>Fixed sporadic crash when canceling out of the rule sheet.</li>
+<li>Should now be able to find iTunes playlists/iPhoto albums in cases where the user moved the whole library by launching iTunes/iPhoto while holding down the option key.</li>
+<li>The rule preview should handle the case of missing metadata better now.</li>
+</ul>
+
+<p>Core changes:</p>
+<ul>
+<li>Support for "Folder" and "Alias" Kinds even on filesystems where metadata is unavailable.</li>
+<li>Improved performance when calculating the size of folders. Should hopefully address performance issues when using rules that filter on size and also descend into subfolders.</li>
+<li>Changed how the Kind attribute prints out in filenames. Prints the actual Kind and not the more general categories that appear in the pop-up.</li>
+<li>Fixed sizing calculations following symbolic links. Should no longer do that.</li>
+<li>Fixed the hours attribute, when set to 24 hour clock, printing out values between 1-24 instead of 0-23.</li>
+<li>Fixed Spotlight attributes that are lists (like the Authors field) printing out with parentheses or extra quotes when used in file renaming or subfolder creation.</li>
+<li>You can now edit the casing (lowercase, uppercase, etc.) of Spotlight file attributes that are lists (like the "Authors" field). Just click on the token for the different options.</li>
+<li>Fixed cases of file attributes with colons being used in filenames.</li>
+<li>Fixed asterisks being used in conditions making the rules uneditable later.</li>
+<li>Fixed case when having multiple App Sweep panels, the second one would become unresponsive after throwing away files in the first one.</li>
+</ul>
+<h2>Version 2.0.2 (Sep 12, 2007)</h2>
+
+New Features:
+<ul>
+<li>Added "Contents" attribute. Represents the text content of the file. Note that this only includes text indexed by Spotlight. If you can find a file by searching on a particular word, then that word is considered to be contained in the contents.</li>
+</ul>
+
+Fixes:
+<ul>
+<li>Trash limits were broken in recent releases. This has been fixed.</li>
+<li>The "Rename" and "Sort into Subfolders" actions should now prevent the creation of any files starting with a dot (".") as this would make them invisible in Finder.</li>
+<li>The "extension" attribute in the "Sort into Subfolders" action no longer prepends the dot ("."). This should prevent the creation of unintentional extensions on folders.</li>
+<li>Fixed date added being incorrect for files in subfolders when the subfolder is added.</li>
+<li>iPhoto importing  was returning before it was complete. Doing a move action right afterwards would sometimes interfere with the import. Now, the import should complete before the next action is run.</li>
+<li>Fixed some of the glitches in the field used to edit patterns. There are still some odd Apple bugs left.</li>
+<li>Fixed moving a file into a subfolder failing if the file exists. Now renumbers the file as needed.</li>
+<li>Other miscellaneous tweaks and fixes.</li>
+</ul>
+<h2>Version 2.0.1 (Aug 20, 2007)</h2>
+
+New Features:
+<ul>
+<li>Added "Date Last Matched" attribute. Represents the date when a rule was last run against a file. Useful for noticing changes since "the last time." For instance, you can set Hazel to do a backup by checking if the file was modified since the last matched date and if so, copy it somewhere else.</li>
+<li>Sample rules have been moved to within Hazel; they are no longer on the disk image. On first launch, you are asked if you want to load them and you can load them later by using the "Load Sample Rules" item in the action menu.</li>
+</ul>
+
+UI:
+<ul>
+<li>In the menu for date attributes, added underlining to indicate the number of digits/zero padding since it is not obvious when the example number has more than one digit.</li>
+</ul>
+
+Fixes:
+<ul>
+<li>Fixed bug where comments would not get set on certain types of files (file packages?).</li>
+<li>Fixed military time and other alternate format settings not sticking for date patterns.</li>
+<li>Fixed bug where comments would be appended even though they were already there.</li>
+<li>Fixed Spotlight picker, when used from the attribute pop up menu, not going away when an attribute was selected (had to cancel to get rid of it).</li>
+<li>Fixed multiple Hazel icons in the menubar that can happen on repeated installs.</li>
+<li>Help menu should now show an entry for Hazel's help.</li>
+</ul>
+<h2>Version 2.0 (Aug 2, 2007)</h2>
+
+<p>This is a free upgrade.</p>
+
+New Features:
+<ul>
+<li>New rule actions:</br>
+	<ul>
+	<li>Rename file: Can rename files by specifying a pattern based on file attributes.</li>
+	<li>Sort file into subfolders: Let's you define a pattern of subfolders into which the file is moved. Patterns can be based on different attributes like date added or the source domain.</li>
+	<li>Unarchive: Unpacks standard archive files and moves them to the trash, leaving the unpacked version in the folder.</li>
+	<li>Send Growl Message: Sends a custom notification via Growl. Growl must be installed for this to be enabled. See Growl support below.</li>
+	</ul>
+</li>
+<li>App Sweep: Hazel can watch for thrown away applications and offer to throw away its support files.</li>
+<li>Rule preview: Get a quick overview of what files will match which rules.</li>
+<li>Growl support: Get notifications of what Hazel is doing on your Desktop. Growl must be downloaded and installed separately.</li>
+<li>Move and copy actions now have option to replace the existing file.</li>
+<li>Better Spotlight integration: Rules can now filter on any Spotlight attribute in the system. Just select "Other" in the file attribute pop-up. Spotlight attributes are also available in the "Rename" and "Sort into subfolders" actions via the "Other" token.</li>
+<li>Support for Flock.</li>
+</ul>
+
+User interface changes:
+<ul>
+<li>New icons</li>
+<li>New menubar item. Can be used to start/stop Hazel and run rules manually.</li>
+<li>License and rules files can now be double-clicked.</li>
+<li>Rules files can be dropped onto folders or the rule list.</li>
+<li>Added various animation/transition effects in the interface.</li>
+<li>Yellow exclamation mark badge appears when a rule becomes invalid (like a destination folder no longer exists).</li>
+<li>Reversed the semantics of the option for adding keywords and commments.  The option is now "Replace existing". If not checked, it's the equivalent of checking the "Append" option before. The semantics of your rules should be preserved. It basically just changes the interfaces such that a new rule will default to "Append".</li>
+<li>Improved visibility of folder names.</li>
+<li>Added "View log" button to the "Info" pane. Gives you quick access to Hazel's log.</li>
+<li>Added sending of system profile info when checking for updates. This is opt-in (and is off by default) but gives us data on what kind of configs to support.</li>
+<li>Fixed Sparkle updater sometimes bugging you to upgrade every 30 minutes.</li>
+<li>Fixed alerts getting buried under other windows in certain cases.</li>
+</ul>
+
+
+Core changes:
+<ul>
+<li>New task scheduler written to replace usage of launchd.</li>
+	<ul>
+	<li>Fixes issue where Hazel stops working after a log out and log in.</li>
+	<li>Should be more responsive when dealing with mounted volumes.</li>
+	<li>No more annoying launchd log messages.</li>
+	<li>Background tasks are now scheduled in a staggered fashion to minimize any periodic "surges" in activity.</li>
+	</ul>
+</li>
+<li>Hazel can now be stopped and restarted at will.</li>
+<li>Detection of busy files has been greatly improved.</li>
+<li>When appending comments, space is used as a separator instead of newline.</li>
+<li>Now ignores all invisible files (including dot files) when processing a folder.</li>
+<li>When calculating sizes of files in a folder, will ignore invisible files. So a folder can be considered empty (size = 0) even if it has files like .DS_Store in it.</li>
+<li>Hazel has its own log now in ~/Library/Logs/Hazel. Hazel will also rotate them on a weekly basis.</li>
+<li>Improved locking of internal database files. You should see fewer messages about lockfiles.</li>
+<li>Rules will now track scripts and Automator workflows if they are moved.</li>
+<li>Can now deal with iTunes and iLibrary library files that are aliased.</li>
+<li>Fixed potential looping with renaming.</li>
+<li>Fixed email address parsing for "is from domain" and "is not for domain" operators.</li>
+<li>Fixed "contains" and "does not contain" not working for multi-line comments.</li>
+<li>Fixed "where froms" being stripped on move/copy.</li>
+<li>Fixed comments with unicode characters getting deconstructed when comment was set or the file was moved/copied.</li>
+<li>Fixed Hazel losing track of a file if a custom script renames it. Subsequent actions in the same rule should now work.</li>
+<li>Fixed Archive action losing track of a file. Subsequent actions in the same rule should now work.</li>
+<li>Fixed multiple executions of rules when run manually.</li>
+<li>Fixed potential problem with moving/copying not generating the right numbering if the file name is already taken.</li>
+<li>Sped up setting of Finder comments. Also made it more reliable when Finder comments are accessed multiple times within the same rule.</li>
+<li>Fixed move and copy operations failing on files with slashes in their names.</li>
+</ul><h2>Version 1.1.5 (Feb 25, 2007)</h2>
+<ul>
+<li>Fixed comments getting lost during move/copy operations. The comments were still retained in Spotlight but unviewable in Finder.</li>
+<li>Fixed potential crasher on start up when Safari/Camino browser download preference could not be read.</li>
+</ul>
+
+<h2>Version 1.1.4 (Jan 10, 2007)</h2>
+<ul>
+<li>Fixed file sizes in rules getting reset when the size was 4G or greater.</li>
+<li>Fixed bug where one could not open/edit rules which use the "Any file" condition.</li>
+<li>When selecting a destination folder, the UI now allows the source folder to be selected (this is a reversal of a previous change). This is necessary to deal with cases involving subfolders.</li>
+<li>Got rid of delay between making a change and having the change committed to disk. Now all changes are written out immediately. Should alleviate some minor confusion.</li>
+</ul>
+
+<h2>Version 1.1.3 (Dec 6, 2006)</h2>
+<ul>
+<li>"Run rules now" now forces actions to be re-run on a file even if they have already been executed before. Should give better feedback to the user when testing out rules.</li>
+<li>Added "minute" for time intervals in rules (but not in folder or trash options). Note that there is a fudge factor of 5 minutes or so depending on when Hazel runs so do not expect precision greater than that.</li>
+<li>Fixed various problems with date added. Date added was not getting reset when a file was re-added to a folder and it was also getting lost when a file was re-saved by certain programs. Internal db changed to a hybrid name/file id table. It should behave as before 1.1.2 (which was the correct way) but still catch file renames in most cases (which is what the 1.1.2 changes were for).</li>
+<li>Fixed crash when Firefox preferences were saved in a different encoding.</li>
+<li>Fixed iTunes import failing when either the main library has been renamed or when running under a non-English localization.</li>
+<li>Fixed problems when there are no iTunes or iPhoto libraries.</li>
+<li>Fixed rule interface resetting the iPhoto action's album to "Library".</li>
+<li>Fixed rule interface so that it remembers the selection whenever you change attributes.</li>
+</ul>
+<h2>Version 1.1.2 (Nov 16, 2006)</h2>
+<ul>
+<li>Added "Copy file to" action to copy a file/folder.</li>
+<liRemoved restriction on using the same type of action more than once in a rule. You can now, for instance, have two moves within the same rule.< li>
+<li>Rudimentary checks added to prevent move and copy actions from having the same source and destination folders.</li>
+<li>Reworked internal database to store entries by file id instead of name. Hazel-maintained metadata, like date added, should carry over across renames of the file within the same folder.</li>
+<li>Fixed bug where Hazel claimed that a value was not filled in when creating a rule with the "open" action.</li>
+<li>Log messages for the background process can be redirected to a file. There is no UI for this setting but it can be set with the "LogFile" key in Hazel's preferences. The value should be a fully specified path.</li>
+<li>Other fixes and tweaks to rule interface.</li>
+</ul>
+
+<h2>Version 1.1.1 (Oct 30, 2006)</h2> 
+
+<ul>
+<li>Fixed the broken "Edit" item in the gear menu.</li>
+<li>Added contextual menu to the rule list.</li>
+</ul><h2>Version 1.1 (Oct 26, 2006)</h2>
+
+New Features:
+<ul>
+<li>New rule actions:</li>
+<ul>
+<li>Open file</li>
+<li>Import into iTunes</li>
+<li>Import into iPhoto</li>
+<li>Run AppleScript</li>
+<li>Run Automator workflow</li>
+<li>Run shell script</li>
+<li>Run rules on folder contents</li>
+</ul>
+<li>New software update mechanism. When a new version is available, you are presented with release notes. If you choose to upgrade, the update is downloaded and installed for you.</li>
+<!--<li>In-app, purchasing system. You can purchase a license within Hazel and get a license immediately. As with the website, transactions are handled by Kagi.</li>-->
+</ul>
+
+User interface improvements:
+<ul>
+<li>Gave rule interface a minor facelift.</li>
+<li>New shaded look for folder list.</li>
+<li>Added "Reveal in Finder" contextual menu to folder list items.</li>
+<li>Can check/uncheck all rules at once by command-clicking one of the checkboxes.</li>
+<li>Added better keyboard navigation for the rule table.</li>
+<li>Added "Rename" to the action pull-down menu.</li>
+<li>Other miscellaneous tweaks.</li>
+</ul>
+
+Rule engine changes/fixes:
+<ul>
+<li>Combined the "Type" and "Content" attributes into "Kind" to better mirror Finder/Spotlight. The "Folder" kind is much more accurate from a user POV (does not include file and app packages). The "Document" kind is the closest to the former "File" type. "Document" is more accurate in that it will match a file package but will miss certain specialized types of flat files (such as an executable).</li>
+<li>Fixed case-sensitivity for "is" and "is not" operators (matches are supposed to be case-insensitive).</li>
+<li>Fixed problem with "Source URL/Address" in combination with "does not contain". Would evaluate to true when it shouldn't have at times.</li>
+<li>Made loop detection smarter when identifying a file. Now matches against the filesystem id. This prevents saving a file with the same name into the folder from triggering the loop detection.</li>
+<li>Loop detection is now much more lenient. Will only trigger after 5 loops.</li>
+<li>Finder comments set by Hazel should be reliably seen when doing "Get Info" in Finder.</li>
+<li>Fixed finder comment action to not prepend a newline when appending a comment if the comment is initially empty.</li>
+</ul>
+
+Other changes/fixes:
+<ul>
+<li>Fixed bug where multiple alerts would pop up when notifying the user of the end of the evaluation period.</li>
+<li>Fixed sporadic crash when deleting folders.</li>
+<li>Worked around problem when upgrading Hazel while System Preferences is running and Hazel has already been loaded. When this happens, you are prompted to restart System Preferences. This should get rid of the odd behavior such as valid license keys all of a sudden considered invalid after an upgrade. Note that this only applies to upgrades from version 1.1 and up. This still remains an issue with the 1.0.x series.</li>
+</ul>
+
+</div>
+
+
+</div>
+	
+	<footer class="row align-center footer" role="contentinfo">
+					<footer class="row align-center footer" role="contentinfo">
+						<div class="small-10 columns">
+
+						<div class="row align-middle">
+							<div id="footer-copyright" class="small-12 medium-4 columns small-order-2 medium-order-1">
+								<p>&copy; 2006-2026 Noodlesoft, LLC
+									| <a href="http://brotherhood.io">Design by <strong>Brotherhood</strong></a>
+								</p>
+							</div>
+
+								<nav id="footer-nav" class="small-12 medium-8 columns menu-right small-order-1 medium-order-2" role="navigation">
+	    						<ul id="menu-footer" class="vertical medium-horizontal menu"><li id="menu-item-498" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-498"><a href="/about">About Noodlesoft</a></li>
+<li id="menu-item-500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-500"><a href="https://www.noodlesoft.com/store">Store</a></li>
+<li id="menu-item-499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-499"><a href="/reviews">Reviews</a></li>
+<li id="menu-item-501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-501"><a href="/forums">Forum</a></li>
+<li id="menu-item-664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-664"><a href="/support">Support</a></li>
+<li id="menu-item-502" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-502"><a href="/blog">Developer Blog</a></li>
+</ul>	    					</nav>
+	    				</div>
+						</div>
+					</footer> <!-- end .footer -->
+
+<!-- Piwik -->
+<script type="text/javascript">var _paq=_paq||[];_paq.push(['setConversionAttributionFirstReferrer',true]);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u="https://www.noodlesoft.com/piwik/";_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['setSiteId',1]);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.async=true;g.defer=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();</script>
+<noscript><p><img src="https://www.noodlesoft.com/piwik/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
+<!-- End Piwik Code -->
+
+</body>
+<script data-pagespeed-no-defer>//<![CDATA[
+(function(){window.pagespeed=window.pagespeed||{};var f=window.pagespeed;function h(c,a,e,b){this.f=c;this.a=a;this.b=e;this.g=b}f.beaconUrl="";
+function k(c){var a=c.f,e=window.mod_pagespeed_start,b=Number(new Date)-e,a=a+(-1==a.indexOf("?")?"?":"&"),a=a+"ets="+("load"==c.a?"load:":"unload:");if("beforeunload"!=c.a||!window.mod_pagespeed_loaded){a=a+b+("&r"+c.a+"=");if(window.performance){var b=window.performance.timing,d=b.navigationStart,g=b.requestStart,a=a+(b[c.a+"EventStart"]-d),a=a+("&nav="+(b.fetchStart-d)),a=a+("&dns="+(b.domainLookupEnd-b.domainLookupStart)),a=a+("&connect="+(b.connectEnd-b.connectStart)),a=a+("&req_start="+(g-d))+
+("&ttfb="+(b.responseStart-g)),a=a+("&dwld="+(b.responseEnd-b.responseStart)),a=a+("&dom_c="+(b.domContentLoadedEventStart-d));window.performance.navigation&&(a+="&nt="+window.performance.navigation.type);d=-1;b.msFirstPaint?d=b.msFirstPaint:window.chrome&&window.chrome.loadTimes&&(d=Math.floor(1E3*window.chrome.loadTimes().firstPaintTime));d-=g;0<=d&&(a+="&fp="+d)}else a+=b;f.getResourceTimingData&&window.parent==window&&(a+=f.getResourceTimingData());a+=window.parent!=window?"&ifr=1":"&ifr=0";"load"==
+c.a&&(window.mod_pagespeed_loaded=!0,(b=window.mod_pagespeed_num_resources_prefetched)&&(a+="&nrp="+b),(b=window.mod_pagespeed_prefetch_start)&&(a+="&htmlAt="+(e-b)));f.criticalCss&&(e=f.criticalCss,a+="&ccis="+e.total_critical_inlined_size+"&cces="+e.total_original_external_size+"&ccos="+e.total_overhead_size+"&ccrl="+e.num_replaced_links+"&ccul="+e.num_unreplaced_links);a+="&dpr="+window.devicePixelRatio;""!=c.b&&(a+=c.b);document.referrer&&(a+="&ref="+encodeURIComponent(document.referrer));a+=
+"&url="+encodeURIComponent(c.g);f.beaconUrl=a;(new Image).src=a}}f.c=function(c,a,e,b){var d=new h(c,a,e,b);window.addEventListener?window.addEventListener(a,function(){k(d)},!1):window.attachEvent("on"+a,function(){k(d)})};f.addInstrumentationInit=f.c;})();
+
+pagespeed.addInstrumentationInit('/mod_pagespeed_beacon', 'load', '', 'https://www.noodlesoft.com/release_notes');
+//]]></script></html>

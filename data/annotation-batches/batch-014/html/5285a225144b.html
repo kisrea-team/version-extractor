@@ -1,0 +1,779 @@
+
+	<!DOCTYPE html>
+	<html id="releasenotespage" class="no-js light" lang="en" prefix="og: http://ogp.me/ns#">
+
+	<head>
+		<title>Release Notes - Little Snitch</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Language" content="en">
+        
+		<meta name="description" content="Protects your privacy and prevents your private data from being sent out to the Internet without your knowledge." />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Objective Development" />
+		<meta property="og:url" content="https://www.obdev.at/products/littlesnitch/releasenotes.html" />
+		<meta property="og:description" content="Protects your privacy and prevents your private data from being sent out to the Internet without your knowledge." />
+		<meta property="og:image" content="https://www.obdev.at/Images/social-graphs/opengraph-littlesnitch.jpg" />
+		<meta property="og:title" content="Little Snitch" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:description" content="Protects your privacy and prevents your private data from being sent out to the Internet without your knowledge." />
+		<meta name="twitter:image" content="https://www.obdev.at/Images/social-graphs/opengraph-littlesnitch.jpg" />
+		<meta name="twitter:site" content="@littlesnitch" />
+		<meta name="twitter:title" content="Little Snitch" />
+		<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "name": "Objective Development",
+            "url": "https://obdev.at",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Objective Development",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://obdev.at/favicon.ico",
+                    "width": 60,
+                    "height": 60
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://obdev.at/"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "url": "https://www.obdev.at/products/littlesnitch/releasenotes.html",
+            "description": "Protects your privacy and prevents your private data from being sent out to the Internet without your knowledge.",
+            "thumbnailUrl": "https://www.obdev.at/Images/social-graphs/opengraph-littlesnitch.jpg",
+            "name": "Little Snitch"
+        }
+    ]
+}
+		</script>
+		<meta name="google-site-verification" content="Rpww5gNCTU0AwbmeNzQ1o73D6GZ9-Ubom5wn4giXVsc" />
+		<script type="text/javascript" src="https://www.obdev.at/resources/javascript/jquery.js?202606231106"></script>
+		<script type="text/javascript" src="https://www.obdev.at/resources/javascript/menu.js?202403261003"></script>
+		<script type="text/javascript">
+			$('html').removeClass('no-js');
+		</script>
+
+		
+		<link rel="mask-icon" href="/favicon.svg" color="#2e77af">
+		<link rel="alternate" type="application/rss+xml" title="Objective Development's Blog" href="https://obdev.at/rss/">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.png" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+				<link rel="stylesheet" href="https://www.obdev.at/resources/css/reset.css?202501310801" type="text/css" />
+		<link rel="stylesheet" href="https://www.obdev.at/resources/css/base-design-2017.css?202502260802" type="text/css" />
+		<link rel="stylesheet" href="https://www.obdev.at/resources/css/littlesnitch.css?202605182105" type="text/css" />
+	</head>
+
+		<body> 		
+		
+		<input type="checkbox" id="mm-trigger" class="mm-trigger">
+		<header>
+						<a href="https://www.obdev.at/" class="desktop logo">
+				<svg width="146px" height="26px" viewBox="0 0 146 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path id="Shape" fill="#000000" fill-rule="evenodd" d="M59.0746312,4.39397541 C60.2759647,4.39397541 61.2748756,4.68594019 62.0701068,5.27050035 C62.865338,5.85442992 63.2626392,6.58844074 63.2626392,7.47190221 C63.2626392,8.32950935 62.8590515,9.04207999 62.0525048,9.60898353 C61.2459581,10.1758871 60.2300738,10.4596541 59.0061093,10.4596541 C57.8217492,10.4596541 56.8322679,10.1721035 56.0364081,9.59637166 C55.2411769,9.0212704 54.8438756,8.30239383 54.8438756,7.44037254 C54.8438756,6.56952293 55.2455774,5.84434042 56.0496095,5.26419442 C56.8530131,4.68404841 57.8619823,4.39397541 59.0746312,4.39397541 Z M58.989136,5.45463365 C59.7611075,5.45463365 60.4023215,5.64002813 60.911521,6.0108171 C61.4207204,6.38160607 61.6753201,6.84887585 61.6753201,7.41388761 C61.6753201,7.98268293 61.4307786,8.44932211 60.9416957,8.81380515 C60.4526128,9.17765759 59.8246002,9.35989911 59.0576579,9.35989911 C58.2850578,9.35989911 57.6526447,9.18017996 57.1610473,8.82011108 C56.6688212,8.46067279 56.4230224,7.9959254 56.4230224,7.42713007 C56.4230224,6.85329 56.6631634,6.38160607 57.1440739,6.0108171 C57.6243559,5.64002813 58.2397956,5.45463365 58.989136,5.45463365 Z M64.9272813,1.32298513 L66.4888261,1.32298513 L66.4888261,4.83412966 C67.1639868,4.46334069 67.8850383,4.27794621 68.651352,4.27794621 C69.6521489,4.27794621 70.4706398,4.56234387 71.1055675,5.13176978 C71.7404951,5.7011957 72.057959,6.43142296 72.057959,7.32371274 C72.057959,8.28095365 71.6788883,9.04271058 70.9207469,9.60961413 C70.1626056,10.1765177 69.1486072,10.4602847 67.8781233,10.4602847 C67.3689239,10.4602847 66.8326929,10.4192962 66.2688017,10.337319 C65.7049105,10.2553419 65.2573179,10.1519245 64.926024,10.027067 L64.926024,1.32298513 L64.9272813,1.32298513 Z M66.4894548,5.95910844 L66.4894548,9.17891877 C67.0219139,9.29936213 67.5675745,9.35989911 68.1283225,9.35989911 C68.8204565,9.35989911 69.385605,9.17450462 69.8231393,8.80371565 C70.2606736,8.43292668 70.4794408,7.9568286 70.4794408,7.37479081 C70.4794408,6.78392472 70.2745037,6.30341248 69.8658869,5.93262351 C69.4566415,5.56183454 68.922925,5.37644006 68.2653663,5.37644006 C67.6819872,5.37707065 67.0898072,5.57129344 66.4894548,5.95910844 Z M73.7666059,4.40721787 L75.3281507,4.40721787 L75.3281507,11.2031239 C75.3281507,12.232883 74.8032353,12.9624797 73.7534044,13.3881303 L72.5904181,12.5286314 C72.9512582,12.4340423 73.2366613,12.2675657 73.4485134,12.0304625 C73.6603655,11.7933594 73.7659772,11.51779 73.7659772,11.2031239 L73.7659772,4.40721787 L73.7666059,4.40721787 Z M74.5046307,1.90502292 C74.7623736,1.90502292 74.982398,1.97312702 75.1653326,2.10870462 C75.3482673,2.24491281 75.4400489,2.40760593 75.4400489,2.59678397 C75.4400489,2.79479033 75.3526677,2.96126701 75.1779055,3.09495283 C75.0031432,3.22863865 74.7843761,3.29548156 74.521604,3.29548156 C74.2751766,3.29548156 74.0582954,3.22674687 73.8690744,3.08864689 C73.6798534,2.95054692 73.5861858,2.78659261 73.5861858,2.59741457 C73.5861858,2.41643424 73.6785961,2.2556329 73.8646739,2.11564114 C74.0507517,1.97564939 74.2644897,1.90502292 74.5046307,1.90502292 Z M84.3654973,7.48514467 L78.8127092,7.48514467 C78.8523136,8.05394 79.105656,8.50670612 79.5721078,8.84281245 C80.0385596,9.17891877 80.6407979,9.34728724 81.3788228,9.34728724 C82.4085371,9.34728724 83.3577854,9.10576993 84.2278249,8.62336591 L84.2278249,9.77419903 C83.7469143,10.0157163 83.2710329,10.1878684 82.7989233,10.2912857 C82.3268138,10.394703 81.7736095,10.4464117 81.1380532,10.4464117 C80.2680137,10.4464117 79.5645641,10.3108341 79.0270758,10.0390483 C78.4895876,9.7672625 78.0583397,9.40214887 77.7352181,8.94307681 C77.4120965,8.48337416 77.2505357,7.95241445 77.2505357,7.34893648 C77.2505357,6.44340423 77.5906306,5.70750164 78.2720777,5.14122869 C78.9528962,4.57432514 79.8367658,4.29055808 80.9236865,4.29055808 C81.9710028,4.29055808 82.8058384,4.56675802 83.4294505,5.11789673 C84.052434,5.66966603 84.3648687,6.40872159 84.3648687,7.33569402 L84.3648687,7.48514467 L84.3654973,7.48514467 Z M78.8472844,6.78014116 L82.8209258,6.78014116 C82.7806927,6.31034901 82.5946149,5.94838835 82.2626924,5.69362858 C81.9307698,5.43886881 81.4844345,5.31211952 80.9243151,5.31211952 C80.3635671,5.31211952 79.9040304,5.43949941 79.5469622,5.69362858 C79.1886366,5.94838835 78.9560394,6.31034901 78.8472844,6.78014116 Z M91.9777142,8.96577818 L91.9777142,10.1298538 C91.1937986,10.3499309 90.4268563,10.4596541 89.6781445,10.4596541 C88.4422358,10.4596541 87.4565264,10.1834542 86.7216447,9.63231549 C85.9861345,9.08054619 85.6183793,8.34149063 85.6183793,7.4145182 C85.6183793,6.47934806 85.9760762,5.72452766 86.69147,5.15131818 C87.4068637,4.5781087 88.3479397,4.29118867 89.5146978,4.29118867 C89.9208001,4.29118867 90.2860406,4.32019597 90.6085336,4.37884116 C90.9322838,4.43685576 91.3308424,4.54594844 91.8054665,4.70548859 L91.8054665,5.95973903 C91.0158931,5.58012175 90.2835261,5.39094371 89.608994,5.39094371 C88.9049158,5.39094371 88.3271945,5.57759938 87.8752014,5.95028013 C87.4232084,6.32359147 87.1975262,6.79842837 87.1975262,7.376052 C87.1975262,7.98394412 87.4420676,8.46634814 87.9311505,8.82452524 C88.4202334,9.18270234 89.0796781,9.36116029 89.9088559,9.36116029 C90.5104655,9.35989911 91.1988277,9.22873566 91.9777142,8.96577818 Z M92.6465885,5.35121632 L95.5817145,3.17882176 L95.5817145,4.40721787 L98.0793062,4.40721787 L98.0793062,5.46787611 L95.5817145,5.46787611 L95.5817145,8.38437098 C95.5817145,9.06541195 95.9563847,9.40593243 96.7057251,9.40593243 C97.2671017,9.40593243 97.8586531,9.2634183 98.4822652,8.97902064 L98.4822652,10.0781451 C97.8819128,10.3322743 97.22624,10.4596541 96.5171327,10.4596541 C95.8017389,10.4596541 95.2070443,10.3020058 94.7317915,9.98733962 C94.5834322,9.8927506 94.4602185,9.7861803 94.3627791,9.66762873 C94.2659684,9.54907715 94.184245,9.39395115 94.1182377,9.20225073 C94.0522303,9.01055031 94.019541,8.64480609 94.019541,8.10627926 L94.019541,5.46787611 L92.6459599,5.46787611 L92.6459599,5.35121632 L92.6465885,5.35121632 Z M100.413451,1.90502292 C100.671194,1.90502292 100.891219,1.97186583 101.074782,2.10555165 C101.257716,2.23923747 101.349498,2.40319177 101.349498,2.59678397 C101.349498,2.78659261 101.257716,2.95054692 101.074782,3.0880163 C100.891219,3.22611627 100.671194,3.29485096 100.413451,3.29485096 C100.17331,3.29485096 99.9614581,3.22485508 99.7785235,3.08486333 C99.5955889,2.94487158 99.5038073,2.78217846 99.5038073,2.59678397 C99.5038073,2.41580364 99.5955889,2.2550023 99.7785235,2.11501055 C99.9614581,1.9750188 100.17331,1.90502292 100.413451,1.90502292 Z M99.6408511,4.40721787 L101.203025,4.40721787 L101.203025,10.3562368 L99.6408511,10.3562368 L99.6408511,4.40721787 Z M108.297241,4.40721787 L109.990801,4.40721787 L106.503728,10.4596541 L105.97504,10.4596541 L102.404358,4.40721787 L104.113634,4.40721787 L106.244727,8.06718246 L108.297241,4.40721787 Z M117.534496,7.48514467 L111.981707,7.48514467 C112.021312,8.05394 112.275283,8.50670612 112.741106,8.84281245 C113.207558,9.17891877 113.809796,9.34728724 114.547821,9.34728724 C115.578164,9.34728724 116.526784,9.10576993 117.396823,8.62336591 L117.396823,9.77419903 C116.915913,10.0157163 116.440031,10.1878684 115.96855,10.2912857 C115.496441,10.394703 114.942608,10.4464117 114.30768,10.4464117 C113.437641,10.4464117 112.734191,10.3108341 112.196703,10.0390483 C111.659214,9.7672625 111.227967,9.40214887 110.904845,8.94307681 C110.581095,8.48337416 110.420163,7.95241445 110.420163,7.34893648 C110.420163,6.44340423 110.760257,5.70750164 111.441705,5.14122869 C112.122523,4.57432514 113.005764,4.29055808 114.093313,4.29055808 C115.14063,4.29055808 115.975465,4.56675802 116.599077,5.11789673 C117.22269,5.66903543 117.534496,6.40872159 117.534496,7.33569402 L117.534496,7.48514467 Z M112.016283,6.78014116 L115.989924,6.78014116 C115.949691,6.31034901 115.763613,5.94838835 115.431691,5.69362858 C115.099768,5.43949941 114.653433,5.31211952 114.092685,5.31211952 C113.531937,5.31211952 113.073029,5.43949941 112.715332,5.69362858 C112.358264,5.94838835 112.125038,6.31034901 112.016283,6.78014116 Z M60.5676542,13.9348548 L62.138,13.9348548 L62.138,22.9674759 L58.799915,22.9674759 C57.6325282,22.9674759 56.7015105,22.6893842 56.0062333,22.1338313 C55.3115847,21.5770173 54.9633175,20.8322864 54.9633175,19.8958551 C54.9633175,19.0212219 55.3279294,18.3017147 56.0577819,17.736703 C56.7870057,17.1716912 57.7186521,16.8891853 58.8508349,16.8891853 C59.3770077,16.8891853 59.9496998,16.9730543 60.5670256,17.1414227 L60.5670256,13.9348548 L60.5676542,13.9348548 Z M60.5676542,21.9591569 L60.5676542,18.1888385 C60.0817145,18.0040746 59.5894884,17.9113774 59.0916045,17.9113774 C58.3133467,17.9113774 57.694135,18.1037084 57.233341,18.4871092 C56.772547,18.8705101 56.5424643,19.3882273 56.5424643,20.0389998 C56.5424643,20.6513061 56.7423722,21.12299 57.1434453,21.4546822 C57.3835863,21.6526885 57.638186,21.7863743 57.9072444,21.8557396 C58.1763029,21.9251049 58.659728,21.9591569 59.3575198,21.9591569 L60.5676542,21.9591569 Z M70.9861256,20.0970144 L65.4333375,20.0970144 C65.4729419,20.6658097 65.7262843,21.1185758 66.1927361,21.4546822 C66.6585593,21.7907885 67.2607976,21.9591569 67.999451,21.9591569 C69.0291654,21.9591569 69.9790423,21.7176396 70.8484532,21.2352356 L70.8484532,22.3860687 C70.3675426,22.627586 69.8916612,22.7997381 69.4195516,22.9031554 C68.947442,23.0065727 68.3942378,23.0582814 67.7586814,23.0582814 C66.8892706,23.0582814 66.1851924,22.9220732 65.6477041,22.650918 C65.1102159,22.3785016 64.678968,22.013388 64.356475,21.5549465 C64.0327248,21.0952439 63.8717926,20.5649147 63.8717926,19.9614368 C63.8717926,19.0559045 64.2125162,18.3193713 64.8933346,17.7530984 C65.5741531,17.1861949 66.4580227,16.9024278 67.5449434,16.9024278 C68.5922597,16.9024278 69.4270953,17.1786277 70.0507074,17.7297664 C70.6743196,18.2815357 70.9861256,19.0212219 70.9861256,19.9475637 L70.9861256,20.0970144 Z M65.4679127,19.3926415 L69.4415541,19.3926415 C69.401321,18.9228493 69.2152432,18.5608887 68.8833206,18.3061289 C68.5513981,18.0513691 68.1050628,17.9246198 67.5449434,17.9246198 C66.9841954,17.9246198 66.5246587,18.0519997 66.1675904,18.3061289 C65.8098936,18.5602581 65.5766677,18.9228493 65.4679127,19.3926415 Z M77.2480211,17.0190876 L78.9415806,17.0190876 L75.4545076,23.0715239 L74.9258203,23.0715239 L71.355138,17.0190876 L73.0650422,17.0190876 L75.1961361,20.6790522 L77.2480211,17.0190876 Z M86.484647,20.0970144 L80.9324875,20.0970144 C80.9720919,20.6658097 81.2254343,21.1185758 81.6918861,21.4546822 C82.1583379,21.7907885 82.7605762,21.9591569 83.4986011,21.9591569 C84.5283154,21.9591569 85.4781923,21.7176396 86.3482318,21.2352356 L86.3482318,22.3860687 C85.8673213,22.627586 85.3914399,22.7997381 84.9193303,22.9031554 C84.4472207,23.0065727 83.8940164,23.0582814 83.2584601,23.0582814 C82.3890492,23.0582814 81.6855997,22.9220732 81.1474828,22.650918 C80.6099945,22.3785016 80.1787466,22.013388 79.855625,21.5549465 C79.5325034,21.0952439 79.3709426,20.5649147 79.3709426,19.9614368 C79.3709426,19.0559045 79.7116662,18.3193713 80.3924846,17.7530984 C81.0733031,17.1861949 81.9571727,16.9024278 83.0447221,16.9024278 C84.0914098,16.9024278 84.926874,17.1786277 85.5504861,17.7297664 C86.1734696,18.2815357 86.4852756,19.0212219 86.4852756,19.9475637 L86.4852756,20.0970144 L86.484647,20.0970144 Z M80.9670627,19.3926415 L84.9400754,19.3926415 C84.900471,18.9228493 84.7143932,18.5608887 84.381842,18.3061289 C84.0505481,18.0519997 83.6042128,17.9246198 83.0434648,17.9246198 C82.4827168,17.9246198 82.02318,18.0519997 81.6661118,18.3061289 C81.3090436,18.5602581 81.075189,18.9228493 80.9670627,19.3926415 Z M88.2102672,13.9348548 L89.7718121,13.9348548 L89.7718121,22.9674759 L88.2102672,22.9674759 L88.2102672,13.9348548 Z M95.8055108,17.0058451 C97.0068442,17.0058451 98.0051265,17.2978099 98.8003577,17.8823701 C99.5962175,18.4662996 99.9928902,19.2003104 99.9928902,20.0837719 C99.9928902,20.9413791 99.5893025,21.6539497 98.7827558,22.2208532 C97.976209,22.7877568 96.9609534,23.0715239 95.7363603,23.0715239 C94.5520001,23.0715239 93.5618902,22.7839732 92.766659,22.2082414 C91.9714278,21.6331401 91.5741265,20.9142635 91.5741265,20.0516117 C91.5741265,19.1813926 91.9764569,18.4562101 92.7798605,17.8760641 C93.583264,17.2959181 94.5922332,17.0058451 95.8055108,17.0058451 Z M95.7193869,18.0665034 C94.9700466,18.0665034 94.3546068,18.2518978 93.8736962,18.6226868 C93.3934143,18.9934758 93.1532734,19.4657903 93.1532734,20.0389998 C93.1532734,20.6077951 93.3997007,21.0725425 93.8912982,21.4319808 C94.3835243,21.7920497 95.0159374,21.9717688 95.7885375,21.9717688 C96.5548512,21.9717688 97.1828638,21.7895273 97.6719467,21.4256749 C98.1610296,21.0611918 98.405571,20.5945526 98.405571,20.0251267 C98.405571,19.4607456 98.1515999,18.9928452 97.6417719,18.6220562 C97.1325725,18.2518978 96.4913584,18.0665034 95.7193869,18.0665034 Z M101.623586,26 L101.623586,17.0190876 L104.36069,17.0190876 C105.761931,17.0190876 106.853881,17.2820451 107.634653,17.80796 C108.415426,18.333875 108.805812,19.0685164 108.805812,20.0131454 C108.805812,20.9048046 108.438057,21.6381849 107.703175,22.2113943 C106.967665,22.7846038 106.030989,23.0708933 104.89252,23.0708933 C104.38835,23.0708933 103.831374,22.9870243 103.219077,22.8186559 L103.219077,26 L101.623586,26 Z M104.326743,18.118212 L103.219706,18.118212 L103.219706,21.7781766 C103.699988,21.9635711 104.202901,22.0562683 104.729702,22.0562683 C105.462069,22.0562683 106.061164,21.8639373 106.527616,21.4805365 C106.993439,21.0971357 107.226665,20.603381 107.226665,19.9992724 C107.226665,19.6114574 107.116024,19.2690451 106.896628,18.971405 C106.675975,18.6737649 106.376113,18.4574713 105.995157,18.3218937 C105.615457,18.1863161 105.05911,18.118212 104.326743,18.118212 Z M116.985063,18.6485411 L116.985063,22.9681065 L115.414717,22.9681065 L115.414717,19.6574907 C115.414717,18.9978899 115.297161,18.5381873 115.062678,18.2771216 C114.828195,18.0166865 114.41895,17.8861536 113.83557,17.8861536 C113.509306,17.8861536 113.210072,17.9422764 112.938499,18.0545221 C112.666298,18.1667677 112.356378,18.3647741 112.007482,18.6491717 L112.007482,22.9687371 L110.445937,22.9687371 L110.445937,17.0197182 L112.007482,17.0197182 L112.007482,17.8016541 C112.802713,17.2032209 113.580971,16.9030584 114.342255,16.9030584 C115.343052,16.9030584 116.118167,17.2606049 116.667599,17.9763285 C117.502435,17.2524072 118.375618,16.8898159 119.285261,16.8898159 C120.051575,16.8898159 120.682731,17.1010647 121.177472,17.5235624 C121.672212,17.94606 121.919897,18.5905265 121.919897,19.4563314 L121.919897,22.9674759 L120.358352,22.9674759 L120.358352,19.4437195 C120.358352,18.9480731 120.223823,18.5684558 119.954764,18.3054983 C119.685706,18.0425408 119.29972,17.9107468 118.796179,17.9107468 C118.149307,17.9113774 117.545811,18.1573088 116.985063,18.6485411 Z M130.793797,20.0970144 L125.241009,20.0970144 C125.280613,20.6658097 125.533955,21.1185758 126.000407,21.4546822 C126.466859,21.7907885 127.069097,21.9591569 127.807122,21.9591569 C128.836837,21.9591569 129.786085,21.7176396 130.656124,21.2352356 L130.656124,22.3860687 C130.175214,22.627586 129.699332,22.7997381 129.227223,22.9031554 C128.755113,23.0065727 128.201909,23.0582814 127.566353,23.0582814 C126.696942,23.0582814 125.992864,22.9220732 125.455375,22.650918 C124.917887,22.3785016 124.487268,22.013388 124.164146,21.5549465 C123.840396,21.0952439 123.679464,20.5649147 123.679464,19.9614368 C123.679464,19.0559045 124.019559,18.3193713 124.700377,17.7530984 C125.381196,17.1861949 126.265065,16.9024278 127.352615,16.9024278 C128.399302,16.9024278 129.234767,17.1786277 129.858379,17.7297664 C130.481362,18.2815357 130.793797,19.0212219 130.793797,19.9475637 L130.793797,20.0970144 Z M125.274955,19.3926415 L129.247968,19.3926415 C129.208364,18.9228493 129.022286,18.5608887 128.690363,18.3061289 C128.358441,18.0519997 127.912105,17.9246198 127.351357,17.9246198 C126.789981,17.9246198 126.331701,18.0519997 125.974004,18.3061289 C125.616936,18.5602581 125.38371,18.9228493 125.274955,19.3926415 Z M134.046387,17.0190876 L134.046387,17.7751692 C134.74355,17.193762 135.536266,16.9024278 136.423279,16.9024278 C136.914877,16.9024278 137.373156,16.998278 137.796232,17.1899784 C138.219936,17.3823094 138.5418,17.6452669 138.761825,17.9788509 C138.982478,18.3130654 139.091861,18.8421333 139.091861,19.5666853 L139.091861,22.9681065 L137.530316,22.9681065 L137.530316,19.5799277 C137.530316,18.9720356 137.407731,18.5381873 137.161304,18.2771216 C136.914877,18.0166865 136.503117,17.8861536 135.925395,17.8861536 C135.187371,17.8861536 134.560615,18.1636148 134.046387,18.7204288 L134.046387,22.9681065 L132.449638,22.9681065 L132.449638,17.0190876 L134.046387,17.0190876 Z M140.164952,17.963086 L143.100078,15.7906915 L143.100078,17.0190876 L145.597041,17.0190876 L145.597041,18.0797458 L143.100078,18.0797458 L143.100078,20.9962407 C143.100078,21.6772817 143.474748,22.0171715 144.224088,22.0171715 C144.784836,22.0171715 145.377017,21.875288 146,21.5908903 L146,22.6893842 C145.399648,22.944144 144.744603,23.0708933 144.034867,23.0708933 C143.319474,23.0708933 142.724779,22.9138755 142.250155,22.5992093 C142.101167,22.5046203 141.977953,22.3974194 141.881143,22.2788678 C141.783703,22.1603163 141.70198,22.0045597 141.635972,21.8134898 C141.570594,21.6211588 141.537276,21.2560452 141.537276,20.7175184 L141.537276,18.0791152 L140.164323,18.0791152 L140.164323,17.963086 L140.164952,17.963086 Z M47.3511448,11.9617278 C47.3511448,18.5690864 36.7509961,23.9240862 23.6758867,23.9240862 C10.5995201,23.9240862 0,18.5690864 0,11.9617278 C0,5.35563047 10.5995201,0 23.6758867,0 C36.7503674,0.000630593485 47.3511448,5.35626107 47.3511448,11.9617278 Z M18.4273609,19.5130848 C20.0693719,19.804419 21.8358538,19.962698 23.6758867,19.962698 C32.4209152,19.962698 39.5101025,16.380927 39.5101025,11.9617278 C39.5101025,7.54315927 32.4209152,3.96075768 23.6758867,3.96075768 C21.8358538,3.96075768 20.0700005,4.11966724 18.4273609,4.41100143 L18.4273609,19.5130848 Z" id="Combined-Shape"></path>
+				</svg>
+			</a>
+						<a href="https://www.obdev.at/" class="mobile logo">
+				<svg width="32px" height="16px" viewBox="0 0 32 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path id="Shape" fill="#000000" fill-rule="evenodd" d="M32,7.99978914 C32,12.4186721 24.8363979,16 16.0002124,16 C7.16317725,16 0,12.4186721 0,7.99978914 C0,3.58174965 7.16317725,0 16.0002124,0 C24.8359731,0.000421729619 32,3.58217138 32,7.99978914 Z M12.453248,13.0500013 C13.5629223,13.2448404 14.7567144,13.3506945 16.0002124,13.3506945 C21.9101204,13.3506945 26.7010077,10.9552703 26.7010077,7.99978914 C26.7010077,5.0447297 21.9101204,2.64888373 16.0002124,2.64888373 C14.7567144,2.64888373 13.5633472,2.7551596 12.453248,2.94999868 L12.453248,13.0500013 Z" id="OBDEV-:-Mobile"></path>
+				</svg>
+			</a>
+
+						<label for="mm-trigger">
+				<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<polygon id="ShapeExpanded" stroke="none" fill="#000000" fill-rule="evenodd" points="9.07106781 5.82842712 14.7279221 11.4852814 16.1421356 10.0710678 9.77817459 3.70710678 9.07106781 3 2 10.0710678 3.41421356 11.4852814"></polygon>
+					<path d="M0,0 L18,0 L18,2 L0,2 L0,0 Z M0,6 L18,6 L18,8 L0,8 L0,6 Z M0,12 L18,12 L18,14 L0,14 L0,12 Z" id="ShapeCollapsed" stroke="none" fill="#000000" fill-rule="evenodd"></path>
+				</svg>
+			</label>
+
+			<nav role="main">
+				<a href="https://www.obdev.at/products/" class="entry desktop">
+					Products				</a>
+
+																				<a href="https://www.obdev.at/products/littlesnitch" class="entry mobile">
+							<img src="https://www.obdev.at/Images/product-icons/littlesnitch_32.png" srcset="https://www.obdev.at/Images/product-icons/littlesnitch_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Little Snitch						</a>
+											<a href="https://www.obdev.at/products/littlesnitch-mini" class="entry mobile">
+							<img src="https://www.obdev.at/Images/product-icons/littlesnitch_mini_32.png" srcset="https://www.obdev.at/Images/product-icons/littlesnitch_mini_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Little Snitch Mini						</a>
+											<a href="https://www.obdev.at/products/microsnitch" class="entry mobile">
+							<img src="https://www.obdev.at/Images/product-icons/microsnitch_32.png" srcset="https://www.obdev.at/Images/product-icons/microsnitch_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Micro Snitch						</a>
+											<a href="https://www.obdev.at/products/launchbar" class="entry mobile">
+							<img src="https://www.obdev.at/Images/product-icons/launchbar_32.png" srcset="https://www.obdev.at/Images/product-icons/launchbar_32@2x.png 2x"  width="32" height="32" border="0" alt="" />LaunchBar						</a>
+											<a href="https://www.obdev.at/products/iapviewer" class="entry mobile">
+							<img src="https://www.obdev.at/Images/product-icons/iapviewer_32.png" srcset="https://www.obdev.at/Images/product-icons/iapviewer_32@2x.png 2x"  width="32" height="32" border="0" alt="" />Internet Access Policy Viewer						</a>
+					
+					<a href="https://www.obdev.at/products/" class="entry mobile more">
+						<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<defs></defs>
+							<path d="M11,22 C4.92486775,22 0,17.0751322 0,11 C0,4.92486775 4.92486775,0 11,0 C17.0751322,0 22,4.92486775 22,11 C22,17.0751322 17.0751322,22 11,22 Z M11,21 C16.5228475,21 21,16.5228475 21,11 C21,5.4771525 16.5228475,1 11,1 C5.4771525,1 1,5.4771525 1,11 C1,16.5228475 5.4771525,21 11,21 Z M5.5,12.5714286 C4.63212396,12.5714286 3.92857143,11.867876 3.92857143,11 C3.92857143,10.132124 4.63212396,9.42857143 5.5,9.42857143 C6.36787604,9.42857143 7.07142857,10.132124 7.07142857,11 C7.07142857,11.867876 6.36787604,12.5714286 5.5,12.5714286 Z M11,12.5714286 C10.132124,12.5714286 9.42857143,11.867876 9.42857143,11 C9.42857143,10.132124 10.132124,9.42857143 11,9.42857143 C11.867876,9.42857143 12.5714286,10.132124 12.5714286,11 C12.5714286,11.867876 11.867876,12.5714286 11,12.5714286 Z M16.5,12.5714286 C15.632124,12.5714286 14.9285714,11.867876 14.9285714,11 C14.9285714,10.132124 15.632124,9.42857143 16.5,9.42857143 C17.367876,9.42857143 18.0714286,10.132124 18.0714286,11 C18.0714286,11.867876 17.367876,12.5714286 16.5,12.5714286 Z" id="Shape" stroke="none" fill="#000000" fill-rule="evenodd"></path>
+						</svg>
+						More Products					</a>
+
+									
+				<a href="https://www.obdev.at/shop/" class="entry">Shop</a>
+				<a href="https://www.obdev.at/support?product=LS" class="entry">Support</a>
+				<a href="https://www.obdev.at/blog/" class="entry">Blog</a>
+
+				
+							</nav>
+		</header>
+
+							<input type="checkbox" id="sm-trigger" class="sm-trigger">
+			<nav role="sub">
+				<a href="https://www.obdev.at/products/littlesnitch/index.html" class="home">Little Snitch</a>
+
+<div class="entries">
+<a href="https://www.obdev.at/products/littlesnitch/whatsnew.html">What’s New</a>
+<a href="https://www.obdev.at/products/littlesnitch/compare.html">Compare</a>
+<a href="https://www.obdev.at/products/littlesnitch/download.html">Download</a>
+<a href="https://www.obdev.at/products/littlesnitch/order.html" class="buy-now">Buy</a>
+</div>
+
+				<label for="sm-trigger">Menu</label>
+			</nav>
+		
+				<div id="menu-overlay"></div>
+		<div class="pageContent">
+
+<section class="header-text-only">
+    <div class="title">
+        <h1>Release Notes</h1>
+    </div>
+</section>
+
+<section class="changelogs">
+<div class="changelog-entry" id="version-7212">
+<div class="date"><span>June 22, 2026</span></div>
+<div class="details">
+<h3 id="first-releasenotes-headline">Little Snitch 6.4.1 <span class="buildnumber">(7212)</span></h3>
+<div class="changes">
+<h4>Hot Fix</h4>
+<p>Fixes an issue where some older licenses were not accepted, causing Little Snitch to fall back to demo mode.</p>
+<p>If you are not affected by this issue, you may skip this update.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-7208">
+<div class="date"><span>June 21, 2026</span></div>
+<div class="details">
+<h3>Little Snitch 6.4 <span class="buildnumber">(7208)</span></h3>
+<div class="changes">
+<h4>New Features</h4>
+<h5>macOS 26 Tahoe</h5>
+<ul>
+<li>Menu icons are now displayed throughout the app on macOS Tahoe, including the main menu, context menus in the rule list and sidebar, and the connection list context menus in Network Monitor.</li>
+<li>The menu icons are slightly enlarged (compared to the rather tiny standard size on macOS Tahoe), which results in a crisper, easier to read appearance that is in general much more pleasing to the eye.</li>
+<li>If you prefer not to have icons in these menus, you can turn them off with the following Terminal commands:
+<pre><code>defaults write at.obdev.littlesnitch NSMenuEnableActionImages -bool false
+defaults write at.obdev.littlesnitch.networkmonitor NSMenuEnableActionImages -bool false</code></pre></li>
+</ul>
+<h5>Rules &amp; Configuration</h5>
+<ul>
+<li><strong>Unlock Configuration Until Quit</strong>: You can now temporarily unlock a locked configuration for the duration of the current session via the menu bar, without permanently disabling the lock.</li>
+<li><strong>Change locked settings with authentication</strong>: Locked settings in the Control Center can now be changed directly with Touch ID or password authentication, without having to unlock the entire configuration first.</li>
+<li><strong>Copy rules between profiles via drag &amp; drop</strong>: Holding the Option key while dragging rules to another profile now creates a copy of the rule in the destination profile, instead of moving it.</li>
+<li><strong>Hourly update interval for blocklists and remote rule groups</strong>: In addition to the existing daily update schedule, blocklists and remote rule groups can now be configured to update hourly.</li>
+</ul>
+<h5>Network &amp; Security</h5>
+<ul>
+<li><strong>App bundle integrity monitoring</strong>: Little Snitch now monitors the integrity of its app bundle not only at app start (like before) but also while the app is running, presenting a warning dialog if an unexpected modification of its app components was detected.</li>
+<li><strong>Biometric Authentication for Software Update</strong>: The Software Update process now supports Touch ID / Face ID authentication.</li>
+<li><strong>DNS4EU</strong>: The dns0.eu encryption service has discontinued its operations. Its DNS encryption preset has therefore been replaced with DNS4EU, which provides unfiltered DNS resolution in compliance with European data protection standards.</li>
+<li><strong>Unfiltered Quad9 DoH and DoT</strong>: The Quad9 DNS encryption preset now uses the unfiltered Quad9 endpoints (9.9.9.10 / 149.112.112.10).</li>
+</ul>
+<h4>Improvements</h4>
+<h5>Network Monitor</h5>
+<ul>
+<li>Clicking an already selected location in the map (which filters the connection list to show only connections to that country/region/city) now clears that selection to reset the location filter.</li>
+<li>App connection nodes are now automatically expanded when the “From Now” filter mode is active.</li>
+<li>Connections to 0.0.0.0 are no longer shown in Network Monitor.</li>
+<li>Improved selection behavior in the connection list.</li>
+<li>Path information for a connection is now displayed as two separate entries in the inspector: the main executable path and the “via” path (e.g., for helper processes).</li>
+<li>The “Include local network traffic” option in Settings &gt; Monitor now affects both the connection list and the traffic shown in the status menu. The separate setting in Settings &gt; Status Menu has been removed.</li>
+<li>The “Keep Above Other Windows” / “Keep Window in Front” menu items have been renamed to “Float on Top” for consistency across Little Snitch and Little Snitch Mini.</li>
+<li>Using the term “traffic volume” instead of “traffic amount”.</li>
+<li>Menu items in the Network Monitor menu bar have been reorganized.</li>
+<li>Connection list expansion states are now cached for 5 minutes after a connection disappears from the list, so re-appearing connections restore their previous expand/collapse state.</li>
+<li>Improved search field appearance when the window doesn’t have keyboard focus.</li>
+</ul>
+<h5>Rules Window</h5>
+<ul>
+<li>When a new rule is added, the UI now automatically switches to the sidebar group or profile where the rule was added.</li>
+<li>When editing a rule and changing the destination type to domain, hostname, or IP address, the destination text field is now automatically focused for faster editing.</li>
+<li>A “Confirm” button has been added to the Notes editor in the inspector, so changes can be confirmed more straightforward, without having to click outside the text field.</li>
+<li>The “Focus on Rules Affecting Process” action now correctly activates the “Active Rules” quick filter.</li>
+<li>The “Lock Configuration” command can now also be invoked with the Command-L keyboard shortcut.</li>
+<li>Toolbar popovers (unlocking the configuration or enabling the network filter) can now be confirmed with the Return key.</li>
+</ul>
+<h5>Connection Alert</h5>
+<ul>
+<li>Mouse clicks in the segmented control of the connection alert are now more reliably recognized.</li>
+</ul>
+<h5>Performance</h5>
+<ul>
+<li>Improved performance when filtering and sorting large blocklists.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>The “Ghostty” terminal application is now correctly recognized by its new bundle identifier.</li>
+<li>Badge counts in the rules window are now correctly recalculated when a filter is selected.</li>
+<li>Fixed a crash that could occur when setting a license key inside a virtual machine.</li>
+<li>Fixed a bug in the network filter’s internal resource management that could cause connection handling issues.</li>
+<li>Fixed a bug where TLS ClientHello data that was split across multiple QUIC initial packets was not correctly reassembled, which could prevent determining the server's hostname for some connections, showing only the IP address instead.</li>
+<li>Items in the map context menu were incorrectly disabled.</li>
+<li>Fixed a bug where icons were missing in column headers of the rule list.</li>
+<li>Fixed incorrect localization of button labels in the code signature issue alert in Network Monitor.</li>
+<li>Fixed a bug where app icons were not updated in the connection list when changing the icon appearance or switching between light and dark mode.</li>
+<li>Fixed incorrect coloring of map connection lines when the system appearance (dark/light mode) did change.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7172">
+<div class="date"><span>November 19, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.3.3 <span class="buildnumber">(7172)</span></h3>
+<div class="changes">
+<ul>
+<li>Using the DNS4EU service for DNS encryption as a replacement for dns0.eu, which recently ceased operations.</li>
+<li>Fixed a daemon crash when running Little Snitch on macOS 26.1 in a virtual machine.</li>
+<li>Improved QUIC parsing to properly handle fragmented initial packets.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7171">
+<div class="date"><span>October 6, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.3.2 <span class="buildnumber">(7171)</span></h3>
+<div class="changes">
+<p>This update fixes a potential crash of the Little Snitch network extension that could disconnect all currently active connections.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-7168">
+<div class="date"><span>September 15, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.3.1 <span class="buildnumber">(7168)</span></h3>
+<div class="changes">
+<p>This version fixes an incompatibility with macOS 14 Sonoma that was introduced in Little Snitch 6.3.</p>
+<p>When DNS encryption was enabled on macOS 14 Sonoma this could cause the network filter module to crash, resulting in loss of network connectivity or a non-functional filter. This issue has now been resolved.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-7166">
+<div class="date"><span>September 9, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.3 <span class="buildnumber">(7166)</span></h3>
+<div class="changes">
+<h4>New Features and Improvements</h4>
+<h5>General</h5>
+<ul>
+<li>Added support for macOS 26 Tahoe.</li>
+<li>Added Internet Access Policy support for Safari web apps added to the Dock.</li>
+<li>Improved loading of blocklist to treat semicolon-prefixed text as comments, preventing false positives.</li>
+<li>Improved display of app bundle paths in the inspector of Network Monitor and in the rules window.</li>
+<li>Connections made by an app on behalf of Password AutoFill (typically to fetch website icons) are now attributed to the Password AutoFill helper process instead of the app itself.</li>
+<li>Connections from XPC helper processes used by app extensions are now attributed to their corresponding extension.</li>
+<li>Improved parent process detection for apps running a copy of themselves from a temporary folder.</li>
+</ul>
+<h5>Configuration</h5>
+<ul>
+<li>Added quick filters to the search field for showing only active or inactive rules in the rule list.</li>
+<li>Added action menus for some fields in the rule inspector (for example to change the process owner setting of a rule).</li>
+<li>Improved the header section of the rule list to better describe the current contents of the list (the number of rules currently shown, the kind of filter currently applied, etc.).</li>
+</ul>
+<h5>Status Menu and Connection Alert</h5>
+<ul>
+<li>Improved appearance of headings in the status menu.</li>
+<li>Selecting an app from the “Recent Network Activity” list in the status menu now focusses on connections of only that app in Network Monitor.</li>
+<li>When a process declares a custom process name at runtime that differs from the actual name on disk, that custom name is now also shown in the details section of the connection alert.</li>
+</ul>
+<h5>Network Monitor</h5>
+<ul>
+<li>Improved responsiveness when allowing or denying connections from the connection list.</li>
+<li>Reduced energy consumption by disabling animations while the window is not visible (either hidden or covered by other windows).</li>
+<li>Sorting the connection list by name now shows app groups (like “macOS”) always at the top.</li>
+<li>Added a “Focus on” context menu option in Network Monitor to focus the list on connections for a particular app, process, domain, or country.</li>
+<li>The inspector now shows a warning triangle next to the Code ID of a process if that ID no longer matches the ID of the corresponding executable on disk. This can happen typically when the developer has changed the bundle identifier of their app with an update.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<h5>General</h5>
+<ul>
+<li>Fixed incorrect parsing of small IPv6 address blocks in blocklists (e.g. /128 was incorrectly imported as /12).</li>
+</ul>
+<h5>Network Monitor</h5>
+<ul>
+<li>Showing correct icons and localized names for iOS/iPadOS apps running natively on macOS.</li>
+<li>Fixed incorrect geographic attribution of Private Relay connections to Åland.</li>
+</ul>
+<h5>Configuration</h5>
+<ul>
+<li>Display the Welcome window and setup questions correctly after reinstalling, even if a previous installation was incomplete.</li>
+<li>Fixed a crash caused by rule usage counts exceeding 4 billion.</li>
+<li>Fixed the “Networks” sidebar not updating after changing profile details.</li>
+<li>Fixed the “Automatic Profile Switching” pane not updating after changing profile details.</li>
+<li>Fixed search scope changes not applying while focusing on a set of rules.</li>
+<li>Fixed the highlight color of the Notes field in the inspector updating incorrectly when switching system appearance between dark and light.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7153">
+<div class="date"><span>March 11, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.2.3 <span class="buildnumber">(7153)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>Improved compatibility with programs using UDP communication by avoiding deep packet inspection for most UDP traffic.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed an issue causing some rules in the Configuration window to be shown with their Code ID instead of the process name.</li>
+<li>Fixed a crash of Network Monitor when opening the connection inspector.</li>
+<li>Fixed detection of Wi-Fi networks for Automatic Profile Switching when the router cannot not be found.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7151">
+<div class="date"><span>February 26, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.2.2 <span class="buildnumber">(7151)</span></h3>
+<div class="changes">
+<h4>Software Update Hot Fix</h4>
+<p>This version fixes a bug introduced in the previous version, 6.2.1: For some users, the automatic software update fails to check for new versions.</p>
+<p><strong>As a result, affected users are not notified when a new version of Little Snitch (such as this one, which resolves the issue) becomes available.</strong> Instead, they must manually check for updates by selecting “Check for Updates” from the “Little Snitch” menu within the application.</p>
+<p>We therefore highly recommend that all users of Little Snitch 6.2.1 install the 6.2.2 update.</p>
+<h4>Other Bug Fixes</h4>
+<ul>
+<li>Fixes an issue in the map of Network Monitor causing incorrect city names to be shown for connections to Africa.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7149">
+<div class="date"><span>February 18, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.2.1 <span class="buildnumber">(7149)</span></h3>
+<div class="changes">
+<h4>Network Monitor</h4>
+<ul>
+<li>Connections from helper processes that are contained within an app bundle are now attributed to their parent app in the connection list of Network Monitor, so they no longer show up as separate, nested connections.</li>
+<li>The connection list now shows more useful names for XPC helper processes running from a temporary, random path which may no longer exist.</li>
+<li>Improved information shown in the inspector’s header section when an app group or app extension is selected.</li>
+</ul>
+<h4>Configuration</h4>
+<ul>
+<li>The rule list now shows an info text overlay for empty search and filter results (explaining why the list is empty).</li>
+</ul>
+<h4>Connection Alert</h4>
+<ul>
+<li>If the Network Extension frameworks provides the URL leading to a connection, this information is now shown in the details section of the connection alert.</li>
+</ul>
+<h4>Bug Fixes and Improvements</h4>
+<ul>
+<li>Improved the installation process to initiate a retry sequence if the Agent process did not start after installation.</li>
+<li>Fixed a missing localization in the Endpoint Security installation dialog on macOS Sonoma. This bug prevented the installation of the Endpoint Security system extension on Sonoma.</li>
+<li>The “Select All” and “Deselect All” commands no longer worked in Network Monitor.</li>
+<li>The Command-Delete keyboard shortcut for removing connections from the connection list no longer worked in Network Monitor.</li>
+<li>Fixed the incorrect appearance of another “Private Relay” label, shown in the map.</li>
+<li>Fixed an issue causing updates of the geolocation database to happen too often or not at all.</li>
+<li>Fixed a display issue in Network Monitor when hovering certain elements in the inspector with the mouse, causing the displayed icon to overlap with the underlying text.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7147">
+<div class="date"><span>February 3, 2025</span></div>
+<div class="details">
+<h3>Little Snitch 6.2 <span class="buildnumber">(7147)</span></h3>
+<div class="changes">
+<h4>Network Monitor</h4>
+<ul>
+<li>New option in context menu of Network Monitor to focus on connections of a particular process.</li>
+<li>Connections of other users are now hidden by default in Network Monitor to prevent confusion of having e.g. multiple instances of Safari and Mail (owned by different users) shown in the connection list. You can still enable the display of these connections in the view options menu in the toolbar, by choosing “Show Connections of Other Users”.</li>
+<li>Improved display of connections without an existing allow or deny rule in the connection list, showing a completely empty allow/deny button instead of no button at all.</li>
+<li>Improved display of connections via iCloud Private Relay on the map. Since the actual IP address of the server is unknown for these connections, it’s not possible to determine their actual location. Little Snitch therefore collects all these connections under a virtual location labeled “Private Relay”.</li>
+<li>Improved keyboard navigation in connection list to expand the “more items” section by pressing the right arrow key twice.</li>
+<li>Improved display of process paths in the inspector view.</li>
+<li>Clicking a process path in the inspector now opens a menu offering to show the app in Finder or to copy the path.</li>
+</ul>
+<h4>Configuration</h4>
+<ul>
+<li>Added several new filter options in the rule window, accessibly by long-clicking the filter buttons in the search field.</li>
+<li>When viewing the contents of a blocklist, there’s now a new “Used Entries” section (which is shown by default), presenting only those blocklist entries that have been used at least once.</li>
+<li>Preventing the search string from getting cleared when switching between different blocklists.</li>
+</ul>
+<h4>Other new features and improvements</h4>
+<ul>
+<li>Improved accessibility via VoiceOver.</li>
+<li>Improved Wi-Fi name detection using the CoreWLAN API in favor of other methods. Wi-Fi name detection is required for Automatic Profile Switching.</li>
+<li>Improved installer to better handle Agent installation issues.</li>
+<li>Further improved detection of Homebrew executable paths.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed a rare crash or hang due to a leak of file descriptors when Automatic Profile Switching is enabled.</li>
+<li>Fixed a bug in the <code>littlesnitch rulegroup</code> Terminal command where the requested rule group or blocklist was not found.</li>
+<li>Fixed a bug where clicking the “Delete All Redundant Rules” button in the Redundant Rules filter section did nothing.</li>
+<li>Fixed an issue causing the map to open with a rather small width after launching the Network Monitor.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7141">
+<div class="date"><span>November 20, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.1.3 <span class="buildnumber">(7141)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>DNS encryption now supports password authentication to DoH servers (DNS over HTTP).</li>
+<li>Improved detection of Wi-Fi network changes for automatic profile switching.</li>
+<li>Improved responsiveness of Network Monitor when selecting a time range in the traffic chart.</li>
+<li>Improved accessibility via VoiceOver.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed dimming of status menu icon on inactive display.</li>
+<li>Fixed a bug where traffic meters in Network Monitor did not update correctly.</li>
+<li>Fixed a bug where the creation of rule groups for Apple Apps or Third Party Apps did not complete.</li>
+<li>Fixed possible deadlock during installation of Little Snitch for certain network configurations.</li>
+<li>Fixed a rare bug where the rule inspector in Little Snitch could stop working.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7132">
+<div class="date"><span>October 15, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.1.2 <span class="buildnumber">(7132)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>Added a hovering effect to Internet Access Policy buttons in the connection list of Network Monitor to indicate that they can be clicked.</li>
+<li>Improved handling of connection errors in DNS encryption.</li>
+<li>Update “Last Used” statistics also for “Ask”-rules.</li>
+<li>Preserve the traffic chart zoom level when Network Monitor is restarted.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<h5>Network Monitor</h5>
+<ul>
+<li>Fixed: Some text input methods like Chinese or Japanese did not work in the search field.</li>
+<li>Fixed: The Internet Access Policy button was incorrectly shown for the “Local Network” group of a connection.</li>
+<li>Fixed a flickering of Internet Access Policy buttons and rule management buttons when scrolling quickly through a large list of connections.</li>
+<li>Fixed a possible crash on startup of Network Monitor.</li>
+<li>Fixed false labeling of weekdays in the traffic chart when the “First day of week” setting in System Settings was different from “Monday”.</li>
+</ul>
+<h5>Little Snitch App</h5>
+<ul>
+<li>Fixed a crash when a rule for an app with a corrupted <code>Info.plist</code> file was found.</li>
+<li>Fixed a bug where changes of a rule’s remote endpoint did not become effective until another rule change occurred.</li>
+<li>Fixed incorrect updates of the rule list when rules were added or removed via Network Monitor.</li>
+</ul>
+<h5>Connection Alert</h5>
+<ul>
+<li>Fixed a bug where a connection alert incorrectly reported a change in the authorship of a TestFlight app, although the original and new author were identical.</li>
+</ul>
+<h5>Status Menu</h5>
+<ul>
+<li>Fixed behavior when clicking a recently denied connection which was denied by an IP address rule.</li>
+</ul>
+<h4>Mass Deployment</h4>
+<p>For installing Little Snitch via Mass Deployment, the initial confirmation dialogs can be suppressed via command line arguments to the app. Pass</p>
+<pre><code>-AcceptLicenseAgreementAutomatically YES \
+-PerformInstallationAutomatically YES</code></pre>
+<p>to suppress both dialogs. Note that the network extension can be allowed via a <code>.mobileconfig</code> file before installation.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-7124">
+<div class="date"><span>September 18, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.1.1 <span class="buildnumber">(7124)</span></h3>
+<div class="changes">
+<p>This version fixes a problem where DNS lookups would leave the computer unencrypted although DNS encryption has been turned on.</p>
+<p>This bug was new in 6.1, previous versions are not affected.</p>
+</div></div></div>
+<div class="changelog-entry" id="version-7119">
+<div class="date"><span>September 16, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.1 <span class="buildnumber">(7119)</span></h3>
+<div class="changes">
+<h4>Compatibility with macOS 15 Sequoia</h4>
+<ul>
+<li>Updated installation instructions that are shown during the first-time installation of Little Snitch. On macOS Sequoia the Little Snitch Network Extension now has to be enabled in a different location in System Settings: The UI for enabling the extension has been moved to <em>Login Items &amp; Extensions &gt; Extensions &gt; Network Extensions</em>.</li>
+</ul>
+<h4>Customization of Status Icon in the Menu Bar</h4>
+<ul>
+<li>The appearance of the Little Snitch status icon can now be customized in more detail under <em>Settings &gt; Status Menu</em>.</li>
+<li>The flashing indication when a connection is blocked can now be turned off.</li>
+<li>Each component of the status icon can now be separately configured to be colored or monochrome.</li>
+<li>It is now possible to choose an appearance that shows numerical data rates only, without a graphical traffic meter.</li>
+<li>The indication of an active silent mode can now be turned off.</li>
+</ul>
+<h4>Improved Internet Access Policy Support</h4>
+<ul>
+<li>The availability of an Internet Access Policy for a particular app or connection is now indicated by an icon in the connection list and the rule list.</li>
+<li>Clicking on that icon opens a popover containing information from the app developer, explaining the app or connection in more detail.</li>
+<li>A filter option has been added to the filter menu in the search bar, allowing you to show only rules for apps that include an Internet Access Policy.</li>
+</ul>
+<h4>Other Improvements</h4>
+<ul>
+<li>Further increased the precedence of blocklists over all other rules. A blocklist now always has the highest precedence. To override a blocklist entry with a rule (e.g., by creating a rule to allow connections to x.com, even though these connections are blocked by a blocklist) it is now necessary to explicitly increase the priority of that rule using the “Increase Priority” command from the context menu.</li>
+<li>Allowing connections that are currently blocked by a blocklist via Network Monitor now allows you to creates rules with increased priority so they can reliably override the blocklist entry.</li>
+<li>Selecting a recently denied connection from the status menu or selecting an app from the Recent Network Activity list now better focusses on those connections in Network Monitor.</li>
+<li>Selecting a recently denied connection from the status menu with the Option key held down now shows the rule that’s responsible for the denial of that connection.</li>
+<li>Improved “Show Corresponding Rules” command in Network Monitor to show all rules that are somehow affecting the selected connection and sort them by precedence.</li>
+<li>Deleting a profile that has networks assigned for Automatic Profile Switching no longer deletes those networks but keeps them available for assigning them to a different profile.</li>
+<li>Reduced update frequency of traffic rates shown in the Inspector view of Network Monitor.</li>
+<li>Improved determination of the hostname for a given IP address.</li>
+<li>Improved the appearance of pressed Allow/Deny buttons in the connection alert.</li>
+<li>Improved Automatic Profile Switching to always add newly joined networks to the list of known networks.</li>
+<li>Improved the display of blocklist updates in Notification Center to also show the number of blocklist entries that have been added or removed.</li>
+<li>Improved the display of domain blocklist entries with increased emphasis on the name of the blocked domain.</li>
+<li>Added limited support for blocklists in the Adblock format.</li>
+<li>Improved sorting by domain names (rules and blocklist entries). They are now sorted strictly alphabetically instead of being grouped by organization domain.</li>
+<li>Added an Internet Access Policy to the Little Snitch Network Extension.</li>
+<li>Improved display of system extensions in the connection list, showing their localized display names, if available.</li>
+<li>Renamed the “Unix Process” filter option to “Background Process”.</li>
+<li>Improved the detection of Wi-Fi SSIDs for Automatic Profile Switching.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Fixed: Sorting blocklist entries by their enabled state did not sub-sort the list by domain/hostname.</li>
+<li>The “Lock/Unlock Configuration” menu command was incorrectly disabled when the “Networks” section was selected.</li>
+<li>Fixed a potential crash when selecting an entry in the filter sidebar of the Little Snitch app after invoking Show Corresponding Rules in Network Monitor.</li>
+<li>Fixed: The “Background Processes” rule filter in the rule list incorrectly included “Any Process” rules, as well as rules for widgets and Safari, in the filter results.</li>
+<li>Fixed: Opening the Network Monitor window using the keyboard shortcut did not work immediately after closing the window with Command-W.</li>
+<li>Fixed: Changes to a rule’s priority were not immediately applied to the network filter.</li>
+<li>Fixed: The increased priority of rules was sometimes incorrectly indicated as being “unnecessary”.</li>
+<li>Fixed a minor drawing glitch in the traffic chart displayed in the status menu.</li>
+<li>Fixed: Blocklists sometimes incorrectly appeared in the Rule Groups section of the sidebar.</li>
+<li>Fixed a potential crash of the Little Snitch Network Extension.</li>
+<li>Fixed some typos in UI labels.</li>
+<li>Added missing German localization for “Effective in all profiles” in the sidebar.</li>
+<li>Added missing German localization for the title of the “Lock Configuration” menu item.</li>
+<li>Added missing German localization in the rule filter picker.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7111">
+<div class="date"><span>August 1, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.0.4 <span class="buildnumber">(7111)</span></h3>
+<div class="changes">
+<h4>Bug Fix for users upgrading from Little Snitch 5</h4>
+<ul>
+<li>When upgrading from Little Snitch 5 to version 6.0.3, the existing rules and setting were not preserved but reset to the factory settings. This bug has been fixed in this version.</li>
+<li>If you have been affected by this bug, you can restore your previous rules and settings by choosing <em>File &gt; Restore from Backup</em> from the menu bar in the Little Snitch app.</li>
+<li>A backup file of your Little Snitch 5 configuration can be found in the <code>/Library/Application Support/Objective Development/Little Snitch</code> folder.</li>
+<li>The name of that backup file is<br><code>configuration5_YYYY-MM-DD_hh.mm.ss_crashOnLoad-5.xpl</code><br>(the middle part of the filename is the date/time when the backup was created).</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7108">
+<div class="date"><span>July 24, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.0.3 <span class="buildnumber">(7108)</span></h3>
+<div class="changes">
+<h4>Improved Demo Mode</h4>
+<ul>
+<li>Little Snitch now offers a free, fully featured 30-day trial for existing customers with a valid license for version 5.</li>
+<li>New users without a license can still run Little Snitch in demo mode, where the network filter is turned off after each three hours of operation.</li>
+<li>The current status of the trial is shown in the toolbar of the rules window and in Network Monitor.</li>
+<li>New <code>littlesnitch restrictions</code> Terminal command to query the status of the trial.</li>
+</ul>
+<h4>New Features and Improvements</h4>
+<ul>
+<li>Increased precedence of blocklists so they can block connections that would otherwise be allowed by Any Process / Domain rules.</li>
+<li>New <code>littlesnitch profile</code> command to enable disable profiles.</li>
+<li>New <code>littlesnitch rulegroup</code> command to enable or disable rule groups.</li>
+<li>New option <code>--preserve-terminal-access</code> for <code>littlesnitch restore-model</code> to prevent lockout.</li>
+<li>Debugging of DNS encryption problems is now easier: If errors occurred recently, an error log is available in the DNS Encryption settings pane of Little Snitch.</li>
+<li>A “Troubleshooting” menu is added to the Help menu when it’s opened with the Option key held down.</li>
+<li>When copying rules from the rules window, blocklists are now represented as reference to the blocklist URL, not by copying a list of all blocklist entries.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>When deciding about DNS encryption exceptions, Little Snitch now also considers DNS queries of type MX, PTR and others.</li>
+<li>When an error occurs in the connection to an encrypted DNS server, Little Snitch now always attempts to reconnect to the server.</li>
+<li>Fixed: When importing a backup, DNS encryption settings were not restored.</li>
+<li>Fixed: Settings for enabled and disabled notifications were not correctly encoded in a backup.</li>
+<li>Preventing the creation of invalid rules when pasting into the rules window.</li>
+<li>When deleting a selected blocklist, rule group or profile, the selection in the sidebar now switches back to “All Rules”.</li>
+<li>Fixed a crash in Network Monitor when right-clicking on “Incoming Connections”.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7104">
+<div class="date"><span>June 25, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.0.2 <span class="buildnumber">(7104)</span></h3>
+<div class="changes">
+<h4>Network Monitor</h4>
+<ul>
+<li>Fixed: The “Show Corresponding Rules” context menu action did not correctly handle connections blocked by a blocklist.</li>
+<li>Fixed: Rule buttons in the connection list may have falsely indicated a mixed allow/deny state, although the connection was actually copletely blocked by a blocklist.</li>
+</ul>
+<h4>Configuration</h4>
+<ul>
+<li>Corrected textual description of “Hide in Network Monitor” rules.</li>
+<li>If a rule’s executable path became invalid due to renaming or moving the app, the inspector now offers a “Repair” option, attempting to resolve the issue.</li>
+<li>Fixed: Duplicating a biderectional rule via Copy/Paste didn’t work properly.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7102">
+<div class="date"><span>June 10, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6.0.1 <span class="buildnumber">(7102)</span></h3>
+<div class="changes">
+<h4>Improvements</h4>
+<ul>
+<li>DNS encryption can now be disabled completely in particular profiles. Enter an asterisk (“*”) for the domain in the “DNS Encryption Exceptions” settings, which acts a wildcard for “All Domains”.</li>
+<li>IP address based blocklists now have precedence over all DNS/name-based rules.</li>
+<li>When selecting a recently denied connection from the status menu, the specific server is now selected in Network Monitor, not just the domain.</li>
+<li>Added an option in Settings &gt; Status Menu to choose if local network traffic shall be included in status menu traffic rates and graphs.</li>
+<li>Improved confirmation dialog when deleting a rule group or profile: You are now asked to explicitly choose whether to keep or delete rules that are contained in that group or profile.</li>
+<li>Improved searching for rules via search field. By default the bundle identifier of the rule or the rule’s notes are no longer searched, because this often resulted in too many and sometimes unexpected search results. You can still search in these fields by choosing a dedicated search scope.</li>
+<li>Improved feedback when the update of a blocklist failed. The yellow warning triangle can now be clicked to reveal more information about what went wrong.</li>
+<li>Clicking on an already selected filter in the sidebar of the rules window now resets an active focus mode.</li>
+<li>The summary inspector in Network Monitor now shows connection statistics for the deepest leaf nodes of the current grouping.</li>
+</ul>
+<h4>Bug Fixes</h4>
+<ul>
+<li>Exception domains for DNS encryption are now case-insensitive.</li>
+<li>The context menu in the connection list of Network Monitor can now also be opened with control-click.</li>
+<li>Clicking the clear button in the search field of the rules window and Network Monitor no longer removes keyboard focus from the search field.</li>
+<li>Fixed textual search for internationalized domain names in blocklists.</li>
+<li>Fixed a bug where total traffic amounts displayed in the connection list did increase over time, even if a fixed time range was selected in the traffic chart.</li>
+<li>Fixed a bug causing the summary statistics in the inspector of Network Monitor not being update after changing connection grouping.</li>
+<li>Fixed: Search field filter buttons didn’t work in the Suggestions section of Little Snitch.</li>
+<li>Fixed: Pressing Down-Arrow in Rule Editor text field did open the wrong menu.</li>
+<li>Clearing Port/Process text fields in rule editor did not reset to Any/Any Process.</li>
+<li>Accessibility: The context menu in the rule list could not be opened via VoiceOver.</li>
+<li>The traffic chart icon shown in the menu bar was sometimes displayed with the wrong color while the menu was open.</li>
+<li>The “Differentiate by color” option was not properly considered for numeric data rates when the 5-minute history style of the chart was used.</li>
+<li>Fixed icon representing “Alert Mode” in profile editor.</li>
+<li>Added missing German localizations.</li>
+</ul>
+</div></div></div>
+<div class="changelog-entry" id="version-7100">
+<div class="date"><span>May 21, 2024</span></div>
+<div class="details">
+<h3>Little Snitch 6 <span class="buildnumber">(7100)</span></h3>
+<div class="changes">
+<div class="infobox">
+<h5>This is a paid upgrade.</h5>
+<p>If you purchased a license before January 1, 2024, upgrading to the new version is a paid option, available at a reduced upgrade price.</p>
+<p>Existing licence owners can safely <strong>evaluate the new version for free</strong> using the full-featured, built-in 30-day trial. And you can always return to your registered version at any time. It can be downloaded from our website and your current settings and rules will be preserved and automatically restored.</p>
+<p>Get an <a href="https://obdev.at/littlesnitch/whatsnew.html">overview of what’s new</a> for an immediate first look!</p>
+</div>
+<h4>New in Little Snitch 6</h4>
+<h5>Blocklists</h5>
+<ul>
+<li>Enhanced support for blocklists, similar to the features found in Little Snitch Mini.</li>
+<li>Conveniently choose from a curated list of blocklists, organized by topic (like Advertising, Tracking, Malware, etc.), allowing you to enable these blocklists with just a few mouse clicks.</li>
+<li>Automatic daily updates ensure that your blocklists are kept up to date when the maintainer adds new entries.</li>
+<li>Improved filtering performance when filtering network connections based on large blocklists.</li>
+</ul>
+<h5>DNS Encryption</h5>
+<ul>
+<li>All DNS lookups can now be securely transmitted via encrypted connections to a DNS server of your choice, ensuring enhanced privacy when browsing the web.</li>
+<li>Configurable, system-wide DNS encryption.</li>
+<li>Can be enabled in Little Snitch Settings &gt; DNS Encryption.</li>
+<li>Predefined configurations for the most popular DNS encryption services so you can get started with just a few mouse clicks.</li>
+</ul>
+<h5>Network Activity Monitoring</h5>
+<ul>
+<li>Improved design of the Network Monitor user interface.</li>
+<li>Introducing a revamped traffic chart for clearer visualization and analysis of network activity.</li>
+<li>Versatile grouping options for connections in Network Monitor. Connections can now be grouped not only by process but alternatively also by domain/server or by country. So you can quickly see at a glance all apps to connect to a particular country or to a particular domain.</li>
+<li>All connections related to one app are now grouped under one entry in the connection list, including incoming connections and connections established via helper tools.</li>
+<li>Configurable traffic meter appearance: Choose between two types of traffic activity indicators – either a live meter showing the current activity (like in Little Snitch 5) and a new thumbnail chart showing a history of the last five minutes (like in Little Snitch Mini).</li>
+<li>Improved legibility of connection lines shown in the map.</li>
+<li>Display of named location labels in the map.</li>
+<li>Automatic updates of the Geolocation Database for enhanced accuracy and reliability.</li>
+<li>Improved display of App Extensions in the connection list.</li>
+<li>More powerful search and filter options.</li>
+</ul>
+<h5>Status Menu</h5>
+<ul>
+<li>Revamped status menu, including an animated traffic chart, information about recent network activity and recently denied connections.</li>
+<li>Configurable traffic meter appearance: Like in Network Monitor you can now choose between two types of traffic activity indicators to be shown in the menu bar: Either a live meter showing the current activity and a new thumbnail chart showing a history of the last five minutes.</li>
+</ul>
+<h5>Creating and managing rules</h5>
+<ul>
+<li>A new type of rules allows to show notifications in Notification Center whenever a certain kind of network activity occurs.</li>
+<li>Ability to create rules for “Any macOS Process” and “Any Simulator Process”.</li>
+<li>Local, editable rule groups, allowing you to organize rules by topic and enable or disable multiple related rules at once.</li>
+<li>Attach notes to newly created rules directly from within the connection alert.</li>
+<li>Rules now identify processes based on their cryptographic code signature, irrespective of their location in the file system. This makes rules resistant against moving or renaming apps. The previous, path-based identification is still available as an option.</li>
+<li>Bidirectional rules that match both incoming and outgoing connections from/to certain IP addresses or ranges.</li>
+<li>Improved Homebrew support. Rules for Homebrew executables are now independent of the version number, which is part of the executable path.</li>
+</ul>
+<h5>Sound Notifications</h5>
+<ul>
+<li>Get an acoustic feedback whenever a certain kind of network activity occurs.</li>
+<li>Become aware of such network activity even when you are not actively watching the Network Monitor window or when you don‘t even watch your screen.</li>
+<li>Select from a fun variety of built-in notification sounds.</li>
+<li>Some of the sounds are modulated to also indicate the amount of data that is currently transferred.</li>
+</ul>
+<h5>Usage statistics for rules and blocklists</h5>
+<ul>
+<li>See how often rules or blocklist entries have been used and when they were last used.</li>
+<li>Sort the rule list by “Last Used Date” or by “Usage Count”.</li>
+<li>The new “Unused” filter helps you quickly find rules that haven’t been used for quite a while.</li>
+</ul>
+<h5>Other new features and improvements</h5>
+<ul>
+<li>Customization options to disable specific types of notifications from being shown in Notification Center.</li>
+</ul>
+</div></div></div>
+</section>
+
+
+			</div> 
+			
+			<footer class="light">
+				<div class="footer-links">
+										<div class="col">
+						<h4>Little Snitch</h4>
+						<a href="https://www.obdev.at/products/littlesnitch">Features</a>
+						<a href="https://www.obdev.at/products/littlesnitch/whatsnew.html">What’s New</a>
+						<a href="https://www.obdev.at/products/littlesnitch/download.html">Download</a>
+						<a href="https://www.obdev.at/products/littlesnitch/releasenotes.html">Release Notes</a>
+						<a href="https://www.obdev.at/products/littlesnitch/order.html#upgrades">Upgrade</a>
+						<h4>Little Snitch Mini</h4>
+						<a href="https://www.obdev.at/products/littlesnitch-mini">Features</a>
+						<a href="https://www.obdev.at/products/littlesnitch-mini/compare.html">Compare</a>
+					</div>
+
+					<div class="col">
+						<h4>Other Products</h4>
+						<a href="https://www.obdev.at/products/launchbar">LaunchBar</a>
+						<a href="https://www.obdev.at/products/microsnitch">Micro Snitch</a>
+						<a href="https://www.obdev.at/products/iapviewer">IAP Viewer</a>
+						<h4 class="v-tablet">Resources</h4>
+						<a class="v-tablet" href="https://www.obdev.at/iap">Internet Access Policy</a>
+						<a class="v-tablet" href="https://www.obdev.at/blog/">Blog</a>
+						<a class="v-tablet" href="https://www.obdev.at/support">Support</a>
+						<a class="v-tablet" href="https://www.obdev.at/support/contact">Contact Us</a>
+						<a class="v-tablet" href="https://www.obdev.at/support/index.html#lost-license">Lost License</a>
+					</div>
+
+					<div class="col v-desktop">
+						<h4>Resources</h4>
+						<a href="https://www.obdev.at/iap">Internet Access Policy</a>
+						<a href="https://www.obdev.at/blog/">Blog</a>
+						<a href="https://www.obdev.at/support">Support</a>
+						<a href="https://www.obdev.at/support/contact">Contact Us</a>
+						<a href="https://www.obdev.at/support/index.html#lost-license">Lost License</a>
+					</div>
+
+					<div class="col">
+						<h4>Company</h4>
+						<a href="https://www.obdev.at/about.html">About Us</a>
+						<a href="https://www.obdev.at/press">Press</a>
+						<a href="https://www.obdev.at/privacy">Privacy Policy</a>
+						<a href="https://www.obdev.at/terms-and-conditions.html">Terms</a>
+						<h4>&nbsp;</h4>
+						<a class="social-link" href="https://mastodon.obdev.at/@littlesnitch" target="_blank"><svg width="74" height="79" viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.7014 17.4323C72.5616 9.05152 65.1774 2.4469 56.424 1.1671C54.9472 0.950843 49.3518 0.163818 36.3901 0.163818H36.2933C23.3281 0.163818 20.5465 0.950843 19.0697 1.1671C10.56 2.41145 2.78877 8.34604 0.903306 16.826C-0.00357854 21.0022 -0.100361 25.6322 0.068112 29.8793C0.308275 35.9699 0.354874 42.0498 0.91406 48.1156C1.30064 52.1448 1.97502 56.1419 2.93215 60.0769C4.72441 67.3445 11.9795 73.3925 19.0876 75.86C26.6979 78.4332 34.8821 78.8603 42.724 77.0937C43.5866 76.8952 44.4398 76.6647 45.2833 76.4024C47.1867 75.8033 49.4199 75.1332 51.0616 73.9562C51.0841 73.9397 51.1026 73.9184 51.1156 73.8938C51.1286 73.8693 51.1359 73.8421 51.1368 73.8144V67.9366C51.1364 67.9107 51.1302 67.8852 51.1186 67.862C51.1069 67.8388 51.0902 67.8184 51.0695 67.8025C51.0489 67.7865 51.0249 67.7753 50.9994 67.7696C50.9738 67.764 50.9473 67.7641 50.9218 67.7699C45.8976 68.9569 40.7491 69.5519 35.5836 69.5425C26.694 69.5425 24.3031 65.3699 23.6184 63.6327C23.0681 62.1314 22.7186 60.5654 22.5789 58.9744C22.5775 58.9477 22.5825 58.921 22.5934 58.8965C22.6043 58.8721 22.621 58.8505 22.6419 58.8336C22.6629 58.8167 22.6876 58.8049 22.714 58.7992C22.7404 58.7934 22.7678 58.794 22.794 58.8007C27.7345 59.9796 32.799 60.5746 37.8813 60.5733C39.1036 60.5733 40.3223 60.5733 41.5447 60.5414C46.6562 60.3996 52.0437 60.1408 57.0728 59.1694C57.1983 59.1446 57.3237 59.1233 57.4313 59.0914C65.3638 57.5847 72.9128 52.8555 73.6799 40.8799C73.7086 40.4084 73.7803 35.9415 73.7803 35.4523C73.7839 33.7896 74.3216 23.6576 73.7014 17.4323ZM61.4925 47.3144H53.1514V27.107C53.1514 22.8528 51.3591 20.6832 47.7136 20.6832C43.7061 20.6832 41.6988 23.2499 41.6988 28.3194V39.3803H33.4078V28.3194C33.4078 23.2499 31.3969 20.6832 27.3894 20.6832C23.7654 20.6832 21.9552 22.8528 21.9516 27.107V47.3144H13.6176V26.4937C13.6176 22.2395 14.7157 18.8598 16.9118 16.3545C19.1772 13.8552 22.1488 12.5719 25.8373 12.5719C30.1064 12.5719 33.3325 14.1955 35.4832 17.4394L37.5587 20.8853L39.6377 17.4394C41.7884 14.1955 45.0145 12.5719 49.2765 12.5719C52.9614 12.5719 55.9329 13.8552 58.2055 16.3545C60.4017 18.8574 61.4997 22.2371 61.4997 26.4937L61.4925 47.3144Z" fill="white"/>
+</svg><p>Little Snitch</p></a><a class="social-link" href="https://mastodon.obdev.at/@launchbar" target="_blank"><svg width="74" height="79" viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.7014 17.4323C72.5616 9.05152 65.1774 2.4469 56.424 1.1671C54.9472 0.950843 49.3518 0.163818 36.3901 0.163818H36.2933C23.3281 0.163818 20.5465 0.950843 19.0697 1.1671C10.56 2.41145 2.78877 8.34604 0.903306 16.826C-0.00357854 21.0022 -0.100361 25.6322 0.068112 29.8793C0.308275 35.9699 0.354874 42.0498 0.91406 48.1156C1.30064 52.1448 1.97502 56.1419 2.93215 60.0769C4.72441 67.3445 11.9795 73.3925 19.0876 75.86C26.6979 78.4332 34.8821 78.8603 42.724 77.0937C43.5866 76.8952 44.4398 76.6647 45.2833 76.4024C47.1867 75.8033 49.4199 75.1332 51.0616 73.9562C51.0841 73.9397 51.1026 73.9184 51.1156 73.8938C51.1286 73.8693 51.1359 73.8421 51.1368 73.8144V67.9366C51.1364 67.9107 51.1302 67.8852 51.1186 67.862C51.1069 67.8388 51.0902 67.8184 51.0695 67.8025C51.0489 67.7865 51.0249 67.7753 50.9994 67.7696C50.9738 67.764 50.9473 67.7641 50.9218 67.7699C45.8976 68.9569 40.7491 69.5519 35.5836 69.5425C26.694 69.5425 24.3031 65.3699 23.6184 63.6327C23.0681 62.1314 22.7186 60.5654 22.5789 58.9744C22.5775 58.9477 22.5825 58.921 22.5934 58.8965C22.6043 58.8721 22.621 58.8505 22.6419 58.8336C22.6629 58.8167 22.6876 58.8049 22.714 58.7992C22.7404 58.7934 22.7678 58.794 22.794 58.8007C27.7345 59.9796 32.799 60.5746 37.8813 60.5733C39.1036 60.5733 40.3223 60.5733 41.5447 60.5414C46.6562 60.3996 52.0437 60.1408 57.0728 59.1694C57.1983 59.1446 57.3237 59.1233 57.4313 59.0914C65.3638 57.5847 72.9128 52.8555 73.6799 40.8799C73.7086 40.4084 73.7803 35.9415 73.7803 35.4523C73.7839 33.7896 74.3216 23.6576 73.7014 17.4323ZM61.4925 47.3144H53.1514V27.107C53.1514 22.8528 51.3591 20.6832 47.7136 20.6832C43.7061 20.6832 41.6988 23.2499 41.6988 28.3194V39.3803H33.4078V28.3194C33.4078 23.2499 31.3969 20.6832 27.3894 20.6832C23.7654 20.6832 21.9552 22.8528 21.9516 27.107V47.3144H13.6176V26.4937C13.6176 22.2395 14.7157 18.8598 16.9118 16.3545C19.1772 13.8552 22.1488 12.5719 25.8373 12.5719C30.1064 12.5719 33.3325 14.1955 35.4832 17.4394L37.5587 20.8853L39.6377 17.4394C41.7884 14.1955 45.0145 12.5719 49.2765 12.5719C52.9614 12.5719 55.9329 13.8552 58.2055 16.3545C60.4017 18.8574 61.4997 22.2371 61.4997 26.4937L61.4925 47.3144Z" fill="white"/>
+</svg><p>LaunchBar</p></a>					</div>
+				</div>
+				<div class="bottom">
+					<p class="copyright">&copy; 2026 Objective Development Software GmbH</p>
+					<div class="languages"><strong>English</strong><a href='https://www.obdev.at/de/products/littlesnitch/releasenotes.html'>Deutsch</a></div>
+									</div>
+			</footer>
+					</body>
+	</html>
+
+

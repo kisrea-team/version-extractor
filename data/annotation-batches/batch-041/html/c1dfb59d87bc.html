@@ -1,0 +1,2068 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.159.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Rclone syncs your files to cloud storage: Google Drive, S3, Swift, Dropbox, Google Cloud Storage, Azure, Box and many more.">
+    <meta name="author" content="Nick Craig-Wood">
+    <meta property="og:site_name" content="Rclone" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rclone.org/img/rclone-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://rclone.org/" />
+    <meta property="og:title" content="Rclone" />
+    <meta property="og:description" content="Rclone syncs your files to cloud storage: Google Drive, S3, Swift, Dropbox, Google Cloud Storage, Azure, Box and many more." />
+    <link rel="shortcut icon" type="image/png" href="/img/rclone-32x32.png"/>
+    <script defer data-domain="rclone.org" src="https://weblog.rclone.org/js/script.js"></script>
+    <title>Rclone</title>
+    <link rel="canonical" href="https://rclone.org/">
+    <link href="/css/rclone.css?r=1785516915" rel="stylesheet">
+    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="rclone - rsync for cloud storage" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  
+  <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  </symbol>
+  <symbol id="icon-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/>
+  </symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </symbol>
+  <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+  </symbol>
+  <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+  </symbol>
+  <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+  </symbol>
+  <symbol id="icon-comments" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </symbol>
+  <symbol id="icon-chevrons-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/>
+  </symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6"/>
+  </symbol>
+  
+  <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+  </symbol>
+  <symbol id="icon-twitter" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+  </symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </symbol>
+  <symbol id="icon-reddit" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+  </symbol>
+  <symbol id="icon-paypal" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/>
+  </symbol>
+  <symbol id="icon-patreon" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M15.386.524c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 4.4 20.136.524 15.386.524M.003 23.537h4.22V.524H.003"/>
+  </symbol>
+  <symbol id="icon-bitcoin" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.546zm-6.35-4.613c.24-1.59-.974-2.45-2.64-3.03l.54-2.153-1.315-.33-.525 2.107c-.345-.087-.7-.169-1.053-.25l.53-2.12-1.313-.33-.54 2.152c-.286-.065-.567-.13-.84-.2l.001-.006-1.812-.452-.35 1.407s.975.224.955.238c.535.136.63.49.615.77l-.617 2.468c.037.01.085.024.138.047l-.14-.034-.865 3.467c-.065.165-.235.406-.614.312.015.02-.956-.239-.956-.239l-.652 1.51 1.71.426.937.244-.548 2.193 1.312.327.54-2.16c.36.1.707.19 1.05.273l-.538 2.145 1.314.33.547-2.19c2.24.428 3.924.256 4.632-1.774.57-1.637-.028-2.58-1.217-3.196.865-.2 1.516-.77 1.69-1.942h.002z"/>
+  </symbol>
+</svg>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="/"><img class="rclone-logo" src="/img/logo_on_dark__horizontal_color.svg" alt="rclone logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/downloads/">Downloads</a>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Docs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/install/">Installation</a>
+          <a class="dropdown-item" href="/docs/">Usage</a>
+          <a class="dropdown-item" href="/filtering/">Filtering</a>
+          <a class="dropdown-item" href="/gui/">GUI</a>
+          <a class="dropdown-item" href="/rc/">Remote Control</a>
+          <a class="dropdown-item" href="/remote_setup/">Remote Setup</a>
+          <a class="dropdown-item" href="/changelog/">Changelog</a>
+          <a class="dropdown-item" href="/bugs/">Bugs</a>
+          <a class="dropdown-item" href="/faq/">FAQ</a>
+          <a class="dropdown-item" href="/flags/">Flags</a>
+          <a class="dropdown-item" href="/licence/">Licence</a>
+          <a class="dropdown-item" href="/authors/">Authors</a>
+          <a class="dropdown-item" href="/privacy/">Privacy Policy</a>
+        </div>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Commands
+        </a>
+        <div class="dropdown-menu pre-scrollable" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/commands/">Overview</a>
+          <div class="dropdown-divider"></div>
+          
+            
+              
+                <a class="dropdown-item" href="/commands/rclone/">rclone</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_about/">rclone about</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_archive/">rclone archive</a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_authorize/">rclone authorize</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_backend/">rclone backend</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_bisync/">rclone bisync</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_cat/">rclone cat</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_check/">rclone check</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_checksum/">rclone checksum</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_cleanup/">rclone cleanup</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_completion/">rclone completion</a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_config/">rclone config</a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_convmv/">rclone convmv</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_copy/">rclone copy</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_copyto/">rclone copyto</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_copyurl/">rclone copyurl</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_cryptcheck/">rclone cryptcheck</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_cryptdecode/">rclone cryptdecode</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_dedupe/">rclone dedupe</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_delete/">rclone delete</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_deletefile/">rclone deletefile</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_gendocs/">rclone gendocs</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_gitannex/">rclone gitannex</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_gui/">rclone gui</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_hashsum/">rclone hashsum</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_link/">rclone link</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_listremotes/">rclone listremotes</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_ls/">rclone ls</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_lsd/">rclone lsd</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_lsf/">rclone lsf</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_lsjson/">rclone lsjson</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_lsl/">rclone lsl</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_md5sum/">rclone md5sum</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_mkdir/">rclone mkdir</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_mount/">rclone mount</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_move/">rclone move</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_moveto/">rclone moveto</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_ncdu/">rclone ncdu</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_nfsmount/">rclone nfsmount</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_obscure/">rclone obscure</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_purge/">rclone purge</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_rc/">rclone rc</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_rcat/">rclone rcat</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_rcd/">rclone rcd</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_rmdir/">rclone rmdir</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_rmdirs/">rclone rmdirs</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_selfupdate/">rclone selfupdate</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_serve/">rclone serve</a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_settier/">rclone settier</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_sha1sum/">rclone sha1sum</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_size/">rclone size</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_sync/">rclone sync</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_test/">rclone test</a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_touch/">rclone touch</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_tree/">rclone tree</a>
+              
+            
+              
+                <a class="dropdown-item" href="/commands/rclone_version/">rclone version</a>
+              
+            
+          
+        </div>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Storage Systems
+        </a>
+        <div class="dropdown-menu pre-scrollable" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/overview/">Overview</a>
+          <a class="dropdown-item" href="/tiers/">Support Tiers</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-letter-heading">1 &ndash; A</span>
+          <a class="dropdown-item" href="/fichier/">1Fichier</a>
+          <a class="dropdown-item" href="/netstorage/">Akamai NetStorage</a>
+          <a class="dropdown-item" href="/alias/">Alias</a>
+          <a class="dropdown-item" href="/s3/">Amazon S3 Storage Providers</a>
+          <a class="dropdown-item" href="/archive/">Archive</a>
+          <span class="dropdown-letter-heading">B &ndash; C</span>
+          <a class="dropdown-item" href="/b2/">Backblaze B2</a>
+          <a class="dropdown-item" href="/box/">Box</a>
+          <a class="dropdown-item" href="/chunker/">Chunker (splits large files)</a>
+          <a class="dropdown-item" href="/cloudinary/">Cloudinary</a>
+          <a class="dropdown-item" href="/compress/">Compress (transparent gzip compression)</a>
+          <a class="dropdown-item" href="/combine/">Combine (remotes into a directory tree)</a>
+          <a class="dropdown-item" href="/sharefile/">Citrix ShareFile</a>
+          <a class="dropdown-item" href="/crypt/">Crypt (encrypts the others)</a>
+          <span class="dropdown-letter-heading">D &ndash; F</span>
+          <a class="dropdown-item" href="/koofr/#digi-storage">Digi Storage</a>
+          <a class="dropdown-item" href="/drime/">Drime</a>
+          <a class="dropdown-item" href="/dropbox/">Dropbox</a>
+          <a class="dropdown-item" href="/filefabric/">Enterprise File Fabric</a>
+          <a class="dropdown-item" href="/filelu/">FileLu Cloud Storage</a>
+          <a class="dropdown-item" href="/s3/#filelu-s5">FileLu S5 (S3-Compatible)</a>
+          <a class="dropdown-item" href="/filen/">Filen</a>
+          <a class="dropdown-item" href="/filescom/">Files.com</a>
+          <a class="dropdown-item" href="/ftp/">FTP</a>
+          <span class="dropdown-letter-heading">G &ndash; I</span>
+          <a class="dropdown-item" href="/gofile/">Gofile</a>
+          <a class="dropdown-item" href="/googlecloudstorage/">Google Cloud Storage</a>
+          <a class="dropdown-item" href="/drive/">Google Drive</a>
+          <a class="dropdown-item" href="/googlephotos/">Google Photos</a>
+          <a class="dropdown-item" href="/hasher/">Hasher (better checksums for others)</a>
+          <a class="dropdown-item" href="/hdfs/">HDFS (Hadoop Distributed Filesystem)</a>
+          <a class="dropdown-item" href="/hidrive/">HiDrive</a>
+          <a class="dropdown-item" href="/http/">HTTP</a>
+          <a class="dropdown-item" href="/huaweidrive/">Huawei Drive</a>
+          <a class="dropdown-item" href="/iclouddrive/">iCloud Drive</a>
+          <a class="dropdown-item" href="/imagekit/">ImageKit</a>
+          <a class="dropdown-item" href="/internetarchive/">Internet Archive</a>
+          <a class="dropdown-item" href="/internxt/">Internxt</a>
+          <span class="dropdown-letter-heading">J &ndash; M</span>
+          <a class="dropdown-item" href="/jottacloud/">Jottacloud</a>
+          <a class="dropdown-item" href="/koofr/">Koofr</a>
+          <a class="dropdown-item" href="/linkbox/">Linkbox</a>
+          <a class="dropdown-item" href="/mailru/">Mail.ru Cloud</a>
+          <a class="dropdown-item" href="/mega/">Mega</a>
+          <a class="dropdown-item" href="/s3/#mega">Mega S4 (S3-Compatible)</a>
+          <a class="dropdown-item" href="/memory/">Memory</a>
+          <a class="dropdown-item" href="/azureblob/">Microsoft Azure Blob Storage</a>
+          <a class="dropdown-item" href="/azurefiles/">Microsoft Azure Files Storage</a>
+          <a class="dropdown-item" href="/onedrive/">Microsoft OneDrive</a>
+          <span class="dropdown-letter-heading">O &ndash; Q</span>
+          <a class="dropdown-item" href="/opendrive/">OpenDrive</a>
+          <a class="dropdown-item" href="/swift/">Openstack Swift</a>
+          <a class="dropdown-item" href="/oracleobjectstorage/">Oracle Object Storage</a>
+          <a class="dropdown-item" href="/pcloud/">pCloud</a>
+          <a class="dropdown-item" href="/pikpak/">PikPak</a>
+          <a class="dropdown-item" href="/pixeldrain/">Pixeldrain</a>
+          <a class="dropdown-item" href="/premiumizeme/">premiumize.me</a>
+          <a class="dropdown-item" href="/protondrive/">Proton Drive</a>
+          <a class="dropdown-item" href="/putio/">put.io</a>
+          <a class="dropdown-item" href="/quatrix/">Quatrix</a>
+          <a class="dropdown-item" href="/qingstor/">QingStor</a>
+          <span class="dropdown-letter-heading">S &ndash; Z</span>
+          <a class="dropdown-item" href="/seafile/">Seafile</a>
+          <a class="dropdown-item" href="/sftp/">SFTP</a>
+          <a class="dropdown-item" href="/shade/">Shade</a>
+          <a class="dropdown-item" href="/sia/">Sia</a>
+          <a class="dropdown-item" href="/smb/">SMB / CIFS</a>
+          <a class="dropdown-item" href="/storj/">Storj</a>
+          <a class="dropdown-item" href="/sugarsync/">SugarSync</a>
+          <a class="dropdown-item" href="/ulozto/">Uloz.to</a>
+          <a class="dropdown-item" href="/union/">Union (merge backends)</a>
+          <a class="dropdown-item" href="/webdav/">WebDAV</a>
+          <a class="dropdown-item" href="/yandex/">Yandex Disk</a>
+          <a class="dropdown-item" href="/zoho/">Zoho WorkDrive</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/local/">The local filesystem</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/contact/"><svg class="icon icon-fw"><use href="#icon-envelope"/></svg> Contact</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/sponsor/"><svg class="icon icon-fw heart"><use href="#icon-heart"/></svg> Sponsor</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a href="https://rclone.com/" target="_blank" rel="noopener" class="nav-link bizbutton" title="Click here for support and advertising contracts"><svg class="icon"><use href="#icon-briefcase"/></svg> For Business</a>
+      </li>
+    </ul>
+    <form class="form-inline" name="search_form" action="https://google.com/search" target="_blank" rel="noopener" onsubmit="on_search();">
+      <input name="words" value="" type="search" placeholder="search..." class="form-control form-control-sm">
+      <input name="q" value="" type="hidden">
+      <input name="as_sitesearch" value="https://rclone.org/" type="hidden">
+    </form>
+  </div>
+</nav>
+
+    
+    <div class="container-fluid">
+      <div class="row">
+        <aside class="col-toc col-toc-empty">
+          
+
+        </aside>
+        <main class="col-content">
+          
+
+          
+
+          
+
+          
+            
+            
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+          
+
+          
+<h1 id="rclone-syncs-your-files-to-cloud-storage">Rclone syncs your files to cloud storage</h1>
+<picture class="hide-mobile" style="width:50%; float:right; padding: 5px;"><source srcset="/img/logo_on_dark__horizontal_color.svg" media="(prefers-color-scheme: dark)"><img width="100%" src="/img/logo_on_light__horizontal_color.svg" alt="rclone logo"></picture>
+
+<ul>
+<li><a href="#about">About rclone</a></li>
+<li><a href="#what">What can rclone do for you?</a></li>
+<li><a href="#features">What features does rclone have?</a></li>
+<li><a href="#providers">What providers does rclone support?</a></li>
+<li><a href="/downloads/">Download</a></li>
+<li><a href="/install/">Install</a></li>
+</ul>
+<h2 id="about">About rclone</h2>
+<p>Rclone is a command-line program to manage files on cloud storage. It
+is a feature-rich alternative to cloud vendors' web storage
+interfaces. <a href="#providers">Over 70 cloud storage products</a> support
+rclone including S3 object stores, business &amp; consumer file storage
+services, as well as standard transfer protocols.</p>
+<p>Rclone has powerful cloud equivalents to the unix commands rsync, cp,
+mv, mount, ls, ncdu, tree, rm, and cat. Rclone's familiar syntax
+includes shell pipeline support, and <code>--dry-run</code> protection. It is
+used at the command line, in scripts or via its <a href="/rc">API</a>.</p>
+<p>Users call rclone <em>&quot;The Swiss army knife of cloud storage&quot;</em>, and
+<em>&quot;Technology indistinguishable from magic&quot;</em>.</p>
+<p>Rclone really looks after your data. It preserves timestamps and
+verifies checksums at all times. Transfers over limited bandwidth;
+intermittent connections, or subject to quota can be restarted, from
+the last good file transferred. You can
+<a href="/commands/rclone_check/">check</a> the integrity of your files. Where
+possible, rclone employs server-side transfers to minimise local
+bandwidth use and transfers from one provider to another without
+using local disk.</p>
+<p>Virtual backends wrap local and cloud file systems to apply
+<a href="/crypt/">encryption</a>,
+<a href="/compress/">compression</a>,
+<a href="/chunker/">chunking</a>,
+<a href="/hasher/">hashing</a> and
+<a href="/union/">joining</a>.</p>
+<p>Rclone <a href="/commands/rclone_mount/">mounts</a> any local, cloud or
+virtual filesystem as a disk on Windows,
+macOS, linux and FreeBSD, and also serves these over
+<a href="/commands/rclone_serve_sftp/">SFTP</a>,
+<a href="/commands/rclone_serve_http/">HTTP</a>,
+<a href="/commands/rclone_serve_webdav/">WebDAV</a>,
+<a href="/commands/rclone_serve_ftp/">FTP</a> and
+<a href="/commands/rclone_serve_dlna/">DLNA</a>.</p>
+<p>Rclone is mature, open-source software originally inspired by rsync
+and written in <a href="https://golang.org">Go</a>. The friendly support
+community is familiar with varied use cases. Official Ubuntu, Debian,
+Fedora, Brew and Chocolatey repos. include rclone. For the latest
+version <a href="/downloads/">downloading from rclone.org</a> is recommended.</p>
+<p>Rclone is widely used on Linux, Windows and Mac. Third-party
+developers create innovative backup, restore, GUI and business
+process solutions using the rclone command line or API.</p>
+<p>Rclone does the heavy lifting of communicating with cloud storage.</p>
+<h2 id="what">What can rclone do for you?</h2>
+<p>Rclone helps you:</p>
+<ul>
+<li>Backup (and encrypt) files to cloud storage</li>
+<li>Restore (and decrypt) files from cloud storage</li>
+<li>Mirror cloud data to other cloud services or locally</li>
+<li>Migrate data to the cloud, or between cloud storage vendors</li>
+<li>Mount multiple, encrypted, cached or diverse cloud storage as a disk</li>
+<li>Analyse and account for data held on cloud storage using <a href="/commands/rclone_lsf/">lsf</a>,
+<a href="/commands/rclone_lsjson/">ljson</a>, <a href="/commands/rclone_size/">size</a>, <a href="/commands/rclone_ncdu/">ncdu</a></li>
+<li><a href="/union/">Union</a> file systems together to present multiple local and/or cloud
+file systems as one</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Transfers
+<ul>
+<li>MD5, SHA1 hashes are checked at all times for file integrity</li>
+<li>Timestamps are preserved on files</li>
+<li>Operations can be restarted at any time</li>
+<li>Can be to and from network, e.g. two different cloud providers</li>
+<li>Can use multi-threaded downloads to local disk</li>
+</ul>
+</li>
+<li><a href="/commands/rclone_copy/">Copy</a> new or changed files to cloud storage</li>
+<li><a href="/commands/rclone_sync/">Sync</a> (one way) to make a directory identical</li>
+<li><a href="/bisync/">Bisync</a> (two way) to keep two directories in sync bidirectionally</li>
+<li><a href="/commands/rclone_move/">Move</a> files to cloud storage deleting the local after
+verification</li>
+<li><a href="/commands/rclone_check/">Check</a> hashes and for missing/extra files</li>
+<li><a href="/commands/rclone_mount/">Mount</a> your cloud storage as a network disk</li>
+<li><a href="/commands/rclone_serve/">Serve</a> local or remote files over <a href="/commands/rclone_serve_http/">HTTP</a>/<a href="/commands/rclone_serve_webdav/">WebDav</a>/<a href="/commands/rclone_serve_ftp/">FTP</a>/<a href="/commands/rclone_serve_sftp/">SFTP</a>/<a href="/commands/rclone_serve_dlna/">DLNA</a></li>
+<li>Experimental <a href="/gui/">Web based GUI</a></li>
+</ul>
+<h2 id="providers">Supported providers</h2>
+<p>(There are many others, built on standard protocols such as
+WebDAV or S3, that work out of the box.)</p>
+<ul class="list-group">
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    1Fichier
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://1fichier.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/fichier/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Akamai Netstorage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.akamai.com/us/en/products/media-delivery/netstorage.jsp" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/netstorage/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Alibaba Cloud (Aliyun) Object Storage System (OSS)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.alibabacloud.com/product/oss/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#alibaba-oss"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Amazon S3
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://aws.amazon.com/s3/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Bizfly Cloud Simple Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://bizflycloud.vn/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#bizflycloud"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Backblaze B2
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.backblaze.com/cloud-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/b2/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Box
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.box.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/box/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Ceph
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="http://ceph.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#ceph"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    China Mobile Ecloud Elastic Object Storage (EOS)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://ecloud.10086.cn/home/product-introduction/eos/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#china-mobile-ecloud-eos"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Arvan Cloud Object Storage (AOS)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.arvancloud.ir/en/products/cloud-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#arvan-cloud-object-storage-aos"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Citrix ShareFile
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="http://sharefile.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sharefile/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Cloudflare R2
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://blog.cloudflare.com/r2-open-beta/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#cloudflare-r2"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Cloudinary
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cloudinary.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/cloudinary/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Cubbit DS3
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cubbit.io/ds3-cloud" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#Cubbit"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    DigitalOcean Spaces
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.digitalocean.com/products/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#digitalocean-spaces"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Digi Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://storage.rcs-rds.ro/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/koofr/#digi-storage"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Dreamhost
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.dreamhost.com/cloud/storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#dreamhost"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Drime
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.drime.cloud/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/drime/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Dropbox
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.dropbox.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/dropbox/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Enterprise File Fabric
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://storagemadeeasy.com/about/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/filefabric/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Exaba
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://exaba.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#exaba"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Fastly Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.fastly.com/products/storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#fastly"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Fastmail Files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.fastmail.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/webdav/#fastmail-files"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    FileLu Cloud Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://filelu.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/filelu/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    FileLu S5 (S3-Compatible Object Storage)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://s5lu.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#filelu-s5"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Filen
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.filen.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/filen/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Files.com
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.files.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/filescom/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    FlashBlade
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.purestorage.com/products/unstructured-data-storage.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#pure-storage-flashblade"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    FTP
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.wikipedia.org/wiki/File_Transfer_Protocol" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/ftp/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Gofile
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://gofile.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/gofile/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Google Cloud Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cloud.google.com/storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/googlecloudstorage/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Google Drive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.google.com/drive/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/drive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Google Photos
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.google.com/photos/about/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/googlephotos/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    HDFS
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://hadoop.apache.org/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/hdfs/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Hetzner Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.hetzner.com/storage/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#hetzner"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Hetzner Storage Box
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.hetzner.com/storage/storage-box" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sftp/#hetzner-storage-box"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    HiDrive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.strato.de/cloud-speicher/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/hidrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Hitachi Content Platform (HCP)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.hitachivantara.com/en-us/products/storage/content-platform.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#hcp"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    HTTP
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/http/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Huawei Drive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cloud.huawei.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/huaweidrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Huawei OBS
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.huaweicloud.com/intl/en-us/product/obs.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#huawei-obs"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    iCloud Drive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://icloud.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/iclouddrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    ImageKit
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://imagekit.io" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/imagekit/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Internet Archive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://archive.org/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/internetarchive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Internxt
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://internxt.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/internxt/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Jottacloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.jottacloud.com/en/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/jottacloud/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    IBM COS S3
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="http://www.ibm.com/cloud/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#ibm-cos-s3"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    IDrive e2
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.idrive.com/e2/?refer=rclone" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#idrive-e2"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Impossible Cloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.impossiblecloud.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#impossible-cloud"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Intercolo Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://intercolo.de/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#intercolo"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    IONOS Cloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cloud.ionos.com/storage/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#ionos"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Koofr
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://koofr.eu/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/koofr/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Leviia Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.leviia.com/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#leviia"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Liara Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://liara.ir/landing/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#liara-object-storage"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Linkbox
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://linkbox.to/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/linkbox/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Linode Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.linode.com/products/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#linode"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Magalu
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://magalu.cloud/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#magalu"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Mail.ru Cloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://cloud.mail.ru/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/mailru/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Memset Memstore
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.memset.com/cloud/storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    MEGA
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://mega.nz/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/mega/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    MEGA S4
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://mega.io/objectstorage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#mega"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Memory
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/memory/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/memory/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Microsoft Azure Blob Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/azureblob/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Microsoft Azure Files Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://azure.microsoft.com/en-us/services/storage/files/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/azurefiles/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Microsoft OneDrive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://onedrive.live.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/onedrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Minio
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.minio.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#minio"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Nextcloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://nextcloud.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/webdav/#nextcloud"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Blomp Cloud Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://rclone.org/swift/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    OpenDrive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.opendrive.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/opendrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    OpenStack Swift
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://docs.openstack.org/swift/latest/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Oracle Cloud Storage Swift
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://docs.oracle.com/en-us/iaas/integration/doc/configure-object-storage.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Oracle Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.oracle.com/cloud/storage/object-storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/oracleobjectstorage/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Outscale
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.outscale.com/storage/outscale-object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#outscale"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    OVHcloud Object Storage (Swift)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.ovhcloud.com/en/public-cloud/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    OVHcloud Object Storage (S3-compatible)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.ovhcloud.com/en/public-cloud/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#ovhcloud"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    ownCloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://owncloud.org/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/webdav/#owncloud"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    pCloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.pcloud.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/pcloud/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Petabox
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://petabox.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#petabox"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    PikPak
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://mypikpak.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/pikpak/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Pixeldrain
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://pixeldrain.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/pixeldrain/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    premiumize.me
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://premiumize.me/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/premiumizeme/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    put.io
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://put.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/putio/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Proton Drive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://proton.me/drive" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/protondrive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    QingStor
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.qingcloud.com/products/storage" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/qingstor/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Qiniu Cloud Object Storage (Kodo)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.qiniu.com/en/products/kodo" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#qiniu"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Quatrix by Maytech
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.maytech.net/products/quatrix-business" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/quatrix/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Rabata Cloud Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://rabata.io" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#Rabata"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    RackCorp Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.rackcorp.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#RackCorp"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Rackspace Cloud Files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.rackspace.com/cloud/files" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/swift/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Rclone Serve S3
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/commands/rclone_serve_s3/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#rclone"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    rsync.net
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://rsync.net/products/rclone.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sftp/#rsync-net"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Scaleway
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.scaleway.com/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#scaleway"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Scality (RING / ARTESCA)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.scality.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#scality"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Seafile
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.seafile.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/seafile/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Seagate Lyve Cloud
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.seagate.com/gb/en/services/cloud/storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#lyve"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    SeaweedFS
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://github.com/chrislusf/seaweedfs/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#seaweedfs"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Selectel
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://selectel.ru/services/cloud/storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#selectel"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Servercore Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://servercore.com/services/object-storage/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#servercore"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    SFTP
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sftp/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Shade
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://shade.inc" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/shade/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Sia
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://sia.tech/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sia/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    SMB / CIFS
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.wikipedia.org/wiki/Server_Message_Block" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/smb/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Spectra Logic
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://spectralogic.com/blackpearl-nearline-object-gateway/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#spectralogic"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Storj
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://storj.io/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/storj/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Synology
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://c2.synology.com/en-global/object-storage/overview" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#synology-c2"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    SugarSync
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://sugarsync.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/sugarsync/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Tencent Cloud Object Storage (COS)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://intl.cloud.tencent.com/product/cos" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#tencent-cos"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Uloz.to
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://uloz.to" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/ulozto/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    US3
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.ucloud.cn/site/product/ufile.html" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#us3"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Wasabi
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://wasabi.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#wasabi"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    WebDAV
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://en.wikipedia.org/wiki/WebDAV" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/webdav/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Yandex Disk
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://disk.yandex.com/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/yandex/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Zadara Object Storage
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.zadara.com" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#zadara"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Zero Services (ZERO-Z3)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://lp.zeroservices.eu/zero-z3/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#zero-z3"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Zoho WorkDrive
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://www.zoho.com/workdrive/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/zoho/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Zata
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="https://zata.ai/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/s3/#Zata"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    The local filesystem
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/local/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/local/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+
+</ul>
+
+<h2 id="virtual-providers">Virtual providers</h2>
+<p>These backends adapt or modify other storage providers:</p>
+<p><li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Alias: Rename existing remotes
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/alias/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/alias/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Archive: Read archive files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/archive/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/archive/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Cache: Cache remotes (DEPRECATED)
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/cache/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/cache/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Chunker: Split large files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/chunker/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/chunker/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Combine: Combine multiple remotes into a directory tree
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/combine/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/combine/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Compress: Compress files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/compress/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/compress/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Crypt: Encrypt files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/crypt/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/crypt/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Hasher: Hash files
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/hasher/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/hasher/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+
+<li class="list-group-item d-flex justify-content-between py-1">
+  <span>
+    Union: Join multiple remotes to work together
+  </span>
+  <span>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/union/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home</a>
+    <a class="badge badge-primary badge-pill" role="button btn-sm" href="/union/"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg> Config</a>
+  </span>
+</li>
+</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a href="https://rclone.org/">Home page</a></li>
+<li><a href="https://github.com/rclone/rclone">GitHub project page for source and bug tracker</a></li>
+<li><a href="https://forum.rclone.org">Rclone Forum</a></li>
+<li><a href="/downloads/">Downloads</a></li>
+</ul>
+
+
+        </main>
+        <aside class="col-sidebar">
+          <div class="card">
+  <div class="card-header">Platinum Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://www.exaba.com/?utm_source=rclone&utm_medium=referral&utm_campaign=banner&utm_content=msp&utm_term=rclone" target="_blank" rel="noopener" title="Visit our sponsor Exaba"><img style="max-width: 100%; height: auto;" src="/img/logos/exaba.svg"></a><br />
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Gold Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://www.idrive.com/e2/?refer=rclone" target="_blank" rel="noopener" title="Visit rclone's sponsor IDrive e2"><img src="/img/logos/idrive_e2.svg" viewBox="0 0 60 55"></a><br />
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Gold Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://files.com/?utm_source=rclone&utm_medium=referral&utm_campaign=banner&utm_term=rclone" target="_blank" rel="noopener" title="Start Your Free Trial Today"><img style="max-width: 100%; height: auto;" src="/img/logos/filescom-enterprise-grade-workflows.png"></a><br />
+  </div>
+</div>
+
+
+<div id="silver-sponsors">
+<div class="card">
+  <div class="card-header">Silver Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://rcloneview.com/?utm_source=rclone" target="_blank" rel="noopener" title="Visit rclone's sponsor RcloneView"><img src="/img/logos/rcloneview.svg"></a><br />
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">Silver Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://shade.inc/" target="_blank" rel="noopener" title="Visit rclone's sponsor Shade"><img style="max-width: 100%; height: auto;" src="/img/logos/shade.svg"></a><br />
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">Silver Sponso⁠r</div>
+  <div class="card-body">
+    <a href="https://dataraven.io/r/rclone" target="_blank" rel="noopener" title="Data Raven: rclone, managed. Unlimited transfers, no per-GB fees."><img style="max-width: 100%; height: auto;" src="/img/logos/data-raven.svg"></a><br />
+  </div>
+</div>
+</div>
+<script>
+(function() {
+  var container = document.getElementById('silver-sponsors');
+  if (!container) return;
+  var cards = Array.prototype.slice.call(container.children);
+  for (var i = cards.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp;
+  }
+  cards.forEach(function(c) { container.appendChild(c); });
+}());
+</script>
+
+
+<div class="card">
+  <div class="card-header">
+    Share and Enjoy
+  </div>
+  <div class="card-body card-body-padded">
+    <div class="menu">
+      
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-twitter"/></svg> <a href="https://twitter.com/intent/tweet/?text=rclone%20-%20rsync%20for%20cloud%20storage%20from%20%40njcw&amp;url=https%3A%2F%2Frclone.org" target="_blank" rel="noopener" aria-label="Share on Twitter">Twitter</a><br />
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-facebook"/></svg> <a href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Frclone.org" target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a><br />
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-reddit"/></svg> <a  href="https://reddit.com/submit/?url=https%3A%2F%2Frclone.org&amp;resubmit=true&amp;title=rclone%20-%20rsync%20for%20cloud%20storage" target="_blank" rel="noopener" aria-label="Share on Reddit">Reddit</a><br />
+      <iframe src="//ghbtns.com/github-btn.html?user=rclone&amp;repo=rclone&amp;type=star&amp;count=true" allowtransparency="true" frameborder="0" scrolling="no" width="120" height="20"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Links
+  </div>
+  <div class="card-body card-body-padded">
+    <div class="menu">
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-comments"/></svg> <a href="https://forum.rclone.org">Rclone forum</a><br />
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-github"/></svg> <a href="https://github.com/rclone/rclone">GitHub project</a><br />
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-book"/></svg> <a href="https://github.com/rclone/rclone/wiki">Rclone Wiki</a><br />
+      <svg class="icon icon-fw heart" aria-hidden="true"><use href="#icon-heart"/></svg> <a href="/sponsor/">Sponsor</a><br />
+      <svg class="icon icon-fw" aria-hidden="true"><use href="#icon-twitter"/></svg> <a href="https://twitter.com/njcw">@njcw</a>
+    </div>
+  </div>
+</div>
+
+        </aside>
+      </div>
+      
+      <footer>
+        <div class="row">
+          <div class="col-footer col-footer-notoc">
+            <div class="card card-body">
+              <p style="font-size: 90%;">
+                &copy; <a href="https://www.craig-wood.com/nick/" target="blank">Nick Craig-Wood</a> 2014-2026<br>
+                Source file <a href="https://github.com/rclone/rclone/blob/master/docs/content/_index.md" target="blank">_index.md</a>
+                last updated <a href="https://github.com/rclone/rclone/commit/0257ae9b50bc3b6713a96e1be62123628336f958">2026-07-27</a><br>
+                Uploaded with <a href="https://rclone.org">rclone</a>.
+                Built with <a href="https://gohugo.io/" target="blank">Hugo</a>.
+                Logo by <a href="https://twitter.com/andy23" target="blank">@andy23</a>.
+                Served by <a href="https://caddyserver.com/" target="blank">Caddy</a>.
+                Hosted at <a href="https://hetzner.cloud/?ref=62WcciVmlzHt" title="Get €⁠20 in cloud credits" target="blank">Hetzner Cloud</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+    </div>
+    <script src="/js/rclone.js?r=1785516915"></script>
+  </body>
+</html>

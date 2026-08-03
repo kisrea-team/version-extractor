@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="UTF-8">
+<script>
+(function(){
+	var defined = ["en","ar","bn","de","es","fr","it","ja","ko","pl","pt-BR","ro","ru","sv","zh"];
+	var dflt = 'en';
+	var cur = 'en';
+	var pref = null;
+	try { pref = localStorage.getItem('lang'); } catch(e) {}
+	if (!pref && cur === dflt) return;
+	if (pref && pref === cur) return;
+	var target = pref;
+	if (!target) {
+		var langs = (navigator.languages || [navigator.language || '']);
+		for (var i = 0; i < langs.length; i++) {
+			var code = langs[i].toLowerCase().split('-')[0];
+			if (defined.indexOf(code) !== -1) { target = code; break; }
+		}
+	}
+	if (!target || target === cur) return;
+	var p = location.pathname;
+	// Strip any locale prefix from path
+	p = p.replace(new RegExp('^/(' + defined.join('|') + ')(/|$)'), '/');
+	// Don't redirect app routes
+	if (/^\/(account|buy)(\/|$)/.test(p)) return;
+	if (target !== dflt) p = '/' + target + (p === '/' ? '/' : p);
+	if (p.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) return;
+	location.replace(p + location.search + location.hash);
+})();
+</script>
+<title>Obsidian Changelog - Obsidian</title>
+<meta name="description" content="Follow the latest updates to Obsidian apps for desktop and mobile.">
+<meta name="copyright" content="Obsidian">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="i18n-hash" content="95affe3b">
+
+<link rel="stylesheet" href="/tailwind.css?v=8ba1b026">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Obsidian Blog">
+<link rel="alternate" type="application/feed+json" href="/feed.json" title="Obsidian Blog">
+<link rel="alternate" type="application/atom+xml" href="/changelog.xml" title="Obsidian Changelog">
+<link rel="alternate" type="application/feed+json" href="/changelog.json" title="Obsidian Changelog">
+
+<meta property="og:site_name" content="Obsidian">
+<meta property="og:title" content="Obsidian Changelog">
+<meta property="og:description" content="Follow the latest updates to Obsidian apps for desktop and mobile.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://obsidian.md/images/banner.png">
+
+<meta name="twitter:title" content="Obsidian Changelog">
+<meta name="twitter:description" content="Follow the latest updates to Obsidian apps for desktop and mobile.">
+<meta name="twitter:site" content="@obsdmd">
+<meta name="twitter:domain" content="obsidian.md">
+<meta name="twitter:creator" content="@obsdmd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
+
+	</head>
+	<body>
+		<div class="header-height"></div>
+<header class="header">
+	<div class="container flex items-center">
+		<div class="flex items-center">
+			<a class="header-logo me-4 flex items-center gap-x-2 transition-colors -mt-[3px]" href="/" aria-label="Go to the Obsidian home page">
+				<svg alt="Obsidian" height="22" viewBox="0 0 143 25" width="126" xmlns="http://www.w3.org/2000/svg"><path fill="#A88BFA" d="m6.91927 14.5955c.64053-.1907 1.67255-.4839 2.85923-.5565-.71191-1.7968-.88376-3.3691-.74554-4.76905.15962-1.61678.72977-2.9662 1.28554-4.11442.1186-.24501.2326-.47313.3419-.69198.1549-.30984.3004-.60109.4365-.8953.2266-.48978.3948-.92231.4798-1.32416.0836-.39515.0841-.74806-.0148-1.08657-.099-.338982-.3093-.703864-.7093-1.1038132-.5222-.1353116-1.1017-.0165173-1.53613.3742922l-5.15591 4.638241c-.28758.25871-.47636.60929-.53406.99179l-.44455 2.94723c.69903.6179 2.42435 2.41414 3.47374 4.90644.09364.2224.1819.4505.26358.6838z"/><path fill="#A88BFA" d="m2.97347 10.3512c-.02431.1037-.05852.205-.10221.3024l-2.724986 6.0735c-.279882.6238-.15095061 1.3552.325357 1.8457l4.288349 4.4163c2.1899-3.2306 1.87062-6.2699.87032-8.6457-.75846-1.8013-1.90801-3.2112-2.65683-3.9922z"/><path fill="#A88BFA" d="m5.7507 23.5094c.07515.012.15135.0192.2281.0215.81383.0244 2.18251.0952 3.29249.2997.90551.1669 2.70051.6687 4.17761 1.1005 1.1271.3294 2.2886-.5707 2.4522-1.7336.1192-.8481.343-1.8075.7553-2.6869l-.0095.0033c-.6982-1.9471-1.5865-3.2044-2.5178-4.0073-.9284-.8004-1.928-1.1738-2.8932-1.3095-1.60474-.2257-3.07497.1961-4.00103.4682.55465 2.3107.38396 5.0295-1.48417 7.8441z"/><path fill="#A88BFA" d="m17.3708 19.3102c.9267-1.3985 1.5868-2.4862 1.9352-3.0758.1742-.295.1427-.6648-.0638-.9383-.5377-.7126-1.5666-2.1607-2.1272-3.5015-.5764-1.3785-.6624-3.51876-.6673-4.56119-.0019-.39626-.1275-.78328-.3726-1.09465l-3.3311-4.23183c-.0117.19075-.0392.37998-.0788.56747-.1109.52394-.32 1.04552-.5585 1.56101-.1398.30214-.3014.62583-.4646.95284-.1086.21764-.218.4368-.3222.652-.5385 1.11265-1.0397 2.32011-1.1797 3.73901-.1299 1.31514.0478 2.84484.8484 4.67094.1333.0113.2675.0262.4023.0452 1.1488.1615 2.3546.6115 3.4647 1.5685.9541.8226 1.8163 2.0012 2.5152 3.6463z"/><path fill="currentColor" d="m39.752 4.5038c-5.952 0-10.248 3.744-10.248 8.88s4.296 8.88 10.248 8.88c5.928 0 10.224-3.744 10.224-8.88s-4.296-8.88-10.224-8.88zm0 3.47999c3.576 0 6.144 2.13601 6.144 5.40001s-2.568 5.4-6.144 5.4c-3.6 0-6.168-2.136-6.168-5.4s2.568-5.40001 6.168-5.40001z"/><path fill="currentColor" d="m55.4847 20.5598c.864.936 2.472 1.704 4.584 1.704 4.32 0 6.8401-2.976 6.8401-6.576 0-3.624-2.5201-6.60001-6.8401-6.60001-2.112 0-3.72.79201-4.584 1.70401v-6.02401h-3.84v17.23201h3.84zm-.12-4.944c0-1.992 1.704-3.432 3.912-3.432 2.112 0 3.888 1.248 3.888 3.504s-1.776 3.48-3.888 3.48c-2.208 0-3.912-1.416-3.912-3.408z"/><path fill="currentColor" d="m67.3181 19.9118c1.464 1.488 4.272 2.352 7.2 2.352 3.96 0 6.936-1.44 6.936-4.392 0-2.88-2.832-3.432-6.072-3.816-2.736-.312-3.576-.384-3.576-1.08 0-.648.864-1.056 2.496-1.056 1.968 0 3.672.6 4.824 1.656l1.992-2.304c-1.272-1.224-3.648-2.18401-6.624-2.18401-4.008 0-6.48 1.72801-6.48 4.32001 0 2.712 2.52 3.312 5.544 3.696 2.832.336 4.032.336 4.032 1.176 0 .792-1.056 1.128-2.784 1.128-2.16 0-4.152-.672-5.664-2.064z"/><path fill="currentColor" d="m82.8395 8.05579h3.912v-3.288h-3.912zm3.864 1.29601h-3.84v12.648h3.84z"/><path fill="currentColor" d="m99.8264 20.5598v1.44h3.8396v-17.23201h-3.8396v6.02401c-.864-.912-2.472-1.70401-4.584-1.70401-4.32 0-6.84 2.97601-6.84 6.60001 0 3.6 2.52 6.576 6.84 6.576 2.112 0 3.72-.768 4.584-1.704zm.12-4.944v.144c0 1.992-1.704 3.408-3.912 3.408-2.112 0-3.888-1.224-3.888-3.48s1.776-3.504 3.888-3.504c2.208 0 3.912 1.44 3.912 3.432z"/><path fill="currentColor" d="m105.996 8.05579h3.912v-3.288h-3.912zm3.864 1.29601h-3.84v12.648h3.84z"/><path fill="currentColor" d="m116.863 22.2638c2.232 0 4.056-.648 5.208-1.656.648 1.2 2.184 1.92 4.992 1.392v-2.832c-1.344.288-1.632-.024-1.632-.696v-4.608c0-3.168-2.376-4.77601-6.408-4.77601-3.48 0-6.264 1.51201-7.056 3.79201l3.456.936c.384-.984 1.704-1.704 3.432-1.704 2.04 0 2.856.768 2.856 1.728v.072l-5.04.456c-2.976.288-5.16 1.512-5.16 3.984 0 2.496 2.232 3.912 5.352 3.912zm4.848-5.112c0 1.464-2.184 2.304-4.152 2.304-1.488 0-2.328-.432-2.328-1.248 0-.84.672-1.152 1.992-1.272l4.488-.456z"/><path fill="currentColor" d="m128.379 21.9998h3.84v-6.048c0-2.184 1.2-3.456 3.288-3.456 1.968 0 3 1.296 3 3.432v6.072h3.84v-7.2c0-3.504-2.232-5.71201-5.52-5.71201-2.04 0-3.624.76801-4.608 1.80001v-1.536h-3.84z"/></svg>
+			</a>
+
+		</div>
+		<div class="group w-full">
+			<ul class="text-sm hidden md:flex items-center">
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="/download">Download</a></li>
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="/pricing">Pricing</a></li>
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="/sync">Sync</a></li>
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="/publish">Publish</a></li>
+				<li class="hidden lg:block"><a class="px-3 py-2 rounded-lg font-medium hover:text-white text-muted hover:bg-gray-800" href="/enterprise">Enterprise</a></li>
+				<li class="flex-grow" aria-hidden="true"></li>
+				<li class="relative" data-lang-picker>
+					<button type="button" data-lang-toggle class="header-lang-toggle px-2 py-2 me-2 rounded-lg ring-1 ring-inset ring-white/10 text-muted hover:text-white hover:bg-gray-800 flex items-center gap-1" aria-label="Change language">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+						<i data-lucide="chevron-down" class="icon-xs"></i>
+					</button>
+					<div data-lang-menu data-search-placeholder="Switch language..." data-no-results="No results" class="lang-menu hidden absolute end-0 top-full mt-1 bg-gray-800 ring-1 ring-inset ring-white/10 rounded-lg min-w-[12rem] shadow-xl z-50 flex flex-col">
+						<ul class="flex flex-col gap-0.5 p-1 min-h-0 overflow-y-auto">
+							<li><a href="/changelog/" data-search="English English en" aria-current="true" onclick="try{localStorage.setItem('lang','en');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">English</a></li><li><a href="/ar/changelog/" data-search="العربية Arabic ar" onclick="try{localStorage.setItem('lang','ar');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">العربية</a></li><li><a href="/bn/changelog/" data-search="বাংলা Bengali Bangla bn" onclick="try{localStorage.setItem('lang','bn');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">বাংলা</a></li><li><a href="/de/changelog/" data-search="Deutsch German de" onclick="try{localStorage.setItem('lang','de');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Deutsch</a></li><li><a href="/es/changelog/" data-search="Español Spanish Castilian es" onclick="try{localStorage.setItem('lang','es');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Español</a></li><li><a href="/fr/changelog/" data-search="Français French fr" onclick="try{localStorage.setItem('lang','fr');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Français</a></li><li><a href="/it/changelog/" data-search="Italiano Italian it" onclick="try{localStorage.setItem('lang','it');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Italiano</a></li><li><a href="/ja/changelog/" data-search="日本語 Japanese ja" onclick="try{localStorage.setItem('lang','ja');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">日本語</a></li><li><a href="/ko/changelog/" data-search="한국어 Korean ko" onclick="try{localStorage.setItem('lang','ko');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">한국어</a></li><li><a href="/pl/changelog/" data-search="Polski Polish pl" onclick="try{localStorage.setItem('lang','pl');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Polski</a></li><li><a href="/pt-BR/changelog/" data-search="Português (Brasil) Portuguese Brazilian pt-BR" onclick="try{localStorage.setItem('lang','pt-BR');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Português (Brasil)</a></li><li><a href="/ro/changelog/" data-search="Română Romanian ro" onclick="try{localStorage.setItem('lang','ro');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Română</a></li><li><a href="/ru/changelog/" data-search="Русский Russian ru" onclick="try{localStorage.setItem('lang','ru');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Русский</a></li><li><a href="/sv/changelog/" data-search="Svenska Swedish sv" onclick="try{localStorage.setItem('lang','sv');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Svenska</a></li><li><a href="/zh/changelog/" data-search="简体中文 Chinese Simplified Mandarin zh" onclick="try{localStorage.setItem('lang','zh');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">简体中文</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="https://community.obsidian.md">Community</a></li>
+				<li><a class="px-3 py-2 rounded-lg font-medium text-muted hover:text-white hover:bg-gray-800" href="/account">Account</a></li>
+			</ul>
+		</div>
+		<div class="ms-auto md:hidden z-10 flex items-center gap-4">
+			<div class="relative" data-lang-picker>
+				<button type="button" data-lang-toggle class="header-lang-toggle-mobile px-2 py-2 text-gray-400 flex items-center gap-1" aria-label="Change language">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+					
+				</button>
+				<div data-lang-menu data-search-placeholder="Switch language..." data-no-results="No results" class="lang-menu hidden absolute end-0 top-full mt-1 bg-gray-800 ring-1 ring-inset ring-white/10 rounded-lg min-w-[12rem] shadow-xl z-50 flex flex-col">
+					<ul class="flex flex-col gap-0.5 p-1 min-h-0 overflow-y-auto">
+						<li><a href="/changelog/" data-search="English English en" aria-current="true" onclick="try{localStorage.setItem('lang','en');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">English</a></li><li><a href="/ar/changelog/" data-search="العربية Arabic ar" onclick="try{localStorage.setItem('lang','ar');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">العربية</a></li><li><a href="/bn/changelog/" data-search="বাংলা Bengali Bangla bn" onclick="try{localStorage.setItem('lang','bn');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">বাংলা</a></li><li><a href="/de/changelog/" data-search="Deutsch German de" onclick="try{localStorage.setItem('lang','de');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Deutsch</a></li><li><a href="/es/changelog/" data-search="Español Spanish Castilian es" onclick="try{localStorage.setItem('lang','es');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Español</a></li><li><a href="/fr/changelog/" data-search="Français French fr" onclick="try{localStorage.setItem('lang','fr');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Français</a></li><li><a href="/it/changelog/" data-search="Italiano Italian it" onclick="try{localStorage.setItem('lang','it');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Italiano</a></li><li><a href="/ja/changelog/" data-search="日本語 Japanese ja" onclick="try{localStorage.setItem('lang','ja');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">日本語</a></li><li><a href="/ko/changelog/" data-search="한국어 Korean ko" onclick="try{localStorage.setItem('lang','ko');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">한국어</a></li><li><a href="/pl/changelog/" data-search="Polski Polish pl" onclick="try{localStorage.setItem('lang','pl');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Polski</a></li><li><a href="/pt-BR/changelog/" data-search="Português (Brasil) Portuguese Brazilian pt-BR" onclick="try{localStorage.setItem('lang','pt-BR');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Português (Brasil)</a></li><li><a href="/ro/changelog/" data-search="Română Romanian ro" onclick="try{localStorage.setItem('lang','ro');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Română</a></li><li><a href="/ru/changelog/" data-search="Русский Russian ru" onclick="try{localStorage.setItem('lang','ru');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Русский</a></li><li><a href="/sv/changelog/" data-search="Svenska Swedish sv" onclick="try{localStorage.setItem('lang','sv');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">Svenska</a></li><li><a href="/zh/changelog/" data-search="简体中文 Chinese Simplified Mandarin zh" onclick="try{localStorage.setItem('lang','zh');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="lang-option">简体中文</a></li>
+					</ul>
+				</div>
+			</div>
+			<a class="header-mobile-nav text-gray-200 hover:text-gray-100" href="#" aria-label="Open the navigation menu">
+				<div class="header-mobile-nav-button">
+					<div class="header-mobile-nav-button-inner"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+</header>
+
+<div class="header-mobile-nav-menu fixed top-0 right-0 bottom-0 left-0 overflow-scroll overscroll-contain block md:hidden">
+	<div class="container py-4">
+		<ul class="text-xl font-medium grid sm:grid-cols-2 pb-4 border-b border-gray-800">
+			<li><a class="flex py-1 items-center gap-2" href="/download">
+				Download</a></li>
+			<li><a class="flex py-1 items-center gap-2" href="/account">
+				Account</a></li>
+			<li><a class="flex py-1 items-center gap-3" href="/sync">
+				Sync</a></li>
+			<li><a class="flex py-1 items-center gap-3" href="/publish">
+				Publish</a></li>
+			<li><a class="flex py-1 items-center gap-3" href="/pricing">
+				Pricing</a></li>
+			<li><a class="flex py-1 items-center gap-3" href="https://community.obsidian.md">
+				Plugins</a></li>
+			<li><a class="flex py-1 items-center gap-2" href="/enterprise">
+				Enterprise</a></li>
+			<li><a class="flex py-1 items-center gap-2" href="/clipper">
+				Web Clipper</a></li>
+		</ul>
+		<div class="text-muted mt-6">Learn more</div>
+		<ul class="font-medium grid grid-cols-2 my-2 pb8">
+			<li><a class="block py-1" href="https://obsidian.md/help/">Help</a></li>
+			<li><a class="block py-1" href="/about">About</a></li>
+
+			<li><a class="block py-1" href="/blog">Blog</a></li>
+			<li><a class="block py-1" href="https://discord.gg/obsidianmd" rel="noopener noreferrer" target="_blank">Discord</a></li>
+
+			<li><a class="block py-1" href="/changelog">Changelog</a></li>
+			<li><a class="block py-1" href="https://community.obsidian.md">Community</a></li>
+
+			<li><a class="block py-1" href="/roadmap">Roadmap</a></li>
+			<li><a class="block py-1" href="/security">Security</a></li>
+
+			<li><a class="block py-1" href="/softwear">Merch store</a></li>
+			<li><a class="block py-1" href="/privacy">Privacy</a></li>
+		</ul>
+	</div>
+</div>
+
+		<div class="">
+			
+<div class="container changelog">
+	<div class="py-24 border-b border-gray-800">
+		<div class="md:w-3/4 ms-auto">
+			<h1 class="text-title">Changelog</h1>
+			<div class="pt-12 text-2xl text-muted flex gap-4">
+				Follow Obsidian updates and improvements.
+			</div>
+			<div class="pt-4 text-base sm:text-lg font-medium flex gap-4 gap-y-2 flex-col md:flex-row">
+				<a href="/changelog.xml" target="_blank" class="flex items-center gap-1 text-accent-400 hover:text-accent-300">
+					<i data-lucide="rss" class="inline align-text-top"></i> <span>RSS</span>
+				</a>
+				<a href="https://discord.gg/obsidianmd" target="_blank" class="flex items-center gap-1 text-accent-400 hover:text-accent-300">
+					<i data-lucide="messages-square" class="inline align-text-top"></i>
+					Discord
+				</a>
+				<a href="https://x.com/obsdmd" target="_blank" class="flex items-center gap-1 text-accent-400 hover:text-accent-300">
+					<i data-lucide="twitter" class="align-text-top"></i>
+					Twitter
+				</a>
+				<a href="https://bsky.app/profile/obsidian.md" target="_blank" class="flex items-center gap-1 text-accent-400 hover:text-accent-300">
+					<i data-lucide="radio" class="align-text-top"></i>
+					Bluesky
+				</a>
+				<a href="https://mas.to/@obsidian" target="_blank" class="flex items-center gap-1 text-accent-400 hover:text-accent-300">
+					<i data-lucide="radio" class="align-text-top"></i>
+					Mastodon
+				</a>
+			</div>
+		</div>
+	</div>
+	<div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-30-mobile-v1.13.4/" class="font-semibold text-3xl sm:text-xl">
+						July 30, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-30-mobile-v1.13.4/" class="flex items-center gap-4">
+							<span class="text-sm">1.13
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>This update introduces a new searchable Settings panel and iOS Share Sheet. Scrolling large files and selecting text should also be improved on both iOS and Android. Includes all new features and bug fixes up to <a href="/changelog/2026-07-30-desktop-v1.13.4/">Obsidian Desktop v1.13.4</a>.</p>
+<h2>iOS Share Sheet</h2>
+<p>The new iOS Share Sheet lets you save content from Safari, YouTube, and other apps without opening Obsidian. You can customize several <strong>Locations</strong> to define the vault, folder, and template that is used. <a href="https://obsidian.md/help/ios">Learn more.</a></p>
+<div style="padding:62.29% 0 0 0;position:relative;"><div class="interface" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/xvo2is4xe2?web_component=true&seo=false" title="2026-04-22 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe></div></div>
+<h2>New</h2>
+<ul>
+<li>Tab switcher: Drag and drop tabs to reorder them.</li>
+<li>Tablet: Press-and-hold to resize splits and pinned sidebars.</li>
+<li>Bases: New menu item to resize columns in table views.</li>
+<li>Swipe down to dismiss a zoomed image.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Settings pages now have enough padding to scroll fully into view when the onscreen keyboard is showing.</li>
+<li>Fixed double-tap to zoom on images.</li>
+<li>Fixed a bug where the input field in the Search view would sometimes autofocus when you open the sidebar.</li>
+<li>Fixed tabs not recomputing their width after another tab is closed.</li>
+<li>Live Preview: Fixed &quot;Enter&quot; from the iOS keyboard not working as expected inside Markdown lists.</li>
+<li>Live Preview: Fixed buttons for creating new columns and new rows not working on iOS.</li>
+<li>File Recovery: Fixed navigating between different files in file history on mobile.</li>
+<li>iOS: Fixed &quot;Delete file&quot; not updating the app interface on non-English devices.</li>
+<li>iOS: Fixed setting pages scrolling back to the top after changing setting values.</li>
+<li>iOS: Fixed app crashing when sharing screenshots via the Share Sheet.</li>
+<li>iOS: Fixed scrolling stopping abruptly when scrolling quickly in a large document.</li>
+<li>iOS: Fixed scroll stopping abruptly in reading mode when scrolling quickly in a document with large embeds.</li>
+<li>iOS: Fixed scroll position getting lost after toggling a plugin on or off.</li>
+<li>iOS: Fixed changing tabs with the Magic Trackpad causing the scroll position to reset.</li>
+<li>iOS: Fixed triple-tap at the end of a paragraph not selecting the paragraph.</li>
+<li>Android: Fixed &quot;Select all&quot; not selecting everything in long documents.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li>We have increased the minimum iOS version from iOS 14.5 to iOS 15. This should not impact any supported devices.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-30-desktop-v1.13.4/" class="font-semibold text-3xl sm:text-xl">
+						July 30, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-30-desktop-v1.13.4/" class="flex items-center gap-4">
+							<span class="text-sm">1.13
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>This update introduces a new searchable Settings panel and new experience for working with images, including a full-screen image viewer.</p>
+<h2>Settings</h2>
+<p>Settings have been completely revamped with keyboard navigation, search, and new APIs for plugin developers.</p>
+<div style="padding:73.75% 0 0 0;position:relative;"><div class="interface" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/rzxipi1h2j?web_component=true&seo=false" title="2026-04-22 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe></div></div>
+<ul>
+<li>Settings now open in a new window. You can turn this off in <strong>Settings</strong> → <strong>Interface</strong> → <strong>Open settings in new window</strong>.</li>
+<li>Added search. You can now search for settings by name or description. This currently supports core settings and core plugins. Community plugins can <a href="https://docs.obsidian.md/plugins/guides/migrate-declarative-settings">migrate to the new settings API</a> to appear in search results.</li>
+<li>Added keyboard navigation. Use arrow keys to move between items, <code>Enter</code> to open a setting tab, and <code>Ctrl/Cmd-F</code> to re-focus search. Also supports Vim key bindings.</li>
+<li>Some settings have moved into a new <strong>Interface</strong> settings page. Several settings pages have been redesigned to improve navigation.</li>
+<li>Added the ability to exit <strong>Restricted Mode</strong> without re-enabling your plugins. Useful for debugging your vault.</li>
+<li>Deprecated the Settings Search plugin as it overlaps with the new search functionality. Thank you to javalent for such a great plugin! It has been added to the <a href="https://obsidian.md/help/credits#Plugin+inspirations">Obsidian credits page</a>.</li>
+</ul>
+<h2>Images</h2>
+<p>Image are now easier to resize and can be viewed fullscreen. Click an image or the <strong>Zoom</strong> button to open it. You can navigate between all the images embedded in the current file, and click and drag to pan within an image.</p>
+<div style="padding:73.75% 0 0 0;position:relative;"><div class="interface" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/tumj3n0wj5?web_component=true&seo=false" title="2026-04-22 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe></div></div>
+<ul>
+<li>Live Preview: New editor experience when working with images. Images can now be selected via the keyboard, and they don't automatically expand to reveal their filename. When the image is selected, backspace and delete will delete the image, and <code>Ctrl/Cmd-C</code> and <code>Ctrl/Cmd-X</code> will copy or cut the image.</li>
+<li>Live Preview: Added keyboard interactions when an image is selected. Press <code>+</code> or <code>-</code> to resize the selected image, and <code>0</code> to reset the image size. Press <code>Enter</code> to edit the image, or <code>Tab</code> to manually edit the image size.</li>
+<li>Vim: Added a new <code>:image</code> Ex command to interact with the selected image. Use <code>:image grow</code> and <code>:image shrink</code> to resize the image, and <code>:image reset</code> to reset the image size. It also supports a count, so <code>:5image grow</code> will grow the image 5 times.</li>
+</ul>
+<h2>Improvements</h2>
+<h3>Security</h3>
+<ul>
+<li>Obsidian URIs now present a confirmation dialog before firing the action. Choose &quot;Don't ask again&quot; to add that action to an allow list. Manage the allow list from settings.</li>
+<li>Added a warning before attempting to load HTML resources if the source points to a network drive.</li>
+<li>Added a warning dialog when choosing to sync plugins via Obsidian Sync.</li>
+</ul>
+<h3>Editor</h3>
+<ul>
+<li>Reading mode now supports external images with an image size and no alt text (e.g. <code>![200](https://www.path.to/image.png)</code>).</li>
+<li>Note Composer: When extracting a section from a file, links in that section will now be rewritten to be relative to the new location.</li>
+</ul>
+<h3>File explorer</h3>
+<ul>
+<li>Pressing <code>Escape</code> to cancel the file rename keeps the File Explorer focused.</li>
+<li>Pressing <code>Escape</code> clears the current selection.</li>
+<li>&quot;Auto reveal&quot; will no longer activate when renaming a file or folder.</li>
+<li>Added support for dragging links from a Base into the File Explorer to move the file to a new location.</li>
+<li>Minor improvements to drag and drop behavior.</li>
+</ul>
+<h3>Properties</h3>
+<ul>
+<li>Improved keyboard navigation in the Global Properties view; <code>Backspace</code> now deletes the selected properties.</li>
+<li>Improved the property type menu to make it clearer whether a property's type is set automatically or chosen manually.</li>
+</ul>
+<h3>Obsidian Sync</h3>
+<ul>
+<li>Removed spinning from the status bar icon because it impacted battery life when the app idles.</li>
+<li>Files in the Sync sidebar view now show all file-related items in the context menu.</li>
+<li>Files in the Sync sidebar view can now be dragged into other views or into the editor.</li>
+<li>Added search menu item to the Sync sidebar view.</li>
+<li>The Sync sidebar view now supports multi-selection with the keyboard (<code>Shift</code>-arrow keys) or the mouse (<code>Alt</code>-click).</li>
+<li>The Sync sidebar view now supports deleting files with the <code>Delete</code> or <code>Backspace</code> key.</li>
+</ul>
+<h3>macOS</h3>
+<ul>
+<li>Updated button and input styles to better match macOS 26 defaults.</li>
+</ul>
+<h3>Canvas</h3>
+<ul>
+<li>Minor rendering performance improvements.</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>Added search to the <strong>Bookmarks</strong> view.</li>
+<li>Added a new one-time banner confirming that you want to render Mermaid code blocks in your vault.</li>
+<li>On desktop, dragging a folder into the app now imports the entire folder and preserves the directory structure.</li>
+<li><code>Ctrl-N</code> and <code>Ctrl-P</code> to navigate to the next/previous item in suggestions now work on all platforms.</li>
+<li>Updated the dialog that appears when opening an unrecognized vault with plugins installed. Wording has been improved to emphasize the risk of using untrusted plugins.</li>
+<li>Closing the quick switcher or command palette with the Escape key now correctly restores the previous selection.</li>
+<li>Pressing the Escape key now hides the search input in sidebar views.</li>
+<li>File Recovery: Added keyboard navigation to the file history records. Use arrow keys to navigate through the list.</li>
+<li>The Unique Note Creator plugin now links to its own settings when it fails to find a template.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed a rare race condition where a file could get stuck and fail to save until the app was restarted.</li>
+<li>Fixed the app failing to load if a view throws errors while the workspace is loading.</li>
+<li>Fixed the app silently crashing on any installer older than Obsidian 1.6. We've also added an error message if this ever happens again.</li>
+<li>Fixed clicking external links in pop-out windows causing the pop-out window to close.</li>
+<li>Fixed ribbon buttons not responding to touch events on desktop.</li>
+<li>Disabling a CSS snippet now properly removes the styles from all pop-out windows.</li>
+<li>Fixed the placeholder text shown in the command palette prompt.</li>
+<li>Fixed choppy horizontal scrolling when sidebar tabs overflow.</li>
+<li>Fixed the &quot;Copy&quot; button not appearing on very large code blocks.</li>
+<li>Fixed image resizing when an image is inside a Markdown table.</li>
+<li>Fixed <code>unique</code> URI action not opening the new note in the correct tab when the <code>paneType</code> option is provided.</li>
+<li>Fixed navigation inside embedded web content (webview).</li>
+<li>Reading mode no longer interprets <code>%%%%</code> as a non-terminated comment. Comments are always fenced with exactly two <code>%</code> characters.</li>
+<li>Live Preview: Fixed <code>Ctrl/Cmd-A</code> not working inside embedded inputs (e.g. a cell in an embedded Bases table).</li>
+<li>Live Preview: Fixed embeds inside Markdown lists not showing the correct indentation.</li>
+<li>Live Preview: Code blocks now re-render correctly when a plugin's post processor changes.</li>
+<li>Live Preview: Fixed inline formatting not expanding properly when math or images are inside. For example, <code>**some $math$ text**</code> would not expand properly when the cursor moved within the bold formatting.</li>
+<li>Live Preview: Fixed image disappearing when editing a Markdown embed and scrolling.</li>
+<li>File Explorer: Fixed rare bug where files temporarily rendered with the wrong indentation level after moving the file to a new folder.</li>
+<li>Properties: Fixed Global properties view not always saving sort order.</li>
+<li>Properties: Fixed &quot;Delete properties&quot; menu item not working reliably when property name contains capital letters.</li>
+<li>Properties: Fixed &quot;Open link under cursor&quot; hotkeys not working on list property items.</li>
+<li>Properties: Fixed an error when rendering <code>[]()</code> inside a list property.</li>
+<li>Bookmarks: Fixed focus not moving to the next item after deleting a bookmark via the keyboard.</li>
+<li>Bookmarks: Fixed keyboard navigation in the Bookmarks view sometimes getting stuck due to missing bookmarked files.</li>
+<li>Bookmarks: Fixed middle-click inside the Bookmarks view activating AutoScroll on Windows.</li>
+<li>Bases: Fixed error messages appearing when disabling and re-enabling the Bases core plugin.</li>
+<li>Bases: Fixed automatic column sizing for number properties.</li>
+<li>Bases: Fixed the formula editor not working for Bases in pop-out windows.</li>
+<li>Bases: Fixed sort filters showing an incorrect background color.</li>
+<li>Bases: &quot;File links&quot; no longer show the image size as the image display name.</li>
+<li>Sync: Fixed a bug where clicking the status bar icon would not always open the menu.</li>
+<li>Vim: A white &quot;ghost&quot; character no longer appears when the Vim cursor overlaps with a widget in the editor.</li>
+</ul>
+<h3>macOS</h3>
+<ul>
+<li>Fixed some elements showing scrollbars when they should not, such as the tab headers in the sidebars.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li>The installer has been updated to use Electron v43.1.1. To upgrade, install visit the <a href="https://obsidian.md/download">Obsidian download page</a> and reinstall Obsidian.</li>
+<li>Added <a href="https://docs.obsidian.md/Plugins/User+interface/Settings">documentation</a> and a <a href="https://docs.obsidian.md/plugins/guides/migrate-declarative-settings">migration guide</a> for the new Settings API.</li>
+<li>Added a new <code>ConfirmationModal</code> component.</li>
+<li>Upgraded CodeMirror to the latest version.</li>
+<li>Base colors have been migrated to OKLCH colorspace.</li>
+<li>The <code>--callout-color</code> variable now expects a valid CSS color. This is a breaking change:</li>
+</ul>
+<pre><code class="language-css">/* Previously callout colors expected an RGB triplet. */
+--callout-color: 255,0,0;
+
+/* Now any valid CSS color is valid */
+--callout-color: #ff0000;
+--callout-color: rgb(255,0,0);
+</code></pre>
+<h3>CLI</h3>
+<ul>
+<li>Fixed Obsidian CLI for flatpak installs.</li>
+</ul>
+<h2>Third-party Libraries</h2>
+<ul>
+<li>Upgraded Moment.js to 2.30.1.</li>
+<li>Upgraded Mermaid to 11.13.0.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-27-mobile-v1.13.4/" class="font-semibold text-3xl sm:text-xl">
+						July 27, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-27-mobile-v1.13.4/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.4
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<ul>
+<li>Includes all new features and bug fixes up to Obsidian Desktop v1.13.4.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>Improved overall appearance of settings in dark mode.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed search input getting automatically focused when browsing Community plugins.</li>
+<li>iOS: Fixed the Share Sheet not including article content when sharing X links.</li>
+<li>iOS: Fixed scroll position getting lost after toggling a plugin on or off.</li>
+<li>iOS: Fixed changing tabs with the Magic Trackpad causing the scroll position to reset.</li>
+<li>iOS: Fixed triple-tap at the end of a paragraph not selecting the paragraph.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-27-desktop-v1.13.4/" class="font-semibold text-3xl sm:text-xl">
+						July 27, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-27-desktop-v1.13.4/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.4
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Improvements</h2>
+<ul>
+<li>The image lightbox now displays the file name of the current image.</li>
+<li>Improved layout of Page Preview settings.</li>
+<li>Settings: Download counts are now abbreviated for plugins and themes.</li>
+<li>Settings: Moved the &quot;Interface&quot; tab above &quot;Editor&quot; in the settings sidebar.</li>
+<li>Live Preview: Improved alignment of images inline with text.</li>
+<li>Live Preview: Removed extra padding around images.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed a rare race condition where a file could get stuck and fail to save until the app was restarted.</li>
+<li>Fixed the app failing to load if a view throws errors while the workspace is loading.</li>
+<li>Fixed appearance of image action buttons on older installers.</li>
+<li>Settings: Fixed Page Preview settings not showing entries from Community plugins.</li>
+<li>Settings: Fixed the close button not being visible in the settings window when &quot;Open settings in new window&quot; is turned off.</li>
+<li>Live Preview: Fixed appearance of non-image embed actions.</li>
+<li>Live Preview: Fixed image disappearing when editing a Markdown embed and scrolling.</li>
+<li>Live Preview: Fixed the editor line height being preserved when editing an image embed on an indented line with no other text.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-21-mobile-v1.13.3/" class="font-semibold text-3xl sm:text-xl">
+						July 21, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-21-mobile-v1.13.3/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.3
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<ul>
+<li>Includes all new features and bug fixes up to Obsidian Desktop v1.13.3.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>Added &quot;swipe down&quot; gesture to dismiss an image in the lightbox.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Tapping an image no longer shows the keyboard.</li>
+<li>Fixed double-tap to zoom on images.</li>
+<li>Live Preview: Fixed buttons for creating new columns and new rows not working on iOS.</li>
+<li>Live Preview: Fixed a regression where &quot;Enter&quot; from the iOS keyboard was not working as expected inside Markdown lists.</li>
+<li>File Recovery: Fixed navigating between different files in file history on mobile.</li>
+<li>iOS: Fixed scroll stopping abruptly in reading mode when scrolling quickly in a document with large embeds.</li>
+<li>Fixed tabs not recomputing their width after another tab is closed.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-21-desktop-v1.13.3/" class="font-semibold text-3xl sm:text-xl">
+						July 21, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-21-desktop-v1.13.3/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.3
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Improvements</h2>
+<ul>
+<li>Live Preview: When the image is the only text on a line, the editor line height is no longer preserved to match the image height.</li>
+<li>Live Preview: Added a new selection state to image embeds.</li>
+<li>Added a &quot;zoom&quot; button to image embeds.</li>
+<li>The image lightbox now supports click and drag to pan within an image.</li>
+<li>File Recovery: Added keyboard navigation to the file history records. Use arrow keys to navigate through the list.</li>
+<li>Unique Note Creator plugin now links to its own settings when it fails to find a template.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed image resizing when an image is inside a Markdown table.</li>
+<li>Fixed <code>unique</code> URI action not opening the new note in the correct tab when the <code>paneType</code> option is provided.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-14-mobile-v1.13.2/" class="font-semibold text-3xl sm:text-xl">
+						July 14, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-14-mobile-v1.13.2/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.2
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<ul>
+<li>Includes all new features and bug fixes up to Obsidian Desktop v1.13.2.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>iOS: Added a <code>url</code> variable to the Share Sheet template for inserting the shared link into your note.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Settings: Updated the size of toggles inside settings.</li>
+<li>Settings: Fixed the display of settings with validation errors.</li>
+<li>iOS: Fixed scrolling stopping abruptly when scrolling quickly in a large document.</li>
+<li>Android: Fixed &quot;Select all&quot; not selecting everything in long documents.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-07-14-desktop-v1.13.2/" class="font-semibold text-3xl sm:text-xl">
+						July 14, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-07-14-desktop-v1.13.2/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.2
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>New</h2>
+<ul>
+<li>New image lightbox for viewing images fullscreen. Click the image in reading mode to open it. Or in live preview, with an image selected, click or press <code>Space</code> to open it in the lightbox. Use arrow keys to navigate between all the images embedded in the current file.</li>
+<li>Live Preview: Added keyboard interactions when an image is selected. Press <code>+</code> or <code>-</code> to resize the selected image, and <code>0</code> to reset the image size. Press <code>Enter</code> to edit the image, or <code>Tab</code> to manually edit the image size.</li>
+<li>Vim: Added a new <code>:image</code> Ex command to interact with the selected image. Use <code>:image grow</code> and <code>:image shrink</code> to resize the image, and <code>:image reset</code> to reset the image size. It also supports a count, so <code>:5image grow</code> will grow the image 5 times.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>Live Preview: Clicking outside a selected image now deselects it.</li>
+<li>Reading mode now supports external images with an image size and no alt text (e.g. <code>![200](https://www.path.to/image.png)</code>).</li>
+<li>File Explorer: Added support for dragging links from a Base into the File Explorer to move the file to a new location.</li>
+</ul>
+<h3>Sync</h3>
+<ul>
+<li>Added file-level context menu items to the Sync view.</li>
+<li>The Sync view now supports multi-selection with the keyboard (<code>Shift</code>-arrow keys) or the mouse (Alt-click).</li>
+<li>The Sync view now supports deleting files with the <code>Delete</code> or <code>Backspace</code> key.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Editor: Fixed regression where &quot;Toggle bold&quot; would not remove the bold (<code>**</code>) markers when the cursor was inside bold text.</li>
+<li>Live Preview: Fixed inline formatting not expanding properly when math or images are inside. For example, <code>**e $e$ e**</code> would not expand properly when the cursor moved within the bold formatting.</li>
+<li>Reading mode no longer interprets <code>%%%%</code> as a non-terminated comment. Comments are always fenced with exactly two <code>%</code> characters.</li>
+<li>Fixed the &quot;Copy&quot; button not appearing on very large code blocks.</li>
+<li>Properties: Fixed an error when rendering <code>[]()</code> inside a list property.</li>
+<li>Bookmarks: Fixed keyboard navigation in the Bookmarks view sometimes getting stuck due to missing bookmarked files.</li>
+<li>Bookmarks: Fixed middle-click inside the Bookmarks view activating AutoScroll on Windows.</li>
+<li>Bases: Fixed the formula editor not working for Bases in pop-out windows.</li>
+<li>Bases: Fixed sort filters showing an incorrect background color.</li>
+<li>Bases: &quot;File links&quot; no longer show the image size as the image display name.</li>
+<li>Sync: Fixed a bug where clicking the status bar icon would not always open the menu.</li>
+<li>Settings: Fixed page preview settings not saving.</li>
+<li>Settings: Fixed pinned commands not showing commands from community plugins.</li>
+<li>Settings: Fixed a minor memory leak with &quot;action&quot; buttons in settings.</li>
+<li>Vim: A white &quot;ghost&quot; character no longer appears when the Vim cursor overlaps with a widget in the editor.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li>Fixed how <code>SettingGroup</code> renders when used outside of a <code>SettingTab</code>.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-06-09-mobile-v1.13.1/" class="font-semibold text-3xl sm:text-xl">
+						June 9, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-06-09-mobile-v1.13.1/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.1
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<ul>
+<li>Includes all new features and bug fixes up to Obsidian Desktop v1.13.1.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>Settings pages now have enough padding to scroll fully into view when the onscreen keyboard is showing.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>iOS: Fixed app crashing when sharing screenshots via the Share Sheet.</li>
+<li>Live Preview: Fixed &quot;Enter&quot; from the iOS keyboard not working as expected inside Markdown lists.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-06-09-desktop-v1.13.1/" class="font-semibold text-3xl sm:text-xl">
+						June 9, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-06-09-desktop-v1.13.1/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.1
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Improvements</h2>
+<h3>Settings</h3>
+<ul>
+<li>Sliders now show a permanent label with the current value, shown inline next to the slider instead of in a tooltip.</li>
+<li>Navigating back now restores focus to the setting item you came from.</li>
+<li>Added support for the mouse &quot;back&quot; button to navigate back through settings history.</li>
+<li>Added <code>Alt-ArrowUp</code> and <code>Alt-ArrowDown</code> to reorder items inside setting lists.</li>
+<li>The command palette settings tab now uses the standard settings rendering.</li>
+<li>Improved the layout of the community plugins list.</li>
+<li>Deprecated the Settings Search plugin as it overlaps with the new search functionality. Thank you to javalent for such a great plugin! It has been added to the <a href="https://obsidian.md/help/credits#Plugin+inspirations">Obsidian credits page</a>.</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>Mermaid diagrams now render immediately after you allow them in a vault, without needing to reload.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed setting pages not always loading when navigating to them from setting search results.</li>
+<li>Fixed the placeholder text shown in the command palette prompt.</li>
+<li>Fixed choppy horizontal scrolling when sidebar tabs overflow.</li>
+<li>Live Preview: Fixed embeds inside Markdown lists not showing the correct indentation.</li>
+<li>Live Preview: Code blocks now re-render correctly when a plugin's post processor changes.</li>
+<li>Bookmarks: Fixed focus not moving to the next item after deleting a bookmark with Cmd-Backspace.</li>
+<li>Bookmarks: Fixed Cmd-Backspace not clearing the filter input.</li>
+<li>App: Fixed app silently crashing on any installer older than Obsidian 1.6. We've also added an error message if this ever happens again.</li>
+<li>Desktop: Fixed navigation inside embedded web content (webview).</li>
+</ul>
+<h3>macOS</h3>
+<ul>
+<li>Fixed some elements showing scrollbars when they should not, such as the tab headers in the sidebars.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li>Settings: Added a reset button next to all setting definitions using &quot;slider&quot; or &quot;color&quot; controls.</li>
+<li>Settings: Added a new display label to surface values before opening a settings page.</li>
+<li><code>SettingDefinitionGroup#search</code> now automatically filters the items using the user input.</li>
+<li>Fixed <code>SettingDefinitionGroup#cls</code> silently failing when trying to provide multiple classnames.</li>
+<li>Upgraded CodeMirror to the latest version.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-05-28-mobile-v1.13.0/" class="font-semibold text-3xl sm:text-xl">
+						May 28, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-05-28-mobile-v1.13.0/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.0
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<ul>
+<li>Includes all new features and bug fixes up to Obsidian Desktop v1.13.0.</li>
+</ul>
+<h2>New</h2>
+<ul>
+<li>iOS: New Share Sheet with configurable Locations. Configure Locations to point to different destinations across any of your vaults.</li>
+<li>iOS: Share Sheet now supports copying the full content of web pages, and content from other apps such as YouTube and social networks.</li>
+<li>Tabs can now be reordered from the tab switcher. Swipe to close the tab</li>
+<li>Tablet: Press-and-hold to resize splits and pinned sidebars.</li>
+<li>Bases: New menu item to resize columns in table views.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>iOS: Fixed &quot;Delete file&quot; not updating the app interface on non-English devices.</li>
+<li>iOS: Fixed setting pages scrolling back to the top after changing setting values.</li>
+<li>Fixed a bug where the input field in the Search view would sometimes autofocus when you open the sidebar.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li>We have increased the minimum iOS version from iOS 14.5 to iOS 15. This should not impact any supported devices.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-05-28-desktop-v1.13.0/" class="font-semibold text-3xl sm:text-xl">
+						May 28, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-05-28-desktop-v1.13.0/" class="flex items-center gap-4">
+							<span class="text-sm">1.13.0
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>This release introduces a revamped Settings panel that opens in a new window with built-in search and keyboard navigation.</p>
+<h2>New</h2>
+<h3>Settings</h3>
+<ul>
+<li>Settings now open in a new window. You can turn this off in <strong>Settings</strong> → <strong>Interface</strong>.</li>
+<li>Added search. You can now search for settings by name or description. This currently supports core settings and core plugins. Community plugins can <a href="https://docs.obsidian.md/plugins/guides/migrate-declarative-settings">migrate to the new settings API</a> to appear in search results.</li>
+<li>Added keyboard navigation. Use arrow keys to move between items, Enter to open a setting tab, and Ctrl/Cmd-F to re-focus search. Also supports Vim key bindings.</li>
+<li>Some settings have moved into the a new Interface settings page. Several settings pages have been redesigned to improve navigation.</li>
+<li>Added the ability to exit Restricted Mode without re-enabling your plugins. Useful for debugging your vault.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Obsidian URIs now present a confirmation dialog before firing the action. Choose &quot;Don't ask again&quot; to add that action to an allow list. Manage the allow list from settings.</li>
+<li>Added a warning before attempting to load HTML resources if the source points to a network drive.</li>
+<li>Added a warning dialog when choosing to sync plugins via Obsidian Sync.</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>Added search to Bookmarks view.</li>
+<li>Added a new one-time banner confirming that you want to render Mermaid code blocks in your vault.</li>
+<li>On desktop, dragging a folder into the app now imports the entire folder and preserves the directory structure.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li><code>Ctrl-N</code> and <code>Ctrl-P</code> to navigate to the next/previous item in suggestions now work on all platforms.</li>
+<li>Updated the dialog that appears when opening an unrecognized vault with plugins installed. Wording has been improved to emphasize the risk of using untrusted plugins.</li>
+</ul>
+<h3>Editor</h3>
+<ul>
+<li>Live Preview: New editor experience when working with images. Images can now be selected via the keyboard, and they don't automatically expand to reveal their filename. When the image is selected, backspace and delete will delete the image, and Ctrl/Cmd-C/Ctrl/Cmd-X will copy or cut the image. This should also support Vim out of the box.</li>
+<li>Note Composer: When extracting a section from a file, links in that section will now be rewritten to be relative to the new location.</li>
+</ul>
+<h3>File explorer</h3>
+<ul>
+<li>Pressing &quot;Escape&quot; to cancel the file rename keeps the File Explorer focused.</li>
+<li>Pressing &quot;Escape&quot; clears the current selection.</li>
+<li>&quot;Auto reveal&quot; will no longer activate when renaming a file or folder.</li>
+<li>Minor improvements to drag and drop behavior.</li>
+</ul>
+<h3>Properties</h3>
+<ul>
+<li>Improved keyboard navigation in Global Properties view, <code>Backspace</code> now deletes the selected properties.</li>
+<li>Property menu differentiates when a property has an automatic type assignment or not.</li>
+</ul>
+<h3>Obsidian Sync</h3>
+<ul>
+<li>Removed spinning from the status bar icon because it impacted battery life when the app idles.</li>
+<li>Files in the Sync view now show all file-related items in the context menu.</li>
+<li>Files in the Sync sidebar view can now be dragged into other views or into the editor.</li>
+<li>Added search menu item to the Sync sidebar view.</li>
+</ul>
+<h3>macOS</h3>
+<ul>
+<li>Updated button and input styles to better match macOS 26 defaults.</li>
+</ul>
+<h3>Canvas</h3>
+<ul>
+<li>Minor rendering performance improvements.</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>Closing the quick switcher or command palette with the escape key now correctly restores previous selection.</li>
+<li>Pressing Escape key now hides the search input in sidebar views.</li>
+<li>Disabling a snippet will remove the snippet from all pop-out windows.</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Fixed clicking external links in pop-out windows causing the pop-out window to close.</li>
+<li>Fixed ribbon buttons not responding to touch events on desktop.</li>
+<li>Fixed CSS snippets staying applied to pop-out windows after disabling them.</li>
+<li>File Explorer: Fixed rare bug where files temporarily rendered with the wrong indentation level after moving the file to a new folder.</li>
+<li>Live Preview: Fixed <code>Ctrl/Cmd-A</code> not working inside embedded inputs (e.g. a cell in an embedded Bases table).</li>
+<li>Properties: Fixed Global properties view not always saving sort order.</li>
+<li>Properties: Fixed &quot;Delete properties&quot; menu item not working reliably when property name contains capital letters.</li>
+<li>Properties: Fixed &quot;Open link under cursor&quot; hotkeys not working on list property items.</li>
+<li>Bases: Fixed error messages appearing when disabling and re-enabling the Bases core plugin.</li>
+<li>Bases: Fixed automatic column sizing for number properties.</li>
+</ul>
+<h2>Developers</h2>
+<ul>
+<li><a href="https://docs.obsidian.md/Plugins/User+interface/Settings">Documentation</a> and <a href="https://docs.obsidian.md/plugins/guides/migrate-declarative-settings">Migration guide</a> for the new Settings API.</li>
+<li>Added a new <code>ConfirmationModal</code> component.</li>
+<li>Codemirror has been upgraded.</li>
+<li>Base colors have been migrated to OKLCH colorspace.</li>
+<li><code>--callout color</code> variable now expects a valid CSS color. This is a breaking change:</li>
+</ul>
+<pre><code class="language-css">/* Previously callout colors expected an RGB triplet. */
+--callout-color: 255,0,0;
+
+/* Now any valid CSS color is valid */
+--callout-color: #ff0000;
+--callout-color: rgb(255,0,0);
+</code></pre>
+<h3>CLI</h3>
+<ul>
+<li>Fixed Obsidian CLI for flatpak installs.</li>
+</ul>
+<h2>Third-party Libraries</h2>
+<ul>
+<li>Upgraded Moment.js to 2.30.1.</li>
+<li>Upgraded Mermaid to 11.13.0.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-23-mobile-v1.12.7/" class="font-semibold text-3xl sm:text-xl">
+						March 23, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-23-mobile-v1.12.7/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.7
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>Includes all new features and bug fixes up to <a href="/changelog/2026-03-23-desktop-v1.12.7/">Obsidian Desktop v1.12.7</a>.</p>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-23-desktop-v1.12.7/" class="font-semibold text-3xl sm:text-xl">
+						March 23, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-23-desktop-v1.12.7/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.7
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Improvements</h2>
+<h3>Obsidian CLI</h3>
+<ul>
+<li>The Obsidian Installer is now bundled with a new binary file for using the CLI. This new method replaces the old method of calling the Electron binary, resulting in significantly faster terminal interactions. Requires downloading <a href="https://obsidian.md/download">the latest installer</a>.</li>
+<li>Added autocompletion for Obsidian commands to the terminal interface (TUI) when using the <code>id=</code> parameter.</li>
+</ul>
+<h2>Bug fixes</h2>
+<h3>Obsidian CLI</h3>
+<ul>
+<li>Fixed the Obsidian CLI incorrectly checking for a Linux-specific directory on macOS.</li>
+<li>Changed the CLI socket file to a hidden dotfile on macOS and Linux.</li>
+</ul>
+<h3>Editor</h3>
+<ul>
+<li>Fixed several issues with copy, cut, and paste when no text is selected.
+<ul>
+<li>Copying and pasting a line no longer places the cursor in the wrong position.</li>
+<li>In tables, copying or cutting without a selection now correctly copies only the cell contents.</li>
+</ul>
+</li>
+<li>Pasting a URL while text is selected across multiple cursors now wraps each selection as a Markdown link (<code>[selected text](url)</code>).</li>
+<li>Fixed images inside callouts showing unwanted scrollbars in Reading mode.</li>
+<li>Fixed double-clicking an image in Live Preview not resetting its size.</li>
+</ul>
+<h2>Developer</h2>
+<ul>
+<li>The installer has been updated to use Electron v39.8.3 (requires downloading <a href="https://obsidian.md/download">the latest installer</a>).</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-18-mobile-v1.12.6/" class="font-semibold text-3xl sm:text-xl">
+						March 18, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-18-mobile-v1.12.6/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.6
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>Includes all new features and bug fixes up to <a href="/changelog/2026-03-18-desktop-v1.12.6/">Obsidian Desktop v1.12.6</a>.</p>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-18-desktop-v1.12.6/" class="font-semibold text-3xl sm:text-xl">
+						March 18, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-18-desktop-v1.12.6/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.6
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Bug fixes</h2>
+<h3>CLI</h3>
+<ul>
+<li>Fixed the Obsidian CLI incorrectly checking for a Linux-specific directory on macOS.</li>
+<li>Changed the CLI socket file to a hidden dotfile on macOS and Linux.</li>
+</ul>
+<h3>Editor</h3>
+<ul>
+<li>Fixed some regressions with the editor introduced in 1.12.4.</li>
+<li>Fixed images inside callouts showing unwanted scrollbars in Reading mode.</li>
+<li>Fixed double-clicking an image in Live Preview not resetting its size.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-05-mobile-v1.12.5/" class="font-semibold text-3xl sm:text-xl">
+						March 5, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-05-mobile-v1.12.5/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.5
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>Includes all new features and bug fixes up to <a href="/changelog/2026-03-05-desktop-v1.12.5/">Obsidian Desktop v1.12.5</a>.</p>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-03-05-desktop-v1.12.5/" class="font-semibold text-3xl sm:text-xl">
+						March 5, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-03-05-desktop-v1.12.5/" class="flex items-center gap-4">
+							<span class="text-sm">1.12.5
+								
+									<span span class=""> Desktop</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<a href="/pricing#catalyst"><span class="bg-accent-900 text-accent-300 py-0.5 px-2 rounded-xl">catalyst</span></a>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<h2>Improvements</h2>
+<h3>Obsidian CLI</h3>
+<ul>
+<li>Added autocompletion for Obsidian commands to the terminal interface (TUI) when using the <code>id=</code> parameter.</li>
+</ul>
+<h2>Bug fixes</h2>
+<ul>
+<li>Fixed several issues with copy, cut, and paste when no text is selected.
+<ul>
+<li>Copying and pasting a line no longer places the cursor in the wrong position.</li>
+<li>In tables, copying or cutting without a selection now correctly copies only the cell contents.</li>
+</ul>
+</li>
+<li>Pasting a URL while text is selected across multiple cursors now wraps each selection as a Markdown link (<code>[selected text](url)</code>).</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-02-27-sync/" class="font-semibold text-3xl sm:text-xl">
+						February 27, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-02-27-sync/" class="flex items-center gap-4">
+							<span class="text-sm">2026.02.27
+								
+									<span span class=""> Sync</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>Obsidian Sync now supports headless operation using the <a href="https://www.npmjs.com/package/obsidian-headless">obsidian-headless</a> client. Learn more about how to use <a href="https://obsidian.md/help/sync/headless">Obsidian Headless with Sync</a>.</p>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex py-16 flex-col md:flex-row">
+			<div class="grow">
+				<div class="md:sticky md:top-[var(--header-height)]">
+					<a href="/changelog/2026-02-27-mobile-v1.12.4/" class="font-semibold text-3xl sm:text-xl">
+						February 27, 2026
+					</a>
+					<div class="font-mono mt-2 text-muted">
+						<a href="/changelog/2026-02-27-mobile-v1.12.4/" class="flex items-center gap-4">
+							<span class="text-sm">1.12
+								
+									<span span class=""> Mobile</span>
+								
+							</span>
+						</a>
+					</div>
+					<div class="mb-8 mt-3 text-xs text-muted font-mono">
+						
+							<span class="bg-green-900 text-green-400 py-0.5 px-2 rounded-xl">public</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="md:basis-3/4">
+				
+				<div class="typeset break-words" dir="ltr">
+					<p>Includes all new features and bug fixes up to <a href="/changelog/2026-02-27-desktop-v1.12.4/">Obsidian Desktop v1.12.4</a>.</p>
+<h2>New</h2>
+<ul>
+<li>iOS: New Share extension to save content to your vault from other apps (e.g. Safari, social networks) without opening Obsidian.</li>
+<li>iOS: New Shortcut action &quot;Bookmark Link&quot; to save URLs as Obsidian bookmarks.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+<li>The app now defaults to the system language and includes a language picker during onboarding.</li>
+<li>Added new &quot;Unique note&quot; App action (the menu when you press and hold on the app icon).</li>
+<li>Improved support for pointer devices on tablet (e.g. Magic Trackpad):
+<ul>
+<li>Submenus now expand on hover.</li>
+<li>Property editor context menu shows on right-click.</li>
+</ul>
+</li>
+</ul>
+<h2>No longer broken</h2>
+<ul>
+<li>Removed the &quot;Delete and do not ask again&quot; option from the file deletion prompt.</li>
+<li>Obsidian Sync: Fixed an issue where files would get overridden if the app is closed before Obsidian can save the latest Sync state.</li>
+<li>iOS: Fixed tooltips sometimes appearing after interacting with items in the sidebar.</li>
+<li>iOS: Fixed issue causing the Daily Note and Bookmark Shortcuts to not work.</li>
+<li>iOS: Fixed issue causing View Note widget to not refresh immediately.</li>
+<li>Slides: Fixed the close button position in the status bar on mobile.</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="my-8 md:w-3/4 ms-auto border-t border-gray-800 text-sm md:text-base">
+			<nav>
+				<ol class="flex gap-2 my-8 flex-wrap leading-9 tabular-nums">
+					
+					
+					
+
+					<li class="mr-auto">
+						
+							<a href="/changelog/page/2/" class="border rounded border-gray-800 py-2 px-3 text-accent font-medium">Next page →</a>
+						
+					</li>
+
+					
+
+					
+
+					
+
+					
+
+					<li><a href="" aria-current="page" class="font-semibold bg-secondary cursor-default hover:text-normal border rounded border-gray-800 py-2 px-3">1</a></li>
+
+					
+					<li><a href="/changelog/page/2/" class="border rounded border-gray-800 py-2 px-3">2</a></li>
+					
+
+					
+						<li><a href="/changelog/page/3/" class="border rounded border-gray-800 py-2 px-3">3</a></li>
+					
+
+					
+					<li class="text-faint">&bull;&bull;&bull;</li>
+					
+
+					
+					<li><a href="/changelog/page/24/" class="border rounded border-gray-800 py-2 px-3">24</a></li>
+					
+				</ol>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<script src="/prism.js"></script>
+
+		</div>
+		<footer class="container flex flex-row-reverse flex-wrap pt-24 pb-12 sm:pt-24 md:pb-32">
+	<div class="grid grid-cols-2 gap-3 gap-y-6 md:grid-cols-3 justify-between w-full mb-24 ms-auto md:w-3/5 lg:w-1/2 md:mb-0 leading-tight md:ps-6 [&_li]:mt-2">
+
+		<div>
+			<ul class="">
+				<li class="text-faint mb-3">Get started</li>
+				<li><a class="font-medium" href="/download">Download</a></li>
+				<li><a class="font-medium" href="/pricing">Pricing</a></li>
+				<li><a class="font-medium" href="/enterprise">Enterprise</a></li>
+				<li><a class="font-medium" href="/account">Account</a></li>
+			</ul>
+			<ul class="mt-8">
+				<li class="text-faint mb-3">Obsidian</li>
+				<li><a class="font-medium" href="/">Overview</a></li>
+				<li><a class="font-medium" href="/sync">Sync</a></li>
+				<li><a class="font-medium" href="/publish">Publish</a></li>
+				<li><a class="font-medium" href="/canvas">Canvas</a></li>
+				<li><a class="font-medium" href="/mobile">Mobile</a></li>
+				<li><a class="font-medium" href="/clipper">Web Clipper</a></li>
+				<li><a class="font-medium" href="/cli">CLI</a></li>
+			</ul>
+		</div>
+
+		<div>
+			<ul class="">
+				<li class="text-faint mb-3">Learn</li>
+				<li><a class="font-medium" href="https://obsidian.md/help/">Help</a></li>
+				<li><a class="font-medium" href="https://docs.obsidian.md/" target="_blank">Developers</a></li>
+				<li><a class="font-medium" href="/changelog">Changelog</a></li>
+				<li><a class="font-medium" href="/about">About</a></li>
+				<li><a class="font-medium" href="/roadmap">Roadmap</a></li>
+				<li><a class="font-medium" href="/blog">Blog</a></li>
+			</ul>
+			<ul class="mt-8">
+				<li class="text-faint mb-3">Resources</li>
+				<li><a class="font-medium" href="https://status.obsidian.md" rel="noopener noreferrer">System status</a></li>
+				<li><a class="font-medium" href="/license">License overview</a></li>
+				<li><a class="font-medium" href="/terms">Terms of service</a></li>
+				<li><a class="font-medium" href="/privacy">Privacy policy</a></li>
+				<li><a class="font-medium" href="/security">Security</a></li>
+			</ul>
+		</div>
+
+		<div>
+			<ul class="">
+				<li class="text-faint mb-3">Community</li>
+				<li><a class="font-medium" href="https://community.obsidian.md/plugins">Plugins</a></li>
+				<li><a class="font-medium" href="https://community.obsidian.md/themes">Themes</a></li>
+				<li><a class="font-medium" href="https://discord.gg/obsidianmd" rel="noopener noreferrer" target="_blank">Discord</a></li>
+				<li><a class="font-medium" href="https://forum.obsidian.md" target="_blank">Forum</a> <span class="text-gray-600">/</span> <a class="font-medium" href="https://forum-zh.obsidian.md" target="_blank">中文论坛</a></li>
+				<li><a class="font-medium" href="/softwear">Merch store</a></li>
+				<li><a class="font-medium" href="/brand">Brand guidelines</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="me-auto w-full sm:w-auto">
+		<a class="header-logo me-4 flex items-center gap-x-2 transition-colors" href="/" aria-label="Go to the Obsidian home page">
+			<svg alt="Obsidian" height="22" viewBox="0 0 143 25" width="126" xmlns="http://www.w3.org/2000/svg"><path fill="#A88BFA" d="m6.91927 14.5955c.64053-.1907 1.67255-.4839 2.85923-.5565-.71191-1.7968-.88376-3.3691-.74554-4.76905.15962-1.61678.72977-2.9662 1.28554-4.11442.1186-.24501.2326-.47313.3419-.69198.1549-.30984.3004-.60109.4365-.8953.2266-.48978.3948-.92231.4798-1.32416.0836-.39515.0841-.74806-.0148-1.08657-.099-.338982-.3093-.703864-.7093-1.1038132-.5222-.1353116-1.1017-.0165173-1.53613.3742922l-5.15591 4.638241c-.28758.25871-.47636.60929-.53406.99179l-.44455 2.94723c.69903.6179 2.42435 2.41414 3.47374 4.90644.09364.2224.1819.4505.26358.6838z"/><path fill="#A88BFA" d="m2.97347 10.3512c-.02431.1037-.05852.205-.10221.3024l-2.724986 6.0735c-.279882.6238-.15095061 1.3552.325357 1.8457l4.288349 4.4163c2.1899-3.2306 1.87062-6.2699.87032-8.6457-.75846-1.8013-1.90801-3.2112-2.65683-3.9922z"/><path fill="#A88BFA" d="m5.7507 23.5094c.07515.012.15135.0192.2281.0215.81383.0244 2.18251.0952 3.29249.2997.90551.1669 2.70051.6687 4.17761 1.1005 1.1271.3294 2.2886-.5707 2.4522-1.7336.1192-.8481.343-1.8075.7553-2.6869l-.0095.0033c-.6982-1.9471-1.5865-3.2044-2.5178-4.0073-.9284-.8004-1.928-1.1738-2.8932-1.3095-1.60474-.2257-3.07497.1961-4.00103.4682.55465 2.3107.38396 5.0295-1.48417 7.8441z"/><path fill="#A88BFA" d="m17.3708 19.3102c.9267-1.3985 1.5868-2.4862 1.9352-3.0758.1742-.295.1427-.6648-.0638-.9383-.5377-.7126-1.5666-2.1607-2.1272-3.5015-.5764-1.3785-.6624-3.51876-.6673-4.56119-.0019-.39626-.1275-.78328-.3726-1.09465l-3.3311-4.23183c-.0117.19075-.0392.37998-.0788.56747-.1109.52394-.32 1.04552-.5585 1.56101-.1398.30214-.3014.62583-.4646.95284-.1086.21764-.218.4368-.3222.652-.5385 1.11265-1.0397 2.32011-1.1797 3.73901-.1299 1.31514.0478 2.84484.8484 4.67094.1333.0113.2675.0262.4023.0452 1.1488.1615 2.3546.6115 3.4647 1.5685.9541.8226 1.8163 2.0012 2.5152 3.6463z"/><path fill="currentColor" d="m39.752 4.5038c-5.952 0-10.248 3.744-10.248 8.88s4.296 8.88 10.248 8.88c5.928 0 10.224-3.744 10.224-8.88s-4.296-8.88-10.224-8.88zm0 3.47999c3.576 0 6.144 2.13601 6.144 5.40001s-2.568 5.4-6.144 5.4c-3.6 0-6.168-2.136-6.168-5.4s2.568-5.40001 6.168-5.40001z"/><path fill="currentColor" d="m55.4847 20.5598c.864.936 2.472 1.704 4.584 1.704 4.32 0 6.8401-2.976 6.8401-6.576 0-3.624-2.5201-6.60001-6.8401-6.60001-2.112 0-3.72.79201-4.584 1.70401v-6.02401h-3.84v17.23201h3.84zm-.12-4.944c0-1.992 1.704-3.432 3.912-3.432 2.112 0 3.888 1.248 3.888 3.504s-1.776 3.48-3.888 3.48c-2.208 0-3.912-1.416-3.912-3.408z"/><path fill="currentColor" d="m67.3181 19.9118c1.464 1.488 4.272 2.352 7.2 2.352 3.96 0 6.936-1.44 6.936-4.392 0-2.88-2.832-3.432-6.072-3.816-2.736-.312-3.576-.384-3.576-1.08 0-.648.864-1.056 2.496-1.056 1.968 0 3.672.6 4.824 1.656l1.992-2.304c-1.272-1.224-3.648-2.18401-6.624-2.18401-4.008 0-6.48 1.72801-6.48 4.32001 0 2.712 2.52 3.312 5.544 3.696 2.832.336 4.032.336 4.032 1.176 0 .792-1.056 1.128-2.784 1.128-2.16 0-4.152-.672-5.664-2.064z"/><path fill="currentColor" d="m82.8395 8.05579h3.912v-3.288h-3.912zm3.864 1.29601h-3.84v12.648h3.84z"/><path fill="currentColor" d="m99.8264 20.5598v1.44h3.8396v-17.23201h-3.8396v6.02401c-.864-.912-2.472-1.70401-4.584-1.70401-4.32 0-6.84 2.97601-6.84 6.60001 0 3.6 2.52 6.576 6.84 6.576 2.112 0 3.72-.768 4.584-1.704zm.12-4.944v.144c0 1.992-1.704 3.408-3.912 3.408-2.112 0-3.888-1.224-3.888-3.48s1.776-3.504 3.888-3.504c2.208 0 3.912 1.44 3.912 3.432z"/><path fill="currentColor" d="m105.996 8.05579h3.912v-3.288h-3.912zm3.864 1.29601h-3.84v12.648h3.84z"/><path fill="currentColor" d="m116.863 22.2638c2.232 0 4.056-.648 5.208-1.656.648 1.2 2.184 1.92 4.992 1.392v-2.832c-1.344.288-1.632-.024-1.632-.696v-4.608c0-3.168-2.376-4.77601-6.408-4.77601-3.48 0-6.264 1.51201-7.056 3.79201l3.456.936c.384-.984 1.704-1.704 3.432-1.704 2.04 0 2.856.768 2.856 1.728v.072l-5.04.456c-2.976.288-5.16 1.512-5.16 3.984 0 2.496 2.232 3.912 5.352 3.912zm4.848-5.112c0 1.464-2.184 2.304-4.152 2.304-1.488 0-2.328-.432-2.328-1.248 0-.84.672-1.152 1.992-1.272l4.488-.456z"/><path fill="currentColor" d="m128.379 21.9998h3.84v-6.048c0-2.184 1.2-3.456 3.288-3.456 1.968 0 3 1.296 3 3.432v6.072h3.84v-7.2c0-3.504-2.232-5.71201-5.52-5.71201-2.04 0-3.624.76801-4.608 1.80001v-1.536h-3.84z"/></svg>
+		</a>
+		<div class="mt-6 text-base md:text-sm text-faint mb-3 md:mb-2">Follow us</div>
+		<div class="text-base md:text-sm grid gap-y-2 grid-cols-2 gap-x-4 md:gap-y-1 mb-4">
+			<a class="font-medium" href="https://discord.com/invite/obsidianmd" rel="noopener noreferrer" target="_blank">Discord</a>
+			<a class="font-medium" href="https://x.com/obsdmd" rel="noopener noreferrer" target="_blank">Twitter</a>
+			<a class="font-medium" href="https://bsky.app/profile/obsidian.md" rel="me noopener noreferrer" target="_blank">Bluesky</a>
+			<a class="font-medium" href="https://www.threads.net/@obsdmd" rel="me noopener noreferrer" target="_blank">Threads</a>
+			<a class="font-medium" href="https://mas.to/@obsidian" rel="me noopener noreferrer" target="_blank">Mastodon</a>
+			<a class="font-medium" href="https://www.youtube.com/@obsdmd" rel="noopener noreferrer" target="_blank">YouTube</a>
+			<a class="font-medium" href="https://github.com/obsidianmd" rel="noopener noreferrer" target="_blank">GitHub</a>
+		</div>
+		<details class="relative text-sm mb-4 group">
+			<summary class="list-none cursor-pointer text-faint hover:text-normal flex items-center gap-1.5 select-none px-3 py-3 sm:py-1.5 rounded-lg ring-1 ring-inset ring-white/10 hover:bg-gray-800 min-w-[10rem] whitespace-nowrap">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+				English
+				<i data-lucide="chevron-down" class="icon-xs ms-auto"></i>
+			</summary>
+			<ul class="absolute bottom-full start-0 mb-1 bg-gray-800 ring-1 ring-inset ring-white/10 rounded-lg p-1 min-w-[10rem] shadow-xl flex flex-col gap-0.5">
+				<li><a href="/changelog/" onclick="try{localStorage.setItem('lang','en');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-normal font-medium bg-gray-700 hover:text-normal">English</a></li><li><a href="/ar/changelog/" onclick="try{localStorage.setItem('lang','ar');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">العربية</a></li><li><a href="/bn/changelog/" onclick="try{localStorage.setItem('lang','bn');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">বাংলা</a></li><li><a href="/de/changelog/" onclick="try{localStorage.setItem('lang','de');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Deutsch</a></li><li><a href="/es/changelog/" onclick="try{localStorage.setItem('lang','es');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Español</a></li><li><a href="/fr/changelog/" onclick="try{localStorage.setItem('lang','fr');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Français</a></li><li><a href="/it/changelog/" onclick="try{localStorage.setItem('lang','it');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Italiano</a></li><li><a href="/ja/changelog/" onclick="try{localStorage.setItem('lang','ja');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">日本語</a></li><li><a href="/ko/changelog/" onclick="try{localStorage.setItem('lang','ko');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">한국어</a></li><li><a href="/pl/changelog/" onclick="try{localStorage.setItem('lang','pl');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Polski</a></li><li><a href="/pt-BR/changelog/" onclick="try{localStorage.setItem('lang','pt-BR');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Português (Brasil)</a></li><li><a href="/ro/changelog/" onclick="try{localStorage.setItem('lang','ro');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Română</a></li><li><a href="/ru/changelog/" onclick="try{localStorage.setItem('lang','ru');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Русский</a></li><li><a href="/sv/changelog/" onclick="try{localStorage.setItem('lang','sv');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">Svenska</a></li><li><a href="/zh/changelog/" onclick="try{localStorage.setItem('lang','zh');sessionStorage.setItem('scrollY',scrollY)}catch(e){}" class="block px-3 py-1.5 rounded-md whitespace-nowrap text-muted hover:text-normal hover:bg-gray-700">简体中文</a></li>
+			</ul>
+		</details>
+		<div class="text-sm text-faint">&copy; 2026 Obsidian</div>
+	</div>
+</footer>
+<script>
+document.addEventListener('click', function(e) {
+	document.querySelectorAll('footer details[open]').forEach(function(d) {
+		if (!d.contains(e.target)) d.removeAttribute('open');
+	});
+});
+</script>
+
+
+		<script src="/static.js?v=75eebef7"></script>
+	</body>
+</html>

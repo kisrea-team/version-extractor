@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en" dir="ltr" class="2xl:text-[20px]"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#2563eb"><meta name="format-detection" content="telephone=no"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="RustDesk Blog" href="/rss.xml"><link rel="alternate" type="text/plain" title="RustDesk llms.txt" href="/llms.txt"><link rel="help" title="RustDesk Technical FAQ" href="https://github.com/rustdesk/rustdesk/wiki/FAQ"><link rel="shortcut icon" href="/_astro/favicon.BntUM-vQ.ico"><link rel="icon" type="image/svg+xml" href="/_astro/favicon.B_ZzjaxD.svg"><link rel="mask-icon" href="/_astro/favicon.B_ZzjaxD.svg" color="#8D46E7"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.DNoXgPv7.png"><style>
+  :root {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: 'Inter Variable';
+    --aw-font-heading: 'Inter Variable';
+
+    --aw-color-primary: rgb(1 97 239);
+    --aw-color-secondary: rgb(1 84 207);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0);
+    --aw-color-text-default: rgb(16 16 16);
+    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-bg-page: rgb(255 255 255);
+
+    --aw-color-bg-page-dark: rgb(3 6 32);
+
+    ::selection {
+      background-color: lavender;
+    }
+  }
+
+  .dark {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: 'Inter Variable';
+    --aw-font-heading: 'Inter Variable';
+
+    --aw-color-primary: rgb(1 97 239);
+    --aw-color-secondary: rgb(1 84 207);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(247, 248, 248);
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: rgb(3 6 32);
+
+    ::selection {
+      background-color: black;
+      color: snow;
+    }
+  }
+</style><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
+
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.checked = theme !== 'dark';
+      });
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+})();</script><title>RustDesk: Open-Source Remote Desktop with Self-Hosted Server Solutions</title>
+<meta name="description" content="RustDesk is the best open-source remote desktop software. Secure alternative to TeamViewer and AnyDesk with self-hosted servers. Cross-platform support for Windows, macOS, Linux, and Android.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://rustdesk.com">
+<meta property="og:title" content="RustDesk: Open-Source Remote Desktop with Self-Hosted Server Solutions">
+<meta property="og:description" content="RustDesk is the best open-source remote desktop software. Secure alternative to TeamViewer and AnyDesk with self-hosted servers. Cross-platform support for Windows, macOS, Linux, and Android.">
+<meta property="og:url" content="https://rustdesk.com">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rustdesk.com/_astro/default.BnGe5sEj_Mm9fb.webp">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="RustDesk">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@rustdesk">
+<meta name="twitter:creator" content="@rustdesk"> <!-- Additional SEO meta tags --> <meta name="keywords" content="remote desktop software, open source remote access, self-hosted remote desktop, TeamViewer alternative, AnyDesk alternative, secure remote control, cross platform remote access, on-premise remote desktop, rustdesk server"> <meta name="author" content="RustDesk Team"> <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"> <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="google-site-verification" content="5yBdiwrwe7-V4TqfqMjX320dHpSE9-jrP4iQIUdCjK4"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://rustdesk.com/#organization","name":"RustDesk","url":"https://rustdesk.com","logo":{"@type":"ImageObject","url":"https://rustdesk.com/_astro/apple-touch-icon.DNoXgPv7.png"},"sameAs":["https://github.com/rustdesk/rustdesk","https://twitter.com/rustdesk","https://discord.gg/nDceKgxnkV","https://www.reddit.com/r/rustdesk/"],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","url":"https://rustdesk.com/support","availableLanguage":["en","de","es","fr","it","ja","pt","zh-CN","zh-TW","ko","ar"]}},{"@type":"WebSite","@id":"https://rustdesk.com/#website","url":"https://rustdesk.com","name":"RustDesk","description":"RustDesk is the best open-source remote desktop software. Secure alternative to TeamViewer and AnyDesk with self-hosted servers. Cross-platform support for Windows, macOS, Linux, and Android.","publisher":{"@id":"https://rustdesk.com/#organization"},"inLanguage":["en","de","es","fr","it","ja","pt","zh-CN","zh-TW","ko","ar"]},{"@type":"WebPage","@id":"https://rustdesk.com/#webpage","url":"https://rustdesk.com/","name":"RustDesk","headline":"RustDesk: Open-Source Remote Desktop with Self-Hosted Server Solutions","description":"RustDesk is the best open-source remote desktop software. Secure alternative to TeamViewer and AnyDesk with self-hosted servers. Cross-platform support for Windows, macOS, Linux, and Android.","isPartOf":{"@id":"https://rustdesk.com/#website"},"inLanguage":"en","about":{"@id":"https://rustdesk.com/#software"},"keywords":["remote desktop software","open source remote access","self-hosted remote desktop","TeamViewer alternative","AnyDesk alternative","secure remote control","cross platform remote access","on-premise remote desktop","rustdesk server"]},{"@type":"SoftwareApplication","@id":"https://rustdesk.com/#software","name":"RustDesk","applicationCategory":"BusinessApplication","applicationSubCategory":"Remote Desktop Software","operatingSystem":["Windows","macOS","Linux","Android","iOS"],"description":"Open-source remote desktop software with self-hosted server options, centralized management, and cross-platform remote access.","url":"https://rustdesk.com","downloadUrl":"https://rustdesk.com/download","softwareHelp":"https://rustdesk.com/support","isAccessibleForFree":true,"author":{"@id":"https://rustdesk.com/#organization"},"publisher":{"@id":"https://rustdesk.com/#organization"},"featureList":["Self-hosted server","Remote access and remote support","Cross-platform desktop and mobile support","Web console","File transfer","Address book","Access control","Audit logs","SSO and LDAP support in Server Pro"]}]}</script><!-- Comment the line below to disable View Transitions --><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><link rel="alternate" hreflang="en" href="https://rustdesk.com"><link rel="alternate" hreflang="de" href="https://rustdesk.com/de"><link rel="alternate" hreflang="es" href="https://rustdesk.com/es"><link rel="alternate" hreflang="fr" href="https://rustdesk.com/fr"><link rel="alternate" hreflang="it" href="https://rustdesk.com/it"><link rel="alternate" hreflang="ja" href="https://rustdesk.com/ja"><link rel="alternate" hreflang="ko" href="https://rustdesk.com/ko"><link rel="alternate" hreflang="pt" href="https://rustdesk.com/pt"><link rel="alternate" hreflang="zh-CN" href="https://rustdesk.com/zh-cn"><link rel="alternate" hreflang="zh-TW" href="https://rustdesk.com/zh-tw"><link rel="alternate" hreflang="ar" href="https://rustdesk.com/ar"><link rel="alternate" hreflang="x-default" href="https://rustdesk.com"><script>(function(){const langs = ["en","de","es","fr","it","ja","ko","pt","zh-cn","zh-tw","ar"];
+const baseUrl = "https://rustdesk.com/";
+const defaultLocale = "en";
+
+      let lang;
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        lang = urlParams.get('lang');
+      } catch (e) {
+        console.error(e);
+      }
+      if (lang) {
+        //
+      } else if (localStorage.selectedLang && langs.includes(localStorage.selectedLang)) {
+        lang = localStorage.selectedLang;
+      } else {
+        const browserLang = navigator.language.toLowerCase();
+
+        if (langs.includes(browserLang)) {
+          lang = browserLang;
+        } else if (langs.includes(browserLang.split('-')[0])) {
+          lang = browserLang.split('-')[0];
+        }
+      }
+      if (lang && lang !== defaultLocale) {
+        location.href = `${baseUrl + lang + location.pathname + (location.hash || location.search || '')}`.replace(/\/$/, '');
+      }
+    })();</script><link rel="stylesheet" href="/_astro/privacy.OKmRV3XB.css">
+<link rel="stylesheet" href="/_astro/index.BvfinZ-E.css"><script type="module" src="/_astro/hoisted.B3AZIEpU.js"></script></head> <body class="antialiased text-default bg-page tracking-tight"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1oQC3F" prefix="r0" component-url="/_astro/Scamming.CD0po5NT.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;lang&quot;:[0,&quot;en&quot;]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Scamming&quot;,&quot;value&quot;:true}"></astro-island>   <div class="dark text-muted text-sm bg-black dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden md:flex gap-1 overflow-hidden px-3 py-2 relative text-ellipsis whitespace-nowrap justify-center items-center"><span class="bg-secondary text-slate-300 font-semibold px-1 py-0.5 text-xs mr-0.5 rtl:mr-0 rtl:ml-0.5 inline-block">New</span><a href="/blog/rustdesk-vs-vnc" class="text-muted hover:underline dark:text-slate-400 font-medium">RustDesk vs VNC: NAT Traversal, Codecs, Encryption »
+</a></div>   <header class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out" data-aw-sticky-header id="header"> <div class="absolute inset-0"></div> <div class="relative text-default py-3 px-3 md:px-6 mx-auto w-full md:grid md:grid-cols-3 md:items-center max-w-7xl"> <div class="flex justify-between"> <a class="flex items-center" href="/?lang=en"> <span class="flex items-center self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"> <img src="/_astro/logo.BKb61-he.svg" loading="lazy" alt="RustDesk Logo" class="h-8 w-8"> <span class="mx-2">rustdesk</span> </span> </a> <div class="flex items-center md:hidden"> <button type="button" class="flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group" aria-label="Toggle Menu" data-aw-toggle-menu> <span class="sr-only">Toggle Menu</span>  <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"></span> <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"></span> <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"></span>  </button> </div> </div> <nav class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center" aria-label="Main navigation"> <ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"> <li class="dropdown">  <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center"> Resources  <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" data-icon="tabler:chevron-down">  <symbol id="ai:tabler:chevron-down"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></symbol><use xlink:href="#ai:tabler:chevron-down"></use>  </svg> </button> <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl"> <li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/team?lang=en"> About us </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/support?lang=en"> Support </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/web"> Web Client </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/self-host/account"> Pro License Portal </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="https://github.com/rustdesk/rustdesk/wiki/FAQ"> FAQ </a> </li> </ul>  </li><li class=""> <a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center" href="/pricing?lang=en"> Pricing </a> </li><li class=""> <a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center" href="/docs"> Docs </a> </li><li class=""> <a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center" href="/blog?lang=en"> Blog </a> </li> </ul> </nav> <div class="hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end"> <div class="items-center flex justify-between w-full md:w-auto"> <div class="flex"> <button type="button" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 md:w-5 md:h-5 md:inline-block" data-icon="tabler:sun">  <symbol id="ai:tabler:sun"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"/></symbol><use xlink:href="#ai:tabler:sun"></use>  </svg></button>  <button id="languageSelect" type="button" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 md:w-5 md:h-5 md:inline-block" data-icon="tabler:language">  <symbol id="ai:tabler:language"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 5h7M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c0 2.144 2.952 3.908 6.7 4m.3 7l4-9l4 9m-.9-2h-6.2"/></g></symbol><use xlink:href="#ai:tabler:language"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" data-icon="tabler:chevron-down">  <use xlink:href="#ai:tabler:chevron-down"></use>  </svg> </button> <ul id="languages" class="md:mt-12 hidden bg-white dark:bg-dark dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded absolute pl-4 md:pl-0 font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl"> <li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap text-primary" href="/?lang=en"> English </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/de"> Deutsch </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/es"> Español </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/fr"> Français </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/it"> Italiano </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/ja"> 日本語 </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/ko"> 한국어 </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/pt"> Português </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/zh-cn"> 简体中文 </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/zh-tw"> 繁體中文 </a> </li><li> <a class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap" href="/ar"> العربية </a> </li> </ul>   <a target="_blank" rel="noopener" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center ltr:ml-auto rtl:mr-auto" title="If you like RustDesk, give us a star." href="https://github.com/rustdesk/rustdesk"> <span class="w-[5.6rem] h-[1.25rem] bg-cover bg-[url(https://img.shields.io/github/stars/rustdesk/rustdesk.svg?style=social&label=Stars&maxAge=86400)]"></span> </a> </div> <span class="ml-4 rtl:ml-0 rtl:mr-4"> <a class="btn-secondary ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" target="_blank" rel="noopener noreferrer" href="https://github.com/rustdesk/rustdesk/releases/latest">Download</a> </span> </div> </div> </div> </header>  <main>  <section class="bg-blue-50 dark:bg-slate-800 not-prose"> <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium"> <span class="font-bold"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 inline-block align-text-bottom" data-icon="tabler:info-square">  <symbol id="ai:tabler:info-square"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 9h.01M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M11 12h1v4h1"/></g></symbol><use xlink:href="#ai:tabler:info-square"></use>  </svg> Note:</span> <span class="text-2xl text-font-bold">rustdesk.com</span> is our only official domain. Please do not download RustDesk from the other domains. </div> </section> <section class="relative md:-mt-[76px] not-prose "> <div class="absolute inset-0 pointer-events-none" aria-hidden="true">    </div> <div class="relative max-w-7xl mx-auto px-4 sm:px-6"> <div class="pt-0 md:pt-[76px] pointer-events-none"></div> <div class="py-12 md:py-20"> <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">  <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"> The Fast Open-Source Remote Access and Support Software </h1> <div class="max-w-3xl mx-auto"> <p class="text-xl text-muted mb-6 dark:text-slate-300">
+Switch from TeamViewer, AnyDesk, and Splashtop to RustDesk for a secure and reliable remote desktop experience
+      with your own self-hosted servers.
+</p> <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4"> <div class="flex w-full sm:w-auto"> <a class="btn-primary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://rustdesk.com/download">Download<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:download">  <use xlink:href="#ai:tabler:download"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" href="https://rustdesk.com/pricing">Self-Hosting<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:server">  <use xlink:href="#ai:tabler:server"></use>  </svg></a> </div> </div> </div>  <br><br> <!-- Slider main container --><astro-swiper data-options="{&#34;spaceBetween&#34;:0,&#34;slidesPerView&#34;:1,&#34;pagination&#34;:{&#34;clickable&#34;:true,&#34;el&#34;:&#34;.swiper-pagination&#34;},&#34;mousewheel&#34;:{&#34;forceToAxis&#34;:true,&#34;sensitivity&#34;:0.1,&#34;releaseOnEdges&#34;:true},&#34;autoplay&#34;:{&#34;delay&#34;:2500,&#34;disableOnInteraction&#34;:true},&#34;scrollbar&#34;:true}" data-uniqueclass="astro-swiper-motci1o27" style="--swiper-pagination-bullet-inactive-color:#fff;--swiper-pagination-bullet-inactive-opacity:0.5;--swiper-pagination-bullet-size:12px" class="swiper astro-swiper-motci1o27"> <div class="swiper-wrapper"> <div class="swiper-slide">  <img src="/remote.jpg" class="rounded-[15px] border border-gray-700" loading="lazy"> <div class="swiper-lazy-preloader swiper-lazy-preloader-white">  </div>  </div><div class="swiper-slide">  <img src="/main.png" class="rounded-[15px] border border-gray-700" loading="lazy"> <div class="swiper-lazy-preloader swiper-lazy-preloader-white">  </div>  </div><div class="swiper-slide">  <img src="/console.png" class="rounded-[15px] border border-gray-700" loading="lazy"> <div class="swiper-lazy-preloader swiper-lazy-preloader-white">  </div>  </div><div class="swiper-slide">  <img src="/custom.png" class="rounded-[15px] border border-gray-700" loading="lazy"> <div class="swiper-lazy-preloader swiper-lazy-preloader-white">  </div>  </div> </div> <div class="swiper-pagination">  </div> </astro-swiper>  </div> <div>  </div> </div> </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">   <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>   </div> <div class="relative px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-7xl mx-auto">  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-xl sm:mx-auto lg:max-w-2xl"><p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase">Inside Self-Hosting</p><h2 class="leading-tighter text-heading text-4xl md:text-5xl font-bold tracking-tighter mb-4 font-heading">Empower your remote access with self-hosted servers</h2></div> <div class="mx-auto max-w-7xl p-4 md:px-8"> <div class="md:flex md:flex-row-reverse md:gap-16"> <div class="md:basis-1/2 self-center"> <div class="mb-12 text-lg dark:text-slate-400"> <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Why self-hosting?</h3>
+Are you frustrated with SaaS platforms due to their unstable performance, lack of transparency, and uncertain data
+      security risks?
+</div>  <div class="grid mx-auto gap-8 gap-y-4 md:gap-y-8"><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Full data control</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Regulatory compliance made easy: self-hosted RustDesk keeps your data fully under your control.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">World-class open source</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">With 113K+ GitHub stars, RustDesk ranks among the world's top 100 open-source software projects, backed by a thriving global community.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Performance and reliability</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Run on your own infrastructure — no dependency on third-party SaaS availability, no shared noisy neighbors.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Flexibility and customization</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Tailor RustDesk on-premise to fit your unique requirements.</p></div></div></div></div> </div> <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2"> <div class="relative m-auto max-w-4xl"> <img src="/_astro/hosting.DAY8QJzU.jpg" crossorigin="anonymous" referrerpolicy="no-referrer" width="500" height="500" srcset="/_astro/hosting.DAY8QJzU_Z1GzwHP.webp 400w, /_astro/hosting.DAY8QJzU_1EDSRK.webp 768w" sizes="(max-width: 768px) 100vw, 432px" style="object-fit: cover; object-position: center; width: 100%; height: auto; aspect-ratio: 1;" class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg" alt="RustDesk self-hosted remote desktop server deployment" loading="lazy" decoding="async"> </div> </div> </div> </div>  </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">   <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>   </div> <div class="relative px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-7xl mx-auto pt-0 md:pt-0 lg:pt-0">   <div class="mx-auto max-w-7xl p-4 md:px-8"> <div class="md:flex  md:gap-16"> <div class="md:basis-1/2 self-center"> <div class="mb-12 text-lg dark:text-slate-400"> <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Custom Client</h3>
+Customize your client with your brand and make it truly yours.
+</div>  <div class="grid mx-auto gap-8 gap-y-4 md:gap-y-8"><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Your brand, your way</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Personalize RustDesk client with your name, icon, logo.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Easy deployment</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Built-in network configuration and server setup make deploying RustDesk on-premise a breeze.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Advanced configuration options</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">More than 90 options can be configured to meet your specific needs.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Multi-platform support</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Windows, macOS, Linux, Android.</p></div></div></div><div><div class="flex flex-row max-w-none"><div class="flex justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="mr-2 rtl:mr-0 rtl:ml-2 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1" data-icon="tabler:check">  <use xlink:href="#ai:tabler:check"></use>  </svg></div><div class="mt-0.5"><h3 class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2">Web client</h3><p class="mt-3 text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2">Host the web client on your server with your domain name to make remote access even easier.</p></div></div></div></div> </div> <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2"> <div class="relative m-auto max-w-4xl"> <img src="/_astro/qs.CPOzyUV2.png" crossorigin="anonymous" referrerpolicy="no-referrer" width="500" height="500" srcset="/_astro/qs.CPOzyUV2_NhISS.webp 400w, /_astro/qs.CPOzyUV2_ZTEXjs.webp 768w" sizes="(max-width: 768px) 100vw, 432px" style="object-fit: cover; object-position: center; width: 100%; height: auto; aspect-ratio: 1;" class="bg-transparent" alt="RustDesk custom branded remote support client" loading="lazy" decoding="async"> </div> </div> </div> </div>  </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">   <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>   </div> <div class="relative mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-5xl">  <div class="flex flex-col gap-8 md:gap-12 md:flex-row-reverse md:flex-row"> <div class="md:py-4 md:self-center md:basis-1/2"> <div class="mb-8 md:mx-auto md:mb-12 text-left rtl:text-right"><h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl lg:text-4xl">Simple self-hosting installation</h2></div> <div class=""><div class="flex"><div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4"><div><div class="flex items-center justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 p-2 rounded-full border-2 text-primary dark:text-slate-200 border-primary dark:border-blue-700" data-icon="tabler:package">  <symbol id="ai:tabler:package"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 3l8 4.5v9L12 21l-8-4.5v-9zm0 9l8-4.5M12 12v9m0-9L4 7.5m12-2.25l-8 4.5"/></symbol><use xlink:href="#ai:tabler:package"></use>  </svg></div></div><div class="w-px h-full bg-black/10 dark:bg-slate-400/50"></div></div><div class="pt-1 pb-8"><p class="text-xl font-bold">Step 1: Install Docker</p><p class="text-muted mt-2"><code class="text-gray-600 dark:text-gray-500">bash <(wget -qO- https://get.docker.com)</code></p></div></div><div class="flex"><div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4"><div><div class="flex items-center justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 p-2 rounded-full border-2 text-primary dark:text-slate-200 border-primary dark:border-blue-700" data-icon="tabler:download">  <symbol id="ai:tabler:download"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5l5-5m-5-7v12"/></symbol><use xlink:href="#ai:tabler:download"></use>  </svg></div></div><div class="w-px h-full bg-black/10 dark:bg-slate-400/50"></div></div><div class="pt-1 pb-8"><p class="text-xl font-bold">Step 2: Download compose.yml</p><p class="text-muted mt-2"><code class="text-gray-600 dark:text-gray-500">wget rustdesk.com/oss.yml -O compose.yml</code>
+          <p class="text-center text-sm">or</p>
+          <code class="text-gray-600 dark:text-gray-500">wget rustdesk.com/pro.yml -O compose.yml</code></p></div></div><div class="flex"><div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4"><div><div class="flex items-center justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 p-2 rounded-full border-2 text-primary dark:text-slate-200 border-primary dark:border-blue-700" data-icon="tabler:hammer">  <symbol id="ai:tabler:hammer"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.414 10l-7.383 7.418a2.09 2.09 0 0 0 0 2.967a2.11 2.11 0 0 0 2.976 0L14.414 13m3.707 2.293l2.586-2.586a1 1 0 0 0 0-1.414l-7.586-7.586a1 1 0 0 0-1.414 0L9.121 6.293a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0"/></symbol><use xlink:href="#ai:tabler:hammer"></use>  </svg></div></div><div class="w-px h-full bg-black/10 dark:bg-slate-400/50"></div></div><div class="pt-1 pb-8"><p class="text-xl font-bold">Step 3: Compose</p><p class="text-muted mt-2"><code class="text-gray-600 dark:text-gray-500">docker compose up -d</code></p></div></div><div class="flex"><div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4"><div><div class="flex items-center justify-center"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 p-2 rounded-full border-2 text-primary dark:text-slate-200 border-primary dark:border-blue-700" data-icon="tabler:check">  <symbol id="ai:tabler:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12l5 5L20 7"/></symbol><use xlink:href="#ai:tabler:check"></use>  </svg></div></div></div><div class="pt-1 "><p class="text-xl font-bold">Ready!</p></div></div></div> </div> <div class="relative md:basis-1/2"> <img src="/_astro/steps.CdLUKly2.jpg" crossorigin="anonymous" referrerpolicy="no-referrer" width="432" height="768" srcset="/_astro/steps.CdLUKly2_CI5Nn.webp 400w, /_astro/steps.CdLUKly2_Z15eBoX.webp 768w" sizes="(max-width: 768px) 100vw, 432px" style="object-fit: cover; object-position: center; max-width: 100%; max-height: 100%;" class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700" alt="RustDesk self-hosting installation steps with Docker" loading="lazy" decoding="async"> </div> </div>  </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">  <div class="absolute inset-0">  </div>  </div> <div class="relative px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-6xl mx-auto">  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl"><p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase">Scenarios</p><h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl">Who are using self-hosting?</h2><p class="mt-4 text-muted text-xl">The data below is from our online survey covering over 1,000 self-hosting users.</p></div> <div class="flex flex-wrap justify-center -m-4 text-center"> <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 37% </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> IT Support </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 25% </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> IT Administration </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 29% </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Remote Work </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 9% </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Industrial and others </div> </div> </div>  </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">  <div class="absolute inset-0">  </div>  </div> <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default"> <div class="flex flex-col lg:justify-between lg:flex-row mb-8"><div class="md:max-w-sm"><h2 class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2">Find out more content in our Blog</h2><a class="cursor-pointer hover:text-primary" href="/blog"> View All Posts »
+</a></div></div><div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6"> <article class="mb-6 transition"> <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6"> <a href="/blog/rustdesk-vs-vnc"> <img src="/_astro/rustdesk-vs-vnc-og.Bbri9YjU.webp" crossorigin="anonymous" referrerpolicy="no-referrer" width="400" height="210" srcset="/_astro/rustdesk-vs-vnc-og.Bbri9YjU_Z2bdtTU.webp 400w, /_astro/rustdesk-vs-vnc-og.Bbri9YjU_Z20Us1u.webp 900w" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 100%; max-height: 100%;" class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700" alt="RustDesk vs VNC: NAT Traversal, Codecs, Encryption" loading="lazy" decoding="async"> </a> </div> <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300"> <a class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href="/blog/rustdesk-vs-vnc"> RustDesk vs VNC: NAT Traversal, Codecs, Encryption </a> </h3> <p class="text-muted dark:text-slate-400 text-lg">RustDesk vs VNC compared in practice: NAT traversal without port-forwarding, modern codecs, built-in encryption, and why teams move from VNC to RustDesk.</p> </article><article class="mb-6 transition"> <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6"> <a href="/blog/rustdesk-vs-screenconnect"> <img src="/_astro/rustdesk-vs-screenconnect-og.DvSpcom6.webp" crossorigin="anonymous" referrerpolicy="no-referrer" width="400" height="210" srcset="/_astro/rustdesk-vs-screenconnect-og.DvSpcom6_V2O3N.webp 400w, /_astro/rustdesk-vs-screenconnect-og.DvSpcom6_16kPWe.webp 900w" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 100%; max-height: 100%;" class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700" alt="RustDesk vs ScreenConnect: Self-Hosted Remote Support" loading="lazy" decoding="async"> </a> </div> <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300"> <a class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href="/blog/rustdesk-vs-screenconnect"> RustDesk vs ScreenConnect: Self-Hosted Remote Support </a> </h3> <p class="text-muted dark:text-slate-400 text-lg">A full comparison of RustDesk vs ScreenConnect: features, OS support, security, pricing models, and the self-hosting trade-off.</p> </article><article class="mb-6 transition"> <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6"> <a href="/blog/rustdesk-scale-50000-200000-devices"> <img src="/_astro/rustdesk-scale-50000-200000-devices-og.BJ5-7Ak7.webp" crossorigin="anonymous" referrerpolicy="no-referrer" width="400" height="210" srcset="/_astro/rustdesk-scale-50000-200000-devices-og.BJ5-7Ak7_Z1a8v9l.webp 400w, /_astro/rustdesk-scale-50000-200000-devices-og.BJ5-7Ak7_ZYPtfU.webp 900w" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 100%; max-height: 100%;" class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700" alt="Can RustDesk Scale to 200,000 Devices?" loading="lazy" decoding="async"> </a> </div> <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300"> <a class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href="/blog/rustdesk-scale-50000-200000-devices"> Can RustDesk Scale to 200,000 Devices? </a> </h3> <p class="text-muted dark:text-slate-400 text-lg">See RustDesk first-party operational context for large-fleet planning, what the public-server observation shows, and what a self-hosted rollout must still validate.</p> </article><article class="mb-6 transition"> <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6"> <a href="/blog/rustdesk-for-linux"> <img src="/_astro/rustdesk-for-linux-og.Bq7IYL5Z.webp" crossorigin="anonymous" referrerpolicy="no-referrer" width="400" height="210" srcset="/_astro/rustdesk-for-linux-og.Bq7IYL5Z_ZT0Wob.webp 400w, /_astro/rustdesk-for-linux-og.Bq7IYL5Z_ZIHUuK.webp 900w" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 100%; max-height: 100%;" class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700" alt="RustDesk for Linux: The Open-Source Remote Desktop" loading="lazy" decoding="async"> </a> </div> <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300"> <a class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href="/blog/rustdesk-for-linux"> RustDesk for Linux: The Open-Source Remote Desktop </a> </h3> <p class="text-muted dark:text-slate-400 text-lg">Install and run RustDesk on Linux: .deb, .rpm, Flatpak and AppImage, X11 vs Wayland, headless and unattended access, and self-hosting the server.</p> </article> </div> </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">  <div class="absolute inset-0">  </div>  </div> <div class="relative px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-6xl mx-auto">  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl"><p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase">Open Source</p><h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl">Built in public with a vibrant community</h2><p class="mt-4 text-muted text-xl">Join a community driven solution that has millions of downloads and used by thousands of organisations.</p></div> <div class="flex flex-wrap justify-center -m-4 text-center"> <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 30M+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Client downloads </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 10M+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Docker downloads </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 10M+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Alive devices </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 113K+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Stars </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 15K+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Forks </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 50K+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Community members </div> </div><div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">  <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl"> 50+ </div> <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"> Languages </div> </div> </div>  </div> </section> <section class="relative md:-mt-[76px] not-prose "> <div class="absolute inset-0 pointer-events-none" aria-hidden="true">    </div> <div class="relative max-w-7xl mx-auto px-4 sm:px-6"> <div class="pt-0 md:pt-[76px] pointer-events-none"></div> <div class="py-12 md:py-20"> <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">  <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"> Join the community </h1> <div class="max-w-3xl mx-auto"> <p class="text-xl text-muted mb-6 dark:text-slate-300"> Discover what our community has to say about their RustDesk experience. </p> <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4"> <div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://github.com/rustdesk/rustdesk/discussions">GitHub<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:message-circle">  <symbol id="ai:tabler:message-circle"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 20l1.3-3.9C1.976 12.663 2.874 8.228 6.4 5.726c3.526-2.501 8.59-2.296 11.845.48c3.255 2.777 3.695 7.266 1.029 10.501S11.659 20.922 7.7 19z"/></symbol><use xlink:href="#ai:tabler:message-circle"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://discord.gg/nDceKgxnkV">Discord<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:message-circle">  <use xlink:href="#ai:tabler:message-circle"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/r/rustdesk/">Reddit<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:message-circle">  <use xlink:href="#ai:tabler:message-circle"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://twitter.com/rustdesk">X<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:brand-x">  <use xlink:href="#ai:tabler:brand-x"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@rustdesk">YouTube<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:brand-youtube">  <use xlink:href="#ai:tabler:brand-youtube"></use>  </svg></a> </div> </div> </div>  </div> <div>  </div> </div> </div> </section> <section class="relative not-prose scroll-mt-[72px]"> <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">  <div class="absolute inset-0">  </div>  </div> <div class="relative px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-6xl mx-auto">  <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"> <div class="md:mx-auto text-center mb-0 md:mb-0"><h2 class="leading-tighter text-heading text-4xl md:text-4xl font-bold tracking-tighter mb-4 font-heading"> Experience RustDesk for yourself </h2></div> <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6"> <div class="flex w-full sm:w-auto"> <a class="btn-primary w-full sm:mb-0" target="_blank" rel="noopener noreferrer" href="https://rustdesk.com/download">Download<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:download">  <use xlink:href="#ai:tabler:download"></use>  </svg></a> </div><div class="flex w-full sm:w-auto"> <a class="btn-secondary w-full sm:mb-0" href="https://rustdesk.com/pricing">Self-Hosting<svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" data-icon="tabler:server">  <symbol id="ai:tabler:server"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zm0 8a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zm4-7v.01M7 16v.01"/></symbol><use xlink:href="#ai:tabler:server"></use>  </svg></a> </div> </div> </div>  </div> </section>  </main>  <footer class="relative border-t border-gray-200 dark:border-slate-800 not-prose"> <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div> <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300"> <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12"> <div class="col-span-12 lg:col-span-4"> <div class="mb-2"> <a class="inline-block font-bold text-xl" href="/?lang=en">RustDesk</a> </div> <div class="text-sm text-muted flex gap-1"> <a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="/terms">Terms</a>  · <a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="/privacy">Privacy Policy</a>  </div> </div> <div class="col-span-6 md:col-span-3 lg:col-span-2"> <div class="dark:text-gray-300 font-medium mb-2">Resources</div> <ul class="text-sm"> <li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="/team?lang=en"> About us </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="/support?lang=en"> Support </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="/web"> Web Client </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="/self-host/account"> Pro License Portal </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://github.com/rustdesk/rustdesk/wiki/FAQ"> FAQ </a> </li> </ul> </div><div class="col-span-6 md:col-span-3 lg:col-span-2"> <div class="dark:text-gray-300 font-medium mb-2">Community</div> <ul class="text-sm"> <li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://twitter.com/rustdesk"> X </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://discord.com/invite/nDceKgxnkV"> Discord </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://www.reddit.com/r/rustdesk/"> Reddit </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://www.youtube.com/@rustdesk"> YouTube </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://github.com/rustdesk/rustdesk"> GitHub </a> </li> </ul> </div><div class="col-span-6 md:col-span-3 lg:col-span-2"> <div class="dark:text-gray-300 font-medium mb-2">Download</div> <ul class="text-sm"> <li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://github.com/rustdesk/rustdesk/releases/latest"> RustDesk Client </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://github.com/rustdesk/rustdesk-server/releases/latest"> RustDesk Server OSS </a> </li><li class="mb-2"> <a class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out" href="https://github.com/rustdesk/rustdesk-server-pro/releases/latest"> RustDesk Server Pro </a> </li> </ul> </div> </div> <div class="md:flex md:items-center md:justify-between py-6 md:py-8"> <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4"> <li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="X" href="https://twitter.com/rustdesk"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-x">  <symbol id="ai:tabler:brand-x"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></symbol><use xlink:href="#ai:tabler:brand-x"></use>  </svg>  </a> </li><li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Discord" href="https://discord.com/invite/nDceKgxnkV"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-discord">  <symbol id="ai:tabler:brand-discord"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0-2 0m6 0a1 1 0 1 0 2 0a1 1 0 0 0-2 0"/><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833-1.667 3.5-3c.667-1.667.5-5.833-1.5-11.5c-1.457-1.015-3-1.34-4.5-1.5l-.972 1.923a11.9 11.9 0 0 0-4.053 0L9 4c-1.5.16-3.043.485-4.5 1.5c-2 5.667-2.167 9.833-1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2-2 2-3"/><path d="M7 16.5c3.5 1 6.5 1 10 0"/></g></symbol><use xlink:href="#ai:tabler:brand-discord"></use>  </svg>  </a> </li><li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Reddit" href="https://www.reddit.com/r/rustdesk/"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-reddit">  <symbol id="ai:tabler:brand-reddit"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 8c2.648 0 5.028.826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59-4.03 6.5-9 6.5c-4.875 0-8.845-2.8-9-6.294l-1-.206a2.5 2.5 0 0 1 2.326-4.36C5.973 8.827 8.353 8 11.001 8zm0 0l1-5l6 1"/><path d="M18 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><circle cx="9" cy="13" r=".5" fill="currentColor"/><circle cx="15" cy="13" r=".5" fill="currentColor"/><path d="M10 17q1 .5 2 .5c1 0 1.333-.167 2-.5"/></g></symbol><use xlink:href="#ai:tabler:brand-reddit"></use>  </svg>  </a> </li><li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="YouTube" href="https://www.youtube.com/@rustdesk"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-youtube">  <symbol id="ai:tabler:brand-youtube"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><path d="m10 9l5 3l-5 3z"/></g></symbol><use xlink:href="#ai:tabler:brand-youtube"></use>  </svg>  </a> </li><li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS" href="/rss.xml"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss">  <symbol id="ai:tabler:rss"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19a1 1 0 1 0 2 0a1 1 0 1 0-2 0M4 4a16 16 0 0 1 16 16M4 11a9 9 0 0 1 9 9"/></symbol><use xlink:href="#ai:tabler:rss"></use>  </svg>  </a> </li><li> <a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Github" href="https://github.com/rustdesk/rustdesk"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-github">  <symbol id="ai:tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"/></symbol><use xlink:href="#ai:tabler:brand-github"></use>  </svg>  </a> </li> </ul> <div class="text-sm mr-4 dark:text-muted"> © 2026 Purslane Tech Pte. Ltd. </div> </div> </div> </footer>   <script>(function(){const defaultTheme = "system";
+
+  if (window.basic_script) {
+    return;
+  }
+
+  window.basic_script = true;
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  const initTheme = function () {
+    if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+      applyTheme(defaultTheme.replace(':only', ''));
+    } else if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      applyTheme('dark');
+    } else {
+      applyTheme('light');
+    }
+  };
+  initTheme();
+
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  const onLoad = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
+
+    attachEvent('#languageSelect', 'click', function () {
+      document.getElementById('languages')?.classList.remove('hidden');
+    });
+
+    /*
+    attachEvent('#languages', 'mouseleave', function () {
+      document.getElementById('languages')?.classList.add('hidden');
+    });
+    */
+
+    document.addEventListener('click', function (event) {
+      const languagesDropdown = document.getElementById('languages');
+      const languageSelect = document.getElementById('languageSelect');
+      if (languagesDropdown && !languagesDropdown.contains(event.target) && !languageSelect.contains(event.target)) {
+        languagesDropdown.classList.add('hidden');
+      }
+    });
+
+    attachEvent('#header nav', 'click', function () {
+      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('header')?.classList.remove('h-screen');
+      document.getElementById('header')?.classList.remove('expanded');
+      document.getElementById('header')?.classList.remove('bg-page');
+      document.querySelector('#header nav')?.classList.add('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+    });
+
+    attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
+      elem.classList.toggle('expanded');
+      document.getElementById('languages')?.classList.toggle('expanded');
+      document.body.classList.toggle('overflow-hidden');
+      document.getElementById('header')?.classList.toggle('h-screen');
+      document.getElementById('header')?.classList.toggle('expanded');
+      document.getElementById('header')?.classList.toggle('bg-page');
+      document.querySelector('#header nav')?.classList.toggle('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+    });
+
+    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+      if (defaultTheme.endsWith(':only')) {
+        return;
+      }
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
+      const network = elem.getAttribute('data-aw-social-share');
+      const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+      const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+
+      let href;
+      switch (network) {
+        case 'facebook':
+          href = `https://www.facebook.com/sharer.php?u=${url}`;
+          break;
+        case 'twitter':
+          href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+          break;
+        case 'linkedin':
+          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          break;
+        case 'whatsapp':
+          href = `https://wa.me/?text=${text}%20${url}`;
+          break;
+        case 'mail':
+          href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+          break;
+
+        default:
+          return;
+      }
+
+      const newlink = document.createElement('a');
+      newlink.target = '_blank';
+      newlink.href = href;
+      newlink.click();
+    });
+
+    const screenSize = window.matchMedia('(max-width: 767px)');
+    screenSize.addEventListener('change', function () {
+      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('header')?.classList.remove('h-screen');
+      document.getElementById('header')?.classList.remove('expanded');
+      document.getElementById('header')?.classList.remove('bg-page');
+      document.querySelector('#header nav')?.classList.add('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+    });
+
+    function applyHeaderStylesOnScroll() {
+      const header = document.querySelector('#header[data-aw-sticky-header]');
+      if (!header) return;
+      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+        header.classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+        header.classList.remove('scroll');
+      }
+      ticking = false;
+    }
+    applyHeaderStylesOnScroll();
+
+    attachEvent([document], 'scroll', function () {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          applyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
+  const onPageShow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+    const elem = document.querySelector('[data-aw-toggle-menu]');
+    if (elem) {
+      elem.classList.remove('expanded');
+    }
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById('header')?.classList.remove('h-screen');
+    document.getElementById('header')?.classList.remove('expanded');
+    document.querySelector('#header nav')?.classList.add('hidden');
+  };
+
+  window.onload = onLoad;
+  window.onpageshow = onPageShow;
+
+  document.addEventListener('astro:after-swap', () => {
+    initTheme();
+    onLoad();
+    onPageShow();
+    loadPrice();
+  });
+
+  function loadPrice() {
+    if (!document.getElementById('users')) return;
+    // Migrate params from hash (e.g. #custom2?years=3) into the real query string
+    // so gotoBuy/buildCheckoutUrl can forward them to checkout.
+    if (window.location.hash.indexOf('?') >= 0) {
+      const hash = window.location.hash;
+      const qIdx = hash.indexOf('?');
+      const hashAnchor = hash.slice(0, qIdx);
+      const hashQuery = hash.slice(qIdx + 1);
+      if (hashQuery) {
+        const existing = new URLSearchParams(window.location.search);
+        new URLSearchParams(hashQuery).forEach((v, k) => {
+          if (!existing.has(k)) existing.append(k, v);
+        });
+        const qs = existing.toString();
+        history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + hashAnchor);
+      }
+    }
+    let users = 10;
+    let devices = 100;
+    window.submit = function () {
+      redirectUrl =
+        'https://rustdesk.com/api/lic/stripe/checkout?type=Customized&users=' + users + '&devices=' + devices;
+      gotoBuy(redirectUrl);
+    };
+    function calculatePrice() {
+      users = parseInt(document.getElementById('users').value);
+      devices = parseInt(document.getElementById('devices').value);
+      if (!users || users < 10) users = 10;
+      if (devices < 100) devices = 100;
+      const price = 23.88 + (Math.min(users, devices) - 10) * 1.2 + (Math.max(devices, users) - 100) * 0.12;
+      document.getElementById('cprice').innerText = price.toFixed(price >= 100 ? 1 : 2);
+    }
+
+    document.getElementById('users').oninput = function () {
+      document.getElementById('usersSlider').value = this.value;
+      calculatePrice();
+    };
+
+    document.getElementById('devices').oninput = function () {
+      document.getElementById('devicesSlider').value = this.value;
+      calculatePrice();
+    };
+
+    document.getElementById('usersSlider').oninput = function () {
+      document.getElementById('users').value = this.value;
+      calculatePrice();
+    };
+
+    document.getElementById('devicesSlider').oninput = function () {
+      document.getElementById('devices').value = this.value;
+      calculatePrice();
+    };
+
+    let users2 = 10;
+    let devices2 = 100;
+    let conns = 1;
+    window.submit2 = function () {
+      redirectUrl =
+        'https://rustdesk.com/api/lic/stripe/checkout?type=Customized&users=' +
+        users2 +
+        '&devices=' +
+        devices2 +
+        '&conns=' +
+        conns;
+      gotoBuy(redirectUrl);
+    };
+    function calculatePrice2() {
+      users2 = parseInt(document.getElementById('users2').value);
+      devices2 = parseInt(document.getElementById('devices2').value);
+      conns = parseInt(document.getElementById('conns').value);
+      if (!users2 || users2 < 10) users2 = 10;
+      if (devices2 < 100) devices2 = 100;
+      if (conns < 1) conns = 1;
+      const price = 23.88 + (Math.min(users2, devices2) - 10) * 1.2 + (Math.max(devices2, users2) - 100) * 0.12 + (conns - 1) * 24;
+      document.getElementById('cprice2').innerText = price.toFixed(price >= 100 ? 1 : 2);
+    }
+
+    if (window.location.href.indexOf('custom2') > 0) {
+      setTimeout(function () {
+        window.location = '#custom2';
+      }, 150);
+    } else {
+      setTimeout(function () {
+        document.getElementById('custom2').parentElement.parentElement.parentElement.style.display = 'none';
+      }, 0);
+    }
+
+    document.getElementById('users2').oninput = function () {
+      document.getElementById('usersSlider2').value = this.value;
+      calculatePrice2();
+    };
+
+    document.getElementById('devices2').oninput = function () {
+      document.getElementById('devicesSlider2').value = this.value;
+      calculatePrice2();
+    };
+
+    document.getElementById('conns').oninput = function () {
+      document.getElementById('connsSlider').value = this.value;
+      calculatePrice2();
+    };
+
+    document.getElementById('usersSlider2').oninput = function () {
+      document.getElementById('users2').value = this.value;
+      calculatePrice2();
+    };
+
+    document.getElementById('devicesSlider2').oninput = function () {
+      document.getElementById('devices2').value = this.value;
+      calculatePrice2();
+    };
+
+    document.getElementById('connsSlider').oninput = function () {
+      document.getElementById('conns').value = this.value;
+      calculatePrice2();
+    };
+  }
+  document.addEventListener('DOMContentLoaded', loadPrice);
+})();</script> <!--<button type="button" class="cc-button">Show preferences modal</button>--> <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQ0BSM74FB"></script><script>(function(){const id = "G-JQ0BSM74FB";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", id);
+})();</script> </body></html>

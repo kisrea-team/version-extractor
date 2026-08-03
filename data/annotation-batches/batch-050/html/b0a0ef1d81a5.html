@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html class="h-full scroll-smooth bg-black" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="manifest" href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/static/favicon/site.webmanifest">
+<link rel="mask-icon" href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/static/favicon/safari-pinned-tab.svg" color="#ff8c2f">
+<link rel="shortcut icon" href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/static/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#1c1b1b">
+<meta name="msapplication-config" content="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/static/favicon/browserconfig.xml">
+<meta name="theme-color" content="#1c1b1b">
+
+        <script type="module">!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)if("LINK"===e.tagName&&"modulepreload"===e.rel)r(e);else if(e.querySelectorAll)for(const o of e.querySelectorAll("link[rel=modulepreload]"))r(o)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerpolicy&&(r.referrerPolicy=e.referrerpolicy),"use-credentials"===e.crossorigin?r.credentials="include":"anonymous"===e.crossorigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();</script>
+<script type="module" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/dist/index-CsWs7YnJ.js" crossorigin onload="e=new CustomEvent(&#039;vite-script-loaded&#039;, {detail:{path: &#039;src/js/index.js&#039;}});document.dispatchEvent(e);"></script>
+<link href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/dist/index-BHH8rdGj.css" rel="stylesheet">
+        <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/ymm4lqb.css">
+
+            <link rel="stylesheet" href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/dist/main-2hqxuWge.css" rel="preload" as="style">
+    <link rel="stylesheet" href="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/builds/a2365c80-d28f-4faf-984d-a9c9dd91eba5/artifacts/dist/main-2hqxuWge.css" />
+
+    <link rel="alternate" type="application/rss+xml" href="https://unraid.net/blog.rss">
+<title>Unraid | The Homelab OS for Storage, Docker &amp; VMs</title>
+<script>dl = [];
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dl','GTM-W52RM3X');
+</script><meta name="generator" content="SEOmatic">
+<meta name="keywords" content="Unraid, NAS OS, home server, self-hosted storage, Docker, virtualization, homelab">
+<meta name="description" content="Unraid OS turns your hardware into a powerful home server. Combine NAS storage, Docker containers, and VMs on one system — no matching drives required. Start your free trial today.">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="robots" content="all">
+<meta content="168619227389648" property="fb:profile_id">
+<meta content="en_US" property="og:locale">
+<meta content="Unraid" property="og:site_name">
+<meta content="website" property="og:type">
+<meta content="https://unraid.net/" property="og:url">
+<meta content="The Homelab OS for Storage, Docker &amp; VMs" property="og:title">
+<meta content="Unraid OS turns your hardware into a powerful home server. Combine NAS storage, Docker containers, and VMs on one system — no matching drives required. Start your free trial today." property="og:description">
+<meta content="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/seo-unraid.png?fit=cover&amp;height=630&amp;width=1200&amp;s=yWE9ELjfTAbKS4xyb1a9IqTpA9av92S02h0X9I4afdE" property="og:image">
+<meta content="1200" property="og:image:width">
+<meta content="630" property="og:image:height">
+<meta content="Unraid logo displayed on an orange gradient background, representing the Unraid server operating system." property="og:image:alt">
+<meta content="https://www.facebook.com/pg/UnraidOfficial" property="og:see_also">
+<meta content="https://www.reddit.com/r/unRAID/" property="og:see_also">
+<meta content="https://www.youtube.com/channel/UC8BZH5xQpP9np0RZ9aBX34Q" property="og:see_also">
+<meta content="https://twitter.com/UnraidOfficial" property="og:see_also">
+<meta content="https://discord.unraid.net" property="og:see_also">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@UnraidOfficial">
+<meta name="twitter:creator" content="@UnraidOfficial">
+<meta name="twitter:title" content="The Homelab OS for Storage, Docker &amp; VMs">
+<meta name="twitter:description" content="Unraid OS turns your hardware into a powerful home server. Combine NAS storage, Docker containers, and VMs on one system — no matching drives required. Start your free trial today.">
+<meta name="twitter:image" content="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/seo-unraid.png?fit=cover&amp;height=418&amp;width=800&amp;s=uzQwGJEW51DfaYOEw-uzpmCDT0oZkUpnDlXWgyOxRUA">
+<meta name="twitter:image:width" content="800">
+<meta name="twitter:image:height" content="418">
+<meta name="twitter:image:alt" content="Unraid logo displayed on an orange gradient background, representing the Unraid server operating system.">
+<link href="https://unraid.net/" rel="canonical">
+<link href="https://unraid.net/" rel="home">
+<link type="text/plain" href="https://unraid.net/humans.txt" rel="author"></head>
+<body class="antialiased h-full bg-black"x-data :style="`--scroll-padding: ${$store.scrollLockPadding.scrollPadding}px`" :class="{
+    'pr-[var(--scroll-padding)]': $store.scrollLockPadding.showScrollPadding
+}">
+    <svg
+    style="width: 0; height: 0; position: absolute" class=""
+>
+    <defs>
+        <linearGradient id="red-to-orange-gradient">
+            <stop offset="0" stop-color="#E22828" />
+            <stop offset="1" stop-color="#FF8C2F" />
+        </linearGradient>
+    </defs>
+        <symbol id="unraid-logo" fill="none" viewBox="0 0 175 31">
+        <path fill="url(#red-to-orange-gradient)"
+            d="M 18.22 0 V 19.99 C 18.22 24.06 15.71 26.22 11.64 26.22 S 5.14 24.06 5.14 19.99 V 0 H 0 V 19.99 C 0 26.95 4.47 30.66 11.47 30.72 H 11.81 C 18.9 30.67 23.37 26.95 23.37 19.99 V 0 H 18.22 Z M 53.09 0 V 20.86 L 39.7 0 H 34.89 V 30.3 H 40.04 V 9.43 L 53.46 30.28 H 58.26 V 0 H 53.1 Z M 69.92 0 V 30.3 H 75.07 V 4.45 H 80.47 C 83.46 4.45 85.36 5.88 85.36 9.73 C 85.36 13.58 83.46 15.05 80.47 15.05 H 77.81 L 85.06 30.28 H 90.99 L 85.23 18.82 C 88.65 17.56 90.69 14.66 90.69 9.72 C 90.69 2.95 86.78 0.04 80.81 -0.01 H 69.91 Z M 109.34 0 L 98.78 30.3 H 103.88 L 106.26 23.2 H 115.45 L 113.95 18.74 H 107.65 L 112.24 5.45 L 120.59 30.29 H 126.17 L 115.6 0 H 109.33 H 109.34 Z M 134.8 30.3 H 139.95 V 0 H 134.8 V 30.3 Z M 156.78 4.46 H 163.14 C 167.24 4.46 169.84 6.71 169.84 10.86 V 19.44 C 169.84 23.6 167.24 25.8 163.05 25.8 H 156.78 V 4.46 Z M 151.63 0.01 V 30.3 H 163.06 C 170.37 30.3 175 26.54 175 19.44 V 10.87 C 175 3.83 170.44 0.07 163.31 0 H 151.63 Z" />
+    </symbol>
+
+        <symbol id="discord-icon" fill="none" viewBox="0 0 40 40">
+        <path fill="currentColor"
+            d="M31.49 10.95c-2.42-1.93-5.88-2.46-7.37-2.62h-.06c-.23 0-.45.13-.52.35-.13.33.07.69.4.75 1.69.34 3.63.94 5.4 2.05.36.22.45.7.16 1.03-.23.26-.62.3-.92.12-3.46-2.13-7.74-2.24-8.58-2.24-.83 0-5.12.11-8.58 2.24-.3.17-.69.14-.92-.12a.68.68 0 0 1 .16-1.03 16.42 16.42 0 0 1 5.4-2.05.55.55 0 0 0 .4-.75c-.07-.22-.29-.35-.52-.35h-.06c-1.5.16-4.95.7-7.37 2.62-1.4 1.3-4.21 8.82-4.34 15.47 0 .45.11.9.37 1.25 1.69 2.37 5.34 3.8 8.1 4 .42.02.83-.16 1.07-.5l.03-.04c.5-.69.2-1.66-.6-1.97a11.76 11.76 0 0 1-3.56-1.92.7.7 0 0 1-.07-.98c.26-.29.69-.31.98-.06.04.03 3.23 2.75 9.51 2.75 6.28 0 9.47-2.72 9.51-2.75a.69.69 0 0 1 .98.06.7.7 0 0 1-.07.98c-.07.07-1.25 1.08-3.55 1.92-.81.3-1.11 1.28-.6 1.97 0 .02 0 .03.02.03.25.35.65.53 1.07.5 2.76-.2 6.42-1.62 8.1-3.99.26-.36.37-.8.37-1.25-.13-6.65-2.93-14.16-4.34-15.47ZM15.52 24.14c-1.32 0-2.4-1.24-2.4-2.75 0-1.52 1.08-2.76 2.4-2.76 1.34 0 2.4 1.24 2.4 2.76 0 1.51-1.06 2.75-2.4 2.75Zm8.96 0c-1.34 0-2.4-1.24-2.4-2.75 0-1.52 1.06-2.76 2.4-2.76 1.32 0 2.4 1.24 2.4 2.76 0 1.51-1.08 2.75-2.4 2.75Z" />
+    </symbol>
+
+    <symbol id="x-icon" fill="none" viewBox="0 0 40 40">
+        <path fill="currentColor"
+            d="m26.34 26.84 1.15 1.54h-2.05l-.07-.09-2.2-2.94-.67-.88-.78-1.05-1-1.32-.89-1.19-.9-1.2-.68-.91-1.2-1.6-.49-.65-.6-.8-1.04-1.38-.78-1.06-.1-.13h2c.05 0 .07 0 .1.05l1.64 2.21 8.56 11.4Zm7.83-17.57v22.29a2.6 2.6 0 0 1-2.61 2.6H9.27a2.6 2.6 0 0 1-2.6-2.6V9.27a2.6 2.6 0 0 1 2.6-2.6h22.29a2.6 2.6 0 0 1 2.6 2.6Zm-3.81 20.27a1.08 1.08 0 0 0-.09-.11l-.04-.05-2.35-3.15-.8-1.05a102 102 0 0 1-.63-.86l-.64-.86-.75-1-.67-.89-.51-.69-.47-.63-.5-.67-.1-.12L27 14.98l.85-.9 1.65-1.78.2-.22c.04-.04.06-.09.1-.15l.12-.25-.26-.1a.43.43 0 0 0-.2-.05h-1.25a.58.58 0 0 0-.4.18l-1.4 1.49-.14.15-1.83 1.96-.57.61-.62.68-.94.99-.5.53-.12-.16-.28-.38-3.3-4.4-1.06-1.4a.58.58 0 0 0-.49-.26H11.58c-.12 0-.23 0-.38.06l-.23.1.1.24c.01.05.03.12.08.17l.6.79.61.82.6.8.66.9.83 1.1.77 1 .87 1.17.46.63 1.85 2.47-.63.68-6.09 6.5-.51.55c-.08.09-.1.2-.1.27l-.01.1.06.08c.07.08.2.1.27.1h1.28c.19 0 .34-.13.38-.17.1-.09.18-.18.26-.28l.89-.94 1.15-1.23.9-.96 3.15-3.37.5.66 2.98 4 1.53 2.04c.13.18.29.27.5.26h5.2c.18-.01.26-.11.29-.17.03-.06.07-.19-.04-.35Z" />
+    </symbol>
+
+    <symbol id="youtube-icon" fill="none" viewBox="0 0 40 40">
+        <path fill="currentColor"
+            d="M34.37 12.24a3.65 3.65 0 0 0-2.65-2.49C29.38 9.17 20 9.17 20 9.17s-9.38 0-11.72.58a3.65 3.65 0 0 0-2.65 2.5C5 14.42 5 20.41 5 20.41s0 5.98.63 8.17a3.65 3.65 0 0 0 2.65 2.49c2.34.59 11.72.59 11.72.59s9.38 0 11.72-.6a3.65 3.65 0 0 0 2.65-2.48c.63-2.2.63-8.17.63-8.17s0-5.99-.63-8.18ZM17 24.07v-7.3c0-.55.63-.89 1.13-.62l6.75 3.66c.5.27.5.95 0 1.22l-6.75 3.65c-.5.27-1.13-.07-1.13-.61Z" />
+    </symbol>
+
+    <symbol id="reddit-icon" fill="none" viewBox="0 0 40 40">
+        <path fill="currentColor"
+            d="M22.32 6.67a3.77 3.77 0 0 0-3.77 3.78v3.49c-2.82.15-5.41.9-7.48 2.1a4.14 4.14 0 0 0-2.9-1.11c-1.11 0-2.26.39-3.05 1.28l-.02.02-.02.02a4.55 4.55 0 0 0 1.15 6.57l-.02.38c0 5.13 6 9.3 13.37 9.3 7.38 0 13.38-4.17 13.38-9.3 0-.13-.02-.26-.03-.38a4.55 4.55 0 0 0 1.15-6.57l-.02-.02-.01-.02a4.03 4.03 0 0 0-3.06-1.28c-1.03 0-2.1.34-2.9 1.1a16.9 16.9 0 0 0-7.48-2.1v-3.48c0-1.01.58-1.72 1.71-1.72.54 0 1.2.27 2.21.63.87.3 2 .61 3.43.7a2.57 2.57 0 0 0 2.43 1.77 2.59 2.59 0 0 0 0-5.16c-.97 0-1.8.54-2.25 1.34a10.08 10.08 0 0 1-2.93-.6c-.93-.32-1.78-.74-2.89-.74ZM8.18 16.99c.4 0 .79.1 1.1.28a8.9 8.9 0 0 0-2.51 3.28 2.4 2.4 0 0 1-.5-1.14c-.12-.69.09-1.41.42-1.84.3-.33.87-.58 1.49-.58Zm22.8 0c.62 0 1.2.25 1.5.58.33.43.54 1.15.43 1.84-.07.41-.24.8-.51 1.14a8.9 8.9 0 0 0-2.52-3.28c.32-.17.7-.28 1.1-.28Zm-16.54 2.08a2.06 2.06 0 1 1-2.06 2.07c0-1.15.92-2.07 2.06-2.07Zm10.29 0a2.06 2.06 0 1 1-2.06 2.07c0-1.15.92-2.07 2.06-2.07Zm.24 5.71a5.66 5.66 0 0 1-5.39 3.59c-2.63 0-4.73-1.66-5.39-3.45a8.77 8.77 0 0 0 5.4 1.66c2.23 0 4.2-.7 5.38-1.8Z" />
+    </symbol>
+
+    <symbol id="facebook-icon" fill="none" viewBox="0 0 40 40">
+        <path fill="currentColor"
+            d="M20 5.83A14.2 14.2 0 0 0 5.83 20.07a14.2 14.2 0 0 0 12.05 14.07v-10.3h-3.5V20.1h3.5v-2.49c0-4.12 2-5.93 5.41-5.93 1.63 0 2.5.12 2.9.18v3.26h-2.32c-1.45 0-1.95 1.38-1.95 2.94v2.04h4.24l-.58 3.75h-3.66v10.32a14.2 14.2 0 0 0 12.25-14.1A14.2 14.2 0 0 0 20 5.83Z" />
+    </symbol>
+
+    <symbol id="bsky-icon" fill="none" viewBox="0 0 256 226">
+        <path fill="currentColor"
+            d="M55.491 15.172c29.35 22.035 60.917 66.712 72.509 90.686c11.592-23.974 43.159-68.651 72.509-90.686C221.686-.727 256-13.028 256 26.116c0 7.818-4.482 65.674-7.111 75.068c-9.138 32.654-42.436 40.983-72.057 35.942c51.775 8.812 64.946 38 36.501 67.187c-54.021 55.433-77.644-13.908-83.696-31.676c-1.11-3.257-1.63-4.78-1.637-3.485c-.008-1.296-.527.228-1.637 3.485c-6.052 17.768-29.675 87.11-83.696 31.676c-28.445-29.187-15.274-58.375 36.5-67.187c-29.62 5.041-62.918-3.288-72.056-35.942C4.482 91.79 0 33.934 0 26.116C0-13.028 34.314-.727 55.491 15.172"></path>
+    </symbol>
+
+        <symbol id="line-arrow-right" fill="none" viewBox="0 0 15 13">
+        <path fill="currentColor"
+            d="M1 5.75a.75.75 0 0 0 0 1.5v-1.5Zm13.53 1.28c.3-.3.3-.77 0-1.06L9.76 1.2A.75.75 0 1 0 8.7 2.26l4.24 4.24-4.24 4.24a.75.75 0 0 0 1.06 1.06l4.77-4.77ZM1 7.25h13v-1.5H1v1.5Z" />
+    </symbol>
+    <symbol id="nav-caret" fill="none" viewBox="0 0 11 7">
+        <style>
+            #nav-caret path {
+                stroke: var(--fill-color, currentColor);
+            }
+        </style>
+        <path stroke-width="1.5" d="M9.9 1.4 5.5 5.77 1.1 1.4" />
+    </symbol>
+    <symbol id="triangle-down" fill="none" viewBox="0 0 12 8">
+        <path fill="currentColor" d="M6 8 .8.38h10.4L6 8Z" />
+    </symbol>
+    <symbol id="nav-circle-arrow-right" fill="none" viewBox="0 0 22 22">
+        <path fill="url(#red-to-orange-gradient)"
+            d="M10.2507.00826838C8.20542.185428 6.49204.774886 4.87427 1.85717 2.19946 3.64809.498975 6.41071.0660645 9.67045c-.088086.66355-.088086 1.97345 0 2.63695.2674805 2.0143.9657255 3.7322 2.1666955 5.3352.38028.5079 1.39004 1.5515 1.85411 1.9155 2.03457 1.5977 4.40966 2.4341 6.91263 2.4341 4.5042 0 8.5873-2.7745 10.234-6.9544.5264-1.3356.7638-2.5951.7638-4.0489 0-.4992-.0236-.9749-.0644-1.29913-.3094-2.43406-1.3331-4.59326-2.9917-6.30795C17.1966 1.57694 15.0525.475326 12.5549.0995324c-.4909-.0740849-1.8713-.1288433-2.3042-.09126402ZM12.3895 1.52433c4.1658.5916 7.425 3.84919 8.0921 8.08492.0956.60985.0956 2.14955 0 2.75935-.4963 3.1513-2.4213 5.8077-5.2089 7.1852-2.7264 1.3464-5.77392 1.3529-8.50781.0161-2.52334-1.2337-4.39892-3.5657-5.06386-6.2972-.12354-.5079-.23311-1.1682-.23311-1.4076v-.1482H13.6184l-.9893.9942-.9883.9943.4619.4424c.3255.3135.4888.4434.5554.4434.0719 0 .5231-.4284 1.8992-1.8049l1.8057-1.8038-1.8401-1.85749-1.8401-1.85749-.521.50249-.52.50249.9883.99424.9883.99426H1.46792v-.1482c0-.0805.02686-.32425.05908-.54113.36953-2.45554 1.73272-4.74681 3.69961-6.21777 2.08613-1.56008 4.57832-2.1957 7.16289-1.82957Z" />
+    </symbol>
+
+        <symbol id="globe" fill="none" viewBox="0 0 18 18">
+        <path fill="currentColor"
+            d="M12.21 5.52C11.7 2.28 10.45 0 9.01 0 7.55 0 6.3 2.28 5.78 5.52h6.42ZM5.51 9c0 .8.05 1.58.13 2.32h6.72a22.75 22.75 0 0 0 0-4.64H5.64c-.08.74-.12 1.51-.12 2.32Zm11.8-3.48A9.02 9.02 0 0 0 11.56.38c.88 1.22 1.5 3.07 1.81 5.14h3.92ZM6.42.38A9.01 9.01 0 0 0 .7 5.52h3.92c.32-2.07.93-3.92 1.81-5.14Zm11.26 6.3h-4.16a23.39 23.39 0 0 1 0 4.64h4.16a8.92 8.92 0 0 0 0-4.64ZM4.36 9c0-.78.04-1.56.12-2.32H.3a9.08 9.08 0 0 0 0 4.64h4.16c-.07-.76-.11-1.54-.11-2.32Zm1.43 3.48C6.32 15.72 7.56 18 9 18c1.45 0 2.69-2.28 3.21-5.52H5.8Zm5.78 5.14a9.03 9.03 0 0 0 5.74-5.14h-3.92c-.32 2.07-.93 3.92-1.82 5.14ZM.7 12.48a9.02 9.02 0 0 0 5.74 5.14c-.89-1.22-1.5-3.07-1.82-5.14H.7Z" />
+    </symbol>
+
+    <symbol id="play" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="25" fill="#2B2A29" stroke="url(#red-to-orange-gradient)" stroke-width="2"/>
+        <path d="M35.1953 25.6465L21.9267 33.3072L21.9267 17.9859L35.1953 25.6465Z" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="circled-check" fill="none" viewBox="0 0 28 28">
+        <path class="fill-[var(--circled-check-bg,var(--ur-orange-dark))]" d="M28 14a14 14 0 1 1-28 0 14 14 0 0 1 28 0Z"/>
+        <path class="fill-[var(--circled-check-fg,var(--ur-cream))]" d="m12.1 20.1-5.6-5.6a.7.7 0 0 1 0-1l1-1c.3-.3.7-.3 1 0l4.1 4.1L20.2 9c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1L13 20.1c-.3.3-.7.3-1 0Z"/>
+    </symbol>
+    <symbol id="plus" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M2 11.5h20M12 1.5v20" />
+    </symbol>
+    <symbol id="minus" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M2 11.5h20"/>
+    </symbol>
+    <symbol id="modal-close" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </symbol>
+    <symbol id="play-icon" fill="none" viewBox="0 0 18 21">
+        <path fill="currentColor" d="M 20 10.54 L 3 20 V 0 L 20 10.54 Z"/>
+    </symbol>
+    <symbol id="pause-icon" fill="none" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M128 96h79v320h-79zM305 96h79v320h-79z"/>
+    </symbol>
+    <symbol id="resize-icon" fill="none" viewBox="0 0 20 20">
+        <path fill="currentColor" d="M13.3 0 16 2.5 2.5 16 0 13.3V20H6.7L4 17.5 17.5 4 20 6.7V0H13.3Z"/>
+    </symbol>
+    <symbol id="unraid-wave" fill="none" viewBox="0 0 219 128">
+        <path fill="url(#red-to-orange-gradient)" d="M104 32H114.8V96H104V32ZM10.8 96H-0V32H10.7V96ZM52.1 103.6H62.8V128H52V103.6ZM26 76H36.6V115.6H26V76.1ZM78 76H88.7V115.6H78V76.1ZM208.3 32H219V96H208.3V32ZM167 24.4H156.3V0H167V24.4ZM193 51.7H182.4V12.3H193V51.7ZM140.9 51.7H130.2V12.3H140.9V51.7Z"/>
+    </symbol>
+    <symbol id="unraid-wave-sm" fill="none" viewBox="0 0 55 32">
+        <path fill="url(#red-to-orange-gradient)" d="M26.1 8h2.7v16h-2.7V8ZM2.7 24H0V8h2.7v16ZM13 25.9h2.6V32h-2.6v-6.1ZM6.5 19h2.7v10H6.5V19Zm13 0h2.8v10h-2.7V19ZM52.4 8H55v16h-2.7V8ZM42 6h-2.6V0h2.6v6.1Zm6.6 6.8h-2.7V3.1h2.7v9.8Zm-13.1 0h-2.7V3.1h2.7v9.8Z"/>
+    </symbol>
+    <symbol id="heroicons-cog-solid" fill="none" viewBox="0 0 20 20">
+        <path fill="currentColor" fill-rule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a7 7 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7 7 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a7 7 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a7 7 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7 7 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54a7 7 0 0 1 1.93-1.115zM10 13a3 3 0 1 0 0-6a3 3 0 0 0 0 6" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-trash-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M16.5 4.478v.227a49 49 0 0 1 3.878.512a.75.75 0 1 1-.256 1.478l-.209-.035l-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A49 49 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a53 53 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951m-6.136-1.452a51 51 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a50 50 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452m-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-credit-card-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor">
+            <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3z"></path>
+            <path fill-rule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75m.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"></path>
+        </g>
+    </symbol>
+    <symbol id="heroicons-user-circle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M18.685 19.097A9.72 9.72 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.72 9.72 0 0 0 3.065 7.097A9.72 9.72 0 0 0 12 21.75a9.72 9.72 0 0 0 6.685-2.653m-12.54-1.285A7.49 7.49 0 0 1 12 15a7.49 7.49 0 0 1 5.855 2.812A8.22 8.22 0 0 1 12 20.25a8.22 8.22 0 0 1-5.855-2.438M15.75 9a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-chat-bubble-left-right-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor">
+            <path d="M4.913 2.658q3.115-.406 6.337-.408c2.147 0 4.262.139 6.337.408c1.922.25 3.291 1.861 3.405 3.727a4.4 4.4 0 0 0-1.032-.211a51 51 0 0 0-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 0 0 2.433 3.984L7.28 21.53A.75.75 0 0 1 6 21v-4.03a49 49 0 0 1-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979"></path><path d="M15.75 7.5q-2.065 0-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94q1.865.153 3.768.165l2.782 2.781a.75.75 0 0 0 1.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49 49 0 0 0 15.75 7.5"></path>
+        </g>
+    </symbol>
+    <symbol id="heroicons-arrow-top-right-on-square-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5m-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-user-group-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor"><path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0m7.5 3a3 3 0 1 1 6 0a3 3 0 0 1-6 0m-13.5 0a3 3 0 1 1 6 0a3 3 0 0 1-6 0m4.06 5.368A6.75 6.75 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498a.75.75 0 0 1-.372.568A12.7 12.7 0 0 1 12 21.75a12.7 12.7 0 0 1-6.337-1.684a.75.75 0 0 1-.372-.568a6.8 6.8 0 0 1 1.019-4.38" clip-rule="evenodd"></path><path d="m5.082 14.254l-.036.055a8.3 8.3 0 0 0-1.271 5.08a9.7 9.7 0 0 1-1.765-.44l-.115-.04a.56.56 0 0 1-.373-.487l-.01-.121Q1.5 18.15 1.5 18a3.75 3.75 0 0 1 3.582-3.746m15.144 5.135a8.3 8.3 0 0 0-1.308-5.135a3.75 3.75 0 0 1 3.57 4.047l-.01.121a.56.56 0 0 1-.373.486l-.115.04q-.851.302-1.764.441"></path></g>
+    </symbol>
+    <symbol id="heroicons-arrow-right-start-on-rectangle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-queue-list-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M5.625 3.75a2.625 2.625 0 1 0 0 5.25h12.75a2.625 2.625 0 0 0 0-5.25zm-1.875 7.5a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5zM3 15.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75m.75 3a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5z"></path>
+    </symbol>
+    <symbol id="heroicons-arrow-left-start-on-rectangle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M16.5 3.75H10.5a3 3 0 0 0-3 3v13.5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V6.75a3 3 0 0 0-3-3zm-9 3.75a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5v10.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-pencil-square-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor"><path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157l3.712 3.712l1.157-1.157a2.625 2.625 0 0 0 0-3.712m-2.218 5.93l-3.712-3.712l-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32z"></path><path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5z"></path></g>
+    </symbol>
+    <symbol id="heroicons-window-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M2.25 6a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3zm18 3H3.75v9a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5zm-15-3.75A.75.75 0 0 0 4.5 6v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V6a.75.75 0 0 0-.75-.75zm1.5.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75zm3-.75A.75.75 0 0 0 9 6v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V6a.75.75 0 0 0-.75-.75z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-currency-dollar-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor"><path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.3 2.3 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004s.152-.691.546-1.004m2.286 6.916v-2.824c.347.085.664.228.921.421c.427.32.579.686.579.991s-.152.671-.579.991a2.5 2.5 0 0 1-.921.42"></path><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75S17.385 2.25 12 2.25M12.75 6a.75.75 0 0 0-1.5 0v.816a3.84 3.84 0 0 0-1.72.756c-.712.566-1.112 1.35-1.112 2.178c0 .829.4 1.612 1.113 2.178c.502.4 1.102.647 1.719.756v2.978a2.5 2.5 0 0 1-.921-.421l-.879-.66a.75.75 0 0 0-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 0 0 1.5 0v-.81a4.1 4.1 0 0 0 1.821-.749c.745-.559 1.179-1.344 1.179-2.191s-.434-1.632-1.179-2.191a4.1 4.1 0 0 0-1.821-.75V8.354c.29.082.559.213.786.393l.415.33a.75.75 0 0 0 .933-1.175l-.415-.33a3.84 3.84 0 0 0-1.719-.755z" clip-rule="evenodd"></path></g>
+    </symbol>
+    <symbol id="heroicons-chevron-up-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-chevron-down-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-x-mark-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12L5.47 6.53a.75.75 0 0 1 0-1.06" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-information-circle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75s-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12m8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836l.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836l-.042.02a.75.75 0 1 1-.671-1.34zM12 9a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-sparkles-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5m9-3a.75.75 0 0 1 .728.568l.258 1.036a2.63 2.63 0 0 0 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258a2.63 2.63 0 0 0-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.63 2.63 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.63 2.63 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5M16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395a1.5 1.5 0 0 0-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395a1.5 1.5 0 0 0 .948-.948l.395-1.183A.75.75 0 0 1 16.5 15" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-exclamation-triangle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5zM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75m0 8.25a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-shield-exclamation-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M11.484 2.17a.75.75 0 0 1 1.032 0a11.2 11.2 0 0 0 7.877 3.08a.75.75 0 0 1 .722.515a12.7 12.7 0 0 1 .635 3.985c0 5.942-4.064 10.933-9.563 12.348a.75.75 0 0 1-.374 0C6.314 20.683 2.25 15.692 2.25 9.75c0-1.39.223-2.73.635-3.985a.75.75 0 0 1 .722-.516l.143.001c2.996 0 5.718-1.17 7.734-3.08M12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75M12 15a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75v-.008a.75.75 0 0 0-.75-.75z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-bars-3-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75M3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12m0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-question-mark-circle-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75s-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12m11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 0 1-.988-1.129c1.454-1.272 3.776-1.272 5.23 0c1.513 1.324 1.513 3.518 0 4.842a3.8 3.8 0 0 1-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 0 1-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502q.274-.133.503-.331c.83-.727.83-1.857 0-2.584M12 18a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-book-open-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M11.25 4.533A9.7 9.7 0 0 0 6 3a9.7 9.7 0 0 0-3.25.555a.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.2 8.2 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886zm1.5 16.103A8.2 8.2 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.7 9.7 0 0 0 18 3a9.7 9.7 0 0 0-5.25 1.533z"></path>
+    </symbol>
+    <symbol id="heroicons-arrow-path-rounded-square-solid" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M12 5.25q1.82 0 3.605.135a3.256 3.256 0 0 1 3.01 3.01q.066.875.1 1.759L17.03 8.47a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 0 0-1.06-1.06l-1.752 1.751q-.035-.975-.108-1.939a4.756 4.756 0 0 0-4.392-4.392a49.4 49.4 0 0 0-7.436 0A4.756 4.756 0 0 0 3.89 8.282q-.026.335-.046.672a.75.75 0 1 0 1.497.092q.02-.326.044-.651a3.256 3.256 0 0 1 3.01-3.01Q10.18 5.25 12 5.25m-6.97 6.22a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.752-1.751q.035.975.108 1.939a4.756 4.756 0 0 0 4.392 4.392a49.4 49.4 0 0 0 7.436 0a4.756 4.756 0 0 0 4.392-4.392q.025-.334.046-.672a.75.75 0 0 0-1.497-.092q-.02.325-.044.651a3.256 3.256 0 0 1-3.01 3.01a48 48 0 0 1-7.21 0a3.256 3.256 0 0 1-3.01-3.01a48 48 0 0 1-.1-1.759L6.97 15.53a.75.75 0 0 0 1.06-1.06z" clip-rule="evenodd"></path>
+    </symbol>
+    <symbol id="heroicons-chevron-double-up-solid" fill="none" viewBox="0 0 24 24">
+        <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.47 10.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 12.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06z"></path><path d="M11.47 4.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 6.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06z"></path></g>
+    </symbol>
+</svg>
+    <div id="App" class="font-sans">
+        
+        
+    
+    
+    
+    
+    <div id="page-wrapper" class="group/page_wrapper">
+                    <div x-data="dynamicTemplateInclude('7ad402697b8aacf46ef6f99bf52cf23efd3ff4f1cde5cc129f252eebfe2728ca_components/global/announcement-banner', [])">
+        <div x-ref="target" x-show="templateStringReady" id="dynamic_261549560"></div>
+    </div>
+<header
+    x-data="siteHeader"
+    class="relative w-full z-[9999]"
+    x-on:resize.window.throttle="handleRezise"
+    x-bind:class="{ 'fixed h-screen overscroll-contain lg:static lg:h-auto': mobileNavOpen }"
+>
+    <div class="relative h-full chrome-gutter bg-black lg:py-10">
+        <div class="relative w-full h-full max-w-screen-chrome mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-start lg:gap-16">
+                        <div class="w-full min-h-[66px] flex gap-[1.125rem] justify-between items-center lg:min-h-0 lg:flex-grow-0 lg:max-w-[140px] lg:order-1">
+                <a href="https://unraid.net/">
+            <svg class="w-[100px] aspect-[175/31] lg:w-[140px]">
+        <use href="#unraid-logo"></use>
+    </svg>
+</a>
+                <button
+    x-bind="mobileToggleButton"
+    type="button"
+    class="flex items-center gap-1 lg:hidden"
+    aria-controls="tbd"
+    aria-label="Toggle Mobile Navigation"
+    x-bind:aria-expanded="mobileNavOpen ? 'true' : 'false'"
+>
+    <span class="hamburger"></span>
+    <span class="text-white transition-all w-[50px] text-right duration-200 inline-block text-[0.84375rem] leading-[1] font-semibold uppercase tracking-[0.09281rem]" x-text="mobileNavOpen ? 'close' : 'menu'">menu</span>
+</button>
+            </div>
+
+                        <div
+                class="relative hidden bg-cream -mx-[--gutter-base] sm:-mx-[--gutter-sm] md:-mx-[--gutter-md] lg:block lg:mx-0 lg:bg-black lg:order-3 lg:ml-auto"
+                x-bind:class="{
+                    'hidden': ! mobileNavOpen,
+                    'block': mobileNavOpen,
+                }"
+            >
+                <div class="flex flex-wrap justify-between items-center chrome-gutter py-4 border-b border-black/20 lg:flex-nowrap lg:gap-5 lg:p-0">
+                                                                <div class="flex flex-wrap gap-2 lg:flex-nowrap lg:gap-3">
+                                                            <a  class="btn btn-nav btn-nav-outline whitespace-nowrap lg:btn-white lg:flex-1 lg:px-5" href="https://unraid.net/getting-started">Free Trial</a>
+                                                            <a  class="btn btn-nav btn-nav-solid whitespace-nowrap lg:btn-white lg:flex-1 lg:px-5" href="https://account.unraid.net/buy">Buy Now</a>
+                                                    </div>
+                    
+                                    </div>
+            </div>
+
+                        <div
+                id="siteHeaderNavigation"
+                class="relative -mx-[--gutter-base] sm:-mx-[--gutter-sm] md:-mx-[--gutter-md] h-0 overflow-hidden lg:mx-0 lg:flex lg:h-full lg:max-h-fit lg:overflow-visible lg:static lg:order-2 lg:ml-6 desktop:ml-12"
+                x-bind:class="{
+                    'h-0': ! mobileNavOpen,
+                    'h-[calc(100dvh-141px)]': mobileNavOpen
+                }"
+            >
+                <nav
+    class="transition-all h-full overflow-y-auto hide-scroll bg-cream text-black lg:static lg:bg-black lg:text-white"
+    x-bind:class="{
+        'overflow-y-auto': activeNav === null,
+        'overflow-y-hidden': activeNav !== null
+    }"
+>
+    <div class="chrome-gutter py-10 lg:p-0">
+        <div class="flex flex-col gap-10 pb-[var(--sa-b)]">
+                            <ul class="flex flex-col gap-6 lg:flex-row">
+                                            
+
+
+
+
+    
+    <li>
+        
+            
+            <button
+                type="button"
+                aria-expanded="false"
+                class="type-beta flex items-center gap-2 lg:hover:type-unraid-gradient lg:aria-expanded:type-unraid-gradient lg:type-zeta"
+                x-bind="subNavButton('node-lvl1-1579658')"
+            >
+                Product
+                        <svg class="w-5 aspect-square lg:hidden">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                <span class="hidden text-white transition-transform relative z-0 items-end w-4 aspect-[2/1] before:transition-transform before:rounded-full before:absolute before:z-0 before:left-[6.25%] before:block before:w-1/2 before:aspect-[4/1] before:origin-[87.5%_50%] before:rotate-45 before:bg-current after:transition-transform after:rounded-full after:absolute after:z-0 after:right-[6.25%] after:block after:w-1/2 after:aspect-[4/1] after:origin-[12.5%_50%] after:-rotate-45 after:bg-current [[aria-expanded='true']>&]:-translate-y-1/4 [[aria-expanded='true']>&]:before:rotate-0 [[aria-expanded='true']>&]:after:rotate-0 lg:flex"></span>
+            </button>
+
+            <div
+                id="node-lvl1-1579658"
+                x-cloak
+                x-bind="subNavPanel('node-lvl1-1579658')"
+                class="absolute top-0 left-0 w-full h-full bg-cream text-black shadow-xl motion-reduce:transition-none overscroll-contain overflow-y-auto hide-scroll lg:overflow-hidden lg:h-auto lg:top-full lg:mt-12 lg:rounded-[0.5rem] lg:w-fit lg:min-w-[986px]"
+                x-transition:enter="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:enter-start="translate-x-full lg:translate-x-0 lg:opacity-0 lg:-translate-y-4"
+                x-transition:enter-end="translate-x-0 lg:opacity-100 lg:translate-y-0"
+                x-transition:leave="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:leave-start="translate-x-0 lg:opacity-100"
+                x-transition:leave-end="translate-x-full lg:translate-x-0 lg:opacity-0"
+            >
+                <div class="relative bg-cream w-full h-auto lg:overflow-hidden">
+                    <div class="flex flex-col gap-6 lg:hidden">
+                        <button
+                            type="button"
+                            class="chrome-gutter py-2.5 w-full flex gap-1.5 items-center bg-black text-white"
+                            x-on:click="activeNav = null"
+                        >
+                                    <svg class="w-[0.7rem] aspect-square rotate-90 -mt-px">
+        <use href="#nav-caret"></use>
+    </svg>
+                            Back
+                        </button>
+                        <div class="chrome-gutter type-alpha">Product</div>
+                    </div>
+                    <div class="divide-y divide-[#D7D7D7] lg:divide-y-0 lg:flex lg:justify-start">
+                                                    
+                        
+                        <div class="chrome-gutter py-6 lg:p-5 lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-3/4 lg:before:w-0 lg:before:left-0 lg:before:top-[12.5%] lg:first:before:content-none">
+            <div class="flex flex-col gap-9 lg:flex-row lg:items-center">
+                                                                                <div class="hidden flex-shrink-0 lg:block">
+                            <img class="w-[326px] aspect-[163/110] object-cover rounded" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_docker.jpg" alt="Img docker">
+                        </div>
+                                    
+                <div class="flex flex-col w-full lg:w-[346px] lg:flex-shrink-0">
+                    <h4 class="type-delta">Unraid OS</h4>
+
+                                            <div class="type-sm-paragraph mt-2">
+                            <p>An operating system for network-attached storage that lets you use what you have to build the server you want.</p>
+                        </div>
+                    
+                                            <div class="mt-9 lg:mt-7">
+                            
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-bright whitespace-nowrap" href="https://unraid.net/product">            Explore Unraid
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    
+            <div class="px-[1.125rem] py-7 lg:px-6 lg:relative lg:ml-4 lg:first:ml-0 lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-3/4 lg:before:w-0 lg:before:left-0 lg:before:top-[12.5%] lg:first:before:content-none">
+            <div class="flex flex-col gap-3 lg:h-full lg:justify-center">
+                                                <a  class="type-zeta text-[1.125rem] underline" href="https://unraid.net/getting-started">
+            Getting Started
+        </a>
+    
+                                                <a  class="type-zeta text-[1.125rem] underline" href="https://unraid.net/use-cases">
+            Use Cases
+        </a>
+    
+                                                <a  class="type-zeta text-[1.125rem] underline" href="https://unraid.net/shop-prebuilts">
+            Prebuilt Servers
+        </a>
+    
+                                    
+    <a  class="type-zeta text-[1.125rem] underline" href="https://account.unraid.net/buy">
+        Pricing
+    </a>
+
+
+
+                            </div>
+        </div>
+    
+    
+
+                                            </div>
+                </div>
+            </div>
+
+            </li>
+
+                                            
+
+
+
+
+    
+    <li>
+        
+            
+            <button
+                type="button"
+                aria-expanded="false"
+                class="type-beta flex items-center gap-2 lg:hover:type-unraid-gradient lg:aria-expanded:type-unraid-gradient lg:type-zeta"
+                x-bind="subNavButton('node-lvl1-1580175')"
+            >
+                Resources
+                        <svg class="w-5 aspect-square lg:hidden">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                <span class="hidden text-white transition-transform relative z-0 items-end w-4 aspect-[2/1] before:transition-transform before:rounded-full before:absolute before:z-0 before:left-[6.25%] before:block before:w-1/2 before:aspect-[4/1] before:origin-[87.5%_50%] before:rotate-45 before:bg-current after:transition-transform after:rounded-full after:absolute after:z-0 after:right-[6.25%] after:block after:w-1/2 after:aspect-[4/1] after:origin-[12.5%_50%] after:-rotate-45 after:bg-current [[aria-expanded='true']>&]:-translate-y-1/4 [[aria-expanded='true']>&]:before:rotate-0 [[aria-expanded='true']>&]:after:rotate-0 lg:flex"></span>
+            </button>
+
+            <div
+                id="node-lvl1-1580175"
+                x-cloak
+                x-bind="subNavPanel('node-lvl1-1580175')"
+                class="absolute top-0 left-0 w-full h-full bg-cream text-black shadow-xl motion-reduce:transition-none overscroll-contain overflow-y-auto hide-scroll lg:overflow-hidden lg:h-auto lg:top-full lg:mt-12 lg:rounded-[0.5rem] lg:w-fit lg:min-w-[986px]"
+                x-transition:enter="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:enter-start="translate-x-full lg:translate-x-0 lg:opacity-0 lg:-translate-y-4"
+                x-transition:enter-end="translate-x-0 lg:opacity-100 lg:translate-y-0"
+                x-transition:leave="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:leave-start="translate-x-0 lg:opacity-100"
+                x-transition:leave-end="translate-x-full lg:translate-x-0 lg:opacity-0"
+            >
+                <div class="relative bg-cream w-full h-auto lg:overflow-hidden">
+                    <div class="flex flex-col gap-6 lg:hidden">
+                        <button
+                            type="button"
+                            class="chrome-gutter py-2.5 w-full flex gap-1.5 items-center bg-black text-white"
+                            x-on:click="activeNav = null"
+                        >
+                                    <svg class="w-[0.7rem] aspect-square rotate-90 -mt-px">
+        <use href="#nav-caret"></use>
+    </svg>
+                            Back
+                        </button>
+                        <div class="chrome-gutter type-alpha">Resources</div>
+                    </div>
+                    <div class="divide-y divide-[#D7D7D7] lg:divide-y-0 lg:flex lg:justify-start">
+                                                    
+                        
+                                
+                                        
+        <div class="chrome-gutter py-6 lg:relative lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-[calc(100%-3rem)] lg:before:w-0 lg:before:left-0 lg:first:before:content-none">
+            <div class="h-full flex flex-col gap-9 lg:justify-between lg:py-5 lg:max-w-[430px]" data-theme="onBright">
+                <div class="flex flex-col gap-2 justify-between h-full min-h-0 lg:justify-start">
+                                                                                                            <a href="https://unraid.net/blog" class="type-delta flex gap-1.5 items-center relative hover:underline focus:outline">
+                        Unraid News
+                                <svg class="w-4 aspect-square lg:w-6">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                    </a>
+                                            <div class="type-sm-paragraph">
+                            <p>Stories and updates from across the Unraid community.</p><p> </p>
+                        </div>
+                                                                <div class="lg:my-auto">
+                                                        <div class="type-zeta mb-2">
+                                Popular Categories
+                            </div>
+                                                        <div class="flex flex-wrap gap-x-4 gap-y-1">
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/use-cases">
+                                        Use Cases
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/blog/releases">
+                                        Releases
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/blog/guides">
+                                        Guides
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/blog/announcement">
+                                        Announcements
+                                    </a>
+                                                            </div>
+                        </div>
+                                    </div>
+                            </div>
+        </div>
+    
+    
+
+                                                    
+                        
+                                
+                                        
+        <div class="chrome-gutter py-6 lg:relative lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-[calc(100%-3rem)] lg:before:w-0 lg:before:left-0 lg:first:before:content-none">
+            <div class="h-full flex flex-col gap-9 lg:justify-between lg:py-5 lg:max-w-[430px]" data-theme="onBright">
+                <div class="flex flex-col gap-2 justify-between h-full min-h-0 lg:justify-start">
+                                                                                                            <a href="https://unraid.net/support" class="type-delta flex gap-1.5 items-center relative hover:underline focus:outline">
+                        Support
+                                <svg class="w-4 aspect-square lg:w-6">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                    </a>
+                                            <div class="type-sm-paragraph">
+                            <p>With our active forum, detailed product documentation, support ticketing, and paid support sessions, we’ve got you covered.</p>
+                        </div>
+                                                                <div class="lg:my-auto">
+                                                        <div class="type-zeta mb-2">
+                                Helpful Links
+                            </div>
+                                                        <div class="flex flex-wrap gap-x-4 gap-y-1">
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/getting-started">
+                                        Getting Started
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/support/paid-support" rel="noopener" target="_blank">
+                                        Paid Support
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://docs.unraid.net/go/release-notes/" rel="noopener" target="_blank">
+                                        Release Notes
+                                    </a>
+                                                            </div>
+                        </div>
+                                    </div>
+                            </div>
+        </div>
+    
+    
+
+                                                    
+                        
+                                
+        
+        <div class="chrome-gutter py-6 lg:relative lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-[calc(100%-3rem)] lg:before:w-0 lg:before:left-0 lg:first:before:content-none">
+            <div class="h-full flex flex-col gap-9 lg:justify-between lg:py-5 lg:max-w-[430px]" data-theme="onBright">
+                <div class="flex flex-col gap-2 justify-between h-full min-h-0 lg:justify-start">
+                                                                                                            <a href="https://unraid.net/uncast" class="type-delta flex gap-1.5 items-center relative hover:underline focus:outline">
+                        The Uncast Show
+                                <svg class="w-4 aspect-square lg:w-6">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                    </a>
+                                            <div class="type-sm-paragraph">
+                            <p>Level up your tech game, stay informed, and connect with fellow enthusiasts in the ever-expanding world of self-hosting, Unraid, and beyond.<br /> </p>
+                        </div>
+                                                        </div>
+                            </div>
+        </div>
+    
+    
+
+                                            </div>
+                </div>
+            </div>
+
+            </li>
+
+                                            
+
+
+
+
+    
+    <li>
+        
+            
+            <button
+                type="button"
+                aria-expanded="false"
+                class="type-beta flex items-center gap-2 lg:hover:type-unraid-gradient lg:aria-expanded:type-unraid-gradient lg:type-zeta"
+                x-bind="subNavButton('node-lvl1-1579931')"
+            >
+                Community
+                        <svg class="w-5 aspect-square lg:hidden">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                <span class="hidden text-white transition-transform relative z-0 items-end w-4 aspect-[2/1] before:transition-transform before:rounded-full before:absolute before:z-0 before:left-[6.25%] before:block before:w-1/2 before:aspect-[4/1] before:origin-[87.5%_50%] before:rotate-45 before:bg-current after:transition-transform after:rounded-full after:absolute after:z-0 after:right-[6.25%] after:block after:w-1/2 after:aspect-[4/1] after:origin-[12.5%_50%] after:-rotate-45 after:bg-current [[aria-expanded='true']>&]:-translate-y-1/4 [[aria-expanded='true']>&]:before:rotate-0 [[aria-expanded='true']>&]:after:rotate-0 lg:flex"></span>
+            </button>
+
+            <div
+                id="node-lvl1-1579931"
+                x-cloak
+                x-bind="subNavPanel('node-lvl1-1579931')"
+                class="absolute top-0 left-0 w-full h-full bg-cream text-black shadow-xl motion-reduce:transition-none overscroll-contain overflow-y-auto hide-scroll lg:overflow-hidden lg:h-auto lg:top-full lg:mt-12 lg:rounded-[0.5rem] lg:w-fit lg:min-w-[986px]"
+                x-transition:enter="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:enter-start="translate-x-full lg:translate-x-0 lg:opacity-0 lg:-translate-y-4"
+                x-transition:enter-end="translate-x-0 lg:opacity-100 lg:translate-y-0"
+                x-transition:leave="transition-all ease-out duration-300 lg:duration-200"
+                x-transition:leave-start="translate-x-0 lg:opacity-100"
+                x-transition:leave-end="translate-x-full lg:translate-x-0 lg:opacity-0"
+            >
+                <div class="relative bg-cream w-full h-auto lg:overflow-hidden">
+                    <div class="flex flex-col gap-6 lg:hidden">
+                        <button
+                            type="button"
+                            class="chrome-gutter py-2.5 w-full flex gap-1.5 items-center bg-black text-white"
+                            x-on:click="activeNav = null"
+                        >
+                                    <svg class="w-[0.7rem] aspect-square rotate-90 -mt-px">
+        <use href="#nav-caret"></use>
+    </svg>
+                            Back
+                        </button>
+                        <div class="chrome-gutter type-alpha">Community</div>
+                    </div>
+                    <div class="divide-y divide-[#D7D7D7] lg:divide-y-0 lg:flex lg:justify-start">
+                                                    
+                        
+                                
+                                        
+        <div class="chrome-gutter py-6 lg:relative lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-[calc(100%-3rem)] lg:before:w-0 lg:before:left-0 lg:first:before:content-none">
+            <div class="h-full flex flex-col gap-9 lg:justify-between lg:py-5 lg:max-w-[430px]" data-theme="onBright">
+                <div class="flex flex-col gap-2 justify-between h-full min-h-0 lg:justify-start">
+                                                                                                            <a href="https://unraid.net/community" class="type-delta flex gap-1.5 items-center relative hover:underline focus:outline">
+                        Community
+                                <svg class="w-4 aspect-square lg:w-6">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                    </a>
+                                            <div class="type-sm-paragraph">
+                            <p>It’s easy to join Unraid’s friendly community.</p><p>Let’s Build Together.</p>
+                        </div>
+                                                                <div class="lg:my-auto">
+                                                        <div class="flex flex-wrap gap-x-4 gap-y-1">
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://forums.unraid.net/">
+                                        Unraid Forums
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://discord.unraid.net/">
+                                        Unraid Discord
+                                    </a>
+                                                            </div>
+                        </div>
+                                    </div>
+                            </div>
+        </div>
+    
+    
+
+                                                    
+                        
+                                
+                                        
+        <div class="chrome-gutter py-6 lg:relative lg:before:absolute lg:before:flex lg:before:border lg:before:border-[#D7D7D7] lg:before:h-[calc(100%-3rem)] lg:before:w-0 lg:before:left-0 lg:first:before:content-none">
+            <div class="h-full flex flex-col gap-9 lg:justify-between lg:py-5 lg:max-w-[430px]" data-theme="onBright">
+                <div class="flex flex-col gap-2 justify-between h-full min-h-0 lg:justify-start">
+                                                                                                            <a href="https://unraid.net/community/partners" class="type-delta flex gap-1.5 items-center relative hover:underline focus:outline">
+                        Unraid Partners
+                                <svg class="w-4 aspect-square lg:w-6">
+        <use href="#nav-circle-arrow-right"></use>
+    </svg>
+                    </a>
+                                            <div class="type-sm-paragraph">
+                            <p>From content creators, Businesses, OEMs, and more, Unraid thrives through word of mouth and strategic partnerships.</p>
+                        </div>
+                                                                <div class="lg:my-auto">
+                                                        <div class="flex flex-wrap gap-x-4 gap-y-1">
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/use-cases">
+                                        Use Cases
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/community/testimonials">
+                                        Testimonials
+                                    </a>
+                                                                    <a  class="type-sm-paragraph text-[0.98438rem] underline" href="https://unraid.net/45homelabxunraid" rel="noopener" target="_blank">
+                                        45Homelab &gt;&lt; Unraid
+                                    </a>
+                                                            </div>
+                        </div>
+                                    </div>
+                            </div>
+        </div>
+    
+    
+
+                                            </div>
+                </div>
+            </div>
+
+            </li>
+
+                                            
+
+
+
+
+    
+    <li>
+                    <a  class="type-beta flex items-center gap-2 lg:hover:type-unraid-gradient lg:aria-expanded:type-unraid-gradient lg:type-zeta" href="https://unraid.net/community/apps">Apps</a>
+            </li>
+
+                                    </ul>
+                                    <div class="text-black lg:hidden">
+                <div class="flex gap-3 items-center">
+                    <a
+            href="https://discord.unraid.net/"
+            title="Discord"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#discord-icon"></use>
+    </svg>
+            <span class="sr-only">Discord</span>
+        </a>
+                    <a
+            href="https://twitter.com/UnraidOfficial"
+            title="X"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#x-icon"></use>
+    </svg>
+            <span class="sr-only">X</span>
+        </a>
+                    <a
+            href="https://bsky.app/profile/unraid.net"
+            title="Bluesky"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-8 h-8">
+        <use href="#bsky-icon"></use>
+    </svg>
+            <span class="sr-only">Bluesky</span>
+        </a>
+                    <a
+            href="https://www.youtube.com/@uncastshow"
+            title="Youtube"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#youtube-icon"></use>
+    </svg>
+            <span class="sr-only">Youtube</span>
+        </a>
+                    <a
+            href="https://www.reddit.com/r/unRAID/"
+            title="Reddit"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#reddit-icon"></use>
+    </svg>
+            <span class="sr-only">Reddit</span>
+        </a>
+                    <a
+            href="https://www.facebook.com/pg/UnraidOfficial"
+            title="Facebook"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#facebook-icon"></use>
+    </svg>
+            <span class="sr-only">Facebook</span>
+        </a>
+    </div>            </div>
+        </div>
+    </div>
+</nav>
+            </div>
+        </div>
+    </div>
+</header>
+        <main>
+            
+            
+                    
+
+
+
+
+
+
+
+
+
+
+<div class="relative bg-black text-white w-full pb-8 tablet:pt-4" data-theme="onDark">
+    <div class="tablet:chrome-gutter">
+        <div x-data="homeHero" class="[--liquid-content-bg:#2B2A29] relative w-full max-w-screen-chrome mx-auto tablet:overflow-hidden">
+            <div class="relative flex flex-col gap-[1.125rem] tablet:rounded-lg tablet:gap-0  tablet:-my-[1.125rem]">
+
+                                <div class="relative z-10 flex flex-col gap-4 p-4 bg-gray-dark rounded-b-lg tablet:flex-row-reverse tablet:even:flex-row tablet:gap-0 tablet:bg-transparent tablet:p-0">
+
+                    
+<div class="-mx-4 -mt-4 tablet:m-0 tablet:flex-1 tablet:flex-grow-[8]">
+    <div class="tablet:h-full tablet:border-[1.125rem] tablet:border-transparent tablet:rounded-2xl tablet:border-r-0">
+        <div x-ref="carousel" class="splide tablet:[&:not(.is-initialized)]:mb-4" aria-label="Splide/Alpine.js Carousel Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                                                                                    <li class="splide__slide w-full hidden flex-col items-center justify-center pb-4 [.is-initialized_&]:flex first:flex">
+            
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                        
+                                                                                            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[60/53] object-cover object-left-top tablet:rounded-lg" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/20-Years-Hero-1.png?fit=crop&amp;width=1200&amp;s=OaTlOj6V4BJAVvJNhFVsRDTTJBOY3ZBQd-8C1VDi4sY" width="1200" height="1068" alt="20 Years Hero 1" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+        </li>
+    
+                                    </ul>
+                            </div>
+        </div>
+    </div>
+</div>
+
+
+                    <div class="tablet:flex-1 tablet:flex-grow-[11]">
+    <div class="tablet:h-[calc(100%-1.125rem)] tablet:rounded-lg tablet:mt-[1.125rem]">
+        <div class="relative w-full h-full text-white rounded-lg tablet:aspect-auto tablet:bg-[--liquid-content-bg] tablet:rounded-lg">
+            <div class="h-full flex items-center justify-start">
+                <div class="tablet:px-10 tablet:py-8 desktop:px-16 desktop:py-12">
+                    <div class="flex flex-col gap-4 text-current tablet:gap-6">
+
+                        
+<h1 class="type-alpha">What will you build?</h1>
+
+                                                    <div class="prose max-w-none text-balance text-white/80">
+                                <p>Unraid is a powerful, easy-to-use operating system for self-hosted servers and network-attached storage. Make the most out of your hardware—no matter what kind of drive you have on hand.</p>
+                            </div>
+                                                                            <div class="flex flex-wrap items-center gap-4 pb-6 tablet:gap-5 tablet:pb-0">
+                                                                                                                                                                                
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/product">            Explore Unraid
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+                                                                                                                                                                                
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-link whitespace-nowrap" href="https://unraid.net/getting-started">            Get Started
+                                </a>
+    
+
+
+
+                                                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                                <div class="group chrome-gutter relative z-10 flex flex-col-reverse gap-5 tablet:flex-row tablet:gap-0 tablet:bg-transparent tablet:p-0">
+                    
+
+    
+
+
+    
+    <div class="tablet:flex-1 tablet:flex-grow-[11] tablet:flex-shrink-0">
+        <div class="tablet:h-full tablet:border-[1.125rem] tablet:border-l-0 tablet:border-transparent tablet:rounded-2xl">
+            <div class="@container w-full">
+                <div class="flex flex-col justify-between gap-4 @3xl:gap-5 @3xl:flex-row @3xl:items-stretch tablet:mt-3">
+                    <div class="">
+                        <div class="relative before:z-0 before:absolute before:top-0 before:left-0 before:w-1 before:h-full before:bg-gradient-to-b before:from-red before:to-orange-dark on-color:before:from-black/60 on-color:before:to-black/60">
+    <div class="pl-8 pt-0.5 pb-2 flex flex-col gap-1.5">
+        <div>
+            
+<h6 class="inline-block type-zeta text-transparent bg-clip-text bg-gradient-to-r from-red to-orange on-color:bg-clip-border on-color:bg-none on-color:text-black/60">Blog</h6>
+        </div>
+        <a class="
+            transition-colors
+            type-delta
+            [text-wrap:balance]
+            on-dark:text-white
+            on-dark:hover:text-orange-dark
+            on-bright:text-black
+            on-bright:hover:text-orange-dark
+            on-color:text-black
+            on-color:hover:text-black/60
+        "
+            href="https://unraid.net/blog/unraid-7-2-8">Unraid OS 7.2.8 Now Available</a>
+        <div class="type-sm-paragraph opacity-60">July 29, 2026</div>
+    </div>
+</div>
+
+                    </div>
+
+                    <div class="@3xl:w-full @3xl:max-w-[232px] @3xl:border-l @3xl:border-white/20 @3xl:px-7 @3xl:flex @3xl:items-center">
+                        <a href="https://unraid.net/blog" class="underline mb-2">
+                            View all announcements
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                    <div class="w-full mt-[1px] tablet:min-w-0 tablet:mt-0 tablet:flex-1 tablet:flex-grow-[8]">
+    <div class="tablet:h-[calc(100%-1.1rem)] tablet:rounded-lg tablet:mb-[1.125rem]">
+        <div class="relative w-full h-full text-white rounded-lg tablet:bg-[--liquid-content-bg] after:liquid-clip-vertical tablet:rounded-lg after:absolute after:bg-[--liquid-content-bg] after:w-10 after:h-5 after:top-0 after:left-0 after:right-0 after:mx-auto after:-mt-5 after:overflow-hidden after:liquid-clip-vertical tablet:after:absolute tablet:after:bg-[--liquid-content-bg] tablet:after:w-14 tablet:after:h-auto tablet:after:aspect-square tablet:after:top-0 tablet:after:left-0 tablet:after:-mt-[1.75rem] tablet:after:-ml-[1.75rem] tablet:after:overflow-hidden tablet:after:liquid-clip-thick">
+            <div class="flex h-full items-center justify-start">
+                <div class="overflow-hidden p-2 rounded-lg w-full bg-[--liquid-content-bg] tablet:p-10">
+                    <div class="relative w-full">
+                        <div class="flex flex-col gap-4 text-current tablet:gap-6">
+                                                        <div class="block w-full z-0">
+                                <div x-ref="ticker" class="splide" aria-label="Featured brands">
+                                    <div class="splide__track">
+                                        <ul class="splide__list [:not(.is-initialized)_&]:flex [:not(.is-initialized)_&]:gap-6">
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/ubuntu.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/stem.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/plex.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/microsoft.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/docker.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/apple.svg" alt="">
+                                            </li>
+                                                                                        <li class="splide__slide shrink-0 w-12 p-2 flex items-center justify-center tablet:w-16">
+                                                <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/Tailscale-Mark-White.svg" alt="">
+                                            </li>
+                                                                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 h-full w-full">
+                                <div class="absolute z-[99] w-20 h-full bg-gradient-to-r from-[--liquid-content-bg] to-[--liquid-content-bg]/0"></div>
+                                <div class="absolute rotate-180 right-0 z-[99] w-20 h-full bg-gradient-to-r from-[--liquid-content-bg] to-[--liquid-content-bg]/0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+    
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    <div
+            class="section-block relative w-full chrome-gutter bg-black text-white overflow-hidden"
+            data-theme="onDark"
+            data-theme-group="onDark"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                                    <div>
+    <div class="relative flex items-center justify-center text-center min-h-[200px] tablet:min-h-[280px]">
+        <div class="absolute w-[150px] aspect-[219/128] lg:w-[230px]">
+                    <svg class="w-full aspect-[219/128] on-color:grayscale on-color:opacity-50">
+        <use href="#unraid-wave"></use>
+    </svg>
+            <div class="absolute inset-0 block w-full h-full bg-fade-wave-gradient on-dark:[--bg-theme-color:--color-black] on-bright:[--bg-theme-color:--color-cream] on-color:[--bg-theme-color:transparent]"></div>
+        </div>
+        
+<h2 class="type-alpha z-10">The possibilities are limitless with Unraid</h2>    </div>
+</div>
+
+                            </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    <div
+            class="section-block relative w-full chrome-gutter bg-black text-white overflow-hidden"
+            data-theme="onDark"
+            data-theme-group="onDark"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                                    <div class="flex flex-col gap-10 md:gap-16 tablet:gap-20">
+    <div class="relative">
+        <div class="flex flex-col gap-10 before:hidden before:z-0 before:absolute before:w-px before:h-full before:bg-[#444444] before:left-5 before:top-2 after:hidden after:z-0 after:absolute after:w-px after:h-[400px] after:bg-gradient-to-b after:from-[#444444] after:to-black after:left-5 after:-bottom-2 md:before:block md:after:block chrome:gap-32">
+
+                                                                                            <div
+    x-data="{ shown: false }"
+    x-intersect.once="shown = true"
+    class="relative w-full before:hidden before:z-10 before:absolute before:top-2 before:left-0 before:w-10 before:h-1 before:bg-unraid-gradient md:before:block"
+>
+    <div class="relative w-full max-w-[1370px] ml-auto flex flex-col gap-4 md:w-[calc(100%-4rem)] md:flex-row-reverse md:gap-8 md:justify-between">
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[62.63%] md:max-w-[858px] md:delay-150" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            
+                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+                
+
+                    
+    
+    
+        
+                        
+                        
+                                                                                            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  class="w-full" style="">
+            <img class="w-full aspect-[33/20] object-cover rounded-lg" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/Simplify-1716-x-1042-px-6.png?fit=crop&amp;width=1200&amp;s=oQZInfIt_a4N2gYZmTR-gcHj4ROD11KI9JXLvHWfn5I" width="1200" height="729" alt="Simplify 1716 x 1042 px 6" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+
+
+        
+
+
+
+        </div>
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[34.6%] md:max-w-[474px]" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            <div class="flex bg-black flex-col gap-6 shadow-2xl shadow-black feature-item-text">
+                
+                    <div>
+                                                    <div class="mb-2">
+                                
+<h6 class="inline-block type-zeta text-transparent bg-clip-text bg-gradient-to-r from-red to-orange">NAS OS</h6>                            </div>
+                        
+                                                    
+<h3 class="type-beta">Simplify your self-hosting set-up</h3>                                            </div>
+
+                
+
+                                    <div class="type-sm-paragraph opacity-80 [text-wrap:balance]">
+                        <p>Say goodbye to a closet full of mismatched drives—and hello to the most flexible operating system for network-attached storage you’ll ever use. Unraid OS lets you use what you have to build what you want. </p>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                                                                                            <div
+    x-data="{ shown: false }"
+    x-intersect.once="shown = true"
+    class="relative w-full before:hidden before:z-10 before:absolute before:top-2 before:left-0 before:w-10 before:h-1 before:bg-unraid-gradient md:before:block"
+>
+    <div class="relative w-full max-w-[1370px] ml-auto flex flex-col gap-4 md:w-[calc(100%-4rem)] md:flex-row-reverse md:gap-8 md:justify-between">
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[62.63%] md:max-w-[858px] md:delay-150" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            
+                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+                
+
+                    
+    
+    
+        
+                        
+                        
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  class="w-full" style="">
+            <img class="w-full aspect-[33/20] object-cover rounded-lg" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_docker_2024-05-31-180429_aopm.jpg?fit=crop&amp;width=1200&amp;s=wqGzkqceth_NZXRfYZYK_mxtNNMb4hmqDbdXqpPS9bM" width="1200" height="729" alt="Img docker" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+
+
+        
+
+
+
+        </div>
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[34.6%] md:max-w-[474px]" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            <div class="flex bg-black flex-col gap-6 shadow-2xl shadow-black feature-item-text">
+                
+                    <div>
+                                                    <div class="mb-2">
+                                
+<h6 class="inline-block type-zeta text-transparent bg-clip-text bg-gradient-to-r from-red to-orange">Docker Applications</h6>                            </div>
+                        
+                                                    
+<h3 class="type-beta">Run applications and manage data on the same server</h3>                                            </div>
+
+                
+
+                                    <div class="type-sm-paragraph opacity-80 [text-wrap:balance]">
+                        <p>Unraid’s simple UI makes it easy to manage your entire stack of Docker applications. Add new applications from the hundreds of user-created templates in Community Apps, or use your own!</p>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                                                                                            <div
+    x-data="{ shown: false }"
+    x-intersect.once="shown = true"
+    class="relative w-full before:hidden before:z-10 before:absolute before:top-2 before:left-0 before:w-10 before:h-1 before:bg-unraid-gradient md:before:block"
+>
+    <div class="relative w-full max-w-[1370px] ml-auto flex flex-col gap-4 md:w-[calc(100%-4rem)] md:flex-row-reverse md:gap-8 md:justify-between">
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[62.63%] md:max-w-[858px] md:delay-150" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            
+                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+                
+
+                    
+    
+    
+        
+                        
+                        
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  class="w-full" style="">
+            <img class="w-full aspect-[33/20] object-cover rounded-lg" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_VM_2024-05-31-180439_mycv.jpg?fit=crop&amp;width=1200&amp;s=fGMVlfXdLboH3aIWqe_rpMJdL5N15j4MGtl5-s97OUA" width="1200" height="729" alt="Img VM" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+
+
+        
+
+
+
+        </div>
+        <div class="transition-all duration-500 flex-1 w-full opacity-0 translate-y-10 md:basis-[34.6%] md:max-w-[474px]" x-bind:class="{ 'opacity-0 translate-y-10': !shown, 'opacity-100 translate-y-0': shown }">
+            <div class="flex bg-black flex-col gap-6 shadow-2xl shadow-black feature-item-text">
+                
+                    <div>
+                                                    <div class="mb-2">
+                                
+<h6 class="inline-block type-zeta text-transparent bg-clip-text bg-gradient-to-r from-red to-orange">Virtual Machines</h6>                            </div>
+                        
+                                                    
+<h3 class="type-beta">Work and create even faster</h3>                                            </div>
+
+                
+
+                                    <div class="type-sm-paragraph opacity-80 [text-wrap:balance]">
+                        <p>Pass through a graphics card to enable gaming or video editing. Allow network-free file access for high-speed file transfers. The possibilities are endless.</p>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+            
+        </div>
+
+    </div>
+            <div>
+            <div class="flex flex-wrap gap-4 tablet:justify-center tablet:gap-5">
+                
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/product">            Explore All Features
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+            </div>
+        </div>
+    </div>
+
+                            </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    <div
+            class="section-block relative w-full chrome-gutter bg-black text-white overflow-hidden"
+            data-theme="onDark"
+            data-theme-group="onDark"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                                    
+
+
+<hr  class="block w-full h-[1px] border-0 bg-current opacity-20">
+
+                            </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    <div
+            class="section-block relative w-full chrome-gutter bg-black text-white overflow-hidden"
+            data-theme="onDark"
+            data-theme-group="onDark"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                
+    
+                            
+    
+                
+                
+
+        <div class="flex flex-col gap-10">
+                            
+                    <div class="flex flex-col gap-4 md:flex-row md:justify-center lg:gap-10">
+                        <div class="prose max-w-full text-center">
+                                
+        
+    
+    
+    
+            
+<h2 class="mb-0 [text-wrap:balance]">It&#039;s Time to Unleash Your Hardware</h2>
+    
+
+
+                                                                                </div>
+                                            </div>
+                                                    
+            
+            
+    
+            
+    
+    <div class="grid grid-cols-1 gap-6 md:gap-9 md:grid-cols-3">
+                    
+
+
+
+    <div class="[--card-container-gap:theme(spacing.6)]">
+        <div class="h-full flex flex-col gap-[--card-container-gap]">
+                                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                                                    
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[5/3] object-cover object-left-top rounded-lg border border-gray-dark" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_BuildForYou.jpg?fit=crop&amp;height=574&amp;width=944&amp;s=ieIK6QE7q3B8ZLvE6fsk5VAkr5XC7ktACXKr3k1ctOs" width="944" height="574" alt="Img Build For You" sizes="100vw" loading="lazy">
+                    </picture>
+
+                                        <div class="flex flex-col gap-4 text-current">
+        <h3 class="type-gamma">            Built for you. Built by you.
+        </h3>        <div class="type-sm-paragraph">
+            <p>We built the operating system we wanted to use. Mix and match hard drives of any size to build your server and grow your storage capacity.</p>
+        </div>
+    </div>
+                                    <div class="flex flex-wrap gap-5">
+                                                    
+        
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/getting-started">            Get Started
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+    
+        </div>
+            </div>
+    </div>
+
+                    
+
+
+
+    <div class="[--card-container-gap:theme(spacing.6)]">
+        <div class="h-full flex flex-col gap-[--card-container-gap]">
+                                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                                                    
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[5/3] object-cover object-left-top rounded-lg border border-gray-dark" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_BuildDifferent.jpg?fit=crop&amp;height=574&amp;width=944&amp;s=-r6_wsCAFenGAfTE7N0Dc4k-PsVXRHpxhIIgYJ_uLVw" width="944" height="574" alt="Img Build Different" sizes="100vw" loading="lazy">
+                    </picture>
+
+                                        <div class="flex flex-col gap-4 text-current">
+        <h3 class="type-gamma">            Built different
+        </h3>        <div class="type-sm-paragraph">
+            <p>Unraid is more than a product—we’re a community. With countless guides, video tutorials, use cases, and communities in just about every social platform and language, you will always feel supported on your journey. We can’t wait to see what you build.</p>
+        </div>
+    </div>
+                                    <div class="flex flex-wrap gap-5">
+                                                    
+        
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/community">            Join our community
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+    
+        </div>
+            </div>
+    </div>
+
+                    
+
+
+
+    <div class="[--card-container-gap:theme(spacing.6)]">
+        <div class="h-full flex flex-col gap-[--card-container-gap]">
+                                    
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                                                    
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[5/3] object-cover object-left-top rounded-lg border border-gray-dark" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_BuildToLast.jpg?fit=crop&amp;height=574&amp;width=944&amp;s=d4fbGEanOaOxiLl_YyzvAdFyLg1g9f8L6HMEJ_jn9IQ" width="944" height="574" alt="Img Build To Last" sizes="100vw" loading="lazy">
+                    </picture>
+
+                                        <div class="flex flex-col gap-4 text-current">
+        <h3 class="type-gamma">            Built to last
+        </h3>        <div class="type-sm-paragraph">
+            <p>If you can imagine it, you can build it with Unraid. From simple storage solutions to game server hosting, we evolve with you however you decide to scale.</p>
+        </div>
+    </div>
+                                    <div class="flex flex-wrap gap-5">
+                                                    
+        
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/use-cases">            See use cases
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+    
+        </div>
+            </div>
+    </div>
+
+            </div>
+
+                                                </div>
+                </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    <div
+            class="section-block relative w-full chrome-gutter bg-cream text-black overflow-hidden"
+            data-theme="onBright"
+            data-theme-group="onBright"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                                                    
+    <div class="w-full max-w-[730px] mx-auto">
+
+        <blockquote class="flex flex-col gap-6 items-center">
+
+            <div class="w-14">
+                        <svg class="w-full aspect-[55/32]">
+        <use href="#unraid-wave-sm"></use>
+    </svg>
+            </div>
+
+            <div class="prose max-w-none text-center [&>p:first-child]:before:content-[open-quote] [&>p:last-child]:after:content-[close-quote]">
+                <p>I've been using Unraid for a few years now. I absolutely love it. My girlfriend suggests I love Unraid more than her... she might be right.  What I enjoy most is discovering new things I can run on my server, setting them up, then watch as they work flawlessly from then on. It just works.</p>
+            </div>
+
+            <div class="flex gap-8 items-center">
+                                <div>
+                    <cite class="block not-italic type-small-button">
+                                                    <a href="https://forums.unraid.net/topic/82471-unraid-14th-birthday-case-badge-giveaway/?do=findComment&amp;comment=767410" class="underline hover:no-underline" target="_blank">@gdmac1</a>
+                                            </cite>
+                                    </div>
+            </div>
+        </blockquote>
+    </div>
+
+                            </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                                    <div
+            class="section-block relative w-full chrome-gutter bg-cream text-black overflow-hidden"
+            data-theme="onBright"
+            data-theme-group="onBright"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-narrow">
+                
+    
+                            
+    
+                
+                
+
+        <div class="flex flex-col gap-10">
+                                                        
+    <div class="[--liquid-content-bg:#2B2A29] relative tablet:overflow-hidden" data-theme="onDark">
+        <div class="relative flex flex-col gap-6 rounded-lg tablet:gap-0  tablet:-my-[1.125rem]">
+
+                            <div class="group relative z-10 flex flex-col gap-4 p-4 bg-gray-dark rounded-lg tablet:flex-row-reverse tablet:even:flex-row tablet:gap-0 tablet:bg-transparent tablet:p-0">
+
+                    <div class="tablet:flex-1">
+                        <div class="tablet:h-full tablet:border-[1.125rem] tablet:border-transparent tablet:rounded-2xl tablet:group-odd:border-r-0 tablet:group-even:border-l-0">
+                            
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                        
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[5/3] object-cover object-left-top rounded-lg tablet:aspect-auto  tablet:h-full" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_CommunityAppThumbnail.jpg?fit=crop&amp;width=863&amp;s=ToYtTzjHOXczfkOH1mxsqXXSPYHq5AhpGg_VbUL8X44" srcset="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_CommunityAppThumbnail.jpg?fit=crop&amp;width=863&amp;s=ToYtTzjHOXczfkOH1mxsqXXSPYHq5AhpGg_VbUL8X44 863w, https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_CommunityAppThumbnail.jpg?fit=crop&amp;width=476&amp;s=N2Mb8RjEYukvdt9x-CRCd2h8NeX56BKps7xyatWHpiE 476w, https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_CommunityAppThumbnail.jpg?fit=crop&amp;width=300&amp;s=lbHsJ_MXkBylSuSgu62yn4L_EGwYnmmzj_k-aYXmkxA 300w" width="863" height="492" alt="Img Community App Thumbnail" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+                        </div>
+                    </div>
+
+                    <div class="tablet:flex-1">
+                        <div class="tablet:h-full tablet:rounded-lg tablet:group-first:mt-[1.125rem] tablet:group-first:h-[calc(100%-1.125rem)] tablet:group-last:mb-[1.125rem] tablet:group-last:h-[calc(100%-1.1rem)]">
+                            <div class="relative w-full h-full text-white rounded-lg tablet:aspect-auto tablet:bg-[--liquid-content-bg] tablet:rounded-lg tablet:after:absolute tablet:after:bg-[--liquid-content-bg] tablet:after:w-[2.25rem] tablet:after:aspect-square tablet:after:top-0 tablet:after:left-0 tablet:after:-mt-[1.125rem] tablet:after:-ml-[1.125rem] tablet:after:overflow-hidden tablet:after:liquid-clip tablet:group-odd:after:left-auto tablet:group-odd:after:right-0 tablet:group-odd:after:rotate-90 tablet:group-odd:after:ml-auto tablet:group-odd:after:-mr-[1.125rem] tablet:group-first:after:hidden">
+                                <div class="h-full flex items-center justify-start">
+                                    <div class="tablet:px-10 tablet:py-8 desktop:px-16 desktop:py-12">
+                                        <div class="flex flex-col gap-4 text-current tablet:gap-6">
+                                            <div class="prose prose-p:type-sm-paragraph prose-p:mt-0 prose-p:mb-2 prose-p:text-white/80">
+                                                <h2 class="not-prose type-beta mb-4 [text-wrap:balance]">                                                    Do more with Community Apps
+                                                </h2>                                                <p>Run popular applications like AdGuard, Pi-hole, Home Assistant, and Plex right from your Unraid server. Don’t see what you need? Submit your own app and share it with the entire community!</p>
+                                            </div>
+                                                                                                                                                                                                <div class="flex flex-wrap gap-4 pb-6 tablet:gap-5 tablet:pb-0">
+                                                                                                                    
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-dark whitespace-nowrap" href="https://unraid.net/product#community-apps">            Browse All Community Apps
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+                                                                                                            </div>
+                                                                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                            <div class="group relative z-10 flex flex-col gap-4 p-4 bg-gray-dark rounded-lg tablet:flex-row-reverse tablet:even:flex-row tablet:gap-0 tablet:bg-transparent tablet:p-0">
+
+                    <div class="tablet:flex-1">
+                        <div class="tablet:h-full tablet:border-[1.125rem] tablet:border-transparent tablet:rounded-2xl tablet:group-odd:border-r-0 tablet:group-even:border-l-0">
+                            
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                        
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="w-full aspect-[5/3] object-cover object-left-top rounded-lg tablet:aspect-auto  tablet:h-full" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_LimitlessPossibilities.jpg?fit=crop&amp;width=863&amp;s=DCtH4F4iL1EQiwElqRgl001cia95LgCjKEMF_SwFhsc" srcset="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_LimitlessPossibilities.jpg?fit=crop&amp;width=863&amp;s=DCtH4F4iL1EQiwElqRgl001cia95LgCjKEMF_SwFhsc 863w, https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_LimitlessPossibilities.jpg?fit=crop&amp;width=476&amp;s=y78zdJaoULbJLGq-9NqRy5wte54NuU5rPqPY-FhZk0k 476w, https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_LimitlessPossibilities.jpg?fit=crop&amp;width=300&amp;s=WH0V4rAU-djqWkikygJvNar3mWfY-NOXqvdtfmNowjQ 300w" width="863" height="528" alt="Img Limitless Possibilities" sizes="100vw" loading="lazy">
+                    </picture>
+
+    
+                        </div>
+                    </div>
+
+                    <div class="tablet:flex-1">
+                        <div class="tablet:h-full tablet:rounded-lg tablet:group-first:mt-[1.125rem] tablet:group-first:h-[calc(100%-1.125rem)] tablet:group-last:mb-[1.125rem] tablet:group-last:h-[calc(100%-1.1rem)]">
+                            <div class="relative w-full h-full text-white rounded-lg tablet:aspect-auto tablet:bg-[--liquid-content-bg] tablet:rounded-lg tablet:after:absolute tablet:after:bg-[--liquid-content-bg] tablet:after:w-[2.25rem] tablet:after:aspect-square tablet:after:top-0 tablet:after:left-0 tablet:after:-mt-[1.125rem] tablet:after:-ml-[1.125rem] tablet:after:overflow-hidden tablet:after:liquid-clip tablet:group-odd:after:left-auto tablet:group-odd:after:right-0 tablet:group-odd:after:rotate-90 tablet:group-odd:after:ml-auto tablet:group-odd:after:-mr-[1.125rem] tablet:group-first:after:hidden">
+                                <div class="h-full flex items-center justify-start">
+                                    <div class="tablet:px-10 tablet:py-8 desktop:px-16 desktop:py-12">
+                                        <div class="flex flex-col gap-4 text-current tablet:gap-6">
+                                            <div class="prose prose-p:type-sm-paragraph prose-p:mt-0 prose-p:mb-2 prose-p:text-white/80">
+                                                <h2 class="not-prose type-beta mb-4 [text-wrap:balance]">                                                    Limitless Possibilities
+                                                </h2>                                                <p>From local file storage, gaming, content creation, and everything in between, Unraid OS allows you to get the most out of your rig. If you are in need of some homelab inspiration, you've come to the right place!</p>
+                                            </div>
+                                                                                                                                                                                                <div class="flex flex-wrap gap-4 pb-6 tablet:gap-5 tablet:pb-0">
+                                                                                                                    
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-dark whitespace-nowrap" href="https://unraid.net/use-cases">            Browse Use Cases
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+                                                                                                            </div>
+                                                                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            
+        </div>
+    </div>
+
+                                                </div>
+                </div>
+        </div>
+    
+
+    
+    
+    
+
+
+
+
+
+
+                    
+                                                <div
+            class="section-block relative w-full chrome-gutter bg-black text-white overflow-hidden"
+            data-theme="onDark"
+            data-theme-group="onDark"
+            data-block-spacing="normal">
+                        <div class="relative z-[1] w-full mx-auto max-w-screen-chrome">
+                
+    
+                            
+    
+                
+                
+
+        <div class="flex flex-col gap-10">
+                                                    <div class="">
+                                <div class="">
+                    
+    
+            
+    
+    <div class="grid grid-cols-1 gap-6 md:gap-9 md:grid-cols-2">
+                    
+
+
+
+
+    <div class="w-full rounded-lg bg-orange text-black" data-theme="onColor">
+        <div class="h-full p-4 md:p-5">
+            <div class="h-full [--card-container-gap:theme(spacing.4)] md:[--card-container-gap:theme(spacing.8)]">
+                <div class="h-full flex flex-col gap-[--card-container-gap]">
+                                            <div class="@container/picture">
+                            
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                                                    
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="transition-[height] w-full h-[188px] object-cover object-left-top rounded-lg @md/picture:h-[220px]" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_Pricing-1.jpg?fit=crop&amp;height=444&amp;width=1380&amp;s=MEE2VJ1nVfiOALSVOpcKc51SnmR-hQsHTcBllXJLuRM" width="1380" height="444" alt="Img Pricing 1" sizes="100vw" loading="lazy">
+                    </picture>
+
+                            </div>
+                                                                <div class="md:px-5 md:pb-2">
+                            <div class="flex flex-col gap-4 text-current">
+                                                                    <h2 class="type-beta">Pricing</h2>
+                                                                                                    <div class="prose type-sm-paragraph lg:type-paragraph">
+                                        <p>With affordable options starting at just $49, we have a license for everyone.</p>
+                                    </div>
+                                                            </div>
+                        </div>
+                                                                <div class="pb-6 mt-auto md:pb-7 md:px-5">
+                            <div class="flex flex-wrap gap-5">
+                                                                        
+        
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://account.unraid.net/buy">            Buy Now
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+    
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+                    
+
+
+
+
+    <div class="w-full rounded-lg bg-cream text-black" data-theme="onBright">
+        <div class="h-full p-4 md:p-5">
+            <div class="h-full [--card-container-gap:theme(spacing.4)] md:[--card-container-gap:theme(spacing.8)]">
+                <div class="h-full flex flex-col gap-[--card-container-gap]">
+                                            <div class="@container/picture">
+                            
+
+                
+    
+                                        
+    
+    
+        
+    
+
+
+        
+    
+
+                    
+    
+    
+        
+                        
+                                                    
+            
+            
+            
+                
+                
+                                                    
+                
+                                
+                
+                
+            
+        
+        
+
+        <picture  style="">
+            <img class="transition-[height] w-full h-[188px] object-cover object-left-top rounded-lg @md/picture:h-[220px]" src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/img_Trial_2024-02-08-212242_rczx.jpg?fit=crop&amp;height=444&amp;width=1380&amp;s=RnUWFzQGFARFGq6kSvp4JOH6st7tsfaYKYJqWSdsgtY" width="1380" height="444" alt="Img Trial 2024 02 08 212242 rczx" sizes="100vw" loading="lazy">
+                    </picture>
+
+                            </div>
+                                                                <div class="md:px-5 md:pb-2">
+                            <div class="flex flex-col gap-4 text-current">
+                                                                    <h2 class="type-beta">Try before you buy</h2>
+                                                                                                    <div class="prose type-sm-paragraph lg:type-paragraph">
+                                        <p>Not sure if Unraid is right for you? Take Unraid for a test drive for 30 days—no credit card required.</p>
+                                    </div>
+                                                            </div>
+                        </div>
+                                                                <div class="pb-6 mt-auto md:pb-7 md:px-5">
+                            <div class="flex flex-wrap gap-5">
+                                                                        
+        
+    
+
+                            
+    
+    
+                
+    
+    
+    
+        
+        <a class="btn btn-pill-on-theme whitespace-nowrap" href="https://unraid.net/getting-started">            Free Trial
+                                    <svg class="btn-icon">
+        <use href="#line-arrow-right"></use>
+    </svg>
+                                </a>
+    
+
+
+
+    
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+
+
+                </div>
+            </div>
+                                                </div>
+                </div>
+        </div>
+    
+
+
+
+    
+        </main>
+                <footer class="bg-black text-white w-full">
+    <div class="chrome-gutter">
+        <div class="py-16 w-full max-w-screen-chrome mx-auto border-gray-dark-faded group-has-[main>[data-theme=onDark]:last-child]/page_wrapper:border-t lg:pt-32 lg:pb-24">
+            <div class="flex flex-col gap-8">
+                                <div class="flex flex-col gap-8 desktop:flex-row desktop:gap-24">
+
+    <div class="flex flex-col gap-8 sm:flex-row desktop:flex-1">
+                <div class="w-full sm:basis-1/2">
+            <div class="flex justify-between gap-4 flex-col desktop:gap-11">
+                <div class="w-[175px]">
+                    <a href="https://unraid.net/">
+            <svg class="w-[140px] aspect-[175/31]">
+        <use href="#unraid-logo"></use>
+    </svg>
+</a>
+
+                </div>
+                            </div>
+        </div>
+
+                <div class="sm:basis-1/2">
+            <div class="w-full max-w-[285px]">
+                <div class="flex flex-row gap-8 desktop:gap-12">
+                                            <ul class="flex flex-col gap-[0.88rem]">
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://unraid.net/getting-started" >
+                                        Free Trial
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://account.unraid.net/buy" >
+                                        Pricing
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://unraid.net/about" >
+                                        About
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://unraid.net/about/team" >
+                                        Team
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://unraid.net/contact" >
+                                        Contact
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://unraid.net/blog" >
+                                        News
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-epsilon text-white hover:text-white/60" href="https://ats.rippling.com/lime-technology/jobs" rel="noopener" target="_blank" >
+                                        Jobs
+                                    </a>
+                                </li>
+                                                    </ul>
+                                                                <ul class="flex flex-col gap-4">
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://unraid.net/support" >
+                                        Product Support
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://docs.unraid.net/go/release-notes/" rel="noopener" target="_blank" >
+                                        Release Notes
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://docs.unraid.net/" rel="noopener" target="_blank" >
+                                        Documentation
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://merch.unraid.net/" rel="noopener" target="_blank" >
+                                        Merch Shop
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://status.unraid.net/" rel="noopener" target="_blank" >
+                                        Status
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://unraid.net/policies" >
+                                        Policies
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://drive.google.com/drive/folders/1wafHPR2bRqMtDPRdLuY5unMK6emkBx5T?usp=drive_link" rel="noopener" target="_blank" >
+                                        Unraid Logos
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a  class="transition-colors type-zeta text-white/60 hover:text-white" href="https://affiliates.unraid.net/" >
+                                        Affiliate Program
+                                    </a>
+                                </li>
+                                                    </ul>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-8 justify-between sm:flex-row sm:items-end desktop:items-start desktop:flex-1">
+                <div class="sm:basis-1/2">
+            <div class="w-full max-w-[218px]">
+                            <div class="w-full">
+                    <div class="flex flex-col gap-4">
+                                                    <div class="w-12 aspect-square flex items-center justify-center">
+                                                                                                                                                                                                                                            <img src="https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/icons/License-management-icon-1.svg" alt="" class="w-12 h-12 block" loading="lazy">
+                                                            </div>
+                                                                            <h2 class="type-delta text-orange-dark">
+                                Account Management
+                            </h2>
+                                                                            <div class="text-white type-sm-paragraph [&_a]:underline [&_a:hover]:text-orange [&_a:focus]:text-orange">
+                                <p>Access license keys, view purchase history, update account info, and upgrade your OS. <a href="https://account.unraid.net/" rel="noopener noreferrer" target="_blank">Login »</a></p>
+                            </div>
+                                            </div>
+                </div>
+                        </div>
+        </div>
+                <div class="sm:basis-1/2">
+            <div class="w-full max-w-[343px]">
+                <div class="w-full">
+    <div class="">
+                    <h3 class="type-epsilon mb-2">Newsletter</h3>
+                            <div class="type-sm-paragraph mb-2">
+                <p>Stay informed about all things Unraid by signing up for our monthly newsletter.</p>
+            </div>
+                <iframe class="w-full h-[52px]" src="https://embeds.beehiiv.com/d9e946d0-d99f-46e9-b780-b802469e5478?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+    </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                                <div class="flex flex-col gap-4 justify-between tablet:flex-row-reverse tablet:items-center">
+        <div class="text-white">
+        <div class="flex gap-3 items-center">
+                    <a
+            href="https://discord.unraid.net/"
+            title="Discord"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#discord-icon"></use>
+    </svg>
+            <span class="sr-only">Discord</span>
+        </a>
+                    <a
+            href="https://twitter.com/UnraidOfficial"
+            title="X"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#x-icon"></use>
+    </svg>
+            <span class="sr-only">X</span>
+        </a>
+                    <a
+            href="https://bsky.app/profile/unraid.net"
+            title="Bluesky"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-8 h-8">
+        <use href="#bsky-icon"></use>
+    </svg>
+            <span class="sr-only">Bluesky</span>
+        </a>
+                    <a
+            href="https://www.youtube.com/@uncastshow"
+            title="Youtube"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#youtube-icon"></use>
+    </svg>
+            <span class="sr-only">Youtube</span>
+        </a>
+                    <a
+            href="https://www.reddit.com/r/unRAID/"
+            title="Reddit"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#reddit-icon"></use>
+    </svg>
+            <span class="sr-only">Reddit</span>
+        </a>
+                    <a
+            href="https://www.facebook.com/pg/UnraidOfficial"
+            title="Facebook"
+            target="_blank"
+            class="hover:text-orange"
+        >
+                    <svg class="text-current w-10 h-10">
+        <use href="#facebook-icon"></use>
+    </svg>
+            <span class="sr-only">Facebook</span>
+        </a>
+    </div>    </div>
+        <div class="text-white/60 text-[0.875rem] font-medium leading-[150%]">
+        <p>Copyright © 2005-2026 Lime Technology, Inc.</p><p>Unraid® is a registered trademark of Lime Technology, Inc.</p>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    </div>
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","author":{"@id":"https://unraid.net#identity"},"copyrightHolder":{"@id":"https://unraid.net#identity"},"copyrightYear":"2018","creator":{"@id":"https://unraid.net#creator"},"dateCreated":"2018-07-11T12:08:52-07:00","dateModified":"2026-07-13T16:18:40-07:00","datePublished":"2018-07-11T12:08:00-07:00","description":"Unraid OS turns your hardware into a powerful home server. Combine NAS storage, Docker containers, and VMs on one system — no matching drives required. Start your free trial today.","headline":"The Homelab OS for Storage, Docker & VMs","image":{"@type":"ImageObject","url":"https://cdn.craft.cloud/481d40bf-939a-4dc1-918d-b4d4b48b7c04/assets/uploads/seo-unraid.png?fit=cover&height=630&width=1200&s=yWE9ELjfTAbKS4xyb1a9IqTpA9av92S02h0X9I4afdE"},"inLanguage":"en-us","mainEntityOfPage":"https://unraid.net/","name":"Unraid","publisher":{"@id":"https://unraid.net#creator"},"url":"https://unraid.net/"},{"@id":"https://unraid.net#identity","@type":"SoftwareApplication","alternateName":"Lime Tech","description":"Unraid is an operating system that brings enterprise-class features for personal and small business applications. Configure your computer systems to maximize performance and capacity using any combination of OS, storage devices, and hardware.","image":{"@type":"ImageObject","height":"630","url":"https://craftassets.unraid.net/uploads/seo-unraid.png","width":"1200"},"inLanguage":"en-us","name":"Lime Technology","sameAs":["https://discord.unraid.net","https://twitter.com/UnraidOfficial","https://www.youtube.com/channel/UC8BZH5xQpP9np0RZ9aBX34Q","https://www.reddit.com/r/unRAID/","https://www.facebook.com/pg/UnraidOfficial"],"url":"https://unraid.net"},{"@id":"https://unraid.net#creator","@type":"WebPage","alternateName":"Lime Tech","description":"Unraid is an operating system that brings enterprise-class features for personal and small business applications. Configure your computer systems to maximize performance and capacity using any combination of OS, storage devices, and hardware.","image":{"@type":"ImageObject","height":"630","url":"https://craftassets.unraid.net/uploads/seo-unraid.png","width":"1200"},"inLanguage":"en-us","name":"Lime Technology, Inc.","url":"https://unraid.net"},{"@type":"BreadcrumbList","description":"Breadcrumbs list","itemListElement":[{"@type":"ListItem","item":"https://unraid.net/","name":"Home","position":1}],"name":"Breadcrumbs"}]}</script>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W52RM3X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"3af732f467454dbb9b7edd5c6441fdd9"}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2573734ea745e49',t:'MTc4NTc3OTk2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

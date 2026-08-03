@@ -1,0 +1,120 @@
+[
+  {
+    "pageId": "15b0e289b463",
+    "name": "Ubuntu desktop",
+    "url": "https://ubuntu.com/download/desktop",
+    "pageStatus": "product-page",
+    "version": null,
+    "label": "ambiguous",
+    "noiseType": null,
+    "temporalStatus": "unclear",
+    "subject": "unknown",
+    "evidenceTypes": [
+      "visible"
+    ],
+    "evidenceQuote": "Download page has no verified single version field in saved HTML",
+    "confidence": "low",
+    "note": "No version guessed.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "needs-review",
+    "fetchedAt": "2026-08-03T17:38:56.758217+00:00",
+    "htmlFile": "data/annotation-batches/batch-031/html/15b0e289b463.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "5e9aacdd1f06b0ae21eac83d022141c1ec387dc043346eb96b77d702de6d3c50"
+  },
+  {
+    "pageId": "94f9a611c731",
+    "name": "KDE",
+    "url": "https://kde.org/",
+    "pageStatus": "product-page",
+    "version": null,
+    "label": "ambiguous",
+    "noiseType": null,
+    "temporalStatus": "unclear",
+    "subject": "unknown",
+    "evidenceTypes": [
+      "visible"
+    ],
+    "evidenceQuote": "Org homepage has no verified product version field",
+    "confidence": "low",
+    "note": "No version guessed.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "needs-review",
+    "fetchedAt": "2026-08-03T17:38:57.560768+00:00",
+    "htmlFile": "data/annotation-batches/batch-031/html/94f9a611c731.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "bab56e0a757a39bfb6e765f8fab72ec0f7a94d03d67692c9102f51107a91a58a"
+  },
+  {
+    "pageId": "7de4a64ed17c",
+    "name": "GIMP",
+    "url": "https://www.gimp.org/downloads/",
+    "pageStatus": "product-page",
+    "version": "3.2.4",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "heading",
+      "download-link"
+    ],
+    "evidenceQuote": "The current stable release of GIMP is 3.2.4 (2026-04-17)",
+    "confidence": "high",
+    "note": "Official downloads page.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:38:58.393013+00:00",
+    "htmlFile": "data/annotation-batches/batch-031/html/7de4a64ed17c.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "5a222a46f23c5ea0cc8bf8270eb9833ea4edd57eba349fc0bcef067523f2ce49"
+  },
+  {
+    "pageId": "79f8d8c5f83e",
+    "name": "OBS Studio",
+    "url": "https://obsproject.com/download",
+    "pageStatus": "product-page",
+    "version": "32.2.1",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "heading",
+      "download-link"
+    ],
+    "evidenceQuote": "Version: 32.2.1 Released: July 24th",
+    "confidence": "high",
+    "note": "Official download page.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:38:58.561279+00:00",
+    "htmlFile": "data/annotation-batches/batch-031/html/79f8d8c5f83e.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "c7b87ecc8a4bdf63f20f9259ff9c5119a9243fc66398029a3e34f9e2aa182a7b"
+  },
+  {
+    "pageId": "a146106eaeb8",
+    "name": "Debian",
+    "url": "https://www.debian.org/distrib/",
+    "pageStatus": "product-page",
+    "version": "13.6.0",
+    "label": "current_product",
+    "noiseType": null,
+    "temporalStatus": "current",
+    "subject": "target-product",
+    "evidenceTypes": [
+      "heading",
+      "download-link"
+    ],
+    "evidenceQuote": "downloading and installing Debian 13.6.0, the stable release",
+    "confidence": "high",
+    "note": "Official distrib page.",
+    "annotator": "hermes-agent-review-01",
+    "reviewStatus": "single-pass",
+    "fetchedAt": "2026-08-03T17:38:59.058410+00:00",
+    "htmlFile": "data/annotation-batches/batch-031/html/a146106eaeb8.html",
+    "renderedHtmlFile": null,
+    "snapshotSha256": "d4135a32ba0f22024875426885a24bee3792685f7bfc866b12f45b34f1244df3"
+  }
+]

@@ -1,0 +1,617 @@
+<!DOCTYPE html><html lang="en" data-theme="light" data-astro-cid-sckkx6r4> <head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-YLHRKD6LH6"></script><script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-YLHRKD6LH6");
+
+            // Track donation intent clicks
+            document.addEventListener("DOMContentLoaded", function() {
+                // Header donate button
+                const headerDonate = document.getElementById("donate-button");
+                if (headerDonate) {
+                    headerDonate.addEventListener("click", function() {
+                        gtag("event", "generate_donation_intent", { location_id: "header" });
+                    });
+                }
+
+                // Footer and sidebar donate links
+                document.querySelectorAll('a[href*="wiresharkfoundation.org/donate"]').forEach(function(link) {
+                    if (link.id === "donate-button") return; // Skip header button (already handled)
+
+                    let location_id = "sidebar";
+                    if (link.closest("footer")) {
+                        location_id = "footer";
+                    }
+
+                    link.addEventListener("click", function() {
+                        gtag("event", "generate_donation_intent", { location_id: location_id });
+                    });
+                });
+            });
+        </script><meta charset="utf-8"><link rel="icon" type="image/ico" href="/favicon.ico"><meta name="description" content="The website for Wireshark, the world's leading network protocol analyzer. Wireshark lets you dive deep into your network traffic - free and open source."><meta property="og:title" content="Wireshark • Go Deep | Wireshark • Wireshark 4.6.4 Release Notes"><meta property="og:description" content="Wireshark: The world's most popular network protocol analyzer"><meta property="og:type" content="website"><meta property="og:site_name" content="Wireshark"><meta property="og:url" content="https://www.wireshark.org/docs/relnotes/wireshark-4.6.4/"><meta property="og:image" content="https://www.wireshark.org/assets/img/og-image.png"><meta name="twitter:image:alt" content="Image for the website for Wireshark, the world's premiere network analyzer"><meta name="twitter:card" content="summary_large_image"><!-- WF Components CSS --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wf-components/public/styles.css"><!-- Magistral Font --><link rel="stylesheet" href="https://use.typekit.net/nvp0lhj.css"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.2"><title>Wireshark • Go Deep | Wireshark • Wireshark 4.6.4 Release Notes</title><style>/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */.container{color:var(--color-text);overflow-wrap:break-word}.container ul,.container ol{margin-left:calc(var(--spacing,.25rem) * 10);color:var(--color-text);list-style-type:disc}.container a{color:var(--color-action);display:inline-block}.container a:hover{color:var(--color-action-hover);display:inline-block}.container li{margin-top:calc(var(--spacing,.25rem) * 2)}.container li::marker{color:var(--color-text)}.container p{margin-block:calc(var(--spacing,.25rem) * 2)}.container h2,.container h3{margin-block:calc(var(--spacing,.25rem) * 10)}.container h4,.container h5{margin-top:calc(var(--spacing,.25rem) * 8);margin-bottom:calc(var(--spacing,.25rem) * 4)}.container pre{color:var(--color-text)}.container label{padding-block:var(--spacing,.25rem)}.container table{width:100%;color:var(--color-text)}.container table th{text-align:left;text-decoration-line:underline}
+</style>
+<link rel="stylesheet" href="/_astro/bibliography.D1m2HyTV.css"></head> <body class="bg-background" data-astro-cid-sckkx6r4> <header class="sticky top-0 z-10"> <div class="undefined flex bg-background-inverted text-text-inverted items-center px-4 sm:px-8 py-1.5 sm:py-2.5 gap-4 text-center w-full left-0"> <a current="false" href="https://sharkfest.wireshark.org/sfus" target="_blank" class="text-text-inverted justify-center w-full flex gap-2 link text-text flex gap-2 size-xs" data-astro-cid-c3we5kpz="true">  SharkFest US 2026 is coming to Nashville, Tennessee! Learn more and register. <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-2 size-xs"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M2 22L22 2M22 2H2M22 2V22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg></a>   <div class="cursor-pointer" id="theme-toggle"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" stroke="var(--color-action)" overflow="visible" fill="currentColor" class="dark-icon hidden icon w-6 size-xl"> <svg width="32" height="32" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path></svg> </svg> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" stroke="var(--color-action)" overflow="visible" fill="currentColor" class="light-icon hidden icon w-6 size-xl"> <svg width="32" height="32" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path></svg> </svg> </div> </div> <nav role="navigation" class="flex justify-between text-text py-4 px-4 sm:px-8 bg-transparent gap-12 transition-all duration-500 ease-in-out border-t border-t-action/75"> <div class="flex items-center gap-6 xl:gap-8"> <a current="false" href="/" data-astro-cid-c3we5kpz="true" class="link text-text size-md">  <svg viewBox="0 0 379.01 109.83" class="header-svg w-32 h-9 -mt-2 header-dropdown-link" fill="currentColor"><g data-name="Layer_1"><path d="M378.3 54.33H205.03c-1.29.02-2.19-.51-2.65-1.76-.55-1.51-1.18-2.99-1.71-4.5-1.95-5.61-3.18-11.38-3.62-17.3-.58-7.82.24-15.46 3.3-22.78.32-.76.93-1.42.82-2.33-.79.06-1.59.08-2.37.2-7.87 1.17-14.82 4.32-20.72 9.7-4.61 4.19-8.08 9.22-10.78 14.8-3.05 6.29-5.01 12.92-6.13 19.81-.12.74-.15 1.49-.31 2.21-.25 1.16-.83 1.68-1.99 1.8-.51.06-1.03.04-1.55.04H2.34c-2.28 0-2.09.11-2.07-2.02.01-2.6-.33-2.29 2.27-2.29 50.63 0 101.26 0 151.89-.02.78 0 1.77.37 2.29-.26.42-.51.4-1.4.53-2.12 1.36-7.5 3.74-14.66 7.35-21.39 3.15-5.88 7.15-11.08 12.35-15.31 6.01-4.9 12.87-7.88 20.5-9.13 2.38-.39 4.77-.67 7.19-.67.4 0 .81-.03 1.2.05 1.24.24 1.99 1.6 1.53 2.78-.2.53-.53 1.02-.82 1.51-2.54 4.31-4.11 8.95-4.81 13.89-1.27 8.87-.07 17.5 2.55 25.98.41 1.31.91 2.6 1.35 3.9.21.64.62.89 1.28.84.13 0 .26-.01.4-.02.61-.01 1.09 0 1.15.01.49.02 49.34.03 169.83 0M293.44 85.3V62.93c0-2.17-.15-1.95 1.93-1.96h17.73c2.3 0 4.58.22 6.84.64 3.46.64 5.94 2.57 7.58 5.64 1.36 2.55 1.86 5.29 1.75 8.14-.06 1.43-.25 2.85-.7 4.23-1.39 4.29-4.36 6.89-8.63 8.12-.5.14-1 .25-1.5.38-.29.08-.37.24-.14.46.21.19.44.36.68.53 2.02 1.47 3.72 3.24 5.04 5.36 1.24 2 2.45 4.01 3.63 6.05 1.49 2.58 2.93 5.19 4.39 7.79.19.35.37.71.51 1.08.03.08-.12.32-.23.35-.21.06-.45.04-.68.04-2.7 0-5.39-.04-8.09.02-.93.02-1.46-.29-1.93-1.08-2.21-3.75-4.47-7.48-6.74-11.2-.86-1.42-1.77-2.81-2.69-4.2-.35-.52-.73-1.03-1.14-1.51-1.21-1.43-2.75-2.23-4.63-2.3-1.09-.04-2.18-.09-3.27-.09-.73 0-.86.17-.88.94-.02.46 0 .92 0 1.38v16.52c0 1.51-.02 1.52-1.51 1.52h-6.37c-.75 0-.89-.17-.93-.92-.03-.46-.01-.92-.01-1.38v-22.2Zm15.45-16.04v-.03c-1.84 0-3.67-.01-5.51 0-1.09 0-1.12.03-1.12 1.03-.01 3.44 0 6.89 0 10.33 0 .99.2 1.04 1.13 1.03 2.53 0 5.05.02 7.58-.03 1.55-.03 3.1-.14 4.63-.32 2.15-.26 3.54-1.5 4.21-3.55.46-1.4.49-2.83.16-4.25-.52-2.23-1.93-3.6-4.2-4.02-.62-.12-1.25-.17-1.88-.18-1.66-.03-3.33 0-4.99 0ZM337.76 85.4V62.84c0-2.05-.17-1.88 1.82-1.88h6.2c.74 0 .81.09.84.77.02.46.01.92.01 1.38v17.22c0 .52 0 1.03.05 1.55 0 .06.3.19.34.16.33-.32.65-.65.93-1 5.01-6.06 10.01-12.13 15.02-18.19.51-.62.96-1.41 1.63-1.73s1.57-.15 2.37-.15h8.61c.15 0 .31.08.46.13-.05.15-.06.35-.15.46-1.91 2.22-3.83 4.43-5.74 6.64L361 78.73c-.19.22-.37.44-.57.65-.37.38-.46.75-.15 1.22.35.53.64 1.09.96 1.63 5.01 8.57 10.01 17.14 15.02 25.71.26.44.51.9.74 1.36.13.26 0 .44-.28.47-.28.03-.57.02-.86.02-2.87 0-5.74-.04-8.61.02-.99.02-1.55-.3-2.01-1.19-2.39-4.64-4.84-9.25-7.27-13.87-1.25-2.39-2.51-4.77-3.78-7.15-.29-.55-.5-.58-.89-.14-2.06 2.32-4.09 4.66-6.17 6.96-.48.53-.51 1.12-.5 1.75 0 3.73.01 7.46 0 11.19-.01 2.79.36 2.4-2.5 2.43-1.84.02-3.67.01-5.51 0-.7 0-.82-.14-.85-.79-.02-.46-.01-.92-.01-1.38V85.41ZM191.3 75.12c-1.15.07-2.29.15-3.44.21-.4.02-.63-.16-.73-.56-.19-.72-.37-1.44-.62-2.14-.85-2.38-2.56-3.7-5.04-4.13-1.67-.29-3.31-.25-4.96.06-1.14.22-2.2.64-3.14 1.34-2.07 1.54-2.26 4.4-.32 6.11.67.6 1.5 1.08 2.34 1.41 1.76.68 3.58 1.22 5.38 1.8 2.18.7 4.38 1.35 6.55 2.06.81.27 1.6.64 2.37 1.02 3.9 1.93 6.37 4.99 7.24 9.27.75 3.69.52 7.3-1.11 10.75-1.69 3.56-4.4 5.95-8.13 7.19-1.86.62-3.77.98-5.73 1.06-2.82.11-5.61.08-8.37-.65-4.49-1.18-7.74-3.84-9.78-8.01-1.12-2.29-1.68-4.74-2.05-7.25-.07-.51.1-.76.63-.82 1.02-.13 2.05-.22 3.08-.34l4.1-.45c.48-.06.76.13.84.61.06.34.13.68.24 1 .28.87.53 1.76.9 2.59 1.27 2.94 3.58 4.56 6.71 4.97 1.72.22 3.45.17 5.12-.33 2.61-.78 4.39-2.44 5-5.16.49-2.2-.32-4.17-2.25-5.31-.83-.49-1.74-.88-2.66-1.18-2.29-.73-4.61-1.38-6.92-2.05-2.15-.63-4.26-1.36-6.22-2.46-4.54-2.54-6.87-6.43-7.01-11.63-.05-1.98.28-3.88 1.06-5.7 1.48-3.47 4.04-5.79 7.55-7.08 1.68-.61 3.41-.98 5.2-1.07 2.87-.14 5.73-.11 8.54.67 5.81 1.61 9.11 5.48 10.14 11.34.54 3.04.58 2.68-2.25 2.81-.74.03-1.49 0-2.24 0v.06ZM239.91 85.48v22.21c0 .52 0 1.03-.03 1.55-.02.32-.22.51-.55.54-.12 0-.23.02-.34.02-2.3 0-4.59.01-6.89 0-.84 0-.96-.15-1-1.02-.02-.46 0-.92 0-1.38V90.01c0-1.52-.02-1.54-1.5-1.54h-14.3c-.35 0-.69 0-1.03.03-.32.03-.52.22-.53.56-.02.46-.03.92-.03 1.38v17.05c0 .46.01.92 0 1.38-.03.83-.11.94-.87.95-2.35.02-4.71.02-7.06 0-.76 0-.87-.14-.91-.92-.02-.4 0-.8 0-1.2V63.1c0-2.42-.21-2.07 2.13-2.09 1.78-.02 3.56 0 5.34 0 1.43 0 1.38.01 1.38 1.46v12.57c0 1.43-.01 2.87.01 4.31.01.76.14.89.92.9 1.72.02 3.44 0 5.17 0h9.3c.46 0 .92 0 1.38-.02.33-.01.54-.2.56-.53.03-.51.05-1.03.05-1.55V63.34c0-.46-.01-.92 0-1.38.04-.86.1-.94 1.04-.95 2.3-.01 4.59-.01 6.89 0 .8 0 .85.08.88.91.01.46 0 .92 0 1.38v22.21ZM3.18 60.97c.75 0 1.49-.02 2.24 0 .69.02.74.06.9.78.59 2.75 1.16 5.5 1.73 8.25 1.65 7.92 3.31 15.83 4.94 23.75.47 2.3.87 4.62 1.31 6.93.08.39.17.78.28 1.17.02.08.13.13.19.19.04-.04.09-.08.1-.13.1-.33.21-.66.28-.99 1.57-7.94 3.79-15.72 5.72-23.57 1.2-4.9 2.48-9.78 3.72-14.67.03-.11.05-.22.08-.33.36-1.34.36-1.36 1.69-1.36h4.99c.47 0 .72.19.84.67.61 2.45 1.25 4.89 1.88 7.33 1.72 6.78 3.45 13.56 5.13 20.35.99 4.01 1.77 8.06 2.31 12.16 0 .06 0 .12.03.17.04.08.12.14.17.2.08-.08.21-.14.23-.23.28-1.29.54-2.58.83-3.87 1.91-8.8 3.83-17.59 5.75-26.38.63-2.91 1.27-5.82 1.92-8.74.09-.39.2-.78.29-1.17.08-.33.29-.48.61-.48 1.55 0 3.1-.01 4.65 0 .51 0 .6.14.48.64-.4 1.67-.81 3.34-1.23 5.01-3.42 13.86-6.85 27.72-10.25 41.58-.45 1.86-.51 1.56-2.04 1.58-.92.01-1.84.01-2.76 0-1.16-.02-1.17-.02-1.47-1.22-.47-1.83-.92-3.67-1.37-5.51-2.87-11.58-5.74-23.15-8.61-34.72-.01-.06 0-.12-.03-.17-.07-.13-.16-.26-.24-.4-.13.17-.32.31-.37.5-.22.89-.39 1.79-.61 2.68-2.5 10.07-5.02 20.14-7.53 30.21-.64 2.56-1.27 5.12-1.93 7.67-.22.87-.29.93-1.16.94-1.38.02-2.76.02-4.13 0-.77-.01-.84-.06-1.04-.86-.41-1.61-.79-3.23-1.18-4.85C7.24 90.3 3.96 76.52.68 62.75c-.11-.45-.2-.9-.28-1.35-.04-.27.13-.42.4-.42h2.41v-.02ZM283.78 109.8c-1.26 0-2.53-.02-3.79 0-.67.02-1.03-.24-1.25-.89-.87-2.61-1.77-5.21-2.7-7.8-1.02-2.84-.3-2.38-3.43-2.4-4.31-.03-8.61 0-12.91 0-.4 0-.8.01-1.2 0-.61-.02-.92.26-1.1.85-.88 2.79-1.81 5.56-2.72 8.34-.12.38-.26.76-.37 1.15-.15.5-.44.76-.99.76-2.64-.01-5.28 0-7.92-.01-.51 0-.62-.17-.48-.64.11-.38.25-.76.38-1.14l15.9-45.45c.11-.33.25-.64.34-.97.13-.47.45-.61.9-.61h8.09c.39 0 .63.17.76.55.16.49.37.97.54 1.45 5.38 14.94 10.75 29.88 16.13 44.83.13.38.28.75.4 1.14.19.63.04.85-.63.86-1.32.02-2.64 0-3.96 0ZM266.4 90.49h4.12c.4 0 .8 0 1.2-.03.34-.02.52-.21.44-.56-.07-.28-.17-.55-.26-.82-1.69-5.05-3.37-10.09-5.06-15.14-.09-.27-.17-.54-.29-.81-.04-.09-.17-.17-.26-.19-.06-.01-.18.1-.21.18-.14.37-.26.76-.39 1.14-.91 2.77-1.82 5.54-2.73 8.32-.66 2.01-1.33 4.02-1.97 6.03-.58 1.82-.89 1.9 1.27 1.88 1.38-.01 2.75 0 4.12 0ZM79.05 85.28V63.07c0-.52 0-1.03.03-1.55.01-.33.22-.52.54-.54.34-.02.69-.02 1.03-.02h18.6c2.07 0 4.12.22 6.15.67 2.97.66 5.21 2.31 6.71 4.95 2.24 3.96 2.66 8.15 1.27 12.45-1.06 3.27-3.23 5.68-6.41 7.03-1.41.6-2.94.93-4.42 1.4-.11.03-.2.09-.3.14.06.1.12.19.18.28.03.04.08.08.13.11 2.6 1.43 4.36 3.68 6 6.06.62.9 1.19 1.83 1.74 2.77 2.18 3.77 4.35 7.56 6.51 11.34.23.4.44.8.62 1.22.03.08-.1.27-.2.36-.07.06-.22.05-.33.05-1.89 0-3.79 0-5.68.01-.52 0-.88-.18-1.12-.63-.22-.4-.46-.8-.68-1.19-2.21-3.82-4.4-7.66-6.64-11.47-.87-1.48-1.85-2.91-2.85-4.3a12.98 12.98 0 0 0-1.95-2.17c-1.22-1.09-2.66-1.83-4.34-1.86-2.64-.05-5.28-.04-7.92-.04-.7 0-.79.12-.82.81-.02.46-.01.92-.01 1.38v17.73c0 1.85.07 1.75-1.81 1.74-1.09 0-2.18 0-3.27-.02-.54-.01-.69-.18-.72-.74-.03-.46-.01-.92-.01-1.38V85.28ZM93.29 66.4h-6.54c-.4 0-1.88 1.09-1.88 1.32v13.42c0 .29-.03.59.04.85.05.19.24.4.41.46.26.09.56.08.85.08 3.84 0 7.69.03 11.53-.02 1.6-.02 3.21-.13 4.77-.55 2.43-.65 4.19-2.1 5.07-4.48.29-.8.52-1.66.58-2.5.29-3.84-1.72-7.35-5.75-8.19-1.06-.22-9.08-.39-9.08-.39ZM123.4 85.42c0-7.46 0-23.41.03-23.92.01-.34.24-.5.56-.51.34-.01 19.97-.02 29.44-.02 1.79 0 1.68-.1 1.68 1.68 0 1.15 0 2.3-.02 3.44 0 .4-.22.64-.63.65-.52.01-1.03.02-1.55.02-7.12 0-22.26-.01-22.72 0-.9.03-.96.07-.96 1.02-.01 4.3 0 8.61 0 12.91 0 .17-.03.37.05.51.1.17 1.48.45 1.99.45h20.48c1.74 0 1.69-.12 1.68 1.68 0 1.15 0 2.3-.02 3.44 0 .41-1.57.65-2.03.65h-20.31c-2.02 0-1.85-.18-1.85 1.85v13.08c0 .4 1.52 1.65 2.04 1.65h22.9c2.15 0 1.96-.21 1.97 1.91 0 1.03.01 2.07-.01 3.1-.01.6-.15.73-.69.77-.4.03-.8.02-1.2.02h-28.92c-2 0-1.89.16-1.89-1.83V85.42ZM68.76 107.92c0 2.02.05 1.87-1.87 1.87-1.03 0-2.07 0-3.1-.01-.54-.01-.74-.2-.77-.7-.03-.46-.03-.92-.03-1.38V62.45c.01-.99.53-1.48 1.53-1.49h2.92c1.27.01 1.28.02 1.3 1.37v45.59Z" /></g></svg> </a>  <div class="hidden xl:flex tracking-normal lg:tracking-tight xl:tracking-normal"> <ul class="dropdown-container flex gap-6 xl:gap-8 list-none m-0 p-0"> <li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/download.html" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Download </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://gitlab.com/wireshark/wireshark/" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Source Code </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/docs/relnotes/" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Release Notes </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://stratoshark.org" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Stratoshark </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/learn" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Learn </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/docs/wsug_html_chunked/" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  User&#39;s Guide </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/certifications" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Certifications </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/faq" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  FAQ </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://www.youtube.com/@WireSharkFest" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  SharkFest YouTube </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/about" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  About </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/resources" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Resources </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/docs/" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Documentation </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://wiki.wireshark.org/" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Wiki </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/resources#sample-captures" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Sample Captures </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/tools/" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Tools </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/tools#oui-lookup" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  OUI Lookup </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/tools/wpa-psk" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  WPA PSK Generator </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/tools/v46status" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  IPv4/IPv6 Test </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/tools/modelines" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Modeline Generator </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/tools/string-cf" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Capture Filter Generator </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/community" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Community </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://lists.wireshark.org/" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Mailing Lists </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://sharkfest.wireshark.org" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  SharkFest </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://sharkbytes.transistor.fm/" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Podcast </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/blog" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Blog </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://ask.wireshark.org/" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Ask Wireshark </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://discord.com/invite/ts9GZCjGj5" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Discord </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="group relative flex gap-3 cursor-pointer"> <a current="false" href="/develop" aria-haspopup="true" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Develop </a>  <ul class="absolute -left-8 top-10 min-w-80 p-0 list-none bg-background-inverted rounded-xl
+                          invisible opacity-0 transition-all duration-500 ease-out z-10
+                          md:group-hover:visible md:group-hover:block md:group-hover:opacity-100 md:group-focus-within:block md:group-focus-within:opacity-100
+                          data-[show=true]:visible data-[show=true]:block data-[show=true]:opacity-100
+                          divide-y-[1px] divide-border px-3 text-background-inverted" aria-label="subLinks" data-dropdown onclick="this.dataset.show = this.dataset.show === 'true' ? 'false' : 'true'"> <svg viewBox="0 0 11 11" fill="none" class="border-0 absolute w-3 h-3 left-6 -top-2.5">
+<path d="M3.9356 2.43245C1.04949 5.02867 0.262373 8.66338 0 11H10.2326C9.79527 9.70189 8.92069 8.67203 8.92069 4.76904C8.92069 2.43245 10.2326 0.355473 10.2326 0.0958508C10.2326 -0.163772 6.69486 -0.049655 3.9356 2.43245Z" stroke="currentColor" fill="currentColor" />
+</svg> <li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/develop" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Get Involved </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="https://gitlab.com/wireshark/wireshark/-/issues" target="_blank" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Issue Tracker </a>  </li><li class="p-4 relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/docs/wsdg_html_chunked/" class="!text-text-inverted hover:!text-action no-underline font-magistral focus:outline-none flex gap-1.5 link text-action size-sm" data-astro-cid-c3we5kpz="true">  Developer&#39;s Guide </a>  </li> </ul> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="header-dropdown-link icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </li><li class="relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/members" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Members </a>  </li><li class="relative transition-colors duration-500 cursor-pointer"> <a current="false" href="/certifications" class="no-underline header-dropdown-link font-magistral focus:outline-none flex gap-1.5 link text-text size-sm" data-astro-cid-c3we5kpz="true">  Certifications </a>  </li> </ul> </div> </div> <div class="flex gap-8 items-center"> <a current="false" href="https://wiresharkfoundation.org/donate/" id="donate-button" class="pt-3 button size-sm variant-secondary" data-astro-cid-2hlhkyqe="true"> Donate  </a>  <button id="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu-content" class="xl:hidden block header-dropdown-link"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 28" stroke="currentColor" overflow="visible" class="cursor-pointer icon w-5 size-lg"> <svg width="40" height="28" viewBox="0 0 40 28" fill="none">
+<path d="M2 14H38M2 2H38M2 26H38" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg> </button> <div id="mobile-menu-content" class="xl:hidden hidden absolute w-full top-0 left-0 bg-background h-full" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" stroke="var(--color-action)" overflow="visible" id="mobile-menu-close" class="absolute right-4 top-6 cursor-pointer icon w-5 size-lg"> <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+<path d="M20.3408 0.234375H1.65922C1.35181 0.234499 1.05703 0.356671 0.839665 0.57404C0.622296 0.791408 0.500124 1.08619 0.5 1.39359V20.0752C0.500124 20.3826 0.622296 20.6773 0.839665 20.8947C1.05703 21.1121 1.35181 21.2343 1.65922 21.2344H11V12.9844H8.48984V9.98438H11V7.59375C11 4.88156 12.8811 3.405 15.3041 3.405C16.4633 3.405 17.7102 3.49219 17.9998 3.53062V6.36328H16.0695C14.7514 6.36328 14.5002 6.98672 14.5002 7.90547V9.98438H17.6408L17.2306 12.9844H14.5002V21.2344H20.3408C20.6482 21.2343 20.943 21.1121 21.1603 20.8947C21.3777 20.6773 21.4999 20.3826 21.5 20.0752V1.39359C21.4999 1.08619 21.3777 0.791408 21.1603 0.57404C20.943 0.356671 20.6482 0.234499 20.3408 0.234375Z" fill="currentColor" />
+</svg> </svg> <div class="py-16 items-center bg-background h-dvh"> <ul class="flex flex-col list-none m-0 p-0 bg-background items-center border-t border-t-border"> <li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Download"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Download<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Download-subLinks"> <a current="false" href="/download.html" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Download </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://gitlab.com/wireshark/wireshark/" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Source Code </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/docs/relnotes/" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Release Notes </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://stratoshark.org" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Stratoshark </a>  </li> </ul> </li><li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Learn"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Learn<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Learn-subLinks"> <a current="false" href="/learn" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Learn </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/docs/wsug_html_chunked/" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  User&#39;s Guide </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/certifications" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Certifications </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/faq" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  FAQ </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://www.youtube.com/@WireSharkFest" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  SharkFest YouTube </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/about" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  About </a>  </li> </ul> </li><li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Resources"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Resources<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Resources-subLinks"> <a current="false" href="/resources" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Resources </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/docs/" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Documentation </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://wiki.wireshark.org/" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Wiki </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/resources#sample-captures" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Sample Captures </a>  </li> </ul> </li><li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Tools"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Tools<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Tools-subLinks"> <a current="false" href="/tools/" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Tools </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/tools#oui-lookup" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  OUI Lookup </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/tools/wpa-psk" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  WPA PSK Generator </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/tools/v46status" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  IPv4/IPv6 Test </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/tools/modelines" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Modeline Generator </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/tools/string-cf" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Capture Filter Generator </a>  </li> </ul> </li><li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Community"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Community<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Community-subLinks"> <a current="false" href="/community" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Community </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://lists.wireshark.org/" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Mailing Lists </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://sharkfest.wireshark.org" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  SharkFest </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://sharkbytes.transistor.fm/" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Podcast </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/blog" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Blog </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://ask.wireshark.org/" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Ask Wireshark </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://discord.com/invite/ts9GZCjGj5" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Discord </a>  </li> </ul> </li><li class="group py-8 px-4 relative flex flex-col items-center gap-3 transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border" id="Develop"> <a current="false" href="#" aria-haspopup="true" class="no-underline font-magistral focus:outline-none flex items-center link text-text size-sm" data-astro-cid-c3we5kpz="true">  Develop<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 16" stroke="currentColor" overflow="visible" class="absolute right-4 icon w-3 size-sm"> <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+<path d="M2 2L14 14L26 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg> </svg>  </a>  <ul class="mt-4 min-w-[5rem] p-0 list-none
+                  hidden opacity-100 group-hover:block group-focus-within:block
+                  transition-all duration-500 ease-in-out z-10" aria-label="subLinks" id="Develop-subLinks"> <a current="false" href="/develop" aria-haspopup="true" class="no-underline py-2 font-magistral focus:outline-none flex items-center justify-center w-full link text-text size-sm" data-astro-cid-c3we5kpz="true">  Develop </a>  <li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/develop" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Get Involved </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="https://gitlab.com/wireshark/wireshark/-/issues" target="_blank" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Issue Tracker </a>  </li><li class="py-2 flex relative transition-colors duration-500 cursor-pointer w-full justify-center"> <a current="false" href="/docs/wsdg_html_chunked/" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Developer&#39;s Guide </a>  </li> </ul> </li><li class="relative py-8 flex transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border"> <a current="false" href="/members" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Members </a>  </li><li class="relative py-8 flex transition-colors duration-500 cursor-pointer w-full justify-center border-b border-b-border"> <a current="false" href="/certifications" class="no-underline font-magistral focus:outline-none link text-text size-sm" data-astro-cid-c3we5kpz="true">  Certifications </a>  </li> </ul> <div class="mt-4 pt-4 flex justify-center"> <a current="false" href="https://wiresharkfoundation.org/donate/" class="w-full button size-sm variant-secondary" data-astro-cid-2hlhkyqe="true"> Donate  </a>  </div> </div> </div> </div> </nav> </header> <script>(function(){const siteLinks = [{"name":"Download","url":"/download.html","subLinks":[{"name":"Source Code","url":"https://gitlab.com/wireshark/wireshark/"},{"name":"Release Notes","url":"/docs/relnotes/"},{"name":"Stratoshark","url":"https://stratoshark.org"}]},{"name":"Learn","url":"/learn","subLinks":[{"name":"User's Guide","url":"/docs/wsug_html_chunked/"},{"name":"Certifications","url":"/certifications"},{"name":"FAQ","url":"/faq"},{"name":"SharkFest YouTube","url":"https://www.youtube.com/@WireSharkFest"},{"name":"About","url":"/about"}]},{"name":"Resources","url":"/resources","subLinks":[{"name":"Documentation","url":"/docs/"},{"name":"Wiki","url":"https://wiki.wireshark.org/"},{"name":"Sample Captures","url":"/resources#sample-captures"}]},{"name":"Tools","url":"/tools/","subLinks":[{"name":"OUI Lookup","url":"/tools#oui-lookup"},{"name":"WPA PSK Generator","url":"/tools/wpa-psk"},{"name":"IPv4/IPv6 Test","url":"/tools/v46status"},{"name":"Modeline Generator","url":"/tools/modelines"},{"name":"Capture Filter Generator","url":"/tools/string-cf"}]},{"name":"Community","url":"/community","subLinks":[{"name":"Mailing Lists","url":"https://lists.wireshark.org/"},{"name":"SharkFest","url":"https://sharkfest.wireshark.org"},{"name":"Podcast","url":"https://sharkbytes.transistor.fm/"},{"name":"Blog","url":"/blog"},{"name":"Ask Wireshark","url":"https://ask.wireshark.org/"},{"name":"Discord","url":"https://discord.com/invite/ts9GZCjGj5"}]},{"name":"Develop","url":"/develop","subLinks":[{"name":"Get Involved","url":"/develop"},{"name":"Issue Tracker","url":"https://gitlab.com/wireshark/wireshark/-/issues"},{"name":"Developer's Guide","url":"/docs/wsdg_html_chunked/"}]},{"name":"Members","url":"/members"},{"name":"Certifications","url":"/certifications"}];
+
+    // Responsive mobile menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu-content");
+        const mobileMenuCloseButton =
+            document.getElementById("mobile-menu-close");
+
+        menuButton?.addEventListener("click", () => {
+            const isExpanded =
+                menuButton.getAttribute("aria-expanded") === "true";
+            menuButton.setAttribute("aria-expanded", (!isExpanded).toString());
+            mobileMenu?.classList.toggle("hidden");
+            mobileMenu?.setAttribute("aria-hidden", isExpanded.toString());
+        });
+
+        mobileMenuCloseButton?.addEventListener("click", () => {
+            menuButton?.click(); // Simulate click to close
+        });
+
+        // Optional: Close on Escape key
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.key === "Escape" &&
+                menuButton?.getAttribute("aria-expanded") === "true"
+            ) {
+                menuButton?.click(); // Simulate click to close
+            }
+        });
+
+        siteLinks.forEach((item) => {
+            const subLinks = item.subLinks;
+            if (subLinks) {
+                const subMenu = document.getElementById(
+                    `${item.name}-subLinks`,
+                );
+                const parentItem = document.getElementById(item.name);
+
+                parentItem?.addEventListener("click", () => {
+                    const isVisible =
+                        subMenu?.classList.contains("hidden") === false;
+                    subMenu?.classList.toggle("hidden", isVisible);
+                    subMenu?.setAttribute("aria-hidden", isVisible.toString());
+                });
+            }
+        });
+    });
+})();</script> <script type="module">const e=document.querySelector("nav");document.addEventListener("scroll",function(){if(window.pageYOffset>50&&e){if(e.style.backgroundColor="var(--color-background-inverted)",e.firstElementChild){const o=document.getElementById("donate-button"),t=document.getElementById("mobile-menu-button")?.childNodes[1],l=Array.from(e.firstElementChild.querySelectorAll(".header-dropdown-link"));o&&t&&(o.style.borderColor="var(--color-text-inverted)",o.style.color="var(--color-text-inverted)",t.style.color="var(--color-text-inverted)"),l.forEach(r=>r.style.color="var(--color-text-inverted)")}}else if(e){e.style.backgroundColor="transparent";const o=document.getElementById("donate-button"),t=document.getElementById("mobile-menu-button")?.childNodes[1];o&&t&&(o.style.borderColor="var(--color-action)",o.style.color="var(--color-action)",t.style.color="var(--color-text)"),e&&Array.from(e.querySelectorAll(".header-dropdown-link")).forEach(r=>r.style.color="var(--color-text)")}});</script> <div class="px-4 sm:px-8 flex flex-col gap-24 sm:gap-32" data-astro-cid-sckkx6r4> <div class="p-4 sm:p-16 flex flex-col gap-6">
+    <section class="release-note container"> <div id="header">
+<h1>Wireshark 4.6.4 Release Notes</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_what_is_wireshark">What is Wireshark?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wireshark is the world’s most popular network protocol analyzer.
+It is used for troubleshooting, analysis, development and education.</p>
+</div>
+<div class="paragraph">
+<p>Wireshark is hosted by the Wireshark Foundation, a nonprofit which promotes protocol analysis education.
+Wireshark and the foundation depend on your contributions in order to do their work.
+If you or your organization would like to contribute or become a sponsor, please visit <a href="https://wiresharkfoundation.org">wiresharkfoundation.org</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you use Wireshark professionally or you just want to learn more about protocol analysis, you should join us at <a href="https://sharkfest.wireshark.org/">SharkFest</a>, the Wireshark developer and user conference.</p>
+</div>
+<div class="paragraph">
+<p>You can also become a Wireshark Certified Analyst! Official Wireshark training and certification are available from
+<a href="https://www.wireshark.org/certifications">the Wireshark Foundation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_new">What’s New</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bug_fixes">Bug Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-05">wnpa-sec-2026-05</a> 
+USB HID dissector memory exhaustion.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20972">Issue 20972</a>.
+<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3201">CVE-2026-3201</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-06">wnpa-sec-2026-06</a> 
+NTS-KE dissector crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/21000">Issue 21000</a>.
+<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3202">CVE-2026-3202</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-07">wnpa-sec-2026-07</a> 
+RF4CE Profile dissector crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/21009">Issue 21009</a>.
+<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3203">CVE-2026-3203</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following bugs have been fixed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Wireshark doesn’t start if Npcap is configured with "Restrict Npcap driver’s Access to Administrators only" <a href="https://gitlab.com/wireshark/wireshark/-/issues/20828">Issue 20828</a>. </p>
+</li>
+<li>
+<p>PQC signature algorithm not reported in signature_algorithms. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20953">Issue 20953</a>.</p>
+</li>
+<li>
+<p>Unexpected JA4 ALPN values when space characters sent. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20966">Issue 20966</a>.</p>
+</li>
+<li>
+<p>Expert Info seems to have quadratic performance (gets slower and slower) <a href="https://gitlab.com/wireshark/wireshark/-/issues/20970">Issue 20970</a>. </p>
+</li>
+<li>
+<p>IKEv2 EMERGENCY_CALL_NUMBERS Notify payload cannot be decoded. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20974">Issue 20974</a>.</p>
+</li>
+<li>
+<p>TShark and editcap fails with segmentation fault when output format (-F) set to blf. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20976">Issue 20976</a>.</p>
+</li>
+<li>
+<p>Fuzz job crash: fuzz-2026-02-01-12944805400.pcap [Zigbee Direct Tunneling Zigbee NWK PDUs NULL hash table] <a href="https://gitlab.com/wireshark/wireshark/-/issues/20977">Issue 20977</a>.</p>
+</li>
+<li>
+<p>Wiretap writes pcapng custom options with string values invalidly. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20978">Issue 20978</a>.</p>
+</li>
+<li>
+<p>RDM status in Output Status (GoodOutputB) field incorrectly decoded in Art-Net PollReply dissector. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20980">Issue 20980</a>.</p>
+</li>
+<li>
+<p>Wiretap writes invalid pcapng Darwin option blocks. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20991">Issue 20991</a>.</p>
+</li>
+<li>
+<p>TDS dissector desynchronizes on RPC DATENTYPE (0x28) due to incorrect expectation of TYPE_VARLEN (MaxLen) <a href="https://gitlab.com/wireshark/wireshark/-/issues/21001">Issue 21001</a>.</p>
+</li>
+<li>
+<p>Only first HTTP POST is parsed inside SOCKS with "Decode As". <a href="https://gitlab.com/wireshark/wireshark/-/issues/21006">Issue 21006</a>.</p>
+</li>
+<li>
+<p>TShark: Bogus "Dissector bug" messages generated in pipelines where something after tshark exits before reading all its input. <a href="https://gitlab.com/wireshark/wireshark/-/issues/21011">Issue 21011</a>.</p>
+</li>
+<li>
+<p>New Diameter RAT-Types in TS 29.212 not decoded. <a href="https://gitlab.com/wireshark/wireshark/-/issues/21012">Issue 21012</a>.</p>
+</li>
+<li>
+<p>Malformed packet error on Trigger HE Basic frames. <a href="https://gitlab.com/wireshark/wireshark/-/issues/21032">Issue 21032</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_protocol_support">New Protocol Support</h3>
+<div class="paragraph">
+<p>There are no new protocols in this release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updated_protocol_support">Updated Protocol Support</h3>
+<div class="paragraph">
+<p>Art-Net, AT, BGP, GSM DTAP, GSM SIM, IEEE 802.11, IPv6, ISAKMP, MBIM, MySQL, NAS-5GS, NTS-KE, SGP.22, Silabs DCH, Socks, TDS, TECMP, USB HID, ZB TLV, and ZBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_and_updated_capture_file_support">New and Updated Capture File Support</h3>
+<div class="paragraph">
+<p>BLF, pcapng, and TTL</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_and_updated_file_format_decoding_support">New and Updated File Format Decoding Support</h3>
+<div class="paragraph">
+<p>There is no new or updated file format support in this release.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prior_versions">Prior Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wireshark 4.6.3 included the following changes.
+See the
+<a href="https://www.wireshark.org/docs/relnotes/wireshark-4.6.3.html">release notes</a>
+for details:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-01">wnpa-sec-2026-01</a>
+BLF file parser crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20880">Issue 20880</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-02">wnpa-sec-2026-02</a>
+IEEE 802.11 dissector crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20939">Issue 20939</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-03">wnpa-sec-2026-03</a>
+SOME/IP-SD dissector crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20945">Issue 20945</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2026-04">wnpa-sec-2026-04</a>
+HTTP3 dissector infinite loop.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20944">Issue 20944</a>.</p>
+</li>
+<li>
+<p>Wireshark 4.6.0 build fails on Solaris: pcapio.c:441:21: error: request for member '_flag' in something not a structure or union. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20773">Issue 20773</a>.</p>
+</li>
+<li>
+<p>RTP Player streams cannot be stopped. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20879">Issue 20879</a>.</p>
+</li>
+<li>
+<p>Additional ABI/API compatibility fixes. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20881">Issue 20881</a>.</p>
+</li>
+<li>
+<p>Missing data in pinfo→cinfo in HomePlug message CM_ATTEN_CHAR.IND. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20893">Issue 20893</a>.</p>
+</li>
+<li>
+<p>maxmind_db: crash when switching from a profile where it’s disabled to one where it’s enabled. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20903">Issue 20903</a>.</p>
+</li>
+<li>
+<p>Compilation warning or error if CFLAGS defines _FORTIFY_SOURCE to other than 3 without first undefining it. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20904">Issue 20904</a>.</p>
+</li>
+<li>
+<p>IEEE 802.11: Incorrect parsing of QoS and Mesh Control Field when the frame body contains an A-MSDU. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20905">Issue 20905</a>.</p>
+</li>
+<li>
+<p>OSS-Fuzz 473164101: Heap-buffer-overflow in dissect_idn_laser_data. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20936">Issue 20936</a>.</p>
+</li>
+<li>
+<p>Bug in decoding 5G NAS message - Extended CAG information list IE. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20946">Issue 20946</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Wireshark 4.6.2 included the following changes.
+See the
+<a href="https://www.wireshark.org/docs/relnotes/wireshark-4.6.2.html">release notes</a>
+for details:</p>
+</div>
+<div class="paragraph">
+<p>This release fixes an API/ABI change that was introduced in Wireshark 4.6.1, which caused a compatibility issue with plugins built for Wireshark 4.6.0. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20881">Issue 20881</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2025-07">wnpa-sec-2025-07</a>
+HTTP3 dissector crash.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20860">Issue 20860</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2025-08">wnpa-sec-2025-08</a>
+MEGACO dissector infinite loop.
+<a href="https://gitlab.com/wireshark/wireshark/-/issues/20884">Issue 20884</a>.</p>
+</li>
+<li>
+<p>ws_base32_decode should be named *_encode ? <a href="https://gitlab.com/wireshark/wireshark/-/issues/20754">Issue 20754</a>.</p>
+</li>
+<li>
+<p>Omnipeek files not working in 4.6.1. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20876">Issue 20876</a>.</p>
+</li>
+<li>
+<p>Stack buffer overflow in wiretap/ber.c (ber_open) <a href="https://gitlab.com/wireshark/wireshark/-/issues/20878">Issue 20878</a>.</p>
+</li>
+<li>
+<p>Plugins incompatibility between 4.6.0 &amp; 4.6.1. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20881">Issue 20881</a>.</p>
+</li>
+<li>
+<p>Fuzz job crash: fuzz-2025-11-30-12266121180.pcap. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20883">Issue 20883</a>.</p>
+</li>
+<li>
+<p>The Windows installers now ship with the Visual C++ Redistributable version 14.44.35112.
+They previously shipped with 14.40.33807.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Wireshark 4.6.1 included the following changes.
+See the
+<a href="https://www.wireshark.org/docs/relnotes/wireshark-4.6.1.html">release notes</a>
+for details:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2025-05">wnpa-sec-2025-05</a> BPv7 dissector crash. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20770">Issue 20770</a>.</p>
+</li>
+<li>
+<p><a href="https://www.wireshark.org/security/wnpa-sec-2025-06">wnpa-sec-2025-06</a> Kafka dissector crash. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20823">Issue 20823</a>.</p>
+</li>
+<li>
+<p>L2CAP dissector doesn’t understand retransmission mode. <a href="https://gitlab.com/wireshark/wireshark/-/issues/2241">Issue 2241</a>.</p>
+</li>
+<li>
+<p>DNS HIP dissector labels PK algorithm as HIT length. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20768">Issue 20768</a>.</p>
+</li>
+<li>
+<p>clang-cl error in "packet-zbee-direct.c" <a href="https://gitlab.com/wireshark/wireshark/-/issues/20776">Issue 20776</a>.</p>
+</li>
+<li>
+<p>Writing to an LZ4-compressed output file might fail. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20779">Issue 20779</a>.</p>
+</li>
+<li>
+<p>endian.h conflics with libc for building plugins. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20786">Issue 20786</a>.</p>
+</li>
+<li>
+<p>TShark crash caused by Lua plugin. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20794">Issue 20794</a>.</p>
+</li>
+<li>
+<p>Wireshark stalls for a few seconds when selecting specific messages. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20797">Issue 20797</a>.</p>
+</li>
+<li>
+<p>TLS Abbreviated Handshake Using New Session Ticket. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20802">Issue 20802</a>.</p>
+</li>
+<li>
+<p>Custom websocket dissector does not run. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20803">Issue 20803</a>.</p>
+</li>
+<li>
+<p>WINREG QueryValue triggers dissector bug in packet-dcerpc.c. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20813">Issue 20813</a>.</p>
+</li>
+<li>
+<p>Lua: FileHandler causing crash when reading packets. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20817">Issue 20817</a>.</p>
+</li>
+<li>
+<p>Apply As Filter for field with FT_NONE and BASE_NONE for a single byte does not use the hex value. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20818">Issue 20818</a>.</p>
+</li>
+<li>
+<p>Layout preference Pane 3 problem with selecting Packet Diagram or None. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20819">Issue 20819</a>.</p>
+</li>
+<li>
+<p>TCP dissector creates invalid packet diagram. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20820">Issue 20820</a>.</p>
+</li>
+<li>
+<p>Too many nested VLAN tags when opening as File Format. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20831">Issue 20831</a>.</p>
+</li>
+<li>
+<p>Omnipeek files not working in 4.6.0. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20842">Issue 20842</a>.</p>
+</li>
+<li>
+<p>Support UTF-16 strings in the IsoBus dissector for the string operations. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20845">Issue 20845</a>.</p>
+</li>
+<li>
+<p>SNMP getBulkRequest request-id does not get filtered for correctly. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20849">Issue 20849</a>.</p>
+</li>
+<li>
+<p>Fuzz job issue: fuzz-2025-11-12-12064814316.pcap. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20852">Issue 20852</a>.</p>
+</li>
+<li>
+<p>UDP Port 853 (DoQ) should be decoded as QUIC. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20856">Issue 20856</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Wireshark 4.6.0 included the following changes.
+See the
+<a href="https://www.wireshark.org/docs/relnotes/wireshark-4.6.0.html">release notes</a>
+for details:</p>
+</div>
+<div class="paragraph">
+<p>Wireshark can dissect process information, packet metadata, flow IDs, drop information, and other information provided by <code>tcpdump</code> on macOS.</p>
+</div>
+<div class="paragraph">
+<p>We now ship universal macOS installers instead of separate packages for Arm64 and Intel. <a href="https://gitlab.com/wireshark/wireshark/-/issues/17294">Issue 17294</a></p>
+</div>
+<div class="paragraph">
+<p>WinPcap is no longer supported. On Windows, use Npcap instead, uninstalling WinPcap if necessary.
+The final release of WinPcap was version 4.1.3 in 2013.
+It only supports up to Windows 8, which is no longer supported by Microsoft or Wireshark.</p>
+</div>
+<div class="paragraph">
+<p>A new “Plots” dialog has been added, which provides scatter plots in contrast to the “I/O Graphs” dialog, which provides histograms.
+The Plots dialog window supports multiple plots, markers, and automatic scrolling.</p>
+</div>
+<div class="paragraph">
+<p>Live captures can be compressed while writing. (Previously there was
+support for compressing when performing multiple file capture, at file
+rotation time.) The <code>--compress</code> option in TShark works on live captures
+as well. <a href="https://gitlab.com/wireshark/wireshark/-/issues/9311">Issue 9311</a></p>
+</div>
+<div class="paragraph">
+<p>Wireshark can now decrypt NTP packets using NTS (Network Time Security). To decrypt packets,
+the NTS-KE (Network Time Security Key Establishment Protocol) packets need to be present,
+alongside the TLS client and exporter secrets.</p>
+</div>
+<div class="paragraph">
+<p>Wireshark’s ability to decrypt MACsec packets has been expanded to either
+use the SAK unwrapped by the MKA dissector, or the PSK configured in the
+MACsec dissector.</p>
+</div>
+<div class="paragraph">
+<p>The TCP Stream Graph axes now use units with SI prefixes. <a href="https://gitlab.com/wireshark/wireshark/-/issues/20197">Issue 20197</a></p>
+</div>
+<div class="paragraph">
+<p>Display filter functions <code>float</code> and <code>double</code> are added to allow explicitly
+converting field types like integers and times to single and double precision
+floats.</p>
+</div>
+<div class="paragraph">
+<p>A <span class="menuseq"><b class="menu">Edit</b> <b class="caret">›</b> <b class="submenu">Copy</b> <b class="caret">›</b> <b class="menuitem">as HTML</b></span> menu item has been added, along with associated context menu items and a keyboard shortcut.</p>
+</div>
+<div class="paragraph">
+<p>The Conversations and Endpoints dialogs have an option to display byte counts and bit rates in exact counts instead of human-readable numbers with SI units.</p>
+</div>
+<div class="paragraph">
+<p>The color scheme can be set to Light or Dark mode independently of the current OS default on Windows and macOS, if Wireshark is built with Qt 6.8 or later as the official installers are. <a href="https://gitlab.com/wireshark/wireshark/-/issues/19328">Issue 19328</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_wireshark">Getting Wireshark</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wireshark source code and installation packages are available from
+<a href="https://www.wireshark.org/download.html" class="bare">https://www.wireshark.org/download.html</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_vendor_supplied_packages">Vendor-supplied Packages</h3>
+<div class="paragraph">
+<p>Most Linux and Unix vendors supply their own Wireshark packages.
+You can usually install or upgrade Wireshark using the package management system specific to that platform.
+A list of third-party packages can be found on the
+<a href="https://www.wireshark.org/download.html">download page</a>
+on the Wireshark web site.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_locations">File Locations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wireshark and TShark look in several different locations for preference files, plugins, SNMP MIBS, and RADIUS dictionaries.
+These locations vary from platform to platform.
+You can use <span class="menuseq"><b class="menu">Help</b> <b class="caret">›</b> <b class="submenu">About Wireshark</b> <b class="caret">›</b> <b class="menuitem">Folders</b></span> or <code>tshark -G folders</code> to find the default locations on your system.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_help">Getting Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The User’s Guide, manual pages and various other documentation can be found at
+<a href="https://www.wireshark.org/docs/" class="bare">https://www.wireshark.org/docs/</a></p>
+</div>
+<div class="paragraph">
+<p>Community support is available on
+<a href="https://ask.wireshark.org/">Wireshark’s Q&amp;A site</a>
+and on the wireshark-users mailing list.
+Subscription information and archives for all of Wireshark’s mailing lists can be found on <a href="https://lists.wireshark.org/lists/">the mailing list site</a>.</p>
+</div>
+<div class="paragraph">
+<p>Bugs and feature requests can be reported on
+<a href="https://gitlab.com/wireshark/wireshark/-/issues">the issue tracker</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can learn protocol analysis and meet Wireshark’s developers at
+<a href="https://sharkfest.wireshark.org">SharkFest</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_you_can_help">How You Can Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Wireshark Foundation helps as many people as possible understand their networks as much as possible.
+You can find out more and donate at <a href="https://wiresharkfoundation.org">wiresharkfoundation.org</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_frequently_asked_questions">Frequently Asked Questions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A complete FAQ is available on the
+<a href="https://www.wireshark.org/faq.html">Wireshark web site</a>.</p>
+</div>
+</div>
+</div>
+</div>
+ </section>
+</div> </div> <footer class="bg-background relative border-t border-t-border-card mt-48 text-border-card"> <svg width="40" height="44" viewBox="0 0 40 44" fill="var(--color-background)" class="absolute right-8 sm:right-24 w-10 h-10 -mt-[38.9px] text-border-card">
+<path d="M0 43.0801C1.02564 33.946 4.10256 19.7376 15.3846 9.58876C26.1708 -0.114028 40 -0.560121 40 0.454768C40 1.46966 34.8718 9.58876 34.8718 18.7227C34.8718 33.9798 38.2906 38.0056 40 43.0801" stroke="currentColor" />
+</svg> <div class="grid grid-cols-2 lg:grid-cols-7 lg:grid-flow-col gap-4 sm:gap-6 text-text py-8 sm:px-8 px-4"> <div class="flex flex-col gap-4 w-full col-span-2 mb-4 lg:mb-0 sm:items-baseline items-center"> <svg viewBox="0 0 379.01 109.83" class="w-32 h-9" fill="currentColor"><g data-name="Layer_1"><path d="M378.3 54.33H205.03c-1.29.02-2.19-.51-2.65-1.76-.55-1.51-1.18-2.99-1.71-4.5-1.95-5.61-3.18-11.38-3.62-17.3-.58-7.82.24-15.46 3.3-22.78.32-.76.93-1.42.82-2.33-.79.06-1.59.08-2.37.2-7.87 1.17-14.82 4.32-20.72 9.7-4.61 4.19-8.08 9.22-10.78 14.8-3.05 6.29-5.01 12.92-6.13 19.81-.12.74-.15 1.49-.31 2.21-.25 1.16-.83 1.68-1.99 1.8-.51.06-1.03.04-1.55.04H2.34c-2.28 0-2.09.11-2.07-2.02.01-2.6-.33-2.29 2.27-2.29 50.63 0 101.26 0 151.89-.02.78 0 1.77.37 2.29-.26.42-.51.4-1.4.53-2.12 1.36-7.5 3.74-14.66 7.35-21.39 3.15-5.88 7.15-11.08 12.35-15.31 6.01-4.9 12.87-7.88 20.5-9.13 2.38-.39 4.77-.67 7.19-.67.4 0 .81-.03 1.2.05 1.24.24 1.99 1.6 1.53 2.78-.2.53-.53 1.02-.82 1.51-2.54 4.31-4.11 8.95-4.81 13.89-1.27 8.87-.07 17.5 2.55 25.98.41 1.31.91 2.6 1.35 3.9.21.64.62.89 1.28.84.13 0 .26-.01.4-.02.61-.01 1.09 0 1.15.01.49.02 49.34.03 169.83 0M293.44 85.3V62.93c0-2.17-.15-1.95 1.93-1.96h17.73c2.3 0 4.58.22 6.84.64 3.46.64 5.94 2.57 7.58 5.64 1.36 2.55 1.86 5.29 1.75 8.14-.06 1.43-.25 2.85-.7 4.23-1.39 4.29-4.36 6.89-8.63 8.12-.5.14-1 .25-1.5.38-.29.08-.37.24-.14.46.21.19.44.36.68.53 2.02 1.47 3.72 3.24 5.04 5.36 1.24 2 2.45 4.01 3.63 6.05 1.49 2.58 2.93 5.19 4.39 7.79.19.35.37.71.51 1.08.03.08-.12.32-.23.35-.21.06-.45.04-.68.04-2.7 0-5.39-.04-8.09.02-.93.02-1.46-.29-1.93-1.08-2.21-3.75-4.47-7.48-6.74-11.2-.86-1.42-1.77-2.81-2.69-4.2-.35-.52-.73-1.03-1.14-1.51-1.21-1.43-2.75-2.23-4.63-2.3-1.09-.04-2.18-.09-3.27-.09-.73 0-.86.17-.88.94-.02.46 0 .92 0 1.38v16.52c0 1.51-.02 1.52-1.51 1.52h-6.37c-.75 0-.89-.17-.93-.92-.03-.46-.01-.92-.01-1.38v-22.2Zm15.45-16.04v-.03c-1.84 0-3.67-.01-5.51 0-1.09 0-1.12.03-1.12 1.03-.01 3.44 0 6.89 0 10.33 0 .99.2 1.04 1.13 1.03 2.53 0 5.05.02 7.58-.03 1.55-.03 3.1-.14 4.63-.32 2.15-.26 3.54-1.5 4.21-3.55.46-1.4.49-2.83.16-4.25-.52-2.23-1.93-3.6-4.2-4.02-.62-.12-1.25-.17-1.88-.18-1.66-.03-3.33 0-4.99 0ZM337.76 85.4V62.84c0-2.05-.17-1.88 1.82-1.88h6.2c.74 0 .81.09.84.77.02.46.01.92.01 1.38v17.22c0 .52 0 1.03.05 1.55 0 .06.3.19.34.16.33-.32.65-.65.93-1 5.01-6.06 10.01-12.13 15.02-18.19.51-.62.96-1.41 1.63-1.73s1.57-.15 2.37-.15h8.61c.15 0 .31.08.46.13-.05.15-.06.35-.15.46-1.91 2.22-3.83 4.43-5.74 6.64L361 78.73c-.19.22-.37.44-.57.65-.37.38-.46.75-.15 1.22.35.53.64 1.09.96 1.63 5.01 8.57 10.01 17.14 15.02 25.71.26.44.51.9.74 1.36.13.26 0 .44-.28.47-.28.03-.57.02-.86.02-2.87 0-5.74-.04-8.61.02-.99.02-1.55-.3-2.01-1.19-2.39-4.64-4.84-9.25-7.27-13.87-1.25-2.39-2.51-4.77-3.78-7.15-.29-.55-.5-.58-.89-.14-2.06 2.32-4.09 4.66-6.17 6.96-.48.53-.51 1.12-.5 1.75 0 3.73.01 7.46 0 11.19-.01 2.79.36 2.4-2.5 2.43-1.84.02-3.67.01-5.51 0-.7 0-.82-.14-.85-.79-.02-.46-.01-.92-.01-1.38V85.41ZM191.3 75.12c-1.15.07-2.29.15-3.44.21-.4.02-.63-.16-.73-.56-.19-.72-.37-1.44-.62-2.14-.85-2.38-2.56-3.7-5.04-4.13-1.67-.29-3.31-.25-4.96.06-1.14.22-2.2.64-3.14 1.34-2.07 1.54-2.26 4.4-.32 6.11.67.6 1.5 1.08 2.34 1.41 1.76.68 3.58 1.22 5.38 1.8 2.18.7 4.38 1.35 6.55 2.06.81.27 1.6.64 2.37 1.02 3.9 1.93 6.37 4.99 7.24 9.27.75 3.69.52 7.3-1.11 10.75-1.69 3.56-4.4 5.95-8.13 7.19-1.86.62-3.77.98-5.73 1.06-2.82.11-5.61.08-8.37-.65-4.49-1.18-7.74-3.84-9.78-8.01-1.12-2.29-1.68-4.74-2.05-7.25-.07-.51.1-.76.63-.82 1.02-.13 2.05-.22 3.08-.34l4.1-.45c.48-.06.76.13.84.61.06.34.13.68.24 1 .28.87.53 1.76.9 2.59 1.27 2.94 3.58 4.56 6.71 4.97 1.72.22 3.45.17 5.12-.33 2.61-.78 4.39-2.44 5-5.16.49-2.2-.32-4.17-2.25-5.31-.83-.49-1.74-.88-2.66-1.18-2.29-.73-4.61-1.38-6.92-2.05-2.15-.63-4.26-1.36-6.22-2.46-4.54-2.54-6.87-6.43-7.01-11.63-.05-1.98.28-3.88 1.06-5.7 1.48-3.47 4.04-5.79 7.55-7.08 1.68-.61 3.41-.98 5.2-1.07 2.87-.14 5.73-.11 8.54.67 5.81 1.61 9.11 5.48 10.14 11.34.54 3.04.58 2.68-2.25 2.81-.74.03-1.49 0-2.24 0v.06ZM239.91 85.48v22.21c0 .52 0 1.03-.03 1.55-.02.32-.22.51-.55.54-.12 0-.23.02-.34.02-2.3 0-4.59.01-6.89 0-.84 0-.96-.15-1-1.02-.02-.46 0-.92 0-1.38V90.01c0-1.52-.02-1.54-1.5-1.54h-14.3c-.35 0-.69 0-1.03.03-.32.03-.52.22-.53.56-.02.46-.03.92-.03 1.38v17.05c0 .46.01.92 0 1.38-.03.83-.11.94-.87.95-2.35.02-4.71.02-7.06 0-.76 0-.87-.14-.91-.92-.02-.4 0-.8 0-1.2V63.1c0-2.42-.21-2.07 2.13-2.09 1.78-.02 3.56 0 5.34 0 1.43 0 1.38.01 1.38 1.46v12.57c0 1.43-.01 2.87.01 4.31.01.76.14.89.92.9 1.72.02 3.44 0 5.17 0h9.3c.46 0 .92 0 1.38-.02.33-.01.54-.2.56-.53.03-.51.05-1.03.05-1.55V63.34c0-.46-.01-.92 0-1.38.04-.86.1-.94 1.04-.95 2.3-.01 4.59-.01 6.89 0 .8 0 .85.08.88.91.01.46 0 .92 0 1.38v22.21ZM3.18 60.97c.75 0 1.49-.02 2.24 0 .69.02.74.06.9.78.59 2.75 1.16 5.5 1.73 8.25 1.65 7.92 3.31 15.83 4.94 23.75.47 2.3.87 4.62 1.31 6.93.08.39.17.78.28 1.17.02.08.13.13.19.19.04-.04.09-.08.1-.13.1-.33.21-.66.28-.99 1.57-7.94 3.79-15.72 5.72-23.57 1.2-4.9 2.48-9.78 3.72-14.67.03-.11.05-.22.08-.33.36-1.34.36-1.36 1.69-1.36h4.99c.47 0 .72.19.84.67.61 2.45 1.25 4.89 1.88 7.33 1.72 6.78 3.45 13.56 5.13 20.35.99 4.01 1.77 8.06 2.31 12.16 0 .06 0 .12.03.17.04.08.12.14.17.2.08-.08.21-.14.23-.23.28-1.29.54-2.58.83-3.87 1.91-8.8 3.83-17.59 5.75-26.38.63-2.91 1.27-5.82 1.92-8.74.09-.39.2-.78.29-1.17.08-.33.29-.48.61-.48 1.55 0 3.1-.01 4.65 0 .51 0 .6.14.48.64-.4 1.67-.81 3.34-1.23 5.01-3.42 13.86-6.85 27.72-10.25 41.58-.45 1.86-.51 1.56-2.04 1.58-.92.01-1.84.01-2.76 0-1.16-.02-1.17-.02-1.47-1.22-.47-1.83-.92-3.67-1.37-5.51-2.87-11.58-5.74-23.15-8.61-34.72-.01-.06 0-.12-.03-.17-.07-.13-.16-.26-.24-.4-.13.17-.32.31-.37.5-.22.89-.39 1.79-.61 2.68-2.5 10.07-5.02 20.14-7.53 30.21-.64 2.56-1.27 5.12-1.93 7.67-.22.87-.29.93-1.16.94-1.38.02-2.76.02-4.13 0-.77-.01-.84-.06-1.04-.86-.41-1.61-.79-3.23-1.18-4.85C7.24 90.3 3.96 76.52.68 62.75c-.11-.45-.2-.9-.28-1.35-.04-.27.13-.42.4-.42h2.41v-.02ZM283.78 109.8c-1.26 0-2.53-.02-3.79 0-.67.02-1.03-.24-1.25-.89-.87-2.61-1.77-5.21-2.7-7.8-1.02-2.84-.3-2.38-3.43-2.4-4.31-.03-8.61 0-12.91 0-.4 0-.8.01-1.2 0-.61-.02-.92.26-1.1.85-.88 2.79-1.81 5.56-2.72 8.34-.12.38-.26.76-.37 1.15-.15.5-.44.76-.99.76-2.64-.01-5.28 0-7.92-.01-.51 0-.62-.17-.48-.64.11-.38.25-.76.38-1.14l15.9-45.45c.11-.33.25-.64.34-.97.13-.47.45-.61.9-.61h8.09c.39 0 .63.17.76.55.16.49.37.97.54 1.45 5.38 14.94 10.75 29.88 16.13 44.83.13.38.28.75.4 1.14.19.63.04.85-.63.86-1.32.02-2.64 0-3.96 0ZM266.4 90.49h4.12c.4 0 .8 0 1.2-.03.34-.02.52-.21.44-.56-.07-.28-.17-.55-.26-.82-1.69-5.05-3.37-10.09-5.06-15.14-.09-.27-.17-.54-.29-.81-.04-.09-.17-.17-.26-.19-.06-.01-.18.1-.21.18-.14.37-.26.76-.39 1.14-.91 2.77-1.82 5.54-2.73 8.32-.66 2.01-1.33 4.02-1.97 6.03-.58 1.82-.89 1.9 1.27 1.88 1.38-.01 2.75 0 4.12 0ZM79.05 85.28V63.07c0-.52 0-1.03.03-1.55.01-.33.22-.52.54-.54.34-.02.69-.02 1.03-.02h18.6c2.07 0 4.12.22 6.15.67 2.97.66 5.21 2.31 6.71 4.95 2.24 3.96 2.66 8.15 1.27 12.45-1.06 3.27-3.23 5.68-6.41 7.03-1.41.6-2.94.93-4.42 1.4-.11.03-.2.09-.3.14.06.1.12.19.18.28.03.04.08.08.13.11 2.6 1.43 4.36 3.68 6 6.06.62.9 1.19 1.83 1.74 2.77 2.18 3.77 4.35 7.56 6.51 11.34.23.4.44.8.62 1.22.03.08-.1.27-.2.36-.07.06-.22.05-.33.05-1.89 0-3.79 0-5.68.01-.52 0-.88-.18-1.12-.63-.22-.4-.46-.8-.68-1.19-2.21-3.82-4.4-7.66-6.64-11.47-.87-1.48-1.85-2.91-2.85-4.3a12.98 12.98 0 0 0-1.95-2.17c-1.22-1.09-2.66-1.83-4.34-1.86-2.64-.05-5.28-.04-7.92-.04-.7 0-.79.12-.82.81-.02.46-.01.92-.01 1.38v17.73c0 1.85.07 1.75-1.81 1.74-1.09 0-2.18 0-3.27-.02-.54-.01-.69-.18-.72-.74-.03-.46-.01-.92-.01-1.38V85.28ZM93.29 66.4h-6.54c-.4 0-1.88 1.09-1.88 1.32v13.42c0 .29-.03.59.04.85.05.19.24.4.41.46.26.09.56.08.85.08 3.84 0 7.69.03 11.53-.02 1.6-.02 3.21-.13 4.77-.55 2.43-.65 4.19-2.1 5.07-4.48.29-.8.52-1.66.58-2.5.29-3.84-1.72-7.35-5.75-8.19-1.06-.22-9.08-.39-9.08-.39ZM123.4 85.42c0-7.46 0-23.41.03-23.92.01-.34.24-.5.56-.51.34-.01 19.97-.02 29.44-.02 1.79 0 1.68-.1 1.68 1.68 0 1.15 0 2.3-.02 3.44 0 .4-.22.64-.63.65-.52.01-1.03.02-1.55.02-7.12 0-22.26-.01-22.72 0-.9.03-.96.07-.96 1.02-.01 4.3 0 8.61 0 12.91 0 .17-.03.37.05.51.1.17 1.48.45 1.99.45h20.48c1.74 0 1.69-.12 1.68 1.68 0 1.15 0 2.3-.02 3.44 0 .41-1.57.65-2.03.65h-20.31c-2.02 0-1.85-.18-1.85 1.85v13.08c0 .4 1.52 1.65 2.04 1.65h22.9c2.15 0 1.96-.21 1.97 1.91 0 1.03.01 2.07-.01 3.1-.01.6-.15.73-.69.77-.4.03-.8.02-1.2.02h-28.92c-2 0-1.89.16-1.89-1.83V85.42ZM68.76 107.92c0 2.02.05 1.87-1.87 1.87-1.03 0-2.07 0-3.1-.01-.54-.01-.74-.2-.77-.7-.03-.46-.03-.92-.03-1.38V62.45c.01-.99.53-1.48 1.53-1.49h2.92c1.27.01 1.28.02 1.3 1.37v45.59Z" /></g></svg> <p class="paragraph text-text undefined size-sm">  <b>Subscribe to our mailing lists.</b> Get tips, technical guides,
+                and best practices. Right in your inbox. </p>  <a current="false" href="https://lists.wireshark.org/" data-astro-cid-2hlhkyqe="true" class="button size-sm variant-secondary">  Subscribe </a>  </div> <div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/download.html" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Download </a>  </li> <li> <a current="false" href="https://gitlab.com/wireshark/wireshark/" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Source Code </a>  </li><li> <a current="false" href="/docs/relnotes/" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Release Notes </a>  </li><li> <a current="false" href="https://stratoshark.org" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Stratoshark </a>  </li>  </ul> </div><div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/learn" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Learn </a>  </li> <li> <a current="false" href="/docs/wsug_html_chunked/" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  User&#39;s Guide </a>  </li><li> <a current="false" href="/certifications" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Certifications </a>  </li><li> <a current="false" href="/faq" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  FAQ </a>  </li><li> <a current="false" href="https://www.youtube.com/@WireSharkFest" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  SharkFest YouTube </a>  </li><li> <a current="false" href="/about" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  About </a>  </li>  </ul> </div><div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/resources" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Resources </a>  </li> <li> <a current="false" href="/docs/" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Documentation </a>  </li><li> <a current="false" href="https://wiki.wireshark.org/" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Wiki </a>  </li><li> <a current="false" href="/resources#sample-captures" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Sample Captures </a>  </li>  </ul> </div><div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/tools/" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Tools </a>  </li> <li> <a current="false" href="/tools#oui-lookup" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  OUI Lookup </a>  </li><li> <a current="false" href="/tools/wpa-psk" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  WPA PSK Generator </a>  </li><li> <a current="false" href="/tools/v46status" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  IPv4/IPv6 Test </a>  </li><li> <a current="false" href="/tools/modelines" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Modeline Generator </a>  </li><li> <a current="false" href="/tools/string-cf" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Capture Filter Generator </a>  </li>  </ul> </div><div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/community" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Community </a>  </li> <li> <a current="false" href="https://lists.wireshark.org/" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Mailing Lists </a>  </li><li> <a current="false" href="https://sharkfest.wireshark.org" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  SharkFest </a>  </li><li> <a current="false" href="https://sharkbytes.transistor.fm/" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Podcast </a>  </li><li> <a current="false" href="/blog" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Blog </a>  </li><li> <a current="false" href="https://ask.wireshark.org/" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Ask Wireshark </a>  </li><li> <a current="false" href="https://discord.com/invite/ts9GZCjGj5" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Discord </a>  </li>  </ul> </div><div class="flex gap-4 sm:py-0 py-2 tracking-tight"> <ul class="flex flex-col w-full sm:text-left text-center"> <li> <a current="false" href="/develop" class="underline link text-action size-xs" data-astro-cid-c3we5kpz="true">  Develop </a>  </li> <li> <a current="false" href="/develop" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Get Involved </a>  </li><li> <a current="false" href="https://gitlab.com/wireshark/wireshark/-/issues" target="_blank" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Issue Tracker </a>  </li><li> <a current="false" href="/docs/wsdg_html_chunked/" data-astro-cid-c3we5kpz="true" class="link text-action size-xs">  Developer&#39;s Guide </a>  </li> <li class="flex sm:justify-normal justify-center mt-2"> <a current="false" href="/members" data-astro-cid-2hlhkyqe="true" class="button size-xs variant-secondary">  
+Become a Member
+ </a>  </li> </ul> </div> </div> <div> <div class="lg:justify-between items-center lg:flex-row flex-col flex bg-background-inverted text-text-inverted items-center px-4 sm:px-8 py-1.5 sm:py-2.5 gap-4 text-center w-full left-0">   <div class="flex gap-8 pt-2 lg:py-1"> <a current="false" href="https://wiresharkfoundation.org/" target="_blank" class="text-text-inverted link text-action size-xs" data-astro-cid-c3we5kpz="true">  Wireshark Foundation </a>  <a current="false" href="https://wiresharkfoundation.org/donate/" target="_blank" class="text-text-inverted link text-action size-xs" data-astro-cid-c3we5kpz="true">  Donate </a>  <a current="false" href="https://wiresharkfoundation.org/privacy-policy/" target="_blank" class="text-text-inverted link text-action size-xs" data-astro-cid-c3we5kpz="true">  Privacy Policy </a>  <a current="false" href="/code-of-conduct" class="text-text-inverted link text-action size-xs" data-astro-cid-c3we5kpz="true">  Code of Conduct </a>  </div> <div class="flex gap-6 pb-2 lg:py-1 items-center"> <a current="false" href="https://bsky.app/profile/wiresharkfoundation.org" target="_blank" class="text-text-inverted link text-action flex gap-2 size-md" aria-label="bluesky" data-astro-cid-c3we5kpz="true">   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-5 size-lg"> <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+<path d="M5.24459 1.87938C7.97901 3.93221 10.9202 8.0945 12 10.3282C13.08 8.09466 16.021 3.93217 18.7555 1.87938C20.7285 0.398138 23.9253 -0.747962 23.9253 2.89899C23.9253 3.62733 23.5077 9.01747 23.2628 9.89254C22.4115 12.9349 19.3092 13.7108 16.5497 13.2412C21.3733 14.0621 22.6003 16.7814 19.9503 19.5007C14.9175 24.6652 12.7166 18.2049 12.1524 16.5496C12.0491 16.2461 12.0007 16.1042 12 16.2249C11.9993 16.1042 11.9509 16.2461 11.8475 16.5496C11.2836 18.2049 9.08278 24.6653 4.04962 19.5007C1.39958 16.7814 2.62661 14.062 7.45026 13.2412C4.69067 13.7108 1.58837 12.9349 0.737156 9.89254C0.492227 9.01739 0.074646 3.62725 0.074646 2.89899C0.074646 -0.747962 3.27152 0.398138 5.24445 1.87938H5.24459Z" fill="currentColor" />
+</svg> </svg></a> <a current="false" href="https://ioc.exchange/@wireshark" target="_blank" class="text-text-inverted link text-action flex gap-2 size-md" aria-label="mastodon" data-astro-cid-c3we5kpz="true">   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 25" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-5 size-lg"> <svg width="23" height="25" viewBox="0 0 23 25" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9557 18.7585C18.9628 18.3994 21.5811 16.5466 21.9102 14.8536C22.4287 12.1867 22.3859 8.3454 22.3859 8.3454C22.3859 3.13907 18.9748 1.61301 18.9748 1.61301C17.255 0.82309 14.3016 0.490905 11.2334 0.46582H11.158C8.08969 0.490905 5.1383 0.82309 3.41829 1.61301C3.41829 1.61301 0.00709574 3.13907 0.00709574 8.3454C0.00709574 8.66103 0.00546439 8.99301 0.00376611 9.33861C-0.000950375 10.2984 -0.00618313 11.3633 0.0215779 12.4748C0.145452 17.5663 0.95503 22.5842 5.66251 23.8302C7.83302 24.4047 9.69656 24.5249 11.1974 24.4424C13.9191 24.2915 15.447 23.4711 15.447 23.4711L15.3573 21.4964C15.3573 21.4964 13.4123 22.1096 11.2279 22.0349C9.06374 21.9607 6.77905 21.8015 6.42903 19.1444C6.3967 18.911 6.38054 18.6615 6.38054 18.3994C6.38054 18.3994 8.50502 18.9187 11.1974 19.042C12.8437 19.1175 14.3876 18.9456 15.9557 18.7585ZM18.3623 15.0533V8.7493C18.3623 7.4609 18.0343 6.43707 17.3755 5.6796C16.6958 4.92213 15.806 4.53383 14.7014 4.53383C13.4233 4.53383 12.4554 5.02506 11.8156 6.00765L11.1934 7.05049L10.5713 6.00765C9.93138 5.02506 8.96353 4.53383 7.68548 4.53383C6.58083 4.53383 5.69095 4.92213 5.01145 5.6796C4.35252 6.43707 4.02447 7.4609 4.02447 8.7493V15.0533H6.522V8.93459C6.522 7.64478 7.06469 6.99011 8.1502 6.99011C9.35041 6.99011 9.95207 7.76671 9.95207 9.30234V12.6515H12.4349V9.30234C12.4349 7.76671 13.0364 6.99011 14.2366 6.99011C15.3221 6.99011 15.8648 7.64478 15.8648 8.93459V15.0533H18.3623Z" fill="currentColor" />
+</svg> </svg></a> <a current="false" href="https://www.facebook.com/WiresharkNews/" target="_blank" class="text-text-inverted link text-action flex gap-2 size-md" aria-label="facebook" data-astro-cid-c3we5kpz="true">   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-5 size-lg"> <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+<path d="M20.3408 0.234375H1.65922C1.35181 0.234499 1.05703 0.356671 0.839665 0.57404C0.622296 0.791408 0.500124 1.08619 0.5 1.39359V20.0752C0.500124 20.3826 0.622296 20.6773 0.839665 20.8947C1.05703 21.1121 1.35181 21.2343 1.65922 21.2344H11V12.9844H8.48984V9.98438H11V7.59375C11 4.88156 12.8811 3.405 15.3041 3.405C16.4633 3.405 17.7102 3.49219 17.9998 3.53062V6.36328H16.0695C14.7514 6.36328 14.5002 6.98672 14.5002 7.90547V9.98438H17.6408L17.2306 12.9844H14.5002V21.2344H20.3408C20.6482 21.2343 20.943 21.1121 21.1603 20.8947C21.3777 20.6773 21.4999 20.3826 21.5 20.0752V1.39359C21.4999 1.08619 21.3777 0.791408 21.1603 0.57404C20.943 0.356671 20.6482 0.234499 20.3408 0.234375Z" fill="currentColor" />
+</svg> </svg></a> <a current="false" href="https://www.linkedin.com/company/wireshark-foundation/" target="_blank" class="text-text-inverted link text-action flex gap-2 size-md" aria-label="linkedin" data-astro-cid-c3we5kpz="true">   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-5 size-lg"> <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+<path d="M19.8205 0.234375H2.29437C1.33672 0.234375 0.5 0.923437 0.5 1.86984V19.4348C0.5 20.3864 1.33672 21.2344 2.29437 21.2344H19.8153C20.7781 21.2344 21.5 20.3808 21.5 19.4348V1.86984C21.5056 0.923437 20.7781 0.234375 19.8205 0.234375ZM7.00953 17.7389H4.00109V8.385H7.00953V17.7389ZM5.60938 6.96281H5.58781C4.625 6.96281 4.00156 6.24609 4.00156 5.34891C4.00156 4.43531 4.64141 3.73547 5.62578 3.73547C6.61016 3.73547 7.2125 4.43016 7.23406 5.34891C7.23359 6.24609 6.61016 6.96281 5.60938 6.96281ZM18.0045 17.7389H14.9961V12.6244C14.9961 11.3991 14.5583 10.5619 13.4698 10.5619C12.6383 10.5619 12.1461 11.1244 11.9272 11.6723C11.8452 11.8692 11.8231 12.1373 11.8231 12.4111V17.7389H8.81469V8.385H11.8231V9.68672C12.2609 9.06328 12.9448 8.16609 14.5363 8.16609C16.5111 8.16609 18.005 9.46781 18.005 12.2742L18.0045 17.7389Z" fill="currentColor" />
+</svg> </svg></a> <a current="false" href="https://www.youtube.com/@WireSharkFest" target="_blank" class="text-text-inverted link text-action flex gap-2 size-md" aria-label="youtube" data-astro-cid-c3we5kpz="true">   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19" stroke="currentColor" overflow="visible" data-astro-cid-c3we5kpz="true" class="icon w-5 size-lg"> <svg width="24" height="19" viewBox="0 0 24 19" fill="none">
+<path d="M23.8425 4.70891C23.8425 2.59953 22.2909 0.902656 20.3737 0.902656C17.7769 0.78125 15.1284 0.734375 12.4219 0.734375H11.5781C8.87811 0.734375 6.22498 0.78125 3.6281 0.903125C1.71561 0.903125 0.164042 2.60937 0.164042 4.71875C0.0468549 6.38703 -0.00283263 8.05578 -2.01252e-05 9.72453C-0.00470763 11.3933 0.0484174 13.0636 0.159355 14.7355C0.159355 16.8448 1.71092 18.5558 3.62342 18.5558C6.35154 18.6823 9.14998 18.7386 11.9953 18.7339C14.8453 18.7433 17.6359 18.6839 20.3672 18.5558C22.2844 18.5558 23.8359 16.8448 23.8359 14.7355C23.9484 13.062 24 11.3933 23.9953 9.71984C24.0059 8.05109 23.955 6.38078 23.8425 4.70891ZM9.7031 14.323V5.11203L16.5 9.71516L9.7031 14.323Z" fill="currentColor" />
+</svg> </svg></a>  </div>   </div> </div> </footer> <div id="wca-promo" class="fixed bottom-5 right-5 z-20 max-w-64 hidden"> <div class="relative bg-gradient-to-br from-blue-800 to-blue-600 rounded shadow-lg border-2 border-transparent transition-all duration-300 ease-in-out"> <!-- Close button --> <button id="wca-promo-close" class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors z-10 cursor-pointer" aria-label="Dismiss WCA promotion"> <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Main content --> <a href="/certifications" class="block no-underline p-4 sm:p-3 hover:shadow-2xl transition-all duration-300 ease-in-out hover:border-blue-300 hover:-translate-y-0.5 group rounded"> <div class="flex items-center gap-3 sm:gap-2.5"> <img src="/_astro/wca.C_vSXqTJ_Z2pt6cI.webp" alt="WCA Logo" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="962" class="w-20 h-20 object-contain flex-shrink-0"> <div class="flex-1"> <p class="paragraph text-text text-white size-xs">  
+Find out more about the new WCA certification
+ </p>  </div> </div> </a> </div> <script type="module">const a="wca-promo-dismissed",t=document.getElementById("wca-promo"),o=document.getElementById("wca-promo-close");(!localStorage.getItem(a)||localStorage.getItem(a)==="false")&&t?.classList.remove("hidden");o?.addEventListener("click",e=>{e.preventDefault(),e.stopPropagation(),t?.classList.add("opacity-0","translate-y-2"),localStorage.setItem(a,"true"),setTimeout(()=>{t?.classList.add("hidden"),t?.remove()},300)});t?.addEventListener("click",e=>{e.target!==o&&!o?.contains(e.target)&&(t?.classList.add("opacity-0","translate-y-2"),localStorage.setItem(a,"true"),setTimeout(()=>{t?.classList.add("hidden"),t?.remove()},300))});</script> </div> <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;e2b217f4cd1643178b66920245ab057f&quot;}"></script> </body> </html> <script type="module">const r=/<\/a>\s+(?=[.,:;!?])/g,n=document.querySelector(".container");n?Array.from(n.querySelectorAll("a")).map(e=>e.parentElement).forEach(e=>{e&&(e.innerHTML=e.innerHTML.replace(r,"</a>"))}):Array.from(document.querySelectorAll("a")).map(e=>e.parentElement).forEach(e=>{e&&(e.innerHTML=e.innerHTML.replace(r,"</a>")),e&&e.children.length>0&&Array.from(e.children).forEach(a=>{a.innerHTML=a.innerHTML.replace(r,"</a>").replace(/ $/,"")})});</script> <script type="module">const o=document.getElementById("theme-toggle"),t=document.querySelector(".dark-icon"),c=document.querySelector(".light-icon"),d=localStorage.getItem("site-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",d),m(d);function m(n){!t||!c||(n==="light"?(t.classList.remove("hidden"),c.classList.add("hidden")):(t.classList.add("hidden"),c.classList.remove("hidden")))}o&&(o.onclick=function(){let e=document.documentElement.getAttribute("data-theme")==="light"?"dark":"light";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("site-theme",e),m(e)});</script>

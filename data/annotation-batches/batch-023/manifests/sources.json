@@ -1,0 +1,110 @@
+[
+  {
+    "pageId": "2449365e5a0b",
+    "name": "飞书下载",
+    "url": "https://www.feishu.cn/download",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:01.191241+00:00",
+    "finalUrl": "https://www.feishu.cn/download",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 4392,
+    "htmlFile": "data/annotation-batches/batch-023/html/2449365e5a0b.html",
+    "snapshotSha256": "60a1bde1105fa490ca73e1e326c6a9d68e84dac98459ec2122a21cabc6bb7d44"
+  },
+  {
+    "pageId": "691bbdb7a12a",
+    "name": "Lark开放平台",
+    "url": "https://open.larksuite.com/changelog?lang=zh-CN",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:01.668091+00:00",
+    "finalUrl": "https://open.larksuite.com/changelog?lang=zh-CN",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 7329,
+    "htmlFile": "data/annotation-batches/batch-023/html/691bbdb7a12a.html",
+    "snapshotSha256": "8a22fd5828c07a908ae964ea6aaca40ae6adc2d4251806c6f9b2a2c941340331"
+  },
+  {
+    "pageId": "4a1ccbb1f759",
+    "name": "阿里云盘下载",
+    "url": "https://www.aliyundrive.com/download",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:01.990019+00:00",
+    "finalUrl": "https://www.aliyundrive.com/download",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 3781,
+    "htmlFile": "data/annotation-batches/batch-023/html/4a1ccbb1f759.html",
+    "snapshotSha256": "ec00136de197db490771829d98f3c21d72c2b6e1bcd98711d26191b0a6e04df3"
+  },
+  {
+    "pageId": "2898db8e263d",
+    "name": "百度网盘下载",
+    "url": "https://pan.baidu.com/download",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:03.292438+00:00",
+    "finalUrl": "https://pan.baidu.com/download",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 8999,
+    "htmlFile": "data/annotation-batches/batch-023/html/2898db8e263d.html",
+    "snapshotSha256": "9b6e8f6adc195002a86593a8eb0c2d359f632e1e953c88687ea977388e9cd918"
+  },
+  {
+    "pageId": "9c0c413c1790",
+    "name": "腾讯文档下载",
+    "url": "https://docs.qq.com/download",
+    "status": null,
+    "fetchedAt": "2026-08-03T17:26:03.880384+00:00",
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "bc1c4d7fd945",
+    "name": "钉钉下载",
+    "url": "https://www.dingtalk.com/download",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:04.261499+00:00",
+    "finalUrl": "https://www.dingtalk.com/download",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 27139,
+    "htmlFile": "data/annotation-batches/batch-023/html/bc1c4d7fd945.html",
+    "snapshotSha256": "e0b98edc757d28fa4729a92bade3919b9e8b588af9f7882128e80e1fdb2ff53d"
+  },
+  {
+    "pageId": "4557adeae0b4",
+    "name": "印象笔记下载",
+    "url": "https://www.evernote.cn/download",
+    "status": null,
+    "fetchedAt": "2026-08-03T17:26:05.795815+00:00",
+    "error": "<urlopen error [Errno -5] No address associated with hostname>",
+    "bytes": 0
+  },
+  {
+    "pageId": "b742080d5e3e",
+    "name": "Snapdrop",
+    "url": "https://snapdrop.net/download",
+    "status": null,
+    "fetchedAt": "2026-08-03T17:26:06.220652+00:00",
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "e6ca54a07988",
+    "name": "TiddlyWiki",
+    "url": "https://tiddlywiki.com/download",
+    "status": null,
+    "fetchedAt": "2026-08-03T17:26:06.473528+00:00",
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "dd5fe45ed78f",
+    "name": "Cyberduck",
+    "url": "https://cyberduck.io/download",
+    "status": 200,
+    "fetchedAt": "2026-08-03T17:26:06.677920+00:00",
+    "finalUrl": "https://cyberduck.io/download/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 25442,
+    "htmlFile": "data/annotation-batches/batch-023/html/dd5fe45ed78f.html",
+    "snapshotSha256": "e4c2b9bfc172e7951b8603e632023f7ace684ba0497f016f8ea1e0045e94d8b4"
+  }
+]

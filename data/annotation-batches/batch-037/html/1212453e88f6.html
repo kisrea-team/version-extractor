@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The Crystal Programming Language</title>
+    <meta charset="utf-8">
+    <link href="/assets/stylesheet.css" rel="stylesheet">
+    <link
+      href="/feed.xml"
+      rel="alternate"
+      title="Newsfeed (Atom)"
+      type="application/atom+xml"
+    >
+    <link href="https://fosstodon.org/@CrystalLanguage" rel="me">
+    <link href="/favicon.png" rel="icon" type="image/png">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <script src="/assets/js/bundle.js" defer></script><!-- Begin Jekyll SEO tag v2.9.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Crystal" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Crystal is a general-purpose, object-oriented programming language. With syntax inspired by Ruby, it’s a compiled language with static type-checking. Types are resolved by an advanced type inference algorithm." />
+<meta name="twitter:description" property="og:description" content="Crystal is a general-purpose, object-oriented programming language. With syntax inspired by Ruby, it’s a compiled language with static type-checking. Types are resolved by an advanced type inference algorithm." />
+<link rel="canonical" href="https://crystal-lang.org/" />
+<meta property="og:url" content="https://crystal-lang.org/" />
+<meta property="og:site_name" content="The Crystal Programming Language" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Crystal" />
+<meta name="twitter:site" content="@CrystalLanguage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Crystal is a general-purpose, object-oriented programming language. With syntax inspired by Ruby, it’s a compiled language with static type-checking. Types are resolved by an advanced type inference algorithm.","headline":"Crystal","name":"Crystal Language","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://crystal-lang.org/assets/media/crystal_logo.svg"}},"sameAs":["https://fosstodon.org/@CrystalLanguage","https://github.com/crystal-lang"],"url":"https://crystal-lang.org/"}</script>
+<!-- End Jekyll SEO tag -->
+
+      <meta property="og:image" content="/assets/banner.webp" />
+      <meta property="twitter:image" content="/assets/banner.webp" />
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preload" href="/assets/fonts/roboto/roboto-v30-latin-300.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="/assets/fonts/roboto/roboto-v30-latin-regular.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="/assets/fonts/roboto/roboto-v30-latin-500.woff2" as="font" type="font/woff2">
+  </head>
+
+  <body class="layout--home">
+
+<header>
+
+
+
+<nav class="mainnav" aria-label="Quick links"><ul>
+    <li>
+      <a href="/blog/" 
+        >Blog</a>
+    </li>
+    <li>
+      <a href="/install" 
+        >Install</a>
+    </li>
+    <li>
+      <a href="/sponsors/" 
+        >Sponsors</a>
+    </li>
+    <li>
+      <a href="/community/" 
+        >Community</a>
+    </li>
+    <li>
+      <a href="https://crystal-lang.org/reference/" 
+        >Docs</a>
+    </li>
+</ul>
+
+</nav>
+
+<div class="utilnav">
+  <a
+    class="icon"
+    href="https://github.com/crystal-lang/crystal"
+    rel="me"
+    title="Crystal repository on GitHub"
+    aria-label="GitHub"
+  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24.13 23.03">
+  <path fill="currentColor" d="M12.11 0C5.61-.19.21 4.91 0 11.41c-.2 5.3 3.2 10 8.3 11.6.3.1.7-.1.8-.4v-2.2c-3.3.7-4-1.6-4-1.6-.2-.7-.7-1.3-1.3-1.7-1.1-.7.1-.7.1-.7.8.1 1.4.6 1.8 1.2.7 1.2 2.2 1.6 3.4 1 .1-.6.3-1.2.8-1.6-2.7-.3-5.5-1.3-5.5-5.8 0-1.2.4-2.3 1.2-3.2-.4-1-.3-2.1.1-3.1 0 0 1-.3 3.3 1.2 2-.5 4-.5 6 0 2.3-1.5 3.3-1.2 3.3-1.2.4 1 .5 2.1.1 3.1.8.9 1.2 2 1.2 3.2 0 4.5-2.8 5.5-5.5 5.8.6.6.9 1.4.8 2.2v3.2c0 .3.3.6.6.6h.3c6.2-1.9 9.7-8.5 7.8-14.7-1.49-5.1-6.19-8.5-11.49-8.31Z"/>
+</svg>
+
+    <span class="visually-hidden">GitHub Repository</span>
+  </a>
+  <a
+    class="icon"
+    href="https://forum.crystal-lang.org/"
+    rel="me"
+    title="Crystal Forum"
+    aria-label="Crystal Forum"
+  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 39.95">
+  <path d="M0 30V2.1c0-.47.22-.93.65-1.4S1.53 0 2 0h25.95c.5 0 .97.22 1.4.68.43.45.65.92.65 1.42v17.8c0 .47-.22.93-.65 1.4s-.9.7-1.4.7H8l-8 8Zm10.05 2c-.47 0-.93-.23-1.38-.7-.45-.47-.68-.93-.68-1.4V25h25V8h5c.47 0 .92.23 1.35.7.43.47.65.95.65 1.45v29.8L32.04 32H10.05Z"/>
+</svg>
+
+    <span class="visually-hidden">Forum</span>
+  </a>
+  <a
+    class="icon"
+    href="/feed.xml"
+    rel="alternate"
+    title="Newsfeed for Crystal blog posts and releases"
+    aria-label="Newsfeed"
+    type="application/atom+xml"
+  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
+</svg>
+
+    <span class="visually-hidden">RSS-Newsfeed</span>
+  </a>
+</div>
+
+
+  <div class="intro">
+    <div class="brand-logo">
+      <canvas height="130" id="logo-canvas" style="cursor:move" width="130"></canvas><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 42">
+  <path d="m27.93 34.73.64 5.45a42 42 0 0 1-12.29 1.51q-9 0-12.63-4.64T0 21Q0 9.58 3.65 4.95T16.28.31a45.27 45.27 0 0 1 11.48 1.28l-.69 5.51q-5-.4-10.78-.41-5 0-6.81 3T7.65 21q0 8.23 1.82 11.27t6.81 3a91.36 91.36 0 0 0 11.65-.54ZM64.79 41h-7.71l-3.19-12.4a4.51 4.51 0 0 0-4.63-3.6l-7.18-.06V41h-7.2V1Q40 .48 49.43.49 57 .49 60.18 3t3.16 9.19q0 4.63-1.74 7.1t-5.74 3v.29a7 7 0 0 1 3.25 1.85 7.82 7.82 0 0 1 2.09 4.06ZM42.07 19h7.18q3.88-.06 5.3-1.39t1.42-5Q56 9 54.56 7.73t-5.3-1.28h-7.19Zm44.74 8.46V41h-7.25V27.37L66.41 1h7.65l7.3 15.53q.4.93 1.62 4.81h.46q1.22-3.88 1.62-4.81L92.37 1h7.53Zm32-2.32-8.06-2.55a11.15 11.15 0 0 1-6.2-4.2 13.22 13.22 0 0 1-1.86-7.39q0-6.55 3-8.64T116.42.31A51.36 51.36 0 0 1 129 1.65l-.46 5.16q-6.6-.23-11.88-.23-4 0-5.33.78T110 11.15a5.07 5.07 0 0 0 1 3.51 8.38 8.38 0 0 0 3.51 1.82l7.71 2.38q4.58 1.45 6.4 4.26a13.37 13.37 0 0 1 1.83 7.39q0 6.61-3.13 8.9t-11.07 2.29a66.11 66.11 0 0 1-13-1.27l.46-5.33q10.14.23 12.69.23 4 0 5.33-.93t1.27-3.95a5.31 5.31 0 0 0-.9-3.54 7.64 7.64 0 0 0-3.3-1.74ZM166 7.21h-12.32V41h-7.3V7.21h-12.23V1H166Zm23.76 22.49h-14.81l-3.3 11.3h-7.42l12-38.07a2.43 2.43 0 0 1 2.6-1.93h7.07a2.43 2.43 0 0 1 2.61 1.91l12 38.07h-7.42Zm-1.74-6L184 9.93q-.81-3.13-.87-3.42h-1.56l-.93 3.42-4 13.79ZM212.38 1v30.66a3.52 3.52 0 0 0 .75 2.58 3.83 3.83 0 0 0 2.66.72h13.91l.29 5.62q-5.68.52-15.88.52-9 0-9-8.29V1Z"/>
+</svg>
+
+    </div>
+    <div class="motto">
+      <h1 class="visually-hidden">Crystal</h1>
+      A language for humans and computers
+    </div>
+    <div class="latest-release-info">
+      <a href="/2026/07/16/1.21.0-released/">Latest release: <strong>1.21.0</strong></a>
+    </div>
+
+    <div class="actions">
+      <a href="/install/" class="hex"><span>Install</span></a>
+      <a href="https://crystal-lang.org/reference/getting_started/" class="hex"><span>Get Started</span></a>
+      <a href="https://play.crystal-lang.org/#/cr" class="hex"><span>Try Online</span></a>
+    </div>
+  </div>
+
+  <h2 class="visually-hidden">Examples</h2><div class="example-tabs">
+
+  <nav class="example-tabs__controls">
+      <a href="#intro">Intro</a>
+      <a href="#stdlib">Rich stdlib</a>
+      <a href="#type_system">Types</a>
+      <a href="#flow_typing">Flow typing</a>
+      <a href="#concurrency">Concurrency</a>
+      <a href="#bindings">C-bindings</a>
+      <a href="#macros">Macros</a>
+      <a href="#dependencies">Shards</a>
+  </nav>
+
+  <div class="example-tabs__tabs">
+      <div class="example-tab" id="intro">
+        <div class="example-description">
+          <h3></h3><p>Crystal is a general-purpose, object-oriented programming language.
+With syntax inspired by Ruby, it’s a compiled language with static type-checking.
+Types are resolved by an advanced type inference algorithm.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/syntax_and_semantics/">Language specification</a>
+
+            </div>
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="c1"># A very basic HTTP server</span>
+<span class="nb">require</span> <span class="s2">"http/server"</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="no">HTTP</span><span class="o">::</span><span class="no">Server</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">context</span><span class="o">|</span>
+  <span class="n">context</span><span class="p">.</span><span class="nf">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/plain"</span>
+  <span class="n">context</span><span class="p">.</span><span class="nf">response</span><span class="p">.</span><span class="nf">print</span> <span class="s2">"Hello world, got </span><span class="si">#{</span><span class="n">context</span><span class="p">.</span><span class="nf">request</span><span class="p">.</span><span class="nf">path</span><span class="si">}</span><span class="s2">!"</span>
+<span class="k">end</span>
+
+<span class="n">address</span> <span class="o">=</span> <span class="n">server</span><span class="p">.</span><span class="nf">bind_tcp</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s2">"Listening on http://</span><span class="si">#{</span><span class="n">address</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># This call blocks until the process is terminated</span>
+<span class="n">server</span><span class="p">.</span><span class="nf">listen</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="stdlib">
+        <div class="example-description">
+          <h3>Batteries included</h3><p>Crystal’s standard library comes with a whole range of libraries that let you start working on your project right away.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/api/">Check the API docs</a>
+
+            </div>
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="nb">require</span> <span class="s2">"http/client"</span>
+<span class="nb">require</span> <span class="s2">"json"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTP</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"https://crystal-lang.org/api/versions.json"</span><span class="p">)</span>
+<span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+<span class="n">version</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s2">"versions"</span><span class="p">].</span><span class="nf">as_a</span><span class="p">.</span><span class="nf">find!</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"released"</span><span class="p">]?</span> <span class="o">!=</span> <span class="kp">false</span> <span class="p">}[</span><span class="s2">"name"</span><span class="p">]</span>
+
+<span class="nb">puts</span> <span class="s2">"Latest Crystal version: </span><span class="si">#{</span><span class="n">version</span> <span class="o">||</span> <span class="s2">"Unknown"</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="type_system">
+        <div class="example-description">
+          <h3>Type system</h3><p>The compiler catches type errors early. Avoids null pointer exceptions at runtime.</p>
+
+<p>The code is still clean and feels like a dynamic language.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/syntax_and_semantics/types_and_methods.html">More about the type system</a>
+
+            </div>
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="n">add</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>         <span class="c1"># =&gt; 3</span>
+<span class="n">add</span> <span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span> <span class="c1"># =&gt; "foobar"</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="flow_typing">
+        <div class="example-description">
+          <h3>Flow typing</h3><p>The compiler tracks the type of variables at each point,
+and restricts types according to conditions.</p>
+
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="kp">loop</span> <span class="k">do</span>
+  <span class="k">case</span> <span class="n">message</span> <span class="o">=</span> <span class="nb">gets</span> <span class="c1"># type is `String | Nil`</span>
+  <span class="k">when</span> <span class="no">Nil</span>
+    <span class="k">break</span>
+  <span class="k">when</span> <span class="s2">""</span>
+    <span class="nb">puts</span> <span class="s2">"Please enter a message"</span>
+  <span class="k">else</span>
+    <span class="c1"># In this branch, `message` cannot be `Nil` so we can safely call `String#upcase`</span>
+    <span class="nb">puts</span> <span class="n">message</span><span class="p">.</span><span class="nf">upcase</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="concurrency">
+        <div class="example-description">
+          <h3>Concurrency Model</h3><p>Crystal uses green threads, called fibers, to achieve concurrency.
+Fibers communicate with each other via channels without having to turn to shared memory or locks (<a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes">CSP</a>).</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/guides/concurrency.html">Read more about concurrency</a>
+
+            </div>
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="n">channel</span> <span class="o">=</span> <span class="no">Channel</span><span class="p">(</span><span class="no">Int32</span><span class="p">).</span><span class="nf">new</span>
+
+<span class="mi">3</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+  <span class="n">spawn</span> <span class="k">do</span>
+    <span class="mi">3</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">j</span><span class="o">|</span>
+      <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="nf">milliseconds</span> <span class="c1"># add non-determinism for fun</span>
+      <span class="n">channel</span><span class="p">.</span><span class="nf">send</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">j</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="mi">9</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="n">channel</span><span class="p">.</span><span class="nf">receive</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="bindings">
+        <div class="example-description">
+          <h3>C-bindings</h3><p>Bindings for C libraries makes it easy to use existing tools.
+Crystal calls lib functions natively without any runtime overhead.</p>
+
+<p>No need to implement the entire program in Crystal when there are already
+good libraries for some jobs.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/syntax_and_semantics/c_bindings/">Learn how to bind to C libraries</a>
+
+            </div>
+        </div>
+
+        <div class="example-code "><div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="c1"># Define the lib bindings and link info:</span>
+<span class="nd">@[Link("m")]</span>
+<span class="k">lib</span> <span class="no">LibM</span>
+  <span class="k">fun</span> <span class="n">pow</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="no">LibC</span><span class="o">::</span><span class="no">Double</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="no">LibC</span><span class="o">::</span><span class="no">Double</span><span class="p">)</span> <span class="p">:</span> <span class="no">LibC</span><span class="o">::</span><span class="no">Double</span>
+<span class="k">end</span>
+
+<span class="c1"># Call a C function like a Crystal method:</span>
+<span class="nb">puts</span> <span class="no">LibM</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span> <span class="c1"># =&gt; 16.0</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+      <div class="example-tab" id="macros">
+        <div class="example-description">
+          <h3>Macros</h3><p>Crystal’s answer to metaprogramming is a powerful macro system, which ranges from basic templating and AST inspection, to types inspection and running arbitrary external programs.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/syntax_and_semantics/macros.html">Read more about Macros</a>
+
+            </div>
+        </div>
+
+        <div class="example-code ">
+<div class="language-crystal highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="k">macro</span> <span class="nf">upcase_getter</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="p">{{</span> <span class="nb">name</span><span class="p">.</span><span class="nf">id</span> <span class="p">}}</span>
+    <span class="err">@</span><span class="p">{{</span> <span class="nb">name</span><span class="p">.</span><span class="nf">id</span> <span class="p">}}.</span><span class="nf">upcase</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="n">upcase_getter</span> <span class="nb">name</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="vi">@name</span> <span class="p">:</span> <span class="no">String</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span> <span class="s2">"John"</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; "JOHN"</span>
+</code></pre></div></div>
+
+
+        </div>
+      </div>
+      <div class="example-tab" id="dependencies">
+        <div class="example-description">
+          <h3>Dependencies</h3><p>Crystal libraries are packed with <em>Shards</em>, a distributed dependency manager without a centralised repository.</p>
+
+<p>It reads dependencies defined in <code class="language-plaintext highlighter-rouge">shard.yml</code> and fetches the source code from their repositories.</p>
+
+            <div class="read-more"><a href="https://crystal-lang.org/reference/latest/man/shards">Read more about Shards</a>
+
+            </div>
+        </div>
+
+        <div class="example-code  runnable"><div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="code_section"><code><span class="na">name</span><span class="pi">:</span> <span class="s">hello-world</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">1.0.0</span>
+<span class="na">license</span><span class="pi">:</span> <span class="s">Apache-2.0</span>
+
+<span class="na">authors</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">Crys &lt;crystal@manas.tech&gt;</span>
+
+<span class="na">dependencies</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+    <span class="na">github</span><span class="pi">:</span> <span class="s">crystal-lang/crystal-mysql</span>
+    <span class="na">version</span><span class="pi">:</span> <span class="s">~&gt;0.16.0</span>
+</code></pre></div></div>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+</header>
+
+<hr class="visually-hidden">
+
+<main><h2 class="visually-hidden">News</h2>
+
+<div class="featured-posts ">
+  <div class="post-teaser">
+    <a href="/2026/07/12/releasing-execution-contexts/" class="post-title">Releasing Execution Contexts</a><time class="post-date" pubdate="" datetime="2026-07-12 00:00:00 +0000">12 Jul 2026</time>
+
+<ul class="avatar-list" aria-hidden="true">
+  <li>
+    <a title="Julien Portalier">
+      <img src="/assets/authors/ysbaddaden.jpg" alt="" />
+    </a>
+  </li>
+</ul>
+<div class="author-names">
+  <span class="author-name" title="ysbaddaden">Julien Portalier</span>
+</div>
+
+<div class="taxonomy">
+    <a href="/blog/project/" class="category">Project</a>
+  <a href="/blog/tags/multithreading/" class="tag">#multithreading</a>
+</div>
+
+
+
+    <div class="excerpt"><p><a href="/2024/02/09/84codes-manas-mt/">Two and a half years ago</a>, with the
+invaluable support from 84codes, we re-examined the multithreading model
+inherited from Crystal 0.28 (preview MT).</p>
+</div>
+  </div>
+  <div class="post-teaser">
+    <a href="/2026/05/26/http-request-smuggling-vulnerability-in-http-server/" class="post-title">Post Mortem: HTTP Request Smuggling Vulnerability</a><time class="post-date" pubdate="" datetime="2026-05-26 00:00:00 +0000">26 May 2026</time>
+
+<ul class="avatar-list" aria-hidden="true">
+  <li>
+    <a title="Julien Portalier">
+      <img src="/assets/authors/ysbaddaden.jpg" alt="" />
+    </a>
+  </li>
+</ul>
+<div class="author-names">
+  <span class="author-name" title="ysbaddaden">Julien Portalier</span>
+</div>
+
+<div class="taxonomy">
+    <a href="/blog/technical/" class="category">Technical</a>
+  <a href="/blog/tags/post-mortem/" class="tag">#post-mortem</a>
+  <a href="/blog/tags/security/" class="tag">#security</a>
+  <a href="/blog/tags/http/" class="tag">#http</a>
+</div>
+
+
+
+    <div class="excerpt"><p>On 12 April 2026, we received a vulnerability report
+regarding an HTTP request smuggling vulnerability in <code class="language-plaintext highlighter-rouge">HTTP::Server</code>.</p>
+</div>
+  </div>
+  <div class="post-teaser">
+    <a href="/2026/04/07/official-linux-arm64-builds/" class="post-title">Official Linux ARM64 builds</a><time class="post-date" pubdate="" datetime="2026-04-07 00:00:00 +0000">07 Apr 2026</time>
+
+<ul class="avatar-list" aria-hidden="true">
+  <li>
+    <a title="Julien Portalier">
+      <img src="/assets/authors/ysbaddaden.jpg" alt="" />
+    </a>
+  </li>
+</ul>
+<div class="author-names">
+  <span class="author-name" title="ysbaddaden">Julien Portalier</span>
+</div>
+
+<div class="taxonomy">
+    <a href="/blog/project/" class="category">Project</a>
+  <a href="/blog/tags/packaging/" class="tag">#packaging</a>
+</div>
+
+
+
+    <div class="excerpt"><p>Finally, starting with Crystal 1.19 we provide official ARM64 builds</p>
+</div>
+  </div>
+  <div class="post-teaser">
+    <a href="/2026/01/23/crystal-talk-fosdem/" class="post-title">Crystal talk at FOSDEM 2026</a><time class="post-date" pubdate="" datetime="2026-01-23 00:00:00 +0000">23 Jan 2026</time>
+
+<ul class="avatar-list" aria-hidden="true">
+  <li>
+    <a title="Johannes Müller">
+      <img src="/assets/authors/straight-shoota.jpg" alt="" />
+    </a>
+  </li>
+</ul>
+<div class="author-names">
+  <span class="author-name" title="straight-shoota">Johannes Müller</span>
+</div>
+
+<div class="taxonomy">
+    <a href="/blog/community/" class="category">Community</a>
+  <a href="/blog/tags/events/" class="tag">#events</a>
+  <a href="/blog/tags/talk/" class="tag">#talk</a>
+  <a href="/blog/tags/community/" class="tag">#community</a>
+  <a href="/blog/tags/foss/" class="tag">#foss</a>
+  <a href="/blog/tags/fosdem/" class="tag">#fosdem</a>
+</div>
+
+
+
+    <div class="excerpt"><p>Johannes is speaking about Crystal at FOSDEM 2026 in Brussels.</p>
+</div>
+  </div>
+</div>
+
+<div class="link-actions">
+  <a href="/blog/">More news</a>
+  <a href="/feed.xml">Feed</a>
+  <a href="/releases/">Release notes</a>
+</div>
+
+<hr class="full-width-rule" />
+
+<div class="topics">
+  <div class="topic">
+    <div class="topic-icon">
+      <img class="topic-icon" src="/assets/icons/favorite.svg" alt="" />
+    </div>
+    <strong>Sponsorship</strong>
+    <p>Become a Crystal sponsor in only 3 simple steps via OpenCollective</p>
+    <a href="https://opencollective.com/crystal-lang" class="hex wide"><span>Contribute</span></a>
+  </div>
+
+  <div class="topic">
+    <img class="topic-icon" src="/assets/icons/domain.svg" alt="" />
+    <strong class="ico building left">Enterprise support</strong>
+    <p>Sponsoring Crystal creates a great springboard for your brand</p>
+    <a href="https://manas.tech/projects/crystal/crystal-compass/" class="hex wide"><span>Get Support</span></a>
+  </div>
+
+  <div class="topic">
+    <img class="topic-icon" src="/assets/icons/shuttle.svg" alt="" />
+    <strong class="ico shuttle left">Hire us for your project</strong>
+    <p>You can tap into the expertise of the very creators of the language to guide you in your implementation. </p>
+    <a href="mailto:crystal@manas.tech" class="hex wide"><span>Hire Us</span></a>
+  </div>
+</div>
+
+<section>
+  <h2 class="full-width-rule">
+    <a href="/sponsors/" class="hex">
+      <span>Top Sponsors</span>
+    </a>
+  </h2>
+
+  
+
+  <div class="top-sponsors top-sponsors--corporate">
+  
+    <a href="https://www.84codes.com/" rel="nofollow sponsored" title="84codes">
+      <img src="/assets/sponsors/84.png" alt="84codes" />
+      84codes
+      
+    </a>
+    <a href="https://manas.tech/" rel="nofollow sponsored" title="Manas.Tech">
+      <img src="/assets/manas-orange.svg" alt="Manas.Tech" />
+      Manas.Tech
+      
+    </a>
+</div>
+
+  <div class="top-sponsors top-sponsors--gold">
+  
+</div>
+
+  <div class="top-sponsors top-sponsors--silver">
+  
+    <a href="https://place.technology/" rel="nofollow sponsored" title="PlaceOS">
+      <img src="/assets/sponsors/placeos.png" alt="PlaceOS" />
+      
+    </a>
+</div>
+
+</section>
+
+<div class="header-wrapper">
+  <h2 id="success-stories">Success stories</h2>
+  <a href="#success-stories">
+    <span aria-hidden="true"><svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z" fill="currentcolor"></path></svg>
+    </span>
+    <span class="visually-hidden">Section titled Success stories</span>
+  </a>
+</div>
+
+<section>
+  <div class="posts-list">
+    <article class="post-card">
+      <img src="/assets/blog/2024-05-22-lavinmq-terminal.png" alt="" />
+      <span class="company">84codes</span>
+      <a href="/2024/05/22/lavinmq-understanding-code/" class="name">LavinMQ: Understanding code to get the best performance
+      </a>
+    </article>
+    <article class="post-card">
+      <img src="/assets/blog/2024-02-02-bright-banner.jpg" alt="" />
+      <span class="company">Bright Security</span>
+      <a href="/2024/02/02/crystal-the-lingua-franca/" class="name">Crystal: the <i>lingua franca</i> at Bright
+      </a>
+    </article>
+    <article class="post-card">
+      <img src="/assets/blog/2023-01-24-placeos.png" alt="" />
+      <span class="company">PlaceOS</span>
+      <a href="/2023/01/24/placeos-environments/" class="name">Automating smart buildings with Crystal
+      </a>
+    </article>
+  </div>
+</section>
+
+<div class="link-actions">
+  <a href="/success-stories/">More success stories</a>
+  <a href="/used_in_prod/">Used in production</a>
+  <a href="https://manas.tech/projects/crystal/crystal-compass/" title="Code Review as a Service from the makers of the language">Crystal Compass</a>
+</div>
+
+</main>
+
+<hr class="visually-hidden">
+
+
+<aside class="edit-on-github" aria-label="Edit this page">
+  <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M18.414 2a.995.995 0 0 0-.707.293L16 4l4 4 1.707-1.707a.999.999 0 0 0 0-1.414l-2.586-2.586A.996.996 0 0 0 18.414 2zM14.5 5.5 3 17v4h4L18.5 9.5l-4-4z"/>
+</svg>
+
+    Found a typo, or want to help improve this page?
+    <a href="https://github.com/crystal-lang/crystal-website/edit/master/index.md">Edit on GitHub</a>
+    or
+    <a href="https://github.com/crystal-lang/crystal-website/issues/new">file an issue</a>.
+  </p>
+</aside>
+
+
+<footer><div class="footer-nav">
+  <nav class="footer-section" aria-label="Home section links">
+    <a class="link-item__main" href="/">Home</a><ul>
+    <li>
+      <a href="/blog/" 
+        >Blog</a>
+    </li>
+    <li>
+      <a href="/install/" 
+        >Install</a>
+    </li>
+    <li>
+      <a href="/releases/" 
+        >Releases</a>
+    </li>
+    <li>
+      <a href="/success-stories/" 
+        >Success stories</a>
+    </li>
+    <li>
+      <a href="/sitemap/" 
+        >Sitemap</a>
+    </li>
+</ul>
+
+  </nav>
+
+  <nav class="footer-section" aria-label="Docs section links">
+    <a class="link-item__main" href="/docs">Documentation</a><ul>
+    <li>
+      <a href="https://crystal-lang.org/reference/getting_started/" 
+        >Getting Started</a>
+    </li>
+    <li>
+      <a href="https://crystal-lang.org/reference/tutorials" 
+        >Tutorials</a>
+    </li>
+    <li>
+      <a href="https://crystal-lang.org/api" 
+        >API Docs</a>
+    </li>
+    <li>
+      <a href="https://crystal-lang.org/reference/syntax_and_semantics" 
+        >Specification</a>
+    </li>
+    <li>
+      <a href="https://crystal-lang.org/reference/guides" 
+        >Guides</a>
+    </li>
+    <li>
+      <a href="/media/" 
+        >Media</a>
+    </li>
+</ul>
+
+  </nav>
+
+  <nav class="footer-section" aria-label="Community section links">
+    <a class="link-item__main" href="/community">Community</a><ul>
+    <li>
+      <a href="/team/" 
+        >Team</a>
+    </li>
+    <li>
+      <a href="/sponsors/" 
+        >Sponsors</a>
+    </li>
+    <li>
+      <a href="/community/#events" 
+        >Events</a>
+    </li>
+    <li>
+      <a href="/used_in_prod/" 
+        >Used in production</a>
+    </li>
+    <li>
+      <a href="/community/governance/" 
+        >Governance</a>
+    </li>
+</ul>
+
+  </nav>
+
+  <div class="link-items">
+    <h3>Help</h3>
+
+    <div class="link-item">
+      <a class="link-item__main" href="https://forum.crystal-lang.org" title="Crystal Forum"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 39.95">
+  <path d="M0 30V2.1c0-.47.22-.93.65-1.4S1.53 0 2 0h25.95c.5 0 .97.22 1.4.68.43.45.65.92.65 1.42v17.8c0 .47-.22.93-.65 1.4s-.9.7-1.4.7H8l-8 8Zm10.05 2c-.47 0-.93-.23-1.38-.7-.45-.47-.68-.93-.68-1.4V25h25V8h5c.47 0 .92.23 1.35.7.43.47.65.95.65 1.45v29.8L32.04 32H10.05Z"/>
+</svg>
+
+        Crystal forum
+      </a>
+    </div>
+
+    <div class="link-item">
+      <a class="link-item__main" href="https://discord.gg/YS7YvQy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M19.98 5.69c-1.68-1.34-4.08-1.71-5.12-1.82h-.04c-.16 0-.31.09-.36.24-.09.23.05.48.28.52 1.17.24 2.52.66 3.75 1.43.25.15.31.49.11.72-.16.18-.43.2-.64.08C15.56 5.38 12.58 5.3 12 5.3s-3.56.08-5.96 1.56c-.21.12-.48.1-.64-.08-.2-.23-.14-.57.11-.72 1.23-.77 2.58-1.19 3.75-1.43.23-.04.37-.29.28-.52-.05-.15-.2-.24-.36-.24h-.04c-1.04.11-3.44.48-5.12 1.82-.98.91-2.93 6.14-3.02 10.77 0 .31.08.62.26.87 1.17 1.65 3.71 2.64 5.63 2.78.29.02.57-.11.74-.35.01 0 .01-.01.02-.02a.899.899 0 0 0-.42-1.37c-1.6-.59-2.42-1.29-2.47-1.34a.488.488 0 0 1-.05-.68c.18-.2.48-.22.68-.04.03.02 2.25 1.91 6.61 1.91s6.58-1.89 6.61-1.91c.2-.18.5-.16.68.04.17.2.15.5-.05.68-.05.05-.87.75-2.47 1.34-.56.21-.77.89-.42 1.37.01.01.01.02.02.02.17.24.45.37.74.35 1.92-.14 4.46-1.13 5.63-2.78.18-.25.26-.56.26-.87-.09-4.63-2.04-9.86-3.02-10.77zM8.89 14.87c-.92 0-1.67-.86-1.67-1.91 0-1.06.75-1.92 1.67-1.92.93 0 1.67.86 1.67 1.92 0 1.05-.74 1.91-1.67 1.91zm6.22 0c-.93 0-1.67-.86-1.67-1.91 0-1.06.74-1.92 1.67-1.92.92 0 1.67.86 1.67 1.92 0 1.05-.75 1.91-1.67 1.91z"/>
+</svg>
+
+        Crystal Discord
+      </a>
+    </div>
+
+    <div class="link-item">
+      <a class="link-item__main" href="https://www.reddit.com/r/crystal_programming/" title="Crystal Programming on Reddit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+  <path d="M17.662 2C15.565 2 14 3.713 14 5.662v3.373c-2.75.146-5.266.88-7.273 2.03-.774-.744-1.81-1.074-2.815-1.073-1.09.001-2.203.378-2.97 1.242l-.018.02-.018.02c-.737.92-1.028 2.154-.832 3.378a4.4 4.4 0 0 0 1.953 2.977C2.02 17.753 2 17.875 2 18c0 4.962 5.832 9 13 9s13-4.038 13-9c0-.125-.02-.247-.027-.371a4.4 4.4 0 0 0 1.953-2.977c.196-1.224-.095-2.458-.832-3.379l-.018-.02-.017-.019c-.769-.864-1.882-1.241-2.971-1.242-1.005 0-2.041.33-2.815 1.072C21.266 9.914 18.75 9.181 16 9.035V5.662C16 4.683 16.565 4 17.662 4c.52 0 1.155.26 2.149.61.84.294 1.932.592 3.33.681A2.501 2.501 0 0 0 25.5 7C26.875 7 28 5.875 28 4.5S26.875 2 25.5 2a2.5 2.5 0 0 0-2.18 1.3 9.836 9.836 0 0 1-2.847-.577C19.569 2.406 18.738 2 17.663 2zm-13.75 9.992c.395 0 .77.104 1.08.272-1.104.921-1.941 1.998-2.447 3.174a2.31 2.31 0 0 1-.494-1.102c-.108-.672.093-1.37.412-1.783.301-.325.851-.56 1.45-.56zm22.174 0c.598 0 1.15.236 1.451.56.319.414.52 1.112.412 1.784a2.31 2.31 0 0 1-.494 1.101c-.506-1.175-1.343-2.252-2.447-3.173a2.27 2.27 0 0 1 1.078-.272zM10 14a2 2 0 1 1 .001 3.999A2 2 0 0 1 10 14zm10 0a2 2 0 1 1 .001 3.999A2 2 0 0 1 20 14zm.238 5.533C19.6 21.4 17.556 23 15 23c-2.556 0-4.6-1.599-5.238-3.332 1.15.933 3.066 1.6 5.238 1.6 2.172 0 4.088-.668 5.238-1.735z"/>
+</svg>
+
+        r/crystal_programming
+      </a>
+    </div>
+
+    <div class="link-item">
+      <a class="link-item__main" href="ircs://irc.libera.chat:6697#crystal-lang"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-0.02 -0.02 118.5 91.27">
+  <path d="m80.75-117.8-.019.003a61.108 61.108 0 0 0-1.633.344l-.325.074a59.046 59.046 0 0 0-2.588.658 61.438 61.438 0 0 0-1.6.47 58.774 58.774 0 0 0-4.405 1.55 55.447 55.447 0 0 0-.501.201l17.04 56.44 2.62-3.067zm22.65-.063-6.202 47.55 5.02-5.874.997 1.598 11.13-40.09a53.582 53.582 0 0 0-1.834-.695 58.77 58.77 0 0 0-5.742-1.748 52.747 52.747 0 0 0-1.298-.31 52.735 52.735 0 0 0-1.306-.28 61.131 61.131 0 0 0-.654-.13zm-53.41 16.47a53.412 53.412 0 0 0-1.567 1.637 67.048 67.048 0 0 0-.888.987 61.177 61.177 0 0 0-2.324 2.813 55.865 55.865 0 0 0-1.192 1.593 53.852 53.852 0 0 0-1.137 1.632l-.184.275-.01.017 32.53 35.55 2.461-3.203.114.05zm83.83-.656L109.76-64.1l2.738 4.389 29.12-32.98a61.725 61.725 0 0 0-.725-1.058 52.015 52.015 0 0 0-.774-1.077 58.893 58.893 0 0 0-4.681-5.592 57.553 57.553 0 0 0-1.617-1.639zM34.07-71.48a57.73 57.73 0 0 0-.45 2.6 58.02 58.02 0 0 0-.62 7.235 60.646 60.646 0 0 0-.016 1.558l34.66 13.04 2.7-3.512zm116.5 1.015-33.02 18.86 2.591 4.152 31.3-11.4.004-.17.007-.33c.002-.11.004-.22.004-.33l.003-.33c0-.11.002-.22.001-.33v-.33l-.004-.331-.003-.21-.006-.33c-.002-.11-.004-.22-.008-.33l-.01-.33-.011-.33-.013-.33-.016-.33-.017-.33-.019-.33-.02-.33a52.024 52.024 0 0 0-.048-.659l-.026-.329-.029-.329c-.009-.11-.02-.219-.03-.329-.01-.11-.021-.219-.033-.328-.01-.11-.022-.22-.033-.329a52.237 52.237 0 0 0-.114-.984 50.511 50.511 0 0 0-.226-1.636 59.857 59.857 0 0 0-.215-1.304l-.01-.053zm-112.8 33.2a52.743 52.743 0 0 0 .522 1.17 56.048 56.048 0 0 0 2.1 4.13 59.04 59.04 0 0 0 2.238 3.676 56.369 56.369 0 0 0 1.124 1.64l.014.02 10.18-2.259.202-.265-.241.001 6.319-8.223zm88.93.314 4.904 8.144 9.146 2.064.068-.096a51.292 51.292 0 0 0 .567-.817 66.106 66.106 0 0 0 .912-1.384 56.728 56.728 0 0 0 1.21-1.978 62.04 62.04 0 0 0 .974-1.732 52.576 52.576 0 0 0 .766-1.467 61.926 61.926 0 0 0 1.137-2.39l.002-.003z" style="paint-order:markers fill stroke" transform="translate(-32.984 117.86)"/>
+  <path d="m69.945 40.2-17.25 19.7-7.897-3.488-25.66 32.99 2.235.002s15.98-20.43 24-30.71l7.82 3.455 16.48-18.83c9.126 15.53 18.97 30.48 27.93 46.1l2.226-.013z"/>
+  <path d="m69.645 46.09-16.02 18.37-7.826-3.25-22.13 28.18 2.445.015 20.28-25.94 7.76 3.22 15.22-17.45 23.94 40.24 2.37-.045z"/>
+  <path d="m28.485 89.37 18.48-23.56 7.918 3.219 14.38-16.52 21.59 36.89z"/>
+</svg>
+
+        IRC: <em>#crystal-lang</em>
+      </a> (<a href="https://web.libera.chat/#crystal-lang">web</a>, <a href="http://irclog.crystal-lang.org">logs</a>)
+    </div>
+
+    <div class="link-item">
+      <a class="link-item__main" href="https://matrix.to/#/#crystal-lang_crystal:gitter.im"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M4 4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h1a1 1 0 1 0 0-2V6a1 1 0 1 0 0-2H4zm15 0a1 1 0 1 0 0 2v12a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-1zm-4.25 4.426c-.499-.01-1 .113-1.404.39-.26.178-.484.406-.74.625-.392-.777-1.1-.984-1.907-.998-.817-.013-1.45.358-2.017 1.036a.838.838 0 0 0-.838-.838h-.006A.838.838 0 0 0 7 9.479v4.615a.895.895 0 0 0 1.787 0c0-.8.001-1.95.004-2.66.001-.222.01-.45.06-.664.146-.627.865-1.03 1.495-.9.485.1.708.434.734 1.081.004.087.007 1.983.008 3.145 0 .493.4.89.894.89h.022a.893.893 0 0 0 .894-.892c0-.815 0-1.987.006-2.63a3.5 3.5 0 0 1 .094-.81c.148-.588.627-.875 1.275-.804.572.063.857.379.899 1v3.257c0 .494.4.895.894.895h.024a.89.89 0 0 0 .892-.887c.004-1.039.01-2.735-.01-3.715a2.2 2.2 0 0 0-.238-.904c-.332-.667-1.153-1.053-1.984-1.07z"/>
+</svg>
+
+        Matrix: <em>#crystal-lang_crystal:gitter.im</em>
+      </a>(<a href="https://gitter.im/crystal-lang/crystal">web</a>)
+    </div>
+  </div>
+
+  <div class="link-items">
+    <h3>News feeds</h3>
+
+    <div class="link-item">
+      <a class="link-item__main" href="/feed.xml" rel="alternate" type="application/atom+xml"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
+</svg>
+
+        Blog posts and releases
+      </a>
+    </div>
+    <div class="link-item">
+      <a class="link-item__main" href="/releases/feed.xml" rel="alternate" type="application/atom+xml"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
+</svg>
+
+        Releases
+      </a>
+    </div>
+    <div class="link-item">
+      <a class="link-item__main" href="/newsletter/feed" rel="alternate" type="application/atom+xml"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
+</svg>
+
+        Newsletter
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-extra">
+  <div class="newsletter-footer"><div class="newsletter-form">
+  <form
+    action="https://tech.us6.list-manage.com/subscribe/post?u=68338ca88d5d6326c9a824317&amp;id=6f80e8b0be&amp;f_id=005a33e3f0"
+    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_self"
+    novalidate>
+    <label for="mce-EMAIL">Subscribe to our <a href="/newsletter">newsletter</a></label>
+    <input
+        type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="" placeholder="E-Mail">
+    <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-flat btn-large hex">Submit</button>
+    <div hidden>
+      <input type="text" name="b_68338ca88d5d6326c9a824317_6f80e8b0be" tabindex="-1" value="" aria-labelledby="">
+    </div>
+  </form>
+</div>
+
+    
+  </div>
+
+  <div class="link-items link-items--social">
+    <div class="link-item">
+      <a class="link-item__main" href="https://github.com/crystal-lang/crystal" title="Crystal repository on GitHub" rel="me"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24.13 23.03">
+  <path fill="currentColor" d="M12.11 0C5.61-.19.21 4.91 0 11.41c-.2 5.3 3.2 10 8.3 11.6.3.1.7-.1.8-.4v-2.2c-3.3.7-4-1.6-4-1.6-.2-.7-.7-1.3-1.3-1.7-1.1-.7.1-.7.1-.7.8.1 1.4.6 1.8 1.2.7 1.2 2.2 1.6 3.4 1 .1-.6.3-1.2.8-1.6-2.7-.3-5.5-1.3-5.5-5.8 0-1.2.4-2.3 1.2-3.2-.4-1-.3-2.1.1-3.1 0 0 1-.3 3.3 1.2 2-.5 4-.5 6 0 2.3-1.5 3.3-1.2 3.3-1.2.4 1 .5 2.1.1 3.1.8.9 1.2 2 1.2 3.2 0 4.5-2.8 5.5-5.5 5.8.6.6.9 1.4.8 2.2v3.2c0 .3.3.6.6.6h.3c6.2-1.9 9.7-8.5 7.8-14.7-1.49-5.1-6.19-8.5-11.49-8.31Z"/>
+</svg>
+
+        GitHub
+      </a>
+    </div>
+    <div class="link-item">
+      <a class="link-item__main" href="https://www.youtube.com/@CrystalLanguage" title="Crystal channel on YouTube" rel="me"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418c-.86.23-1.538.908-1.768 1.768C2 7.746 2 12 2 12s0 4.254.418 5.814c.23.86.908 1.538 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.504 2.504 0 0 0 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/>
+</svg>
+
+        YouTube
+      </a>
+    </div>
+    <div class="link-item">
+      <a class="link-item__main" href="https://fosstodon.org/@CrystalLanguage"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+  <path d="M15.938 4.031c-3.021.013-6.02.396-7.58 1.115 0 0-3.358 1.529-3.358 6.735 0 6.197-.005 13.98 5.563 15.484 2.131.573 3.965.697 5.439.612 2.675-.151 3.998-.971 3.998-.971l-.09-1.977s-1.734.611-3.88.541c-2.128-.075-4.369-.234-4.718-2.89a5.64 5.64 0 0 1-.046-.746c4.507 1.119 8.35.487 9.408.359 2.954-.359 5.525-2.211 5.853-3.904.514-2.668.471-6.508.471-6.508 0-5.206-3.352-6.735-3.352-6.735-1.645-.768-4.688-1.127-7.709-1.115zm-3.233 3.971c1.035.028 2.058.49 2.688 1.469l.609 1.035.607-1.035c1.265-1.967 4.1-1.845 5.45-.323 1.244 1.448.966 2.383.966 8.852v.002h-2.447v-5.629c0-2.635-3.36-2.737-3.36.365V16h-2.43v-3.262c0-3.102-3.358-3.002-3.358-.367V18H8.977c0-6.474-.273-7.415.966-8.852.68-.766 1.727-1.174 2.762-1.146z"/>
+</svg>
+
+        Mastodon
+      </a>
+    </div>
+    <div class="link-item">
+      <a class="link-item__main" href="https://twitter.com/CrystalLanguage"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+  <path d="M22 3.999c-.78.463-2.345 1.094-3.265 1.276-.027.007-.049.016-.075.023A4.5 4.5 0 0 0 11 8.499c0 .131-.011.372 0 .5-3.353 0-5.905-1.756-7.735-4-.199.5-.286 1.29-.286 2.032 0 1.401 1.095 2.777 2.8 3.63-.314.081-.66.139-1.02.139A2.686 2.686 0 0 1 3 10.183v.051c0 1.958 2.078 3.291 3.926 3.662-.375.221-1.131.243-1.5.243-.26 0-1.18-.119-1.426-.165.514 1.605 2.368 2.507 4.135 2.539-1.382 1.084-2.341 1.486-5.171 1.486H2C3.788 19.145 6.065 20 8.347 20 15.777 20 20 14.337 20 8.999l-.005-.447c0-.018.005-.035.005-.053 0-.027-.008-.053-.008-.08a18.384 18.384 0 0 0-.009-.329A8.217 8.217 0 0 0 22 5.999a8.07 8.07 0 0 1-2.32.636c.834-.5 2.019-1.692 2.32-2.636z"/>
+</svg>
+
+        Twitter
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="imprint">
+  <p>Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p>
+  <p>Crystal language, born &amp; raised at <a href="https://manas.tech">Manas<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64">
+  <path d="M32 0C14.3 0 0 14.3 0 32s14.3 32 32 32 32-14.3 32-32S49.7 0 32 0zm18 47h-4V36.9c0-3.3-2.7-6-6-6s-6 2.7-6 6V39h-4v-2.1c0-3.3-2.7-6-6-6s-6 2.7-6 6V39h-4V19h4v9.8c4.3-3.3 10.6-2.5 13.9 1.9l.1.1c3.3-4.4 9.6-5.3 14-2 2.5 1.9 4 4.9 4 8V47zm0-24h-9.9c-2.7 0-5.2-1.1-7-3.1l2.8-2.8c1.1 1.2 2.6 1.8 4.2 1.8h10L50 23z"/>
+</svg>
+</a></p>
+</div>
+
+</footer>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D3KP40BWCR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D3KP40BWCR');
+</script>
+
+  </body>
+</html>

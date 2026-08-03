@@ -1,0 +1,64 @@
+[
+  {
+    "pageId": "2e3a6a703fac",
+    "name": "LibreOffice release notes",
+    "url": "https://www.libreoffice.org/release-notes/",
+    "expected": "v26.2.5",
+    "fetchedAt": "2026-08-03T17:36:30.588997+00:00",
+    "status": 200,
+    "finalUrl": "https://www.libreoffice.org/release-notes/",
+    "contentType": "text/html",
+    "bytes": 22203,
+    "htmlFile": "data/annotation-batches/batch-029/html/2e3a6a703fac.html",
+    "snapshotSha256": "47af9790570985c7e427482fb3a5e77caf1a4ad1605bf577213e6349ce63f2db"
+  },
+  {
+    "pageId": "1bd35d956cd9",
+    "name": "Inkscape wiki",
+    "url": "https://wiki.inkscape.org/wiki/Release_notes",
+    "expected": "v1.4.4",
+    "fetchedAt": "2026-08-03T17:36:31.258874+00:00",
+    "status": 200,
+    "finalUrl": "https://wiki.inkscape.org/wiki/Release_notes",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 18571,
+    "htmlFile": "data/annotation-batches/batch-029/html/1bd35d956cd9.html",
+    "snapshotSha256": "5003d56665a879f5f4f1a4cdcc9e7079906c6fa66550695a691d1009e1c1b886"
+  },
+  {
+    "pageId": "4549ddb3dc99",
+    "name": "Notepad++ news",
+    "url": "https://notepad-plus-plus.org/news/",
+    "expected": "v8.9.7",
+    "fetchedAt": "2026-08-03T17:36:32.282132+00:00",
+    "status": 200,
+    "finalUrl": "https://notepad-plus-plus.org/news/",
+    "contentType": "text/html",
+    "bytes": 69654,
+    "htmlFile": "data/annotation-batches/batch-029/html/4549ddb3dc99.html",
+    "snapshotSha256": "6236412923b7b9c4c9354178a1d8238868a03004aefdf8f40a871750da1eb0f0"
+  },
+  {
+    "pageId": "87c99d59dbab",
+    "name": "Firefox releases",
+    "url": "https://www.firefox.com/en-US/releases/",
+    "expected": "v153.0.1",
+    "fetchedAt": "2026-08-03T17:36:33.049895+00:00",
+    "status": 200,
+    "finalUrl": "https://www.firefox.com/en-US/releases/",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 210617,
+    "htmlFile": "data/annotation-batches/batch-029/html/87c99d59dbab.html",
+    "snapshotSha256": "d475dc5026c3f5377afde2dce182efb58118fce4a18f14ebce3602bfef980c3f"
+  },
+  {
+    "pageId": "a03a293e768f",
+    "name": "Inkscape homepage",
+    "url": "https://inkscape.org/",
+    "expected": "v1.4.4",
+    "fetchedAt": "2026-08-03T17:36:33.363982+00:00",
+    "status": null,
+    "error": "<urlopen error timed out>",
+    "bytes": 0
+  }
+]

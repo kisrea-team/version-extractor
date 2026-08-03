@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+
+  
+    
+    
+  <title>Recent News | Ruby</title>
+    
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+
+  
+
+  <meta name="description" content="">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ruby-lang.org/en/news/">
+  <meta property="og:title" content="Recent News | Ruby">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="https://www.ruby-lang.org/images/og-image.png">
+  <meta property="og:site_name" content="Ruby Programming Language">
+  <meta property="og:locale" content="en">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://www.ruby-lang.org/en/news/">
+  <meta name="twitter:title" content="Recent News | Ruby">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="https://www.ruby-lang.org/images/twitter-card-square.png">
+
+  <!-- Schema.org -->
+  <meta itemprop="name" content="Recent News | Ruby">
+  <meta itemprop="description" content="">
+  <meta itemprop="image" content="https://www.ruby-lang.org/images/og-image.png">
+
+  <link rel="stylesheet" type="text/css" href="/pagefind/pagefind-component-ui.css">
+<script type="module" src="/pagefind/pagefind-component-ui.js"></script>
+<script type="module">
+  // pagefind-highlight.js carries mark.js with it, so it is only worth loading
+  // on the pages a search result linked to. A build that skipped the index has
+  // no such file, and highlighting is not worth an unhandled rejection.
+  if (new URLSearchParams(window.location.search).has('highlight')) {
+    try {
+      await import('/pagefind/pagefind-highlight.js');
+      new PagefindHighlight({ highlightParam: 'highlight' });
+    } catch {}
+  }
+</script>
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/compiled.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Material+Icons&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,200..700,0,0&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://www.ruby-lang.org/en/news/">
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/images/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  
+    <link href="" rel="alternate" title="" type="application/rss+xml">
+
+
+  <!-- Apply theme immediately to prevent flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme-preference') || 'auto';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <!-- Detect icon font loading to prevent FOUT -->
+  <script>
+    (function() {
+      if (document.fonts && document.fonts.load) {
+        document.fonts.load('24px "Material Symbols Rounded"').then(function() {
+          document.documentElement.classList.add('fonts-loaded');
+        }).catch(function() {
+          document.documentElement.classList.add('fonts-loaded');
+        });
+      } else {
+        document.documentElement.classList.add('fonts-loaded');
+      }
+    })();
+  </script>
+
+  <script type="text/javascript" src="/javascripts/navigation-toggle.js" defer></script>
+  <script type="text/javascript" src="/javascripts/header-navigation.js" defer></script>
+  <script type="text/javascript" src="/javascripts/toc.js" defer></script>
+  <script type="text/javascript" src="/javascripts/theme-toggle.js" defer></script>
+  
+</head>
+
+
+
+<body>
+  
+
+<header class="fixed top-0 left-0 right-0 w-full bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700 z-50">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between h-20 lg:px-4">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <a href="/en/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <img src="/images/header-ruby-logo.svg" alt="Ruby" class="h-10 w-10 sm:h-12 sm:w-12">
+          <span class="text-3xl sm:text-4xl font-extrabold font-logo text-stone-900 dark:text-stone-50">Ruby</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-stretch gap-1 h-20">
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/documentation/installation/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          Install
+        </a>
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/documentation/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          Docs
+        </a>
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/libraries/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          Libraries
+        </a>
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/community/ruby-core/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          Contribution
+        </a>
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/community/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          Community
+        </a>
+        
+        <!-- Simple link (no dropdown) -->
+        <a href="/en/news/"
+           class="flex items-center px-3 xl:px-5 h-full text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          News
+        </a>
+        
+      </nav>
+
+      <!-- Right section: Search + Language selector + Theme toggle + Mobile menu button -->
+      <div class="flex items-center gap-0.5 sm:gap-2">
+        <!-- Search -->
+        <pagefind-config highlight-param="highlight" lang="en"></pagefind-config>
+<div class="search-trigger-bar">
+  <pagefind-modal-trigger compact></pagefind-modal-trigger>
+</div><pagefind-modal reset-on-close></pagefind-modal>
+
+        <!-- Language Selector -->
+        
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+
+<div class="relative group">
+  <button class="flex items-center gap-1 px-3 py-1.5 text-sm border border-stone-300 dark:border-stone-600 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+    <span class="text-stone-700 dark:text-stone-300">
+      
+      English<span class="hidden sm:inline"> (<span lang="und-Latn">en</span>)</span>
+      
+    </span>
+    <span class="icon-dropdown text-base" aria-hidden="true"></span>
+  </button>
+
+  <!-- Language dropdown -->
+  <div class="absolute right-0 mt-1 w-56 max-h-[80vh] overflow-y-auto bg-white dark:bg-stone-800 rounded-lg shadow-lg border border-stone-200 dark:border-stone-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    <div class="py-2">
+      
+      <a href="/bg/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="bg">Български</span>
+          (<span lang="und-Latn">bg</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/de/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="de">Deutsch</span>
+          (<span lang="und-Latn">de</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/en/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm bg-stone-100 dark:bg-stone-700 text-stone-900 dark:text-stone-50 font-medium hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="en">English</span>
+          (<span lang="und-Latn">en</span>)
+        </span>
+        
+        <span class="icon-check" aria-hidden="true"></span>
+        
+      </a>
+      
+      <a href="/es/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="es">Español</span>
+          (<span lang="und-Latn">es</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/fr/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="fr">Français</span>
+          (<span lang="und-Latn">fr</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/id/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="id">Indonesia</span>
+          (<span lang="und-Latn">id</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/it/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="it">Italiano</span>
+          (<span lang="und-Latn">it</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/ja/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="ja">日本語</span>
+          (<span lang="und-Latn">ja</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/ko/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="ko">한국어</span>
+          (<span lang="und-Latn">ko</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/pl/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="pl">polski</span>
+          (<span lang="und-Latn">pl</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/pt/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="pt">Português</span>
+          (<span lang="und-Latn">pt</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/ru/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="ru">Русский</span>
+          (<span lang="und-Latn">ru</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/tr/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="tr">Türkçe</span>
+          (<span lang="und-Latn">tr</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/uk/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="uk">Українська</span>
+          (<span lang="und-Latn">uk</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/vi/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="vi">Tiếng Việt</span>
+          (<span lang="und-Latn">vi</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/zh_cn/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="zh-CN">简体中文</span>
+          (<span lang="und-Latn">zh_cn</span>)
+        </span>
+        
+      </a>
+      
+      <a href="/zh_tw/news/"
+         class="flex items-center justify-between px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+        <span>
+          <span lang="zh-TW">繁體中文</span>
+          (<span lang="und-Latn">zh_tw</span>)
+        </span>
+        
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle"
+                type="button"
+                aria-label="Theme: Auto"
+                title="Theme: Auto (System)"
+                class="ml-1 sm:ml-0 p-2 text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors">
+          <span class="icon-theme-auto text-xl" aria-hidden="true"></span>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-toggle" class="lg:hidden p-2 text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md">
+          <span class="icon-menu" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone-200 dark:border-stone-700">
+    <nav class="container mx-auto px-4 py-4">
+      <!-- Search, for the widths where the top bar has no room for it -->
+      <div class="search-trigger-menu mb-3">
+        <pagefind-modal-trigger></pagefind-modal-trigger>
+      </div>
+
+      
+      <a href="/en/documentation/installation/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        Install
+      </a>
+      
+      <a href="/en/documentation/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        Docs
+      </a>
+      
+      <a href="/en/libraries/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        Libraries
+      </a>
+      
+      <a href="/en/community/ruby-core/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        Contribution
+      </a>
+      
+      <a href="/en/community/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        Community
+      </a>
+      
+      <a href="/en/news/"
+         class="block px-5 py-2 text-sm font-bold text-stone-900 dark:text-stone-300 hover:text-semantic-text-hovered dark:hover:text-ruby-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md transition-colors mb-2">
+        News
+      </a>
+      
+    </nav>
+  </div>
+</header>
+
+
+  <div id="page" class="pt-20">
+    
+
+<!-- Mobile Navigation Panel (collapsible, full width) -->
+
+<div class="md:hidden bg-stone-50 dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+  <!-- Navigation toggle header -->
+  <button id="nav-toggle" class="flex items-center justify-between w-full px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+    <span class="flex items-center gap-2 text-sm font-bold text-stone-900 dark:text-stone-100">
+      <span class="icon-menu text-base relative top-0.5" aria-hidden="true"></span>
+      <span id="nav-section-title"></span>
+    </span>
+    <span id="nav-chevron" class="icon-dropdown text-base text-stone-500 dark:text-stone-400 transition-transform"></span>
+  </button>
+
+  <!-- Navigation content panel -->
+  <div id="nav-mobile-panel" class="hidden border-t border-stone-200 dark:border-stone-700">
+    <div class="px-4 pb-6">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+        
+        
+        
+
+
+
+
+
+<div class="md:bg-transparent md:dark:bg-transparent md:p-0 md:border-0">
+  
+  <div class="mb-1 hidden md:block border-b border-stone-200 dark:border-stone-700 pb-3">
+    <h3 class="text-xs font-semibold text-stone-500 dark:text-stone-400">News</h3>
+  </div>
+
+  
+  <nav class="space-y-0">
+    
+      
+
+
+  
+  
+
+
+
+
+
+
+  
+
+
+  <div class="border-b border-stone-200 dark:border-stone-700">
+    <a href="/en/news/"
+       class="flex items-center justify-between py-4 pl-1 text-base group text-semantic-text-link font-bold transition-colors"
+       >
+      <span class="">
+        News
+        
+      </span>
+      <svg class="w-3 h-3 text-stone-400 dark:text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+
+
+
+    
+      
+
+
+  
+  
+
+
+
+
+
+
+  
+
+
+  <div class="border-b border-stone-200 dark:border-stone-700">
+    <a href="/en/security/"
+       class="flex items-center justify-between py-4 pl-1 text-base group text-stone-900 dark:text-stone-100 hover:text-semantic-text-link-hovered dark:hover:text-ruby-400 font-bold transition-colors"
+       >
+      <span class="">
+        Security
+        
+      </span>
+      <svg class="w-3 h-3 text-stone-400 dark:text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+
+
+
+    
+  </nav>
+
+  
+  
+  <div class="pt-6">
+    <p class="pl-1">
+      <a href="/en/feeds/news.rss" target="_blank" rel="noopener noreferrer" class="text-sm font-normal text-stone-900 dark:text-stone-100 hover:text-semantic-text-link-hovered dark:hover:text-ruby-400 transition-colors inline-flex items-center gap-1">
+        <span class="icon-rss-feed" aria-hidden="true"></span>
+        Recent News (RSS)<span class="icon-external text-xs" aria-hidden="true"></span>
+      </a>
+    </p>
+  </div>
+  
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
+  <div class="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-8">
+    <!-- Desktop Navigation (hidden on mobile) -->
+    <div class="hidden md:block md:w-40 lg:w-44 xl:w-56 flex-shrink-0 sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+        
+        
+        
+
+
+
+
+
+<div class="md:bg-transparent md:dark:bg-transparent md:p-0 md:border-0">
+  
+  <div class="mb-1 hidden md:block border-b border-stone-200 dark:border-stone-700 pb-3">
+    <h3 class="text-xs font-semibold text-stone-500 dark:text-stone-400">News</h3>
+  </div>
+
+  
+  <nav class="space-y-0">
+    
+      
+
+
+  
+  
+
+
+
+
+
+
+  
+
+
+  <div class="border-b border-stone-200 dark:border-stone-700">
+    <a href="/en/news/"
+       class="flex items-center justify-between py-4 pl-1 text-base group text-semantic-text-link font-bold transition-colors"
+       >
+      <span class="">
+        News
+        
+      </span>
+      <svg class="w-3 h-3 text-stone-400 dark:text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+
+
+
+    
+      
+
+
+  
+  
+
+
+
+
+
+
+  
+
+
+  <div class="border-b border-stone-200 dark:border-stone-700">
+    <a href="/en/security/"
+       class="flex items-center justify-between py-4 pl-1 text-base group text-stone-900 dark:text-stone-100 hover:text-semantic-text-link-hovered dark:hover:text-ruby-400 font-bold transition-colors"
+       >
+      <span class="">
+        Security
+        
+      </span>
+      <svg class="w-3 h-3 text-stone-400 dark:text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+
+
+
+    
+  </nav>
+
+  
+  
+  <div class="pt-6">
+    <p class="pl-1">
+      <a href="/en/feeds/news.rss" target="_blank" rel="noopener noreferrer" class="text-sm font-normal text-stone-900 dark:text-stone-100 hover:text-semantic-text-link-hovered dark:hover:text-ruby-400 transition-colors inline-flex items-center gap-1">
+        <span class="icon-rss-feed" aria-hidden="true"></span>
+        Recent News (RSS)<span class="icon-external text-xs" aria-hidden="true"></span>
+      </a>
+    </p>
+  </div>
+  
+</div>
+
+    </div>
+
+    <!-- Main content wrapper -->
+    <div class="flex-1 min-w-0 flex flex-col gap-6">
+
+      <!-- Main content -->
+      <article id="content-wrapper" class="prose md:px-4 lg:px-6">
+        
+<h1>Recent News</h1>
+
+
+
+        <div id="content">
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/07/16/ruby-3-3-12-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 3.3.12 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 3.3.12 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/07/16/ruby-3-3-12-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>hsbt</strong> on 16 Jul 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/07/14/ruby-4-0-6-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 4.0.6 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 4.0.6 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/07/14/ruby-4-0-6-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>k0kubun</strong> on 14 Jul 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/06/30/ruby-3-4-10-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 3.4.10 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 3.4.10 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/06/30/ruby-3-4-10-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>nagachika</strong> on 30 Jun 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/05/20/ruby-4-0-5-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 4.0.5 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 4.0.5 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/05/20/ruby-4-0-5-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>k0kubun</strong> on 20 May 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/05/20/getaddrinfo-cve-2026-46727/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                CVE-2026-46727: Use-after-free in pthread-based getaddrinfo timeout handler
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>A use-after-free vulnerability has been discovered in the pthread-based <code class="language-plaintext highlighter-rouge">getaddrinfo</code> timeout handler of Ruby. This vulnerability has been assigned the CVE identifier <a href="https://www.cve.org/CVERecord?id=CVE-2026-46727">CVE-2026-46727</a>. This issue has been fixed in Ruby 4.0.5. We recommend upgrading Ruby.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/05/20/getaddrinfo-cve-2026-46727/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>hsbt</strong> on 20 May 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/05/11/ruby-4-0-4-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 4.0.4 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 4.0.4 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/05/11/ruby-4-0-4-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>k0kubun</strong> on 11 May 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/04/21/ruby-4-0-3-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 4.0.3 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 4.0.3 has been released.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/04/21/ruby-4-0-3-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>k0kubun</strong> on 21 Apr 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/04/21/erb-cve-2026-41316/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                CVE-2026-41316: ERB @_init deserialization guard bypass via def_module / def_method / def_class
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>We published security advisory for CVE-2026-41316.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/04/21/erb-cve-2026-41316/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>k0kubun</strong> on 21 Apr 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/03/27/ruby-3-2-11-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 3.2.11 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 3.2.11 has been released. This release includes <a href="https://www.ruby-lang.org/en/news/2026/03/05/buffer-overflow-zlib-cve-2026-27820/">an update to the zlib gem addressing CVE-2026-27820</a>.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/03/27/ruby-3-2-11-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>hsbt</strong> on 27 Mar 2026</p>
+          </div>
+          
+          <div class="not-prose pb-8 mb-8 border-b border-stone-200 dark:border-stone-700 first:pt-8 first:mt-8 first:border-t last:border-b-0 last:mb-0 last:pb-0">
+            <h3 class="text-3xl font-bold mb-4">
+              <a href="/en/news/2026/03/26/ruby-3-3-11-released/" class="text-stone-900 dark:text-stone-100 hover:text-ruby-600 dark:hover:text-ruby-400 transition-colors">
+                Ruby 3.3.11 Released
+              </a>
+            </h3>
+
+            <div class="text-stone-900 dark:text-stone-300">
+              <p>Ruby 3.3.11 has been released. This release includes <a href="https://www.ruby-lang.org/en/news/2026/03/05/buffer-overflow-zlib-cve-2026-27820/">an update to the zlib gem addressing CVE-2026-27820</a>, along with some bug fixes.</p>
+
+            </div>
+
+            <p class="mt-1">
+              <a href="/en/news/2026/03/26/ruby-3-3-11-released/" class="text-sm text-semantic-text-link hover:text-semantic-text-link-hovered transition-colors inline-flex items-center">
+                <span class="icon-double-arrow-right" aria-hidden="true"></span>
+                Continue Reading...
+              </a>
+            </p>
+
+            <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">Posted by <strong>hsbt</strong> on 26 Mar 2026</p>
+          </div>
+          
+        </div>
+      </article>
+    </div>
+
+    <!-- Desktop Yearly Archives (hidden below lg) -->
+    <div class="hidden lg:block lg:w-56 xl:w-64 flex-shrink-0 sticky top-24 self-start min-h-[calc(100vh-10rem)] max-h-[calc(100vh-6rem)] overflow-y-auto">
+      <div class="pb-8">
+        <h3 class="text-base font-bold text-stone-900 dark:text-stone-100 mb-4 pl-1 flex items-center gap-2">
+          <span class="icon-calendar" aria-hidden="true"></span>
+          Archives by Year
+        </h3>
+        <div class="relative group">
+          <button class="flex items-center justify-between w-full px-4 py-2 text-sm border border-stone-300 dark:border-stone-600 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+            <span class="text-stone-700 dark:text-stone-300">--- Select a Year ---</span>
+            <span class="icon-dropdown text-base" aria-hidden="true"></span>
+          </button>
+
+          <!-- Archive year dropdown -->
+          <div class="absolute left-0 mt-1 w-full bg-white dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="max-h-[calc(100vh-18rem)] overflow-y-auto overflow-x-hidden py-2 rounded-lg">
+              
+              <a href="2026/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2026 Archives
+              </a>
+              
+              <a href="2025/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2025 Archives
+              </a>
+              
+              <a href="2024/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2024 Archives
+              </a>
+              
+              <a href="2023/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2023 Archives
+              </a>
+              
+              <a href="2022/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2022 Archives
+              </a>
+              
+              <a href="2021/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2021 Archives
+              </a>
+              
+              <a href="2020/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2020 Archives
+              </a>
+              
+              <a href="2019/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2019 Archives
+              </a>
+              
+              <a href="2018/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2018 Archives
+              </a>
+              
+              <a href="2017/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2017 Archives
+              </a>
+              
+              <a href="2016/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2016 Archives
+              </a>
+              
+              <a href="2015/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2015 Archives
+              </a>
+              
+              <a href="2014/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2014 Archives
+              </a>
+              
+              <a href="2013/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2013 Archives
+              </a>
+              
+              <a href="2012/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2012 Archives
+              </a>
+              
+              <a href="2011/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2011 Archives
+              </a>
+              
+              <a href="2010/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2010 Archives
+              </a>
+              
+              <a href="2009/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2009 Archives
+              </a>
+              
+              <a href="2008/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2008 Archives
+              </a>
+              
+              <a href="2007/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2007 Archives
+              </a>
+              
+              <a href="2006/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2006 Archives
+              </a>
+              
+              <a href="2005/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2005 Archives
+              </a>
+              
+              <a href="2004/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2004 Archives
+              </a>
+              
+              <a href="2003/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2003 Archives
+              </a>
+              
+              <a href="2002/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2002 Archives
+              </a>
+              
+              <a href="2001/" class="block px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                2001 Archives
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  
+
+
+
+<!-- Footer Section -->
+<footer class="bg-gold-150 dark:bg-stone-770 mt-12 md:mt-16 pt-2 pb-8 md:pb-12 relative">
+  <!-- Wave Border at top -->
+  <div class="absolute -top-[23px] md:-top-[31px] left-0 right-0 h-6 md:h-8 text-gold-150 dark:text-stone-770">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 20" preserveAspectRatio="none" class="w-full h-full">
+      <path d="M0,10 C20,0 40,20 60,10 C80,0 100,20 120,10 C140,0 160,20 180,10 C200,0 220,20 240,10 C260,0 280,20 300,10 C320,0 340,20 360,10 C380,0 400,20 400,10 L400,20 L0,20 Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- Illustration Pattern Band -->
+  <div class="w-full h-10 mb-12 bg-repeat-x bg-center bg-[url('/images/footer/illust-pattern.svg')] bg-[length:auto_40px]" aria-hidden="true"></div>
+
+  <div class="container mx-auto px-4 md:px-6 lg:px-8">
+
+    <!-- Happy Hacking! and Footer Links -->
+    <div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 xl:gap-8 mb-10">
+      <!-- Happy Hacking! (Matz's handwriting) -->
+      <div class="mb-3 xl:mb-0 relative">
+        <img src="/images/footer/happy-hacking.svg" alt="Happy Hacking!" class="h-24 md:h-28 w-auto dark:invert relative z-10">
+        <img src="/images/home/why_ruby/line.svg" alt="" class="w-72 h-auto absolute bottom-2 md:bottom-3 left-0 z-0" aria-hidden="true">
+      </div>
+
+      <!-- Footer Links -->
+      <nav class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-bold leading-none xl:pt-2">
+        
+        <a href="/en/security/"
+           class="mb-2 sm:mb-0 border-r border-stone-300 dark:border-stone-700 pr-3 text-stone-900 hover:text-ruby-600 dark:text-stone-300 dark:hover:text-ruby-400 transition-colors">
+          Security
+        </a>
+        
+
+        
+        <a href="/en/about/website/"
+           class="mb-2 sm:mb-0 border-r border-stone-300 dark:border-stone-700 pr-3 text-stone-900 hover:text-ruby-600 dark:text-stone-300 dark:hover:text-ruby-400 transition-colors">
+          About This Website
+        </a>
+        
+
+        
+        <a href="/en/about/logo/"
+           class="mb-2 sm:mb-0 border-r border-stone-300 dark:border-stone-700 pr-3 text-stone-900 hover:text-ruby-600 dark:text-stone-300 dark:hover:text-ruby-400 transition-colors">
+          About the Logo
+        </a>
+        
+
+        
+        <a href="/en/feeds/news.rss"
+           class="mb-2 sm:mb-0 border-r border-stone-300 dark:border-stone-700 pr-3 text-stone-900 hover:text-ruby-600 dark:text-stone-300 dark:hover:text-ruby-400 transition-colors">
+          News RSS
+        </a>
+        
+
+        
+        <a href="/en/about/license.txt"
+           class="mb-2 sm:mb-0 text-stone-900 hover:text-ruby-600 dark:text-stone-300 dark:hover:text-ruby-400 transition-colors">
+          Ruby License
+        </a>
+        
+      </nav>
+    </div>
+
+    <!-- Credits -->
+    <div class="credits text-sm text-stone-900 dark:text-stone-300">
+      <a href="/en/about/website/">This website</a> is proudly maintained by members of the Ruby community.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

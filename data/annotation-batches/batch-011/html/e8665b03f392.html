@@ -1,0 +1,1461 @@
+<!-- Built with LaunchNotes -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Reclaim | Product Updates</title>
+<meta name="description" content="The latest feature releases, bugfixes, and improvements from the Reclaim team.">
+<meta name="keywords" content="launchnotes, release notes, product updates, changelog">
+<link rel="canonical" href="https://updates.reclaim.ai/">
+<link rel="alternate" href="https://updates.reclaim.ai/feed.rss" type="application/rss+xml" title="RSS">
+<meta property="og:title" content="Reclaim | Product Updates">
+<meta property="og:description" content="The latest feature releases, bugfixes, and improvements from the Reclaim team.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://app.launchnotes.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTE2OCwicHVyIjoiYmxvYl9pZCJ9fQ==--aa3608a66f43dec8d2161972f61153cc2b01d0d1/general%20meta%20img%201.png">
+<meta name="twitter:title" content="Reclaim | Product Updates">
+<meta name="twitter:description" content="The latest feature releases, bugfixes, and improvements from the Reclaim team.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@launchawesome">
+<meta name="twitter:creator" content="@reclaimai">
+<meta name="twitter:image" content="https://app.launchnotes.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTE2OCwicHVyIjoiYmxvYl9pZCJ9fQ==--aa3608a66f43dec8d2161972f61153cc2b01d0d1/general%20meta%20img%201.png">
+<meta name="twitter:image:alt" content="Meet Reclaim.ai, a smart calendar assistant that blocks flexible time for anything you care about">
+<meta name="author" content="The Reclaim Team">
+<meta name="slack-app-id" content="AQZ806FNX">
+
+    <!-- Pagination link tags (prev/next only) -->
+        <link rel="next" href="https://updates.reclaim.ai/?page=2" />
+
+    <link rel="stylesheet" href="https://assets.launchnotes.io/packs/css/public-26a1f3a1.css" media="all" />
+
+      <style>
+        
+      
+      </style>
+
+    <style>
+  body {
+    color: #2A3760;
+  }
+
+  /* primary-color primary-background */
+    .primary-color { color: #8380FF; }
+    .primary-background { background-color: #8380FF; }
+    .primary-border { border-color: #8380FF; }
+    .secondary-color { color: #5856C1; }
+    .secondary-background { background-color: #5856C1; }
+    .secondary-border { border-color: #5856C1; }
+    .white-color { color: #FFFFFF; }
+    .white-background { background-color: #FFFFFF; }
+    .white-border { border-color: #FFFFFF; }
+    .off-white-color { color: #F3F6F8; }
+    .off-white-background { background-color: #F3F6F8; }
+    .off-white-border { border-color: #F3F6F8; }
+    .gray-color { color: #D4D5D8; }
+    .gray-background { background-color: #D4D5D8; }
+    .gray-border { border-color: #D4D5D8; }
+    .light-gray-color { color: #E8EBEF; }
+    .light-gray-background { background-color: #E8EBEF; }
+    .light-gray-border { border-color: #E8EBEF; }
+    .primary-text-color { color: #2A3760; }
+    .primary-text-background { background-color: #2A3760; }
+    .primary-text-border { border-color: #2A3760; }
+    .secondary-text-color { color: #BAB9B9; }
+    .secondary-text-background { background-color: #BAB9B9; }
+    .secondary-text-border { border-color: #BAB9B9; }
+
+  .btn-primary {
+    background-color: #8380FF !important;
+    color: #FFFFFF !important;
+    border-color: #8380FF !important;
+  }
+
+  .btn-outline-primary {
+    border-color: #8380FF !important;
+    color: #8380FF !important;
+    outline: unset !important;
+  }
+
+  .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus {
+    border-color: #8380FF !important;
+    background-color: #8380FF !important;
+    color: #FFFFFF !important;
+  }
+
+  .custom-control-input:not(:disabled) ~ .custom-control-label {
+    cursor: pointer;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label:before {
+    border-color: #8380FF !important;
+    background-color: #8380FF !important;
+  }
+
+  .custom-control-input:checked:disabled ~ .custom-control-label:before {
+    border-color: #D4D5D8 !important;
+    background-color: #D4D5D8 !important;
+  }
+
+  .ln-end-user-layout .form-control::placeholder {
+    color:rgba(42, 55, 96, 0.35)
+  }
+
+  .work-item-outer-container:hover {
+    color:#2A3760;
+  }
+
+  input#search-clear {
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px rgba(80, 80, 80, 0.7);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    height: 16px;
+    padding: 0;
+    width: 16px;
+  }
+
+  input#search {
+    background-color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
+  }
+
+  input#search:focus {
+    border-bottom-color: #8380FF;
+  }
+
+  .navbar-brand, .navbar-brand:hover {
+    color: #FFFFFF !important;
+  }
+
+  .brand-circle {
+    color: #8380FF;
+    background-color: #FFFFFF;
+  }
+
+  .views.navbar {
+    border-top: 1px solid #F3F6F8;
+  }
+
+  .footie p, .footie a, .footie a:hover {
+    color: #BAB9B9 !important;
+  }
+
+  header.cover-header button.subscribe-button svg {
+    position: relative;
+    bottom: 1px;
+    fill: #FFFFFF;
+  }
+
+  header.cover-header button.subscribe-button svg * {
+    transition: fill 60ms;
+  }
+
+  header.cover-header button.subscribe-button:hover svg *, header.cover-header button.subscribe-button:active svg *, header.cover-header button.subscribe-button:active:focus svg * {
+    fill: #2A3760;
+  }
+
+  .navbar.views .nav-item a.nav-link {
+    color: #BAB9B9;
+  }
+
+  a, a:hover, a:active {
+    color: #8380FF;
+  }
+
+  .navbar.views .nav-item.active {
+    border-bottom: 2px solid #8380FF;
+  }
+
+  .navbar.views .nav-item.active a.nav-link {
+    color: #8380FF;
+  }
+
+  .navbar.views .nav-item {
+    border-bottom: 2px solid #FFFFFF;
+  }
+
+  .month-picker a.active {
+    font-weight: bold;
+  }
+
+  .red {
+    color: #f9512b;
+  }
+
+  .separator::before, .separator::after {
+    border-bottom: 1px solid #E8EBEF;
+  }
+
+  .pagination .page-item.active > .page-link, .pagination .page-item.active > .page-link:focus, .pagination .page-item.active > .page-link:hover {
+    background-color: #5856C1;
+    border-color: #5856C1;
+    color: #FFFFFF;
+  }
+
+  .pagination .page-item .page-link {
+    color: #D4D5D8;
+  }
+
+  .pagination .page-item .page-link:hover, .pagination .page-item .page-link:focus {
+    background-color: #E8EBEF;
+    color: #2A3760;
+  }
+
+  .release.card {
+    background-color: #FFFFFF;
+  }
+
+  .release .latest-update .update-wrapper:before {
+    color: #8380FF;
+  }
+
+  .release .latest-update .update-wrapper .latest-update-heading {
+    color: #8380FF;
+  }
+
+  .release .content-body {
+    color: #8380FF
+  }
+
+  .form-control {
+    background-color: #FFFFFF;
+  }
+
+  ul.timeline li:after {
+    color: #2A3760;
+  }
+
+  ul.timeline li:before {
+    border-left: 1px solid #E8EBEF;
+  }
+
+  .work-items-index .subscribe-button {
+    background-color: #FFFFFF;
+  }
+  .work-items-index .subscribe-button.following {
+    background-color: #8380FF;
+  }
+  .work-item-show .subscribe-button {
+    background-color: unset;
+  }
+  .work-item-show .subscribe-button.following {
+    background-color: #8380FF;
+  }
+  /* Subscribe modal */
+  #subscribeModal button[type="submit"] {
+    background-color: #8380FF;
+    border: none;
+    color: #FFFFFF
+  }
+
+  /* jQuery table of contents */
+  ul.toc, ul.toc ul {
+    padding-left: 24px;
+    padding-left: 0;
+
+    ul li {
+      padding-left: 12px;
+      border-left: 1px solid #E8EBEF;
+    }
+
+    > li {
+      padding: 0;
+      border: none;
+    }
+
+
+    li > a {
+      color: #8380FF;
+      font-size: 16px;
+      white-space: nowrap;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    li::marker {
+      line-height: 1.5;
+      content: ''
+    }
+  }
+
+  pre {
+    background-color: #E8EBEF;
+  }
+
+  .Toastify .Toastify__toast-container {
+    pointer-events: none;
+  }
+  .Toastify .Toastify__toast {
+    border: 1px solid;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    font-family: inherit;
+  }
+  .Toastify .Toastify__toast-theme--colored.Toastify__toast--success {
+    border-color: #8380FF;
+    background-color: #8380FF;
+    color: white;
+  }
+  .Toastify .Toastify__toast-theme--colored.Toastify__toast--error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+
+  .secure-page {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .secure-page-logo {
+    margin-bottom: 30px;
+  }
+
+  .secure-page-card {
+    width: 450px;
+    max-width: 90%;
+    margin: auto;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 48px;
+  }
+
+  .secure-page-card-body { text-align: center; margin-bottom: 30px; }
+
+  .public-timeline {
+    list-style-type: none;
+    padding: 15px;
+    padding-bottom: 0px;
+    position: relative;
+  }
+
+  .public-timeline .timeline-item {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .public-timeline .timeline-item .timeline-announcement {
+    flex: 1;
+  }
+
+  .public-timeline .timeline-item p {
+    color: #2A3760;
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+
+  .public-timeline .timeline-item .date {
+    color: #BAB9B9;
+    display: inline-block;
+    width: 160px;
+  }
+
+  .public-timeline .timeline-item .announcement-link {
+    color: #E66A47;
+  }
+
+  .public-timeline .timeline-item::before {
+    content: '';
+    background: gray;
+    position: absolute;
+    border-radius: 50%;
+    left: -8px;
+    top: 19px;
+    width: 8px;
+    height: 8px;
+    z-index: 100
+  }
+
+  .public-timeline .timeline-tail {
+    position: absolute;
+    top: 20px;
+    left: -5px;
+    height: 100%;
+    border-left: 2px solid #E8EBEF;
+    z-index: 1;
+  }
+
+  .public-timeline .timeline-item.last .timeline-tail {
+    display: none;
+  }
+</style>
+
+
+      <link rel="apple-touch-icon" sizes="180x180" href="https://assets.launchnotes.io/assets/favicon/apple-touch-icon-07a72b88327c01c3ac330d85706b227e32f8c453bfeaac0db8fca69dc8167487.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://assets.launchnotes.io/assets/favicon/favicon-32x32-3c35a47e0b756c55e83672f7eb67839822e29e9eea5e0b91eef4fe792d4810cd.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://assets.launchnotes.io/assets/favicon/favicon-16x16-c80a379ead9594e2bc3623d174caab06f1822da3b62d13f97f0e600d7c1a9d92.png">
+  <link rel="shortcut icon" href="https://assets.launchnotes.io/assets/favicon/favicon-386866c3444e3e0a9325106e25314e7dd36910803c1c9d7e7ecba170565dbfed.ico">
+  <link rel="mask-icon" href="https://assets.launchnotes.io/assets/favicon/safari-pinned-tab-ac8f30dac32825c77535b3d70e70c9bf633eb1363454ae72d2a34f5c18c488ac.svg" color="#5bbad5">
+
+<link rel="manifest" href="https://assets.launchnotes.io/assets/favicon/site-95b4d753717a3b3021b9dcd1a94a59a9918da1016969dcfcca0ce747add2e243.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Reclaim.ai">
+<meta name="application-name" content="Reclaim.ai">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="https://assets.launchnotes.io/assets/favicon/browserconfig-05a7558d6d75012d9277748d15242876a62df20a501c39d8a0c9a506d298d0bb.xml">
+<meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css" integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.slim.min.js" integrity="sha512-jxwTCbLJmXPnV277CvAjAcWAjURzpephk0f0nO2lwsvcoDMqBdy1rh1jEwWWTabX1+Grdmj9GFAgtN22zrV0KQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="R3fM8BqqOLtmUmOz9rk_74O1BHBUjz1BNF-PERiPK0vHRfadcSsGseDQ_Kj9-KStI1IsEK--6L5xr_d3B92MrQ" />
+    <meta name="csp-nonce" />
+
+    
+
+      <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_UlHlA3tIQlE89WRH9NSy0MzlOg1XYiUXnXiYjKBJ4OT',
+          {
+            api_host:'https://a.launchnotes.com',
+            loaded: function (posthog_instance) {
+              var properties = {"project_id":"pro_aXtpgn7cH74ug","project_name":"Reclaim.ai","organization_id":"org_2BROfpSjEnzIe"};
+                posthog_instance.group('Project', "pro_aXtpgn7cH74ug", { name: "Reclaim.ai" });
+            },
+          }
+        );
+      </script>
+
+    <script src="https://assets.launchnotes.io/packs/js/turbo-744676db2015b15a301a.js" data-turbo-track="reload" data-cookieconsent="ignore"></script>
+
+    
+  </head>
+
+  <body class="off-white-background ln-end-user-layout" data-branding-version="0c9f22835a263eff3823fe4effefb240cd80568888e10166c913f7210298c8ab">
+    <header class="cover-header white-background">
+      <nav class="navbar navbar-expand-md container-padding-left container-padding-right fixed-top primary-background">
+  <a href="/" class="navbar-brand">
+    
+      <img src="https://app.launchnotes.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MzgwLCJwdXIiOiJibG9iX2lkIn19--42a00165fa7825af3f4ab0768b08ca1a8d8ad4a0/Icon_05.png" height="30px" class="d-inline-block align-top" />
+    
+  </a>
+  <button class="subscribe-button btn btn-outline-light my-sm-0 ml-auto pb-2 white-border white-text" data-toggle="modal" data-target="#subscribeModal"><span class="btn-text d-none d-sm-inline-block">Subscribe to updates</span><span class="d-inline-block d-sm-none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <title>megaphone</title>
+  <g fill="#FFFFFF">
+    <path d="M19.525,1.149a1,1,0,0,0-.972-.044L10.764,5H5A5,5,0,0,0,5,15h5.764L18.553,18.9A1,1,0,0,0,20,18V2A1,1,0,0,0,19.525,1.149Z" fill="#FFFFFF"></path>
+    <path d="M21,7v6a3,3,0,0,0,0-6Z"></path>
+    <path d="M10.142,17H5.813l2.334,5.744a2,2,0,0,0,3.708-1.492Z"></path>
+  </g>
+</svg></span></button>
+</nav>
+          <div class="header-wrapper text-center px-4">
+  <h1 class="heading primary-text-color mb-3 mt-0">
+    Reclaim Product Updates
+  </h1>
+  <span class="primary-text-color opacity-8 mb-0 d-block" style="font-size:18px">
+    <p>The latest feature releases, bugfixes, and improvements from the Reclaim team.</p>
+
+  </span>
+</div>
+
+    </header>
+
+    <main role="main" id="main">
+      <turbo-frame id="outlet">
+  <style>
+    body {
+      background-color: #F3F6F8;
+    }
+  </style>
+
+
+  
+<nav class="views navbar navbar-expand-lg navbar-light white-background py-0 position-relative">
+  <form id="nav-search-form" class="form-inline position-absolute d-none d-lg-block container-margin-left" data-turbo-frame="outlet" data-turbo-action="replace" action="https://updates.reclaim.ai/" accept-charset="UTF-8" method="get">
+    <svg class="svg-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8.33333 13.8946C11.555 13.8946 14.1667 11.2829 14.1667 8.06124C14.1667 4.83958 11.555 2.22791 8.33333 2.22791C5.11167 2.22791 2.5 4.83958 2.5 8.06124C2.5 11.2829 5.11167 13.8946 8.33333 13.8946Z" stroke="#8380FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17.5 17.2279L12.5 12.2279" stroke="#8380FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    <input type="search" name="search" id="search" class="form-control search-field" tabindex="1" autocomplete="off" placeholder="search" aria-label="Search" />
+    <input id="search-clear" type="reset" value="X" alt="Clear the search form" style='display:none'>
+    
+    
+</form>
+  <div class="mx-auto">
+    <ul class="navbar-nav mx-auto mt-0 flex-row" style="min-height: 60px">
+        <li class="nav-item active"><a tabindex="0" data-turbo-frame="outlet" data-turbo-action="advance" class="nav-link " aria-current="page" href="/">Announcements</a></li>
+
+        <li class="nav-item"><a tabindex="2" data-turbo-frame="outlet" data-turbo-action="advance" class="nav-link " href="/board">Roadmap</a></li>
+
+        
+    </ul>
+  </div>
+</nav>
+
+<script type="text/javascript" charset="utf-8">
+  var currentLocation = "/"
+
+  var clearEl = document.getElementById("search-clear");
+  var searchEl = document.getElementById("search");
+
+  document.getElementById('nav-search-form').addEventListener('submit', function() {
+    document.getElementById('loading-indicator').style.display = 'block';
+    document.getElementById('announcements-container').style.display = 'none';
+  });
+
+  clearEl.addEventListener('click', function () {
+    const frame = document.querySelector("turbo-frame#outlet");
+
+    if (!!frame) {
+      searchEl.value = "";
+
+      var params = new URLSearchParams(window.location.search);
+      var nextParams = {};
+
+      if (params.has("categories")) {
+        nextParams["categories"] = params.get("categories");
+      }
+
+      var search = new URLSearchParams(nextParams).toString();
+
+      frame.src = `${currentLocation}?${search}`;
+
+      const newURL = `${window.location.protocol}//${window.location.host}${currentLocation}?${search}`;
+
+      window.history.pushState({}, '', newURL);
+      window.Turbo.navigator.history.push(newURL);
+    }
+  });
+</script>
+
+
+  <div class="container-fluid pb-4 container-padding-left container-padding-right container-padding-top layout-content announcements-index d-md-flex">
+    <div class="category-feedback-container">
+      <div class="d-md-block d-none mt-4">
+
+        
+<div class="filter-pane-wrapper mr-auto">
+    <div
+      data-controller="categories"
+      data-categories-categories-hidden-value="false"
+      data-categories-change-types-hidden-value="false"
+      data-categories-selected-categories-value="[]"
+      data-categories-selected-change-types-value="[]"
+      data-categories-project-value="{&quot;id&quot;:&quot;pro_aXtpgn7cH74ug&quot;,&quot;name&quot;:&quot;Reclaim.ai&quot;,&quot;slug&quot;:&quot;reclaim-ai&quot;,&quot;published&quot;:true,&quot;categories&quot;:[{&quot;id&quot;:&quot;cat_ZXAHV643wCX8h&quot;,&quot;name&quot;:&quot;Habits&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#d4f8e8&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#d4f8e8&quot;},{&quot;id&quot;:&quot;cat_BFyhdUbK09Mqr&quot;,&quot;name&quot;:&quot;Calendar Sync&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#512b58&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#512b58&quot;},{&quot;id&quot;:&quot;cat_FvESjOarN2h8V&quot;,&quot;name&quot;:&quot;Scheduler&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#216453&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#216453&quot;},{&quot;id&quot;:&quot;cat_1A1D5afRiAZSa&quot;,&quot;name&quot;:&quot;Settings&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#f67575&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#f67575&quot;},{&quot;id&quot;:&quot;cat_BVRNyiiszdrgp&quot;,&quot;name&quot;:&quot;Analytics&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#216453&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#216453&quot;},{&quot;id&quot;:&quot;cat_dSUgoVQoFx7DS&quot;,&quot;name&quot;:&quot;Slack&quot;,&quot;description&quot;:&quot;&quot;,&quot;color&quot;:&quot;#eb144c&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#eb144c&quot;},{&quot;id&quot;:&quot;cat_BXBcsTOKbaogL&quot;,&quot;name&quot;:&quot;Tasks&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#1eb3a6&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#1eb3a6&quot;},{&quot;id&quot;:&quot;cat_MHFwz4ZAJuzbY&quot;,&quot;name&quot;:&quot;Bug fixes&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#ffa44d&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#ffa44d&quot;},{&quot;id&quot;:&quot;cat_fAZuiJnNNByVi&quot;,&quot;name&quot;:&quot;Travel Time&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#1eb3a6&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#1eb3a6&quot;},{&quot;id&quot;:&quot;cat_1yYDv5ABD5sCa&quot;,&quot;name&quot;:&quot;Decompression Time&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#216453&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#216453&quot;},{&quot;id&quot;:&quot;cat_WmDcm8doyyFny&quot;,&quot;name&quot;:&quot;Design&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#ffa44d&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#ffa44d&quot;},{&quot;id&quot;:&quot;cat_RW4qKABkmHcGG&quot;,&quot;name&quot;:&quot;Priorities&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#eeffea&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#eeffea&quot;},{&quot;id&quot;:&quot;cat_Hr1nCJ9OtFuGA&quot;,&quot;name&quot;:&quot;Planner&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#75daad&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#75daad&quot;},{&quot;id&quot;:&quot;cat_GaWjYJAaRKMZj&quot;,&quot;name&quot;:&quot;Integrations&quot;,&quot;description&quot;:&quot;Integrations with task platforms, project management tools, etc.&quot;,&quot;color&quot;:&quot;#ABB8C3&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#abb8c3&quot;},{&quot;id&quot;:&quot;cat_96LvVglABRPNe&quot;,&quot;name&quot;:&quot;Billing and Administration&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#ABB8C3&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#abb8c3&quot;},{&quot;id&quot;:&quot;cat_aYidAoYTM67A7&quot;,&quot;name&quot;:&quot;Meetings&quot;,&quot;description&quot;:null,&quot;color&quot;:&quot;#ABB8C3&quot;,&quot;text_color&quot;:&quot;#394967&quot;,&quot;background_color&quot;:&quot;#abb8c3&quot;}],&quot;change_types&quot;:[]}"
+      data-categories-location-value="/"
+      data-categories-translations-value="{&quot;categoriesTitle&quot;:&quot;Categories&quot;,&quot;labelsTitle&quot;:&quot;Labels&quot;,&quot;categoriesClear&quot;:&quot;Clear&quot;}"
+      data-categories-change-type-rollout-value="true"
+    ></div>
+</div>
+
+
+          <div
+  data-controller="rss-feed"
+  data-rss-feed-url-value=https://updates.reclaim.ai/feed
+  data-rss-feed-translations-value="{&quot;subscribeAllCategories&quot;:&quot;Subscribe to all categories&quot;,&quot;subscribeSelectedCategories&quot;:&quot;Subscribe to selected categories&quot;,&quot;subscribeWorkItem&quot;:&quot;Subscribe to this work item&quot;,&quot;feedTitle&quot;:&quot;RSS Feed&quot;}"
+></div>
+
+
+            <div class="d-none d-md-block">
+  <a class="primary-text-color powered-by-link " style="display: block !important;" href="https://www.launchnotes.com/powered-by?company=ReclaimAI&amp;utm_campaign=https%3A%2F%2Fupdates.reclaim.ai%2F&amp;utm_content=project-release-index&amp;utm_medium=powered-by&amp;utm_source=in-app">Powered by LaunchNotes</a>
+</div>
+
+      </div>
+    </div>
+
+    <div class="row mt-0 flex-grow-1">
+      <div class="loading-indicator col-md-12 col-lg-9 col-xl-8 w-75 mx-auto text-center" id="loading-indicator">
+        <svg
+  id="L9"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  x="0px"
+  y="0px"
+  viewBox="0 0 100 100"
+  xml:space="preserve"
+  width="60px"
+>
+  <path
+    fill="#8380FF"
+    d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
+  >
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      dur="1s"
+      from="0 50 50"
+      to="360 50 50"
+      repeatCount="indefinite" />
+  </path>
+</svg>
+<p class="loading-label primary-text-color">
+  Loading...
+</p>
+
+      </div>
+
+      <div class="col-md-12 col-lg-9 col-xl-8 mx-auto announcements-container" id="announcements-container">
+          
+  <div data-controller="pagination-loading">
+    <div data-pagination-loading-target="loading" class="d-none text-center py-4">
+      <svg
+  id="L9"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  x="0px"
+  y="0px"
+  viewBox="0 0 100 100"
+  xml:space="preserve"
+  width="60px"
+>
+  <path
+    fill="#8380FF"
+    d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
+  >
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      dur="1s"
+      from="0 50 50"
+      to="360 50 50"
+      repeatCount="indefinite" />
+  </path>
+</svg>
+<p class="loading-label primary-text-color">
+  Loading...
+</p>
+
+    </div>
+
+    <div id="announcements-content">
+          <div class="separator primary-text-color month-published-header">
+    June 2026
+  </div>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/custom-slack-out-of-office-auto-replies" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/yp6arf3hnlp9j4saf7un1o6mzpcs" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#eb144c" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#eb144c"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Slack</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">Custom Slack Out-of-Office Auto-Replies</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Keep your teammates informed while you&#39;re away with custom Slack auto-reply messages. When you have an Out-of-Office event on your calendar synced to Slack,...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2026-06-04T13:12:21Z" data-local="time" data-format="%B %e, %Y">June  4, 2026</time></small>
+    </section>
+  </a>
+</article>
+
+  <div class="separator primary-text-color month-published-header">
+    April 2026
+  </div>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/new-team-ooo-calendars" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/yvd52gn7j6ckkpm1l6hgcg3vj6hy" />
+    <section class="announcement-title-container">
+      <h2 class="m-0">New Team OOO Calendars</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Keeping work on track when teammates are out shouldn’t require constant coordination — but for most teams, it does. New Team OOO Calendar support changes...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2026-04-09T21:44:55Z" data-local="time" data-format="%B %e, %Y">April  9, 2026</time></small>
+    </section>
+  </a>
+</article>
+
+  <div class="separator primary-text-color month-published-header">
+    December 2025
+  </div>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/reclaim-recapped-2025-your-year-in-review-is-here" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/i1hcjt9yth07euc42pl78jik0dqr" />
+    <section class="announcement-title-container">
+      <h2 class="m-0">Reclaim Recapped 2025: Your Year-in-Review is Here 🎉</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      You worked, you planned, you hustled — and your calendar saw it all. Now it’s time to unpack the highlights. Reclaim Recapped 2025 is officially live, and...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-12-02T14:08:42Z" data-local="time" data-format="%B %e, %Y">December  2, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/new-improved-reclaim-for-slack" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/durz0nfuicuchvwumlogqhd6p9ir" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#eb144c" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#eb144c"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Slack</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">New &amp; Improved Reclaim for Slack</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Reclaim’s Slack app just got a major upgrade! Get a clearer view of your time with smarter notifications, daily and weekly digests, conflict alerts, and more...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-12-02T13:35:09Z" data-local="time" data-format="%B %e, %Y">December  2, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+  <div class="separator primary-text-color month-published-header">
+    August 2025
+  </div>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/travel-timezone-settings" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/6jor2hz4bar9issx85rf2t57p3qq" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#216453" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#216453"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Scheduler</span>
+        </span>
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#f67575" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#f67575"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Settings</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">Travel Timezone Settings</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Whether you&#39;re traveling for business or just shifting time zones for a while, Reclaim now supports travel timezone settings so your scheduling stays...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-08-21T22:50:11Z" data-local="time" data-format="%B %e, %Y">August 21, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/custom-branding-for-scheduling-links" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/zrupikp4oq3ytqt0j7p8zlxrjsif" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#f67575" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#f67575"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Settings</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">Custom Branding for Scheduling Links</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      You can now customize the branding on Scheduling Links so your booking pages and meeting emails feature your team&#39;s logo, a banner, and even a homepage link...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-08-15T19:02:44Z" data-local="time" data-format="%B %e, %Y">August 15, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/improved-categorization-for-connected-calendars" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/l9usux1pbbx20y8ftbfjdvk5g3bz" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#f67575" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#f67575"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Settings</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">Improved categorization for Connected Calendars</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Your Connected Calendars page just got a refresh to make managing and organizing all the calendars linked to your account more intuitive. Here’s what’s new:...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-08-15T16:48:25Z" data-local="time" data-format="%B %e, %Y">August 15, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/new-task-filters-for-effortless-sorting" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/rk8tqyhmgrxgpg6lv5yyqufdkxnv" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#1eb3a6" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#1eb3a6"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Tasks</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">New Task filters for effortless sorting</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Staying on top of your tasks just got a whole lot easier with new Task filters that make navigating your to-do list faster and more intuitive. Whether you&#39;re...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-08-07T17:44:18Z" data-local="time" data-format="%B %e, %Y">August  7, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+  <div class="separator primary-text-color month-published-header">
+    May 2025
+  </div>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/outlook-calendar-support-is-here" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/x1vr8qijmtpnvk3vbfbyekrdriq9" />
+    <section class="announcement-title-container">
+      <h2 class="m-0">Outlook Calendar support is here 🎉</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      Our most requested feature is finally here! Reclaim now supports Outlook Calendar (in beta) and it’s available to all users. Just like with Google Calendar,...
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-05-21T18:29:17Z" data-local="time" data-format="%B %e, %Y">May 21, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+      <article class="release announcement card white-background d-flex pt-0">
+  <a href="https://updates.reclaim.ai/announcements/new-feature-focus-time-is-here" target="_self">
+      <img style="width:100%" class="w-100 mb-3" loading="lazy" src="https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/37mwszmzhgabims96kzda4t69qdz" />
+      <section class="announcement-categories d-flex flex-column">
+    <div class="d-flex flex-wrap mb-2">
+      <span class="category-title secondary-text-color" style="letter-spacing: 0.2px; font-size: 12px">
+        
+      </span>
+    </div>
+    <div class="d-flex flex-wrap mb-2">
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#216453" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#216453"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Scheduler</span>
+        </span>
+        <span class="category-badge d-flex align-items-center mr-3" style="font-size:12px">
+          <svg class="category-dot" width="9px" height="9px" viewBox="0 0 12 12" fill="#75daad" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#75daad"/>
+          </svg>
+          <span class="category-title secondary-text-color text-uppercase" style="letter-spacing:0.2px">Planner</span>
+        </span>
+    </div>
+</section>
+
+    <section class="announcement-title-container">
+      <h2 class="m-0">New feature: Focus Time is here 🚀</h2>
+    </section>
+    <section class="announcement-excerpt-container">
+      It’s harder than ever to find time for productive, heads-down work in a busy week. But deleting meetings isn&#39;t the answer — defending more focus time is....
+    </section>
+    <section class="announcement-date-container">
+      <small class="primary-text-color opacity-6 timestamp release-timestamp"><time datetime="2025-05-13T17:48:15Z" data-local="time" data-format="%B %e, %Y">May 13, 2025</time></small>
+    </section>
+  </a>
+</article>
+
+
+    </div>
+
+    <div id="announcement-pagination">
+    <div class="p-2 d-flex justify-content-between align-items-center mb-4">
+      <div class="mx-auto">
+        
+
+
+  <nav aria-label="pager"  class="pagy-bootstrap-nav" role="navigation">
+    <ul class="pagination">
+
+        <li class="page-item prev disabled">
+          <a href="#" class="page-link">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 36 36"><title>left chevron</title>
+  <g fill="#CCC">
+    <path d="M23.12 11.12L21 9l-9 9 9 9 2.12-2.12L16.24 18z"></path>
+  </g>
+</svg>
+          </a>
+        </li>
+
+
+          <li class="page-item active">
+            <a href="/?page=1"  class="page-link" data-turbo-action="replace" >1</a>
+          </li>
+          <li class="page-item">
+            <a href="/?page=2"  class="page-link" data-turbo-action="replace" rel="next" >2</a>
+          </li>
+          <li class="page-item">
+            <a href="/?page=3"  class="page-link" data-turbo-action="replace" >3</a>
+          </li>
+          <li class="page-item">
+            <a href="/?page=4"  class="page-link" data-turbo-action="replace" >4</a>
+          </li>
+          <li class="page-item">
+            <a href="/?page=5"  class="page-link" data-turbo-action="replace" >5</a>
+          </li>
+          <li class="page-item disabled gap">
+            <a href="#" class="page-link">
+              &hellip;
+            </a>
+          </li>
+          <li class="page-item">
+            <a href="/?page=16"  class="page-link" data-turbo-action="replace" >16</a>
+          </li>
+
+        <li class="page-item next">
+          <a href="/?page=2"  class="page-link" data-turbo-action="replace" rel="next" aria-label="next">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 36 36"><title>left chevron</title>
+  <g fill="#CCC">
+    <path d="M15 9l-2.12 2.12L19.76 18l-6.88 6.88L15 27l9-9z"></path>
+  </g>
+</svg></a>
+        </li>
+    </ul>
+  </nav>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+      </div>
+
+      <div class="d-none d-lg-block col-lg-3 col-xl-4 month-picker-container">
+          <dl class="month-picker align-right">
+  <dt class="primary-text-color">Jump to Month</dt>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="active primary-color" aria-current="page" href="/?date=2026-06-01">June 2026</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2026-04-01">April 2026</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-12-01">December 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-08-01">August 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-05-01">May 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-04-01">April 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-03-01">March 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-02-01">February 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2025-01-01">January 2025</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-11-01">November 2024</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-09-01">September 2024</a>
+    </dd>
+    <dd style="">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-08-01">August 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-07-01">July 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-06-01">June 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-05-01">May 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-04-01">April 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-03-01">March 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-02-01">February 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2024-01-01">January 2024</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-12-01">December 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-11-01">November 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-10-01">October 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-09-01">September 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-08-01">August 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-07-01">July 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-06-01">June 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-05-01">May 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-04-01">April 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-03-01">March 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-02-01">February 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2023-01-01">January 2023</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-12-01">December 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-11-01">November 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-10-01">October 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-09-01">September 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-08-01">August 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-07-01">July 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-06-01">June 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-05-01">May 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-04-01">April 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-03-01">March 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-02-01">February 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2022-01-01">January 2022</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-12-01">December 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-11-01">November 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-10-01">October 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-09-01">September 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-08-01">August 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-07-01">July 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-06-01">June 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-05-01">May 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-04-01">April 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-03-01">March 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-02-01">February 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2021-01-01">January 2021</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-11-01">November 2020</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-10-01">October 2020</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-09-01">September 2020</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-08-01">August 2020</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-07-01">July 2020</a>
+    </dd>
+    <dd style="display:none">
+      <a data-turbo-frame="outlet" data-turbo-action="replace" class="primary-text-color opacity-8" href="/?date=2020-06-01">June 2020</a>
+    </dd>
+    <dd id="older-months-toggle">
+      <a href="/?show_older=1"
+         class="primary-text-color opacity-8"
+         data-turbo-frame="outlet"
+         data-turbo-action="replace">Older</a>
+    </dd>
+</dl>
+
+      </div>
+    </div>
+
+      <div class="footie row mt-4 mb-4 ml-0 mr-0 d-block d-md-none">
+        <div class="col text-center mt-3 mb-4 p-0">
+          <a class="primary-text-color powered-by-link " style="display: block !important;" href="https://www.launchnotes.com/powered-by?company=ReclaimAI&amp;utm_campaign=https%3A%2F%2Fupdates.reclaim.ai%2F&amp;utm_content=project-release-index&amp;utm_medium=powered-by&amp;utm_source=in-app">Powered by LaunchNotes</a>
+        </div>
+      </div>
+  </div>
+</turbo-frame>
+      
+    </main>
+
+    <div id="feedback-portal-root"></div>
+
+      <div class="modal fade white-background-color" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <style>
+            #subscribeModal .modal-header {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                margin: 20px 0 0 0 !important;
+            }
+            #subscribeModal .modal-title {
+                font-weight: 700;
+                text-align: left !important;
+                flex: 1;
+                margin: 0;
+            }
+            #subscribeModal .modal-header .close {
+                position: static !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                float: none !important;
+            }
+            .grecaptcha-badge {
+                visibility: hidden;
+            }
+        </style>
+        <div class="modal-header border-0 pb-0 px-4" style="display: flex; justify-content: space-between; align-items: center;">
+          <h5 class="modal-title mt-0 primary-text-color" id="subscribeLabel" style="font-weight: 700; text-align: left; flex: 1;">
+            Subscribe to updates
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 0; margin: 0; line-height: 1;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form data-turbo="false" class="new_subscriber" id="new_subscriber" action="https://updates.reclaim.ai/subscribers" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="36NIKs0JT8GMe4RCTmAOWy2CNFYAizF2sObeaqiQXvg72QBfVVBMsJ-DD6huuoynb6ErdZFUilGK70xJw_foeg" autocomplete="off" />
+          <div class="modal-body px-4">
+            <div class="form-group">
+              <label class="primary-text-color" for="subscriber_email">
+                <span style="color: red; margin-right: 4px;">*</span>Email
+</label>              <input class="form-control" placeholder="email@example.com" type="email" name="subscriber[email]" id="subscriber_email" />
+              <div id="email-error" style="display:none; color: red; font-size: 12px; margin-top: 4px;"></div>
+              <input type="hidden" name="subscribed_object_type" id="subscribed_object_type" value="Project" autocomplete="off" />
+              <input type="hidden" name="subscribed_object_id" id="subscribed_object_id" value="pro_aXtpgn7cH74ug" autocomplete="off" />
+                <div class="form-group mt-3" style="margin-left: 0; padding-left: 0;">
+                  <label class="primary-text-color" style="margin-bottom: 0.5rem;"><span style="color: red; margin-right: 4px;">*</span>Categories</label>
+                  <div
+                    id="subscribe-category-select"
+                    data-controller="subscribe-category-select"
+                    data-categories="[{&quot;value&quot;:&quot;cat_ZXAHV643wCX8h&quot;,&quot;label&quot;:&quot;Habits&quot;,&quot;backgroundColor&quot;:&quot;#d4f8e8&quot;},{&quot;value&quot;:&quot;cat_BFyhdUbK09Mqr&quot;,&quot;label&quot;:&quot;Calendar Sync&quot;,&quot;backgroundColor&quot;:&quot;#512b58&quot;},{&quot;value&quot;:&quot;cat_FvESjOarN2h8V&quot;,&quot;label&quot;:&quot;Scheduler&quot;,&quot;backgroundColor&quot;:&quot;#216453&quot;},{&quot;value&quot;:&quot;cat_1A1D5afRiAZSa&quot;,&quot;label&quot;:&quot;Settings&quot;,&quot;backgroundColor&quot;:&quot;#f67575&quot;},{&quot;value&quot;:&quot;cat_BVRNyiiszdrgp&quot;,&quot;label&quot;:&quot;Analytics&quot;,&quot;backgroundColor&quot;:&quot;#216453&quot;},{&quot;value&quot;:&quot;cat_dSUgoVQoFx7DS&quot;,&quot;label&quot;:&quot;Slack&quot;,&quot;backgroundColor&quot;:&quot;#eb144c&quot;},{&quot;value&quot;:&quot;cat_BXBcsTOKbaogL&quot;,&quot;label&quot;:&quot;Tasks&quot;,&quot;backgroundColor&quot;:&quot;#1eb3a6&quot;},{&quot;value&quot;:&quot;cat_MHFwz4ZAJuzbY&quot;,&quot;label&quot;:&quot;Bug fixes&quot;,&quot;backgroundColor&quot;:&quot;#ffa44d&quot;},{&quot;value&quot;:&quot;cat_fAZuiJnNNByVi&quot;,&quot;label&quot;:&quot;Travel Time&quot;,&quot;backgroundColor&quot;:&quot;#1eb3a6&quot;},{&quot;value&quot;:&quot;cat_1yYDv5ABD5sCa&quot;,&quot;label&quot;:&quot;Decompression Time&quot;,&quot;backgroundColor&quot;:&quot;#216453&quot;},{&quot;value&quot;:&quot;cat_WmDcm8doyyFny&quot;,&quot;label&quot;:&quot;Design&quot;,&quot;backgroundColor&quot;:&quot;#ffa44d&quot;},{&quot;value&quot;:&quot;cat_RW4qKABkmHcGG&quot;,&quot;label&quot;:&quot;Priorities&quot;,&quot;backgroundColor&quot;:&quot;#eeffea&quot;},{&quot;value&quot;:&quot;cat_Hr1nCJ9OtFuGA&quot;,&quot;label&quot;:&quot;Planner&quot;,&quot;backgroundColor&quot;:&quot;#75daad&quot;},{&quot;value&quot;:&quot;cat_GaWjYJAaRKMZj&quot;,&quot;label&quot;:&quot;Integrations&quot;,&quot;backgroundColor&quot;:&quot;#ABB8C3&quot;},{&quot;value&quot;:&quot;cat_96LvVglABRPNe&quot;,&quot;label&quot;:&quot;Billing and Administration&quot;,&quot;backgroundColor&quot;:&quot;#ABB8C3&quot;},{&quot;value&quot;:&quot;cat_aYidAoYTM67A7&quot;,&quot;label&quot;:&quot;Meetings&quot;,&quot;backgroundColor&quot;:&quot;#ABB8C3&quot;}]"
+                    data-required="true"
+                  ></div>
+                  <small class="secondary-text-color">Choose the topics you'd like to stay updated on.</small>
+                  <div id="category-error" style="display:none; color: red; font-size: 12px; margin-top: 4px;">
+                    Please select at least one category.
+                  </div>
+                </div>
+                <script src="https://www.recaptcha.net/recaptcha/api.js?render=6LcNzNsZAAAAAJH1kh0G2YHL-7Cm3dSmFKcOzOM_"   ></script>
+        <script>
+          // Define function so that we can call it again later if we need to reset it
+          // This executes reCAPTCHA and then calls our callback.
+          function executeRecaptchaForSubscribe() {
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LcNzNsZAAAAAJH1kh0G2YHL-7Cm3dSmFKcOzOM_', {action: 'subscribe'}).then(function(token) {
+                setInputWithRecaptchaResponseTokenForSubscribe('g-recaptcha-response-data-subscribe', token)
+              });
+            });
+          };
+          // Invoke immediately
+          executeRecaptchaForSubscribe()
+
+          // Async variant so you can await this function from another async function (no need for
+          // an explicit callback function then!)
+          // Returns a Promise that resolves with the response token.
+          async function executeRecaptchaForSubscribeAsync() {
+            return new Promise((resolve, reject) => {
+             grecaptcha.ready(async function() {
+                resolve(await grecaptcha.execute('6LcNzNsZAAAAAJH1kh0G2YHL-7Cm3dSmFKcOzOM_', {action: 'subscribe'}))
+              });
+            })
+          };
+
+                  var setInputWithRecaptchaResponseTokenForSubscribe = function(id, token) {
+          var element = document.getElementById(id);
+          if (element !== null) element.value = token;
+        }
+
+        </script>
+<input type="hidden" name="g-recaptcha-response-data[subscribe]" id="g-recaptcha-response-data-subscribe" data-sitekey="6LcNzNsZAAAAAJH1kh0G2YHL-7Cm3dSmFKcOzOM_" class="g-recaptcha g-recaptcha-response "/>
+
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mb-2 primary-background-color">Subscribe</button>
+            <small class="secondary-text-color">
+              By clicking subscribe, you accept our <a href="https://www.launchnotes.com/privacy" target="_blank" class="primary-color">privacy policy</a> and
+              <a href="https://www.launchnotes.com/terms" target="_blank" class="primary-color">terms and conditions</a>.
+
+                <span>
+                  reCAPTCHA <a href="https://policies.google.com/privacy" class="primary-color">privacy</a> and <a href="https://policies.google.com/terms" class="primary-color">terms</a> apply
+                </span>
+            </small>
+          </div>
+</form>      </div>
+    </div>
+  </div>
+
+
+    
+  <script 
+    src="https://browser.sentry-cdn.com/5.21.4/bundle.tracing.min.js" 
+    integrity="sha384-L18Y4dnHG3rj58y7WwOZH5ZKkXqPhaf5M9QItUT/MB5t71mgOwtxs83RI+4m/nE5" 
+    crossorigin="anonymous"></script>
+
+  <script>
+    Sentry.init({
+      release: '19eede75df4f4faf9995ff49876236fbd698b659',
+      environment: 'production',
+      dsn: "https://9bfa402b68994872b61bcd78267127f6@o269410.ingest.sentry.io/1772406",
+    });
+  </script>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" integrity="sha512-hCP3piYGSBPqnXypdKxKPSOzBHF75oU8wQ81a6OiGXHFMeKs9/8ChbgYl7pUvwImXJb03N4bs1o1DzmbokeeFw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://assets.launchnotes.io/packs/js/public-6c2563d88ef65649e1d4.js" data-cookieconsent="ignore"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre, pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+      if (URLSearchParams !== 'undefined') {
+        let queryParams = new URLSearchParams(window.location.search);
+        if (queryParams && (queryParams.get("token") || queryParams.get("workosToken") || queryParams.get("authToken"))) {
+          queryParams.delete('token');
+          queryParams.delete('authToken');
+          queryParams.delete('workosToken');
+          if (queryParams.size === 0) {
+            window.history.pushState({}, document.title, location.origin + location.pathname)
+          } else {
+            window.history.pushState({}, document.title, location.origin + location.pathname + '?' + queryParams.toString())
+          }
+
+        }
+      }
+    </script>
+
+    <script>
+      document.addEventListener('turbo:click', async (event) => {
+        // Clear search params, since the component for Ideas is keeping
+        // the previous state for the params, and therefore misapplying filters
+        if (event.detail.url.endsWith('/ideas')) {
+          const newURL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+          window.history.pushState({}, '', newURL);
+        }
+
+        // If we are targeting a pagination link, scroll to the navbar
+        // The navbar is a nice padding above the announcement list
+        // Note that we only use pagination like this for announcement
+        // list
+        if (event.target.classList.contains('page-link')) {
+          let navbarQuery = document.querySelectorAll('nav.views.navbar')
+          if (!!navbarQuery) {
+            let navbar = navbarQuery[0]
+
+            navbar.scrollIntoView({ behavior: 'smooth' })
+          }
+        }
+      })
+    </script>
+
+    <script>
+        // Strip `show_older` from the URL browser reload.
+        // show_older is added when the user clicks "Older" in the month/quarter
+        // picker to reveal entries beyond the initial 12 months / 4 quarters.
+        // On a full page reload we want to reset back to the collapsed state,
+        // but Turbo frame navigations (type === 'navigate') should preserve it.
+        if (
+            performance.getEntriesByType('navigation')[0]?.type === 'reload' &&
+            new URLSearchParams(window.location.search).has('show_older')
+        ) {
+            var url = new URL(window.location.href);
+            url.searchParams.delete('show_older');
+            window.location.replace(url.toString());
+        }
+    </script>
+
+    <script>
+        // Force a full page reload if branding has changed since the last Turbo snapshot was cached.
+        // This prevents visitors from seeing stale inline styles or custom header/footer HTML
+        // after a project's branding settings are updated
+        document.addEventListener('turbo:before-cache', () => {
+            document.body.dataset.brandingVersion = document.body.dataset.brandingVersion;
+        });
+
+        document.addEventListener('turbo:before-render', (event) => {
+            const incoming = event.detail.newBody.dataset.brandingVersion;
+            const current = document.body.dataset.brandingVersion;
+            if (incoming && current && incoming !== current) {
+                event.preventDefault();
+                window.location.reload();
+            }
+        });
+
+        document.addEventListener('turbo:frame-render', (event) => {
+            event.detail.fetchResponse.responseHTML.then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const incoming = doc.body.dataset.brandingVersion;
+                const current = document.body.dataset.brandingVersion;
+                if (incoming && current && incoming !== current) {
+                    document.body.dataset.brandingVersion = incoming;
+                    window.location.reload();
+                }
+            });
+        });
+    </script>
+
+    <div data-react-class="Alerts" data-react-props="{&quot;initialAlerts&quot;:[]}"></div>
+
+
+      <script>
+      $('body').on('hidden.bs.modal', '.modal', function() {
+          $('.btn').blur();
+      });
+      $('body').on('shown.bs.modal', '.modal', function() {
+          $('.form-control').focus();
+      });
+      $("#subscribeModal form").on("submit", function(e) {
+          let hasError = false;
+
+          const email = $(this).find('input[type="email"]').val();
+          const emailError = $("#email-error");
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!email) {
+              emailError.text('Email is required.').show();
+              hasError = true;
+          } else if (!emailRegex.test(email)) {
+              emailError.text('Please enter a valid email address.').show();
+              hasError = true;
+          } else {
+              emailError.hide();
+          }
+
+          const container = $("#subscribe-category-select");
+          if (container.length > 0 && container.data("required") === true) {
+              const selected = $("input[name='category_ids[]']", $(this));
+              if (selected.length === 0) {
+                  $("#category-error").show();
+                  hasError = true;
+              } else {
+                  $("#category-error").hide();
+              }
+          }
+
+          if (hasError) {
+              e.preventDefault();
+              return false;
+          }
+      });
+  </script>
+
+  </body>
+
+</html>

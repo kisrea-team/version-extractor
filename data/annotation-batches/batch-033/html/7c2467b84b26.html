@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="description" content="Rufus is a small application that creates bootable USB drives, which can then be used to install or run Microsoft Windows, Linux or DOS. In just a few minutes, and with very few clicks, Rufus can help you run a new Operating System on your computer...">
+    <meta name="keywords" content="Application,BIOS,Boot,Bootable,DOS,Download,Drive,Fast,Flash,Formatting,FreeDOS,Linux,Portable,Rufus,Small,Standlone,UEFI,USB,Utility,Windows">
+    <meta name="author" content="Pete Batard">
+    <meta name="application-name" content="Rufus"/>
+    <title>Rufus - The Official Website (Download, New Releases)</title>
+  </head>
+  <body>
+    <script>
+     var supported_languages = [
+      "en", "sq", "ar", "hy", "az", "bn", "bs", "bg", "yue", "ca", "zh", "zh_TW", "hr", "cs", "da", "nl", "et", "fil", "fi", "fr", "gl", "de", "el", "he", "hi", "hu", "id", "ga", "it", "ja", "jv", "ko", "ar_IQ", "lv", "lt", "mk", "ms", "mi", "nb", "or", "fa", "pl", "pt_BR", "pt", "ro", "ru", "sr_LT", "sr", "si", "sk", "sl", "es", "sv", "ta", "te", "th", "tr", "uk", "ur", "ug", "vi", "cy"
+     ];
+     var localized_index = "en";
+     var lang = (window.navigator.language || window.navigator.userLanguage).replace('-', '_');
+     if (lang == "ar_IQ")
+       localized_index = "ar_IQ";
+     else if (lang == "pt_BR")
+       localized_index = "pt_BR";
+     else if (lang == "zh_TW")
+       localized_index = "zh_TW";
+     else if (lang == "sr@latin" || lang == "sr_RS@latin")
+       localized_index = "sr_LT";
+     else
+       localized_index = lang.split('_')[0];
+     if (supported_languages.indexOf(localized_index) < 0)
+       localized_index = "en";
+     window.location = '/' + localized_index;
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://rufus.ie/en/" />
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>GParted -- Live CD/USB/PXE/HD </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="author" content="Curtis Gedak">
+  <meta name="keywords" content="partition editor, partition manager, partition magic, hard disk drive, flash drive, USB stick">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/gparted-16.png" type="image/png">
+  <link rel="stylesheet" href="css/default.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="cookieconsent/cookieconsent.min.css" />
+<script src="cookieconsent/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#efefef",
+      "text": "#404040"
+    },
+    "button": {
+      "background": "#8ec760",
+      "text": "#ffffff"
+    }
+  },
+  "content": {
+    "message": "This site uses cookies to make your browsing experience better.  By using our site you agree to our use of cookies.",
+    "dismiss": "Got it!",
+    "link": "Learn more",
+    "href": "privacy-policy.php"
+  }
+})});
+</script>
+</head>
+<body>
+<div class="body">
+
+<script type="text/javascript">
+  // Stop iFrame loading on older browsers
+  if ( top != self ) {
+    top.location.replace(document.location);
+    alert("iFrame not allowed; click OK to load this page without iFrame.");
+  }
+</script>
+<div class="hdr">
+	<a href="index.php"><img class="logo" src="images/gparted-64x42.png" alt="home" title="back to home page"></a>
+	<div class="hdrtitle">
+	<b>GNOME Partition Editor</b>
+	</div>
+</div>
+<div class="hovermenu">
+  	<ul>
+	<li><a href="index.php">Home</a></li>
+	<li><a href="download.php">Download</a></li>
+	<li><a href="livecd.php">Live CD/USB</a></li>
+	<li><a href="help.php">Help</a></li>
+	<li><a href="news.php">News</a></li>
+	<li><a href="development.php">Develop</a></li>
+	<li><a href="donations.php">Donate</a></li>
+	</ul>
+</div>
+<div class="abovead"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6388742802791691";
+width = document.documentElement.clientWidth;
+/* Site pages, 320x50 ads, Above page content */
+google_ad_slot = "6908663966";
+google_ad_width = 320;
+google_ad_height = 50;
+if (width > 500) {
+  /* Site pages, 468x60 Ads, Above page content */
+  google_ad_slot = "1021583018";
+  google_ad_width = 468;
+  google_ad_height = 60;
+}
+if (width > 750) {
+  /* Site pages, 728x90 ads, Above page content */
+  google_ad_slot = "0776862578";
+  google_ad_width = 728;
+  google_ad_height = 90;
+}
+if (width > 1000) {
+  /* Site pages, 970x90 ads, Above page content */
+  google_ad_slot = "4706792360";
+  google_ad_width = 970;
+  google_ad_height = 90;
+}
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div class="content">
+<H1>Live CD/USB/PXE/HD</H1>
+
+<div class="right"><script type="text/javascript"><!--
+google_ad_client = "pub-6388742802791691";
+width = document.documentElement.clientWidth;
+/* Live CD page, 120x240 ads, Inline with content */
+google_ad_slot = "2477060368";
+google_ad_width = 120;
+google_ad_height = 240;
+if (width > 500) {
+  /* Live CD page, 160x600 ads, Right hand side near top */
+  google_ad_slot = "1531402778";
+  google_ad_width = 160;
+  google_ad_height = 600;
+}
+if (width > 800) {
+  /* Live CD page, 336x280 ads, Right hand side near top */
+  google_ad_slot = "8523593961";
+  google_ad_width = 336;
+  google_ad_height = 280;
+}
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<p>
+<b>GParted Live</b> is a small bootable GNU/Linux distribution for x86
+based computers.<br>
+
+It enables you to use all the <a href="features.php">features</a> of
+the latest versions of the GParted application.<br>
+
+<br>
+GParted Live can be installed on CD, USB, PXE server, and Hard Disk
+then run on an x86 machine.<br>
+</p>
+
+<table class="noborder"><tr class="noborder"><td class="noborder">
+<div class="caution">
+<p class="hangcaution">
+<b>CAUTION</b>:&nbsp;
+Creating a whole disk or partition image backup is recommended before
+you resize or move a partition.  Some free software (GPL) disk and
+partition image tools are available:<br>
+<br>
+<a href="http://clonezilla.org" target=_blank>Clonezilla</a>, &nbsp;
+<a href="http://doclone.nongnu.org" target=_blank>doClone</a>, &nbsp;
+<a href="http://www.fsarchiver.org" target=_blank>FSArchiver</a>, &nbsp;
+<a href="http://g4l.sourceforge.net" target=_blank>G4L</a>, &nbsp;
+<a href="http://www.feyrer.de/g4u" target=_blank>g4u</a>, &nbsp;
+<a href="http://partimage.org" target=_blank>Partimage</a>, &nbsp;
+<a href="http://partclone.org" target=_blank>Partclone</a>.
+</p>
+
+</div>
+</td></tr></table>
+
+<h2>Installation Instructions</h2>
+<p>
+To install GParted Live on CD, <a href="download.php">download</a> the
+.iso file and burn it as an image to a CD.<br>
+<br>
+For other installations, please refer to the following documents:<br>
+<a href="liveusb.php">GParted Live on USB</a><br>
+<a href="livepxe.php">GParted Live on PXE server</a><br>
+<a href="livehd.php">GParted Live on Hard Disk</a><br>
+<a href="add-packages-in-gparted-live.php">Add packages in GParted Live</a><br>
+<a href="create-gparted-live.php">Create your own custom GParted Live
+from scratch</a><br>
+</p>
+
+<h2>Usage Instructions</h2>
+<p>
+See the <a href="display-doc.php?name=gparted-live-manual">GParted
+Live Manual</a> for instructions on how to use the Live image.<br>
+See the <a href="display-doc.php?name=help-manual">GParted Manual</a>
+for instructions on how to use the application for partitioning
+tasks.<br>
+See the <a href="documentation.php">documentation</a> page for copies
+of the GParted Manual in other languages.<br>
+For x86-based Apple machines before 2012, e.g.,  iMac5.1 or iMac11.1, you might need to add "nomodeset enforcing=0 xforcevesa vga=791" in the boot parameters so that GParted live can boot successfully. For more info, please refer to <a href="https://gitlab.gnome.org/GNOME/gparted/-/issues/167" target=_blank>this</a>.
+</p>
+
+<h2>Accounts in GParted live</h2>
+<p>
+GParted live is based on <a href="https://wiki.debian.org/DebianLive" target=_blank>Debian live</a>, and the default account is "user", with password "live". There is no root password, so if you need root privileges, login as "user", then run "sudo" to get root privileges. 
+</p>
+
+<h2>Available boot parameters</h2>
+<p>
+You can find the available boot parameters for GParted live <a href="./gparted-live-boot-param.php">here</a>.
+
+<h2>Included Packages</h2>
+<p>
+GParted Live includes additional packages, such as:<br>
+</p>
+<h3>Graphical Utilities</h3>
+<p>
+Right click on the desktop to access a pop-up menu.
+</p>
+<table>
+  <tr>
+    <th>Program</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><a href="http://wiki.lxde.org/en/LXTerminal">lxterminal</a></td>
+    <td>Terminal emulator (provides access to command line)</td>
+  </tr>
+  <tr>
+    <td><a href="http://pcmanfm.sourceforge.net/">pcmanfm</a></td>
+    <td>Graphical file manager</td>
+  </tr>
+  <tr>
+    <td><a href="http://tarot.freeshell.org/leafpad/">leafpad</a></td>
+    <td>Graphical text editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.netsurf-browser.org/">netsurf</a></td>
+    <td>Small web browser</td>
+  </tr>
+  <tr>
+    <td><a href="http://gsmartcontrol.sourceforge.net/">gsmartcontrol</a></td>
+    <td>Hard disk drive and SSD health inspection tool</td>
+  </tr>
+  <tr>
+    <td><a href="http://galculator.mnim.org/">galculator</a></td>
+    <td>RPN and algebraic scientific calculator</td>
+  </tr>
+</table>
+<h3>Command Line Utilities</h3>
+<table>
+  <tr>
+    <th>Program</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><a href="http://www.fsarchiver.org/">fsarchiver</a></td>
+    <td>File system archiver and restorer<br></td>
+  </tr>
+  <tr>
+    <td><a href="http://partclone.org/">partclone</a></td>
+    <td>Backup partitions into a compressed image file (e.g.,
+      partclone.ext4)</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.partimage.org/">partimage</a></td>
+    <td>Backup partitions into a compressed image file<br></td>
+  </tr>
+  <tr>
+    <td><a href="http://www.cgsecurity.org/wiki/TestDisk">testdisk</a></td>
+    <td>Data recovery tool that can help recover lost partitions<br></td>
+  </tr>
+  <tr>
+    <td><a href="http://en.wikipedia.org/wiki/Gpart">gpart</a></td>
+    <td>(Older) data recovery tool that can help recover lost msdos partition tables<br></td>
+  </tr>
+  <tr>
+    <td><a href="http://www.gnu.org/software/grub/">grub</a></td>
+    <td>GRand Unified Bootloader for restoring GRUB 2 boot loader<br></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/pixel/hexedit">hexedit</a></td>
+    <td>Edit files in hexadecimal or in ASCII</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.gnu.org/software/mc/">mc</a></td>
+    <td>Text based file manager known as Midnight Commander</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.nano-editor.org/">nano</a></td>
+    <td>Text editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.vim.org/">vim-tiny</a></td>
+    <td>Enhanced vi text editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.gnu.org/software/parted/">parted</a></td>
+    <td>Partition table editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://en.wikipedia.org/wiki/Util-linux">fdisk</a></td>
+    <td>MSDOS partition table editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://en.wikipedia.org/wiki/Util-linux">sfdisk</a></td>
+    <td>MSDOS partition table editor also useful to save/restore partition table to/from a file</td>
+  </tr>
+  <tr>
+    <td><a href="http://sourceforge.net/projects/gptfdisk/">gdisk</a></td>
+    <td>GPT partition table editor</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.rodsbooks.com/gdisk/sgdisk.html">sgdisk</a></td>
+    <td>GPT partition table editor also useful to save/restore partition table to/from a file</td>
+  </tr>
+  <tr>
+    <td><a href="http://packages.debian.org/sid/gptsync">gptsync</a></td>
+    <td>GPT and MSDOS partition tables synchronization tool useful for Mac OS X users</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.openssh.com/">openssh</a></td>
+    <td>Secure shell (ssh) connectivity tool suite</td>
+  </tr>
+  <tr>
+    <td><a href="http://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/">screen</a></td>
+    <td>Screen manager with VT100/ANSI terminal emulation</td>
+  </tr>
+  <tr>
+    <td><a href="http://linux.die.net/man/8/ping">ping</a></td>
+    <td>Check network connectivity to another host on a network</td>
+  </tr>
+  <tr>
+    <td><a href="http://linux.die.net/man/1/rsync">rsync</a></td>
+    <td>Fast, versatile, remote (and local) file-copying tool</td>
+  </tr>
+  <tr>
+    <td><a href="http://linux.die.net/man/1/telnet">telnet</a></td>
+    <td>Communicate with another host using the TELNET protocol</td>
+  </tr>
+  <tr>
+    <td><a href="http://linux.die.net/man/8/traceroute">traceroute</a></td>
+    <td>Print the route packets trace to network host</td>
+  </tr>
+  <tr>
+    <td><a href="http://linux.die.net/man/1/bc">bc</a></td>
+    <td>Arbitrary precision calculator language</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/martijnvanbrummelen/nwipe">nwipe</a></td>
+    <td>Secure disk eraser</td>
+  </tr>
+</table>
+<p>
+To view all of the included packages you can either:<br>
+ &nbsp; &nbsp; refer to the "packages-<i>x.y.z</i>-<i>w</i>.txt" file in the
+ download directory,<br>
+or<br>
+ &nbsp; &nbsp; view the file "live/packages.txt" file inside the
+ GParted Live iso file or zip file.<br>
+</p>
+
+</div>
+
+<div class="bottomad"><script type="text/javascript"><!--
+google_ad_client = "pub-6388742802791691";
+width = document.documentElement.clientWidth;
+/* Site pages, 320x50 ads, Below page content */
+google_ad_slot = "2338863563";
+google_ad_width = 320;
+google_ad_height = 50;
+if (width > 500) {
+  /* Site pages, 468x60 ads, Below page content */
+  google_ad_slot = "3675995969";
+  google_ad_width = 468;
+  google_ad_height = 60;
+}
+if (width > 750) {
+  /* Site pages, 728x90 ads, Below page content */
+  google_ad_slot = "5925625433";
+  google_ad_width = 728;
+  google_ad_height = 90;
+}
+if (width > 1000) {
+  /* Site pages, 970x90 ads, Below page content */
+  google_ad_slot = "1613725160";
+  google_ad_width = 970;
+  google_ad_height = 90;
+}
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div class="ftr">
+	<a href="documentation.php">Documentation</a> &nbsp;
+	<a href="faq.php">FAQ</a> &nbsp;
+	<!-- Forum offline ~ Dec 16, 2024
+	<a href="forum.php">Forum</a> &nbsp;
+	-->
+	<a href="bugs.php">Bugs</a> &nbsp;
+	<a href="features.php">Features</a> &nbsp;
+	<a href="screenshots.php">Screenshots</a> &nbsp;
+	<a href="articles.php">Articles</a> &nbsp;
+	<a href="contact.php">Contact</a>
+	<br><br>
+<a href="https://sourceforge.net/projects/gparted"><img
+	src="https://sflogo.sourceforge.net/sflogo.php?group_id=115843&amp;type=12"
+	width="120" height="31" border="0"
+	alt="Get GParted at SourceForge.net. Fast, secure and Free
+	Open Source software downloads" ></a>
+<a href="https://validator.w3.org/check/referer"><img border="0"
+	src="images/valid-html401.png"
+	alt="Valid HTML 4.01!" height="31" width="88"></a>
+<a href="https://jigsaw.w3.org/css-validator/validator?uri=https://gparted.org/">
+	<img border="0" src="images/vcss.gif"
+	 alt="Correct CSS!" height="31" width="88"></a>
+<a href="privacy-policy.php">
+	<img border="0" src="images/pp.png"
+	 alt="Privacy policy"></a>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>VeraCrypt - Free Open source disk encryption with strong security for the Paranoid</title>
+<meta name="description" content="VeraCrypt is free open-source disk encryption software for Windows, Mac OS X and Linux. In case an attacker forces you to reveal the password, VeraCrypt provides plausible deniability. In contrast to file encryption, data encryption performed by VeraCrypt is real-time (on-the-fly), automatic, transparent, needs very little memory, and does not involve temporary unencrypted files."/>
+<meta name="keywords" content="encryption, security"/>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div>                      
+<a href="Home.html"><img src="VeraCrypt128x128.png" alt="VeraCrypt"/></a>
+</div>
+
+<div id="menu">
+	<ul>
+	  <li><a class="active" href="Home.html">Home</a></li>
+	  <li><a href="Code.html">Source Code</a></li>
+	  <li><a href="Downloads.html">Downloads</a></li>
+	  <li><a href="Documentation.html">Documentation</a>           </li>
+	  <li><a href="Donation.html">Donate</a></li>
+	  <li><a href="https://sourceforge.net/p/veracrypt/discussion/" target="_blank">Forums</a></li>
+	</ul>
+</div>
+
+<div class="wikidoc">
+<p>VeraCrypt is a free open source disk encryption software for Windows, Mac OSX and Linux. Brought to you by <strong>AM Crypto </strong>
+(<a href="https://amcrypto.jp">https://amcrypto.jp</a>) and based on TrueCrypt 7.1a.</p>
+
+VeraCrypt main features:
+<ul>
+<li>Creates a <b>virtual encrypted disk</b> within a file and mounts it as a real disk. </li>
+<li>Encrypts an<b> entire partition or storage device</b> such as USB flash drive or hard drive.</li>
+<li>Encrypts a <b>partition or drive where Windows is installed</b> (<a href="System%20Encryption.html">pre-boot authentication</a>).</li>
+<li>Encryption is <a href="Documentation.html"><b>automatic</b>, <b>real-time</b>(on-the-fly) and <b>transparent</b></a>.</li>
+<li><a href="Parallelization.html">Parallelization</a> and <a href="Pipelining.html">pipelining</a> allow data to be read and written as fast as if the drive was not encrypted.</li>
+<li>Encryption can be <a href="Hardware%20Acceleration.html">hardware-accelerated</a> on modern processors.</li>
+<li>Provides <b><a href="Plausible%20Deniability.html">plausible deniability</a></b>, in case an adversary forces you to reveal the password: <b><a href="Hidden%20Volume.html">Hidden volume</a></b> (steganography) and <b><a href="Hidden%20Operating%20System.html">hidden operating system</a></b>.</li>
+<li>More information about the features of VeraCrypt may be found in the <a href="Documentation.html" style="color:rgb(0, 128, 192);text-decoration:none;"><b>documentation</b></a></li>
+</ul>
+
+
+<p><strong><a href="Donation.html">Donate to help the project<img src="paypal_30x30.png" style="vertical-align: middle;margin-left: 5px; margin-right: 5px"><img src="BC_Logo_30x30.png" style="vertical-align: middle;margin-right: 5px"><img src="Ethereum_Logo_19x30.png" style="vertical-align: middle;margin-right: 5px"><img src="liberapay.svg" width="30" height="30" style="vertical-align: middle; margin-right: 5px"></a></strong></p>
+<p><strong><a href="Release%20Notes.html">Release Notes / Changelog</a></strong></p>
+<p><strong><a href="FAQ.html">Frequently Asked Question</a></strong></p>
+<p><strong><a href="Android%20%26%20iOS%20Support.html">Android &amp; iOS Support</a></strong></p>
+<p><strong><a href="Contributed%20Resources.html">Contributed Resources &amp; Downloads (Tutorials, PPA, ARM, Raspberry Pi...)</a></strong></p>
+<p><strong><a href="https://amcrypto.jp/VeraCrypt/canary.txt" target="_blank">Warrant Canary<img src="Home_canary.png" style="margin-left: 5px" alt="VeraCrypt's WarantCanary" width="32" height="32"></a></strong></p>
+<p><strong><a href="Contact.html">Contact us</a></strong></p>
+<p>
+<a title="VeraCrypt on Twitter" href="https://twitter.com/VeraCrypt_IDRIX" target="_blank"><img src="twitter_veracrypt.PNG" alt="VeraCrypt on Twitter" width="168" height="28"></a>&nbsp;&nbsp;
+<a rel="me" title="VeraCrypt on Mastodon" href="https://mastodon.social/@veracrypt" target="_blank"><img src="mastodon_veracrypt.PNG" alt="VeraCrypt on Mastodon" width="69" height="28"></a>&nbsp;&nbsp;
+<a title="VeraCrypt on Facebook" href="https://www.facebook.com/veracrypt" target="_blank"><img src="Home_facebook_veracrypt.png" alt="VeraCrypt on Facebook" width="61" height="28"></a>&nbsp;&nbsp;
+<a title="VeraCrypt on Reddit" href="https://www.reddit.com/r/VeraCrypt/" target="_blank"><img src="Home_reddit.png" alt="VeraCrypt on Reddit" width="94" height="28"></a>
+</p>
+<p><a title="Coverity Scan Badge for VeraCrypt" href="https://scan.coverity.com/projects/4090" target="_blank"><img src="https://scan.coverity.com/projects/4090/badge.svg" alt="Coverity Status" width="95" height="18"></a></p>
+<h3><strong>What does VeraCrypt bring to you?</strong></h3>
+<p>VeraCrypt adds enhanced security to the algorithms used for system and partitions encryption making it immune to new developments in brute-force attacks.<br>
+VeraCrypt also solves many vulnerabilities and security issues found in TrueCrypt.<br>
+<br>
+As an example, when the system partition is encrypted, TrueCrypt uses PBKDF2-RIPEMD160 with 1000 iterations whereas in VeraCrypt we use
+<span style="text-decoration:underline">200000</span> iterations by default (can be increased using a custom PIM). And for standard containers and other partitions, TrueCrypt uses at most 2000 iterations but VeraCrypt uses
+<span style="text-decoration:underline">500000</span> iterations by default (can also be increased using a custom PIM).<br>
+<br>
+This enhanced security adds some delay only to the opening of encrypted partitions without any performance impact to the application use phase. This is acceptable to the legitimate owner but it makes it much harder for an attacker to gain access to the encrypted
+ data.</p>
+<p>Starting from version 1.12, it is possible to use custom iterations through the
+<a href="Personal%20Iterations%20Multiplier%20%28PIM%29.html">
+PIM feature</a>, which can be used to increase the encryption security.<br>
+<br>
+Starting from version 1.0f, VeraCrypt can load TrueCrypt volume. It also offers the possibility to convert TrueCrypt containers and non-system partitions to VeraCrypt format.</p>
+<p><span style="text-decoration:underline">UPDATE June 9th 2026</span> : <strong>
+VeraCrypt 1.26.29</strong> has been released. It adds Argon2id support for non-system volumes, fixes two security issues, and includes many stability and compatibility improvements. For more details, please refer to the&nbsp;<a href="Release%20Notes.html">release notes</a>.</p>
+<p><span style="text-decoration:underline">UPDATE May 30th 2025</span> : <strong>
+VeraCrypt 1.26.24</strong> has been released. It brings screen protection on Windows, AppImage support on Linux and other fixes and enhancements. For more details, please refer to the&nbsp;<a href="Release%20Notes.html">release notes</a>.</p>
+<p><span style="text-decoration:underline">UPDATE February 3rd 2025</span> : <strong>
+VeraCrypt 1.26.20</strong> has been released. It includes a fix for regressions on Windows and Linux, alongside an ARM64 enhancement and other changes. For more details, please refer to the&nbsp;<a href="Release%20Notes.html">release notes</a>.</p>
+<p><span style="text-decoration:underline">UPDATE January 22nd 2025</span> : <strong>
+VeraCrypt 1.26.19</strong> has been released. It includes a fix for a regression on macOS affecting dismounting of volumes. For more details, please refer to the&nbsp;<a href="Release%20Notes.html">release notes</a>.</p>
+<p><span style="text-decoration:underline">UPDATE January 20th 2025</span> : <strong>
+VeraCrypt 1.26.18</strong> has been released. It includes fixes for two security vulnerabilities on Linux, adds AES acceleration for ARM64 platforms, and incorporates numerous other fixes and enhancements. For more details, please refer to the&nbsp;<a href="Release%20Notes.html">release notes</a>.</p>
+<p><span style="text-decoration:underline">UPDATE September 2nd 2024</span> : <strong>
+VeraCrypt 1.26.15</strong> has been released as a Hotfix for Windows only. It fixes MSI installation issues and a regression affecting decryption of encrypted systems. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE August 25th 2024</span> : <strong>
+VeraCrypt 1.26.14</strong> has been released. It brings many fixes and enhancements across the board, especially on Windows. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE October 1st 2023</span> : <strong>
+VeraCrypt 1.26.7</strong> has been released. It brings major upgrades and enhanced security across the board, especially on Windows. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE February 19th 2022</span> : <strong>
+VeraCrypt 1.25.9</strong> has been released. It brings various fixes. Now Windows MSI installer is compatible with System Encryption. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE January 7th 2022</span> : <strong>
+VeraCrypt 1.25.7</strong> has been released. It brings back support for older versions of Windows. It also fixes some issues on Windows and macOS. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE December 3rd 2021</span> : <strong>
+VeraCrypt 1.25.4</strong> has been released. It brings many enhancements and fixes. A Windows MSI installer is available allowing silent deployments. Also this version brings native Apple M1 support and multi-language support for VeraCrypt UI on Linux and macOS. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE November 28th 2020</span> : <strong>
+VeraCrypt 1.24-Update8</strong> has been released for MacOSX 10.9 and later. It fixes compatibility issues with macOS Big Sur, especially on Apple Silicon M1 with macFUSE 4.0.x. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE August 7th 2020</span> : <strong>
+VeraCrypt 1.24-Update7</strong> has been released. It fixes several issues and adds some enhancements and features, like support for password drag-n-drop from KeePass. Also, a Raspberry Pi OS package is provided with this release. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE March 10th 2020</span> : <strong>
+VeraCrypt 1.24-Update6</strong> has been released for Windows. It fixes some UI issues. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for other changes and more details.</p>
+<p><span style="text-decoration:underline">UPDATE March 9th 2020</span> : <strong>
+VeraCrypt 1.24-Update5</strong> has been released for Windows. It fixes some issues and add some features, like adding support for specifying keyfiles when creation volumes using command line and bringing support for CPUs with more than 64 logical cores. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for other changes and more details.</p>
+<p><span style="text-decoration:underline">UPDATE January 23rd 2020</span> : <strong>
+VeraCrypt 1.24-Update4</strong> has been released. It fixes regressions on Windows, Linux and MacOSX and it adds a new CLI switch on Windows. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE December 21st 2019</span> : <strong>
+VeraCrypt 1.24-Update3</strong> has been released. It targets Linux/FreeBSD only by removing unnecessary GTK dependency from console only build. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for more details.</p>
+<p><span style="text-decoration:underline">UPDATE December 16th 2019</span> : <strong>
+VeraCrypt 1.24-Update2</strong> has been released. It fixes some security issues inherited from TrueCrypt. It also fixes other issues in Windows, Linux and MacOS while adding some features. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE October 27th 2019</span> : <strong>
+VeraCrypt 1.24-Hotfix1</strong> has been released. It fixes a regression in version 1.24 affecting System Favorites mounting at boot. It also fixes other issues in Windows, Linux and MacOS. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE October 6th 2019</span> : <strong>
+VeraCrypt 1.24</strong> has been released. It adds new security features like RAM encryption and other mechanisms that protect encryption keys and passwords in memory from attacks. It also fixes issues affecting system encryption and others. Additionally, it brings some enhancements like the increase of password length for non system encryption to 128 bytes instead of 64 bytes. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE October 8th 2018</span> : <strong>
+VeraCrypt 1.23-Hotfix-2</strong> has been released. It fixes a low severity security vulnerability. It also adds a workaround for an issue affecting Microsoft Distributed File System (DFS) and it brings a change to quick formatting handling. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE September 12th 2018</span> : <strong>
+VeraCrypt 1.23</strong> has been released. It brings enhancements for Windows EFI system encryption like support for default SecureBoot. It also fixes some issues and adds some features. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE March 30th 2018</span> : <strong>
+VeraCrypt 1.22</strong> has been released. It fixes many issues and it brings some enhancements and features (e.g. Kuznyechik speedup, new cascades cipher algorithms, and TRIM support for SSD). Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE July 9th 2017</span> : <strong>
+VeraCrypt 1.21</strong> has been released. It fixes many regressions found in version 1.20 and it brings FreeBSD support. All users are urged to update to this new version. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of fixes.</p>
+<p><span style="text-decoration:underline">UPDATE June 29th 2017</span> : <strong>
+VeraCrypt 1.20</strong> has been released. It brings bug fixes, performance enhancements and new features. It is also the first version to include local HTML documentation instead of the usual User Guide PDF. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p><span style="text-decoration:underline">UPDATE October 17th 2016</span> : <strong>VeraCrypt 1.19</strong> has been released. It includes fixes for issues reported by
+<a href="http://blog.quarkslab.com/security-assessment-of-veracrypt-fixes-and-evolutions-from-truecrypt.html" target="_blank">
+Quarkslab audit</a> that was funded by <a href="https://ostif.org/" target="_blank">
+OSTIF</a>. This release also brings many enhancements and fixes, like Serpent algorithm speedup by a factor of 2.5 and the support of Windows 32-bit for EFI system encryption. Please check the&nbsp;<a href="Release%20Notes.html">release
+ notes</a> for the complete list of changes. Download for Windows <a title="VeraCrypt for Windows" href="https://launchpad.net/veracrypt/trunk/1.19/+download/VeraCrypt%20Setup%201.19.exe">
+is here</a>.<strong><br>
+</strong></p>
+<p><span style="text-decoration:underline">UPDATE August 18th 2016</span> : The Windows installer for VeraCrypt 1.18 has been updated to include drivers signed by Microsoft that allow VeraCrypt to run on Windows 10 Anniversary Edition. Windows Installer version
+ was incremented to <strong>1.18a</strong> but there is no changed at VeraCrypt level. Linux and MacOSX installers remain unchanged.<strong><br>
+</strong></p>
+<p><span style="text-decoration:underline">UPDATE August 17th 2016</span> : <strong>
+VeraCrypt 1.18</strong> has been released. It brings EFI system encryption for Windows (a world first in open source community) and it solves a TrueCrypt vulnerability that allows attacker to detect the presence of hidden volume. This release also brings many
+ enhancements and fixes. Please check the&nbsp;<a href="Release%20Notes.html">release notes</a> for the complete list of changes.</p>
+<p>Installers and packages are available in the <a href="Downloads.html">
+Downloads </a>section.
+<p>All released files are signed with a PGP key available on the following link :
+<a href="https://amcrypto.jp/VeraCrypt/VeraCrypt_PGP_public_key.asc">https://amcrypto.jp/VeraCrypt/VeraCrypt_PGP_public_key.asc</a> . It's also available on major key servers with ID=0x680D16DE.
+<br>
+Please check that its fingerprint is 5069A233D55A0EEB174A5FC3821ACD02680D16DE.</p>
+<p>SHA256 and SHA512 sums for all released files are available in the Downloads section.</p>
+<h3><strong>Some screenshots: </strong></h3>
+<p>VeraCrypt on the fly encrypting the system partition :<br>
+<img src="Home_VeraCrypt_Encrypting_Partition.png" alt="VeraCrypt Partition Encryption" width="606" height="368"></p>
+
+<p>VeraCrypt encryption options when creating an encrypted volume :<br>
+<img src="Home_VeraCrypt_Creating_Volume.png" alt="VeraCrypt encrypted volume creation" width="704" height="505"></p>
+
+<p>VeraCrypt formatting of newly created encrypted volume: <br>
+<img src="Home_VeraCrypt_NonSysEncryption.png" alt="VeraCrypt creating non-system encrypted disk" width="616" height="410"></p>
+<p>Changing the GUI language of VeraCrypt: <br>
+<img src="Home_VeraCrypt_languages_selection.png" alt="VeraCrypt Language Selection Dialog" width="582" height="504"></p>
+</div>
+<!-- Language Selector Start -->
+<div id="lang-selector">
+	<button id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+	  <img src="en-flag.png" alt="English" id="current-flag" />
+	  <span id="current-lang">English</span>
+	  <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" style="margin-left:6px;">
+		<path d="M1 1l5 5 5-5" stroke="#333" stroke-width="2" fill="none" fill-rule="evenodd"/>
+	  </svg>
+	</button>
+	<ul id="lang-list" tabindex="-1" role="listbox" aria-label="Language options">
+	  <li data-lang="en" data-url="/en/Home.html" tabindex="0" role="option" aria-selected="false">
+		<img src="en-flag.png" alt="English" /> English
+	  </li>
+	  <li data-lang="zh-cn" data-url="/zh-cn/Home.html" tabindex="0" role="option" aria-selected="false">
+		<img src="zh-cn-flag.png" alt="简体中文" /> 简体中文
+	  </li>
+	  <li data-lang="ru" data-url="/ru/Home.html" tabindex="0" role="option" aria-selected="false">
+		<img src="ru-flag.png" alt="Русский" /> Русский
+	  </li>
+	</ul>
+  </div>
+  <!-- Language Selector End -->
+  <script src="language_selection.js"></script>
+</body></html>

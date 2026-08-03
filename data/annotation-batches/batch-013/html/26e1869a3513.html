@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF0FCNE76Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DF0FCNE76Q');
+</script>
+
+<meta name=viewport content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Mowglii makes apps for macOS.">
+<meta charset="UTF-8">
+
+<title>Mowglii - Itsycal for Mac version history</title>
+
+
+<link rel="apple-touch-icon-precomposed" href="/static/apple-touch-icon.png?v=1784778331" />
+<link rel="icon" href="/favicon.ico?v=1784778331" />
+<link href="/static/mowglii.css?v=1784778331" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="bigbox">
+
+    <div class="centereddiv">
+     <a href="/" style="justify-content: center;"><img src="/static/mowglii.svg?v=1784778331" width="235" height="38" alt="Mowglii" /></a>
+     <nav>
+       <ul class="dropdown">
+         <li><a href="/itsycal/">Itsycal</a></li>
+         <li><a href="/mdv/">MDV</a> <span class="newbadge"></span></li>
+         <li><a href="/snk/">Snk</a></li>
+         <li><a href="/blog/">Blog</a></li>
+         <li><a href="/about/">About</a></li>
+       </ul>
+     </nav>
+    </div>
+    <br/>
+
+<h2><a href="/itsycal">Itsycal</a> / Version History</h2>
+
+<p>
+<h4>Downloads</h4>
+</p>
+<ul>
+  <li><a href="https://itsycal.s3.amazonaws.com/Itsycal.zip" download>Itsycal (latest) <span style="color:rgba(0,0,0,.4)">for macOS 11+</span></a></li>
+
+  <li><a href="https://itsycal.s3.amazonaws.com/Itsycal-0.14.1.zip" download>Itsycal 0.14.1 <span style="color:rgba(0,0,0,.4)">for macOS 10.14+</span></a></li>
+
+  <li><a href="https://itsycal.s3.amazonaws.com/Itsycal-0.11.17.zip" download>Itsycal 0.11.17 <span style="color:rgba(0,0,0,.4)">for macOS 10.12+</span></a></li>
+
+  <li><a href="https://itsycal.s3.amazonaws.com/Itsycal-0.10.16.zip" download>Itsycal 0.10.16 <span style="color:rgba(0,0,0,.4)">for macOS 10.10+</span></a></li>
+
+  <li><a href="https://itsycal.s3.amazonaws.com/Itsycal-0.8.15.zip" download>Itsycal 0.8.15 <span style="color:rgba(0,0,0,.4)">for macOS 10.8+</span></a></li>
+</ul>
+
+<!-- 2026-04-04 -->
+<h4 id="0.15.12">Itsycal 0.15.12</h4>
+<ul>
+  <li>Reverting a change from the previous release that attempted to improve Itsycal positioning when using status item hiding apps like Ice. Unfortunately that change broke existing behavior when using macOS menu bar auto-hiding.</li>
+  <li>Fixed a bug relating to popover sizing.</li>
+</ul>
+
+<!-- 2025-03-30 -->
+<h4 id="0.15.11">Itsycal 0.15.11</h4>
+<ul>
+  <li>When creating a new event, the default event duration matches the default set in Calendar.app. Previously, it always defaulted to 1 hour.</li>
+  <li>Right-clicking the status icon opens a menu which allows you to quickly access settings or quit Itsycal. (Thank you, Ilmi)</li>
+  <li>Itsycal positions itself better when menu bar space is limited or when you are using a menu bar hiding app like Ice, etc. In those cases, Itsycal will position itself along the right side of the screen. (Thank you, Nathan)</li>
+  <li>Attendee participation status is colored (green/red).</li>
+  <li>Korean localization. (Thank you, Sunghyun)</li>
+  <li>Distracting menu icons are disabled in macOS 26. To re-enable, open Terminal.app and enter <code>defaults write com.mowglii.Itsycalapp EnableTahoeMenuIcons -bool YES</code></li>
+</ul>
+
+<!-- 2025-12-10 -->
+<h4 id="0.15.10">Itsycal 0.15.10</h4>
+<ul>
+  <li>For macOS 26 Tahoe: The options menu has the little glyphs and the widgets in the Settings panels are Tahoe-styled.</li>
+</ul>
+
+<!-- 2025-12-07 -->
+<h4 id="0.15.9">Itsycal 0.15.9</h4>
+<ul>
+  <li>Fixed a memory leak on macOS 26 Tahoe.</li>
+  <li>Added expansion tooltips for truncated titles and locations in the agenda.</li>
+</ul>
+
+<!-- 2025-10-30 -->
+<h4 id="0.15.8">Itsycal 0.15.8</h4>
+<ul>
+  <li>This is the same as version 0.15.7 but fixes a bug that version introduced that made the app use excessive CPU. Oof!</li>
+</ul>
+
+<!-- 2025-10-29 -->
+<h4 id="0.15.7">Itsycal 0.15.7</h4>
+<ul>
+  <li>Added recognition of VK Calls events. (Thank you, oxyberg.)</li>
+  <li>Fixed a bug for a hidden feature introduced in Itsycal 0.15.5 for showing the agenda popover on hover. (Thank you, crabique.)</li>
+  <li>Fixed a bug where Itsycal didn't handle the shift from Daylight Savings time correctly.</li>
+  <li>Created a workaround for a MacOS Sequoia issue where user calendars set to ISO8601 wouldn't honor the `EEE` datetime format pattern.</li>
+</ul>
+
+<!-- 2025-02-15 -->
+<h4 id="0.15.6">Itsycal 0.15.6</h4>
+<ul>
+  <li>Fixed a bug in how All-day events are copied. This is part of a previous bug related to All-day events that should have been fixed before but I missed it. Big thanks to Michael (yet again!) who found both of these.</li>
+</ul>
+
+<!-- 2024-10-23 -->
+<h4 id="0.15.5">Itsycal 0.15.5</h4>
+<ul>
+  <li>Fixed a bug where the 1 week alert was off by 9 hours. A big thank you to Michael who both found and fixed this bug.</li>
+  <li>A new *hidden* setting to show event details when you hover over them in the agenda. Users might find this more efficient than having to click on each agenda item to open the details. To try it, open Terminal.app and enter <code>defaults write com.mowglii.ItsycalApp ShowEventPopoverOnHover -bool YES</code>. To disable, enter the same command, but change the <code>YES</code> to <code>NO</code>. Thank you to Lee for the suggestion.</li>
+</ul>
+
+<!-- 2024-07-03 -->
+<h4 id="0.15.4">Itsycal 0.15.4</h4>
+<ul>
+  <li>A new Appearance setting to show days in the agenda that do not have events. With this new setting, empty days are shown dimmed so you can focus on the days that do have events.</li>
+  <li>A new *hidden* setting to disable drawing the outline around the current month in the calendar. To use it, open Terminal.app and enter <code>defaults write com.mowglii.ItsycalApp DoNotDrawOutlineAroundCurrentMonth -bool YES</code>. Once you've come back to your senses, you can undo this change with <code>defaults delete com.mowglii.ItsycalApp DoNotDrawOutlineAroundCurrentMonth</code>. &#128541;</li>
+  <li>Fixed keyboard navigation (Tab / Shift-Tab) in the new event popover.</li>
+  <li>Kinda sorta worked around an apparent Apple bug related to opening Calendar.app.</li>
+</ul>
+
+<!-- 2024-03-14 -->
+<h4 id="0.15.3">Itsycal 0.15.3</h4>
+<ul>
+  <li>You can set a custom beep-beep-on-the-hour sound. Place a file called <code>beep.mp3</code> in Itsycal's Application Support folder: <code>~/Library/Application Support/com.mowglii.ItsycalApp</code>. If you have selected `Beep beep on the hour` in Settings, this custom file will play instead of the default sound.</li>
+  <li>Fix: Go to Date can be invoked with the "return" key - you don't have to click the button.</li>
+  <li>Fix: Addressed a crash in the rare case that an event's attendee name is set to nil.</li>
+  <li>Fix: Addressed corrupted window drawing on macOS Sonoma when the user has multiple monitors and a large number of events in the agenda.</li>
+  <li>Fix: Long calendar names wrap in the General Settings calendar list.</li>
+</ul>
+
+<!-- 2024-01-10 -->
+<h4 id="0.15.2">Itsycal 0.15.2</h4>
+<ul>
+  <li>Go to Date (shift-command-T) provides a quick way to navigate to an arbitrary date.</li>
+  <li>Itsycal has a URL scheme: <code>itsycal://date/DATE</code>
+    which will open Itsycal at the <code>DATE</code> specified in <code>yyyy-MM-dd</code> format.
+    Instead of <code>DATE</code> use <code>now</code> to open Itsycal to today.<br>
+    (Thank you, Nick K!)</li>
+  <li>Fixed a bug where Itsycal wasn't opening the Date/Time System Preference panel correctly on macOS 13+.<br>
+    (Thank you again, Nick K!)</li>
+</ul>
+
+<!-- 2023-10-21 -->
+<h4 id="0.15.1">Itsycal 0.15.1</h4>
+<ul>
+  <li>Bug fixes.</li>
+</ul>
+
+<!-- 2023-10-01 -->
+<h4 id="0.15.0">Itsycal 0.15.0</h4>
+<ul>
+  <li>Modernized the New Event popover.</li>
+  <li>Attendees in the Agenda Info popover.</li>
+  <li>This release requires macOS 11 (Big Sur) or higher.</li>
+</ul>
+
+<!-- 2023-10-01 -->
+<h4 id="0.14.1">Itsycal 0.14.1</h4>
+<ul>
+  <li>Two new generic menu bar icon options.</li>
+  <li>Bug fixes.</li>
+</ul>
+
+<!-- 2023-09-13 -->
+<h4 id="0.14.0">Itsycal 0.14.0</h4>
+<ul>
+  <li>Updates for macOS 14 Sonoma compatibility.</li>
+  <li>The new event popover has a notes field.</li>
+  <li>Minor fixups.</li>
+  <li>Upgraded MASShortcut, the shortcut recorder component.</li>
+  <li>Upgraded Sparkle, the software update component.</li>
+</ul>
+
+<!-- 2022-12-17 -->
+<h4 id="0.13.4">Itsycal 0.13.4</h4>
+<ul>
+  <li>Upgraded Sparkle software update component.</li>
+  <li>Hopefully fix a startup crash for some users on macOS Ventura.</li>
+  <li>Fix the New Event popover functionality for some users on macOS Ventura.</li>
+  <li>Fix All-day event dates on macOS Ventura.</li>
+</ul>
+
+<!-- 2022-08-16 -->
+<h4 id="0.13.3">Itsycal 0.13.3</h4>
+<ul>
+<li>A URL field in the New Event popup. This field is pretty unforgiving so if you enter an invalid URL, it will simply be ignored.</li>
+<li>A new General preference enables an optional hourly beep. It might be useful if you, like me, sometimes lose track of the time. This feature has existed hidden for a while, but now is exposed in the user interface.</li>
+<li>The Zoom button link detector should now work with /my/ links.</li>
+<li>A new hidden preference lets you adjust the baseline offset of the date-time pattern text next to the menu bar icon. If you have no idea what date-time pattern text is, you can stop reading. Each version of macOS seems to make minor adjustments to how text lines up in the menu bar and someone somewhere won't like it. If that resonates, this pref is for you. To use it, open Terminal.app and enter <code>defaults write com.mowglii.ItsycalApp BaselineOffset N</code> where N is a number between -2 and 2 in increments of 0.5. The default baseline offset for macOS 11+ is zero.</li>
+<li>A new hidden preference lets you have meeting buttons enabled indefinitely once they are turned on. By default, meeting buttons turn on 15 minutes before the meeting start time and turn off at the end of the meeting. This pref keeps them on indefinitely so you can easily revisit, say, a common room. To use it, open Terminal.app and enter <code>defaults write com.mowglii.ItsycalApp EnableMeetingButtonIndefinitely -bool YES</code>. To turn it off, change the 1 to a 0.</li>
+</ul>
+
+<!-- 2022-03-10 -->
+<h4 id="0.13.2">Itsycal 0.13.2</h4>
+<ul>
+<li>The calendar button opens Calendar.app in its last opened view rather than forcing month view.</li>
+<li>A new shortcut, <kbd>&#8984J</kbd>, opens the first active virtual meeting in the agenda view. It is equivalent to clicking the meeting's "Join" button if it is enabled. This new shortcut, combined with a shortcut to open Itsycal, allows you to join meetings from Itsycal without using a mouse or trackpad.</li>
+<li>There is less padding around the menu bar icon.</li>
+<li>If you use a date-time pattern in the menu bar, it is automatically formatted according to ISO 8601 without having to set your calendar to ISO 8601 in System Preferences. This is particularly relevant for displaying week-of-the-year in the menu bar.</li>
+<li>Added jit.si, FaceTime, Workplace virtual meeting detection.</li>
+<li>An experimental feature to display a virtual meeting indicator in the menu bar. To try it, open Terminal.app and enter <code>defaults write com.mowglii.ItsycalApp ShowMeetingIndicator -bool YES</code>.</li>
+</ul>
+
+<!-- 2020-08-14 -->
+<h4 id="0.13.1">Itsycal 0.13.1</h4>
+<ul>
+<li>Tentative and pending events are visually indicated in the agenda. Tentative events have an open circle and pending events have an open circle and striped background.</li>
+<li>Buttons have a subtle hover effect.</li>
+<li>The menu bar icon now has an accessibility title.</li>
+<li>Fix: The menu bar icon consistently toggles Itsycal on Big Sur. (Thank you, David)</li>
+<li>Fix: The agenda updates when the user changes 12/24 hour system preference.</li>
+<li>Fix: The shortcut recorder UI renders properly on Big Sur.</li>
+<li>Fix: The new-event popover position is stable when navigating calendar.</li>
+</ul>
+
+<!-- 2020-06-17 -->
+<h4 id="0.13.0">Itsycal 0.13.0</h4>
+<ul>
+<li>Itsycal is a Universal app which runs natively on both Intel and ARM Macs.</li>
+<li>When creating a new event, Itsycal will attempt to honor the default alert time set in the Mac Calendar app's preferences and display that in the 'Alert' popup control.</li>
+<li>Double-clicking an event in the agenda opens it in the Mac Calendar app. You can also right-click on an event for a context-menu which has an option to open in the Calendar app. The event opens in the day view. Clicking the calendar button in Itsycal opens the month view.</li>
+<li>Updated German localization. (Thank you, 3bbing)</li>
+<li>Chime meeting link detection. (Thank you, Pratik)</li>
+<li>Fixed a bug that prevented localization of the calendar buttons.</li>
+<li>Fixed a bug where the end date of multi-day all-day events was off by one.</li>
+<li>Fixed a bug where the delete button would disappear after being clicked.</li>
+<li>Fixed a bug where all-day events were sorted incorrectly.</li>
+<li>Fixed a bug where events that start or end at midnight were displayed poorly.</li>
+</ul>
+
+<!-- 2020-12-28 -->
+<h4 id="0.12.6">Itsycal 0.12.6</h4>
+<ul>
+  <li>Video button opens Zoom and Teams meetings in app, if available.</li>
+  <li>Event URL fields are now shown in the details popover.</li>
+	<li>Bigbluebutton meeting detection for video button.</li>
+  <li>Various fixes for macOS Big Sur (Thank you, Carlos).</li>
+</ul>
+
+<!-- 2020-10-20 -->
+<h4 id="0.12.5">Itsycal 0.12.5</h4>
+<ul>
+  <li>Addresses Microsoft's annoying habit of embedding links in angle brackets.
+    Previously, these links were rendered invisible. They are now visible.</li>
+  <li>Agenda detail popover fits to size so you can see the whole thing at once. If your event detail is too long for the screen, it scrolls.</li>
+  <li>Calendar tooltip width adjusts for your font size preference.</li>
+  <li>Agenda scroller is further right so as to not overlay text when you have a long list of events.</li>
+</ul>
+
+<!-- 2020-10-02 -->
+<h4 id="0.12.4">Itsycal 0.12.4</h4>
+<ul>
+  <li>Virtual meetings are indicated with a small icon next to the time in the agenda view. The icon changes to a button 15 minutes prior to the event start, providing convenient access to the meeting. For cases where Itsycal didn't detect your virtual meeting, you can still access the meeting links in the agenda popover.</li>
+  <li>Itsycal now offers 3 text sizes and a new slider user-interface to choose among them in the Appearance Preference pane.</li>
+  <li>Agenda popover design has been improved for better readability.</li>
+  <li>The formatting of dates in the menu bar is slightly different for certain languages like French and Spanish which normally do not capitalize dates. Now, the first word of a date is capitalized, but the rest are still lowercase.</li>
+</ul>
+
+<!-- 2020-04-11 -->
+<h4 id="0.12.3">Itsycal 0.12.3</h4>
+<ul>
+  <li>The location field in the event popover highlights links.</li>
+  <li>Calendars without associated calendar-colors are ignored.</li>
+</ul>
+
+<!-- 2019-10-25 -->
+<h4 id="0.12.2">Itsycal 0.12.2</h4>
+<ul>
+  <li>There is a Help link that takes you to Itsycal's Help webpage. It is located in the menu that pops up when you click the gear icon.</li>
+  <li>Itsycal defaults to using the first weekday that is conventional for your
+	locale. This is Sunday in the US and Monday most other places. As before,
+	this can be set explicitly in General Preferences.</li>
+  <li>All-day events are preceded with a small vertical bar instead of a
+	dot to more quickly distinguish them.</li>
+  <li>Double-clicking on a day in the calendar will open, rather than toggle, the New Event popover.</li>
+</ul>
+
+<!-- 2019-09-24 -->
+<h4 id="0.12.1">Itsycal 0.12.1</h4>
+<ul>
+  <li>This version works around a macOS 10.14+ bug that causes text in the menu bar to be slightly misaligned.</li>
+  <li>See notes for 0.12.0 below for other recent changes.</li>
+</ul>
+
+<!-- 2019-09-22 -->
+<h4 id="0.12.0">Itsycal 0.12.0</h4>
+<ul>
+  <li>This version requires macOS 10.14+.</li>
+  <li>The New Event form is in a popover instead of a separate modal window. This presentation more closely associates the form with Itsycal. It also allows you to manipulate the calendar while the form is showing. The old modal presentation did not allow this.</li>
+  <li>There is a new option to show colored dots for days with events. Each
+	colored dot represents a calendar that has one or more events for that day.
+	Up to 3 dots can be shown. The options to show a single monochrome dot or no
+	dot are still available in Preferences &gt; Appearance.</li>
+  <li>Itsycal now uses macOS system colors for many UI elements resulting in better Accessibility for visually impaired users.</li>
+  <li>All Day events in the agenda list are sorted alphabetically by calendar title.</li>
+</ul>
+
+<!-- 2019-08-19 -->
+<h4 id="0.11.17">Itsycal 0.11.17</h4>
+<ul>
+  <li>There is a new menu item to open the System Preferences Date &amp; Time panel.</li>
+  <li>The calendar date selection will reset to today after the calendar is hidden for about 10 minutes.</li>
+  <li>If you are using a datetime pattern, it is now drawn with the default system font unless you are displaying seconds, in which case monospaced digits are used. Previously, it was always drawn with monospaced digits.</li>
+</ul>
+
+<!-- 2019-07-17 -->
+<h4 id="0.11.16">Itsycal 0.11.16</h4>
+<ul>
+  <li>The calendar button opens Busycal 3 if that is set as your default calendar.</li>
+  <li>You can use the delete key to delete events when shown in the side popover. The escape key dismisses the popover.</li>
+  <li>Fixed a bug where some characters in event notes would be garbled.</li>
+  <li>Reworked event-fetching code to address a crashing bug.</li>
+</ul>
+
+<!-- 2019-05-30 -->
+<h4 id="0.11.15">Itsycal 0.11.15</h4>
+<ul>
+    <li>Uses Apple's new Notarization security process.</li>
+    <li>Uses your accent color (set in System Preferences : General) to highlight the current day on macOS 10.14+ (Thanks, Jiashu).</li>
+    <li>Renders HTML in event notes better.</li>
+</ul>
+
+<!-- 2019-04-05 -->
+<h4 id="0.11.14">Itsycal 0.11.14</h4>
+<ul>
+    <li>Fetching events from the calendar database is more efficient. The fetches are smaller and duplicative work is reduced.</li>
+    <li>Fixed a bug where event tooltips would randomly pop up out of nowhere while Itsycal was hidden for some users on macOS 10.14.</li>
+    <li>Fixed a crashing bug associated with fetching events for some users on macOS 10.14.</li>
+</ul>
+
+<!-- 2018-10-01 -->
+<h4 id="0.11.13">Itsycal 0.11.13</h4>
+<ul>
+    <li>Press the <kbd>#</kbd> key to briefly display the selected date's offset from today and day number of the year. For example, if today is October 1, 2018 and October 3, 2018 is selected, pressing <kbd>#</kbd> will display <b>+2 / 276</b> because October 3 is 2 days ahead of today and is the 276th day of the year. If you select the day you were born (which is pretty quick to do with the next new feature) and press <kbd>#</kbd>, the offset is how many days old you are today. Whoopee.</li>
+    <li>You can enter a repeat count and then a navigation command to have that command repeated. For example, typing <kbd>1</kbd><kbd>4</kbd><kbd>shift-rightArrow</kbd> will move the selection forward 14 days. Typing <kbd>3</kbd><kbd>2</kbd><kbd>upArrow</kbd> will go back 32 years. The repeat count times out after a few seconds.</li>
+    <li>Various fixes as usual. If you are an early-adopter of macOS 10.14 Mojave and your navigation buttons randomly disappear, hopefully this version fixes that behavior.</li>
+</ul>
+
+<!-- 2018-08-19 -->
+<h4 id="0.11.12">Itsycal 0.11.12</h4>
+<ul>
+    <li>New preference for a larger text size.</li>
+    <li>The event details popover displays the event's notes.</li>
+    <li>Itsycal's height is constrained to the height of the screen.</li>
+</ul>
+
+<!-- 2018-07-15 -->
+<h4 id="0.11.11">Itsycal 0.11.11</h4>
+<ul>
+    <li>Text in the event details popover is now selectable.</li>
+    <li>For macOS 10.13, Itsycal should properly reflect timezone changes.</li>
+    <li>For macOS 10.14 (now in beta), a new System theme that automatically selects Light or Dark depending on the setting in macOS's System Preferences.</li>
+    <li>Fixes and code cleanup as usual.</li>
+</ul>
+
+<!-- 2018-06-08 -->
+<h4 id="0.11.10">Itsycal 0.11.10</h4>
+<ul>
+    <li>Two additional choices for the agenda: 14 and 31 days.</li>
+    <li>Copy to clipboard: Right click an agenda item for a context menu with this option.</li>
+    <li>Compact agenda: Agenda truncates event titles to a single line and locations (if shown) to two lines. To see the full title and location, click on the agenda item for a popover.</li>
+    <li>Some tweaks for macOS 10.14 (now in beta and not officially supported).</li>
+    <li>Minor fixes and code cleanup as usual.</li>
+</ul>
+
+<!-- 2018-02-06 -->
+<h4 id="0.11.9">Itsycal 0.11.9</h4>
+<ul>
+    <li>FIX: Fixed some Chinese translations.</li>
+    <li>Rearranged some plumbing.</li>
+</ul>
+
+<!-- 2017-10-10 -->
+<h4 id="0.11.8">Itsycal 0.11.8</h4>
+<ul>
+    <li>FIX (sort of) for macOS 10.13: Itsycal localizes the calendar and icon so that they are expressed in the user's native language no matter where they are. This worked on macOS 10.12 and prior, but stopped working on macOS 10.13. This version restores this functionality for a number of languages until Apple fixes the underlying issue in macOS 10.13.</li>
+</ul>
+
+<!-- 2017-10-04 -->
+<h4 id="0.11.7">Itsycal 0.11.7</h4>
+<ul>
+    <li>FIX: Some code was reworked to be more power efficient.</li>
+    <li>New preference to hide the dots. If you have events every day, the dots just add clutter.</li>
+</ul>
+
+<!-- 2017-08-04 -->
+<h4 id="0.11.6">Itsycal 0.11.6</h4>
+<ul>
+    <li>New preference to display event location. You can also use the <kbd>.</kbd> (period) key to toggle this setting. The keyboard shortcut is useful if you use the keyboard exclusively to navigate Itsycal and you want to quickly peek at locations that are normally hidden.</li>
+    <li>Today's events dim when past their end time.</li>
+    <li>The deletion alert shows the title and time of the event you are about to remove.</li>
+    <li>Appearance tweaks and bug fixes.</li>
+</ul>
+
+<!-- 2017-07-19 -->
+<h4 id="0.11.5">Itsycal 0.11.5</h4>
+<ul>
+    <li>Chinese localization.</li>
+    <li>Appearance tweaks and small bug fixes.</li>
+</ul>
+
+<!-- 2017-06-16 -->
+<h4 id="0.11.4">Itsycal 0.11.4</h4>
+<ul>
+    <li>New look with light and dark themes.</li>
+</ul>
+
+<!-- 2017-06-14 -->
+<h4 id="0.11.3">Itsycal 0.11.3</h4>
+<ul>
+    <li>Minor bug fixes and tweaks.</li>
+</ul>
+
+<!-- 2017-02-26 -->
+<h4 id="0.11.2">Itsycal 0.11.2</h4>
+<ul>
+    <li>Added the ability to resize the calendar vertically using control-j/k or by dragging from just below the bottom row.</li>
+    <li>The system font replaces Varela Round in the calendar.</li>
+    <li>FIX: Behaves better when you have multiple screens and use fullscreen apps.</li>
+    <li>FIX: Event form correctly shows alarm popup every time.</li>
+    <li>FIX: Preferences tabs work when double-clicked.</li>
+    <li>Minor bug fixes and tweaks.</li>
+</ul>
+
+<!-- 2017-01-28 -->
+<h4 id="0.11.1">Itsycal 0.11.1</h4>
+<ul>
+    <li>New tabbed preferences interface.</li>
+    <li>New preference to turn off automatically checking for updates. You will still be able to check manually.</li>
+    <li>New preference to configure a custom datetime format. This was only possible via the command-line in the previous version.</li>
+    <li>New preference to hide the icon if a custom datetime format is set.</li>
+    <li>New preference for highlighting columns replaces the old 'Highlight Weekends' setting. This gives you more control over the appearance of your calendar and acknowledges that the concept of 'weekend' means different things to different people.</li>
+    <li>Minor bug fixes and cleanup under the hood.</li>
+</ul>
+
+<!-- 2016-12-11 -->
+<h4 id="0.11.0">Itsycal 0.11.0</h4>
+<ul>
+  <li>Added option for an outlined icon which might look nicer with dark menu bars.</li>
+  <li>Added an experimental hidden feature: Itsycal can display a clock in the format of your choosing. To enable the clock, specify your custom clock format in Itsycal's preferences via the command-line. For example,
+      <code>defaults write com.mowglii.ItsycalApp ClockFormat "h:mm a"</code>. To disable the clock, either delete the <code>ClockFormat</code> rule, or set it to an empty string. The smallest unit supported is seconds. The format patterns you can use are found <a href="http://unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns">here</a>. This feature is experimental and may change in the future or even disappear.
+  </li>
+</ul>
+
+<!-- 2016-10-31 -->
+<h4 id="0.10.16">Itsycal 0.10.16</h4>
+<ul>
+  <li>FIX: The last version (0.10.15) introduced a bug for users on macOS 10.10 and 10.11 relating to a feature that automatically detects the country and conditionally sets the weekend to Friday/Saturday. This version removes that automatic feature for macOS 10.10 and 10.11. However, if you want Itsycal to consider Friday/Saturday as the weekend, you can type the following command in Terminal.app: <code>defaults write com.mowglii.ItsycalApp WeekendIsFridaySaturday -bool YES</code>
+  </li>
+</ul>
+
+<!-- 2016-10-30 -->
+<h4 id="0.10.15">Itsycal 0.10.15</h4>
+<ul>
+  <li>Itsycal considers Friday/Saturday to be the weekend in the following countries:
+    Afghanistan,
+    Algeria,
+    Bahrain,
+    Bangladesh,
+    Egypt,
+    Iraq,
+    Jordan,
+    Kuwait,
+    Libya,
+    Maldives,
+    Oman,
+    Palestine,
+    Qatar,
+    Saudi Arabia,
+    Sudan,
+    Syria,
+    United Arab Emirates,
+    Yemen.
+    You can override this behavior and enforce Saturday/Sunday weekends by issuing the following
+    command in Terminal.app: <code>defaults write com.mowglii.ItsycalApp WeekendIsSaturdaySunday -bool YES</code>
+  </li>
+  <li>FIX: Itsycal remembers its position in the menu bar on macOS 10.12+.</li>
+</ul>
+
+<!-- 2016-08-06 -->
+<h4 id="0.10.14">Itsycal 0.10.14</h4>
+<ul>
+  <li>Minor fixes.</li>
+</ul>
+
+<!-- 2016-07-25 -->
+<h4 id="0.10.13">Itsycal 0.10.13</h4>
+<ul>
+  <li>Double-click on a date to open the New Event box for that date.</li>
+  <li>Unhide Itsycal when activated in case the 'Hide' option in Login Items is selected.</li>
+  <li>On macOS 10.12+, ensure Itsycal has been moved to the Applications folder.</li>
+  <li>FIX: Don't show window anchor if it extends past the edge of the Itsycal window.</li>
+</ul>
+
+<!-- 2016-04-19 -->
+<h4 id="0.10.12">Itsycal 0.10.12</h4>
+<ul>
+  <li>FIX: Don't show day unit in icon when only day number is showing for users of several Eastern languages.</li>
+</ul>
+
+<!-- 2016-04-16 -->
+<h4 id="0.10.11">Itsycal 0.10.11</h4>
+<ul>
+  <li>Added option to show short day of week name in menu bar.</li>
+</ul>
+
+<!-- 2016-02-10 -->
+<h4 id="0.10.10">Itsycal 0.10.10</h4>
+<ul>
+  <li><b>If you are updating Itsycal from a prior version on macOS 10.10 (Yosemite), you will need to restart your computer after installing this version.</b></li>
+  <li>Added option to show short month name in menu bar. Icon uses system font.</li>
+  <li>Show 7 days of events in agenda by default (instead of 0) when Itsycal is first installed.</li>
+  <li>FIX: Software updater (Sparkle) was updated to latest version (1.13.1) to address security vulnerability.</li>
+</ul>
+
+<!-- 2016-01-24 -->
+<h4 id="0.10.9">Itsycal 0.10.9</h4>
+<ul>
+  <li>Low-res icon font matches Hi-res icon and calendar fonts.</li>
+  <li>FIX: Keyboard shortcuts for cut/copy/paste work when creating a new event.</li>
+  <li>FIX: Don't attempt to install menu extra on 10.11+.</li>
+</ul>
+
+<!-- 2015-11-20 -->
+<h4 id="0.10.8">Itsycal 0.10.8</h4>
+<ul>
+  <li>Left/right 2-finger swipe to go to previous/next months.</li>
+  <li>FIX: Tooltips appear in correct screen with multi-monitor setups.</li>
+  <li>FIX: Itsycal is a bit better at remembering calendar preferences.</li>
+</ul>
+
+<!-- 2015-10-22 -->
+<h4 id="0.10.7">Itsycal 0.10.7</h4>
+<ul>
+  <li>The calendar button opens BusyCal2 or Fantastical2 if they are set as your default calendar app.</li>
+  <li>Weekends can be highlighted so they stand out more.</li>
+  <li>FIX: Time zone changes are reflected without the need to restart Itsycal.</li>
+  <li>FIX: Updater works properly on macOS 10.11 El Capitan.</li>
+</ul>
+
+<!-- 2015-10-01 -->
+<h4 id="0.10.6">Itsycal 0.10.6</h4>
+<ul>
+  <li>Use San Francisco system font in agenda and tooltips on macOS 10.11.</li>
+  <li>FIX: Calendar.app opens in foreground on macOS 10.11.</li>
+  <li>FIX: New Event popup layout fixes.</li>
+</ul>
+
+<!-- 2015-09-06 -->
+<h4 id="0.10.5">Itsycal 0.10.5</h4>
+<ul>
+  <li>FIX: Calculate table cell height properly for events that end at midnight.</li>
+  <li>FIX: Don't show scrollers in tooltips ever, no matter what.</li>
+</ul>
+
+<!-- 2015-08-10 -->
+<h4 id="0.10.4">Itsycal 0.10.4</h4>
+<ul>
+  <li>Agenda shows relative day of the week (today, tomorrow).</li>
+  <li>Agenda uses System short date format. You can customize this in System Preferences... &gt; Language &amp; Region &gt; Advanced... &gt; Dates.</li>
+  <li>FIX: German Save Event translation improved.</li>
+</ul>
+
+<!-- 2015-07-22 -->
+<h4 id="0.10.3">Itsycal 0.10.3</h4>
+<ul>
+  <li>FIX: Veritcal position is correct with multiple monitors.</li>
+</ul>
+
+<!-- 2015-07-05 -->
+<h4 id="0.10.2">Itsycal 0.10.2</h4>
+<ul>
+  <li>FIX: Pop-up no longer gets clipped in fullscreen mode.</li>
+</ul>
+
+<!-- 2015-06-05 -->
+<h4 id="0.10.1">Itsycal 0.10.1</h4>
+<ul>
+  <li>NEW: Basic alert option for new events.</li>
+  <li>FIX: Time zone changes don't require restart.</li>
+  <li>FIX: Various localization fixes.</li>
+</ul>
+
+<!-- 2015-05-10 -->
+<h4 id="0.10.0">Itsycal 0.10.0</h4>
+<ul>
+  <li>NEW: Added an updater so it will be easier to keep up with new versions of Itsycal.</li>
+</ul>
+
+<!-- 2015-05-07 -->
+<h4 id="0.9.3">Itsycal 0.9.3</h4>
+<ul>
+  <li>FIX: Properly create All-day events now.</li>
+</ul>
+
+<!-- 2015-04-25 -->
+<h4 id="0.9.2">Itsycal 0.9.2</h4>
+<ul>
+  <li>NEW: Event location shown in tooltip when you hover over an event in the agenda.</li>
+  <li>FIX: Tweaks to French localization.</li>
+</ul>
+
+<!-- 2015-03-26 -->
+<h4 id="0.9.1">Itsycal 0.9.1</h4>
+<ul>
+  <li>FIX: Do not display events the user has declined.</li>
+</ul>
+
+<!-- 2015-03-14 -->
+<h4 id="0.9.0">Itsycal 0.9.0</h4>
+<ul>
+  <li>This version is almost a complete re-write of the app.
+    It has a new bundle ID so that it doesn't conflict with
+    previous versions.</li>
+  <li>Added the ability to create and delete events.</li>
+  <li>Added the ability to change the first-day-of-the-week from within the app.</li>
+  <li>Improved performance.</li>
+  <li>New icon.</li>
+</ul>
+
+<!-- 2015-01-27 -->
+<h4 id="0.8.15">Itsycal 0.8.15</h4>
+<ul>
+  <li>Fixed bug in 0.8.14 that prevented launching on macOS 10.8.</li>
+</ul>
+
+<!-- 2015-01-22 -->
+<h4 id="0.8.14">Itsycal 0.8.14</h4>
+<ul>
+  <li>Flattened and softened UI a bit.</li>
+  <li>Hide declined events (macOS 10.9+).</li>
+</ul>
+
+<!-- 2014-11-17 -->
+<h4 id="0.8.13">Itsycal 0.8.13</h4>
+<ul>
+  <li>Fixed infrequent crasher when an event doesn't have an associated color.</li>
+</ul>
+
+<!-- 2014-11-12 -->
+<h4 id="0.8.12">Itsycal 0.8.12</h4>
+<ul>
+  <li>Fixed German localization.</li>
+</ul>
+
+<!-- 2014-10-29 -->
+<h4 id="0.8.11">Itsycal 0.8.11</h4>
+<ul>
+  <li>Minor bug fix in agenda view.</li>
+</ul>
+
+<h4 id="0.8.10">Itsycal 0.8.10</h4>
+<ul>
+  <li>Updates for macOS 10.10 Yosemite.</li>
+</ul>
+
+<h4 id="0.8.0">Itsycal 0.8.0</h4>
+<ul>
+  <li>Added the ability to move the date icon in the menu bar by holding down the command key and dragging.</li>
+  <li>Removed the clock.</li>
+  <li>Use command-q to quit.</li>
+  <li>New icon.</li>
+</ul>
+
+<h4 id="0.4.4">Itsycal 0.4.4</h4>
+<ul>
+  <li>Updates for macOS 10.9 Mavericks.</li>
+  <li>H,J,K,L keys can navigate months and years.</li>
+  <li>Minor fixes and tweaks.</li>
+</ul>
+
+<h4 id="0.4.3">Itsycal 0.4.3</h4>
+<ul>
+	<li>Use up/down arrows to move by year.</li>
+	<li>Use 'p' to pin/unpin Itsycal.</li>
+	<li>Use 'w' to toggle calendar weeks.</li>
+	<li>Tooltips for buttons.</li>
+	<li>New icon.</li>
+	<li>Appearance tweaks and various bug fixes.</li>
+</ul>
+
+<h4 id="0.4.2">Itsycal 0.4.2</h4>
+<ul>
+	<li>Addressed a navigation bug in 0.4.0/0.4.1.</li>
+</ul>
+
+<h4 id="0.4.1">Itsycal 0.4.1</h4>
+<ul>
+	<li>Hover over agenda items to highlight them in the calendar.</li>
+</ul>
+
+<h4 id="0.4.0">Itsycal 0.4.0</h4>
+<ul>
+	<li>See appointments from your Mac Calendar.</li>
+</ul>
+
+<h4 id="0.3.1">Itsycal 0.3.1</h4>
+<ul>
+	<li>Shortcut toggles Itsycal instead of only opening it.</li>
+</ul>
+
+<h4 id="0.3.0">Itsycal 0.3.0</h4>
+<ul>
+	<li>Itsycal is a tiny window now instead of a menu.</li>
+	<li>Preference to show calendar weeks.</li>
+	<li>Ability to pin the window.</li>
+	<li>Localizations for:
+		<ul>
+			<li>Deutsch</li>
+			<li>Espa&ntilde;ol</li>
+			<li>Fran&ccedil;ais</li>
+			<li>Italiano</li>
+		</ul>
+	</li>
+</ul>
+
+<h4 id="0.2.0">Itsycal 0.2.0</h4>
+<ul>
+	<li>Preference to show/hide the date.</li>
+	<li>Credits pane in Preferences window.</li>
+	<li>Clock and calendar better localized.</li>
+	<li>Command-w can be used to close Preferences window.</li>
+</ul>
+
+<h4 id="0.1.0">Itsycal 0.1.0</h4>
+<ul>
+	<li>Initial release.</li>
+</ul>
+
+
+
+    <br/>
+    <div class="centereddiv">
+     <nav>
+       <ul class="dropdown">
+         <li><a href="/itsycal/">Itsycal</a></li>
+         <li><a href="/mdv/">MDV</a> <span class="newbadge"></span></li>
+         <li><a href="/snk/">Snk</a></li>
+         <li><a href="/blog/">Blog</a></li>
+         <li><a href="/about/">About</a></li>
+       </ul>
+     </nav>
+    </div>
+  </div>
+  <br/>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"0400785859fa4bf19877d18efdc73f21","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,3398 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Internet Download Manager News and Updates</title>
+	<meta name="abstract" content="Download Internet Download Manager to increase download speed by up to 5 times, resume and schedule downloads from video sites" />
+	<meta name="description" content="History of Internet Download Manager updates and releases" />
+	<meta name="keywords" content="download, mp3, mp4, music, video, save, grab, youtube, google video games, windows, software, getright, downloads, internet, speed, performance, connection, increase, manager, managers, accelerator, accelerators, booster, netbooster, faster,
+	high-speed, rate, transmission, transfer, mpeg, audio, video, avi, reget, flashget, gozilla, dap, get, IE, http, proxy, url, accelerate, quick, speed up, rapid, download manager, download accelerator, transfer rate, byte rate, fast, quick, fastest, schedule" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link href="/main.css" rel="stylesheet" type="text/css" />
+	<script src="/js/jquery.min(1).js"></script>
+	<link rel="canonical" href="https://www.internetdownloadmanager.com/news.html" />
+</head>
+
+<body>
+	<script>
+		var hide_trial = false;
+		$(document).ready((function(){$(".freeTrialBtn").click((function(){$("#overlay").fadeIn(400,(function(){$(".fixed-overlay").css("display","block").animate({opacity:1},200)}))})),$("#modal_close, #overlay").click((function(){$(".fixed-overlay").animate({opacity:0},200,(function(){$(this).css("display","none"),$("#overlay").fadeOut(400)}))}))}));var display="block";function resize_main(){var diff=63,main_bottom=200,width=document.body.scrollWidth,footer,footer_height=document.getElementsByTagName("footer")[0].offsetHeight,mob_menu,mob_menu_height;footer_height>70&&(main_bottom=248),document.getElementsByClassName("mobmenu")[0].offsetHeight>80&&(diff=120),footer_height>120&&(main_bottom=294,diff=110,window.document.documentMode&&(diff=110),navigator.userAgent.toLowerCase().indexOf("firefox")>-1&&(diff=109.8)),footer_height>200&&(main_bottom=348),"block"===$("#menu_close").css("display")&&(main_bottom+=diff),main_bottom="calc(100% - "+main_bottom+"px)",$("main").css("min-height",main_bottom)}function resize_codes(){var codes=document.getElementsByClassName("code");for(i=0;i<codes.length;i++)codes[i].style.fontSize="1px";var width,diff=30;for(document.body.scrollWidth>420&&(diff+=80),codes=document.getElementsByClassName("code"),i=0;i<codes.length;i++){var code=codes[i];code.style.fontSize="1px";var font_size=13,main,main_width=document.getElementsByTagName("main")[0].offsetWidth;code.style.fontSize=font_size+"px";for(var j=0;;){var code_width;if(j++,font_size-=.2,main_width>code.offsetWidth+diff)break;if(code.style.fontSize=font_size+"px",j>1e3)break}}}function show_menu_on_top(){window.pageYOffset>sticky?header.classList.add("sticky"):window.pageYOffset+65<sticky&&header.classList.remove("sticky")}window.innerWidth>1200&&(display="table"),$(document).ready((function(){$(".mobmenu").css("opacity",0),$(".m_menu").click((function(){$("#overlay").fadeIn(100,(function(){$(".mobmenu").css("display","block").animate({opacity:1},1e3),$(".m_menu").css("display","none"),$("#menu_close").css("display","block"),resize_main()}))})),$("#menu_close, #overlay").click((function(){$(".mobmenu").animate({opacity:0},100,(function(){$(this).css("display","none"),$("#overlay").fadeOut(100),$(".m_menu").css("display","inline-block"),$("#menu_close").css("display","none"),resize_main()}))})),resize_codes()})),window.onresize=function(){display=window.innerWidth>1200?"table":"block",$(".content-block:visible").slice(0,1e3).slideDown(1e3,(function(){$(this).css("display",display)})),resize_main(),resize_codes()},$(document).ready((function(){$(".content-block").slice(0,10).css("display",display),$("#loadMore").on("click",(function(e){e.preventDefault(),$(".content-block:hidden").slice(0,10).slideDown(1e3,(function(){$(this).css("display",display)})),0==$(".content-block:hidden").length&&$("#loadMore").fadeOut("slow"),$("html,body").animate({scrollTop:$(this).offset().top},1500)}))}));var on_menu=0,timerID=0,menu_block=null,support_menu_item=null;function imgOut(){timerID=setTimeout("imgTimeOut()",500)}function imgTimeOut(){0==on_menu&&(hideMenu(),clearTimeout(timerID))}function showMenu(){on_menu=1,menu_block.style.display="block"}function hideMenu(){on_menu=0,menu_block.style.display="none"}$(document).ready((function(){menu_block=document.getElementById("support_menu_block"),(support_menu_item=document.getElementById("support_menu_item"))&&(support_menu_item.onmouseover=function(){showMenu(),on_menu=1},support_menu_item.onmouseout=function(){imgOut(),on_menu=0}),menu_block&&(menu_block.onmouseover=function(){showMenu(),on_menu=1},menu_block.onmouseout=function(){imgOut(),on_menu=0}),window.document.documentMode&&(menu_block.style.right="82px"),document.body.scrollHeight>document.body.clientHeight+10?hide_trial?window.document.documentMode?menu_block.style.right="66px":menu_block.style.right="65px":window.document.documentMode?menu_block.style.right="197px":menu_block.style.right="196px":hide_trial||(window.document.documentMode?menu_block.style.right="214px":menu_block.style.right="213px")}));
+	</script>
+
+	<nav>
+		<div class="header" id="myHeader">
+			<a href="/">
+				<div class="logo">
+					<div class="logo-img"><img src="/register/IDMlib/images/idman_logos.png" alt="Internet Download Manager logo" /></div>
+					<div class="logo-txt">&nbsp;Internet Download Manager</div>
+				</div>
+			</a>
+
+			<div class="navbar">
+				<ul>
+					<li><a class="menu-item  " href="/">home</a></li>
+					<li><a class="menu-item nav-link-highlight" href="/news.html">news</a></li>
+					<li><a class="menu-item  " href="/features2.html">features</a></li>
+					<li><a class="menu-item  " href="/language.html">language</a></li>
+					<li><a class="menu-item  " href="/contact_us.html">contact us</a></li>
+					<li><a class="menu-item  " href="/download.html">download</a></li>
+					<li><a class="menu-item  " id="support_menu_item" href="/support/index.html">support</a></li>
+					<li><a class="cta-btn cta-btn-s" href="https://secure.internetdownloadmanager.com/buy.html">buy now</a></li>
+					<li><a class="cta-btn2 cta-btn-s freeTrialBtn">free trial</a></li>
+				</ul>
+			</div>
+
+			<div class="menu_list" id="support_menu_block" style="display:none;">
+				<table class="support_menu_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<TR><TD><a class="menu-item" href="/contact_us.html">FAQ</a></TD></TR>
+					<TR><TD><a class="menu-item  " href="/reghelp.html">Registration</a></TD></TR>
+					<TR><TD><a class="menu-item  " href="/support/using_idm/using_idm.html">How to use IDM</a></TD></TR>
+					<TR><TD><a class="menu-item  " href="/support/idm-grabber/idm_grabber.html">IDM Grabber</a></TD></TR>
+					<TR><TD class="no-padd"><a class="menu-item  " href="/support/idm-scheduler/idm_scheduler.html">IDM Scheduler</a></TD></TR>
+				</table>
+			</div>
+
+			<div class="menu_list" id="contact_menu_block" style="display:none;">
+				<table class="support_menu_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<TR><TD><a class="menu-item" href="/register/new_faq/purchase_main.cgi">Purchase</a></TD></TR>
+					<TR><TD><a class="menu-item" href="/register/new_faq/registrations_main.cgi">Registration / Serial number</a></TD></TR>
+					<TR><TD><a class="menu-item" href="/register/new_faq/bi_main.cgi">Browser integration</a></TD></TR>
+					<TR><TD><a class="menu-item" href="/register/new_faq/video_main.cgi">Downloading videos from web players</a></TD></TR>
+					<TR><TD><a class="menu-item" href="/register/new_faq/sites_main.cgi">Downloading from sharing sites</a></TD></TR>
+					<TR><TD class="no-padd"><a class="menu-item" href="/register/new_faq/functions_main.cgi">General questions about IDM functions and problems</a></TD></TR>
+				</table>
+			</div>
+
+			<div class="menu_list" id="old_support_menu_block" style="display:none;">
+				<table class="support_menu_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<TR><TD><a class="menu-item" href="/support/about.html">About IDM</a></TD></TR>
+					<TR><TD class="no-padd"><a class="menu-item  " href="/support/segmentation.html">Dynamic Segmentation and Performance</a></TD></TR>
+				</table>
+			</div>
+		</div>
+
+		<div class="m_header" id="myMobHeader">
+			<a href="/">
+				<div class="logo">
+					<div class="logo-img"><img src="/register/IDMlib/images/idman_logos.png" alt="Internet Download Manager logo" /></div>
+					<div class="logo-txt">&nbsp;Internet Download Manager</div>
+				</div>
+			</a>
+
+			<div class="m_menu">
+				<span class="more">more</span>
+				<span class="m_menu_img">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="14.369" y="19.7969" width="9.61223" height="2" transform="rotate(-45 14.369 19.7969)" fill="#2C0E0E"></rect>
+						<rect x="10.4142" y="13.0173" width="9.568" height="2" transform="rotate(45 10.4142 13.0173)" fill="#2C0E0E"></rect>
+					</svg>
+				</span>
+			</div>
+
+			<div id="menu_close">
+				<span class="more">more</span>
+				<span class="m_menu_img">
+					<svg width="32" height="32" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="17.2111" y="12.4143" width="9.61223" height="2" transform="rotate(135 17.2111 12.4143)" fill="#2C0E0E"></rect>
+						<rect x="21.1658" y="19.1938" width="9.568" height="2" transform="rotate(-135 21.1658 19.1938)" fill="#2C0E0E"></rect>
+					</svg>
+				</span>
+			</div>
+
+			<div class="navbar">
+				<ul>
+					<li><a class="menu-item" href="/support/index.html">support</a></li>
+					<li><a class="cta-btn cta-btn-s" href="https://secure.internetdownloadmanager.com/buy.html">buy now</a></li>
+				</ul>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+
+		<div class="mobmenu">
+			<div class="container mobile__container">
+				<div><a class="menu-item  " href="/">home</a></div>
+				<div><a class="menu-item nav-link-highlight" href="/news.html">news</a></div>
+				<div><a class="menu-item  " href="/features2.html">features</a></div>
+				<div><a class="menu-item  " href="/language.html">language</a></div>
+				<div><a class="menu-item  " href="/contact_us.html">contact&nbsp;us</a></div>
+				<div><a class="menu-item  " href="/download.html">download</a></div>
+
+				<div class="freeTrialBtn"><a class="cta-btn2 cta-btn-s freeTrialBtn">free&nbsp;trial</a></div>
+
+			</div>
+		</div>
+	</nav>
+
+<main>
+	<div class="fixed-overlay fixed-overlay_modal">
+		<div id="overlay">
+			<div id="overlay_bg"></div>
+		</div>
+	</div>
+
+	
+
+<div class="fixed-overlay fixed-overlay_modal">
+	<div id="overlay">
+		<div id="overlay_bg"></div>
+	</div>
+
+	<div class="modal">
+		<div id="modal_form">
+			<div class="download_form">
+				<span id="modal_close">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path d="M13 1.18176L11.8184 0L6.5 5.31836L1.18164 0.00012207L0 1.18188L5.31836 6.5L0 11.8182L1.18213 13L6.5 7.68188L11.8184 13.0001L13 11.8182L7.68164 6.50012L13 1.18176Z" fill="#ffffff"></path>
+					</svg>
+				</span>
+
+				<div>
+					<H3>Try Internet Download Manager for free</H3>
+
+					<div class="warning">
+						<div class="subtext">No email or credit card required</div>
+
+						<div class="subtext">Internet Download Manager has NO spyware or adware inside of it</div>
+					</div>
+
+					<p></p>
+
+					<OL class="left-close-ul">
+						<li>
+							<a class="cta-btn" href="https://download.internetdownloadmanager.com/idman643build7.exe">Download Internet Download Manager (10 MB)</a>
+						</li>
+
+						<li>Run .exe file</li>
+
+						<li>Follow installation instructions</li>
+
+						<li>
+							<p class="no_bottom">Install IDM extension for your browser:</p>
+							<div class="no_bottom"><a class="nav_link" href="https://chrome.google.com/webstore/detail/IDM-Integration-Module/ngpampappnmepgilojfohadhhmbhlaek">For Google Chrome</a></div>
+							<div class="no_bottom"><a class="nav_link" href="https://www.internetdownloadmanager.com/support/installffextfrommozillasite.html">For Mozilla Firefox</a></div>
+							<div><a class="nav_link" href="https://microsoftedge.microsoft.com/addons/detail/idm-integration-module/llbjbkhnmlidjebalopleeepgdfgcpec">For Microsoft Edge</a></div>
+						</li>
+					</OL>
+
+					<p></p>
+
+					<div class="subtext">If you have any questions about IDM, please <a href="https://www.internetdownloadmanager.com/contact_us.html">contact our Free Support Service</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<link href="/CSS/news.css" rel="stylesheet" type="text/css" />
+<script src="/js/scroll_news.js"></script>
+
+<div class="n-banner blue">
+	<div class="container">
+		<H1>Internet Download Manager news</H1>
+		<div class="lead">Supporting and developing Internet Download Manager since year 2000</div>
+		<a class="cta-btn" href="https://download.internetdownloadmanager.com/idman643build7.exe" >Download Internet Download Manager</a>
+	</div>
+</div>
+
+<div class="fixed-nav">
+	<div class="nav" id="nav">
+		<div class="nav-link item__1"><a href="#2020" class="menu-item">2020</a></div>
+		<div class="nav-link item__2"><a href="#2019" class="menu-item">2019</a></div>
+		<div class="nav-link item__3"><a href="#2018" class="menu-item">2018</a></div>
+		<div class="nav-link item__4"><a href="#2017" class="menu-item">2017</a></div>
+		<div class="nav-link item__5"><a href="#2016" class="menu-item">2016</a></div>
+		<div class="nav-link item__6"><a href="#2015" class="menu-item">2011&ndash;2015</a></div>
+		<div class="nav-link item__7"><a href="#2010" class="menu-item">2006&ndash;2010</a></div>
+		<div class="nav-link item__8"><a href="#2005" class="menu-item">2001&ndash;2005</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-nav"></div>
+
+	<div class="col-center with__nav">
+		<p>IDM has an automatic update option, and IDM can check for the availability of a new version once per week. Once a new version becomes available, IDM will show a dialog that describes all new features and suggests updating your current version.
+			You may also check for updates manually at any time using <strong>"Help&#8594;Check for updates..."</strong> IDM main menu item.
+		</p>
+<H3>What's new in version 6.43 Build 7</H3>
+<p class="subtext">(Released: Jul 22, 2026)</p>
+<UL>
+<li>Fixed a problem causing IDM download panel not to appear on some websites</LI>
+</UL>
+		
+<H3>What's new in version 6.43 Build 6</H3>
+<p class="subtext">(Released: Jul 18, 2026)</p>
+<UL>
+<li>Fixed a bug when converting TS video to MP4</LI>
+</UL>
+		
+<H3>What's new in version 6.43 Build 5</H3>
+<p class="subtext">(Released: Jul 11, 2026)</p>
+<UL>
+<li>Fixed a bug that sometimes caused Windows Explorer to crash</li>
+<li>Fixed a problem causing IDM download panel not to appear on some websites</LI>
+<li>Resolved Proxy/VPN related issues that caused "Download this video" panel not to appear or caused 403 errors on some websites</LI>
+</UL>
+		
+<H3>What's new in version 6.43 Build 2</H3>
+<p class="subtext">(Released: Jun 28, 2026)</p>
+<UL>
+<li>Resolved the problem that caused a "403 Forbidden" error when downloading some files</LI>
+<li>Fixed a problem causing IDM download panel not to appear on some websites</LI>
+<li>Fixed a bug that caused a crash when converting some TS files to MP4</LI>
+</UL>
+		
+<H3>What's new in version 6.43 Build 1</H3>
+<p class="subtext">(Released: Jun 15, 2026)</p>
+<UL>
+<li>Added the ability to download MP4 files from web sites where previously only TS videos were available. IDM displays both TS and MP4 file formats in its video download button. If you only need MP4 files, disable TS in IDM Options -> General tab -> Customize IDM Download panels in browsers -> Edit button. Remove TS extension on "Customize IDM Download panels in browsers" dialog</LI>
+<li>Fixed video downloading problems on several popular web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+
+<H3>What's new in version 6.42 Build 64</H3>
+<p class="subtext">(Released: May 16, 2026)</p>
+<UL>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 63</H3>
+<p class="subtext">(Released: Mar 07, 2026)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 62</H3>
+<p class="subtext">(Released: Mar 03, 2026)</p>
+<UL>
+<li>The issue where downloads of some TS video streams stopped at 99% has been fixed</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+
+<H3>What's new in version 6.42 Build 61</H3>
+<p class="subtext">(Released: Feb 19, 2026)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 58</H3>
+<p class="subtext">(Released: Dec 14, 2025)</p>
+<UL>
+<li>Issues with detecting standard video streams for downloading videos from some websites have been fixed</LI>
+<li>Video recognition in Ultra HD (4K, 8K) formats has been improved</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 57</H3>
+<p class="subtext">(Released: Dec 05, 2025)</p>
+<UL>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 56</H3>
+<p class="subtext">(Released: Nov 25, 2025)</p>
+<UL>
+<li>Fixed an issue that caused TS videos to be offered instead of MP4</LI>
+<li>Improved Ultra HD video recognition (4K, 8K)</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 52</H3>
+<p class="subtext">(Released: Oct 23, 2025)</p>
+<UL>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 51</H3>
+<p class="subtext">(Released: Oct 15, 2025)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 50</H3>
+<p class="subtext">(Released: Oct 07, 2025)</p>
+<UL>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 49</H3>
+<p class="subtext">(Released: Oct 06, 2025)</p>
+<UL>
+<li>Fixed erroneous filename replacement with "video"</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 45</H3>
+<p class="subtext">(Released: Sep 18, 2025)</p>
+<UL>
+<li>The issues with detecting videos and drawing the "Download this video" button on some websites have been fixed. However, users also need to wait for the new version of IDM extension to be approved in browsers</LI>
+<li>Fixed bugs</LI>
+</UL>
+		
+<H3>What's new in version 6.42 Build 42</H3>
+<p class="subtext">(Released: Jul 26, 2025)</p>
+<UL>
+<li>Updated chrome extension to support chrome manifest 3</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 41</H3>
+<p class="subtext">(Released: Jun 13, 2025)</p>
+<UL>
+<li>Fixed an issue with some websites where "Download Video" panel would show many small fragments of videos instead of full videos</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 40</H3>
+<p class="subtext">(Released: May 30, 2025)</p>
+<UL>
+<li>Fixed the problem when only 360p quality was offered in the "download video" panel on some web sites</LI>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 36</H3>
+<p class="subtext">(Released: May 07, 2025)</p>
+<UL>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 32</H3>
+<p class="subtext">(Released: Apr 05, 2025)</p>
+<UL>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+<li>Fixed bugs</LI>
+</UL>
+		
+<H3>What's new in version 6.42 Build 27</H3>
+<p class="subtext">(Released: Jan 23, 2025)</p>
+<UL>
+<li>Improved download engine</LI>
+<li>Fixed bugs</LI>
+</UL>
+		
+<H3>What's new in version 6.42 Build 26</H3>
+<p class="subtext">(Released: Dec 10, 2024)</p>
+<UL>
+<li>Fixed issues with displaying the download panel on some sites</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 25</H3>
+<p class="subtext">(Released: Nov 17, 2024)</p>
+<UL>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Fixed the problem when IDM did not show all types of video streams on some web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 23</H3>
+<p class="subtext">(Released: Oct 15, 2024)</p>
+<UL>
+<li>Fixed issues with integration into Google Chrome. After updating IDM, you need to restart Chrome</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 22</H3>
+<p class="subtext">(Released: Sep 16, 2024)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 21</H3>
+<p class="subtext">(Released: Sep 05, 2024)</p>
+<UL>
+<li>Resolved the problem that caused "403 Forbidden" error. All users are also required to update to 6.42.18.3 version of "IDM integration module" extension in their browsers</LI>
+<li>Fixed problems with downloading for several types of video and audio streams</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 18</H3>
+<p class="subtext">(Released: Jul 31, 2024)</p>
+<UL>
+<li>Resolved the problem that caused "403 Forbidden" error</LI>
+<li>Fixed a bug that caused Windows Explorer to crash</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 12</H3>
+<p class="subtext">(Released: Jun 19, 2024)</p>
+<UL>
+<li>Fixed "An unknown error" for some video streams</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 11</H3>
+<p class="subtext">(Released: Jun 05, 2024)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Fixed problems with the assembly of several video types when videos could not be played after downloading</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 10</H3>
+<p class="subtext">(Released: May 05, 2024)</p>
+<UL>
+<li>Fixed the problem with a slow download speed on several web sites. Please ensure that "IDM integration module" extension has been updated to "6.42.8.2" version in your browsers</LI>
+<li>Fixed the problem when IDM download panel was now displayed on several web sites</LI>
+<li>Fixed the problem when IDM did not show all types of video streams on some web sites</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 7</H3>
+<p class="subtext">(Released: Mar 25, 2024)</p>
+<UL>
+<li>Fixed problems with integration in Microsoft Edge browser</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 3</H3>
+<p class="subtext">(Released: Jan 17, 2024)</p>
+<UL>
+<li>Improved video recognition for some web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.42 Build 2</H3>
+<p class="subtext">(Released: Nov 26, 2023)</p>
+<UL>
+<li>IDM 6.42 build 1 has the following bug. If you make a Full uninstall and then install IDM again, the integration into the browsers cannot be turned on. IDM 6.42 build 2 fixes this problem, but you need to make sure that "IDM Integration module" extension/add-on is turned on in your browser(s) after installing this version of IDM.</LI>
+</UL>
+		
+
+<H3>What's new in version 6.42 Build 1</H3>
+<p class="subtext">(Released: Nov 22, 2023)</p>
+<UL>
+<li>Added browser integration for Windows ARM computers and tablets<BR>(For Firefox integration you need to update IDM and update <a class="nav_link" href="https://www.internetdownloadmanager.com/support/installffextfrommozillasite.html">"IDM integration module" add-on</a>)</LI>
+<li>Enhanced download engine</LI>
+<li>Fixed problems with slow downloading on some web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 22</H3>
+<p class="subtext">(Released: Oct 19, 2023)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>On Windows 11, the problem with the proxy pack script parser has been fixed</LI>
+<li>On Windows 7, the establishment of TLS connections has been improved; as a result, download errors on some sites have been fixed</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 20</H3>
+<p class="subtext">(Released: Sep 09, 2023)</p>
+<UL>
+<li>Improved video recognition for some web sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+		
+<H3>What's new in version 6.41 Build 18</H3>
+<p class="subtext">(Released: Aug 07, 2023)</p>
+<UL>
+<li>Improved download engine</LI>
+<li>Improved the interception of downloads</LI>
+<li>Fixed bugs</LI>
+</UL>
+		
+<H3>What's new in version 6.41 Build 15</H3>
+<p class="subtext">(Released: Jun 15, 2023)</p>
+<UL>
+<li>Resolved slow download speed problem for some files when Google Chrome is open</LI>
+</UL>		
+
+<H3>What's new in version 6.41 Build 14</H3>
+<p class="subtext">(Released: Jun 05, 2023)</p>
+<UL>
+<li>Improved download engine</LI>
+<li>Fixed problems with downloading from several sites</LI>
+<li>Optimized sorting of the list of downloads with a large number of items</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 11</H3>
+<p class="subtext">(Released: Apr 05, 2023)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Fixed a bug when the download panel was shown even when it was turned off</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 10</H3>
+<p class="subtext">(Released: Mar 23, 2023)</p>
+<UL>
+<li>Improved video recognition for some web sites</LI>
+<li>Added a correct processing and conversion for some types of MP4 video streams</LI>
+<li>Fixed problems with downloading from several sites</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 7</H3>
+<p class="subtext">(Released: Feb 27, 2023)</p>
+<UL>
+<li>Improved download engine</LI>
+<li>Resolved problems with video recognition on several web sites</LI>
+<li>Fixed problems when some web sites had only MKV options and no options of MP4 downloading in Firefox browser. Also please update "IDM Integration Module" add-on to version 6.41.7 in Firefox to see all downloading options.</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 6</H3>
+<p class="subtext">(Released: Dec 03, 2022)</p>
+<UL>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Resolved problem with download error "400 Bad Request"</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 3</H3>
+<p class="subtext">(Released: Oct 03, 2022)</p>
+<UL>
+<li>Fixed problems with downloading from several sites</LI>
+<li>Fixed mp4 video assembling  problems for some streams when audio did not play, or when video played too fast and only the audio played, etc.</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 2</H3>
+<p class="subtext">(Released: May 31, 2022)</p>
+<UL>
+<li>Fixed a critical bug when a new instance of an executable file (for example, from the command line, etc.) closed the process of old instance opened earlier</LI>
+</UL>
+
+<H3>What's new in version 6.41 Build 1</H3>
+<p class="subtext">(Released: May 25, 2022)</p>
+<UL>
+<li>Improved download engine</LI>
+<li>Fixed problems with downloading for several types of video streams</LI>
+<li>Fixed bugs</LI>
+</UL>
+
+<H3>What's new in version 6.40 Build 11</H3>
+<p class="subtext">(Released: Mar 24, 2022)</p>
+<UL>
+<li>Fixed a bug that caused Windows Explorer to crash</LI>
+<li>Fixed a problem with randomly disabling IDM extension in a browser</LI>
+<li>Fixed getting cookies of the downloads that have not been added from browsers automatically</LI>
+</UL>
+
+<H3>What's new in version 6.40 Build 10</H3>
+<p class="subtext">(Released: Mar 22, 2022)</p>
+<UL>
+<li>Fixed a bug when downloading some types of videos freezing at the end of the download, and fixed other minor bugs</LI>
+</UL>
+	
+		<H3>What's new in version 6.40 Build 9</H3>
+		<p class="subtext">(Released: Mar 18, 2022)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.40 Build 8</H3>
+		<p class="subtext">(Released: Feb 21, 2022)</p>
+		<UL>
+			<li>Resolved problems with video recognition on several web sites</LI>
+			<li>Fixed problems with downloading for several types of video streams</LI>
+			<li>Resolved the problem when IDM saved video and audio streams as two separate files. Now IDM converts audio and mixes with video into one file</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.40 Build 7</H3>
+		<p class="subtext">(Released: Jan 25, 2022)</p>
+		<UL>
+			<li>Resolved problems with video recognition on several web sites</LI>
+			<li>Resolved problems with crashes and freezing when assembling some types of video streams</LI>
+			<li>Fixed timeout problems with some web sites</LI>
+			<li>Added a setting to IDM to turn off context menu items in Google Chrome browser</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.40 Build 2</H3>
+		<p class="subtext">(Released: Dec 09, 2021)</p>
+		<UL>
+			<li>Fixed several bugs in download engine</LI>
+			<li>Fixed bugs with custom fonts.</li>
+			<li>Fixed a problem when using a large font on low screen resolution, IDM dialogs and fonts do not increase over screen size now.</li>
+			<li>Fixed problems with not fitting button names in IDM Options and in IDM Scheduler when fonts with wide metrics are used.</li>
+			<li>Fixed problems with cutting tabs on download progress dialog.</li>
+			<li>Fixed other minor bugs with custom fonts</li>
+		</UL>
+
+		<H3>What's new in version 6.40</H3>
+		<p class="subtext">(Released: Nov 29, 2021)</p>
+		<UL>
+			<li>Improved download engine. Increased download speed for several web sites</LI>
+			<li>Fixed timeout problems and other errors when establishing connection with some web sites</LI>
+			<li>Added support for "Make text bigger" feature in Windows 10/11 accessibility settings. IDM will change the font size now</LI>
+			<li>Added the selection of font for IDM interface to View->Fonts menu item of main IDM window</LI>
+			<li>Improved the processing of capturing downloads from the web sites that don't allow making second http request</LI>
+			<li>Fixed others bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.39 Build 8</H3>
+		<p class="subtext">(Released: Oct 29, 2021)</p>
+		<UL>
+			<li>Fixed "403 Forbidden" downloading problem for some web sites</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.39 Build 7</H3>
+		<p class="subtext">(Released: Oct 22, 2021)</p>
+		<UL>
+			<li>Fixed a bug when assembling several types of MKV videos</LI>
+			<li>Fixed other minor bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.39 Build 5</H3>
+		<p class="subtext">(Released: Oct 19, 2021)</p>
+		<UL>
+			<li>Fixed a bug with selected group downloads from the browser</LI>
+			<li>Fixed problems with some types of large files</LI>
+		</UL>
+
+		<H3>What's new in version 6.39 Build 3</H3>
+		<p class="subtext">(Released: Oct 15, 2021)</p>
+		<UL>
+			<li>Increased download speed for several web sites</LI>
+			<li>Resolved problems with https downloading for some users</LI>
+			<li>Improved video recognition for some web sites</LI>
+			<li>Fixed problems with downloading for several types of video streams</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.39 Build 2</H3>
+		<p class="subtext">(Released: Jul 16, 2021)</p>
+		<UL>
+			<li>Added search in an old way in full IDM list (F3) when closing the SearchBar</LI>
+			<li>Fixed a bug with adding downloads from the command line</LI>
+		</UL>
+
+		<H3>What's new in version 6.39</H3>
+		<p class="subtext">(Released: Jul 14, 2021)</p>
+		<UL>
+			<li>Changed the search dialog (Ctrl-F) and added SearchBar</LI>
+			<li>Fixed a problem with searching Unicode strings</LI>
+			<li>Added the ability to show "Parent web page" column to the list of downloads of the main dialog</LI>
+			<li>Fixed problems with downloading from several sites</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 25</H3>
+		<p class="subtext">(Released: May 10, 2021)</p>
+		<UL>
+			<li>Improved download engine</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 23</H3>
+		<p class="subtext">(Released: May 05, 2021)</p>
+		<UL>
+			<li>Resolved browser integration problems some versions of Windows 10</LI>
+			<li>Added support for new types of video streams</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 22</H3>
+		<p class="subtext">(Released: Apr 30, 2021)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</LI>
+			<li>Fixed bugs</LI>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 21</H3>
+		<p class="subtext">(Released: Apr 17, 2021)</p>
+		<UL>
+			<li>Improved browsers integration</li>
+			<li>Fixed problems with downloading from several sites</li>
+			<li>Fixed IDMMsgHost.exe crashes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 18</H3>
+		<p class="subtext">(Released: Mar 03, 2021)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Improved the interception of downloads</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 17</H3>
+		<p class="subtext">(Released: Feb 12, 2021)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2020">What's new in version 6.38 Build 16</H3>
+		<p class="subtext">(Released: Dec 25, 2020)</p>
+		<UL>
+			<li>Added support for new types of video streams</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 15</H3>
+		<p class="subtext">(Released: Dec 10, 2020)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 14</H3>
+		<p class="subtext">(Released: Nov 25, 2020)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Fixed the problem with the pale drawing of the download panel in FireFox 83 on Windows 7</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 12</H3>
+		<p class="subtext">(Released: Nov 17, 2020)</p>
+		<UL>
+			<li>Improved the interception of downloads on some sites</li>
+			<li>Improved downloading files intercepted from Chrome based browsers</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 11</H3>
+		<p class="subtext">(Released: Nov 14, 2020)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed handling of HTTP status <strong>"308 Permanent Redirect"</strong></li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 10</H3>
+		<p class="subtext">(Released: Nov 09, 2020)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed problems with downloading from several file sharing sites</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 9</H3>
+		<p class="subtext">(Released: Oct 30, 2020)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 8</H3>
+		<p class="subtext">(Released: Oct 23, 2020)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 3</H3>
+		<p class="subtext">(Released: Oct 06, 2020)</p>
+		<UL>
+			<li>Resolved download problems for several types of video streams</li>
+			<li>Fixed problems with downloading from several sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38 Build 2</H3>
+		<p class="subtext">(Released: Aug 01, 2020)</p>
+		<UL>
+			<li>Resolved download problems for several types of video streams</li>
+			<li>Improved the interception of downloads from browsers</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.38</H3>
+		<p class="subtext">(Released: Jun 28, 2020)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Added support for new types of video streams</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 16</H3>
+		<p class="subtext">(Released: Jun 25, 2020)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Fixed a bug with command line downloads</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 15</H3>
+		<p class="subtext">(Released: Jun 24, 2020)</p>
+		<UL>
+			<li>Fixed a problem with erroneous interceptions of BIN files from gmail and other Google services</li>
+			<li>Added support for new types of video streams, fixed problems when assembling some types of videos</li>
+			<li>Fixed a problem with stealing focus when IDM processed download queue</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 14</H3>
+		<p class="subtext">(Released: May 01, 2020)</p>
+		<UL>
+			<li>Updated SSL libraries</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 12</H3>
+		<p class="subtext">(Released: Apr 29, 2020)</p>
+		<UL>
+			<li>Fixed "endless reboot" problem when changing IDM Network integration on Windows 7</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 11</H3>
+		<p class="subtext">(Released: Apr 26, 2020)</p>
+		<UL>
+			<li>Resolved browser integration compatibility problems with some configurations of Windows 7 computers, e.g. the disappearance of video download panel, or <strong>"0x80004002"</strong> error when taking over a download</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 10</H3>
+		<p class="subtext">(Released: Apr 17, 2020)</p>
+		<UL>
+			<li>Fixed a bug with displaying vertical grid lines in IDM main window in Dark Mode when swapping columns</li>
+			<li>Added a feature to turn off Dark Mode support (<strong>"View -> Dark Mode support"</strong> menu item)</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 9 Final Release</H3>
+		<p class="subtext">(Released: Apr 15, 2020)</p>
+		<UL>
+			<li>Added new <strong>"Neon"</strong> toolbar that was design for IDM Dark Mode, but it looks great in Light Mode as well</li>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 8 beta</H3>
+		<p class="subtext">(Released: Apr 03, 2020)</p>
+		<UL>
+			<li>Added support for Dark Mode of Windows 10 to IDM main window and most frequently used IDM dialogs</li>
+			<li>Fixed problems with downloading for several types of TS video</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 7 beta</H3>
+		<p class="subtext">(Released: Mar 03, 2020)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.37 Build 5 beta</H3>
+		<p class="subtext">(Released: Feb 17, 2020)</p>
+		<UL>
+			<li>Fixed bugs with HTTPS downloads</li>
+			<li>Resolved download problems for several types of video streams</li>
+		</UL>
+
+		<H3>What's new in version 6.37 beta</H3>
+		<p class="subtext">(Released: Feb 10, 2020)</p>
+		<UL>
+			<li>Added full TLS 1.3 support</li>
+			<li>Improved program stability</li>
+		</UL>
+
+		<H3>What's new in version 6.36 Build 7</H3>
+		<p class="subtext">(Released: Feb 08, 2020)</p>
+		<UL>
+			<li>Added support for new types of video streams</li>
+			<li>Fixed problems with missing audio for some TS files</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.36 Build 5</H3>
+		<p class="subtext">(Released: Feb 02, 2020)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed problems in message boxes with some Unicode languages</li>
+			<li>Improved the appearance of <strong>"Download panel"</strong> on Windows 8 and above</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.36 Build 3</H3>
+		<p class="subtext">(Released: Jan 21, 2020)</p>
+		<UL>
+			<li>Added support for new types of videos for several web streaming services</li>
+			<li>Fixed problems with video recognition for several types of web sites in IE</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.36 Build 2</H3>
+		<p class="subtext">(Released: Jan 11, 2020)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Improved download engine (fixed problems with downloading from several sites such as github and others)</li>
+			<li>Added Unicode support for command line parameters</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2019">What's new in version 6.36</H3>
+		<p class="subtext">(Released: Dec 25, 2019)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Improved the interception of downloads from browsers</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 18</H3>
+		<p class="subtext">(Released: Dec 18, 2019)</p>
+		<UL>
+			<li>Improved HTTPS downloading</li>
+			<li>Fixed compatibility problems with Tor browser</li>
+			<li>Fixed problems with downloading for several types of TS video</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 17</H3>
+		<p class="subtext">(Released: Dec 07, 2019)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Improved downloading from sharing and other web sites that generate temporary links that can be requested one time only</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 12</H3>
+		<p class="subtext">(Released: Nov 20, 2019)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 11</H3>
+		<p class="subtext">(Released: Nov 15, 2019)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 9</H3>
+		<p class="subtext">(Released: Nov 10, 2019)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed problems with browsers integration</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 8</H3>
+		<p class="subtext">(Released: Oct 24, 2019)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Added a feature to download and mix/assemble TS videos where audio and video go in different streams</li>
+			<li>Added the possibility to change action on double click to open files in IDM main list</li>
+			<li>Fixed <strong>"403 Forbidden"</strong> downloading problem for some web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 5</H3>
+		<p class="subtext">(Released: Sep 20, 2019)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 3</H3>
+		<p class="subtext">(Released: Aug 27, 2019)</p>
+		<UL>
+			<li>Fixed video quality recognition on several web sites</li>
+		</UL>
+
+		<H3>What's new in version 6.35 Build 2</H3>
+		<p class="subtext">(Released: Aug 26, 2019)</p>
+		<UL>
+			<li>Fixed the recognition of video file names on some web sites</li>
+			<li>Resolved compatibility problems with older versions of FireFox browsers</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.35</H3>
+		<p class="subtext">(Released: Aug 16, 2019)</p>
+		<UL>
+			<li>Added the recognition of proxies in browsers and its automatic usage in IDM when IDM cannot download directly. The recognition works for all VPN extensions in FireFox, and for some VPN extensions in Google Chrome.</li>
+			<li>Added a feature to set <strong>"User-Agent"</strong> header for manually added downloads. You can do it in IDM <strong>"Options&#8594;Downloads"</strong> Tab.
+				The settings of antiviral software were moved to a separate dialog to simplify <strong>"Downloads"</strong> tab.</li>
+			<li>Improved video recognition in web players</li>
+			<li>Found the cause of <strong>"403 Forbidden"</strong> error when downloading some videos and made a workaround.</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.33 Build 3</H3>
+		<p class="subtext">(Released: Jul 01, 2019)</p>
+		<UL>
+			<li>Added support for Pale Moon 28</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.33 Build 2</H3>
+		<p class="subtext">(Released: May 11, 2019)</p>
+		<UL>
+			<li>Updated the new feature to download from file sharing web sites</li>
+			<li>Fixed problems of IDM 33 with Windows XP</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.33 Build 1</H3>
+		<p class="subtext">(Released: May 05, 2019)</p>
+		<UL>
+			<li>Added a new feature to improve downloading from sharing and other websites that generate temporary links that can be requested one time only.
+				If IDM discovers such web site, it offers to send a report, and requests updated download rules for this web site from IDM servers. Because IDM has a large number of users, we plan to receive many reports and update this database quickly.
+			</li>
+			<li>Added <strong>"Del"</strong> key to special keys to prevent downloading with IDM because previous keys (<strong>"Ctrl"</strong>, <strong>"Alt"</strong>, <strong>"Shift"</strong>) that we offered were reserved by browsers for other purposes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 11</H3>
+		<p class="subtext">(Released: Apr 20, 2019)</p>
+		<UL>
+			<li>Improved browser integration modules</li>
+			<li>Added support of new AV1 video type</li>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 9</H3>
+		<p class="subtext">(Released: Apr 05, 2019)</p>
+		<UL>
+			<li>Fixed a problem with an incorrect display of some custom toolbars</li>
+			<li>Fixed an old critical bug that might damage process memory</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 8</H3>
+		<p class="subtext">(Released: Mar 21, 2019)</p>
+		<UL>
+			<li>Fixed problems with automatic installation of extension in Google Chrome 73</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 7</H3>
+		<p class="subtext">(Released: Mar 19, 2019)</p>
+		<UL>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>The change of trading company name</H3>
+		<p class="subtext">(Date: Feb 27, 2019)</p>
+		<p><strong>Tonec Inc.</strong> will start the process of changing trading company name from <strong>Tonec Inc.</strong> to <strong>Tonec FZE</strong> for different IDM payment options and resellers from March 1st, 2019. All corresponding <strong>Tonec Inc.</strong> rights, duties,
+			liabilities and obligations shall be transferred to <strong>Tonec FZE</strong> and accepted by <strong>Tonec FZE</strong>. All new licensing and other types of agreements will become legally binding to <strong>Tonec FZE</strong> from March 1st, 2019 unless specified otherwise.
+		</p>
+
+		<H3>What's new in version 6.32 Build 6</H3>
+		<p class="subtext">(Released: Feb 10, 2019)</p>
+		<UL>
+			<li>Fixed compatibility problems with Google Chrome 72</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2018">What's new in version 6.32 Build 5</H3>
+		<p class="subtext">(Released: Dec 27, 2018)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Found the cause of <strong>"403 Forbidden"</strong> error when downloading some videos and made a workaround</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 3</H3>
+		<p class="subtext">(Released: Dec 20, 2018)</p>
+		<UL>
+			<li>Improved browser integration modules</li>
+			<li>Fixed a problem with the interception of several types of downloads from browsers and from some file sharing web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 2</H3>
+		<p class="subtext">(Released: Dec 10, 2018)</p>
+		<UL>
+			<li>Added support of UTF-8 (for non-latin characters) in authorization for web and proxy servers</li>
+			<li>Fixed critical bugs in IDM scheduler</li>
+			<li>Fixed other bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.32 Build 1</H3>
+		<p class="subtext">(Released: Nov 16, 2018)</p>
+		<UL>
+			<li>Adapted the user interface for Unicode characters for all versions of Windows</li>
+			<li>Added the possibility to translate IDM into all languages not previously supported</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 9</H3>
+		<p class="subtext">(Released: Oct 18, 2018)</p>
+		<UL>
+			<li>Fixed problems with downloading for several types of video streams</li>
+			<li>Fixed the problems with FireFox and Google Chrome integration caused by some security applications</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 8</H3>
+		<p class="subtext">(Released: Sep 28, 2018)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 5</H3>
+		<p class="subtext">(Released: Sep 15, 2018)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 3</H3>
+		<p class="subtext">(Released: Jul 09, 2018)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 2</H3>
+		<p class="subtext">(Released: Jun 25, 2018)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.31 Build 1</H3>
+		<p class="subtext">(Released: Jun 23, 2018)</p>
+		<UL>
+			<li>Added support of Unicode only languages to latest Windows 10</li>
+			<li>Fixed compatibility problems with foreign language translations when using <strong>"Use Unicode UTF-8 for worldwide language support"</strong> feature of Windows 10</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 10</H3>
+		<p class="subtext">(Released: May 16, 2018)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 9</H3>
+		<p class="subtext">(Released: May 11, 2018)</p>
+		<UL>
+			<li>Improved audio/video recognition in web players</li>
+			<li>Added support for FireFox 61, 62</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 8</H3>
+		<p class="subtext">(Released: Mar 30, 2018)</p>
+		<UL>
+			<li>Fixed a critical security bug</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 7</H3>
+		<p class="subtext">(Released: Mar 01, 2018)</p>
+		<UL>
+			<li>Improved video downloading for several types of video streams</li>
+			<li>Added support for FireFox 60</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 6</H3>
+		<p class="subtext">(Released: Jan 12, 2018)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2017">What's new in version 6.30 Build 3</H3>
+		<p class="subtext">(Released: Dec 27, 2017)</p>
+		<UL>
+			<li>Improved download engine</li>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 2</H3>
+		<p class="subtext">(Released: Dec 15, 2017)</p>
+		<UL>
+			<li>Improved proxy/socks settings</li>
+			<li>Added support for FireFox 59</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.30 Build 1</H3>
+		<p class="subtext">(Released: Dec 07, 2017)</p>
+		<UL>
+			<li>Added a new extension for a full-fledged integration with Microsoft Edge browser</li>
+			<li>Improved proxy server settings, added a possibility to use system proxy settings</li>
+			<li>Improved download engine</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.29 Build 2</H3>
+		<p class="subtext">(Released: Oct 06, 2017)</p>
+		<UL>
+			<li>Improved FireFox integration</li>
+		</UL>
+
+		<H3>What's new in version 6.29 Build 1</H3>
+		<p class="subtext">(Released: Oct 03, 2017)</p>
+		<UL>
+			<li>Added support of HTTPS proxy servers. It's possible to make VPN connections via HTTPS proxy servers by using <strong>proxy.pac</strong> files</li>
+			<li>Fixed problems with HTTPS downloading via proxy servers with Digest authentication</li>
+			<li>Added support for FireFox 57, 58</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 17</H3>
+		<p class="subtext">(Released: Aug 05, 2017)</p>
+		<UL>
+			<li>Added compatibility with Windows 10 Preview build 16257</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 16</H3>
+		<p class="subtext">(Released: Jul 14, 2017)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 15</H3>
+		<p class="subtext">(Released: Jun 28, 2017)</p>
+		<UL>
+			<li>Fixed critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 14</H3>
+		<p class="subtext">(Released: Jun 23, 2017)</p>
+		<UL>
+			<li>Fixed bugs in downloading several types of video streams</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 12</H3>
+		<p class="subtext">(Released: Jun 08, 2017)</p>
+		<UL>
+			<li>Fixed critical bugs in IDM executable file and in browser integration modules</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 11</H3>
+		<p class="subtext">(Released: May 25, 2017)</p>
+		<UL>
+			<li>Resolved problems with downloading videos embedded on 3d party websites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 10</H3>
+		<p class="subtext">(Released: May 17, 2017)</p>
+		<UL>
+			<li>Fixed critical bugs in browser integration modules</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 9</H3>
+		<p class="subtext">(Released: May 02, 2017)</p>
+		<UL>
+			<li>Fixed problem with erroneous interceptions of files in FireFox</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 8</H3>
+		<p class="subtext">(Released: Apr 27, 2017)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Added a feature to the settings of schedulers to go into sleep mode or hibernate when downloading is done</li>
+			<li>Improved <strong>"Download panel"</strong> view on high DPI displays</li>
+			<li>Fixed problems with Chinese captions on the <strong>"Download panel"</strong></li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 6</H3>
+		<p class="subtext">(Released: Apr 07, 2017)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 5</H3>
+		<p class="subtext">(Released: Mar 29, 2017)</p>
+		<UL>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.28 Build 1</H3>
+		<p class="subtext">(Released: Mar 22, 2017)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>A new type of extension for FireFox (webextension) has been created that supports multiprosess FireFox feature (e10s)</li>
+			<li>Added support for FireFox 53, 54, 55</li>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.27 Build 5</H3>
+		<p class="subtext">(Released: Feb 14, 2017)</p>
+		<UL>
+			<li>Fixed bugs in downloading several types of video streams</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.27 Build 3</H3>
+		<p class="subtext">(Released: Jan 26, 2017)</p>
+		<UL>
+			<li>Added support for FireFox 52</li>
+			<li>Added support for SeaMonkey up to 2.49</li>
+		</UL>
+
+		<H3 id="2016">What's new in version 6.27 Build 2</H3>
+		<p class="subtext">(Released: Dec 15, 2016)</p>
+		<UL>
+			<li>Fixed a critical bug in the integration with FireFox 45.6 ESR</li>
+			<li>Fixed bugs in downloading several types of video streams</li>
+			<li>Fixed other small bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.27 Build 1</H3>
+		<p class="subtext">(Released: Dec 10, 2016)</p>
+		<UL>
+			<li>Added a feature to set minimum file size for showing <strong>"Download this video"</strong> button</li>
+			<li>Fixed download progress dialog on Windows 10, removed a wide border around it</li>
+			<li>Improved video recognition in web player</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 14</H3>
+		<p class="subtext">(Released: Nov 30, 2016)</p>
+		<UL>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 12</H3>
+		<p class="subtext">(Released: Nov 25, 2016)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 11</H3>
+		<p class="subtext">(Released: Nov 21, 2016)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 10</H3>
+		<p class="subtext">(Released: Nov 16, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 51</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 9</H3>
+		<p class="subtext">(Released: Nov 11, 2016)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed the problem with erroneous video interceptions from web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 8</H3>
+		<p class="subtext">(Released: Oct 22, 2016)</p>
+		<UL>
+			<li>Fixed several critical bugs when using proxy servers</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 7</H3>
+		<p class="subtext">(Released: Oct 01, 2016)</p>
+		<UL>
+			<li>Fixed a problem with disabling of the Google Chrome extension</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed a problem with disk space occupation</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 3</H3>
+		<p class="subtext">(Released: Sep 21, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 50</li>
+			<li>Improved IPV6 support</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 2</H3>
+		<p class="subtext">(Released: Sep 09, 2016)</p>
+		<UL>
+			<li>Fixed problem with video recognition for several video types</li>
+		</UL>
+
+		<H3>What's new in version 6.26 Build 1</H3>
+		<p class="subtext">(Released: Sep 07, 2016)</p>
+		<UL>
+			<li>Added support for IPV6 Internet addresses</li>
+			<li>Improved <strong>"Start Download Info"</strong> dialog</li>
+			<li>Fixed a freezing problem when <strong>"save to"</strong> path is on a network drive</li>
+			<li>Fixed bugs with IE and FireFox integration</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 25</H3>
+		<p class="subtext">(Released: Aug 05, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 49</li>
+			<li>Fixed compatibility problems with the latest build of Windows 10</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 24</H3>
+		<p class="subtext">(Released: Jul 28, 2016)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 23</H3>
+		<p class="subtext">(Released: Jul 12, 2016)</p>
+		<UL>
+			<li>Fixed problem with video recognition for several video types</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 22</H3>
+		<p class="subtext">(Released: Jul 05, 2016)</p>
+		<UL>
+			<li>Fixed problem with erroneous interceptions of video data</li>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 21</H3>
+		<p class="subtext">(Released: Jun 09, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 48</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed problems with taking over some types of downloads in FireFox</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 20</H3>
+		<p class="subtext">(Released: May 25, 2016)</p>
+		<UL>
+			<li>Fixed critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 18</H3>
+		<p class="subtext">(Released: May 20, 2016)</p>
+		<UL>
+			<li>Improved Google Chrome integration module</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 17</H3>
+		<p class="subtext">(Released: May 10, 2016)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 16</H3>
+		<p class="subtext">(Released: Apr 27, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 47</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 15</H3>
+		<p class="subtext">(Released: Apr 15, 2016)</p>
+		<UL>
+			<li>Improved Google Chrome integration module</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 14</H3>
+		<p class="subtext">(Released: Mar 11, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 46</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 12</H3>
+		<p class="subtext">(Released: Feb 11, 2016)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 11</H3>
+		<p class="subtext">(Released: Jan 28, 2016)</p>
+		<UL>
+			<li>Added support for FireFox 45</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2015">What's new in version 6.25 Build 10</H3>
+		<p class="subtext">(Released: Dec 28, 2015)</p>
+		<UL>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 9</H3>
+		<p class="subtext">(Released: Dec 18, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 44</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 8</H3>
+		<p class="subtext">(Released: Dec 11, 2015)</p>
+		<UL>
+			<li>Added support for new types of videos for several web streaming services</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 7</H3>
+		<p class="subtext">(Released: Dec 10, 2015)</p>
+		<UL>
+			<li>Made a workaround and fixed compatibility problems of previous IDM version (6.25.5) with Kaspersky Internet security on Windows 10</li>
+			<li>Improved video recognition in Google Chrome on Windows XP</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 5</H3>
+		<p class="subtext">(Released: Dec 09, 2015)</p>
+		<UL>
+			<li>Added support for new types of videos for several web streaming services</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 3</H3>
+		<p class="subtext">(Released: Nov 09, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 43 and SeaMonkey 2.39, 2.40, 2.41</li>
+			<li>Lowered CPU consumption</li>
+			<li>Added support for new types of video streaming sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25 Build 2</H3>
+		<p class="subtext">(Released: Oct 16, 2015)</p>
+		<UL>
+			<li>Fixed problems with video downloading for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.25</H3>
+		<p class="subtext">(Released: Oct 08, 2015)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Added support for SeaMonkey 2.38</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 23</H3>
+		<p class="subtext">(Released: Sep 30, 2015)</p>
+		<UL>
+			<li>Fixed the problem with repeating quality lines in video download panel</li>
+			<li>Fixed the problem with erroneous video interceptions from web players</li>
+			<li>Fixed the problem with keyboard focus in Google Chrome</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 22</H3>
+		<p class="subtext">(Released: Sep 23, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 42 and SeaMonkey 2.35</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 21</H3>
+		<p class="subtext">(Released: Aug 28, 2015)</p>
+		<UL>
+			<li>Fixed problems with downloading from several file sharing sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 20</H3>
+		<p class="subtext">(Released: Aug 20, 2015)</p>
+		<UL>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 19</H3>
+		<p class="subtext">(Released: Aug 14, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 41</li>
+			<li>Resolved the problem with erroneous download interceptions of videos in FireFox</li>
+			<li>Resolved the problem when <strong>"Download this video"</strong> button was not displayed in FireFox</li>
+			<li>Improved integration into Google Chrome</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 18</H3>
+		<p class="subtext">(Released: Aug 03, 2015)</p>
+		<UL>
+			<li>Fixed problems with detection of some types of downloads in FireFox</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 17</H3>
+		<p class="subtext">(Released: Jul 24, 2015)</p>
+		<UL>
+			<li>Added support for Microsoft Edge browser</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 16</H3>
+		<p class="subtext">(Released: Jul 15, 2015)</p>
+		<UL>
+			<li>Fixed a bug in FireFox extension with multiple download dialogs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 15</H3>
+		<p class="subtext">(Released: Jul 10, 2015)</p>
+		<UL>
+			<li>Fixed the bug with text selection in FireFox extension</li>
+			<li>Improved video recognition in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 14</H3>
+		<p class="subtext">(Released: Jul 07, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 40</li>
+			<li>Improved Google Chrome integration</li>
+			<li>Fixed problems with video recognition for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 12</H3>
+		<p class="subtext">(Released: May 20, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 39</li>
+			<li>Improved video downloading for several types of web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 11</H3>
+		<p class="subtext">(Released: Apr 20, 2015)</p>
+		<UL>
+			<li>Fixed problems with erroneous interceptions of FireFox internal downloads</li>
+			<li>Improved Google Chrome integration</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 10</H3>
+		<p class="subtext">(Released: Apr 02, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 38</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 9</H3>
+		<p class="subtext">(Released: Mar 26, 2015)</p>
+		<UL>
+			<li>Fixed compatibility problems of Google Chrome extension with Kaspersky Internet Security</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 8</H3>
+		<p class="subtext">(Released: Mar 19, 2015)</p>
+		<UL>
+			<li>Fixed a critical bug in IDM network driver</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 7</H3>
+		<p class="subtext">(Released: Mar 17, 2015)</p>
+		<UL>
+			<li>Fixed compatibility problems with antiviral and internet security software</li>
+			<li>Improved taking over downloads of videos from web players in Google Chrome</li>
+			<li>Added a feature to change video resolution for rtmp protocol</li>
+			<li>Added support for SeaMonkey 2.33</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 6</H3>
+		<p class="subtext">(Released: Mar 12, 2015)</p>
+		<UL>
+			<li>Fixed problems with video/audio recognition for several types of web sites</li>
+			<li>Fixed compatibility problems of Google Chrome extension with several applications</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 5</H3>
+		<p class="subtext">(Released: Mar 10, 2015)</p>
+		<UL>
+			<li>Fixed bugs in Chrome integration module</li>
+		</UL>
+
+		<H3>What's new in version 6.23 Build 2</H3>
+		<p class="subtext">(Released: Feb 24, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 37</li>
+		</UL>
+
+		<H3>What's new in version 6.23</H3>
+		<p class="subtext">(Released: Feb 22, 2015)</p>
+		<UL>
+			<li>Added support for Google Chrome 42</li>
+			<li>Added support for new types of video streaming sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.22</H3>
+		<p class="subtext">(Released: Feb 05, 2015)</p>
+		<UL>
+			<li>Added support for Windows 10</li>
+			<li>Fixed problems with corrupted video files from several types of video services</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 19</H3>
+		<p class="subtext">(Released: Jan 26, 2015)</p>
+		<UL>
+			<li>Resolved compatibility issues with some applications</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3 id="2015">What's new in version 6.21 Build 18</H3>
+		<p class="subtext">(Released: Jan 13, 2015)</p>
+		<UL>
+			<li>Added support for FireFox 36 and SeaMonkey 2.32</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 17</H3>
+		<p class="subtext">(Released: Dec 16, 2014)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 16</H3>
+		<p class="subtext">(Released: Dec 07, 2014)</p>
+		<UL>
+			<li>Added support for SeaMonkey 2.31 and for Pale Moon 25</li>
+			<li>Improved the recognition of new types of videos</li>
+			<li>Added a feature to wake up from sleep to download scheduled files in queue</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 15</H3>
+		<p class="subtext">(Released: Nov 07, 2014)</p>
+		<UL>
+			<li>Added the recognition of new types of videos</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 14</H3>
+		<p class="subtext">(Released: Oct 15, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 35</li>
+			<li>Improved Google Chrome integration module</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 11</H3>
+		<p class="subtext">(Released: Oct 03, 2014)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Improved video recognition in Google Chrome</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 10</H3>
+		<p class="subtext">(Released: Sep 12, 2014)</p>
+		<UL>
+			<li>Improved <strong>"IDM Integration module"</strong> Chrome extension</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 9</H3>
+		<p class="subtext">(Released: Sep 05, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 34 and SeaMonkey 2.30</li>
+			<li>Fixed problems with Google Chrome extension for non-default zoom</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 8</H3>
+		<p class="subtext">(Released: Sep 03, 2014)</p>
+		<UL>
+			<li>Fixed a freezing problem when assembling downloaded videos</li>
+			<li>Fixed an integration bug into Google Chrome browser</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 7</H3>
+		<p class="subtext">(Released: Aug 28, 2014)</p>
+		<UL>
+			<li>Added 64-bit support to <strong>"IDM Integration module"</strong> Chrome extension</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 5</H3>
+		<p class="subtext">(Released: Aug 20, 2014)</p>
+		<UL>
+			<li>Added a feature to select a group of files in main IDM list and change their storage folder</li>
+			<li>Fixed several problems with erroneous interceptions of videos</li>
+			<li>Improved the logic of <strong>"Download this video"</strong> panel</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 3</H3>
+		<p class="subtext">(Released: Aug 11, 2014)</p>
+		<UL>
+			<li>Added a feature to search downloads in IDM list</li>
+			<li>Added high DPI support for Google chrome extension</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.21 Build 2</H3>
+		<p class="subtext">(Released: Jul 23, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 33 and SeaMonkey 2.29</li>
+		</UL>
+
+		<H3>What's new in version 6.21</H3>
+		<p class="subtext">(Released: Jul 11, 2014)</p>
+		<UL>
+			<li>Fixed detections of two separate video and audio streams in Chrome browser</li>
+			<li>Improved IDM download engine</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.20 Build 5</H3>
+		<p class="subtext">(Released: Jun 18, 2014)</p>
+		<UL>
+			<li>Fixed an erroneous interception of attendant content in Google Docs</li>
+			<li>Fixed a critical bug when saving and resuming several types of videos</li>
+			<li>Fixed a bug in the recognition of several types of videos in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.20 Build 2</H3>
+		<p class="subtext">(Released: Jun 09, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 32 and SeaMonkey 2.28</li>
+			<li>Fixed video recognition problems in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.20</H3>
+		<p class="subtext">(Released: Jun 05, 2014)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Added the recognition and downloading of TS videos</li>
+			<li>Resolved <strong>"403 Forbidden"</strong> problems while downloading some videos</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 9</H3>
+		<p class="subtext">(Released: May 15, 2014)</p>
+		<UL>
+			<li>Improved downloading from file sharing sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 8</H3>
+		<p class="subtext">(Released: Apr 29, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 31 and SeaMonkey 2.26</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 7</H3>
+		<p class="subtext">(Released: Apr 21, 2014)</p>
+		<UL>
+			<li>Fixed a problem with not clickable download panel in Google Chrome version 34 and above</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 6</H3>
+		<p class="subtext">(Released: Apr 03, 2014)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 3</H3>
+		<p class="subtext">(Released: Mar 20, 2014)</p>
+		<UL>
+			<li>Added support for FireFox 30 and SeaMonkey 2.25</li>
+			<li>Improved video recognition in Google Chrome</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19 Build 2</H3>
+		<p class="subtext">(Released: Feb 21, 2014)</p>
+		<UL>
+			<li>Added support for Google Chrome 33</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.19</H3>
+		<p class="subtext">(Released: Feb 05, 2014)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Added support for FireFox 29 and SeaMonkey 2.24</li>
+			<li>Fixed video recognition problems in Google Chrome</li>
+			<li>Fixed problems when taking over HTTPS downloads in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 12</H3>
+		<p class="subtext">(Released: Jan 16, 2014)</p>
+		<UL>
+			<li>Resolved compatibility issues with Google Chrome 32</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 11</H3>
+		<p class="subtext">(Released: Dec 15, 2013)</p>
+		<UL>
+			<li>Resolved problems with 1080p HD video recognition in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 10</H3>
+		<p class="subtext">(Released: Dec 11, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 28 and SeaMonkey 2.23</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 9</H3>
+		<p class="subtext">(Released: Nov 29, 2013)</p>
+		<UL>
+			<li>Fixed a bug with erroneous dialup dialog</li>
+			<li>Added a workaround for Trusteer bug when it crashes IE</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 8</H3>
+		<p class="subtext">(Released: Nov 28, 2013)</p>
+		<UL>
+			<li>Increased the maximum number of connections to support up to 32 simultaneous connections per download</li>
+			<li>Improved video recognition in web players</li>
+			<li>Improved IDM download engine</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 7</H3>
+		<p class="subtext">(Released: Nov 08, 2013)</p>
+		<UL>
+			<li>Fixed a critical bug in IE integration module</li>
+			<li>Improved Windows 8.1 and IE 11 integration</li>
+			<li>Resolved compatibility issues with Google Chrome 31</li>
+			<li>Improved video recognition in web players</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 5</H3>
+		<p class="subtext">(Released: Oct 29, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 26 and SeaMonkey 2.21</li>
+			<li>Fixed a bug when assembling video files with high bitrate</li>
+			<li>Improved video recognition in Google Chrome</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 4</H3>
+		<p class="subtext">(Released: Oct 27, 2013)</p>
+		<UL>
+			<li>Redeveloped assembling of video files to improve compatibility with Windows Media player</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 3</H3>
+		<p class="subtext">(Released: Oct 25, 2013)</p>
+		<UL>
+			<li>Improved video recognition in web players</li>
+			<li>Redeveloped assembling of video files to improve compatibility with some video players</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.18 Build 2</H3>
+		<p class="subtext">(Released: Oct 09, 2013)</p>
+		<UL>
+			<li>Resolved compatibility issues with Google Chrome 30</li>
+			<li>Fixed downloading of groups of links for several file sharing sites</li>
+		</UL>
+
+		<H3>What's new in version 6.18</H3>
+		<p class="subtext">(Released: Oct 03, 2013)</p>
+		<UL>
+			<li>Added support for High DPI settings</li>
+			<li>Added a feature to take over HTTPS downloads in Google Chrome</li>
+			<li>Added a feature to show download this video/audio panel for HTTPS videos in Google Chrome</li>
+			<li>Resolved problems with downloading videos from several sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.17 Build 11</H3>
+		<p class="subtext">(Released: Sep 18, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 26 and SeaMonkey 2.21</li>
+			<li>Resolved problems with downloading videos from several sites</li>
+			<li>Fixed errors during file assembling, missing file errors, problems with non-playing videos, or videos without a sound when taking over downloading of videos in Google Chrome</li>
+			<li>Fixed other bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.17 Build 7</H3>
+		<p class="subtext">(Released: Aug 06, 2013)</p>
+		<UL>
+			<li>Resolved problems with Google Chrome extension</li>
+			<li>Added support for FireFox 25 and SeaMonkey 2.20</li>
+			<li>Resolved problems with downloading videos from several sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.17 Build 6</H3>
+		<p class="subtext">(Released: Jul 26, 2013)</p>
+		<UL>
+			<li>Changed Google Chrome extension because of false identification from Google</li>
+			<li>Resolved problems with downloading videos from several sites</li>
+			<li>Fixed a bug with high CPU loading</li>
+		</UL>
+
+		<H3>What's new in version 6.17 Build 5</H3>
+		<p class="subtext">(Released: Jul 19, 2013)</p>
+		<UL>
+			<li>Added support for new video sites changes</li>
+			<li>Added support for Google Chrome 30</li>
+		</UL>
+
+		<H3>What's new in version 6.17 Build 2</H3>
+		<p class="subtext">(Released: Jul 12, 2013)</p>
+		<UL>
+			<li>Improved IE 11 integration (Windows 8.1)</li>
+			<li>Added support for new video sites' changes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.17?</H3>
+		<p class="subtext">(Released: Jun 27, 2013)</p>
+		<UL>
+			<li>Added support for new types of video streaming sites</li>
+			<li>Added support for FireFox 24 and SeaMonkey 2.19</li>
+			<li>Added a workaround for video sites' changes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.16 Build 3?</H3>
+		<p class="subtext">(Released: Jun 20, 2013)</p>
+		<UL>
+			<li>Added a workaround for video sites' changes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.16?</H3>
+		<p class="subtext">(Released: Jun 10, 2013)</p>
+		<UL>
+			<li>Improved IDM download engine</li>
+			<li>Fixed problems when downloading from dailymotion sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 15?</H3>
+		<p class="subtext">(Released: May 31, 2013)</p>
+		<UL>
+			<li>Resolved problems with downloading videos from the sites that play videos hosted on video sites</li>
+			<li>Resolved problems with downloading of videos from video sites</li>
+			<li>Fixed a critical security bug</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 12?</H3>
+		<p class="subtext">(Released: May 15, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 23 and SeaMonkey 2.18</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 11?</H3>
+		<p class="subtext">(Released: May 07, 2013)</p>
+		<UL>
+			<li>Fixed crash in 64-bit Mozilla FireFox integration module</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 10?</H3>
+		<p class="subtext">(Released: Apr 30, 2013)</p>
+		<UL>
+			<li>Added a workaround for video sites' problems with separate audio and video streams</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 9?</H3>
+		<p class="subtext">(Released: Apr 25, 2013)</p>
+		<UL>
+			<li>Updated extension for Google Chrome</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 8?</H3>
+		<p class="subtext">(Released: Apr 05, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 22 and SeaMonkey 2.17</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 7?</H3>
+		<p class="subtext">(Released: Mar 22, 2013)</p>
+		<UL>
+			<li>Added a workaround for changes on video sites</li>
+			<li>Added the feature to stop and save live stream broadcasts</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 3?</H3>
+		<p class="subtext">(Released: Feb 21, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 21</li>
+			<li>Fixed a critical bug with processing some types of redirects</li>
+			<li>Resolved problems when displaying <strong>"Download progress"</strong> dialog tabs with large windows fonts</li>
+			<li>Fixed a bug with the download progress bar showing download threads when resuming zip files</li>
+		</UL>
+
+		<H3>What's new in version 6.15 Build 2?</H3>
+		<p class="subtext">(Released: Feb 15, 2013)</p>
+		<UL>
+			<li>Fixed a critical bug in download engine</li>
+			<li>Added download panel for selected links in Chrome browser</li>
+			<li>Added support for SeaMonkey 2.15 and 2.16</li>
+		</UL>
+
+		<H3>What's new in version 6.15?</H3>
+		<p class="subtext">(Released: Jan 29, 2013)</p>
+		<UL>
+			<li>Added support for automatic proxy configuration scripts (used in services like premiumize.me and others)</li>
+			<li>Fixed a critical bug in IE integration module</li>
+			<li>Resolved downloading problems with several file sharing sites</li>
+			<li>Changed <strong>"Minimize to tray"</strong> button style for Windows 8</li>
+		</UL>
+
+		<H3>What's new in version 6.14 Final Build 5?</H3>
+		<p class="subtext">(Released: Jan 09, 2013)</p>
+		<UL>
+			<li>Added support for FireFox 20</li>
+			<li>Improved downloading from some types of video servers</li>
+		</UL>
+
+		<H3>What's new in version 6.14 Final Build 3?</H3>
+		<p class="subtext">(Released: Dec 24, 2012)</p>
+		<UL>
+			<li>Added support for latest changes of web sites</li>
+		</UL>
+
+		<H3>What's new in version 6.14 Final Build 2?</H3>
+		<p class="subtext">(Released: Dec 19, 2012)</p>
+		<UL>
+			<li>Fixed a compatiblity problem with WaterFox browser on Windows 8</li>
+			<li>Added support for SeaMonkey 2.14</li>
+		</UL>
+
+		<H3>What's new in version 6.14 Final?</H3>
+		<p class="subtext">(Released: Dec 14, 2012)</p>
+		<UL>
+			<li>Improved Windows 8 integration</li>
+			<li>Improved integration for Enhanced Protected Mode of IE 10</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 26?</H3>
+		<p class="subtext">(Released: Nov 21, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 19</li>
+			<li>Improved IE 10 integration</li>
+			<li>Improved Google Chrome integration</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 24?</H3>
+		<p class="subtext">(Released: Nov 12, 2012)</p>
+		<UL>
+			<li>Now IDM download panel allows the choice of video resolutions</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 23?</H3>
+		<p class="subtext">(Released: Oct 26, 2012)</p>
+		<UL>
+			<li>Fixed a critical bug in IE integration module</li>
+			<li>Improved Chrome and Opera integration</li>
+			<li>Fixed crashing in Chrome IDM integration module</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 22?</H3>
+		<p class="subtext">(Released: Oct 10, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 18</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 21?</H3>
+		<p class="subtext">(Released: Sep 27, 2012)</p>
+		<UL>
+			<li>Fixed a bug when taking over downloads from Google Chrome</li>
+			<li>Fixed compatibility issue with Sling Media Player</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 20?</H3>
+		<p class="subtext">(Released: Sep 26, 2012)</p>
+		<UL>
+			<li>Fixed a bug in Chrome integration module. After IDM update, you will need to restart Google Chrome.</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 19?</H3>
+		<p class="subtext">(Released: Sep 25, 2012)</p>
+		<UL>
+			<li>Fixed a critical bug</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final Build 18?</H3>
+		<p class="subtext">(Released: Sep 20, 2012)</p>
+		<UL>
+			<li>Fixed bugs when downloading videos in Chrome browser</li>
+			<li>Fixed an erroneous interception of video from web-players in Google Chrome browser. After IDM update you will need to restart Google Chrome and agree with the installation of <strong>"IDM Integration"</strong> extension.</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final build 15?</H3>
+		<p class="subtext">(Released: Sep 05, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 17</li>
+			<li>Added support for Seamonkey 2.12 and 2.13</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final build 11?</H3>
+		<p class="subtext">(Released: Aug 28, 2012)</p>
+		<UL>
+			<li>Improved video downloading</li>
+		</UL>
+
+		<H3>What's new in version 6.12 Final build 10?</H3>
+		<p class="subtext">(Released: Aug 23, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 16</li>
+			<li>Added a feature to set file creation date as provided by the server (<strong>"IDM Options&#8594;Save To"</strong>)</li>
+			<li>Fixed an erroneous interception of attendant content of web pages in Chrome</li>
+			<li>Added the possibility to translate text for IDM installer and IDM uninstaller</li>
+			<li>Redeveloped file integrity verification during resume.</li>
+			<li>Improved resume capability after power outages.</li>
+			<li>Redeveloped IDM integration into IE.</li>
+			<li>Optimized IE integration module and improved its speed performance.</li>
+			<li>Added support of IDM download panel to Google Frame installed into IE.</li>
+			<li>Improved integration into IE based browsers like AOL, MSN, etc...</li>
+			<li>Added support for SeaMonkey 2.10.</li>
+			<li>Added support for new version of Adobe Flash Player</li>
+			<li>Improved support of several web players.</li>
+			<li>Made a workaround for bugs in a new Outpost firewall.</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.11 build 8?</H3>
+		<p class="subtext">(Released: Jun 07, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 15</li>
+		</UL>
+
+		<H3>What's new in version 6.11 build 7?</H3>
+		<p class="subtext">(Released: May 02, 2012)</p>
+		<UL>
+			<li>Fixed a bug in integration module for IE</li>
+			<li>Added support for FireFox 14</li>
+			<li>Added support for SeaMonkey 2.9</li>
+		</UL>
+
+		<H3>What's new in version 6.11 build 5?</H3>
+		<p class="subtext">(Released: Apr 23, 2012)</p>
+		<UL>
+			<li>Fixed false interception of web ads</li>
+			<li>Added Socks traffic monitoring for Google Chrome and Opera</li>
+			<li>Added compatibility with address hiding programs</li>
+		</UL>
+
+		<H3>What's new in version 6.11 beta build 4?</H3>
+		<p class="subtext">(Released: Apr 19, 2012)</p>
+		<UL>
+			<li>Improved IDM categories. Added a feature to create categories for specific sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.11 beta build 3?</H3>
+		<p class="subtext">(Released: Apr 12, 2012)</p>
+		<UL>
+			<li>Improved Advanced browser integration</li>
+			<li>Improved HTML5 video detection in IE 9 & 10</li>
+		</UL>
+
+		<H3>What's new in version 6.11 beta build 2?</H3>
+		<p class="subtext">(Released: Apr 03, 2012)</p>
+		<UL>
+			<li>Improved Advanced browser integration</li>
+			<li>Improved video downloading from Google Chrome</li>
+			<li>Improved Site Grabber</li>
+		</UL>
+
+		<H3>What's new in version 6.11 beta?</H3>
+		<p class="subtext">(Released: Mar 23, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 13</li>
+			<li>Added support for SeaMonkey 2.8</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.10 Final build 2?</H3>
+		<p class="subtext">(Released: Mar 16, 2012)</p>
+		<UL>
+			<li>Fixed a bug in IE integration module because of which <strong>"Tracking Protection Lists"</strong> feature of Internet Explorer did not work properly</li>
+		</UL>
+
+		<H3>What's new in version 6.10 beta?</H3>
+		<p class="subtext">(Released: Mar 12, 2012)</p>
+		<UL>
+			<li>Fixed compatibility problems with Internet Explorer 10 beta</li>
+		</UL>
+
+		<H3>What's new in version 6.09 build 3?</H3>
+		<p class="subtext">(Released: Feb 23, 2012)</p>
+		<UL>
+			<li>Improved downloading from file sharing sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.09 build 2?</H3>
+		<p class="subtext">(Released: Feb 16, 2012)</p>
+		<UL>
+			<li>Added support for FireFox 11 and FireFox 12</li>
+			<li>Fixed a number of serious problems when downloading from video streaming sites</li>
+			<li>Improved Advanced Browser Integration</li>
+		</UL>
+
+		<H3>What's new in version 6.08 build 9?</H3>
+		<p class="subtext">(Released: Jan 26, 2012)</p>
+		<UL>
+			<li>Added support for new types of video streaming sites</li>
+		</UL>
+
+		<H3>What's new in version 6.08 build 8?</H3>
+		<p class="subtext">(Released: Jan 17, 2012)</p>
+		<UL>
+			<li>Redesigned video stream recognition for web players. Added support for new types of video streaming sites</li>
+			<li>Added support for FileSonic changes</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.08 beta build 7?</H3>
+		<p class="subtext">(Released: Dec 29, 2011)</p>
+		<UL>
+			<li>Added support for FileSonic changes</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 16?</H3>
+		<p class="subtext">(Released: Dec 29, 2011)</p>
+		<UL>
+			<li>Added support for FileSonic changes</li>
+			<li>Added FireFox 10 support</li>
+			<li>Added socks support</li>
+		</UL>
+
+		<H3>What's new in version 6.08 beta build 5?</H3>
+		<p class="subtext">(Released: Dec 27, 2011)</p>
+		<UL>
+			<li>Added FireFox 10 support</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.08 beta build 3?</H3>
+		<p class="subtext">(Released: Dec 20, 2011)</p>
+		<UL>
+			<li>Added socks support</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.08 beta?</H3>
+		<p class="subtext">(Released: Nov 25, 2011)</p>
+		<UL>
+			<li>Redesigned video stream recognition for web players. Added support for new types video sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 15?</H3>
+		<p class="subtext">(Released: Nov 14, 2011)</p>
+		<UL>
+			<li>Added support for FireFox 9</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 14?</H3>
+		<p class="subtext">(Released: Oct 25, 2011)</p>
+		<UL>
+			<li>Added support for new domain names of FileSonic site</li>
+			<li>Added digest authorization for web sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 12?</H3>
+		<p class="subtext">(Released: Oct 01, 2011)</p>
+		<UL>
+			<li>Added support for FireFox 8</li>
+			<li>Improved video discovery</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 11?</H3>
+		<p class="subtext">(Released: Sep 15, 2011)</p>
+		<UL>
+			<li>Added video stream recognition for several new web players</li>
+			<li>Fxied a critical bug in 64bit versions of Windows</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 10?</H3>
+		<p class="subtext">(Released: Sep 08, 2011)</p>
+		<UL>
+			<li>Resolved the problem with expiration of some download links. Fixed automatic updating of download addresses</li>
+			<li>Added digest authentication for proxy authorization</li>
+			<li>Added rtmp resume for many sites where IDM could not resume in the past</li>
+			<li>Improved downloading for the sites which generate temporary download links</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 9?</H3>
+		<p class="subtext">(Released: Aug 29, 2011)</p>
+		<UL>
+			<li>Added support for FireFox 7</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 7?</H3>
+		<p class="subtext">(Released: Aug 01, 2011)</p>
+		<UL>
+			<li>Enhanced <strong>"Speed Limiter"</strong>. Added the feature to set an individual limit for every download</li>
+			<li>Redesigned <strong>"Download progress"</strong> dialog, added new tabs and the possibility to disable tabs that are not necessary for you</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 5?</H3>
+		<p class="subtext">(Released: Jul 18, 2011)</p>
+		<UL>
+			<li>Added support for FireFox 6</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 build 3?</H3>
+		<p class="subtext">(Released: Jul 14, 2011)</p>
+		<UL>
+			<li>Enhanced <strong>"Start Download"</strong> dialog</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.07 ?</H3>
+		<p class="subtext">(Released: Jul 07, 2011)</p>
+		<UL>
+			<li>Added additional options on <strong>"Download progress"</strong> dialog</li>
+			<li>Made a workaround for odd characters in file names when downloading</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.06 build 8?</H3>
+		<p class="subtext">(Released: Jun 23, 2011)</p>
+		<UL>
+			<li>Added support for FireFox 5</li>
+			<li>Resolved problems with foreign versions of Windows when a username contains hieroglyphs or other Unicode characters</li>
+			<li>Advanced browser integration has been significantly amended. Improved automatic interception of downloads, enhanced video stream detection in Chrome, Opera and in other browsers which are integrated with network driver</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in versions 6.05 build 14?</H3>
+		<p class="subtext">(Released: Apr 25, 2011)</p>
+		<UL>
+			<li>Enhanced new download progress bar</li>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 12?</H3>
+		<p class="subtext">(Released: Apr 21, 2011)</p>
+		<UL>
+			<li>Enhanced Download progress dialog. The download progress bar was redesigned in 3d style. Added support for Windows Aero theme for Windows 7 and Windows Vista</li>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 11?</H3>
+		<p class="subtext">(Released: Apr 05, 2011)</p>
+		<UL>
+			<li>Improved IE integration</li>
+			<li>Fixed a critical bug in IE integration module</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 10?</H3>
+		<p class="subtext">(Released: Mar 28, 2011)</p>
+		<UL>
+			<li>Made a workaround to resolve compatibility problems of IDM network drivers with antiviral software drivers which caused some sites to load slowly in browsers</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 8?</H3>
+		<p class="subtext">(Released: Mar 17, 2011)</p>
+		<UL>
+			<li>Fixed <strong>"Download all links with IDM"</strong> menu crashing IE 9</li>
+			<li>Fixed critical bug in IE integration module</li>
+			<li>Improved audio and video recognition for several sites</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 7?</H3>
+		<p class="subtext">(Released: Mar 15, 2011)</p>
+		<UL>
+			<li>Fixed compatibility problems with Internet Explorer 9 Final</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 5?</H3>
+		<p class="subtext">(Released: Mar 10, 2011)</p>
+		<UL>
+			<li>Resolved IE integration problems</li>
+			<li>Fixed bugs with file name renaming</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 3?</H3>
+		<p class="subtext">(Released: Mar 03, 2011)</p>
+		<UL>
+			<li>Fixed a bug with incorrect replacement of file extensions</li>
+			<li>Added support for new download interface on FileSonic sites</li>
+			<li>Improved video recognition in IE9</li>
+		</UL>
+
+		<H3>What's new in version 6.05 build 2?</H3>
+		<p class="subtext">(Released: Feb 11, 2011)</p>
+		<UL>
+			<li>Improved recognition of audio and video streams in web players</li>
+			<li>Improved download resuming when a download link has expired</li>
+			<li>Improved processing of HTTPS protocol</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.05</H3>
+		<p class="subtext">(Released: Feb 01, 2011)</p>
+		<UL>
+			<li>Fixed a critical bug that may crash Windows Explorer or a browser when a user moves the slider on the timeline in a web player</li>
+			<li>Improved IDM download engine</li>
+		</UL>
+
+		<H3>What's new in version 6.04 build 3?</H3>
+		<p class="subtext">(Released: Jan 25, 2011)</p>
+		<UL>
+			<li>Resolved several problems when advanced browser integration was unable to turn on</li>
+			<li>Fixed downloading with several web sites</li>
+			<li>Added a display of download progress on IDM icon on the taskbar of Windows 7</li>
+		</UL>
+
+		<H3 id="2010">What's new in version 6.04 build 2?</H3>
+		<p class="subtext">(Released: Dec 23, 2010)</p>
+		<UL>
+			<li>Added support for several browsers</li>
+			<li>Improved compatibility with Proxomitron web filter</li>
+		</UL>
+
+		<H3>What's new in version 6.04?</H3>
+		<p class="subtext">(Released: Dec 21, 2010)</p>
+		<UL>
+			<li>Added full support for 64-bit browsers</li>
+			<li>Improved web players detection for some sites</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta build 14?</H3>
+		<p class="subtext">(Released: Dec 09, 2010)</p>
+		<UL>
+			<li>Added RapidShare support in Advanced Integration driver</li>
+			<li>Improved Panda antivirus and AOL Desktop compatibility</li>
+			<li>Improved automatic renewal of stale download links</li>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta build 10?</H3>
+		<p class="subtext">(Released: Nov 17, 2010)</p>
+		<UL>
+			<li>Improved advanced integration compatibility with LavaSoft Firewall and Kaspersky antivirus products</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta build 9?</H3>
+		<p class="subtext">(Released: Nov 16, 2010)</p>
+		<UL>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta build 6?</H3>
+		<p class="subtext">(Released: Nov 09, 2010)</p>
+		<UL>
+			<li>Improved advanced integration compatibility with ZoneAlarm and several other security applications</li>
+		</UL>
+
+		<H3>What's new in versions 5.19 build 5 and 6.03 beta build 5?</H3>
+		<p class="subtext">(Released: Nov 05, 2010)</p>
+		<UL>
+			<li>Fixed video downloading problems</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta build 4?</H3>
+		<p class="subtext">(Released: Nov 03, 2010)</p>
+		<UL>
+			<li>Fixed BSOD related bugs</li>
+			<li>Improved advanced integration compatibility with AVG and Avast Internet Security</li>
+		</UL>
+
+		<H3>What's new in version 6.03 beta?</H3>
+		<p class="subtext">(Released: Sep 29, 2010)</p>
+		<UL>
+			<li>Added a workaround for RapidShare.com site changes</li>
+			<li>Improved processing of downloads from several file sharing sites</li>
+			<li>Fixed FireFox 4 compatibility problems</li>
+		</UL>
+
+		<H3>What's new in version <B>5.19 build 4</B>?</H3>
+		<p class="subtext">(Released: Sep 29, 2010)</p>
+		<UL>
+			<li>Added a workaround for RapidShare.com site changes</li>
+			<li>Improved processing of downloads from several file sharing sites</li>
+			<li>Fixed FireFox 4 compatibility problems</li>
+			<li>Included all latest bug fixes since May 2010</li>
+		</UL>
+
+		<H3>What's new in version 6.02 beta?</H3>
+		<p class="subtext">(Released: Sep 02, 2010)</p>
+		<UL>
+			<li>Added capture of new video formats in online media players</li>
+			<li>Fixed system crashes caused by advanced integration driver</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta build 6?</H3>
+		<p class="subtext">(Released: Aug 25, 2010)</p>
+		<UL>
+			<li>Fixed advanced browser integration compatibility issue with Kaspersky antivirus (Windows 7)</li>
+			<li>Fixed compatibility problems with Avira Security Suite and Avast Internet Security</li>
+			<li>Fixed problem with browser not loading individual pages on some web sites served by MS IIS</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta build 5?</H3>
+		<p class="subtext">(Released: Aug 10, 2010)</p>
+		<UL>
+			<li>Fixed advanced browser integration compatibility issue with NOD32 Antivirus</li>
+			<li>Fixed problem with browsers not opening Hotmail.com and other pages (Windows XP)</li>
+			<li>Fixed problem downloading from Download.com and other sites</li>
+			<li>Better detection of media players embedded into web pages</li>
+			<li>Fixed minor bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta build 4?</H3>
+		<p class="subtext">(Released: Aug 3, 2010)</p>
+		<UL>
+			<li>Fixed random system crashes (Windows XP)</li>
+			<li>Fixed minor bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta build 3?</H3>
+		<p class="subtext">(Released: Aug 1, 2010)</p>
+		<UL>
+			<li>Fixed system freeze after installing third-party TDI drivers (Windows XP)</li>
+			<li>Fixed IE8 stalls on certain web sites</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta build 2?</H3>
+		<p class="subtext">(Released: July 29, 2010)</p>
+		<UL>
+			<li>Fixed system freeze with Ad Muncher installed (Windows 7)</li>
+			<li>Fixed minor bugs</li>
+		</UL>
+
+		<H3>What's new in version 6.01 beta?</H3>
+		<p class="subtext">(Released: July 27, 2010)</p>
+		<UL>
+			<li>Fixed compatibility problems with all major browsers including Google Chrome.</li>
+			<li>Added IDM video download panel for all major browsers</li>
+		</UL>
+
+		<H3>What's new in version 5.19 build 3?</H3>
+		<p class="subtext">(Released: May 26, 2010)</p>
+		<UL>
+			<li>Improved Windows 7 compatibility</li>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.19 build 2?</H3>
+		<p class="subtext">(Released: Apr 29, 2010)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.19?</H3>
+		<p class="subtext">(Released: Apr 27, 2010)</p>
+		<UL>
+			<li>Fixed a security vulnerability</li>
+			<li>Added <strong>"Download panel"</strong> for selected links on a web-page</li>
+		</UL>
+
+		<H3 id="2010">What's new in version 5.18 build 8?</H3>
+		<p class="subtext">(Released: Jan 25, 2010)</p>
+		<UL>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.18 build 5?</H3>
+		<p class="subtext">(Released: Nov 11, 2009)</p>
+		<UL>
+			<li>Added Windows 7 support</li>
+			<li>Fixed critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.18 build 4?</H3>
+		<p class="subtext">(Released: Oct 15, 2009)</p>
+		<p>We have added these features in response to IDM user requests.</p>
+		<UL>
+			<li>Added automatic interception of downloads for various file hosting web sites</li>
+			<li>Fixed Windows 98 compatibility problems started from 5.18 build 1, introduced by processing of site names in foreign languages</li>
+		</UL>
+
+		<H3>What's new in version 5.18 build 3?</H3>
+		<p class="subtext">(Released: Sep 16, 2009)</p>
+		<UL>
+			<li>Fixed a critical security vulnerability</li>
+			<li>Added the ability to get back using old IDM triangle icon in system tray. The icon can be returned by using <strong>"View&#8594;IDM tray icon&#8594;Classic style"</strong> menu item</li>
+		</UL>
+
+		<H3>What's new in version 5.18 build 2?</H3>
+		<p class="subtext">(Released: Sep 09, 2009)</p>
+		<UL>
+			<li>Fixed bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.18 beta?</H3>
+		<p class="subtext">(Released: Aug 10, 2009)</p>
+		<UL>
+			<li>Added processing of site names in foreign languages</li>
+			<li>Added support of Unicode characters for download descriptions and file names</li>
+			<li>Updated IDM icon</li>
+			<li>Improved recognition of server bugs. For example when DailyMotion.com proxy servers send incorrect data under certain conditions</li>
+		</UL>
+
+		<H3>What's new in version 5.17 build 5?</H3>
+		<p class="subtext">(Released: May 27, 2009)</p>
+		<UL>
+			<li>Fixed a bug with NTLM authorization and several others</li>
+		</UL>
+
+		<H3>What's new in version 5.17 build 4?</H3>
+		<p class="subtext">(Released: May 19, 2009)</p>
+		<UL>
+			<li>Added <strong>"Add batch download from clipboard"</strong> menu item to <strong>"Tasks"</strong> menu</li>
+			<li>Significantly revised parsing of HTTP protocol headers. Besides increasing download speed, it also solved problems with flaw programmed firewalls and antiviral software. In particular <strong>"CA Internet Security Suite"</strong>
+				has a serious bug in its network filters, because of which IDM versions from 5.16 till 5.17.3 could not parse headers and download some files correctly.
+			</li>
+		</UL>
+
+		<H3>What's new in version 5.17 build 3?</H3>
+		<p class="subtext">(Released: May 07, 2009)</p>
+		<UL>
+			<li>Improved media file recognition in web players in FireFox and other Mozilla based browsers</li>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.17 build 2?</H3>
+		<p class="subtext">(Released: Apr 29, 2009)</p>
+		<UL>
+			<li>Fixed incorrect lookup of file names on several sites (including RapidDhare.com) for <strong>"Download with IDM"</strong> feature</li>
+		</UL>
+
+		<H3>What's new in version 5.17?</H3>
+		<p class="subtext">(Released: Apr 28, 2009)</p>
+		<UL>
+			<li>Fixed a critical bug with downloading files over 4GB</li>
+			<li>Improved media file recognition in web players in IE</li>
+		</UL>
+
+		<H3>What's new in version 5.16 build 3?</H3>
+		<p class="subtext">(Released: Apr 03, 2009)</p>
+		<UL>
+			<li>Resolved FireFox integration problems</li>
+			<li>Fixed bugs related to downloading of text files</li>
+		</UL>
+
+		<H3>What's new in version 5.16 build 2?</H3>
+		<p class="subtext">(Released: Apr 02, 2009)</p>
+		<UL>
+			<li>Improved processing of erroneously intercepted downloads</li>
+			<li>Fixed several bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.16?</H3>
+		<p class="subtext">(Released: Mar 30, 2009)</p>
+		<UL>
+			<li>Completely remade the logic of download resume feature and added the possibility to resume downloads for sites that use temporary download addresses or when download addresses expire</li>
+			<li>Added the possibility to select a queue when you press on OK button on <strong>"Download all links with IDM"</strong> dialog and when you press on <strong>"Download Later"</strong> button on <strong>"Download file info"</strong> (start download) dialog</li>
+			<li>Added a link to the page where download was taken over from a browser to <strong>"File Properties"</strong> dialog</li>
+			<li>Made many other small improvements and fixed all known bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.15 build 6?</H3>
+		<p class="subtext">(Released: Jan 22, 2009)</p>
+		<UL>
+			<li>Added IDM download panel to IE web-players based on Microsoft Silverlight component</li>
+			<li>Fixed a bug with <strong>"Download with IDM"</strong> in IE and FireFox when selected links had spaces in Internet addresses</li>
+			<li>Improved recognition of MP3 music in Flash player</li>
+			<li>Added support for Google Chrome 2</li>
+			<li>Fixed other bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.15 build 5?</H3>
+		<p class="subtext">(Released: Dec 23, 2008)</p>
+		<UL>
+			<li>Fixed several critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.15 build 4?</H3>
+		<p class="subtext">(Released: Dec 17, 2008)</p>
+		<UL>
+			<li>Fixed a bug with erroneous interceptions of downloads from Myspace.com</li>
+			<li>Added support for AOL Desktop 10 browser</li>
+			<li>Added play list support to IDM Download panel for Windows Media Player ActiveX</li>
+			<li>Added IDM Download panel to browsers for RealPlayer ActiveX</li>
+		</UL>
+
+		<H3>What's new in version 5.15 build 3?</H3>
+		<p class="subtext">(Released: Dec 04, 2008)</p>
+		<UL>
+			<li>Fixed critical bugs</li>
+			<li>Resolved several compatibility issues on Windows Vista</li>
+			<li>Added full support for FireFox 3.1 and FireFox 3.2</li>
+		</UL>
+
+		<H3>What's new in version 5.15 build 2?</H3>
+		<p class="subtext">(Released: Nov 24, 2008)</p>
+		<UL>
+			<li>Added workarounds for the sites where IDM had download problems</li>
+			<li>Resolved several issues related to taking over downloads on Windows Vista</li>
+			<li>Fixed bugs with <strong>"Download with IDM"</strong> menu on FireFox 3.x</li>
+			<li>Version 5.15 build 2 includes all latest bug fixes</li>
+		</UL>
+
+		<H3>What's new in version 5.15?</H3>
+		<p class="subtext">(Released: Oct 28, 2008)</p>
+		<UL>
+			<li>Added IDM Download Panel for FireFox and other Mozilla based browsers that appears on top of a web-player when IDM detects a multimedia request from the web-player. IDM download panel is used to download and save audio and video files that are played by the web player.</li>
+			<li>Made a workaround for a problem with downloading attachments from different Yahoo servers</li>
+			<li>Enhanced processing of downloads for different types of servers</li>
+		</UL>
+
+		<H3>What's new in version 5.14 build 5?</H3>
+		<p class="subtext">(Released: Sep 15, 2008)</p>
+		<UL>
+			<li>Resolved Google Chrome browser integration problems in advanced browser integration</li>
+			<li>Fixed a critical bug in IE add-on</li>
+		</UL>
+
+		<H3>What's new in version 5.14 build 4?</H3>
+		<p class="subtext">(Released: Sep 1, 2008)</p>
+		<UL>
+			<li>Improved the interception of downloads on some sites in IE</li>
+			<li>Resolved the compatibility problems between IDM Download Panel and several 3rd party IE Add-ons</li>
+		</UL>
+
+		<H3>What's new in version 5.14 build 3?</H3>
+		<p class="subtext">(Released: July 29, 2008)</p>
+		<UL>
+			<li>Fixed critical bug</li>
+			<li>Added IDM Download panel for IE web players based on Windows Media Player. The panel works the same as for Flash based web-players.</li>
+			<li>Added the button and the dialog to add additional file types which should be taken over by IDM from web-players</li>
+		</UL>
+
+		<H3>What's new in version 5.14?</H3>
+		<p class="subtext">(Released: July 14, 2008)</p>
+		<UL>
+			<li>Added IDM Download Panel for IE and IE based browsers that appears on top of a web-player when IDM detects a multimedia request from the web-player. IDM download panel is used to download and save audio and video files that are played by the web player.</li>
+			<li>Redeveloped from scratch and completely replaced IDM integration modules for IE and IE based browsers on more stable ones. Note that previous IDM integration modules were designed for IE 5.0 and were getting obsolete.
+				The new modules also fix problems with <strong>"Download with IDM"</strong> feature
+			</li>
+			<li>Added an option to start IDM download queues on IDM startup</li>
+			<li>Made workarounds to download files from several problem sites</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 11?</H3>
+		<p class="subtext">(Released: May 12, 2008)</p>
+		<UL>
+			<li>Fixed a bug with several HTTPS servers</li>
+			<li>Improved file name creation logic to save on a disk and to display on <strong>"Download progress"</strong> dialog</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 10?</H3>
+		<p class="subtext">(Released: May 05, 2008)</p>
+		<UL>
+			<li>Fixed bugs with downloading files from some download sites like SpeedyShare.com</li>
+			<li>Fixed bugs when forming file names to save on a local disk</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 9?</H3>
+		<p class="subtext">(Released: Apr 28, 2008)</p>
+		<UL>
+			<li>Made a workaround for download problems on MediaFire.com site</li>
+			<li>Fixed a bug with capturing FTP links in FireFox 3.0</li>
+			<li>Added support for FireFox 4.0a</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 8?</H3>
+		<p class="subtext">(Released: Feb 20, 2008)</p>
+		<UL>
+			<li>Enhanced confirmation dialogs to delete downloads from IDM list of downloads. Now its possible to delete files from hard disk as well.</li>
+			<li>Improved downloading of links that have unsafe (or foreign language) characters</li>
+			<li>Improved control over taking over downloads. Fixed erroneous download interceptions.</li>
+			<li>Added automatic interception for <strong>"split"</strong> files</li>
+			<li>Fixed bugs while forming file names to save on hard disk</li>
+			<li>Improved monitoring of FLV videos in Internet Explorer</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 7?</H3>
+		<p class="subtext">(Released: Feb 06, 2008)</p>
+		<UL>
+			<li>Fixed critical bugs</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 6?</H3>
+		<p class="subtext">(Released: Jan 23, 2008)</p>
+		<p>We have added these features in response to IDM user requests.</p>
+		<UL>
+			<li>Fixed critical bugs </li>
+			<li>Version 5.12 build 6 includes all latest bug fixes </li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 5?</H3>
+		<p class="subtext">(Released: Jan 21, 2008)</p>
+		<UL>
+			<li>Improved FLV video grabber in Internet Explorer. Now IDM retrieves all FLV video links from IE.</li>
+			<li>Improved <strong>"Download all links with IDM"</strong> feature. Now IDM checks and determines file types with better accuracy.</li>
+			<li>Fixed a bug with site exceptions which should not be taken over by IDM in Internet Explorer.</li>
+		</UL>
+
+		<H3>What's new in version 5.12 build 4?</H3>
+		<p class="subtext">(Released: Jan 10, 2008)</p>
+		<UL>
+			<li>Fixed the problem with <strong>"Download with IDM"</strong> feature in FireFox when download link is not a text, but a picture</li>
+			<li>Fixed a bug with using special keys to prevent downloading with IDM in Internet Explorer</li>
+			<li>Fixed erroneous interception of downloads from a browser which look like suitable for downloading with IDM but in fact they are pictures for example.</li>
+		</UL>
+
+		<H3>What's new in version 5.12?</H3>
+		<p class="subtext">(Released: Dec 20, 2007)</p>
+		<UL>
+			<li>Added <strong>"Speed Limiter"</strong> feature to limit download speed</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 10 ?</H3>
+		<p class="subtext">(Released: Dec 11, 2007)</p>
+		<UL>
+			<li>Made a workaround to resolve conflicts between IDM IE integration and several 3rd party IE Add-ons like RealPlayer 11</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 9 ?</H3>
+		<p class="subtext">(Released: Dec 4, 2007)</p>
+		<UL>
+			<li>Changed <strong>"Download progress"</strong> dialog appearance for Windows Vista Aero theme to show <strong>"Minimize to system tray"</strong> button correctly</li>
+			<li>Added a feature allowing to use patterns with wildcards (<strong>*</strong>) in the list of Internet addresses which IDM should not take over from browsers</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 8 ?</H3>
+		<p class="subtext">(Released: Oct 10, 2007)</p>
+		<UL>
+			<li>Added a button on <strong>"Download file info"</strong> dialog to create a new category</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 7 ?</H3>
+		<p class="subtext">(Released: Sep 28, 2007)</p>
+		<UL>
+			<li>Added the button and the dialog to IDM <strong>"Options/General"</strong> tab to customize browser context menu items for FireFox, Internet Explorer, and other Mozilla and IE based browsers</li>
+			<li>Added an additional menu item to the context menu of Internet Explorer to download FLV videos from 10 last requested</li>
+			<li>Added the possibility to translate IDM browser context menu items to foreign languages</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 6 ?</H3>
+		<p class="subtext">(Released: Sep 10, 2007)</p>
+		<UL>
+			<li>Improved the interception of FLV video downloads from video sharing sites</li>
+			<li>Fixed compatibility problems with several IE add-ons</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 5 ?</H3>
+		<p class="subtext">(Released: Jul 27, 2007)</p>
+		<UL>
+			<li>IDM checks and runs the installation process if necessary to re-install <strong>"IDM CC"</strong> extension for FireFox and other Mozilla based browsers</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 4 ?</H3>
+		<p class="subtext">(Released: Jul 23, 2007)</p>
+		<UL>
+			<li>Added context menu for downloading FLV files in FireFox and other Mozilla based browsers</li>
+			<li>Fixed IDM compatibility problems discovered in FireFox 3.0a6 (Minefield) and newer releases</li>
+		</UL>
+
+		<H3>What's new in version 5.11 build 3 ?</H3>
+		<p class="subtext">(Released: Jul 04, 2007)</p>
+		<UL>
+			<li>Added the feature to download and save FLV video. You may get more information on <a href="articles/flv_downloading.html">IDM video grabber page</a></li>
+			<li>Version 5.11 build 3 includes all latest bug fixes</li>
+		</UL>
+
+		<H3>What's new in version 5.11 ?</H3>
+		<p class="subtext">(Released: Jun 21, 2007)</p>
+		<UL>
+			<li>Completely redeveloped IDM scheduler. Added periodic synchronization of files and the possibility to create new queues for downloading or synchronization. Added new features on starting and stopping queue processing</li>
+			<li>Improved user interface. Added processing of context menu key, fixed tabbing order on all dialogs, added mnemonic keys to the main menu and the menu of IDM Grabber</li>
+		</UL>
+
+		<H3>New IDM Scheduler announcement</H3>
+		<p class="subtext">(Report released: Jun 20, 2007)</p>
+		<p>The new version of IDM will have a completely redeveloped scheduler that can be used for downloading and file synchronization with multiple download queues. <a href="support/idm-scheduler/idm_scheduler.html">Internet Download Manager Scheduler announcement</a>
+			has been published on the official site.
+		</p>
+
+		<H3>What's new in version 5.09 ?</H3>
+		<p class="subtext">(Released: Feb 25, 2007)</p>
+		<UL>
+			<li>Completely redeveloped the logic of taking over downloads from all browsers. Fixed erroneous interceptions of the web pages that IDM treated as downloads in the past, for example, it happened in some cases on RapidShare sites</li>
+		</UL>
+
+		<H3>Windows Vista compatibility report</H3>
+		<p class="subtext">(Report released: Feb 08, 2007)</p>
+		<p> Internet Download Manager (IDM) has been tested for Windows Vista compatibility. <a href="articles/vista-idm.html">Internet Download Manager and Windows Vista compatibility report</a> has been published on the official site.</p>
+
+		<H3>What's new in version 5.08 ?</H3>
+		<p class="subtext">(Released: Jan 25, 2007)</p>
+		<UL>
+			<li>Improved processing of foreign language URLs in IE. IDM uses current web-page encoding to suggest correct file names when saving downloaded files</li>
+			<li>Enhanced download engine to increase download speed.</li>
+			<li>Fixed bugs when sending queries to servers on foreign languages</li>
+			<li>Improved download processing for premium accounts of popular RapidShare sites</li>
+		</UL>
+
+		<H3>What's new in version 5.07 ?</H3>
+		<p class="subtext">(Released: Jan 15, 2007)</p>
+		<UL>
+			<li>Added full compatibility with Windows Vista</li>
+			<li>Resolved several problems with IE 7</li>
+			<li>Fixed conflicts of <strong>"Advanced browser integration"</strong> with Windows Vista, Windows 2003 and with several Internet applications</li>
+			<li>The logic of click monitoring for IE-based browsers (MSN Explorer, Avant, MyIE, some versions of AOL etc.) was moved from idman process to a separate exe module. This module can be turned on/off in <strong>"Options&#8594;General"</strong></li>
+		</UL>
+
+		<H3>What's new in version 5.05 ?</H3>
+		<p class="subtext">(Released: Sep 2, 2006)</p>
+		<UL>
+			<li>Added support for FireFox 2.0 browser</li>
+			<li>Added a dialog to select from several actions if a duplicate download link was added</li>
+			<li>Added an icon to download complete dialog to drag&nbsp;&&nbsp;drop downloaded files</li>
+		</UL>
+
+		<H3>What's new in version 5.04 ?</H3>
+		<p class="subtext">(Released: Aug 2, 2006)</p>
+		<UL>
+			<li>Changed basic browsers integration. Added extensions for Mozilla based browsers (Mozilla FireFox, Flock etc) to take over more downloads from these browsers in a better way than advanced browser integration.
+				Also added "Download with IDM" and "Download All links with IDM" context menu items for these browsers.
+			</li>
+			<li>The <strong>"General"</strong> tab in IDM options was divided into <strong>"General"</strong> and <strong>"File Types"</strong> tabs for convenience</li>
+			<li>Added <strong>"Open with..."</strong> button to <strong>"Download complete"</strong> dialog and <strong>"Open with..."</strong> menu item to the context menu of the main IDM window.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 5.03</H3>
+		<p class="subtext">(Released: May 31, 2006)</p>
+		<UL>
+			<li>Added MMS protocol support. MMS links can only be downloaded manually using <strong>"Add Url"</strong> button or using <strong>"Download with IDM"</strong> IE right click menu</li>
+			<li>Changed settings dialog. Split <strong>"Downloads"</strong> tab to <strong>"Downloads"</strong> and <strong>"Save to"</strong>. Added the possibility to turn off downloading while showing <strong>"Download File Info"</strong> dialog</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 5.02</H3>
+		<p class="subtext">(Released: Jan 18, 2006)</p>
+		<UL>
+			<li>IDM can fix all rebuild errors and restore a file when its rebuilding process from downloaded parts has been interrupted due to power outages or due to killing/termination of IDM process.</li>
+			<li>Improved download progress dialog. Now it can be resized and minimized to system tray.</li>
+			<li>The message box on download completion has been replaced with a download complete dialog that has several useful functions, for example opening a downloaded file folder.</li>
+			<li>Improved start download dialog. Now you can conveniently select a folder to save a file directly on this dialog.</li>
+		</UL>
+
+		<H3 id="2005">New features in Internet Download Manager 5.01</H3>
+		<p class="subtext">(Released: Dec 16, 2005)</p>
+		<UL>
+			<li>Added thumbnails view to IDM Site Grabber</li>
+			<li>Added scheduler to IDM Site Grabber. It's possible to schedule multiple grabber projects to run them once at a specified time, stop them at a specified time, or run periodically to synchronize changes</li>
+			<li>Added update feature to IDM Site Grabber. It's possible to start exploring a site from the start page again for a project to update the files that have been changed on the server</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 5.0</H3>
+		<p class="subtext">(Released: Nov 25, 2005)</p>
+		<UL>
+			<li>Added the site grabber feature. This feature not only lets you download required files that are specified with filters, for example all pictures from a web site,
+				or all audio files from a web site, but it also lets you download subsets of web sites, or complete web sites for mirroring or offline browsing.
+			</li>
+			<li>Improved visual appearance and user interface. The toolbar looks better for different XP Visual styles.</li>
+			<li>Redesigned and enhanced IDM download engine</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.07</H3>
+		<p class="subtext">(Released: Sep 12, 2005)</p>
+		<UL>
+			<li>Added batch download feature to download files using wildcards. Select <strong>"URL&#8594;Add batch download"</strong> menu item to use it.</li>
+			<li>Improved user interface for IDM main dialog, added error status and the ability to use resume button for several selected downloads</li>
+			<li>Enhanced user interaface for <strong>"Download all with IDM"</strong> dialog</li>
+			<li>Improved downloading with HTTPs protocol</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.06</H3>
+		<p class="subtext">(Released: Aug 2, 2005)</p>
+		<UL>
+			<li>Improved the general security of Internet Download Manager.</li>
+			<li>Fixed buffer overflow bug when taking over downloads with long URLs.</li>
+			<li>Added authorization dialog in case authorization information don't match.</li>
+			<li>Improved processing of sites that demand different authorization information.</li>
+			<li>Added several enhancements to the logic of download engine.</li>
+			<li>Version 4.06 includes all latest bug fixes</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.05</H3>
+		<p class="subtext">(Released: Jun 27, 2005)</p>
+		<UL>
+			<li>Improved user interface.</li>
+			<li>Added support for XP visual styles.</li>
+			<li>Added icons for IDM settings to IDM options dialog.</li>
+			<li>Improved browser integration.</li>
+			<li>Improved downloading from HTTP/HTTPS sites that require cookies.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.04</H3>
+		<p class="subtext">(Released: May 15, 2005)</p>
+		<UL>
+			<li>Improved Integration into Internet Explorer browser.</li>
+			<li>All link capturing capabilities of advanced browser integration have been included into the basic Internet Explorer Integration. If you use Internet Explorer only, and had problems with advanced browser integration, you can turn off advanced browser integration.</li>
+			<li>Improved capturing of secure HTTP links in Internet Explorer. Now IDM can take over HTTPS downloads that launch indirectly</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.03</H3>
+		<p class="subtext">(Released: Dec 7, 2004)</p>
+		<UL>
+			<li>Revised <strong>"Download with IDM"</strong> feature for Internet Explorer browser. Now IDM gets all necessary request headers from Internet Explorer to take over any downloads.
+				Now users may select a text in Internet Explorer, and pick <strong>"Download with IDM"</strong> to add all links in the selected text to IDM.
+			</li>
+			<li>Improved download link capture logic. Now IDM can download from the sites which have a protection from downloading with download managers.</li>
+			<li>Added download links capture from anti leech plugins.</li>
+			<li>Added protection from the registry cleaners, optimizers, repairers, etc. which damage Internet Download Manager registry keys.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.02</H3>
+		<p class="subtext">(Released: Sep 16, 2004)</p>
+		<UL>
+			<li>Added a feature to customize toolbar look. It's possible to customize toolbar style, buttons order, and the size of toolbar buttons.</li>
+			<li>Designed new 3D buttons. The default toolbar appearance has changed. Those users, who got used to old style, may get back to Classic style in toolbar customization menu.</li>
+			<li>IDM has a choice to select from 4 different toolbar looks, download new toolbar skins from home site, or design new skins if you are familiar with graphics design basics.</li>
+			<li>Optimized download engine for several types of FTP/HTTP servers.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.01</H3>
+		<p class="subtext">(Released: Apr 22, 2004)</p>
+		<UL>
+			<li>Added a feature to switch between old browser integration and new browser integrat</li>
+			<li>Improved <strong>"Download All"</strong> feature.</li>
+			<li>Added support for more FTP and HTTP servers that are not RFC compliant</li>
+			<li>Version 4.01 includes all latest bug fixes.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 4.0</H3>
+		<p class="subtext">(Released: Apr 2, 2004)</p>
+		<UL>
+			<li>Completely redesigned central download engine. Improved download speed and reliability.</li>
+			<li>Improved User Interface. Added <strong>"Stop queue"</strong> and <strong>"Start queue"</strong> buttons to IDM toolbar. <strong>"All Downloads"</strong> tree node now expands to all download categories independently on whether they are finished or not.</li>
+			<li>Totally changed browser integration. IDM takes over any downloads from any browsers.</li>
+			<li>Added a feature to customize keyboard keys to prevent or to force downloading with Internet Download Manager. This feature should work for any browser now, not in Internet Explorer only as before.</li>
+			<li>Added the ignore list of sites where Internet Download Manager won't take over downloads.</li>
+			<li>Improved <strong>"Download All"</strong> feature. The main window can be resized. It's possible now to choose a path for saving downloads.</li>
+			<li>Added re-download feature to download complete files again</li>
+			<li>Added <strong>"Open Folder"</strong> item in the right click menu.</li>
+			<li>Added several new methods for FTP proxy authorization</li>
+			<li>Added a feature not to use proxy servers for specified Internet addresses.</li>
+			<li>Added a feature to download files larger than 4 GB</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.18</H3>
+		<p class="subtext">(Released: Oct 28, 2003)</p>
+		<UL>
+			<li>Added <strong>"Download all links with IDM"</strong> feature</li>
+			<li>Revised IDM help file</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.17</H3>
+		<p class="subtext">(Released: Sep 29, 2003)</p>
+		<UL>
+			<li>Added a feature to customize columns and the toolbar</li>
+			<li>Added new columns: Referrer, Last Try Date, Date Added, Save Path</li>
+			<li>Enhanced connection dialog in IDM options</li>
+			<li>Added a feature to use single connection</li>
+			<li>Added a feature to limit max. number of connections for specific servers</li>
+			<li>Improved appearance, changed icons for download categories</li>
+			<li>Added a feature to save sizes of columns and dialogs</li>
+			<li>Added a feature to save sorting order of columns</li>
+			<li>Improved scheduler. Added multiselection for downloads</li>
+			<li>Added Mozilla Firebird integration option</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.16</H3>
+		<p class="subtext">(Released: Jun 20, 2003)</p>
+		<UL>
+			<li>Added multilingual support. Added French, German, Italian, Dutch, Japanese, Arabic, and other languages</li>
+			<li>Added support for Microsoft ISA server</li>
+			<li>Added Kerberos and Negotiate authorization for sites and proxy servers</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.15</H3>
+		<p class="subtext">(Released: May 19, 2003)</p>
+		<UL>
+			<li>Added ZIP files preview before downloading</li>
+			<li>Added download categories</li>
+			<li>Enhanced user interface, e.g. columns sorting, the ability to edit URL while downloading</li>
+			<li>Added NTLM authorization for sites and proxy servers</li>
+			<li>Improved integration with all browsers.</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.14</H3>
+		<p class="subtext">(Released: Mar 24, 2003)</p>
+		<UL>
+			<li>Added HTTPS support</li>
+			<li>Added a feature to play sounds for different download events</li>
+			<li>Added more authentication types</li>
+			<li>Improved download scheduler</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.13</H3>
+		<p class="subtext">(Released: Mar 03, 2003)</p>
+		<UL>
+			<li>Improved integration with Internet Explorer</li>
+			<li>Added support for more server platforms</li>
+			<li>Added a feature to switch focus with TAB key</li>
+			<li>Added more command line parameters</li>
+			<li>Optimized UI drawing</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.12</H3>
+		<p class="subtext">(Released: Feb 17, 2003)</p>
+		<UL>
+			<li>Improved built-in download accelerator</li>
+			<li>Increased HTTP downloading speed</li>
+			<li>Added pipelining for FTP commands</li>
+			<li>Added a feature to reuse all FTP connections</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.11</H3>
+		<p class="subtext">(Released: Jan 29, 2003)</p>
+		<UL>
+			<li>Added HTML help and tutorial</li>
+			<li>Optimized IDM library and executable file codes, lowered CPU consumption</li>
+			<li>Added support for additional server platforms</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.10</H3>
+		<p class="subtext">(Released: Dec 23, 2002)</p>
+		<UL>
+			<li>Revised scheduler pro</li>
+			<li>Improved queue processor</li>
+			<li>Added silent mode</li>
+			<li>Enhanced virus protection on download completion</li>
+			<li>Added progressive downloading with quotas. (useful for connections that use some kind of fair access policy or FAP like Direcway, Direct PC, Hughes, etc.)</li>
+			<li>Added command line parameters to use IDM from command line</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.09</H3>
+		<p class="subtext">(Released: Dec 03, 2002)</p>
+		<UL>
+			<li>Increased host server accessibility. Now IDM can download from protected servers that don't allow downloading with download managers or accelerators (for example, anti-leech protection, download images protection, etc.)</li>
+			<li>Enhanced user interface</li>
+			<li>Added start-up tips</li>
+			<li>Improved Web browser integration</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.08</H3>
+		<p class="subtext">(Released: Oct 24, 2002)</p>
+		<UL>
+			<li>Added MSN Explorer browser integration option</li>
+			<li>Added Internet Explorer based browser integration option</li>
+			<li>Added new formats to media content inspection</li>
+			<li>Added the feature to edit the list of extensions to take over downloads from Netscape, Opera and Mozilla browsers</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.07</H3>
+		<p class="subtext">(Released: Aug 26, 2002)</p>
+		<UL>
+			<li>Added extraction and accelerated downloading of audio data streams</li>
+			<li>Added support for more FTP and HTTP server platforms</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.06</H3>
+		<p class="subtext">(Released: July 18, 2002)</p>
+		<UL>
+			<li>Added import/export of download lists</li>
+			<li>Added enhancements to download logic optimizer that slightly increased download speed</li>
+			<li>Added support for more FTP and HTTP server platforms</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.05</H3>
+		<p class="subtext">(Released: June 8, 2002)</p>
+		<UL>
+			<li>Improved download speed. The last file segment doesn't slow down download process</li>
+			<li>Added file content inspection</li>
+			<li>IDM shows useful information about media files (MP3, AVI, MPEG, ...) during download process</li>
+			<li>Added Netscape 6, 7, Mozilla and Opera integration options</li>
+			<li>Improved cookies processing</li>
+			<li>Added full drag&nbsp;&&nbsp;drop support</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.04</H3>
+		<p class="subtext">(Released: April 11, 2002)</p>
+		<UL>
+			<li>Added additional support for dial-up users</li>
+			<li>Added download basket window</li>
+			<li>Optimized download logic</li>
+			<li>Changed graphic buttons and appearance</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.03</H3>
+		<p class="subtext">(Released: February 21, 2002)</p>
+		<UL>
+			<li>Added options to configure download dialog appearance</li>
+			<li>Added virus checking feature</li>
+			<li>Changed graphic buttons and appearance</li>
+			<li>Added a number of features to make your work with IDM more comfortable</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.02</H3>
+		<p class="subtext">(Released: January 31, 2002)</p>
+		<UL>
+			<li>Added advanced download scheduler</li>
+			<li>Added download queue</li>
+			<li>Applied minor changes to appearance</li>
+		</UL>
+
+		<H3>New features in Internet Download Manager 3.01</H3>
+		<p class="subtext">(Released: January 9, 2002)</p>
+		<UL>
+			<li>New optimization logic may increase your Internet download speed up to 500% (works best on a shared Internet connection and with the large number of file segments)</li>
+			<li>Five Operating Systems are supported (95/98/ME/NT/2000)</li>
+			<li>IDM monitors clipboard for valid URLs</li>
+			<li>IDM works with cookies and sites/directories that demand authorization</li>
+			<li>IDM handles different types of download redirections</li>
+			<li>IDM supports FTP/HTTP proxy servers and the large number of directory listing formats</li>
+			<li>IDM supports large number of network adapters</li>
+			<li>Dynamic file segmentation significantly improves file download performance</li>
+			<li>Automatic optimization of performance related settings</li>
+			<li>Full reuse of connections that have finished downloading of assigned segments without additional connect and login stages</li>
+			<li>Selectable timeout time and number of connections to tune IDM to your particular connection type</li>
+			<li>Optional automatic update if a newer version has become available</li>
+			<li>Fully integrates to Internet Explorer and Netscape Communicator</li>
+		</UL>
+
+		<H3>What 's NEW in version 3.0 ?</H3>
+		<p class="subtext">(Released: December 5, 2001)</p>
+		<UL>
+			<li>Added clipboard monitoring for valid URLs</li>
+			<li>Added support for more FTP and HTTP servers. More listings formats are supported. Protocol implementation been extended to be more reliable and not sensitive to non-standard server responses</li>
+			<li>Added FTP/HTTP proxy support</li>
+		</UL>
+
+		<H3>What 's NEW in version 2.9 ?</H3>
+		<p class="subtext">(Released: November 8, 2001)</p>
+		<UL>
+			<li>Added full Windows 2000 support</li>
+			<li>Added IDMan <strong>"Quick Update"</strong> utility</li>
+			<li>Added support for download redirections</li>
+			<li>Added IDMan integration to IE file context menu</li>
+		</UL>
+
+		<H3>What 's NEW in version 2.8?</H3>
+		<p class="subtext">(Released: June 2, 2001)</p>
+		<UL>
+			<li>Added support for cookies and site/directory authorization</li>
+			<li>Enhanced dynamic segmentation logic to fully reuse Internet connections</li>
+		</UL>
+	</div>
+</div>
+
+</main>
+
+<nav>
+	<footer class="footer">
+		<div class="footer-logo">
+			<div class="footer-logo-item"><center><div id="idm_minimal"><img src="/register/IDMlib/images/idman_logos.png" alt="Tonec Inc. logo" /></div></center></div>
+			<div class="footer-logo-item">&copy; 1999&#x2013;2026 Tonec FZE. All rights reserved.</div>
+		</div>
+
+		<div class="footer-bar">
+			<div class="footer-bar-item"><a class="subtext" href="/support/privacy.html">Privacy Policy</a></div>
+			<div class="footer-bar-item"><a class="subtext" href="/support/terms-and-conditions.html">Terms and conditions</a></div>
+		</div>
+	</footer>
+</nav>
+
+<script>
+	window.onscroll = function () { show_menu_on_top() };
+	var header = document.getElementById("myHeader");
+	var sticky = 100;
+</script>
+
+</body>
+</html>
+

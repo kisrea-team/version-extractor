@@ -1,0 +1,220 @@
+[
+  {
+    "pageId": "0675b21780b7",
+    "name": "Blender Foundation",
+    "url": "https://www.blender.org/",
+    "expected": "v5.2",
+    "fetchedAt": "2026-08-03T17:56:52.124435+00:00",
+    "status": 200,
+    "finalUrl": "https://www.blender.org/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 114800,
+    "htmlFile": "data/annotation-batches/batch-047/html/0675b21780b7.html",
+    "snapshotSha256": "1b83157afb85d3e6b56f396a9398451e153f2e4b4d0a74441e5b6356d5d581a1"
+  },
+  {
+    "pageId": "2844aaa7e619",
+    "name": "Krita releases",
+    "url": "https://krita.org/en/release-notes/",
+    "expected": "v5.3.3",
+    "fetchedAt": "2026-08-03T17:56:52.636051+00:00",
+    "status": 200,
+    "finalUrl": "https://krita.org/en/release-notes/",
+    "contentType": "text/html",
+    "bytes": 25016,
+    "htmlFile": "data/annotation-batches/batch-047/html/2844aaa7e619.html",
+    "snapshotSha256": "fc4862d91af30e1a995507f3dafd44c8fe0ee0d0449c63201973ee728cc2465b"
+  },
+  {
+    "pageId": "30c255bd1235",
+    "name": "OBS blog",
+    "url": "https://obsproject.com/blog",
+    "expected": "v32.2.1",
+    "fetchedAt": "2026-08-03T17:56:53.437769+00:00",
+    "status": 200,
+    "finalUrl": "https://obsproject.com/blog",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 24828,
+    "htmlFile": "data/annotation-batches/batch-047/html/30c255bd1235.html",
+    "snapshotSha256": "9d290d70e68e4c5caf406fd1fb319ac42e148f87b4260c66d6224376bda5973c"
+  },
+  {
+    "pageId": "9292f072c047",
+    "name": "GIMP news 2",
+    "url": "https://www.gimp.org/news/2026/07/06/gimp-3-2-2-released/",
+    "expected": "v3.2.2",
+    "fetchedAt": "2026-08-03T17:56:54.027996+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "a1b12814bd80",
+    "name": "Inkscape release",
+    "url": "https://inkscape.org/release/inkscape-1.4.4/",
+    "expected": "v1.4.4",
+    "fetchedAt": "2026-08-03T17:56:54.358657+00:00",
+    "status": null,
+    "error": "<urlopen error timed out>",
+    "bytes": 0
+  },
+  {
+    "pageId": "a813f0f2fb94",
+    "name": "Darktable releases",
+    "url": "https://www.darktable.org/releases/",
+    "expected": "v5.2.0",
+    "fetchedAt": "2026-08-03T17:57:19.559097+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "753844365265",
+    "name": "Kdenlive",
+    "url": "https://kdenlive.org/",
+    "expected": "v25.12.3",
+    "fetchedAt": "2026-08-03T17:57:20.201973+00:00",
+    "status": 200,
+    "finalUrl": "https://kdenlive.org/",
+    "contentType": "text/html",
+    "bytes": 22815,
+    "htmlFile": "data/annotation-batches/batch-047/html/753844365265.html",
+    "snapshotSha256": "4c0c16a6c54fc903b7b7764caf7522e07175a4063419b699bd2057e6cc083f29"
+  },
+  {
+    "pageId": "340337119cde",
+    "name": "Shotcut releases",
+    "url": "https://www.shotcut.org/releases/",
+    "expected": "v26.8.1",
+    "fetchedAt": "2026-08-03T17:57:21.008337+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "e8cd9381fa2c",
+    "name": "Natron releases",
+    "url": "https://natron.fr/downloads/",
+    "expected": "v2.6.4",
+    "fetchedAt": "2026-08-03T17:57:21.286598+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "9158351db526",
+    "name": "MuseScore 2",
+    "url": "https://musescore.org/en/downloads",
+    "expected": "v4.7.4",
+    "fetchedAt": "2026-08-03T17:57:22.247578+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "a00a490d5dda",
+    "name": "LibreOffice download",
+    "url": "https://www.libreoffice.org/download/download/",
+    "expected": "v26.2.5",
+    "fetchedAt": "2026-08-03T17:57:23.108270+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "fb66f965f00b",
+    "name": "OpenShot news",
+    "url": "https://www.openshot.org/news/",
+    "expected": "v3.5.1",
+    "fetchedAt": "2026-08-03T17:57:23.713158+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "8057fef1ed2d",
+    "name": "HandBrake releases",
+    "url": "https://handbrake.fr/releases.php",
+    "expected": "v1.11.2",
+    "fetchedAt": "2026-08-03T17:57:24.128440+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "51232824987e",
+    "name": "Audacity downloads",
+    "url": "https://www.audacityteam.org/download/linux/",
+    "expected": "v3.7.7",
+    "fetchedAt": "2026-08-03T17:57:24.836241+00:00",
+    "status": 200,
+    "finalUrl": "https://www.audacityteam.org/download/linux/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 32497,
+    "htmlFile": "data/annotation-batches/batch-047/html/51232824987e.html",
+    "snapshotSha256": "3bcb27d6b642768ba5ba425d8ed5aa8a0aab105e83c01086af71343674d90c6b"
+  },
+  {
+    "pageId": "ae58980c1ca4",
+    "name": "VLC download",
+    "url": "https://www.videolan.org/vlc/download-windows.html",
+    "expected": "v3.0.23",
+    "fetchedAt": "2026-08-03T17:57:25.064395+00:00",
+    "status": 200,
+    "finalUrl": "https://www.videolan.org/vlc/download-windows.html",
+    "contentType": "text/html",
+    "bytes": 32928,
+    "htmlFile": "data/annotation-batches/batch-047/html/ae58980c1ca4.html",
+    "snapshotSha256": "a54b48975a9a5786979311b99bea00e5173a0818e4ccd0b732d7334f74fc6f9a"
+  },
+  {
+    "pageId": "92e84166d604",
+    "name": "FFmpeg news",
+    "url": "https://ffmpeg.org/news.html",
+    "expected": "v8.1.2",
+    "fetchedAt": "2026-08-03T17:57:25.777108+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "ca0edd163295",
+    "name": "MPV releases",
+    "url": "https://mpv.io/releases/",
+    "expected": "v0.41",
+    "fetchedAt": "2026-08-03T17:57:26.601079+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "3675c0056051",
+    "name": "Clementine news",
+    "url": "https://www.clementine-player.org/news",
+    "expected": "v1.4.0",
+    "fetchedAt": "2026-08-03T17:57:26.881465+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "e8233754cc34",
+    "name": "Strawberry news",
+    "url": "https://www.strawberrymusicplayer.org/news/",
+    "expected": "v1.2.26",
+    "fetchedAt": "2026-08-03T17:57:27.135056+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  },
+  {
+    "pageId": "27a633d07f16",
+    "name": "Ardour news",
+    "url": "https://ardour.org/news.html",
+    "expected": "v9.7",
+    "fetchedAt": "2026-08-03T17:57:28.116419+00:00",
+    "status": null,
+    "error": "HTTP Error 404: Not Found",
+    "bytes": 0
+  }
+]

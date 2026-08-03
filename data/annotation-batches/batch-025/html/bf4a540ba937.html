@@ -1,0 +1,773 @@
+<!DOCTYPE html><!--  Last Published: Fri Jul 03 2026 07:09:49 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="63c7f3bd9476d01d26630037" data-wf-site="636ab6ba0e1bd250e3aaedaf" lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>balenaEtcher - Flash OS images to SD cards &amp; USB drives</title>
+  <meta content="A cross-platform tool to flash OS images onto SD cards and USB drives safely and easily. Free and open source for makers around the world." name="description">
+  <meta content="balenaEtcher - Flash OS images to SD cards &amp; USB drives" property="og:title">
+  <meta content="A cross-platform tool to flash OS images onto SD cards and USB drives safely and easily. Free and open source for makers around the world." property="og:description">
+  <meta content="balenaEtcher - Flash OS images to SD cards &amp; USB drives" name="twitter:title">
+  <meta content="A cross-platform tool to flash OS images onto SD cards and USB drives safely and easily. Free and open source for makers around the world." name="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/components.css" rel="stylesheet" type="text/css">
+  <link href="css/balena-io-2-0.css" rel="stylesheet" type="text/css">
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="7974cd1369a1aa237699fab0-text/javascript"></script>
+  <script type="7974cd1369a1aa237699fab0-text/javascript">WebFont.load({  google: {    families: ["Source Code Pro:300,400,500,600,700","Source Sans Pro:300,400,500,600,700","Space Grotesk:300,400,500,600,700"]  }});</script>
+  <script type="7974cd1369a1aa237699fab0-text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="https://www.balena.io/etcher" rel="canonical">
+  <script src="https://www.google.com/recaptcha/api.js" type="7974cd1369a1aa237699fab0-text/javascript"></script>
+  <style>
+* {
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+  <meta property="twitter:image" content="https://uploads-ssl.webflow.com/636ab6ba0e1bd250e3aaedaf/65ef146b4576693f0c5d825b_OG%20image.png">
+  <meta property="og:image" content="https://uploads-ssl.webflow.com/636ab6ba0e1bd250e3aaedaf/65ef146b4576693f0c5d825b_OG%20image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!--  Amplitude web experiment script  -->
+  <script type="7974cd1369a1aa237699fab0-text/javascript" src="https://cdn.amplitude.com/script/1963512249dcd02836369507fb6dd034.experiment.js"></script>
+</head>
+<body class="body-9">
+  <div class="etcher-hero-section">
+    <div class="wrapper centre-aligned"><img src="images/balenaEtcher_logo_white.svg" loading="lazy" alt="" class="image-44">
+      <h1 class="main-header white">Flash. Flawless.<br></h1>
+      <div class="hero-about-text centre-align white">Flash OS images to SD cards &amp; USB drives, safely and easily.<strong><br></strong></div><img src="images/Etcher_steps.gif" loading="eager" alt="Flash, Flawless. This gif shows the steps you take to flash with Etcher, select image, select drive, flash!" class="etcher-flashing-gif">
+      <a href="#download-etcher" class="etcher-filled-button top-margin bottom-margin w-button">Download Etcher</a>
+    </div>
+  </div>
+  <div class="resource-links-section">
+    <div class="wrapper centre-aligned w-container">
+      <h2 class="subheading green">Resources</h2>
+      <div class="w-layout-grid resource-links-grid">
+        <a id="w-node-_0e40b138-7a7a-5347-fcc7-0246a28f50f9-26630037" href="https://etcher-docs.balena.io/" target="_blank" class="etcher-outlined-button w-button">Docs</a>
+        <a href="#about" id="w-node-_9e5b3933-a6ac-dc04-bbd0-b3bf7ed95aab-26630037" class="etcher-outlined-button w-button">About</a>
+        <a href="#FAQs" id="w-node-aefae755-e2dc-bfc9-ce4a-e9bf3f9c8190-26630037" class="etcher-outlined-button w-button">FAQs</a>
+        <a id="w-node-_0e40b138-7a7a-5347-fcc7-0246a28f50f7-26630037" href="https://forums.balena.io/c/etcher?" target="_blank" class="etcher-outlined-button w-button">Forums</a>
+      </div>
+    </div>
+  </div>
+  <div id="about" class="product-about-section">
+    <div class="wrapper centre-aligned">
+      <h3 class="features-heading left-justified">Why balenaEtcher?</h3>
+      <div class="columns w-row">
+        <div class="column-10px-right-padding w-col w-col-6 w-col-small-small-stack">
+          <div class="paragraph-16px-grey left-justified mobile-bottom-margin">Here at balena we have thousands of users working through our getting started process, we found there was no easy way for our users to flash an SD card that we could recommend to everyone.<br><br>So we built Etcher, an SD card flasher app that is simple for end users, extensible for developers, and works on any platform. <br></div>
+        </div>
+        <div class="column-10px-right-padding w-col w-col-6 w-col-small-small-stack">
+          <ul role="list" class="list-no-formatting">
+            <li class="list-item-left-justified">Create USB installation media from bootable ISOs</li>
+            <li class="list-item-left-justified">Install almost any OS to almost any flash drive</li>
+            <li class="list-item-left-justified">Offer an easy way for your users to flash your OS using our ‘Flash with Etcher’ feature</li>
+          </ul>
+        </div>
+      </div>
+      <div class="columns w-row">
+        <div class="column-10px-right-padding w-col w-col-6"></div>
+        <div class="column-10px-right-padding w-col w-col-6"></div>
+      </div>
+      <a href="https://www.balena.io/blog/tags/etcher/" class="etcher-outlined-button left-aligned w-button">Read more on our blog</a>
+    </div>
+  </div>
+  <div class="product-features-section">
+    <div class="wrapper centre-aligned">
+      <div class="features-header-div">
+        <h4 class="subheading green">FEATURES</h4>
+        <h3 class="features-heading white">A better way to burn</h3>
+      </div>
+      <div class="features-grid _2-rows">
+        <div id="w-node-_26331317-194e-c3a3-3ca4-d4f34d92549d-26630037" class="features-grid-div"><img src="images/etcher-lightning.svg" loading="lazy" width="80" height="80" alt="" class="features-grid-icon">
+          <div class="div-block-no-format">
+            <h4 class="bold-paragraph-18px-grey white left-aligned _5px-bottom-margin"><strong class="bold-text-6">Validated Flashing</strong></h4>
+            <div class="paragraph-16px-white">Etcher confirms that your flash has completed, enjoy peace of mind that your card will boot and isn’t corrupted.</div>
+          </div>
+        </div>
+        <div class="features-grid-div"><img src="images/etcher-hardrive.svg" loading="lazy" width="80" height="80" alt="" class="features-grid-icon">
+          <div class="div-block-no-format">
+            <h5 class="bold-paragraph-18px-grey white left-aligned _5px-bottom-margin"><strong>Hard Drive Friendly</strong></h5>
+            <div class="paragraph-16px-white">Etcher gives you warnings and hides your system drives by default to avoid accidentally wiping your entire hard-drive.</div>
+          </div>
+        </div>
+        <div class="features-grid-div"><img src="images/etcher-beautiful.svg" loading="lazy" width="80" height="80" alt="" class="features-grid-icon">
+          <div class="div-block-no-format">
+            <h5 class="bold-paragraph-18px-grey white left-aligned _5px-bottom-margin"><strong>Beautiful Interface</strong></h5>
+            <div class="paragraph-16px-white">Who said flashing SD cards has to be an eyesore. Etcher has an intuitive 3-step process with no command lines!</div>
+          </div>
+        </div>
+        <div class="features-grid-div"><img src="images/etcher-opensource.svg" loading="lazy" alt="" height="80" class="features-grid-icon">
+          <div class="div-block-no-format">
+            <h5 class="bold-paragraph-18px-grey white left-aligned _5px-bottom-margin"><strong>Open Source</strong></h5>
+            <div class="paragraph-16px-white">Made with JS, HTML, node.js and<a href="https://electronjs.org/" class="link-3"> Electron</a>. Etcher is built on open source tools and is and always will be free and open source to use!</div>
+          </div>
+        </div>
+        <div class="features-grid-div"><img src="images/etcher-crossplatform.svg" loading="lazy" width="80" height="80" alt="" class="features-grid-icon">
+          <div class="div-block-no-format">
+            <h5 class="bold-paragraph-18px-grey white left-aligned _5px-bottom-margin"><strong>Cross Platform</strong></h5>
+            <div class="paragraph-16px-white">Works for everyone whether you are on Windows, Linux or Mac with no complicated install instructions. </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="download-etcher" class="etcher-download-section">
+    <div class="wrapper features-2-wrapper">
+      <div class="feature-4-left feature-2-vertical">
+        <h6 class="subheading green">DOWNLOAD</h6>
+        <h2 class="main-header">Download Etcher</h2>
+      </div>
+      <div class="w-embed w-script">
+        <style>
+          /* .download-table-wrapper {
+              width: 100%;
+            } */
+          .download-table {
+            width: 100%;
+              margin-bottom: 10px;
+          }
+          .download-table td {
+              padding: 8px;
+          }
+          .download-table tbody tr:nth-child(odd) {
+              background-color: #f8f9fd;
+          }
+          .download-table-title,
+          .download-table-text {
+            color: #000;
+            text-align: left;
+            padding-right: 16px;
+          }
+          .download-table-text {
+            font-weight: 400;
+            font-size: 14px;
+          }
+          .download-link {
+            padding: 10px;
+          }
+        </style>
+        <div class="download-table-wrapper"></div>
+        <script type="7974cd1369a1aa237699fab0-text/javascript">
+        function getReleases(version) {
+            let downloadString = "https://github.com/balena-io/etcher/releases/download/";
+            return [
+                {
+                    "text": "Etcher for Windows (x86|x64) (Installer)",
+                    "href": downloadString + 'v' + version + "/balenaEtcher-" + version + ".Setup.exe",
+                    "os": "Windows",
+                    "arch": "x86|x64",
+                    "installerType": "(Installer)"
+                },
+                {
+                    "text": "Etcher for macOS",
+                    "href": downloadString + 'v' + version + "/balenaEtcher-" + version + "-x64.dmg",
+                    "os": "macOS",
+                    "arch": "x64"
+                },
+                {
+                    "text": "Etcher for macOS (arm64)",
+                    "href": downloadString + 'v' + version + "/balenaEtcher-" + version + "-arm64.dmg",
+                    "os": "macOS",
+                    "arch": "arm64"
+                },
+                {
+                    "text": "Etcher for Linux x64 (64-bit) (zip)",
+                    "href": downloadString + 'v' + version + "/balenaEtcher-linux-x64-" + version + ".zip",
+                    "os": "Linux",
+                    "arch": "x64"
+                },
+//       {
+//          "text": "Etcher for Linux x64 (64-bit) (AppImage)",
+//          "href": downloadString + 'v' + version + "/balenaEtcher-" + version + "-x64.AppImage",
+//          "os": "Linux",
+//          "arch": "x64",
+//          "installerType": "(AppImage)"
+//        },
+                {
+                    text: 'Etcher for Linux (Legacy 32 bit) (AppImage)',
+                    href: 'https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-1.7.9-ia32.AppImage',
+                    os: 'Linux',
+                    arch: 'x86',
+                    installerType: '(AppImage)',
+                }
+            ]
+        }
+        function renderTable(releases) {
+            const elements = [];
+            for (let index = 0; index < releases.length; index++) {
+                const etcherRelease = releases[index];
+                const element = '<tr>' +
+                    '<td>' +
+                    '<h6 class="download-table-text">' + etcherRelease.text + '</h6>' +
+                    '</td>' +
+                    '<td>' +
+                    '<h6 class="download-table-text">' + etcherRelease.os + '</h6>' +
+                    '</td>' +
+                    '<td>' +
+                    '<h6 class="download-table-text">' + etcherRelease.arch + '</h6>' +
+                    '</td>' +
+                    '<td>' +
+                    '<div class="download-link-wrapper">' +
+                    '<a href="' + etcherRelease.href +
+                    '" class="download-link" rel="noopener" target="_blank">Download</a>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>';
+                elements.push(element);
+            }
+            const tableHead = '<thead>' +
+                '<tr>' +
+                '<th>' +
+                '<h6 class="download-table-title">ASSET</h6>' +
+                '</th>' +
+                '<th>' +
+                '<h6 class="download-table-title">OS</h6>' +
+                '</th>' +
+                '<th>' +
+                '<h6 class="download-table-title">ARCH</h6>' +
+                '</th>' +
+                '<th>&nbsp;</th>' +
+                '</tr>' +
+                '</thead>';
+            const tableBody = '<tbody>' + elements.join("") + '</tbody>';
+            const table = '<table class="download-table">' + tableHead + tableBody + '</table>';
+            document.querySelector(".download-table-wrapper").innerHTML = table;
+        }
+        (function () {
+            fetch('https://api.github.com/repos/balena-io/etcher/releases/latest').then(res => res.json()).then(val => {
+                let currentVersion = val.tag_name.split('v')[1];
+                let releases = getReleases(currentVersion);
+                renderTable(releases);
+            });
+            // Fall back on a link to the latest Github release
+            document.querySelector(".download-table-wrapper").innerHTML = `
+              <a href="https://github.com/balena-io/etcher/releases/latest/" style="padding: 15px 40px; margin: 20px 0 50px;" class="etcher-filled-button top-margin bottom-margin w-button">
+                Download From Github&nbsp;
+                <svg style="width: 20px; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Pro v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path d="M354.4 83.8C359.4 71.8 371.1 64 384 64L544 64C561.7 64 576 78.3 576 96L576 256C576 268.9 568.2 280.6 556.2 285.6C544.2 290.6 530.5 287.8 521.3 278.7L464 221.3L310.6 374.6C298.1 387.1 277.8 387.1 265.3 374.6C252.8 362.1 252.8 341.8 265.3 329.3L418.7 176L361.4 118.6C352.2 109.4 349.5 95.7 354.5 83.7zM64 240C64 195.8 99.8 160 144 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L144 224C135.2 224 128 231.2 128 240L128 496C128 504.8 135.2 512 144 512L400 512C408.8 512 416 504.8 416 496L416 416C416 398.3 430.3 384 448 384C465.7 384 480 398.3 480 416L480 496C480 540.2 444.2 576 400 576L144 576C99.8 576 64 540.2 64 496L64 240z"/></svg>
+              </a>`;
+        })()
+      </script>
+      </div>
+      <div class="wrapper no-padding">
+        <p>Looking for <a href="https://github.com/balena-io/etcher#debian-and-ubuntu-based-package-repository-gnulinux-x86x64" target="_blank">Debian (.deb) packages</a> or <a href="https://github.com/balena-io/etcher#redhat-rhel-and-fedora-based-package-repository-gnulinux-x86x64" target="_blank">Red Hat (.rpm) packages</a>?</p>
+      </div>
+    </div>
+  </div>
+  <div class="half-size-cta-section">
+    <div class="wrapper">
+      <div class="w-layout-grid cta-and-text">
+        <div id="w-node-e65e70c9-aa5a-5370-5160-7b8e08a8304d-26630037" class="left-half-cta">
+          <div class="cta-top-wrapper"><img src="images/balenaCloud_logo_dark.webp" loading="lazy" width="320" sizes="(max-width: 479px) 67vw, (max-width: 767px) 48vw, 320px" alt="" srcset="images/balenaCloud_logo_dark-p-500.png 500w, images/balenaCloud_logo_dark-p-800.png 800w, images/balenaCloud_logo_dark-p-1080.png 1080w, images/balenaCloud_logo_dark.webp 2050w" class="image-13"></div>
+          <div class="cta-text-block">Device deployment and management infrastructure, hosted by balena.</div>
+          <p class="cta-text-block grey">Your first 10 devices are always free and fully featured</p>
+          <a href="https://balena.io/cloud" class="blue-filled-button centre-align w-button">Learn more</a>
+        </div>
+        <div id="w-node-e65e70c9-aa5a-5370-5160-7b8e08a83056-26630037" class="right-half-text">
+          <h3 id="w-node-e65e70c9-aa5a-5370-5160-7b8e08a83057-26630037" class="half-text-header"><strong class="features-heading left-justified">The container-based platform for deploying IoT fleets</strong></h3>
+          <div class="blog-post__read-more top-padding left-justified bottom-margin">Easily develop and deploy IoT fleets, and remotely update and monitor your devices and code from anywhere in the world.<br></div>
+          <div class="icon-list">
+            <div class="icon-list---icon"></div>
+            <div class="icon-list---text">Develop iteratively<br></div>
+          </div>
+          <div class="icon-list">
+            <div class="icon-list---icon"></div>
+            <div class="icon-list---text">Deploy with confidence<br></div>
+          </div>
+          <div class="icon-list">
+            <div class="icon-list---icon"></div>
+            <div class="icon-list---text">Manage at scale<br></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="community-section">
+    <div class="wrapper centre-aligned">
+      <p class="subheading green">Commmunity</p>
+      <h3 class="features-heading centred">Get involved with the Etcher community</h3>
+      <div class="w-layout-grid etcher-community-grid">
+        <div id="w-node-aca42b49-e2dd-e168-5ffd-c2ab70b3db17-26630037" class="outlined-white-box-modern">
+          <div class="div-full-20px-margin">
+            <h1 class="community-card-headline"><strong>Forums</strong></h1>
+            <p class="blog-post__read-more">If you have a question about Etcher, or are a fan of Etcher and want to help other users troubleshoot their issues, join us in our forum!</p>
+            <a href="https://forums.balena.io/c/etcher/32" target="_blank" class="etcher-outlined-button top-margin-20px w-button">Go to forums</a>
+          </div>
+        </div>
+        <div id="w-node-f5440a13-47bb-5e33-26cd-d6380c74bcad-26630037" class="outlined-white-box-modern">
+          <div class="div-full-20px-margin">
+            <h1 class="community-card-headline"><strong>Contribute</strong></h1>
+            <p class="blog-post__read-more">BalenaEtcher is and always will be free and open sourced, it is maintained by balena staff but we welcome contributions from the community. </p>
+            <a href="https://github.com/balena-io/etcher" target="_blank" class="etcher-outlined-button top-margin-20px w-button">Go to GitHub</a>
+          </div>
+        </div>
+        <div id="w-node-e51a34d5-f42c-ae17-808b-08c569d7b6fb-26630037" class="outlined-white-box-modern">
+          <div class="div-full-20px-margin">
+            <h1 class="community-card-headline"><strong>Flash with Etcher</strong></h1>
+            <p class="blog-post__read-more">Your users can now easily install your OS straight from your website, add the flash with Etcher button to your site or blog to get started.</p>
+            <a href="https://etcher-docs.balena.io/FAQ#can-i-use-the-flash-with-etcher-button-on-my-site" target="_blank" class="etcher-outlined-button top-margin-20px w-button">Get the code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="featured-project-section">
+    <div class="wrapper centre-aligned">
+      <p class="subheading green">Explore Tutorials</p>
+      <h2 class="features-heading centred">Find your next IoT Project</h2>
+      <div class="columns-11 w-row">
+        <div class="column-26 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
+          <div class="hub-featured-app-card">
+            <div class="home-features-card---app-title">
+              <div class="hub-card-header"><img src="images/balenaSense-logo.webp" loading="lazy" alt="balenaSense logo" class="hub-card-image"></div>
+              <div class="card-title">balenaSense</div>
+            </div>
+            <div class="hub-featured-card---app-owner">
+              <div class="hub-card-app-owner-image"><img src="images/profile.webp" loading="lazy" alt="" class="app-owner-image"></div>
+              <div class="app-owner-text">by balenaLabs</div>
+            </div>
+            <p class="blog-post__read-more left-justified bottom-margin no-padding">Take readings from a BME680 or similar sensors on a Raspberry Pi, store with InfluxDB and view with Grafana.</p>
+            <div class="app-owner-text capitalise bottom-padding">Works With</div>
+            <div class="hub-card-device-wrapper"><img src="images/raspberry-pi.svg" loading="lazy" alt="Raspberry Pi logo" class="image-22"><img src="images/rpi-3.svg" loading="lazy" alt="Raspberry Pi 3 logo" class="image-22"><img src="images/raspberry-pi2.svg" loading="lazy" alt="Raspberry Pi 2 logo" class="image-22"><img src="images/rpi4.svg" loading="lazy" alt="Raspberry Pi 4 logo" class="image-22"></div>
+            <div class="w-layout-grid hub-card-cta">
+              <a id="w-node-_11221fe7-951a-11db-12c9-adeef127dbd4-26630037" href="https://hub.balena.io/apps/1844156/balenaSense" target="_blank" class="blue-filled-button w-button">View on balenaHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="column-27 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
+          <div class="hub-featured-app-card">
+            <div class="home-features-card---app-title">
+              <div class="hub-card-header"><img src="images/balena-dash.webp" loading="lazy" alt="balenaDash Logo" class="hub-card-image"></div>
+              <div class="card-title">balenaDash</div>
+            </div>
+            <div class="hub-featured-card---app-owner">
+              <div class="hub-card-app-owner-image"><img src="images/profile.webp" loading="lazy" alt="" class="app-owner-image"></div>
+              <div class="app-owner-text">by balenaLabs</div>
+            </div>
+            <p class="blog-post__read-more left-justified bottom-margin">Raspberry Pi-powered digital signage or website viewer, remotely accessible from anywhere.<br>‍</p>
+            <div class="app-owner-text capitalise bottom-padding">Works With</div>
+            <div class="hub-card-device-wrapper"><img src="images/rpi4.svg" loading="lazy" alt="Raspberry Pi 4 logo" class="image-22"><img src="images/RPi-64.svg" loading="lazy" alt="Raspberry Pi 64 bit logo" class="image-22"><img src="images/RPi400.svg" loading="lazy" alt="Raspberry Pi 400 bit logo" class="image-22"></div>
+            <div class="w-layout-grid hub-card-cta">
+              <a href="https://hub.balena.io/apps/1767559/balena-dash" target="_blank" class="blue-filled-button w-button">View on balenaHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="column-28 w-col w-col-4 w-col-medium-4 w-col-small-small-stack">
+          <div class="hub-featured-app-card">
+            <div class="home-features-card---app-title">
+              <div class="hub-card-header"><img src="images/python.webp" loading="lazy" alt="Python Hello World project logo" class="hub-card-image"></div>
+              <div class="card-title">python-hello-world</div>
+            </div>
+            <div class="hub-featured-card---app-owner">
+              <div class="hub-card-app-owner-image"><img src="images/profile.webp" loading="lazy" alt="" class="app-owner-image"></div>
+              <div class="app-owner-text">by balena-io-examples</div>
+            </div>
+            <p class="blog-post__read-more left-justified bottom-margin">This is a simple skeleton python server that works on any of the devices supported by balena.</p>
+            <div class="app-owner-text capitalise bottom-padding">Works With</div>
+            <div class="hub-card-device-wrapper"><img src="images/RPi-64.svg" loading="lazy" alt="Raspberry Pi 64 bit logo" class="image-22"><img src="images/generic-aarch64.svg" loading="lazy" alt="Arm V8 device type logo" class="image-22"><img src="images/jetson-tx2.svg" loading="lazy" alt="Nvidia Jetson TX2 logo" class="image-22"></div>
+            <div class="w-layout-grid hub-card-cta">
+              <a href="https://hub.balena.io/apps/1940796/balena-python-hello-world" target="_blank" class="blue-filled-button w-button">View on balenaHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="FAQs" class="faqs-section">
+    <div class="wrapper-1200px-left">
+      <div class="w-row">
+        <div class="w-col w-col-4 w-col-stack">
+          <div class="faq-s-text-wrapper">
+            <h2 class="features-heading left-justified">Frequently Asked Questions</h2>
+          </div>
+        </div>
+        <div class="w-col w-col-8 w-col-stack">
+          <div class="faqs-wrapper">
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">What should I do if my flash in Etcher fails?<br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">It depends how it fails. Most of the time, a failed flash is due to either a faulty drive or adapter. Retry. Then try with another adaptor, drive or card and usb port.<br><br>If you&#x27;re flashing from an url and it fails, try downloading the file first and flash it again from file.<br><br>Sometimes, things might go wrong, and you end up with a half-flashed drive that is unusable by your operating systems, and common graphical tools might even refuse to get it back to a normal state. To solve these kinds of problems, we&#x27;ve collected<a href="https://github.com/balena-io/etcher/blob/master/docs/USER-DOCUMENTATION.md?d_id=92e06341-01fc-4a38-a96b-16e28fc39aa8&amp;s_id=1672837261619#recovering-broken-drives"> a list of fail-proof methods</a> to completely erase your drive in major operating systems.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">Can I use Etcher on Windows, Linux or Mac?<br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">Etcher works on Microsoft Windows 10 and later, Linux (most distros) and macOS 10.10 (Yosemite) and later. Make sure you download the correct version from our downloads section.<br><br>For Windows 7, 8 or 32 bits, the latest compatible version of Etcher is v7.9.0.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">Do I need to format my SD card / thumb drive before using Etcher? <br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">No. But keep in mind that Etcher will erase the whole drive and replace the data.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">Can Etcher make a bootable USB? <br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">Yes, as long as the file you&#x27;re flashing is bootable.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">Can Etcher write Windows ISO?<br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">Windows images are not bootable without extra treatment that etcher is not designed to do. If you need to make a bootable disk for windows you can find <a href="https://github.com/balena-io/etcher/blob/master/docs/USER-DOCUMENTATION.md?d_id=92e06341-01fc-4a38-a96b-16e28fc39aa8&amp;s_id=1672837261619#why-is-my-drive-not-bootable">more information in our documentation</a>.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+            <div class="faq-div-card">
+              <div class="faq-question-container">
+                <div class="faq-question-wrapper">
+                  <div class="faq-questions">What should I do if I am still having problems with Etcher?<br></div><img src="images/etcher-plus.webp" loading="lazy" alt="" class="faq-icon">
+                </div>
+              </div>
+              <div class="faq-answer-wrap">
+                <p class="faq-content">Still having issues? Check out the <a href="https://github.com/balena-io/etcher/tree/master/docs">Etcher docs</a> to troubleshoot your problem, <a href="https://forums.balena.io/c/etcher/32">search the forums</a> for already opened tickets with the same issue as you which or open your own ticket or <a href="https://github.com/balena-io/etcher/issues/new">issue on the etcher repo, </a>and our support team will be able to help you.</p>
+              </div>
+              <div class="bottom-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="wrapper footer-wrapper _80-top-padding">
+      <div class="footer-up">
+        <div id="w-node-_132fb877-feaf-2ffa-1670-affea41db6d4-a41db6d1" data-w-id="132fb877-feaf-2ffa-1670-affea41db6d4" class="footer-logo-and-subscribe">
+          <a href="https://balena.io/index" class="footer-logo w-inline-block"><img src="images/balena_logo_dark.svg" loading="lazy" alt="" class="image-25">
+            <div class="footer-text">Create and manage massive fleets of small devices</div>
+          </a>
+          <div class="status-page-button--container">
+            <a href="https://status.balena.io" target="_blank" class="status-page-button w-inline-block">
+              <div class="dot"></div>
+              <div class="status">Loading ...</div>
+            </a>
+          </div>
+        </div>
+        <div id="w-node-ba24982b-8ca2-2870-ea7f-e2597971cf9b-a41db6d1" class="footer-links-container">
+          <div class="footer-links-row">
+            <p class="footer-title">Company</p>
+            <a href="https://balena.io/team" class="footer-link">Team</a>
+            <a href="https://jobs.balena.io/" class="footer-link">Jobs</a>
+            <a href="https://balena.io/contact" class="footer-link">Contact</a>
+          </div>
+          <div class="footer-links-row">
+            <p class="footer-title">Policies</p>
+            <a href="https://balena.io/terms-of-service" class="footer-link">Terms of service</a>
+            <a href="https://balena.io/privacy-policy" class="footer-link">Privacy Statement</a>
+            <a href="https://balena.io/master-agreement" class="footer-link">Master Agreement</a>
+            <a href="https://balena.io/security" class="footer-link">Security</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-down">
+        <div class="footer-text stretch">Copyright 2026 Balena | All Rights Reserved. </div>
+        <div class="footer-social-icons-container">
+          <a href="https://github.com/balena-io" target="_blank" class="blog-social-item w-inline-block"><img src="images/github.webp" loading="lazy" alt="" class="contain"></a>
+          <a href="https://twitter.com/balena_io?lang=en" target="_blank" class="blog-social-item w-inline-block"><img src="images/twitter.webp" loading="lazy" alt="" class="contain"></a>
+          <a href="https://www.facebook.com/balenacloud/" target="_blank" class="blog-social-item w-inline-block"><img src="images/facebook.webp" loading="lazy" alt="" class="contain"></a>
+          <a href="https://www.instagram.com/balena_io/" target="_blank" class="blog-social-item w-inline-block"><img src="images/instagram.webp" loading="lazy" alt="" class="contain"></a>
+          <a href="https://www.linkedin.com/company/5000762" target="_blank" class="blog-social-item w-inline-block"><img src="images/linkedin.webp" loading="lazy" alt="" class="contain"></a>
+          <a href="https://www.youtube.com/balenaio" target="_blank" class="blog-social-item w-inline-block"><img src="images/youtube1.webp" loading="lazy" alt="" class="contain"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=636ab6ba0e1bd250e3aaedaf" type="7974cd1369a1aa237699fab0-text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/balena-io-2-0.js" type="7974cd1369a1aa237699fab0-text/javascript"></script>
+  <script async="" src="https://cdn.statuspage.io/se-v2.js" type="7974cd1369a1aa237699fab0-text/javascript"></script>
+  <style>
+  .dot {
+    content: ' ';
+    height: 10px;
+    width: 10px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    margin-right: 8px;
+  }
+  .dot.none {
+    background: #7ee811;
+  }
+  .dot.critical {
+    background: #ff0404;
+  }
+  .dot.major {
+    background: #ff9f00;
+  }
+  .dot.minor {
+    background: #ffec02;
+  }
+  .status-page-button {
+    font-weight: 600;
+    font-size: 14px;
+    height: 38px;
+    white-space: nowrap;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0px;
+    background: rgb(42, 80, 111);
+    overflow: visible;
+    text-transform: none;
+    border: 1px solid rgb(42, 80, 111);
+    padding: 4px 30px;
+    line-height: 1.5;
+    border-radius: 20px;
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+</style>
+  <script type="7974cd1369a1aa237699fab0-text/javascript">
+  function checkStatusPage() {
+    if (typeof window !== 'undefined' && window && window.StatusPage) {
+      const sp = new window.StatusPage.page({
+        page: '5b4dcn321xtp',
+      });
+      sp.summary({
+        success: function (data) {
+          const newClass = data.status.indicator + ' dot';
+          $('a.status-page-button > div.dot').attr('class', newClass);
+          $('a.status-page-button > div.status').text(data.status.description);
+        },
+      });
+    }
+  }
+  $(function () {
+    const container = $('.status-page-button--container');
+    checkStatusPage();
+  });
+</script>
+  <!--  COOKIE CONSENT  -->
+  <link href="https://unpkg.com/@balena/design-tokens@latest/build/css/tokens.css" rel="stylesheet">
+  <style>
+  .cc-container.cc-noselect.displayed .cc-box {
+    color: var(--color-text);
+    font-family:
+      'Source Sans 3',
+      'Source Sans Pro',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      'Open Sans',
+      'Helvetica Neue',
+      sans-serif;
+    border-radius: 16px;
+  }
+  .cc-container.cc-noselect.displayed .cc-box .cc-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .cc-container.cc-noselect.displayed .cc-box .cc-btn {
+    border-radius: 24px;
+    border: 1px solid var(--color-border-accent);
+    color: var(--color-text);
+    width: 100%;
+    background: white;
+    text-align: center;
+  }
+  .cc-container.cc-noselect.displayed .cc-box .cc-btn.cc-btn-accept {
+    background: var(--color-bg-accent-strong);
+    color: var(--color-text-inverse);
+    border-color: transparent;
+  }
+  .cc-container.cc-noselect.displayed .cc-box a {
+    color: var(--color-text-accent);
+  }
+  .cc-container.cc-noselect.displayed .cc-box [role='link'] {
+    border-bottom: 0;
+  }
+  .cc-container.cc-noselect.displayed .cc-box [role='link']:hover {
+    color: var(--color-text-accent);
+  }
+  .cc-container.cc-noselect.displayed .cc-box [role='checkbox']::before {
+    border: 1px solid var(--color-border-strong);
+    padding: 1.5px;
+    background: white;
+    border-radius: 5px;
+    margin-top: 1px;
+  }
+  .cc-container.cc-noselect.displayed .cc-box [role='checkbox']::after {
+    background: white;
+    border-color: var(--color-border-accent);
+    margin-top: 1px;
+  }
+  .cc-container.cc-noselect.displayed .cc-box h3 {
+    display: none;
+  }
+</style>
+  <!--  Add AnalyticsClient and GTM  -->
+  <script src="https://cdn.jsdelivr.net/npm/@klaxit/cookie-consent@0.3.4/dist/cookie-consent.js" type="7974cd1369a1aa237699fab0-text/javascript"></script>
+  <script type="7974cd1369a1aa237699fab0-text/javascript">
+!(function () {
+    'use strict';
+    const PROJECT_NAME = '1963512249dcd02836369507fb6dd034';
+    const COMPONENT_NAME = 'Marketing Website';
+    const COMPONENT_VERSION = 'webflow';
+    const TRACKER_NAME = 'Marketing';
+    const ENDPOINT = 'data.balena-cloud.com';
+    const GTM_TAG = 'GTM-M8XL8QHM';
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied'
+    });
+    function addAnalyticsClient() {
+      const el = document.createElement('script');
+      el.type = 'text/javascript';
+      el.crossOrigin = 'anonymous';
+      el.async = true;
+      el.src =
+        'https://cdn.jsdelivr.net/npm/analytics-client@3.2.0/dist/bundle.js';
+      el.onload = function (_) {
+        const ac = window.analyticsClient;
+        const urlParams = new ac.AnalyticsUrlParams();
+        const newQuery = urlParams.consumeUrlParameters(window.location.search);
+        if (newQuery != null) {
+          const newUrl = window.location.pathname + ('?' + newQuery);
+          window.history.replaceState(null, '', newUrl);
+        }
+        const client = urlParams.isOptOutRequested()
+        ? ac.createNoopClient()
+        : ac.createMarketingClient({
+          projectName: PROJECT_NAME,
+          componentName: COMPONENT_NAME,
+          componentVersion: COMPONENT_VERSION,
+          endpoint: ENDPOINT,
+          deviceId: urlParams.getPassedDeviceId(),
+          autocapture: {
+            pageViews: false,
+            attribution: true,
+          }
+        });
+        urlParams.setClient(client);
+        const tracker = ac.createWebTracker(client, TRACKER_NAME);
+        tracker.trackPageView();
+        const a = document.getElementsByTagName('a');
+        for (let idx = 0; idx < a.length; ++idx) {
+          a[idx].addEventListener('click', async e => {
+            const href = e.currentTarget.href;
+            const origin = new URL(window.location.href);
+            const qs = urlParams.getQueryString(href, origin);
+            let hrefWithAnalyticsParams = href;
+            if (new URL(href).hostname !== origin.hostname) {
+              if (href.includes('?')) {
+                hrefWithAnalyticsParams = href + '&' + qs;
+              } else if (href.includes('#')) {
+                const urlParts = href.split('#');
+                hrefWithAnalyticsParams =
+                  urlParts[0] + '?' + qs + '#' + urlParts[1];
+              } else {
+                hrefWithAnalyticsParams = href + '?' + qs;
+              }
+            }
+            e.currentTarget.href = hrefWithAnalyticsParams;
+            await tracker.trackNavigationClick(href);
+          });
+        }
+      };
+      const firstElement = document.getElementsByTagName('script')[0];
+      firstElement.parentNode.insertBefore(el, firstElement);
+    }
+    function addGTM() {
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start':
+          new Date().getTime(), event: 'gtm.js',
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', GTM_TAG);
+    }
+    if (window.CookieConsent) {
+      const cc = new window.CookieConsent({
+        title: 'We use cookies 🍪',
+        description: 'We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All" you consent to our use of cookies. Read more about our <a href="https://www.balena.io/privacy-policy" target="_blank">privacy policy</a>.',
+        buttons: {
+          acceptAll: 'Accept all',
+          acceptSelected: 'Save selection',
+          reject: 'Reject all',
+          showSettings: 'Customize',
+          hideSettings: 'Back',
+        },
+        cookie: {
+          secure: false,
+          name: 'cookie_consent',
+          domain: 'balena.io',
+        },
+      })
+        cc.on('accept', (cc) => {
+            if (cc.acceptedCategories?.includes('analytics')) {
+                addAnalyticsClient();
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted',
+                });
+            }
+            window.dataLayer.push({
+                event: 'consent_updated'
+            });
+        });
+      // open cookie settings on click
+      document.querySelector('.open-cookie-settings')?.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.CookieConsent?.open();
+      });
+    }
+    if (window.CookieConsent?.acceptedCategories?.includes('analytics')) {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+      addAnalyticsClient();
+    }
+    addGTM();
+})();
+</script>
+  <script src="https://hubspotonwebflow.com/assets/js/form-124.js" type="7974cd1369a1aa237699fab0-text/javascript" integrity="sha384-bjyNIOqAKScdeQ3THsDZLGagNN56B4X2Auu9YZIGu+tA/PlggMk4jbWruG/P6zYj" crossorigin="anonymous"></script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7974cd1369a1aa237699fab0-|49" defer></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"d0045d81f57847c38b68914f61dbbfc1","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

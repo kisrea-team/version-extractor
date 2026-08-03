@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="OmniPlayer - OmniPlayer，Mac 免费全能视频播放器，支持mp4, mkv, avi, mov, wmv, flv, mp3, flac, ape等几乎所有格式，多档倍速播放，支持MKV内置字幕和外挂字幕。同时支持一键投屏到电视/盒子，支持DLNA设备(三星电视，索尼电视，小米电视，LG电视，小米盒子，天猫魔盒，极光盒子等)，Chromecast和Roku。">
+  <title>OmniPlayer - Mac 免费全能视频播放器 - Oka Apps</title>
+  <link rel="shortcut icon" href="https://cdn.zh.okaapps.com/icon/omi.ico">
+  <link rel="alternate" hreflang="en" href="https://okaapps.com/product/1470926410" />
+  <link rel="alternate" hreflang="zh" href="https://zh.okaapps.com/product/1470926410" />
+  <link rel="alternate" hreflang="x-default" href="https://okaapps.com/product/1470926410" />
+  <link rel="canonical" href="https://zh.okaapps.com/product/1470926410">
+  <link rel="stylesheet" type="text/css" href="https://cdn.zh.okaapps.com/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.zh.okaapps.com/css/header_20230104.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.zh.okaapps.com/css/index_20230118.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.zh.okaapps.com/css/footer_20230104.css">
+  <link href="https://en.freedownloadmanager.org/styles/r2-2.css" rel="stylesheet" />
+  <style>
+    header {
+      background-color: transparent;
+    }
+
+    body {
+      background-color: transparent;
+    }
+
+    /* 遮罩层 */
+    .download-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 弹窗样式 */
+    .download-popup {
+      background-color: white;
+      padding: 40px 30px 30px;
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    /* 关闭按钮 */
+    .download-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 20px;
+      color: #333;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-close-btn:hover {
+      color: black;
+    }
+
+    /* 二维码 */
+    .download-qr-code {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 20px;
+    }
+
+    /* 描述文字 */
+    .download-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    /* 下载链接 */
+    .download-link {
+      font-size: 14px;
+      color: #2674f5;
+      text-decoration: none;
+    }
+
+    .download-link:hover {
+      text-decoration: underline;
+    }
+
+    .tv-store-card {
+      margin: 12px 0 20px;
+      padding: 16px;
+      background: #f7f8fa;
+      border-radius: 12px;
+    }
+
+    .tv-store-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .tv-store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 14px 12px;
+    }
+
+    .tv-store-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tv-store-item img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      padding: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .tv-store-item span {
+      font-size: 12px;
+      color: #333;
+      white-space: nowrap;
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OmniPlayer",
+      "operatingSystem": "OSX 10.13",
+      "softwareVersion": "2.1.10",
+      "applicationCategory": "UtilitiesApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "62665"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      }
+    }
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3f5b5fb070901b3842e2b1863511f2ce";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    window.addEventListener("load",function() {
+      const commentNumber = document.getElementsByClassName("comment-item").length;
+      const commentListDiv = document.getElementsByClassName("comment-list")[0];
+      let showCommentIndex = 1;
+      setInterval(async () => {
+        commentListDiv.style.transition = "all 1s";
+        commentListDiv.style.transform = "translateX(-" + 290 * showCommentIndex + "px)";
+        showCommentIndex += 1;
+        if (showCommentIndex >= commentNumber)
+        {
+          setTimeout(() => {
+            commentListDiv.style.transition = "";
+            commentListDiv.style.transform = "translateX(0)";
+            showCommentIndex = 1;
+          }, 1000);
+        }
+      }, 4000)
+    });
+  </script>
+</head>
+
+<body onload="sendEvent('View Page', 'OmniPlayer', 'Product Detail')">
+  
+<header>
+  <div class="nav-bar">
+    <div class="nav-left">
+      <div class="logo">
+        
+        <a href="/">
+        
+          <picture>
+            <source srcset="https://cdn.zh.okaapps.com/icon/omi.webp" type="image/webp">
+            <source srcset="https://cdn.zh.okaapps.com/icon/omi.png" type="image/png">
+            <img src="https://cdn.zh.okaapps.com/icon/omi.png">
+          </picture>
+        </a>
+      </div>
+    </div>
+    <div class="nav-center">
+      <ul>
+        <li>
+          
+          <a href='/' class="lia">主页</a>
+          
+        </li>
+        <li class="product">
+          <a href='#'>产品<img id="iconImg" src="https://cdn.zh.okaapps.com/icon/chevron-down.svg"></a>
+          <div id="product-list" class="nav-product" style="display: none">
+            
+            <h2>Mac Apps</h2>
+            <div class="row">
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1592987853">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Omi录屏专家
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1659622164">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/vidhub.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/vidhub.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/vidhub.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      VidHub - 视频播放器
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/6760281977">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/AIBrowser/logo/icon_512x512%402x.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/AIBrowser/logo/icon_512x512%402x.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/AIBrowser/logo/icon_512x512%402x.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Aye
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1470926410">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      OmniPlayer
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1536071582">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      OmniConverter
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1441507725">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/filezip.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/filezip.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/filezip.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      解压专家Oka
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1503649026">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/paste.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/paste.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/paste.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      uPaste
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1580856488">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/ntfsDisk.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/ntfsDisk.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/ntfsDisk.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Omi NTFS磁盘专家
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/6445983074">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/pingpongchat.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/pingpongchat.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/pingpongchat.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Ping AI 
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/0000000010">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/mumu.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/mumu.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/mumu.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      MuMu模拟器Pro
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/0000000008">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/190_140/diskgeeker.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/190_140/diskgeeker.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/190_140/diskgeeker.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      赤友DiskGeeker高级Mac磁盘管理大师
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/6446893480">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/deskx.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/deskx.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/deskx.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      DeskX超级桌面助手
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1521634562mac">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/todo.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/todo.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/todo.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Oka To Do for Mac
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1420002626">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/vault.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/vault.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/vault.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      F-Vault 文件保险箱
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/0000000001">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/windowizard.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/windowizard.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/windowizard.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      WindoWizard
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1499584783">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Oka Mirror 投屏专家 - 智能电视版
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1512564265">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Oka Mirror投屏专家 - Chromecast版
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1523794932">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Oka Mirror投屏专家 - 浏览器通用版
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1450345160">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/colorfolder.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/colorfolder.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/colorfolder.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      Color Folder 文件夹改色助手
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1455463454">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/macwifi.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/macwifi.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/macwifi.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      WiFi 测网速
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1467156679">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/encryptor.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/encryptor.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/encryptor.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      文件压缩加密助手
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1461463493">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/xdisk.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/xdisk.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/xdisk.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      X-Disk
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                
+                <a href="/product/1556461417">
+                
+                  <div class="thumbnail">
+                    <picture>
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.webp" type="image/webp">
+                      <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.png" type="image/png">
+                      <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.png" alt="...">
+                    </picture>
+                    <div class="title">
+                      xBrowser
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+            </div>
+            
+            <hr>
+            
+
+          </div>
+        </li>
+        <li><a href='/blog' class="lia">文章</a></li>
+        <li><a href='/support' class="lia">联系我们</a></li>
+        <li><a href='/partners' class="lia">合作伙伴</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="burger">
+        <div class="top-line"></div>
+        <div class="middle-line"></div>
+        <div class="bottom-line"></div>
+      </button>
+    </div>
+  </div>
+  
+  <div class="promotion-dialog" id="promotionDialog">
+    <div class="promotion-appTitle">
+      Go Browser - Mac上一键下载安装谷歌Chrome浏览器
+    </div>
+    <picture>
+      <source srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.webp" type="image/webp">
+      <source srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.png" type="image/png">
+      <img class="promotion-image" src="https://cdn.zh.okaapps.com/resource/icon/app_icons/go_browser_icon_1024.png" alt="...">
+    </picture>
+    <div class="promotion-appDescription">
+      Mac上的谷歌Chrome浏览器，火狐Firfox浏览器下载助手，多浏览器切换工具
+    </div>
+    <div class="promotion-content">
+      降价至
+      <span>免费下载！</span><ul>
+      <li class="normalPrice"><s>¥98</s></li>
+      <li class="currentPrice">¥0</li>
+    </ul>
+    </div>
+    <div class="promotion-btn">
+      <a href="https://zh.okaapps.com/product/1556461417">免费下载</a>
+    </div>
+    <div class="promotion-close">
+      <a id="promotionClose"><img src="/icon/close-b.svg" alt=""></a>
+    </div>
+  </div>
+  <div class="promotion-bg">
+  </div>
+  
+</header>
+
+  
+  <div class="product-background"></div>
+
+  <div class="download-overlay" id="download-apk-overlay">
+    <div class="download-popup">
+      <button class="download-close-btn" onclick="hideApkPopup()">×</button>
+      <img class="download-qr-code" src="https://cdn.zh.okaapps.com/icon/vidhub_android_qrcode_appgallery.png" alt="QR Code">
+      <div class="download-title">扫码下载安装安卓版</div>
+      <a id="download-apk-mobile" class="download-link" onclick="sendEvent('Click Download Android APK', 'OmniPlayer', 'Product Detail')" href="https://download.dacall.ai/mobile/vidhub-universal-release.apk" target="_blank">点击下载安卓版APK</a>
+    </div>
+  </div>
+
+  <div class="download-overlay" id="download-tv-overlay">
+    <div class="download-popup">
+      <button class="download-close-btn" onclick="hideTVPopup()">×</button>
+      <div class="download-title">1. 在TV应用商店搜索"VidHub"下载</div>
+      <div class="tv-store-card">
+        <div class="tv-store-desc">
+          VidHub TV 版已上线以下 TV 应用商店
+        </div>
+        <div class="tv-store-grid">
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-mi.png" alt="小米">
+            <span>小米</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-sony.png" alt="索尼">
+            <span>索尼</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-samsung.png" alt="三星">
+            <span>三星</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-dangbei.png" alt="当贝市场">
+            <span>当贝市场</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-dangbei-os.png" alt="当贝 OS">
+            <span>当贝 OS</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-tcl.png" alt="TCL">
+            <span>TCL</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-changhong.png" alt="长虹">
+            <span>长虹</span>
+          </div>
+
+          <div class="tv-store-item">
+            <img src="https://cdn.zh.okaapps.com/icon/tv/tv-icon-phillips.png" alt="飞利浦">
+            <span>飞利浦</span>
+          </div>
+        </div>
+      </div>
+      <div class="download-title">2. 下载TV版APK安装包，使用U盘安装</div>
+      <a id="download-apk-tv", class="download-link" onclick="sendEvent('Click Download Android TV APK', 'OmniPlayer', 'Product Detail')" href="https://download.dacall.ai/tv/vidhub-TV-universal-release.apk" target="_blank">点击下载安卓TV版APK</a>
+    </div>
+  </div>
+
+  <div class="product-detail">
+    
+    <div class="row banner">
+      <div class="col-lg-8 product-left">
+        <h1 style="font-size:1.5em">OmniPlayer</h1>
+        <h2 style="font-size:1.2em">Mac 免费全能视频播放器</h2>
+        <p style="font-size:0.8em; text-align:left">OmniPlayer，Mac 免费全能视频播放器，支持mp4, mkv, avi, mov, wmv, flv, mp3, flac, ape等几乎所有格式，多档倍速播放，支持MKV内置字幕和外挂字幕。同时支持一键投屏到电视/盒子，支持DLNA设备(三星电视，索尼电视，小米电视，LG电视，小米盒子，天猫魔盒，极光盒子等)，Chromecast和Roku。</p>
+        <div class="app-detail">
+          
+          <span>App大小: 95.3MB</span>
+          
+          
+          <span>App版本: 2.1.10</span>
+          
+          
+          <span>支持OS: OSX 10.13</span>
+          
+          
+          <span>App语言: 葡萄牙文, 俄文, 韩文, 简体中文, 意大利文, 英文, 繁体中文, 西班牙文, 德文, 日文, 法文</span>
+          
+        </div>
+
+        <ul>
+          <li style="width:150px">
+            <a id="store_download_link" style="line-height:unset" href="macappstore://itunes.apple.com/app/id1470926410?pt=119209922&#38;l=en&#38;mt=12&#38;ct=newhomepage"
+              onclick="sendEvent('Click Download Store', 'OmniPlayer', 'Product Detail')">
+              <img src="https://cdn.zh.okaapps.com/icon/apple.svg" alt="">
+              <span>
+                <p style="font-size:0.8em">Apple 版本</p>
+              </span>
+            </a>
+          </li>
+
+          
+          
+          
+
+          
+
+          
+
+          
+          <li style="width:150px; background-color:#5A75FF; box-shadow:none">
+            <a id="app_download_link" style="line-height:unset;justify-content: center" href="https://download.dacall.ai/okaapps/download/OmniPlayer.dmg"
+               onclick="sendEvent('Click Download Free', 'OmniPlayer', 'Product Detail')">
+              <span>
+                <p style="font-size:0.9em">免费下载</p>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+
+        
+        <ul style="">
+          <li style="background-color: transparent; width:150px">
+            <a></a>
+          </li>
+          
+          <li style="background-color: transparent; width:150px">
+            <a class="upgradeVIP" style="line-height:unset;justify-content: center" href="/payment/1470926410"
+              onclick="sendEvent('Click Upgrade VIP', 'OmniPlayer', 'Product Detail')">
+              <p style="font-size:0.8em">升级到VIP</p>
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+
+      <div class="col-lg-4 product-right">
+        <picture class="flex-center" style="padding: 20px;">
+          <source srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.webp" type="image/webp">
+          <source srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.png" type="image/png">
+          <img src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniplayer.png" alt="...">
+        </picture>
+
+        <div class="comments-div">
+          <div style="display: flex;">
+            <img style="width: 100px; height: 22px" src="https://cdn.zh.okaapps.com/icon/stars.svg" alt="">
+            
+            <span class="rating">评分: 4.8</span>
+            
+          </div>
+
+          <div style="width: 290px; overflow: hidden;">
+            <div class="comment-list">
+              
+              <div class="comment-item">
+                <p class="comment">比较了很多播放器，这款是最好的!</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- Robert Bao</div>
+                  </p>
+                </div>
+              </div>
+              
+              <div class="comment-item">
+                <p class="comment">投屏功能很方便，刚刚更新了字幕投屏变得更加实用了，希望越来越好。</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- Snaidy</div>
+                  </p>
+                </div>
+              </div>
+              
+              <div class="comment-item">
+                <p class="comment">真心不错，对比过很多播放软件，这软件无论是从界面还是功能，速度来说，都是一流的</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- Frank 22</div>
+                  </p>
+                </div>
+              </div>
+              
+              <div class="comment-item">
+                <p class="comment">字幕识别的问题终于解决了，功能又增强了不少，正式成为我最常用的视频播放器了！</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- sonic yahoo</div>
+                  </p>
+                </div>
+              </div>
+              
+              <div class="comment-item">
+                <p class="comment">之前一直用IINA，这个比IINA更好用！各方面都深得我心，暂时没有发现什么问题，相信开发人员一定会把软件维护得越来越棒的，非常有心的开发者~爱了爱了❤️</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- 小白阿黄</div>
+                  </p>
+                </div>
+              </div>
+              
+
+              <div class="comment-item">
+                <p class="comment">比较了很多播放器，这款是最好的!</p>
+                <div class="comment-footer">
+                  
+                  <div class="comment-number">62665人已评</div>
+                  
+                  <div class="comment-user">----- Robert Bao</div>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="features" style="margin-top:120px">
+      <div class="row">
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <picture>
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_1.webp" type="image/webp">
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_1.png" type="image/png">
+              <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_1.png" alt="简单易用的播放控制(几乎支持所有格式)">
+            </picture>
+          </div>
+
+          <div class="caption">
+            <h4>简单易用的播放控制(几乎支持所有格式)</h4>
+            <p>能播放几乎所有格式的本地和远程服务器音视频(samba/FTP 协议)。 例如mp4, mkv, rmvb, rm, avi, mov, wmv, flv, webm, mp3, wmv, wav, ape, flac, srt, ass, ssa 等。支持暂停/恢复/快进/快退/跳转到指定的播放时间。</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <picture>
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_2.webp" type="image/webp">
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_2.png" type="image/png">
+              <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_2.png" alt="灵活的播放速度">
+            </picture>
+          </div>
+
+          <div class="caption">
+            <h4>灵活的播放速度</h4>
+            <p>可在0.1x~8.0x之间任意调节倍速播放，同时支持逐帧播放模式</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <picture>
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_3.webp" type="image/webp">
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_3.png" type="image/png">
+              <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_3.png" alt="电视投屏，在大屏幕上看电影">
+            </picture>
+          </div>
+
+          <div class="caption">
+            <h4>电视投屏，在大屏幕上看电影</h4>
+            <p>目前市面上支持很全面的投屏播放器，支持各种DLNA协议的智能电视，三星，小米，LG，Sony等等主流品牌，也支持chromecast系列的设备，xbox游戏机，甚至支持roku电视，这个小众的品牌，海外的留学生朋友可以试试roku电视</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <picture>
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_4.webp" type="image/webp">
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_4.png" type="image/png">
+              <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_4.png" alt="在线字幕匹配下载">
+            </picture>
+          </div>
+
+          <div class="caption">
+            <h4>在线字幕匹配下载</h4>
+            <p>看剧最需要的就是字幕啊，自动在线字幕搜索，下载，免去了你找字幕的烦恼。</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <picture>
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_5.webp" type="image/webp">
+              <source data-srcset="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_5.png" type="image/png">
+              <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/blog/new_screenshot/omni_player_screenshot_5.png" alt="截图，转gif，录制视频">
+            </picture>
+          </div>
+
+          <div class="caption">
+            <h4>截图，转gif，录制视频</h4>
+            <p>截图可以快速生成多张截图，gif最多支持60秒的视频，视频录制高清截取</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    
+    <div class="features" style="margin-top:120px">
+      <h5 style="margin-bottom:36px">相关视频</h5>
+      <div class="row">
+        
+        <div id="bilibili-video" class="related_video">
+          <iframe class="lazy" title="MacOS 上的全能视频播放器"
+            src="https://player.bilibili.com/player.html?aid=854805750&#38;bvid=BV1wL4y1T7eA&#38;cid=741343388&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no"
+            framespacing="0" width="640" height="360" allowfullscreen="true"></iframe>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    
+    <div class="FAQ" style="margin-top:70px">
+      <h5>常见问题解答</h5>
+      <div class="question-list">
+        
+        <div class="question-item">
+          <p class="question">为什么Omni Player扫描不到我投屏的电视设备？</p>
+          <p class="answer">请确保你的投屏设备支持DLNA/Chromecast/Roku 协议。电视和Mac必须在同一网络下。尝试关闭科学SW，防火墙，某些阻挡网络连接杀毒软件。如果还是找不到设备，尝试重启Mac，投屏设备，路由器。 </p>
+        </div>
+        
+        <div class="question-item">
+          <p class="question">为什么我的文件使用Omni Player播放不成功</p>
+          <p class="answer">有些文件，尤其是自己录制的网课视频，因为格式可能有些特别，播放会出现一些问题，不过放心联系我们，有了样本视频文件，我们就能一步步提高。 </p>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    
+    <div class="app-list" style="margin-top:70px">
+      <h5 style="margin-bottom:18px">相关App</h5>
+      <div class="content-box row">
+        
+        <div class="col-sm-6 col-md-4 col-lg-4 app-item">
+          
+            <a href="/product/1592987853">
+              
+              <div class="thumbnail">
+                <picture>
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.webp" type="image/webp">
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.png" type="image/png">
+                  <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omiScreenRecorder.png" alt="...">
+                </picture>
+                <div class="message">
+                  <div class="title">
+                    Omi录屏专家
+                  </div>
+                  <div class="caption">
+                    Mac平台的免费录屏和摄像头录制工具
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-6 col-md-4 col-lg-4 app-item">
+          
+            <a href="/product/1536071582">
+              
+              <div class="thumbnail">
+                <picture>
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.webp" type="image/webp">
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.png" type="image/png">
+                  <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/omniconverter.png" alt="...">
+                </picture>
+                <div class="message">
+                  <div class="title">
+                    OmniConverter
+                  </div>
+                  <div class="caption">
+                    Mac 免费全能视频格式转换器
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-6 col-md-4 col-lg-4 app-item">
+          
+            <a href="/product/1499584783">
+              
+              <div class="thumbnail">
+                <picture>
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.webp" type="image/webp">
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.png" type="image/png">
+                  <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorsmarttv.png" alt="...">
+                </picture>
+                <div class="message">
+                  <div class="title">
+                    Oka Mirror 投屏专家 - 智能电视版
+                  </div>
+                  <div class="caption">
+                    苹果电脑投屏到DLNA智能电视，电视盒子
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-6 col-md-4 col-lg-4 app-item">
+          
+            <a href="/product/1512564265">
+              
+              <div class="thumbnail">
+                <picture>
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.webp" type="image/webp">
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.png" type="image/png">
+                  <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorchromecast.png" alt="...">
+                </picture>
+                <div class="message">
+                  <div class="title">
+                    Oka Mirror投屏专家 - Chromecast版
+                  </div>
+                  <div class="caption">
+                    苹果电脑投屏到Chromecast 
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-6 col-md-4 col-lg-4 app-item">
+          
+            <a href="/product/1523794932">
+              
+              <div class="thumbnail">
+                <picture>
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.webp" type="image/webp">
+                  <source data-srcset="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.png" type="image/png">
+                  <img class="lazy" data-src="https://cdn.zh.okaapps.com/resource/icon/app_icons/mirrorbrowser.png" alt="...">
+                </picture>
+                <div class="message">
+                  <div class="title">
+                    Oka Mirror投屏专家 - 浏览器通用版
+                  </div>
+                  <div class="caption">
+                    苹果电脑投屏到电视、手机浏览器
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    
+    <div class="FAQ">
+      <h5>相关文章</h5>
+      <div class="content-box row aritle-list">
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://www.appinn.com/omniplayer/">OmniPlayer – 支持投屏、自动搜索字幕，评分高达 4.8 分的全能视频播放器[macOS]</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/610df933158ed84e0bff1070">Mac平台视频播放器</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/610e4c26158ed84e0bff10af">Mac如何播放MKV/MP4?</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/6111385c158ed84e0bff111b">m3u8文件如何在Mac上播放?</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/61e014dbd42eee0aaef3ed8c">Mac上有哪些跟PotPlayer一样强大的播放器</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/62552eef948009206c55ffcd">电脑上如何看电视直播？</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/610964a2158ed84e0bff0d7e">苹果App付费后如何退款?</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/610964a2158ed84e0bff0d7f">如何取消自动续费的苹果Apple订阅服务?</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/61b342afd42eee0aaef3eb36">如果音频或视频文件无法在Mac上播放怎么办？</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/638f291a948009206c56165c">如何更改Mac系统默认的播放器？</a>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-lg-6" style="margin-bottom: 8px">
+          <a target="_blank" href="https://zh.okaapps.com/blog/63901a36948009206c5616c7">Mac上到底怎么看HDR视频？</a>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+
+    
+    <img id="1000236131_cpa_testing"
+      src="https://ads.trafficjunky.net/tj_ads_pt?a=1000236131&member_id=1002882661&cb=1&cti=1470926410&ctv=9.99&ctd=player_from_trafficjunky"
+      width="1" height="1" border="0" />
+    
+  </div>
+  
+  <footer>
+  <div class="center">
+    <p class="flex-center">
+      <picture>
+        <source srcset="https://cdn.zh.okaapps.com/icon/omi.webp" type="image/webp">
+        <source srcset="https://cdn.zh.okaapps.com/icon/omi.png" type="image/png">
+        <img src="https://cdn.zh.okaapps.com/icon/omi.png">
+      </picture>
+      为您带来更好的Mac、iOS应用体验
+    </p>
+    <hr>
+    
+    <div class="lanuage">
+      <ul>
+        <li class="active">
+          <a href="https://zh.okaapps.com">
+            简体中文
+          </a>
+        </li>
+  
+        <li>
+          <a href="https://www.okaapps.com">
+            English
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="links">
+      <a href="/terms">使用条款</a>
+      <span class="spa">|</span>
+      <a href="/privacy">隐私政策</a>
+      <span class="spa">|</span>
+      <a href="/support">联系我们</a>
+      <span class="spa">|</span>
+      <a href="/partners">合作伙伴</a>
+    </p>
+    <p class="copyright">
+      <span id="copyright">Copyright © 2020-2023 南京欧米软件开发有限公司.</span>
+      <a target="_blank" style="margin-left: 5px" href="https://beian.miit.gov.cn">苏ICP备2022000670号-1</a>
+      <span class="spa">|</span>
+      <a target="_blank"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302321294">苏公网安备 32011302321294号</a>
+    </p>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('copyright');
+    if (el) {
+      const startYear = 2020;
+      const currentYear = new Date().getFullYear();
+      el.textContent = `Copyright © ${startYear}-${currentYear} 南京欧米软件开发有限公司.`;
+    }
+  });
+</script>
+
+  <script defer src="https://cdn.zh.okaapps.com/js/main_20251216.js"></script>
+  <script src="https://cdn.zh.okaapps.com/js/lazyload.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTND1RDVGE">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JTND1RDVGE');
+    new LazyLoad({ elements_selector: ".lazy" })
+
+    function sendEvent(action, category, label) {
+      gtag('event', action, {
+        'event_category': category,
+        'event_label': label
+      });
+    }
+
+    if (window.location.hash) {
+      let hash = window.location.hash.split("#")[1]
+      let originalStoreHref = document.getElementById("store_download_link").href
+      let originalAppHref = document.getElementById("app_download_link").href
+      if (originalStoreHref.includes("macappstore")) {
+        document.getElementById("store_download_link").href = originalStoreHref + "_" + hash
+      }
+      if (originalAppHref.includes("macappstore")) {
+        document.getElementById("app_download_link").href = originalStoreHref + "_" + hash
+      }
+    }
+
+    function showApkPopup() {
+      document.getElementById('download-apk-overlay').style.display = 'flex';
+    }
+
+    function hideApkPopup() {
+      document.getElementById('download-apk-overlay').style.display = 'none';
+    }
+
+    // 点击遮罩关闭弹窗
+    document.getElementById('download-apk-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideApkPopup();
+      }
+    });
+
+    function showTVPopup() {
+      document.getElementById('download-tv-overlay').style.display = 'flex';
+    }
+
+    function hideTVPopup() {
+      document.getElementById('download-tv-overlay').style.display = 'none';
+    }
+
+    // 点击遮罩关闭弹窗
+    document.getElementById('download-tv-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideTVPopup();
+      }
+    });
+
+    // If URL contains ?ref=baidu_xxxxx (value starts with 'baidu'), switch download links,
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search || "");
+        var ref = params.get('ref') || '';
+        if (typeof ref === 'string' && ref.indexOf('baidu') === 0) {
+          var mobile = document.getElementById('download-apk-mobile');
+          if (mobile) mobile.href = 'https://download.dacall.ai/mobile/vidhub-universal-baidu-release.apk';
+
+          var tv = document.getElementById('download-apk-tv');
+          if (tv) tv.href = 'https://download.dacall.ai/tv/vidhub-TV-universal-baidu-release.apk';
+        }
+      } catch (e) {
+        // no-op
+      }
+    })();
+
+    // Baidu promotion visit tracking for VidHub product pages.
+    (function () {
+      try {
+        const currentUrl = new URL(window.location.href);
+        const pathParts = currentUrl.pathname.split('/').filter(function (part) {
+          return part;
+        });
+        const appId = pathParts[pathParts.length - 1];
+        const ref = (currentUrl.searchParams.get("ref") || "").trim();
+        const bdType = (currentUrl.searchParams.get("bd_type") || "").trim();
+
+        if (appId !== "1659622164") return;
+        if (ref.indexOf("baidu") !== 0) return;
+        if (bdType.toLowerCase() === "home") return;
+
+        const bdVid = (currentUrl.searchParams.get("bd_vid") || "").trim();
+        const promotionEndpoint = "https://ga.7littlemen.com/api/v1/baidu/promotion";
+        const promotionPayload = {
+          logidUrl: currentUrl.href,
+          appId: "1659622164",
+          appName: "VidHub"
+        };
+
+        const sendPromotionLog = () => {
+          fetch(promotionEndpoint, {
+            method: "POST",
+            mode: "cors",
+            credentials: "omit",
+            keepalive: true,
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(promotionPayload)
+          }).catch(function () {});
+        };
+
+        if (bdVid) {
+          sendPromotionLog();
+        }
+      } catch (e) {
+        // no-op
+      }
+    })();
+
+    // Channel / Promotion Code tracking for appId 1659622164
+    // URL format: ?channel=ChannelName_PromoCode
+    (function () {
+      try {
+        var pathParts = window.location.pathname.split('/');
+        var appId = pathParts[pathParts.length - 1];
+        if (appId !== '1659622164') return;
+
+        var params = new URLSearchParams(window.location.search || '');
+        var channelParam = params.get('channel') || '';
+        if (!channelParam) return;
+
+        var underscoreIndex = channelParam.indexOf('_');
+        if (underscoreIndex === -1) return;
+
+        var channel = channelParam.substring(0, underscoreIndex);
+        var promoCode = channelParam.substring(underscoreIndex + 1);
+        if (!channel || !promoCode) return;
+
+        // Silently POST page visit
+        fetch('https://vh.api.okaapps.com/api/v1/channel/' + promoCode, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true
+        }).catch(function () {});
+
+        // Silently POST on download link clicks
+        ['store_download_link', 'android_store_download_link', 'android_tv_download_link'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('click', function () {
+              fetch('https://vh.api.okaapps.com/api/v1/channel/' + promoCode + '/download', {
+                method: 'POST',
+                mode: 'no-cors',
+                keepalive: true
+              }).catch(function () {});
+            });
+          }
+        });
+      } catch (e) {
+        // no-op
+      }
+    })();
+  </script>
+</body>
+
+</html>

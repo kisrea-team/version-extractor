@@ -1,0 +1,2774 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="shortcut icon" type="image/png" href="/blog//assets/favicons/favicon.ico">
+  <script src="https://tableplus.com/resources/js/jquery.min.js"></script>
+  <script src="https://tableplus.com/resources/js/blog_bootstrap.min.js"></script>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Changelogs | TablePlus</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Changelogs" />
+<meta name="author" content="Huy Pham" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Modern, native SQL client with intuitive GUI tools to create, access, query &amp; edit multiple relational databases: MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Amazon Redshift, MariaDB, CockroachDB, Vertica, and Redis." />
+<meta property="og:description" content="Modern, native SQL client with intuitive GUI tools to create, access, query &amp; edit multiple relational databases: MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Amazon Redshift, MariaDB, CockroachDB, Vertica, and Redis." />
+<link rel="canonical" href="https://tableplus.com/blog/2017/02/changelogs.html" />
+<meta property="og:url" content="https://tableplus.com/blog/2017/02/changelogs.html" />
+<meta property="og:site_name" content="TablePlus" />
+<meta property="og:image" content="https://tableplus.com/blog/assets/images/native-tool/tableplus-connections.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-02-09T17:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://tableplus.com/blog/assets/images/native-tool/tableplus-connections.png" />
+<meta property="twitter:title" content="Changelogs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Huy Pham"},"dateModified":"2017-02-09T17:00:00+00:00","datePublished":"2017-02-09T17:00:00+00:00","description":"Modern, native SQL client with intuitive GUI tools to create, access, query &amp; edit multiple relational databases: MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Amazon Redshift, MariaDB, CockroachDB, Vertica, and Redis.","headline":"Changelogs","image":"https://tableplus.com/blog/assets/images/native-tool/tableplus-connections.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tableplus.com/blog/2017/02/changelogs.html"},"url":"https://tableplus.com/blog/2017/02/changelogs.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://tableplus.com/blog/feed.xml" title="TablePlus" /></head>
+
+  <body class="bg-other">
+    
+    <header id="header">
+  <div
+    style="width: 100%; font-size: 16px; line-height: 24px; background-color: #59b200; color: white; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; font-weight: 500; padding-top: 8px; padding-bottom: 8px; display: none;">
+    The only chance of the year, use
+    <span
+      style="font-weight: 600; color: white; margin-left: 4px; background-color: black; padding-left: 8px; padding-right: 8px; border-radius: 4px;">
+      BLACK_FRIDAY_2025
+    </span>
+    <span style="padding-left: 4px;"> for <span
+        style="font-weight: 600; color: white; background-color: black; border-radius: 4px; padding-top: 3px; padding-bottom: 3px; padding-left: 8px; padding-right: 8px;">25%
+        off</span></span><a href="/pricing"
+      style="color: white; text-decoration-line: underline; margin-left: 16px;">Buy
+      now →</a>
+  </div>
+  <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+    <div class="row">
+      <div class="w-full h-full padding-zero">
+        <a id="logo" class="site-title" href="https://tableplus.com">
+          <img src="/blog//assets/favicons/apple-icon.png"
+            srcset="/blog//assets/favicons/apple-icon-60x60.png 1x, /blog//assets/favicons/apple-icon-120x120.png 2x">
+          <h1>TablePlus</h1>
+        </a>
+      </div>
+      <div class="col-md-8 col-sm-8">
+        <nav id="nav" class="dropdown">
+          <button id="button-burger" class="dropdown-toggle" href="#" id="dropdown-menu-button" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="burger-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+          <ul>
+            
+            <li class="li-row "><a href="/blog">Blog</a></li>
+            
+            <li class="li-row "><a href="/pricing">Pricing</a></li>
+            
+            <li class="li-row "><a href="https://docs.tableplus.com">Docs</a></li>
+            
+            <li class="li-row "><a href="/contact">Contact</a></li>
+            
+            <li class="li-row download-button"><a href="/download">Download</a></li>
+            
+          </ul>
+          <ul id="dropdown-menu" style="display: none;">
+            
+            <li class=""><a href="/blog">Blog</a></li>
+            
+            <li class=""><a href="/pricing">Pricing</a></li>
+            
+            <li class=""><a href="https://docs.tableplus.com">Docs</a></li>
+            
+            <li class=""><a href="/contact">Contact</a></li>
+            
+            <li class="download-button-mobile"><a href="/download">Download</a></li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+</header>
+<script>
+  const burger = document.getElementById("button-burger");
+  const menu = document.getElementById("dropdown-menu");
+  if (burger && menu) {
+    burger.addEventListener("click", function (e) {
+      if (menu.style.display !== "none") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "block";
+      }
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  }
+  document.addEventListener("click", function () {
+    if (menu.style.display !== "none") {
+      menu.style.display = "none";
+    }
+  });
+
+</script>
+    <main class="page-content" aria-label="Content">
+      <div class="container">
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <header class="post-header">
+      <h2 class="post-title" itemprop="name headline">Changelogs</h2>
+      <p class="post-meta">
+        
+          
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="https://github.com/huyphams">Huy Pham</a></span></span> •
+        
+        <time datetime="2017-02-09T17:00:00+00:00" itemprop="datePublished">
+           February 9, 2017
+        </time>
+      </p>
+    </header>
+
+    <div class="post-content" itemprop="articleBody">
+      <p align="left">
+    <a href="https://tableplus.com/osx/changelog">
+        <img src="/assets/images/main/macos-blue.svg" alt="macOS" />
+    </a>
+    <a href="https://tableplus.com/win/changelog">
+        <img src="/assets/images/main/windows-gray.svg" alt="Windows" />
+    </a>
+    <a href="https://tableplus.com/linux/changelog">
+        <img src="/assets/images/main/linux-gray.svg" alt="Linux" />
+    </a>
+</p>
+
+<hr />
+
+<h3 id="version-2686-752---macos-27-golden-gate">Version 26.8.6 (752) - macOS 27 Golden Gate</h3>
+<h4 id="release-date-29-july-2026">Release date: 29 July 2026.</h4>
+<h5 id="download"><a href="https://files.tableplus.com/macos/752/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3c9aaa3b3258d743e1d65ccd1092cc831579808244b46f4ea8eb34420a3950c3">SHA: <code class="language-plaintext highlighter-rouge">3c9aaa3b3258d743e1d65ccd1092cc831579808244b46f4ea8eb34420a3950c3</code></h5>
+
+<ul>
+  <li>Updated app layout and optimized for macOS 27 Golden Gate.</li>
+  <li>Bug fixes and new features.</li>
+</ul>
+
+<h3 id="version-2676-742---macos-27-golden-gate">Version 26.7.6 (742) - macOS 27 Golden Gate</h3>
+<h4 id="release-date-16-july-2026">Release date: 16 July 2026.</h4>
+<h5 id="download-1"><a href="https://files.tableplus.com/macos/742/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6cf9e32a98c370ef3d0a8e3b893ae0be5b2648c0a2903ada8dd744e65130de4a">SHA: <code class="language-plaintext highlighter-rouge">6cf9e32a98c370ef3d0a8e3b893ae0be5b2648c0a2903ada8dd744e65130de4a</code></h5>
+
+<ul>
+  <li>Updated app layout and optimized for macOS 27 Golden Gate.</li>
+  <li>Supported LLM Custom Agent.</li>
+  <li>Bug fixes and new features.</li>
+</ul>
+
+<h3 id="version-2660-730---mcp-server--macos-27-golden-gate">Version 26.6.0 (730) - MCP Server + macOS 27 Golden Gate</h3>
+<h4 id="release-date-25-june-2026">Release date: 25 June 2026.</h4>
+<h5 id="download-2"><a href="https://files.tableplus.com/macos/730/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1f4273ff0c4bb002b99c800b1aef61a6b55ba648d7a01c479028f9543874adfe">SHA: <code class="language-plaintext highlighter-rouge">1f4273ff0c4bb002b99c800b1aef61a6b55ba648d7a01c479028f9543874adfe</code></h5>
+
+<ul>
+  <li>Optimize for MacOS 27 Golden Gate.</li>
+  <li>[Metrics Board] Big update: button, importer, and exporter.</li>
+  <li>[SQLite] Upgrade driver.</li>
+  <li>[SSH] Added version 0.12 option.</li>
+  <li>[MCP] Fixed a bug where TablePlus didn’t accept self-signed SSL connections.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-722-722---mcp-server--macos-27-golden-gate">Version 7.2.2 (722) - MCP Server + macOS 27 Golden Gate</h3>
+<h4 id="release-date-14-june-2026">Release date: 14 June 2026.</h4>
+<h5 id="download-3"><a href="https://files.tableplus.com/macos/722/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-dac6e5c8503e73cacf09b7bc3cca5ef8d64950f9308e5328421e12951e42fb1e">SHA: <code class="language-plaintext highlighter-rouge">dac6e5c8503e73cacf09b7bc3cca5ef8d64950f9308e5328421e12951e42fb1e</code></h5>
+
+<ul>
+  <li>Optimize for MacOS 27 Golden Gate.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-718-718---mcp-server--macos-27-golden-gate">Version 7.1.8 (718) - MCP Server + macOS 27 Golden Gate</h3>
+<h4 id="release-date-10-june-2026">Release date: 10 June 2026.</h4>
+<h5 id="download-4"><a href="https://files.tableplus.com/macos/718/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e342cdda6dc1cbae3add429843c2c92d4c056e66b3121aac632f37cc54775e24">SHA: <code class="language-plaintext highlighter-rouge">e342cdda6dc1cbae3add429843c2c92d4c056e66b3121aac632f37cc54775e24</code></h5>
+
+<ul>
+  <li>[AI] Updated AI chat, DeepSeek handling, API first-try behavior, and AI hang fixes.</li>
+  <li>[AI] Introduced and reworked TablePlus MCP.</li>
+  <li>[AI] Added Codex CLI support.</li>
+  <li>[macOS] Fixed macOS 27 status bar behavior.</li>
+  <li>[Feat] Updated localization and menu content.</li>
+  <li>[Feat] Added native diagram.</li>
+  <li>[Feat] Added export to Excel for results, tables, multiple tables, and multiple results.</li>
+  <li>[Feat] Added JSON import, auto-pretty JSON, and quick-look JSON editor fixes.</li>
+  <li>[Feat] Added PostgreSQL table privilege support.</li>
+  <li>[ClickHouse] Upgrade driver and fix many potential crash issue.</li>
+  <li>[DuckDB] Updated driver and bug fixes.</li>
+  <li>Many other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-710-710---liquid-glass">Version 7.1.0 (710) - Liquid Glass</h3>
+<h4 id="release-date-26-may-2026">Release date: 26 May 2026.</h4>
+<h5 id="download-5"><a href="https://files.tableplus.com/macos/710/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e409a746cf45ac33d578b2c4062578c4edf090174c729304f901cafd1cd90ad3">SHA: <code class="language-plaintext highlighter-rouge">e409a746cf45ac33d578b2c4062578c4edf090174c729304f901cafd1cd90ad3</code></h5>
+
+<ul>
+  <li>[DeepSeek] Fixed a bug with tool invocation.</li>
+  <li>Fixed a bug where the Set Contains button was not displayed on the right sidebar.</li>
+  <li>Added an auto pretty JSON feature.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-706-706---liquid-glass">Version 7.0.6 (706) - Liquid Glass</h3>
+<h4 id="release-date-21-may-2026">Release date: 21 May 2026.</h4>
+<h5 id="download-6"><a href="https://files.tableplus.com/macos/706/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6c2ea52452e8eea230f93d40e8ff2f46814bdf9c683e06b79f94fb44d977847e">SHA: <code class="language-plaintext highlighter-rouge">6c2ea52452e8eea230f93d40e8ff2f46814bdf9c683e06b79f94fb44d977847e</code></h5>
+
+<ul>
+  <li>Optimize Liquid Glass</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-704-704---liquid-glass">Version 7.0.4 (704) - Liquid Glass</h3>
+<h4 id="release-date-19-may-2026">Release date: 19 May 2026.</h4>
+<h5 id="download-7"><a href="https://files.tableplus.com/macos/704/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-bbebf192c59905456d411891ef4ed2f7ddeb9ee8f7a1f65a3ef06094996ad53f">SHA: <code class="language-plaintext highlighter-rouge">bbebf192c59905456d411891ef4ed2f7ddeb9ee8f7a1f65a3ef06094996ad53f</code></h5>
+
+<ul>
+  <li>Optimize Liquid Glass</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-700-700---liquid-glass">Version 7.0.0 (700) - Liquid Glass</h3>
+<h4 id="release-date-18-may-2026">Release date: 18 May 2026.</h4>
+<h5 id="download-8"><a href="https://files.tableplus.com/macos/700/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b1234c6c8b8d29c031b1ce7f05473143c7cafdeae04ce7c20b27fc932d3886ae">SHA: <code class="language-plaintext highlighter-rouge">b1234c6c8b8d29c031b1ce7f05473143c7cafdeae04ce7c20b27fc932d3886ae</code></h5>
+
+<ul>
+  <li>New UI: Liquid Glass</li>
+  <li>[SQL Query] Export multiple results in tab mode</li>
+  <li>Added “Copy Cell Value” to the main menu</li>
+  <li>[LibSQL] Support for bootstrap command</li>
+</ul>
+
+<h3 id="version-696-676---bug-fixes-and-improvements">Version 6.9.6 (676) - Bug fixes and improvements.</h3>
+<h4 id="release-date-12-may-2026">Release date: 12 May 2026.</h4>
+<h5 id="download-9"><a href="https://files.tableplus.com/macos/676/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-cf73bda94dccb38520ae566c5f961ecae8ac738d3b2c0bf3e7440db9021f1080">SHA: <code class="language-plaintext highlighter-rouge">cf73bda94dccb38520ae566c5f961ecae8ac738d3b2c0bf3e7440db9021f1080</code></h5>
+
+<ul>
+  <li>[DuckDB] Updated Official version 1.5.2</li>
+  <li>[DuckDB] Added support for Geometry</li>
+  <li>[PostgreSQL] Added support for SSL Negotiation</li>
+  <li>SQLite] Fixed column type, which was occasionally null</li>
+  <li>Open Anything now supports searching for features</li>
+  <li>Various bug fixes and improvements</li>
+</ul>
+
+<h3 id="version-691-670---bug-fixes-and-improvements">Version 6.9.1 (670) - Bug fixes and improvements.</h3>
+<h4 id="release-date-2-may-2026">Release date: 2 May 2026.</h4>
+<h5 id="download-10"><a href="https://files.tableplus.com/macos/670/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-9649cc219ef7c18d35023366a96732e116c6074896594aef0fd72281d53e53d9">SHA: <code class="language-plaintext highlighter-rouge">9649cc219ef7c18d35023366a96732e116c6074896594aef0fd72281d53e53d9</code></h5>
+
+<ul>
+  <li>Added a column list to the left sidebar.</li>
+  <li>[DynamoDB] Fixed a bug where TablePlus could not fetch the item list.</li>
+  <li>[DuckDB] Updated to DuckDB 1.6.0.</li>
+  <li>Updated the app menu and layout.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-686-662---bug-fixes-and-improvements">Version 6.8.6 (662) - Bug fixes and improvements.</h3>
+<h4 id="release-date-27-march-2026">Release date: 27 March 2026.</h4>
+<h5 id="download-11"><a href="https://files.tableplus.com/macos/662/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-551d2c49365f4638effa9e03718722281246e431c8c23e0a2e14c73c646c497d">SHA: <code class="language-plaintext highlighter-rouge">551d2c49365f4638effa9e03718722281246e431c8c23e0a2e14c73c646c497d</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus did not prioritize the user/port in the SSH form.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-682-656---bug-fixes-and-improvements">Version 6.8.2 (656) - Bug fixes and improvements.</h3>
+<h4 id="release-date-2-march-2026">Release date: 2 March 2026.</h4>
+<h5 id="download-12"><a href="https://files.tableplus.com/macos/656/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b8cebd62421563bb654e82b0226bab081d522330007c8b9039ef908c85cc012b">SHA: <code class="language-plaintext highlighter-rouge">b8cebd62421563bb654e82b0226bab081d522330007c8b9039ef908c85cc012b</code></h5>
+
+<ul>
+  <li>[DuckDB] Upgraded driver.</li>
+  <li>Fixed a bug where the item overview and process list lost their sorting after a refresh.</li>
+  <li>Fixed a bug where AI Client could not save default model.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-680-654---optimize-for-macos-tahoe">Version 6.8.0 (654) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-29-december-2025">Release date: 29 December 2025.</h4>
+<h5 id="download-13"><a href="https://files.tableplus.com/macos/650/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-44e2346be3ed22ea8ef749825f376531e9f73e2bf323dc23364bbb4a7f438464">SHA: <code class="language-plaintext highlighter-rouge">44e2346be3ed22ea8ef749825f376531e9f73e2bf323dc23364bbb4a7f438464</code></h5>
+
+<ul>
+  <li>Optimized for macOS Tahoe.</li>
+  <li>[PostgreSQL] Updated driver.</li>
+  <li>[ClickHouse] Fixed a bug where the HTTP Driver could not decode bool values.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-678-650---optimize-for-macos-tahoe">Version 6.7.8 (650) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-5-december-2025">Release date: 5 December 2025.</h4>
+<h5 id="download-14"><a href="https://files.tableplus.com/macos/650/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5ac0992e6b565f44dd1efb77b32c150fd6b2ed7c1d16070edf16776ec2ffea5f">SHA: <code class="language-plaintext highlighter-rouge">5ac0992e6b565f44dd1efb77b32c150fd6b2ed7c1d16070edf16776ec2ffea5f</code></h5>
+
+<ul>
+  <li>Optimized for macOS Tahoe.</li>
+  <li>Improved data grid performance (10x faster with large data sets).</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-674-642---optimize-for-macos-tahoe">Version 6.7.4 (642) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-17-november-2025">Release date: 17 November 2025.</h4>
+<h5 id="download-15"><a href="https://files.tableplus.com/macos/642/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-55ef4c53a132f2f56ccea3519cceaaab5b313558634cc0a0589594787e4ce779">SHA: <code class="language-plaintext highlighter-rouge">55ef4c53a132f2f56ccea3519cceaaab5b313558634cc0a0589594787e4ce779</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus could not authorize GitHub Copilot.</li>
+  <li>Fixed a bug where TablePlus could crash when opening a new split screen.</li>
+  <li>Updated libssh.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-673-640---optimize-for-macos-tahoe">Version 6.7.3 (640) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-7-november-2025">Release date: 7 November 2025.</h4>
+<h5 id="download-16"><a href="https://files.tableplus.com/macos/640/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-56bb0d0da9bcf3f8e30cc7b78585c8c0e2db64b47ef68f56521230927016e621">SHA: <code class="language-plaintext highlighter-rouge">56bb0d0da9bcf3f8e30cc7b78585c8c0e2db64b47ef68f56521230927016e621</code></h5>
+
+<ul>
+  <li>Optimized for macOS Tahoe.</li>
+  <li>Fixed a bug where the database name was truncated in the backup window.</li>
+  <li>Fixed a bug involving a missing separator line in the item overview.</li>
+  <li>Fixed a bug where the notification text was missing.</li>
+  <li>[PostgreSQL] Added PostgreSQL 18 binaries.</li>
+</ul>
+
+<h3 id="version-672-638---optimize-for-macos-tahoe">Version 6.7.2 (638) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-3-november-2025">Release date: 3 November 2025.</h4>
+<h5 id="download-17"><a href="https://files.tableplus.com/macos/638/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5cca3b3824e5ecf61a0903aba5c02d0f2c234212f927f7751270d0f993322532">SHA: <code class="language-plaintext highlighter-rouge">5cca3b3824e5ecf61a0903aba5c02d0f2c234212f927f7751270d0f993322532</code></h5>
+
+<ul>
+  <li>Optimize for MacOS Tahoe.</li>
+  <li>Fixed a bug where the Lock Screen could be bypassed by switching the database.</li>
+  <li>Many bug fixes (mostly on Tahoe) and improvements.</li>
+</ul>
+
+<h3 id="version-671-636---optimize-for-macos-tahoe">Version 6.7.1 (636) - Optimize for MacOS Tahoe</h3>
+<h4 id="release-date-26-september-2025">Release date: 26 September 2025.</h4>
+<h5 id="download-18"><a href="https://files.tableplus.com/macos/636/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c9777e1eae323fa832a1c099b3f7ec2d78463060175ab36af5dc53a7291d33b3">SHA: <code class="language-plaintext highlighter-rouge">c9777e1eae323fa832a1c099b3f7ec2d78463060175ab36af5dc53a7291d33b3</code></h5>
+
+<ul>
+  <li>Optimize for MacOS Tahoe.</li>
+  <li>Many bug fixes (mostly on Tahoe) and improvements.</li>
+</ul>
+
+<h3 id="version-670-634---bug-fixes-and-improvements">Version 6.7.0 (634) - Bug fixes and improvements</h3>
+<h4 id="release-date-5-september-2025">Release date: 5 September 2025.</h4>
+<h5 id="download-19"><a href="https://files.tableplus.com/macos/634/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b8ec7898fb4bbe0d6f42554b0140aafd277b162b4606d6919e36d0524541b1f5">SHA: <code class="language-plaintext highlighter-rouge">b8ec7898fb4bbe0d6f42554b0140aafd277b162b4606d6919e36d0524541b1f5</code></h5>
+
+<ul>
+  <li>[DynamoDB] Added DynamoDB - Beta.</li>
+  <li>Improved the metrics board and fixed some minor issues.</li>
+  <li>Fixed a bug where the passcode lock did not work with TouchID.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-668-632---tableplus--llm-chat">Version 6.6.8 (632) - TablePlus + LLM Chat</h3>
+<h4 id="release-date-15-july-2025">Release date: 15 July 2025.</h4>
+<h5 id="download-20"><a href="https://files.tableplus.com/macos/632/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1b6bea30abbbcb21a527cb6ab7d72a5285a124608c883ff6ad43b43f4fb47040">SHA: <code class="language-plaintext highlighter-rouge">1b6bea30abbbcb21a527cb6ab7d72a5285a124608c883ff6ad43b43f4fb47040</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus could not parse OpenAI responses.</li>
+  <li>Fixed a bug where TablePlus failed to retrieve the table context in MySQL.</li>
+  <li>Added an option in SQL Query allowing users to restore all SQL Query Tabs.</li>
+  <li>Added an option in the table view settings allowing users to choose the default content order.</li>
+  <li>Improved app performance and updated the app layout to align with the new macOS design pattern.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-665-626---tableplus--llm-chat">Version 6.6.5 (626) - TablePlus + LLM Chat</h3>
+<h4 id="release-date-27-june-2025">Release date: 27 June 2025.</h4>
+<h5 id="download-21"><a href="https://files.tableplus.com/macos/624/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-57197c1e35e0c2e45f1a2bf893eb8909118166ecdcfd0bdbd897c37ef5659329">SHA: <code class="language-plaintext highlighter-rouge">57197c1e35e0c2e45f1a2bf893eb8909118166ecdcfd0bdbd897c37ef5659329</code></h5>
+
+<ul>
+  <li>Updated Welcome Screen Layout.</li>
+  <li>Updated Lib SSH.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-664-624---tableplus--llm-chat">Version 6.6.4 (624) - TablePlus + LLM Chat</h3>
+<h4 id="release-date-24-june-2025">Release date: 24 June 2025.</h4>
+<h5 id="download-22"><a href="https://files.tableplus.com/macos/624/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-d7a7c6b762db076565c1cb640a95e5c116b0993123387c20f38e03a808502657">SHA: <code class="language-plaintext highlighter-rouge">d7a7c6b762db076565c1cb640a95e5c116b0993123387c20f38e03a808502657</code></h5>
+
+<ul>
+  <li>Enabled the LLM Chat on the right sidebar.</li>
+  <li>Many bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-648-608---bug-fixes-and-improvements">Version 6.4.8 (608) - Bug fixes and improvements</h3>
+<h4 id="release-date-12-may-2025">Release date: 12 May 2025.</h4>
+<h5 id="download-23"><a href="https://files.tableplus.com/macos/608/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c1be5a73cdaef8327b849fa1b675ba6a2a588f37e35bbd25212159b4e3b1b32d">SHA: <code class="language-plaintext highlighter-rouge">c1be5a73cdaef8327b849fa1b675ba6a2a588f37e35bbd25212159b4e3b1b32d</code></h5>
+
+<ul>
+  <li>[DuckDB] Updated driver.</li>
+  <li>Supported advance export tables.</li>
+  <li>Disable lazy load schema items by default.</li>
+  <li>Many bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-644-604---bug-fixes-and-improvements">Version 6.4.4 (604) - Bug fixes and improvements</h3>
+<h4 id="release-date-7-april-2025">Release date: 7 April 2025.</h4>
+<h5 id="download-24"><a href="https://files.tableplus.com/macos/604/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-cf37640e35862a6736fe8d4408fdbe5f701d93813e0cc426baf43e44eec2ab20">SHA: <code class="language-plaintext highlighter-rouge">cf37640e35862a6736fe8d4408fdbe5f701d93813e0cc426baf43e44eec2ab20</code></h5>
+
+<ul>
+  <li>[SSH] Updated SSH library: added more modern encryption exchange methods.</li>
+  <li>Fixed a bug where TablePlus Safe Mode was not exported or imported.</li>
+  <li>[PostgreSQL] Fixed a bug where TablePlus could not update partitioned tables.</li>
+  <li>[PostgreSQL] Fixed a bug where the Enum creation statement exported could be placed in the wrong schema.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-642-600---bug-fixes-and-improvements">Version 6.4.2 (600) - Bug fixes and improvements</h3>
+<h4 id="release-date-21-march-2025">Release date: 21 March 2025.</h4>
+<h5 id="download-25"><a href="https://files.tableplus.com/macos/600/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-9ab9be701020c7f8271d9387e3e4c190ec8c6dcf8f02e20ed2531e27a5b645b6">SHA: <code class="language-plaintext highlighter-rouge">9ab9be701020c7f8271d9387e3e4c190ec8c6dcf8f02e20ed2531e27a5b645b6</code></h5>
+
+<ul>
+  <li>Added “Copy Name” menu in Database Listing.</li>
+  <li>Fixed a bug where TablePlus could not search within results when the result contained more than one column with the same name.</li>
+  <li>Supported editing query results from JOIN queries and other queries.</li>
+  <li>Fixed a bug in the formatter where it didn’t work on incomplete queries or queries containing syntax errors.</li>
+  <li>Added a database filter to the process list/running queries.</li>
+  <li>Fixed a bug where the wrong color appeared in settings.</li>
+  <li>Fixed a bug where custom tag colors were not saved.</li>
+  <li>[ClickHouse] Supported Int128, UInt128, Int256, and UInt256.</li>
+  <li>[DuckDB] Updated to version 1.3.0.</li>
+  <li>Shortcut Key: Cmd + Shift + D to split the screen on the right.</li>
+  <li>And many other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="version-632-586---bug-fixes-and-improvements">Version 6.3.2 (586) - Bug fixes and improvements</h3>
+<h4 id="release-date-18-february-2025">Release date: 18 February 2025.</h4>
+<h5 id="download-26"><a href="https://files.tableplus.com/macos/584/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-73d6c0d1b5b22d2e67e1d68b86ebf2260ba219b617991d7cf7216e409fa88309">SHA: <code class="language-plaintext highlighter-rouge">73d6c0d1b5b22d2e67e1d68b86ebf2260ba219b617991d7cf7216e409fa88309</code></h5>
+
+<ul>
+  <li>New Welcome Screen UI.</li>
+  <li>Added support for back and forward navigation.</li>
+  <li>Added support for splitting the workspace horizontally.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-578---bug-fixes-and-improvements">Build 578 - Bug fixes and improvements</h3>
+<h4 id="release-date-17-december-2024">Release date: 17 December 2024.</h4>
+<h5 id="download-27"><a href="https://files.tableplus.com/macos/578/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3850f073869024f66a9a0a443b193d204e0d5dde91f3a2ed0db3050eab4ab994">SHA: <code class="language-plaintext highlighter-rouge">3850f073869024f66a9a0a443b193d204e0d5dde91f3a2ed0db3050eab4ab994</code></h5>
+
+<ul>
+  <li>Fixed a bug where users couldn’t trigger line commands.</li>
+  <li>Beautify now displays an error instead of doing nothing when errors occur.</li>
+  <li>Updated the SQL Query Ruler layout: removed the separator and increased the line number size.</li>
+  <li>Updated the layout of the welcome screen.</li>
+  <li>[DuckDB] Use main as the default schema.</li>
+  <li>[DuckDB] Fixed a bug where TablePlus could not display UUID, Struct, and HugeInt values.</li>
+</ul>
+
+<h3 id="build-576---bug-fixes-and-improvements">Build 576 - Bug fixes and improvements</h3>
+<h4 id="release-date-24-november-2024">Release date: 24 November 2024.</h4>
+<h5 id="download-28"><a href="https://files.tableplus.com/macos/576/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-de3b708d6318e462900d42e8077a255c8e77513a4e480656d8ab8452182e4274">SHA: <code class="language-plaintext highlighter-rouge">de3b708d6318e462900d42e8077a255c8e77513a4e480656d8ab8452182e4274</code></h5>
+
+<ul>
+  <li>Fixed a bug where the metrics board object did not work with multiple statements.</li>
+  <li>Improved the beautify feature and fixed various SQL beautification bugs.</li>
+  <li>[DuckDB] Fixed a bug where TablePlus could not load decimals.</li>
+  <li>[DuckDB] Updated to version 1.1.3.</li>
+  <li>Fixed an incorrect tooltip on the title bar.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-574---bug-fixes-and-improvements">Build 574 - Bug fixes and improvements</h3>
+<h4 id="release-date-9-october-2024">Release date: 9 October 2024.</h4>
+<h5 id="download-29"><a href="https://files.tableplus.com/macos/574/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c283490caa6b13d89409ddb7557bc32ccc3bcf936151da33cabb0f55811370ab">SHA: <code class="language-plaintext highlighter-rouge">c283490caa6b13d89409ddb7557bc32ccc3bcf936151da33cabb0f55811370ab</code></h5>
+
+<ul>
+  <li>[MySQL] Added SNI support.</li>
+  <li>[PostgreSQL] Added support for disabling channel binding.</li>
+  <li>[PostgreSQL] Added PostgreSQL 17 binaries.</li>
+  <li>[SQLite] Updated SQLite to version 3.46.1.</li>
+  <li>[DuckDB] Updated DuckDB to version 1.1.1.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-570---bug-fixes-and-improvements">Build 570 - Bug fixes and improvements</h3>
+<h4 id="release-date-11-september-2024">Release date: 11 September 2024.</h4>
+<h5 id="download-30"><a href="https://files.tableplus.com/macos/570/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-a4b466cf502cdcd54c95cb636dd69a0b3355b72140196cc7ec10591f6edb875a">SHA: <code class="language-plaintext highlighter-rouge">a4b466cf502cdcd54c95cb636dd69a0b3355b72140196cc7ec10591f6edb875a</code></h5>
+
+<ul>
+  <li>Fixed a bug where float values in JSON were sometimes rounded.</li>
+  <li>Allowed export/import of the metrics board with an empty password.</li>
+  <li>Fixed URL schema for Mongo, SQLite, DuckDB, and CloudflareD1.</li>
+  <li>Updated toolbar icons.</li>
+  <li>Supported deep linking for row level.</li>
+  <li>Various bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-568---bug-fixes-and-improvements">Build 568 - Bug fixes and improvements</h3>
+<h4 id="release-date-5-july-2024">Release date: 5 July 2024.</h4>
+<h5 id="download-31"><a href="https://files.tableplus.com/macos/568/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6af8c2a71145cd7e885146d3bccca8686b66b9c655e7dbd1b964caf38633e4e2">SHA: <code class="language-plaintext highlighter-rouge">6af8c2a71145cd7e885146d3bccca8686b66b9c655e7dbd1b964caf38633e4e2</code></h5>
+
+<ul>
+  <li>[DuckDB] Support schema.</li>
+  <li>[MySQL] Fixed quote in statistics query.</li>
+  <li>[Layout] Fixed a bug where the right sidebar contents were mark red.</li>
+  <li>Added a reconnect button in the SQL Query disconnect popup.</li>
+  <li>Fixed a bug where the table couldn’t be detected when the user edite SQL Query content.</li>
+  <li>Fixed pretty JSON where float values are modified.</li>
+  <li>Fixed copy/export JSON with trailing zero values.</li>
+  <li>Fixed some potential crash bugs and made other improvements.</li>
+</ul>
+
+<h3 id="build-562---bug-fixes-and-improvements">Build 562 - Bug fixes and improvements</h3>
+<h4 id="release-date-14-june-2024">Release date: 14 June 2024.</h4>
+<h5 id="download-32"><a href="https://files.tableplus.com/macos/562/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b52b5db1a32d7a7869d2d3ceced98d4f5cf35016d04516bdb1a6cb43adf24aab">SHA: <code class="language-plaintext highlighter-rouge">b52b5db1a32d7a7869d2d3ceced98d4f5cf35016d04516bdb1a6cb43adf24aab</code></h5>
+
+<ul>
+  <li>[DuckDB] Added DuckDB.</li>
+  <li>[OpenAI] Disabled ChatGPT view by default. You have to enable it again in the app settings.</li>
+  <li>[Layout] Updated selection style in the app.</li>
+  <li>And minor bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-558---bug-fixes-and-improvements">Build 558 - Bug fixes and improvements</h3>
+<h4 id="release-date-31-may-2024">Release date: 31 May 2024.</h4>
+<h5 id="download-33"><a href="https://files.tableplus.com/macos/558/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-a813027ef599631f91347eff2ddee224bdbfdb8668cb86f8c7000753be9cea63">SHA: <code class="language-plaintext highlighter-rouge">a813027ef599631f91347eff2ddee224bdbfdb8668cb86f8c7000753be9cea63</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus would crash when a user selects a row containing medium text.</li>
+  <li>Fixed a bug where TablePlus would freeze when opening a large SQL file.</li>
+</ul>
+
+<h3 id="build-556---bug-fixes-and-improvements">Build 556 - Bug fixes and improvements</h3>
+<h4 id="release-date-20-may-2024">Release date: 20 May 2024.</h4>
+<h5 id="download-34"><a href="https://files.tableplus.com/macos/556/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-01eb1871325bae3d4df05a8d1786a85a8ae451022aa9d050a18a1b98c86869e4">SHA: <code class="language-plaintext highlighter-rouge">01eb1871325bae3d4df05a8d1786a85a8ae451022aa9d050a18a1b98c86869e4</code></h5>
+
+<ul>
+  <li>Enabled auto-restore for recently closed workspaces by default.</li>
+  <li>TablePlus will not clear the error marker in a query until you modify the query or re-run it.</li>
+  <li>Updated Assistant layout, supporting custom prompts.</li>
+  <li>Fixed many UI glitches in full-screen mode.</li>
+  <li>Fixed a bug where TablePlus did not show custom tags when creating a new connection for Oracle/ClickHouse/MongoDB.</li>
+  <li>Fixed a bug where opening a workspace in a separate window may not work in full-screen mode.</li>
+  <li>Fixed a bug where users could not chain multiple inputs in the metrics board.</li>
+  <li>Fixed a bug where restored workspaces could be merged if they have the same connection and the same database.</li>
+  <li>Fixed many crash bugs and code drawing issues on macOS Sonoma.</li>
+</ul>
+
+<h3 id="build-550---bug-fixes-and-improvements">Build 550 - Bug fixes and improvements</h3>
+<h4 id="release-date-20-april-2024">Release date: 20 April 2024.</h4>
+<h5 id="download-35"><a href="https://files.tableplus.com/macos/550/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-ef1343a9f281fc24d071af976239f4225c623e4db731957508cd7b175fc6ff28">SHA: <code class="language-plaintext highlighter-rouge">ef1343a9f281fc24d071af976239f4225c623e4db731957508cd7b175fc6ff28</code></h5>
+
+<ul>
+  <li>[D1] Added Cloudflare D1.</li>
+  <li>[SQLite] Upgrade to version 3.44.2</li>
+  <li>Fixed a bug where TablePlus close function/sequence when change schema.</li>
+  <li>Fixed a bug where bulk edit rows on sidebar could cause app freeze.</li>
+  <li>Many bug fixes and minor improvements.</li>
+</ul>
+
+<h3 id="build-546---bug-fixes-and-improvements">Build 546 - Bug fixes and improvements</h3>
+<h4 id="release-date-30-march-2024">Release date: 30 March 2024.</h4>
+<h5 id="download-36"><a href="https://files.tableplus.com/macos/546/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-8d7e78b386a305263c3966a46b43443ab057a1d5a03ddeb01d0f383e07b1000e">SHA: <code class="language-plaintext highlighter-rouge">8d7e78b386a305263c3966a46b43443ab057a1d5a03ddeb01d0f383e07b1000e</code></h5>
+
+<ul>
+  <li>TablePlus will not close item tabs when changing the schema.</li>
+  <li>Bring back the lazy load item option.</li>
+  <li>[Metrics board] Added dropdown.</li>
+  <li>Fixed sequence bug where TablePlus generates the wrong creation statement.</li>
+  <li>Support safe mode with CTA queries.</li>
+  <li>Added Bootstrap CLI script when creating a new connection.</li>
+  <li>[PostgreSQL] Show include columns in table indices.</li>
+  <li>[PostgreSQL] Includes indices in table creation statement.</li>
+  <li>Many bug fixes and minor improvements.</li>
+</ul>
+
+<h3 id="build-542---bug-fixes-and-improvements">Build 542 - Bug fixes and improvements</h3>
+<h4 id="release-date-23-march-2024">Release date: 23 March 2024.</h4>
+<h5 id="download-37"><a href="https://files.tableplus.com/macos/542/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-dd547e4255a78300f304cd7e6d7ff6b6e2a635d2bdebb6e851a1bbe1ae4372d7">SHA: <code class="language-plaintext highlighter-rouge">dd547e4255a78300f304cd7e6d7ff6b6e2a635d2bdebb6e851a1bbe1ae4372d7</code></h5>
+
+<ul>
+  <li>[LibSQL] Supported SQLite over HTTPS.</li>
+  <li>[Cassandra] Supported JSONB column for YugabytesDB.</li>
+  <li>Many minor bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-538---bug-fixes-and-improvements">Build 538 - Bug fixes and improvements</h3>
+<h4 id="release-date-14-february-2024">Release date: 14 February 2024.</h4>
+<h5 id="download-38"><a href="https://files.tableplus.com/macos/538/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-75bdddbe313392a5ab10efa55f222693471506487c3270b01ce60a220fa4442e">SHA: <code class="language-plaintext highlighter-rouge">75bdddbe313392a5ab10efa55f222693471506487c3270b01ce60a220fa4442e</code></h5>
+
+<ul>
+  <li>Fixed a bug where OpenAI repeatedly displays an error popup.</li>
+</ul>
+
+<h3 id="build-534---bug-fixes-and-improvements">Build 534 - Bug fixes and improvements</h3>
+<h4 id="release-date-2-february-2024">Release date: 2 February 2024.</h4>
+<h5 id="download-39"><a href="https://download.tableplus.com/macos/534/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3f8263edf7befca4f0e179e64bec2080de07af199871db3dce2503d09730b657">SHA: <code class="language-plaintext highlighter-rouge">3f8263edf7befca4f0e179e64bec2080de07af199871db3dce2503d09730b657</code></h5>
+
+<ul>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-532---bug-fixes-and-improvements">Build 532 - Bug fixes and improvements</h3>
+<h4 id="release-date-15-january-2024">Release date: 15 January 2024.</h4>
+<h5 id="download-40"><a href="https://download.tableplus.com/macos/532/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5e633e73e65060bd478d4b10d69236e4a6030b978203f6b02b8e4654213d2b87">SHA: <code class="language-plaintext highlighter-rouge">5e633e73e65060bd478d4b10d69236e4a6030b978203f6b02b8e4654213d2b87</code></h5>
+
+<ul>
+  <li>Supported export chart.</li>
+  <li>[Vertica] Fixed an issue in TablePlus where client information was not sent to the Database.</li>
+  <li>[SQL Server] Show computed/generated or regular status.</li>
+  <li>[ClickHouse] Resolved an error in Clickhouse that occurred when rendering an empty map column.</li>
+  <li>[SQLite] Supported view dbstat and virtual tables in TablePlus.</li>
+  <li>[ClickHouse] Fixed a bug where trailing zeroes were getting removed from Decimal numbers.</li>
+  <li>[ClickHouse] Fixed a bug where an invalid sum(rows) result occurred for a given table.</li>
+  <li>[MariaDB] Supported TLS 1.3.</li>
+  <li>[Vertica] Fixed a bug on Vertica where items on the v_internal schema were not visible.</li>
+  <li>[BigQuery] Fixed a bug where the table did not show all databases.</li>
+  <li>[Snowflake] Fixed a bug where TablePlus could not import CSV.</li>
+  <li>Fixed a bug where switching from other windows took 5-10 seconds.</li>
+  <li>Fixed a bug where the app became slower after some time of usage until restarting.</li>
+  <li>Fixed a bug where text was unreadable on the status bar.</li>
+</ul>
+
+<h3 id="build-528---happy-new-year">Build 528 - Happy new year</h3>
+<h4 id="release-date-28-december-2023">Release date: 28 December 2023.</h4>
+<h5 id="download-41"><a href="https://download.tableplus.com/macos/528/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-fbff87570006014ec9965e385c392329e796cf9c5f69df11ffd85085512df61b">SHA: <code class="language-plaintext highlighter-rouge">fbff87570006014ec9965e385c392329e796cf9c5f69df11ffd85085512df61b</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus restored closed workspaces in the wrong order.</li>
+  <li>Fixed some minor layout issues.</li>
+  <li>[Big Query] Fixed a bug where TablePlus did not display all databases.</li>
+  <li>Improved SQL Editor performance.</li>
+  <li>Other bugs fixed and improvements made.</li>
+</ul>
+
+<h3 id="build-524---happy-new-year">Build 524 - Happy new year</h3>
+<h4 id="release-date-16-december-2023">Release date: 16 December 2023.</h4>
+<h5 id="download-42"><a href="https://download.tableplus.com/macos/524/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-89621ab578314243a9d8d7c24fa5d9c5f4dcf8fa36e54c5d86ef39bc50d389ed">SHA: <code class="language-plaintext highlighter-rouge">89621ab578314243a9d8d7c24fa5d9c5f4dcf8fa36e54c5d86ef39bc50d389ed</code></h5>
+
+<ul>
+  <li>[SQL Editor] Improve the UX for creating and saving a new file.</li>
+  <li>[Metric Board] Fixed a bug where TablePlus was unable to save configurations.</li>
+  <li>[PostgreSQL] Fixed a bug that prevented TablePlus from restoring PostgreSQL 16.</li>
+  <li>[Redis] Fixed a bug where TablePlus failed to report connection errors.</li>
+  <li>[Big Query] Fixed an issue with empty queries when opening a new item.</li>
+  <li>[ClickHouse] Added support for viewing Map data.</li>
+  <li>[ClickHouse] Upgraded the SQLite driver.</li>
+  <li>Fixed a layout issue with the app’s status bar.</li>
+  <li>Other bugs fixed and improvements made.</li>
+</ul>
+
+<h3 id="build-520---bug-fixes-and-new-features">Build 520 - Bug fixes and new features</h3>
+<h4 id="release-date-27-november-2023">Release date: 27 November 2023.</h4>
+<h5 id="download-43"><a href="https://download.tableplus.com/macos/520/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-80ac0332b2d401ffd8cfb42af0ab03d71afac991484de6ab9fef1a96377f695c">SHA: <code class="language-plaintext highlighter-rouge">80ac0332b2d401ffd8cfb42af0ab03d71afac991484de6ab9fef1a96377f695c</code></h5>
+
+<ul>
+  <li>[Vertica] Updated driver.</li>
+  <li>[Snowflake] Fixed a bug where TablePlus could not load items.</li>
+  <li>[Metric Board] Added Pie Chart.</li>
+  <li>[PostgreSQL] Fixed a bug where TablePlus could not restore PostgreSQL 16.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-516---new-features">Build 516 - New features</h3>
+<h4 id="release-date-10-november-2023">Release date: 10 November 2023.</h4>
+<h5 id="download-44"><a href="https://download.tableplus.com/macos/516/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-79129de9ab04b25a443beb2f588071d13bd178e79a48ae9a9e4c747f32850565">SHA: <code class="language-plaintext highlighter-rouge">79129de9ab04b25a443beb2f588071d13bd178e79a48ae9a9e4c747f32850565</code></h5>
+
+<ul>
+  <li>[SQLite] Updated driver.</li>
+  <li>[MySQL] Update driver, support TLS 1.3.</li>
+  <li>[MariaDB] Updated driver, support TLS 1.3.</li>
+</ul>
+
+<h3 id="build-514---new-features">Build 514 - New features</h3>
+<h4 id="release-date-31-october-2023">Release date: 31 October 2023.</h4>
+<h5 id="download-45"><a href="https://download.tableplus.com/macos/514/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c7101d39ef9de940586fffea5ec488f5da97c5bdee943b17543263299d1d3eeb">SHA: <code class="language-plaintext highlighter-rouge">c7101d39ef9de940586fffea5ec488f5da97c5bdee943b17543263299d1d3eeb</code></h5>
+
+<ul>
+  <li>Improved support on macOS Sonoma.</li>
+  <li>Added: order column by name/ordinal position.</li>
+  <li>Added LLM: chartGPT.</li>
+</ul>
+
+<h3 id="build-512---new-features">Build 512 - New features</h3>
+<h4 id="release-date-9-october-2023">Release date: 9 October 2023.</h4>
+<h5 id="download-46"><a href="https://download.tableplus.com/macos/512/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-955f34a35c392a97850de9b35ea35fca1a738f26ee1f02050d610eec18ef35db">SHA: <code class="language-plaintext highlighter-rouge">955f34a35c392a97850de9b35ea35fca1a738f26ee1f02050d610eec18ef35db</code></h5>
+
+<ul>
+  <li>Improved support on macOS Sonoma.</li>
+  <li>[MongoDB] Added basic support for MongoShell Syntax Command.</li>
+  <li>[Metrics Board] Added Scoreboard.</li>
+  <li>[Metrics Board] Parse query comment to draw charts.</li>
+  <li>[UI] Quick Look now detachable.</li>
+  <li>[UI] Updated default font: TablePlus now uses mono font everywhere.</li>
+  <li>[Improvement] Better code auto suggestion.</li>
+  <li>[Bug fixes] Fewer crashes.</li>
+  <li>And many minor bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-506---macos-sonoma">Build 506 - macOS Sonoma</h3>
+<h4 id="release-date-16-september-2023">Release date: 16 September 2023.</h4>
+<h5 id="download-47"><a href="https://download.tableplus.com/macos/506/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6d30c4ed69a2cf7e80a0a22d83f684634531a9fe01f329defd254febd3677be5">SHA: <code class="language-plaintext highlighter-rouge">6d30c4ed69a2cf7e80a0a22d83f684634531a9fe01f329defd254febd3677be5</code></h5>
+
+<ul>
+  <li>Supported macOS Sonoma.</li>
+  <li>Various bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-504---macos-sonoma">Build 504 - macOS Sonoma</h3>
+<h4 id="release-date-5-august-2023">Release date: 5 August 2023.</h4>
+<h5 id="download-48"><a href="https://download.tableplus.com/macos/504/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-60552abafef540512796687ddfe1ec14de97b60a14c7a08c395a9f75600859fa">SHA: <code class="language-plaintext highlighter-rouge">60552abafef540512796687ddfe1ec14de97b60a14c7a08c395a9f75600859fa</code></h5>
+
+<ul>
+  <li>Supported macOS Sonoma.</li>
+  <li>[BigQuery] Fixed a bug where TablePlus could not load all tables.</li>
+  <li>[MySQL] Fixed generated query order.</li>
+  <li>[MySQL] Fixed a bug where user could not update query result which generated by queires that contains aliases.</li>
+  <li>[CSV] Fixed bug import CSV with NaN values.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-500---new-features">Build 500 - New features</h3>
+<h4 id="release-date-24-may-2023">Release date: 24 May 2023.</h4>
+<h5 id="download-49"><a href="https://download.tableplus.com/macos/500/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-8923708b46605b219ec3286697de6b27c2d67b3c308d6e2869f2ae7d9fcd0dac">SHA: <code class="language-plaintext highlighter-rouge">8923708b46605b219ec3286697de6b27c2d67b3c308d6e2869f2ae7d9fcd0dac</code></h5>
+
+<ul>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-496---new-features">Build 496 - New features</h3>
+<h4 id="release-date-3-april-2023">Release date: 3 April 2023.</h4>
+<h5 id="download-50"><a href="https://download.tableplus.com/macos/496/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1d94309ab4971e48c1295c89fb0b8dd256514e2585bcf973a6a7f8027d882aae">SHA: <code class="language-plaintext highlighter-rouge">1d94309ab4971e48c1295c89fb0b8dd256514e2585bcf973a6a7f8027d882aae</code></h5>
+
+<ul>
+  <li>Upgrade snowflare driver.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-494---new-features">Build 494 - New features</h3>
+<h4 id="release-date-20-march-2023">Release date: 20 March 2023.</h4>
+<h5 id="download-51"><a href="https://download.tableplus.com/macos/494/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5015fa1dfeafad930527064cdd07853c8337f2f9e1f81dcf379b0e7ed9540d92">SHA: <code class="language-plaintext highlighter-rouge">5015fa1dfeafad930527064cdd07853c8337f2f9e1f81dcf379b0e7ed9540d92</code></h5>
+
+<ul>
+  <li>Supported: customize connection tag.</li>
+  <li>Supported: customize, export, import themes.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-492---bug-fixes">Build 492 - Bug fixes</h3>
+<h4 id="release-date-6-march-2023">Release date: 6 March 2023.</h4>
+<h5 id="download-52"><a href="https://download.tableplus.com/macos/492/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0da80e48a1d9181afdb75d3482d29c1e8b9b4efe2df66b4061891fecfff466c3">SHA: <code class="language-plaintext highlighter-rouge">0da80e48a1d9181afdb75d3482d29c1e8b9b4efe2df66b4061891fecfff466c3</code></h5>
+
+<ul>
+  <li>Updated app layout: tag.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-490---bug-fixes">Build 490 - Bug fixes</h3>
+<h4 id="release-date-16-february-2023">Release date: 16 February 2023.</h4>
+<h5 id="download-53"><a href="https://download.tableplus.com/macos/490/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-8b9a5331ec0912c66cb7780808da9b745330a73639e52be8aa42d3de40bf2ae5">SHA: <code class="language-plaintext highlighter-rouge">8b9a5331ec0912c66cb7780808da9b745330a73639e52be8aa42d3de40bf2ae5</code></h5>
+
+<ul>
+  <li>Supported: Search in database.</li>
+  <li>Supported: Reorder databases in the left sidebar.</li>
+  <li>Fixed potential crash bugs.</li>
+</ul>
+
+<h3 id="build-486---bug-fixes">Build 486 - Bug fixes</h3>
+<h4 id="release-date-30-january-2023">Release date: 30 January 2023.</h4>
+<h5 id="download-54"><a href="https://download.tableplus.com/macos/486/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-ae5e0ec669b6f57cb23ce4bbe633347bd016e4892ac778622c2aaeebfefec278">SHA: <code class="language-plaintext highlighter-rouge">ae5e0ec669b6f57cb23ce4bbe633347bd016e4892ac778622c2aaeebfefec278</code></h5>
+
+<ul>
+  <li>Fixes potential crash bugs.</li>
+</ul>
+
+<h3 id="build-478---happy-new-year">Build 478 - Happy new year</h3>
+<h4 id="release-date-15-january-2023">Release date: 15 January 2023.</h4>
+<h5 id="download-55"><a href="https://download.tableplus.com/macos/478/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-f4f358e38f289affe9eba41cf0e769ab797bf98a31b89910ba95769540bf6882">SHA: <code class="language-plaintext highlighter-rouge">f4f358e38f289affe9eba41cf0e769ab797bf98a31b89910ba95769540bf6882</code></h5>
+
+<ul>
+  <li>Updated App Icon.</li>
+  <li>[PostgreSQL] Added Sequences.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-472---merry-christmas">Build 472 - Merry Christmas</h3>
+<h4 id="release-date-25-december-2022">Release date: 25 December 2022.</h4>
+<h5 id="download-56"><a href="https://download.tableplus.com/macos/472/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-d6c0708853db3b390da40d0c8c3ebc2731c167fccd409dc171394bdd3f0a91d4">SHA: <code class="language-plaintext highlighter-rouge">d6c0708853db3b390da40d0c8c3ebc2731c167fccd409dc171394bdd3f0a91d4</code></h5>
+
+<ul>
+  <li>[PostgreSQL] Added PostgreSQL 15 binaries.</li>
+  <li>[SQLite] Upgrade SQLite to version 3.39.</li>
+  <li>Fixed a bug where the Right Sidebar is hidden.</li>
+  <li>Shortcut: Added hide query result shortcut.</li>
+  <li>Bug fixes and improvemens.</li>
+</ul>
+
+<h3 id="build-468---ready-for-macos-ventura">Build 468 - Ready for macOS Ventura</h3>
+<h4 id="release-date-25-october-2022">Release date: 25 October 2022.</h4>
+<h5 id="download-57"><a href="https://download.tableplus.com/macos/468/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1e3eddc61fd9821ba3acd73d046cf1e5965da1a189b3f8ca99026166a3da55ab">SHA: <code class="language-plaintext highlighter-rouge">1e3eddc61fd9821ba3acd73d046cf1e5965da1a189b3f8ca99026166a3da55ab</code></h5>
+
+<ul>
+  <li>Fully support macOS Ventura.</li>
+  <li>Fixed a bug where TablePlus didn’t reload Queries folders.</li>
+  <li>Fixed a bug where TablePlus could show re-save popup repeatedly.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-458---bug-fixes-and-new-features">Build 458 - Bug fixes and new features</h3>
+<h4 id="release-date-14-october-2022">Release date: 14 October 2022.</h4>
+<h5 id="download-58"><a href="https://download.tableplus.com/macos/458/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-20c9bbcb05557d8fbb5a3f8845946cccb47ff01aed2be2e841fc7f95dad094aa">SHA: <code class="language-plaintext highlighter-rouge">20c9bbcb05557d8fbb5a3f8845946cccb47ff01aed2be2e841fc7f95dad094aa</code></h5>
+
+<ul>
+  <li>Improved Metrics Board.</li>
+  <li>Supported Wrap lines to Editor Width as an option.</li>
+  <li>Fixed a bug where TablePlus always expand the functions/tables.</li>
+  <li>Fixed many potential crash bugs.</li>
+</ul>
+
+<h3 id="build-454---bug-fixes-and-new-features">Build 454 - Bug fixes and new features</h3>
+<h4 id="release-date-3-october-2022">Release date: 3 October 2022.</h4>
+<h5 id="download-59"><a href="https://download.tableplus.com/macos/454/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-f7aca21e16c454d9374d2c5f3cb045d6f7f653dcdfa827e775d9c218a0c4b377">SHA: <code class="language-plaintext highlighter-rouge">f7aca21e16c454d9374d2c5f3cb045d6f7f653dcdfa827e775d9c218a0c4b377</code></h5>
+
+<ul>
+  <li>Added Metrics Board where you can create charts, input fields, and mini apps.</li>
+  <li>Added IAM authentication.</li>
+  <li>Fixed a glitch on toolbars when launching the app.</li>
+  <li>Many other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-450---bug-fixes-and-new-features">Build 450 - Bug fixes and new features</h3>
+<h4 id="release-date-15-september-2022">Release date: 15 September 2022.</h4>
+<h5 id="download-60"><a href="https://download.tableplus.com/macos/450/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e678e35f530052cda4d697d7c007a3a49e13b8fb2e310649cd7a612b7f6f4bdc">SHA: <code class="language-plaintext highlighter-rouge">e678e35f530052cda4d697d7c007a3a49e13b8fb2e310649cd7a612b7f6f4bdc</code></h5>
+
+<ul>
+  <li>Updated layout on macOS Ventura.</li>
+  <li>Fixed a memory leak bug.</li>
+  <li>Fixed a bug where TablePlus could not run more than 200 queries at a time.</li>
+</ul>
+
+<h3 id="build-448---bug-fixes-and-new-features">Build 448 - Bug fixes and new features</h3>
+<h4 id="release-date-9-september-2022">Release date: 9 September 2022.</h4>
+<h5 id="download-61"><a href="https://download.tableplus.com/macos/488/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-81a8bca9ecedab1bebbc58067724f13c1585ebb66938ad752810de07542f3280">SHA: <code class="language-plaintext highlighter-rouge">81a8bca9ecedab1bebbc58067724f13c1585ebb66938ad752810de07542f3280</code></h5>
+
+<ul>
+  <li>Small UI tweaks.</li>
+  <li>Fixed a crash bug when you move queries on Queries tab.</li>
+</ul>
+
+<h3 id="build-446---bug-fixes-and-new-features">Build 446 - Bug fixes and new features</h3>
+<h4 id="release-date-8-september-2022">Release date: 8 September 2022.</h4>
+<h5 id="download-62"><a href="https://download.tableplus.com/macos/446/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c38f2d37b51de517202dc56c0264d43c5d5bf08f83722ede04cf14ac10c7cd9f">SHA: <code class="language-plaintext highlighter-rouge">c38f2d37b51de517202dc56c0264d43c5d5bf08f83722ede04cf14ac10c7cd9f</code></h5>
+
+<ul>
+  <li>Updated app layout.</li>
+  <li>Added: Change date text color.</li>
+  <li>Added: Group table on the Left Sidebar by Rules.</li>
+  <li>Added: Copy cell value shortcut: Cmd + Shift + C.</li>
+  <li>[Oracle] Fixed a bug where user could not add/remove columns.</li>
+  <li>[PostgreSQL] Fixed a bug where TablePlus could not parse some PostGIS geo type.</li>
+  <li>[BigQuery] Supported paging results.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-436---bug-fixes-and-new-features">Build 436 - Bug fixes and new features</h3>
+<h4 id="release-date-25-july-2022">Release date: 25 July 2022.</h4>
+<h5 id="download-63"><a href="https://download.tableplus.com/macos/436/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-d3ed1c3f315ed873bcdff77f8db971fd90aae6be32d43bf9774e14f80b6916a1">SHA: <code class="language-plaintext highlighter-rouge">d3ed1c3f315ed873bcdff77f8db971fd90aae6be32d43bf9774e14f80b6916a1</code></h5>
+
+<ul>
+  <li>Improved column auto-sizing.</li>
+  <li>[PostgreSQL] Updated driver to support SNI.</li>
+  <li>Added search for databases in backup/restore windows.</li>
+  <li>Allow to open any file in SQL Query.</li>
+  <li>TablePlus now open a new SQL tab when the user double-click on a history query.</li>
+  <li>Fixed a bug where TablePlus could not restore closed workspace.</li>
+  <li>Fixed a bug where TablePlus show the wrong estimated rows count.</li>
+  <li>Fixed a bug where the clear text plugin was not enabled in backup/restore.</li>
+  <li>Fixed a bug that could cause the high CPU usage in idle.</li>
+  <li>[MySQL] Fixed a bug where the user could not edit some of the global permissions in user management.</li>
+</ul>
+
+<h3 id="build-432---bug-fixes-and-new-features">Build 432 - Bug fixes and new features</h3>
+<h4 id="release-date-8-july-2022">Release date: 8 July 2022.</h4>
+<h5 id="download-64"><a href="https://download.tableplus.com/macos/432/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-83b3ab643b01738bda081980aab22be127992eb3ff5698ddcc4a173c5a33dd8e">SHA: <code class="language-plaintext highlighter-rouge">83b3ab643b01738bda081980aab22be127992eb3ff5698ddcc4a173c5a33dd8e</code></h5>
+
+<ul>
+  <li>Updated app layout, improved paging UI/UX.</li>
+  <li>Left sidebar font is configurable.</li>
+  <li>Toggle rows numbers: on table views and query results.</li>
+  <li>[PostgreSQL] Supported Json operators: contains, not contains.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could not enable clear text plugin.</li>
+  <li>[BigQuery] Fixed a bug where TablePlus could not parse struct/array.</li>
+</ul>
+
+<h3 id="build-428---bug-fixes-and-new-features">Build 428 - Bug fixes and new features</h3>
+<h4 id="release-date-18-june-2022">Release date: 18 June 2022.</h4>
+<h5 id="download-65"><a href="https://download.tableplus.com/macos/428/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6573810e38582f65af9ef45a66532a246a528b4efac17d60a6b7c343f0ca008d">SHA: <code class="language-plaintext highlighter-rouge">6573810e38582f65af9ef45a66532a246a528b4efac17d60a6b7c343f0ca008d</code></h5>
+
+<ul>
+  <li>Added BigQuery driver.</li>
+  <li>[Mongo] Support SSL and PEM certification.</li>
+  <li>[ClickHouse] Support SSL.</li>
+  <li>[ClickHouse] Fixed a bug where TablePlus unable to show DateTime.</li>
+  <li>[SQLite] Updated SQLite 3.37</li>
+  <li>Updated app UI/UX.</li>
+  <li>Fixed a layout bug where TablePlus unable to restore full screen after restarting.</li>
+  <li>Many bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-424---bug-fixes-and-new-features">Build 424 - Bug fixes and new features</h3>
+<h4 id="release-date-26-may-2022">Release date: 26 May 2022.</h4>
+<h5 id="download-66"><a href="https://download.tableplus.com/macos/424/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-9ac00f2a925d2ea65be37583b51dbd9ca1ef5c9114cedaa57b6766d1e2f115cb">SHA: <code class="language-plaintext highlighter-rouge">9ac00f2a925d2ea65be37583b51dbd9ca1ef5c9114cedaa57b6766d1e2f115cb</code></h5>
+
+<ul>
+  <li>Improved app UI/UX.</li>
+  <li>[SQL Query] Improved variable parser.</li>
+  <li>Fixed a bug where database names could be truncated.</li>
+  <li>Fixed a bug where folders in Queries tab could not be moved to root.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-422---bug-fixes-and-new-features">Build 422 - Bug fixes and new features</h3>
+<h4 id="release-date-8-may-2022">Release date: 8 May 2022.</h4>
+<h5 id="download-67"><a href="https://download.tableplus.com/macos/422/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-7ac9d738cbbe3e2601b54ca0ca1bb027599c03aa2b9a8942d6068a2e15185226">SHA: <code class="language-plaintext highlighter-rouge">7ac9d738cbbe3e2601b54ca0ca1bb027599c03aa2b9a8942d6068a2e15185226</code></h5>
+
+<ul>
+  <li>[ClickHouse] Supprted Tuple, Decimal, IPv4, IPv6 data types.</li>
+  <li>Supported auto-generate JOIN query based on foreign keys.</li>
+  <li>Fixed a layout issue in SQL Query where text is being truncated.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-414---bug-fixes-and-new-features">Build 414 - Bug fixes and new features</h3>
+<h4 id="release-date-8-april-2022">Release date: 8 April 2022.</h4>
+<h5 id="download-68"><a href="https://download.tableplus.com/macos/414/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-20be63f22b2b93cfbc3b83e23db1fdb070debcddcc45e9104af37f6c543657fc">SHA: <code class="language-plaintext highlighter-rouge">20be63f22b2b93cfbc3b83e23db1fdb070debcddcc45e9104af37f6c543657fc</code></h5>
+
+<ul>
+  <li>ClickHouse Support.</li>
+  <li>Fixed a bug where TablePlus could not load advanced filter columns and operators.</li>
+  <li>Fixed a bug when user enable the lazy load schema items.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-410---bug-fixes-and-new-features">Build 410 - Bug fixes and new features</h3>
+<h4 id="release-date-17-march-2022">Release date: 17 March 2022.</h4>
+<h5 id="download-69"><a href="https://download.tableplus.com/macos/410/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-87e5e6a49513d2be3a3e0da221f102484cb3f1481c1924a84fad9ff34ff2f4ef">SHA: <code class="language-plaintext highlighter-rouge">87e5e6a49513d2be3a3e0da221f102484cb3f1481c1924a84fad9ff34ff2f4ef</code></h5>
+
+<ul>
+  <li>[SQLite] Fixed a bug where TablePlus could generate a wrong item creation query.</li>
+  <li>[Vertica] Fixed a bug where TablePlus could not load schema list.</li>
+  <li>Minor bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-406---bug-fixes-and-new-features">Build 406 - Bug fixes and new features</h3>
+<h4 id="release-date-1-march-2022">Release date: 1 March 2022.</h4>
+<h5 id="download-70"><a href="https://download.tableplus.com/macos/406/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-ed01c7cd2c66ef9e46592163572719814927e70ab24702bfc113703f84575ea5">SHA: <code class="language-plaintext highlighter-rouge">ed01c7cd2c66ef9e46592163572719814927e70ab24702bfc113703f84575ea5</code></h5>
+
+<ul>
+  <li>Added MySQL 8 ARM backup/restore.</li>
+  <li>Supported master passcode.</li>
+  <li>Improved chart view: click to see the selected value.</li>
+  <li>Fixed a theme bug on main menu.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could generate a wrong update query.</li>
+  <li>[MongoDB] Fixed export table bug.</li>
+</ul>
+
+<h3 id="build-402---bug-fixes-and-new-features">Build 402 - Bug fixes and new features</h3>
+<h4 id="release-date-24-december-2021">Release date: 24 December 2021.</h4>
+<h5 id="download-71"><a href="https://download.tableplus.com/macos/402/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3ce0dcc6e68480b1201abe6093c471e078d22bf4bdfa651280e6cdeaaf85a268">SHA: <code class="language-plaintext highlighter-rouge">3ce0dcc6e68480b1201abe6093c471e078d22bf4bdfa651280e6cdeaaf85a268</code></h5>
+
+<ul>
+  <li>Supported update rows from CSV.</li>
+  <li>Supported Lazy load schema items (off by default).</li>
+  <li>Fixed a bug where TablePlus could not save function/view.</li>
+  <li>Bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-396---bug-fixes-and-new-features">Build 396 - Bug fixes and new features</h3>
+<h4 id="release-date-15-october-2021">Release date: 15 October 2021.</h4>
+<h5 id="download-72"><a href="https://download.tableplus.com/macos/396/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-aca94041f83cbf4d37e11b121f3c0a8d36a97d6a20f7e378744f3c98e42d2c7c">SHA: <code class="language-plaintext highlighter-rouge">aca94041f83cbf4d37e11b121f3c0a8d36a97d6a20f7e378744f3c98e42d2c7c</code></h5>
+
+<ul>
+  <li>Added PostgreSQL 14 binaries.</li>
+  <li>Added setting for default safe mode.</li>
+  <li>Updated advanced filter layout.</li>
+  <li>Updated app layout, icons.</li>
+  <li>[Cassandra] Added protocol selection.</li>
+  <li>Bug fixes.</li>
+</ul>
+
+<h3 id="build-388---bug-fixes-and-new-features">Build 388 - Bug fixes and new features</h3>
+<h4 id="release-date-18-september-2021">Release date: 18 September 2021.</h4>
+<h5 id="download-73"><a href="https://download.tableplus.com/macos/388/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c0c290413c843083c532e3b18dbdcea1d610c5db92857b9bb1880cac630d76ba">SHA: <code class="language-plaintext highlighter-rouge">c0c290413c843083c532e3b18dbdcea1d610c5db92857b9bb1880cac630d76ba</code></h5>
+
+<ul>
+  <li>Added Charts: LineChart, BarChart.</li>
+  <li>Open anything now supports open Queries file.</li>
+  <li>Fixed a bug where advanced filters could be reset to first column.</li>
+  <li>Fixed a bug where users could not tab to shift right in quicklook.</li>
+  <li>Command + T now opens SQL Query instead of an empty tab.</li>
+  <li>Reset column position should also unhide column.</li>
+  <li>Added multiple columns sort in right click menu context (on column header).</li>
+  <li>Fixed a bug where TablePlus could not sort very big number.</li>
+  <li>[Cassandra] Fixed a bug where timestamp is shown in wrong format.</li>
+  <li>[SQLite] Upgrade to version 3.16.0 and support alter column queries.</li>
+  <li>[CSV] Fixed a bug where TablePlus export an bool field with t and f instead of true and false.</li>
+  <li>[MongoDB] Supported truncate collection.</li>
+  <li>[MySQL, PostgreSQL, CockroachDB] Group alter queries into one statement.</li>
+  <li>[MySQL] Fixed a bug where exported file could contains virtual columns.</li>
+  <li>Updated app layout.</li>
+</ul>
+
+<h3 id="build-382---bug-fixes-and-new-features">Build 382 - Bug fixes and new features</h3>
+<h4 id="release-date-28-august-2021">Release date: 28 August 2021.</h4>
+<h5 id="download-74"><a href="https://download.tableplus.com/macos/382/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-951f400257ae26654e7b65e3e91e5b1809e27fc583ee85603bbd4eaf14e63b5a">SHA: <code class="language-plaintext highlighter-rouge">951f400257ae26654e7b65e3e91e5b1809e27fc583ee85603bbd4eaf14e63b5a</code></h5>
+
+<ul>
+  <li>Improved auto code completion performance.</li>
+  <li>Fixed a bug where TablePlus shows confirm popup repeatedly.</li>
+  <li>Improved Mongo support.</li>
+  <li>Updated layout.</li>
+</ul>
+
+<h3 id="build-376---bug-fixes-and-new-features">Build 376 - Bug fixes and new features</h3>
+<h4 id="release-date-15-august-2021">Release date: 15 August 2021.</h4>
+<h5 id="download-75"><a href="https://download.tableplus.com/macos/376/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-177ca581cf9bcce53107224b97a3d8835cf39187314b38c9fb880868c044aefe">SHA: <code class="language-plaintext highlighter-rouge">177ca581cf9bcce53107224b97a3d8835cf39187314b38c9fb880868c044aefe</code></h5>
+
+<ul>
+  <li>Fixed layout issue on macOS Monterery.</li>
+  <li>[MongoDB] Fixed a bug where TablePlus could not update Json.</li>
+  <li>[MongoDB] Supported drop collection.</li>
+  <li>[MySQL] Improved loading time.</li>
+  <li>[MySQL] Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-374---bug-fixes-and-new-features">Build 374 - Bug fixes and new features</h3>
+<h4 id="release-date-18-july-2021">Release date: 18 July 2021.</h4>
+<h5 id="download-76"><a href="https://download.tableplus.com/macos/374/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-862afd49182e85509bad4fe726fce89164c8f51da74b48669838f5930b892cd6">SHA: <code class="language-plaintext highlighter-rouge">862afd49182e85509bad4fe726fce89164c8f51da74b48669838f5930b892cd6</code></h5>
+
+<ul>
+  <li>Updated app layout.</li>
+  <li>[Cassandra] Enable query limit button.</li>
+  <li>Fixed a bug where TablePlus could generate wrong export queries.</li>
+  <li>Fixed a notification bug.</li>
+  <li>[Cassandra] Fixed a bug where TablePlus failed to add auto limit.</li>
+</ul>
+
+<h3 id="build-370---bug-fixes-and-new-features">Build 370 - Bug fixes and new features</h3>
+<h4 id="release-date-8-june-2021">Release date: 8 June 2021.</h4>
+<h5 id="download-77"><a href="https://download.tableplus.com/macos/370/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-af776e301ae6c917c339a2999318d98230ec8839f11c1b7ffb29ffa18c42a2bd">SHA: <code class="language-plaintext highlighter-rouge">af776e301ae6c917c339a2999318d98230ec8839f11c1b7ffb29ffa18c42a2bd</code></h5>
+
+<ul>
+  <li>Optimized TablePlus on macOS Monterey.</li>
+  <li>Supported toggle sidebar with hot key.</li>
+  <li>[PostgreSQL] Added money type.</li>
+  <li>Supported backup/restore with SSL.</li>
+  <li>Fixed a notification bug.</li>
+  <li>Fixed a bug where TablePlus failed to add auto limit.</li>
+</ul>
+
+<h3 id="build-368---bug-fixes">Build 368 - Bug fixes</h3>
+<h4 id="release-date-8-may-2021">Release date: 8 May 2021.</h4>
+<h5 id="download-78"><a href="https://download.tableplus.com/macos/368/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1b4297f63634d5caefb58a46533620f7c38f85bc0ea301136c03df5b18541b08">SHA: <code class="language-plaintext highlighter-rouge">1b4297f63634d5caefb58a46533620f7c38f85bc0ea301136c03df5b18541b08</code></h5>
+
+<ul>
+  <li>Improved multiple carets support.</li>
+  <li>Fixed many layout bug on Big Sur.</li>
+  <li>Fixed a bug where the app play a weird beep sound after sorting a column.</li>
+  <li>[MySQL] Fixed a bug where TablePlus generate wrong update queries.</li>
+</ul>
+
+<h3 id="build-366---bug-fixes">Build 366 - Bug fixes</h3>
+<h4 id="release-date-1-april-2021">Release date: 1 April 2021.</h4>
+<h5 id="download-79"><a href="https://download.tableplus.com/macos/366/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-f5e13e93739c4417d4853e8509aff300e46a70f4cf219eac4380f5498d6fc9a1">SHA: <code class="language-plaintext highlighter-rouge">f5e13e93739c4417d4853e8509aff300e46a70f4cf219eac4380f5498d6fc9a1</code></h5>
+
+<ul>
+  <li>Supported comment on table in item overview.</li>
+  <li>[SQL Server] Fixed a bug where TablePlus generate wrong update queries.</li>
+  <li>Improved layout.</li>
+</ul>
+
+<h3 id="build-364---new-feature">Build 364 - New feature</h3>
+<h4 id="release-date-8-march-2021">Release date: 8 March 2021.</h4>
+<h5 id="download-80"><a href="https://download.tableplus.com/macos/364/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3ebfb911620a37f185fff0b6faca53bc48f55b9bf9d78f93ae9ede6aa1180cb4">SHA: <code class="language-plaintext highlighter-rouge">3ebfb911620a37f185fff0b6faca53bc48f55b9bf9d78f93ae9ede6aa1180cb4</code></h5>
+
+<ul>
+  <li>Improved query generator: do not quote number.</li>
+  <li>Fixed a bug where TablePlus could generate wrong reorder column and filter column queries.</li>
+  <li>Fixed a bug where TablePlus could not save a query with a custom location.</li>
+  <li>[Cassandra] Fixed a bug where TablePlus could not fetch items in DataStax.</li>
+  <li>Ensure that the SQLite file is closed after closing the app.</li>
+  <li>Fixed layout bugs.</li>
+</ul>
+
+<h3 id="build-360---new-feature">Build 360 - New feature</h3>
+<h4 id="release-date-10-february-2021">Release date: 10 February 2021.</h4>
+<h5 id="download-81"><a href="https://download.tableplus.com/macos/360/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0c679a1e69a343795b56708ce439bb1805cb31018db6181f139c1a22a41b0996">SHA: <code class="language-plaintext highlighter-rouge">0c679a1e69a343795b56708ce439bb1805cb31018db6181f139c1a22a41b0996</code></h5>
+
+<ul>
+  <li>[SQL Query] Added an option: add space in auto-completion.</li>
+  <li>[SQL Query] Supported change invisible character color.</li>
+  <li>Supported export advanced filter result.</li>
+  <li>Fixed an advanced filter bug.</li>
+  <li>Fixed a layout issue.</li>
+  <li>Other bug fixes.</li>
+</ul>
+
+<h3 id="build-358---happy-new-year">Build 358 - Happy new year</h3>
+<h4 id="release-date-1-january-2021">Release date: 1 January 2021.</h4>
+<h5 id="download-82"><a href="https://download.tableplus.com/macos/358/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-beffa2cb4893400df46520bf7fb4129c90a7726a3104377b43aa2c256a52ac7f">SHA: <code class="language-plaintext highlighter-rouge">beffa2cb4893400df46520bf7fb4129c90a7726a3104377b43aa2c256a52ac7f</code></h5>
+
+<ul>
+  <li>[MySQL, SQL Server] Fixed a bug where TablePlus could generate wrong queries.</li>
+  <li>Fixed a layout issue.</li>
+  <li>Bug fixes.</li>
+</ul>
+
+<h3 id="build-354---bug-fixes">Build 354 - Bug fixes</h3>
+<h4 id="release-date-5-december-2020">Release date: 5 December 2020.</h4>
+<h5 id="download-83"><a href="https://download.tableplus.com/macos/354.4/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-130e35e6753adfe49d02cae687a97828de51612418901e2ea830f5a1318ca9f6">SHA: <code class="language-plaintext highlighter-rouge">130e35e6753adfe49d02cae687a97828de51612418901e2ea830f5a1318ca9f6</code></h5>
+
+<ul>
+  <li>Updated app icon.</li>
+  <li>Updated layout.</li>
+  <li>Added “Close all Tabs” menu.</li>
+  <li>[PostgreSQL] Fixed bug GSS API.</li>
+  <li>[SQLite] Fixed bug where TablePlus could not delete rows that contains NULL value.</li>
+  <li>Bug fixes.</li>
+</ul>
+
+<h3 id="build-352---apple-silicon-m1---arm-chip">Build 352 - Apple Silicon (M1 - ARM chip)</h3>
+<h4 id="release-date-18-september-2020">Release date: 18 September 2020.</h4>
+<h5 id="download-84"><a href="https://download.tableplus.com/macos/352.3/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5aa674c63c7f57cd1fd62b408bd0aca246419727d7dbbe0d5186bffca1443585">SHA: <code class="language-plaintext highlighter-rouge">5aa674c63c7f57cd1fd62b408bd0aca246419727d7dbbe0d5186bffca1443585</code></h5>
+
+<ul>
+  <li>Optimized for Big Sur and supported Apple Silicon (M1 - ARM chip).</li>
+  <li>[Oracle] Supported copy creation.</li>
+  <li>[MySQL] Optimized for MyCat cluster.</li>
+  <li>Improved search for connections.</li>
+  <li>Updated TablePlus Workspace layout, update tooltip.</li>
+  <li>Bug fixes and stability improvements.</li>
+</ul>
+
+<h3 id="build-348---new-features">Build 348 - New features</h3>
+<h4 id="release-date-20-october-2020">Release date: 20 October 2020.</h4>
+<h5 id="download-85"><a href="https://download.tableplus.com/macos/348/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-87f8a72bf6fbd1f436a0fafc719f937103bab4f4fe093ac56b5d4e8c49da19c1">SHA: <code class="language-plaintext highlighter-rouge">87f8a72bf6fbd1f436a0fafc719f937103bab4f4fe093ac56b5d4e8c49da19c1</code></h5>
+
+<ul>
+  <li>Supported search for connection on home screen: Command + F.</li>
+  <li>[Preferences] change editor line height.</li>
+  <li>[PostgreSQL] Show view definition with pretty mode.</li>
+  <li>[PostgreSQL] Added PostgreSQL 13 binaries.</li>
+  <li>[PostgreSQL] Added user management.</li>
+  <li>[Snowflake] Upgrade driver.</li>
+  <li>Fixed some minor layout issues.</li>
+  <li>Bug fixes and stability improvements.</li>
+</ul>
+
+<h3 id="build-342---squashes-bugs-and-crashes">Build 342 - Squashes bugs and crashes</h3>
+<h4 id="release-date-16-september-2020">Release date: 16 September 2020.</h4>
+<h5 id="download-86"><a href="https://download.tableplus.com/macos/342/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6d6f2e723aa4431dca07c29406bf958a90d9a942be249a46b19121869c0ef86e">SHA: <code class="language-plaintext highlighter-rouge">6d6f2e723aa4431dca07c29406bf958a90d9a942be249a46b19121869c0ef86e</code></h5>
+
+<ul>
+  <li>Improved auto reconnect.</li>
+  <li>[MySQL] Fixed bug where TablePlus could not fetch item list on Vitess.</li>
+  <li>Fixed bug where command enter didn’t trigger Quick Look.</li>
+  <li>Fixed potential crashes when editing SQL Query.</li>
+  <li>Fixed a bug when restoring advanced filter on the free trial.</li>
+  <li>Fixed a bug where the window could be created out side the screen.</li>
+</ul>
+
+<h3 id="build-336---new-feature">Build 336 - New feature</h3>
+<h4 id="release-date-26-august-2020">Release date: 26 August 2020.</h4>
+<h5 id="download-87"><a href="https://download.tableplus.com/macos/336/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-04b19967794ec2f35cac697ac5253f0281099db6579dc3832a39b9f760e8e918">SHA: <code class="language-plaintext highlighter-rouge">04b19967794ec2f35cac697ac5253f0281099db6579dc3832a39b9f760e8e918</code></h5>
+
+<ul>
+  <li>Supported change the Run Current/Run All shortcut key.</li>
+  <li>Supported pin results.</li>
+  <li>Supported 3D, 4D geometry data.</li>
+  <li>[SQLite] Updated driver: supported generated column.</li>
+  <li>[SQLite] Now you can open encrypted SQLite database by double click the file.</li>
+  <li>Updated TablePlus UI.</li>
+  <li>Fixed toolbar bug on Big Sur.</li>
+  <li>Other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-332---bug-fixes">Build 332 - Bug fixes</h3>
+<h4 id="release-date-03-august-2020">Release date: 03 August 2020.</h4>
+<h5 id="download-88"><a href="https://download.tableplus.com/macos/332/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-a1bd7e580bb27cdce1c11cb11765463ff0627c1013edf7a00694a3915cc99da7">SHA: <code class="language-plaintext highlighter-rouge">a1bd7e580bb27cdce1c11cb11765463ff0627c1013edf7a00694a3915cc99da7</code></h5>
+
+<ul>
+  <li>Fixed a minor UI bug on the right sidebar.</li>
+  <li>Fixed a bug where undo/redo could cause the app crash.</li>
+</ul>
+
+<h3 id="build-330---new-features">Build 330 - New features</h3>
+<h4 id="release-date-31-july-2020">Release date: 31 July 2020.</h4>
+<h5 id="download-89"><a href="https://s3.amazonaws.com/tableplus-osx-builds/330/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-306cc99d8815d656954ff8745f17a567a7d9dd7ccb01928c37a50d0ee067ffab">SHA: <code class="language-plaintext highlighter-rouge">306cc99d8815d656954ff8745f17a567a7d9dd7ccb01928c37a50d0ee067ffab</code></h5>
+
+<ul>
+  <li>Supported new query result view mode.</li>
+  <li>Backup/restore database now respects the Safe mode.</li>
+  <li>Highlight the parentheses.</li>
+  <li>Updated JS API for TablePlus Diagram.</li>
+  <li>Fixed a bug not responding after executing many queries at once.</li>
+  <li>Fixed a bug rename a queries.</li>
+  <li>Fixed a bug JSON parser.</li>
+  <li>Polish UI.</li>
+</ul>
+
+<h3 id="build-322---macos-big-sur">Build 322 - macOS Big Sur</h3>
+<h4 id="release-date-26-june-2020">Release date: 26 June 2020.</h4>
+<h5 id="download-90"><a href="https://s3.amazonaws.com/tableplus-osx-builds/322/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c8259a6e5a1112ae6924f0bde51209c5b646a0b539dc5572ff8badf8f103c975">SHA: <code class="language-plaintext highlighter-rouge">c8259a6e5a1112ae6924f0bde51209c5b646a0b539dc5572ff8badf8f103c975</code></h5>
+
+<ul>
+  <li>Supported MacOS Big Sur.</li>
+  <li>Fixed a bug where connections weren’t saved after testing.</li>
+  <li>Fixed a glitch UI issue on Welcome screen.</li>
+  <li>Fixed a bug that could prevent TablePlus from update/delete rows.</li>
+  <li>Fixed a many other bugs.</li>
+</ul>
+
+<h3 id="build-320---bug-fixes">Build 320 - Bug fixes</h3>
+<h4 id="release-date-9-june-2020">Release date: 9 June 2020.</h4>
+<h5 id="download-91"><a href="https://s3.amazonaws.com/tableplus-osx-builds/320/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-800cff90b5609368920096c7d73355a93203c680ef2dce5625cfd14ade3a052b">SHA: <code class="language-plaintext highlighter-rouge">800cff90b5609368920096c7d73355a93203c680ef2dce5625cfd14ade3a052b</code></h5>
+
+<ul>
+  <li>[Quick Look] Added foreign key viewer.</li>
+  <li>Improved syntax highlighting.</li>
+  <li>Improved item overview.</li>
+  <li>Improved search within results.</li>
+  <li>Bring back the console syntax highlighting.</li>
+  <li>[SQL Server] Fixed a bug where TablePlus couldn’t parse table name from queries.</li>
+  <li>[PostgreSQL] Fixed a bug where TablePlus couldn’t parse foreign keys.</li>
+  <li>[SQL Server] Fixed a bug where TablePlus crashed after canceling a query.</li>
+  <li>Fixed a layout bug where exported CSV didn’t respect the column order.</li>
+  <li>Fixed a bug where TablePlus couldn’t detect variables after a special character.</li>
+  <li>[Query Result] Fixed a layout bug in query result message.</li>
+  <li>[Query Result] Fixed a bug where the estimated time could be delayed after resizing windows (threading).</li>
+  <li>Fixed a bug were JSON Viewer right sidebar didn’t work properly.</li>
+  <li>Fixed a lot of bugs that could cause the app crash.</li>
+</ul>
+
+<h3 id="build-314---new-features">Build 314 - New features</h3>
+<h4 id="release-date-28-may-2020">Release date: 28 May 2020.</h4>
+<h5 id="download-92"><a href="https://s3.amazonaws.com/tableplus-osx-builds/314/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-4aa121e1506abbef2510a8a496353e9b3c2d7bfed34ee3f04e2a0b60102c1c08">SHA: <code class="language-plaintext highlighter-rouge">4aa121e1506abbef2510a8a496353e9b3c2d7bfed34ee3f04e2a0b60102c1c08</code></h5>
+
+<ul>
+  <li>Redesigned workspace layout.</li>
+  <li>Supported search and replace within results.</li>
+  <li>Supported cell-level selection.</li>
+  <li>Made syntax highlighing faster.</li>
+  <li>TablePlus now uses the single quote when you copy all column values.</li>
+  <li>Dropped support physical column.</li>
+  <li>Fixed many crash bugs.</li>
+  <li>Fixed a bug where switching between workspaces could be delayed.</li>
+  <li>Fixed a highlight syntax glitch bug.</li>
+  <li>Fixed a bug where the databases on the left sidebar are ordered incorrectly.</li>
+  <li>[SQLite] Fixed a bug where TablePlus has failed to show the error.</li>
+  <li>[Cassandra] Fixed a bug where TablePlus could not parse varint number.</li>
+</ul>
+
+<h3 id="build-308---new-features">Build 308 - New features</h3>
+<h4 id="release-date-11-may-2020">Release date: 11 May 2020.</h4>
+<h5 id="download-93"><a href="https://s3.amazonaws.com/tableplus-osx-builds/308/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3cbca4a55ad07bdf78ef9af7b390a3da23bf86b398e355d0261ea7d82c34d7da">SHA: <code class="language-plaintext highlighter-rouge">3cbca4a55ad07bdf78ef9af7b390a3da23bf86b398e355d0261ea7d82c34d7da</code></h5>
+
+<ul>
+  <li>Polish UI.</li>
+  <li>TablePlus no longer discards pending changes after reconnecting.</li>
+  <li>Auto reconnect when the app become active.</li>
+  <li>Supported view Spatial data in Map View.</li>
+  <li>Supported history search.</li>
+  <li>Supported bootstrap commands.</li>
+  <li>Added Greenplum driver.</li>
+  <li>When you click on “manual Input… “ it will focus on the input field on the right sidebar.</li>
+  <li>[MySQL] Skip virtual columns when export SQL.</li>
+  <li>[MySQL] Supported reset auto-increment.</li>
+  <li>[Oracle] Fixed a bug where TablePlus could not update DateTime value.</li>
+  <li>[PostgreSQL] Fixed bug where TablePlus couldn’t load foreign table.</li>
+  <li>[PostgreSQL 12] Fixed bug where TablePlus couldn’t load check condition.</li>
+  <li>Fixed a bug “duplicate rows” but could not save.</li>
+  <li>Fixed a bug where connections which do not belong to any group could be ignored.</li>
+  <li>Various bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-304---bug-fixes">Build 304 - Bug fixes</h3>
+<h4 id="release-date-18-april-2020">Release date: 18 April 2020.</h4>
+<h5 id="download-94"><a href="https://s3.amazonaws.com/tableplus-osx-builds/304/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-a9a3c7464b2e4cec4c5a8deb3e6159a2d5447c38954aa17278a8e7a978ac7807">SHA: <code class="language-plaintext highlighter-rouge">a9a3c7464b2e4cec4c5a8deb3e6159a2d5447c38954aa17278a8e7a978ac7807</code></h5>
+
+<ul>
+  <li>Polish UI.</li>
+  <li>[MySQL, MariaDB] Supported export SQL with virtual column.</li>
+  <li>Fixed a bug where console log could make the app unresponsive.</li>
+  <li>Various bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-300---new-features">Build 300 - New features</h3>
+<h4 id="release-date-31-march-2020">Release date: 31 March 2020.</h4>
+<h5 id="download-95"><a href="https://s3.amazonaws.com/tableplus-osx-builds/300/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-ed8e8add50d60df29ee775d5296c6842b134f3f767984d3afea5ee46555f6b9a">SHA: <code class="language-plaintext highlighter-rouge">ed8e8add50d60df29ee775d5296c6842b134f3f767984d3afea5ee46555f6b9a</code></h5>
+
+<ul>
+  <li>[MySQL, MariaDB] Reduced memory usage.</li>
+  <li>[Advanced filter] Supported OR filter.</li>
+  <li>[The Right Sidebar] Supported multiple carets and syntax highlighting.</li>
+  <li>[Quick Look] Supported XML/JSON syntax highlighting.</li>
+  <li>[Quick Look] Improved JSON Viewer.</li>
+  <li>Supported search and replace in the Quick Look editor.</li>
+  <li>Improved import/export speed.</li>
+  <li>Fixed a bug where TablePlus couldn’t render the big blob on the right sidebar.</li>
+  <li>[SQL Editor] Fixed invalid whitespace bug.</li>
+  <li>Various bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-296---new-features-and-bugfixes">Build 296 - New features and bugfixes</h3>
+<h4 id="release-date-12-february-2020">Release date: 12 February 2020.</h4>
+<h5 id="download-96"><a href="https://s3.amazonaws.com/tableplus-osx-builds/296/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e993c07662c1c0c91fb70c419bf6d7dc700dc39a832a8ce3629a18649cbfc72c">SHA: <code class="language-plaintext highlighter-rouge">e993c07662c1c0c91fb70c419bf6d7dc700dc39a832a8ce3629a18649cbfc72c</code></h5>
+
+<ul>
+  <li>Supported edit view content.</li>
+  <li>Supported nested connection group.</li>
+  <li>[TableData] Supported set column positions and widths.</li>
+  <li>[Preferences] Added PostGIS decoder option.</li>
+  <li>[Preferences] Added data locations for synching connections with private cloud (Dropbox, iCloud…).</li>
+  <li>[Export SQL] TablePlus now split queries into 250KB chunk size.</li>
+  <li>Improved Import/Export performance.</li>
+  <li>[MySQL] Supported edit table encoding and collation.</li>
+  <li>Fixed a bug where auto limit queries were not recorded in history correctly.</li>
+  <li>Fixed bug parse foreign key with custom quotes.</li>
+  <li>Fixed a bug where TablePlus could ignore auto limit.</li>
+  <li>Fixed a bug where foreign keys were not loaded in the query result.</li>
+  <li>[Backup/Restore] Fixed an escape password bug.</li>
+  <li>Fixed many potential crash bugs.</li>
+  <li>Fixed a bug loading foreign keys.</li>
+  <li>Polish UI.</li>
+</ul>
+
+<h3 id="build-290---new-features-and-bugfixes">Build 290 - New features and bugfixes</h3>
+<h4 id="release-date-18-january-2020">Release date: 18 January 2020.</h4>
+<h5 id="download-97"><a href="https://s3.amazonaws.com/tableplus-osx-builds/290/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-c9a966a96c07b870558b726c617b819df206af5708146ff7370b544bf232c17f">SHA: <code class="language-plaintext highlighter-rouge">c9a966a96c07b870558b726c617b819df206af5708146ff7370b544bf232c17f</code></h5>
+
+<ul>
+  <li>Added Geometry Viewer when hovering mouse on the geometry data cell.</li>
+  <li>Fixed a bug High CPU after backup/restore.</li>
+  <li>[SQLite] [Redshift] Fixed a CSV import bug.</li>
+  <li>[PostgreSQL] Supported view/edit Geometry data.</li>
+</ul>
+
+<h3 id="build-286---happy-new-year">Build 286 - Happy new year</h3>
+<h4 id="release-date-12-january-2020">Release date: 12 January 2020.</h4>
+<h5 id="download-98"><a href="https://s3.amazonaws.com/tableplus-osx-builds/286/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-7b01822ba8405d57135d3aa4b596fa87e95a9d9822ce3ebb44ad828c3dc4cb76">SHA: <code class="language-plaintext highlighter-rouge">7b01822ba8405d57135d3aa4b596fa87e95a9d9822ce3ebb44ad828c3dc4cb76</code></h5>
+
+<ul>
+  <li>Improved advanced filter with state colors.</li>
+  <li>Improved backup compress speed.</li>
+  <li>Added PostgreSQL 12 binaries.</li>
+  <li>TablePlus no longer replaces SQL tabs.</li>
+  <li>[Search] Supported matching pattern: use the double quote when searching.</li>
+  <li>[MySQL] Supported opening foreign keys cross-database.</li>
+  <li>[MySQL] Fixed a bug parse Geometry data.</li>
+  <li>[MySQL] Fixed performance issue when the database has hundreds of thousand users.</li>
+  <li>[SQL Server] Handled updating Unicode string correctly.</li>
+  <li>[SQL Server] Fixed a bug where empty column and the query status could be ignored in some cases.</li>
+  <li>[SQL Editor] Added an ability to add all table fields when using auto-completion.</li>
+  <li>[SQL Editor] Updated gutter font sync with editor font.</li>
+  <li>Fixed a bug where the advanced filter state wasn’t updated.</li>
+  <li>Fixed a bug where TablePlus could not open Gzip files.</li>
+</ul>
+
+<h3 id="build-282---enhancements">Build 282 - Enhancements</h3>
+<h4 id="release-date-8-december-2019">Release date: 8 December 2019.</h4>
+<h5 id="download-99"><a href="https://s3.amazonaws.com/tableplus-osx-builds/282/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1c19dfa8ad6fe03e56ead9b4386b41ea4e1ffcbeba64d9943cf171f4162f02b6">SHA: <code class="language-plaintext highlighter-rouge">1c19dfa8ad6fe03e56ead9b4386b41ea4e1ffcbeba64d9943cf171f4162f02b6</code></h5>
+
+<ul>
+  <li>Updated theme colors.</li>
+  <li>Improved export feature.</li>
+  <li>Enabled tab to next field in Table Structure and Table Index.</li>
+  <li>[Advanced filter] [MySQL] Added case sensitive filter.</li>
+  <li>[Advanced filter] Fixed a bug where the filter could produce invalid queries.</li>
+  <li>[SQLite] Supported rename column.</li>
+  <li>[MySQL, MariaDB] Fixed a bug where TablePlus could reconnect repeatedly.</li>
+  <li>[SQL Server] Improved loading time.</li>
+  <li>[Editor] Supported auto-completion in Multiple Cursors mode.</li>
+  <li>[Editor] Fixed split horizontally via the right-click menu context.</li>
+  <li>[Editor] Fixed a tab-width bug.</li>
+  <li>Fixed a lot of potential crash bugs.</li>
+  <li>Fixed a bug where the content which was edited via quick look could be ignored.</li>
+</ul>
+
+<h3 id="build-278---enhancements">Build 278 - Enhancements</h3>
+<h4 id="release-date-12-november-2019">Release date: 12 November 2019.</h4>
+<h5 id="download-100"><a href="https://s3.amazonaws.com/tableplus-osx-builds/278/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0bcbd1a5110ae78fe52017531e74b6d63c8fcaea0e39c6135cfc538a0f53d8dd">SHA: <code class="language-plaintext highlighter-rouge">0bcbd1a5110ae78fe52017531e74b6d63c8fcaea0e39c6135cfc538a0f53d8dd</code></h5>
+
+<ul>
+  <li>Scrollable left sidebar (database view).</li>
+  <li>Improved theme colors.</li>
+  <li>Updated backup/restore windows UI.</li>
+  <li>Updated preferences UI.</li>
+  <li>[Quick look] Support multiple carets.</li>
+  <li>[Editor] Fixed a crash bug.</li>
+  <li>Beautify and uglify the current query instead of all the queries.</li>
+  <li>Fixed huge memory issues during import/export.</li>
+  <li>Fixed a bug where select all text in a cell was limited 32k characters.</li>
+</ul>
+
+<h3 id="build-276---enhancements">Build 276 - Enhancements</h3>
+<h4 id="release-date-8-november-2019">Release date: 8 November 2019.</h4>
+<h5 id="download-101"><a href="https://s3.amazonaws.com/tableplus-osx-builds/276/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1704360e2bc97bec96b7606de80b93d415b917894996e71f68b1753ee2f5fc2c">SHA: <code class="language-plaintext highlighter-rouge">1704360e2bc97bec96b7606de80b93d415b917894996e71f68b1753ee2f5fc2c</code></h5>
+
+<ul>
+  <li>Improved theme colors.</li>
+  <li>Updated backup/restore windows UI.</li>
+  <li>Updated preferences UI.</li>
+  <li>[Quick look] Support multiple carets.</li>
+  <li>[Editor] Fixed a crash bug.</li>
+  <li>Beautify and uglify the current query instead of all the queries.</li>
+  <li>Fixed huge memory issues during import/export.</li>
+  <li>Fixed a bug where select all text in a cell was limited 32k characters.</li>
+</ul>
+
+<h3 id="build-272---bug-fixes">Build 272 - Bug fixes</h3>
+<h4 id="release-date-26-october-2019">Release date: 26 October 2019.</h4>
+<h5 id="download-102"><a href="https://s3.amazonaws.com/tableplus-osx-builds/272/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-ee4f23b286f5407704d01c9b84eab0084eaa95fc90e234b5f85ca0a46a34edc3">SHA: <code class="language-plaintext highlighter-rouge">ee4f23b286f5407704d01c9b84eab0084eaa95fc90e234b5f85ca0a46a34edc3</code></h5>
+
+<ul>
+  <li>TablePlus will try to decode blob data to text if it is possible.</li>
+  <li>[Editor] Improved code auto-completion.</li>
+  <li>[MySQL] Fixed a glitch UI issue in user management.</li>
+  <li>Fixed a crash bug on EL Capitan.</li>
+</ul>
+
+<h3 id="build-270---blog-whats-new-in-tableplus-build-270">Build 270 - <a href="https://tableplus.com/blog/2019/10/whats-new-in-build-270.html">Blog: What’s new in TablePlus build 270?</a></h3>
+<h4 id="release-date-22-october-2019">Release date: 22 October 2019.</h4>
+<h5 id="download-103"><a href="https://s3.amazonaws.com/tableplus-osx-builds/270/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0827b2ab45750a77aa4531cfaf58737b5713638f9ca80abf1da241f3735bc31c">SHA: <code class="language-plaintext highlighter-rouge">0827b2ab45750a77aa4531cfaf58737b5713638f9ca80abf1da241f3735bc31c</code></h5>
+
+<ul>
+  <li>[Query Editor] Wrap selected text in quotes.</li>
+  <li>[Query Editor] Supported multiple cursors.</li>
+  <li>Improved Quick Look location popup.</li>
+  <li>Improved CSV export function.</li>
+  <li>Added an ability to change the query params regex.</li>
+  <li>Added Command + Delete: Delete items and ignore foreign key checks.</li>
+  <li>TablePlus now export/import connection encoded URL correctly.</li>
+  <li>TablePlus will suggest you to use the TouchID to unlock safe mode.</li>
+  <li>[MySQL User Management] Added CREATE TEMPORARY TABLES privilege.</li>
+  <li>[SQL Server] Added IDENTITY when creating a new column.</li>
+  <li>[SQL Server] Use a single transaction when executing multiple queries.</li>
+  <li>[MySQL] Improved Binary data type support.</li>
+  <li>[MySQL] Fixed a bug syntax error when executing a function contains DELIMITER with comments.</li>
+  <li>[SQLite] Added handler for real data type.</li>
+  <li>[PostgreSQL] Fixed a bug where backup/restore didn’t work if the user name contains the @ character.</li>
+  <li>[Mongo] Supported count rows in results.</li>
+  <li>Fixed a minor license system issue.</li>
+  <li>Fixed a bug where the last row could not be rendered in some cases.</li>
+  <li>Fixed a crash bug when TablePlus wake up from idle.</li>
+  <li>Fixed a few potential crash bugs.</li>
+  <li>Fixed a bug where the theme didn’t change in macOS Catalina auto theme mode.</li>
+  <li>Fixed a bug where pin/unpin item didn’t respect multiple selections.</li>
+  <li>Fixed a bug where Open Recent is always empty.</li>
+  <li>Fixed some glitch UI bugs.</li>
+  <li>Fixed some driver bugs.</li>
+  <li>Fixed a bug using default filter operator with always show.</li>
+  <li>Fixed a memory leak bug.</li>
+</ul>
+
+<h3 id="build-264---catalina">Build 264 - Catalina</h3>
+<h4 id="release-date-24-september-2019">Release date: 24 September 2019.</h4>
+<h5 id="download-104"><a href="https://s3.amazonaws.com/tableplus-osx-builds/264/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5d50e2627855d4f99e3ca7427aa53489e5b98e60aa31c826902b92d478dadc91">SHA: <code class="language-plaintext highlighter-rouge">5d50e2627855d4f99e3ca7427aa53489e5b98e60aa31c826902b92d478dadc91</code></h5>
+
+<ul>
+  <li>Improvement macOS Catalina support.</li>
+  <li>Supported enterprise users with Auto-Agent security guard.</li>
+  <li>Fixed a bug where variables were not applied.</li>
+</ul>
+
+<h3 id="build-262---new-features">Build 262 - New features</h3>
+<h4 id="release-date-17-september-2019">Release date: 17 September 2019.</h4>
+<h5 id="download-105"><a href="https://s3.amazonaws.com/tableplus-osx-builds/262/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-988a18434af2e81504852b88917bd95d44d161ea40238a9ea65387d4d3f877cb">SHA: <code class="language-plaintext highlighter-rouge">988a18434af2e81504852b88917bd95d44d161ea40238a9ea65387d4d3f877cb</code></h5>
+
+<ul>
+  <li>Fixed an auto completion bug with alias.</li>
+</ul>
+
+<h3 id="build-260---new-features">Build 260 - New features</h3>
+<h4 id="release-date-16-september-2019">Release date: 16 September 2019.</h4>
+<h5 id="download-106"><a href="https://s3.amazonaws.com/tableplus-osx-builds/260/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b6ede79b963c5b57b9c215fbac711d1da3e7f8d62448b1ba21ec0e6cf0625122">SHA: <code class="language-plaintext highlighter-rouge">b6ede79b963c5b57b9c215fbac711d1da3e7f8d62448b1ba21ec0e6cf0625122</code></h5>
+
+<ul>
+  <li>Added advanced filter config: default column, default operator, default filter state.</li>
+  <li>Supported filter with a column in the right-click context menu on the table header.</li>
+  <li>Improved data detection and tuning the dark theme.</li>
+  <li>Improved the Safe Mode: the Safe Mode now can ingore comments.</li>
+  <li>[Snowflake] Fixed a bug where TablePlus couldn’t fetch the views.</li>
+  <li>[Snowflake] Fixed a bug where TablePlus unresponsive during larger queries.</li>
+  <li>Fixed a visual bug in the foreign key popup.</li>
+  <li>Fixed a bug where the Right Sidebar wasn’t reloaded after refreshing/committing</li>
+  <li>Fixed a bug where the Counter wasn’t rendered correctly.</li>
+  <li>Fixed a bug where the Connection SQLite over SSH could cause reconnect repeatedly.</li>
+  <li>Fixed a bug where the Console didn’t load font correctly.</li>
+  <li>Fixed a bug where the Editor Search Panel didn’t show up after pressing command + F.</li>
+</ul>
+
+<h3 id="build-256---enhancements">Build 256 - Enhancements</h3>
+<h4 id="release-date-22-august-2019">Release date: 22 August 2019.</h4>
+<h5 id="download-107"><a href="https://s3.amazonaws.com/tableplus-osx-builds/256/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-7513e351de7578aee99ce2cd67fa70c83bd2895dec136bed023fce00f54cede1">SHA: <code class="language-plaintext highlighter-rouge">7513e351de7578aee99ce2cd67fa70c83bd2895dec136bed023fce00f54cede1</code></h5>
+
+<ul>
+  <li>Improved UX/UI, theme colors and performance.</li>
+  <li>TablePlus now won’t reload all tables after committing.</li>
+  <li>Supported double click to open an item in the item-overview.</li>
+  <li>TablePlus now scrolls to the beginning of the document when navigating to next and previous page.</li>
+  <li>[Oracle] Upgrqade Oracle Library.</li>
+  <li>[Oracle] Fixed a crash bug when fetching rows.</li>
+  <li>[Oracle] Supported UTF8 charset.</li>
+  <li>[Open anything] Supported control + p/n as arrow alias.</li>
+  <li>[Open Anything] Hold Command + Open an item to open the item in a new tab.</li>
+  <li>Fixed a bug where TablePlus couldn’t get MySQL database list.</li>
+  <li>Fixed a bug which could affect the performance (counting rows).</li>
+  <li>Fixed a bug where TablePlus didn’t show the database bar after merging windows.</li>
+</ul>
+
+<h3 id="build-252---bug-fixes">Build 252 - Bug fixes</h3>
+<h4 id="release-date-31-july-2019">Release date: 31 July 2019.</h4>
+<h5 id="download-108"><a href="https://s3.amazonaws.com/tableplus-osx-builds/252/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-42638fa0f54f093504b955ef33f54355ba073268feedae670f7fe8e78c03b05c">SHA: <code class="language-plaintext highlighter-rouge">42638fa0f54f093504b955ef33f54355ba073268feedae670f7fe8e78c03b05c</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus couldn’t retrieve binary data correctly.</li>
+</ul>
+
+<h3 id="build-250---bug-fixes">Build 250 - Bug fixes</h3>
+<h4 id="release-date-30-july-2019">Release date: 30 July 2019.</h4>
+<h5 id="download-109"><a href="https://s3.amazonaws.com/tableplus-osx-builds/30/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0b77a206dd45e60aed8032d088d05aba6c75f1a1b0543f9233b13cdb23368eba">SHA: <code class="language-plaintext highlighter-rouge">0b77a206dd45e60aed8032d088d05aba6c75f1a1b0543f9233b13cdb23368eba</code></h5>
+
+<ul>
+  <li>Fixed an import bug where TablePlus skipped the last chunk.</li>
+  <li>[Cassandra] Supported ALLOW FILTERING.</li>
+  <li>Improved auto-completion context awareness.</li>
+  <li>[Redshift] Added driver logo.</li>
+  <li>[Redshift] Fixed a bug where TablePlus couldn’t load Spectrum Tables.</li>
+  <li>[Cassandra] Fixed a bug parse date time.</li>
+  <li>[Preferecnes] TablePlus will not restore recently opened workspace except you turn it on.</li>
+  <li>[MySQL] Fixed a bug where TablePlus couldn’t retrieve binary data correctly.</li>
+</ul>
+
+<h3 id="build-246---bug-fixes">Build 246 - Bug fixes</h3>
+<h4 id="release-date-15-july-2019">Release date: 15 July 2019.</h4>
+<h5 id="download-110"><a href="https://s3.amazonaws.com/tableplus-osx-builds/246/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-4c0c1592aec9017f0c90149294bd492a7c7666abbeb2503b32bf2ed6af634a3c">SHA: <code class="language-plaintext highlighter-rouge">4c0c1592aec9017f0c90149294bd492a7c7666abbeb2503b32bf2ed6af634a3c</code></h5>
+
+<ul>
+  <li>Updated libSSH.</li>
+  <li>TablePlus is no longer prompt for an update if you turn it off.</li>
+  <li>Improved fuzzy searching for items/databases.</li>
+  <li>Improved backup/restore default driver.</li>
+  <li>[MySQL] Supported backup –all-databases flag.</li>
+  <li>Added sorting connection by name/tag/driver.</li>
+  <li>Filling zero for the date and time in the naming pattern.</li>
+  <li>Fixed a bug where clicking a foreign key could generate a wrong query.</li>
+  <li>Fixed a bug export CSV where TablePlus didn’t respect the option convert line break to spaces.</li>
+  <li>Fixed a bug where asking password every time didn’t work.</li>
+  <li>Fixed a few minor bugs.</li>
+</ul>
+
+<h3 id="build-242---bug-fixes">Build 242 - Bug fixes</h3>
+<h4 id="release-date-02-july-2019">Release date: 02 July 2019.</h4>
+<h5 id="download-111"><a href="https://s3.amazonaws.com/tableplus-osx-builds/242/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3a51852c0e7888d8caafc4728a627a6ee3dec4e0301ddb12839d3a9146097b00">SHA: <code class="language-plaintext highlighter-rouge">3a51852c0e7888d8caafc4728a627a6ee3dec4e0301ddb12839d3a9146097b00</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus couldn’t get header history.</li>
+  <li>Fixed a bug where TablePlus wouldn’t show process list.</li>
+  <li>[MySQL] Fixed a threading bug which could cause a crash.</li>
+</ul>
+
+<h3 id="build-240---new-feature">Build 240 - New feature</h3>
+<h4 id="release-date-29-jun-2019">Release date: 29 Jun 2019.</h4>
+<h5 id="download-112"><a href="https://s3.amazonaws.com/tableplus-osx-builds/240/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-790dba70c5c7f8258f2d1f106465ec27764f2800b5269f47757194a2e76631ff">SHA: <code class="language-plaintext highlighter-rouge">790dba70c5c7f8258f2d1f106465ec27764f2800b5269f47757194a2e76631ff</code></h5>
+
+<ul>
+  <li>TablePlus will restore the recently closed workspaces.</li>
+  <li>[Auto completion] Added an option auto prefix schema name.</li>
+  <li>Improved import/export big dump file.</li>
+  <li>Fixed a editing inline bug where the cell wasn’t marked as yellow.</li>
+  <li>Fixed a bug where TablePlus didn’t update the sidebar after switching database by shortcut.</li>
+  <li>Fixed a bug where TablePlus froze if the user opened console during import SQL.</li>
+</ul>
+
+<h3 id="build-233---new-feature">Build 233 - New feature</h3>
+<h4 id="release-date-21-jun-2019">Release date: 21 Jun 2019.</h4>
+<h5 id="download-113"><a href="https://s3.amazonaws.com/tableplus-osx-builds/233/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-45c4f67a4471e7ec482b9b85669eb1694f3cb30caf81d738ccaf9fbe47709236">SHA: <code class="language-plaintext highlighter-rouge">45c4f67a4471e7ec482b9b85669eb1694f3cb30caf81d738ccaf9fbe47709236</code></h5>
+
+<ul>
+  <li>Supported query params.</li>
+  <li>Supported export CSV with the option convert line break to space.</li>
+  <li>Supported killing running queries.</li>
+  <li>[Backup/Restore] TablePlus now remembers backup/restore options, gzip checkbox state and driver version.</li>
+  <li>Advanced safe mode now can ignore Explain queries.</li>
+  <li>Export CSV now respects the column position.</li>
+  <li>[SQLite] Enabled Over SSH.</li>
+  <li>Optimized editing mode, it takes zero time when pressing Tab to navigate to the next cell.</li>
+  <li>[PostgreSQL] Fixed a bug where TablePlus couldn’t load foreign key in multiple schemas.</li>
+  <li>TablePlus now startups in zero time.</li>
+  <li>New icon set for the dark theme.</li>
+  <li>Bug fix and performance improvements.</li>
+  <li>Improved SSH Security.</li>
+  <li>Added Command + Delete/Option + Delete to Delete/Truncate tables.</li>
+  <li>Added naming pattern when backup/restore database.</li>
+  <li>Changed the advanced filter behaviors, clear all button will remove applied filters instead of deleting it.</li>
+  <li>Improved tab color when the app is inactive.</li>
+  <li>Fixed a bug where TablePlus failed to restore Welcome window size/position.</li>
+  <li>Fixed a bug where the Welcome Screen didn’t close after opening SQLite database.</li>
+  <li>Fixed a bug where inline editing cell has a different font with the table data.</li>
+  <li>[Redis] Fixed a counting bug.</li>
+  <li>[Redis] Support ElasticCache TLS (Redis with TLS).</li>
+  <li>[SQL Server] Fixed a bug where columns with utf8 were not rendered correctly.</li>
+  <li>[MySQL] Fixed an escaping password bug in the backup/restore.</li>
+  <li>[MySQL] Added MySQL 8 binaries for backup/restore.</li>
+  <li>[MariaDB] Supported native driver and enabled socket forwarding.</li>
+</ul>
+
+<h3 id="build-228---bug-fixes">Build 228 - Bug fixes</h3>
+<h4 id="release-date-21-may-2019">Release date: 21 May 2019.</h4>
+<h5 id="download-114"><a href="https://s3.amazonaws.com/tableplus-osx-builds/228/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-bf3350deeba7d62df1e9e2cf35d8e43c5f785d8e9e5e109d951797e6e1bef1c0">SHA: <code class="language-plaintext highlighter-rouge">bf3350deeba7d62df1e9e2cf35d8e43c5f785d8e9e5e109d951797e6e1bef1c0</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus didn’t render the total result count.</li>
+  <li>Fixed a bug where TablePlus couldn’t save the advanced filter states.</li>
+  <li>Fixed a bug where TablePlus couldn’t hide the advanced filter.</li>
+  <li>Connect over an SSH tunneling is now faster 30%.</li>
+  <li>Supported backup/restore using socket over an SSH tunneling.</li>
+  <li>Supported forwarding socket over SSH.</li>
+  <li>TablePlus now remembers console state show/hide.</li>
+  <li>Improved the default font system: default monospaced digit.</li>
+  <li>Improved estimated rows count.</li>
+  <li>Improved searching for items with regex.</li>
+  <li>Improved SQL beautify function.</li>
+  <li>Improved auto-completion context awareness.</li>
+  <li>Improved general UI, typo.</li>
+  <li>Improved the left sidebar database stack view (multiple workspaces).</li>
+  <li>[Mongo] Fixed a bug where editing a row with the primary is a string.</li>
+  <li>[Cassandra] Fixed a bug where blob values were shown incorrectly.</li>
+  <li>[Redis] Fixed a bug syntax error when reloading content with enabled filter.</li>
+  <li>[SQL Server] Fixed a bug where the result was empty in some cases.</li>
+  <li>[SQL Server] Fixed a crash bug on EL Capitan.</li>
+  <li>[MYSQL] Fixed a bug where SSL keys were not found.</li>
+  <li>[MySQL] Fixed bug where TablePlus couldn’t insert an index with column length.</li>
+  <li>Fixed some potential backup/restore bugs.</li>
+  <li>Fixed a bug where shift-left eats characters.</li>
+</ul>
+
+<h3 id="build-222---new-safe-mode-levels-new-font-system">Build 222 - New safe mode levels, new font system</h3>
+<h4 id="release-date-26-apr-2019">Release date: 26 Apr 2019.</h4>
+<h5 id="download-115"><a href="https://s3.amazonaws.com/tableplus-osx-builds/222/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-b86292baa8fb7a4e3c94aac114f1deca8a6f3965d4c4541c184f6b822d6ac1e7">SHA: <code class="language-plaintext highlighter-rouge">b86292baa8fb7a4e3c94aac114f1deca8a6f3965d4c4541c184f6b822d6ac1e7</code></h5>
+
+<ul>
+  <li>Added two new safe mode levels which can ignore SELECT queries.</li>
+  <li>Supported edit bytea as Hex value.</li>
+  <li>Supported parse safe mode level from URL.</li>
+  <li>Supported all macOS fonts.</li>
+  <li>Supported changing row padding.</li>
+  <li>Supported searching for items with AND regex.</li>
+  <li>Supported changing editor/table view fonts.</li>
+  <li>Added shortcut reload the current tab: Command + Option + R</li>
+  <li>Improved column auto-sizing.</li>
+  <li>[CSV] Added matching strategy.</li>
+  <li>[CSV] Export CSV uses “Quote if needed” as the default option.</li>
+  <li>Bring back option: double click to import Favorite.</li>
+  <li>Pretty function now can validate/sort JSON.</li>
+  <li>Enable editor when executing a query.</li>
+  <li>[Advanced filter] Supported ILIKE.</li>
+  <li>[Cockroach] Fixed a bug where the user can’t update a table with bytea primary.</li>
+  <li>[Mongo] Added support sorting column.</li>
+  <li>[Mongo] TablePlus now sorts key in the table view mode.</li>
+  <li>[Redis] Fixed an advanced filter bug.</li>
+  <li>[SQLite] Fixed a bug loading table primary key.</li>
+  <li>[MySQL] Fixed a bug generate alter column statement.</li>
+  <li>[PostgreSQL] Fixed a bug foreign key and index columns were not loaded.</li>
+  <li>Fixed a bug where backup/restore didn’t work due to Apple hardened.</li>
+  <li>Fixed a bug run history.</li>
+  <li>Fixed an auto-completion bug where TablePlus didn’t add a double quote.</li>
+  <li>Fixed a bug where JSON Editor keys were not sorted.</li>
+  <li>Fixed a bug where JSON Editor was not editable.</li>
+  <li>Fixed a bug exporting connection could skip the ungrouped connections.</li>
+</ul>
+
+<h3 id="build-212---hot-patch">Build 212 - Hot patch</h3>
+<h4 id="release-date-5-apr-2019">Release date: 5 Apr 2019.</h4>
+<h5 id="download-116"><a href="https://s3.amazonaws.com/tableplus-osx-builds/212/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3aacc45048a00479d442a0d7273c66bda3cf710d881ccea98749fb39ccf17e10">SHA: <code class="language-plaintext highlighter-rouge">3aacc45048a00479d442a0d7273c66bda3cf710d881ccea98749fb39ccf17e10</code></h5>
+
+<ul>
+  <li>Fixed a crash when importing/exporting Gzip file.</li>
+  <li>Fixed a crash when using auto-completion.</li>
+</ul>
+
+<h3 id="build-210---new-features-and-bug-fixes">Build 210 - New features and bug fixes</h3>
+<h4 id="release-date-4-apr-2019">Release date: 4 Apr 2019.</h4>
+<h5 id="download-117"><a href="https://s3.amazonaws.com/tableplus-osx-builds/210/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-6f58053cce1dfde635b922679993b90845a55e1ad494f2d770ff2f32fbc8d904">SHA: <code class="language-plaintext highlighter-rouge">6f58053cce1dfde635b922679993b90845a55e1ad494f2d770ff2f32fbc8d904</code></h5>
+
+<ul>
+  <li>Fixed some potential crash bugs.</li>
+  <li>Added shortcut key: Toggle Block Comment.</li>
+  <li>Added shortcut key: Select Next/Previous Workspace.</li>
+  <li>Supported changing shortcut keys.</li>
+  <li>Supported adding/deleting/duplicating rows in the query result.</li>
+  <li>Sorted JSON columns in JSONViewer.</li>
+  <li>Added MariaDB identify.</li>
+  <li>[MySQL] Auto suggestion table now can cross databases.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could ignore the extra info when creating a new column.</li>
+  <li>[MySQL] Fixed a bug which can cause command out of sync.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could generate a wrong Alter Column Query.</li>
+  <li>[MySQL] Added database encoding and collation.</li>
+  <li>[SQL Server] Money data type now shows 4 digits.</li>
+  <li>[SQL Server] Enable replicate login.</li>
+  <li>[Cassandra] Supported creating a new keyspace.</li>
+  <li>Fixed a bug when Toggling Comment in SQL Editor.</li>
+  <li>Updated SSH lib.</li>
+</ul>
+
+<h3 id="build-204---new-features-and-bug-fixes">Build 204 - New features and bug fixes</h3>
+<h4 id="release-date-18-mar-2019">Release date: 18 Mar 2019.</h4>
+<h5 id="download-118"><a href="https://s3.amazonaws.com/tableplus-osx-builds/204/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-3ddd9335dea342986e7919bc21db0555fb646ffefbabe7b03bf75c34a150cf6b">SHA: <code class="language-plaintext highlighter-rouge">3ddd9335dea342986e7919bc21db0555fb646ffefbabe7b03bf75c34a150cf6b</code></h5>
+
+<ul>
+  <li>Added an option disable auto save Favorites.</li>
+  <li>Supported sort table by multiple columns.</li>
+  <li>Supported duplicate multiple rows</li>
+  <li>Improved sort result performance.</li>
+  <li>[PostgreSQL] Supported change view encoding.</li>
+  <li>[Advanced Filter] Added BETWEEN operator.</li>
+  <li>[SQLite] Supported view blob data.</li>
+  <li>TablePlus now always opens a SQL file in a new tab.</li>
+  <li>TablePlus now remembers the advanced filter state (show/hide).</li>
+  <li>TablePlus now remembers column position, size.</li>
+  <li>Fixed Query Editor Layout issue.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could show wrong affected rows number.</li>
+  <li>[Redshift] Fixed an issue where TablePlus auto-suggestion could slow down the app.</li>
+  <li>[Cockroach] Fixed bug load foreign keys.</li>
+  <li>[Cassandra] Fixed a bug where TablePlus could show wrong date format.</li>
+</ul>
+
+<h3 id="build-200---new-features-and-bug-fixes">Build 200 - New features and bug fixes</h3>
+<h4 id="release-date-04-mar-2019">Release date: 04 Mar 2019.</h4>
+<h5 id="download-119"><a href="https://s3.amazonaws.com/tableplus-osx-builds/200/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5a9d2452a71227a030937f82cedd14a685fdf853f33829215b2f7a9eedf7492e">SHA: <code class="language-plaintext highlighter-rouge">5a9d2452a71227a030937f82cedd14a685fdf853f33829215b2f7a9eedf7492e</code></h5>
+
+<ul>
+  <li>New Favorite design.</li>
+  <li>Improved query result message in single tab mode.</li>
+  <li>Improved Copy as Markdown Table.</li>
+  <li>Added IN/NOT IN into quick filter.</li>
+  <li>Supported copy multiple history queries.</li>
+  <li>Supported search for connection.</li>
+  <li>Supported NOT IN in advanced filter.</li>
+  <li>Supported multiple selections in SQL Editor.</li>
+  <li>New design for run custom JavaScript.</li>
+  <li>Fixed a bug where the favorite tag could be removed after moving to a new group.</li>
+  <li>[Mongo] Supported URL.</li>
+  <li>[Redshift] Fixed a bug where TablePlus couldn’t load indices.</li>
+  <li>[Redshift] Fixed a bug where TablePlus couldn’t foreign keys.</li>
+  <li>[Redshift] Fixed a bug where TablePlus couldn’t load functions.</li>
+  <li>[Redis] Supported SSL.</li>
+  <li>[Redis] Fixed a bug where TablePlus could generate the wrong query if there are multiple databases.</li>
+  <li>[MySQL/Redshift/MariaDB] Improved default data type value when creating a new table.</li>
+  <li>[Redis] Supported STREAMS.</li>
+  <li>[MySQL] Fixed a bug where TablePlus could generate the wrong index query.</li>
+  <li>[MySQL] Set user password now compatible for version &lt; 5.7</li>
+  <li>[Cockroach] Supported limit returned rows.</li>
+  <li>[Snowflake] Updated libs, supported limit returned rows.</li>
+</ul>
+
+<h3 id="build-194---new-features-and-bug-fixes">Build 194 - New features and bug fixes</h3>
+<h4 id="release-date-16-feb-2019">Release date: 16 Feb 2019.</h4>
+<h5 id="download-120"><a href="https://s3.amazonaws.com/tableplus-osx-builds/194/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e622a1bb43a57611bf0f107be88470d7a10ddc6fc78567bae3c1edcaf32590f8">SHA: <code class="language-plaintext highlighter-rouge">e622a1bb43a57611bf0f107be88470d7a10ddc6fc78567bae3c1edcaf32590f8</code></h5>
+
+<ul>
+  <li>Add notification when backup/restore done.</li>
+  <li>Added limit returned rows for MySQL, PostgreSQL and SQLite.</li>
+  <li>User management and import wizard now respects the Safe mode.</li>
+  <li>[SQLite] Supported the full-text search extension.</li>
+  <li>[CockroachDB] Fixed a bug where TablePlus could generate a wrong update statement.</li>
+  <li>[Redis] Supported advanced filter.</li>
+  <li>[MySQL] User management per database.</li>
+  <li>[MySQL] Support backup/restore via local socket.</li>
+  <li>[MySQL] Fixed a bug where TablePlus couldn’t update index name.</li>
+  <li>[SQL Server] Fixed an issue where TablePlus could show the wrong time format.</li>
+  <li>Fixed an import SQL bug.</li>
+  <li>Fixed a bug export CSV with an empty column name.</li>
+  <li>Fixed a bug where TablePlus could show error popup repeatedly.</li>
+  <li>Fixed a memory leak bug.</li>
+  <li>Fixed a bug indent SQL with tabs.</li>
+  <li>Avoid escape JSON character after Pretty.</li>
+</ul>
+
+<h3 id="build-190---happy-lunar-new-year">Build 190 - Happy Lunar New Year</h3>
+<h4 id="release-date-3-feb-2019">Release date: 3 Feb 2019.</h4>
+<h5 id="download-121"><a href="https://s3.amazonaws.com/tableplus-osx-builds/190/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-adda9bf1225c56b22653144f5e69845117b8d0079b4ddd3cd3361628828ce292">SHA: <code class="language-plaintext highlighter-rouge">adda9bf1225c56b22653144f5e69845117b8d0079b4ddd3cd3361628828ce292</code></h5>
+
+<ul>
+  <li>Beautifier now respects the indent setting.</li>
+  <li>Supported pretty JSON on the right sidebar (menu dropdown).</li>
+  <li>[Mongo] Allow empty database when creating a new connection.</li>
+  <li>[Mongo] Supported insert a new row.</li>
+  <li>[Advanced filter] Auto adds braces for IN.</li>
+  <li>[Advanced filter] Jump to the last applied filter instead of the first filter when pressing: Command + F.</li>
+  <li>Fixed a memory leak bug.</li>
+  <li>Fixed a bug where connections/groups could be overridden when syncing via Dropbox.</li>
+  <li>Fixed a rare crash bug that could occur when editing a query.</li>
+  <li>[MySQL] Fixed a bug where TablePlus imports fail but won’t report any error.</li>
+  <li>[MySQL] Fixed a bug where editing MySQL structure could generate a wrong statement.</li>
+</ul>
+
+<h3 id="build-188---welcome-mongodb">Build 188 - Welcome MongoDB</h3>
+<h4 id="release-date-28-jan-2019">Release date: 28 Jan 2019.</h4>
+<h5 id="download-122"><a href="https://s3.amazonaws.com/tableplus-osx-builds/188/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-aa9f4b28c39d80351928e88ab6d55a193cc902a9325f662cd515fc8ea65e5fb6">SHA: <code class="language-plaintext highlighter-rouge">aa9f4b28c39d80351928e88ab6d55a193cc902a9325f662cd515fc8ea65e5fb6</code></h5>
+
+<ul>
+  <li>[Mongo] Added basic support: table view mode.</li>
+  <li>[Redis] 10x faster.</li>
+  <li>Updated left sidebar item layout.</li>
+  <li>Table now cache the column size in the query result.</li>
+  <li>[Cassandra] Fixed a bug display wrong Time value.</li>
+  <li>[MySQL] Fixed a bug set Auto increment.</li>
+  <li>[MySQL] Fixed a bug show error message.</li>
+  <li>[MySQL] Fixed a bug set default value.</li>
+  <li>Fixed a bug the main window is not shown after closing workspace.</li>
+  <li>Fixed a bug export single table.</li>
+  <li>Fixed a rare bug where TablePlus crashed when creating a connection.</li>
+</ul>
+
+<h3 id="build-182---new-features-and-bug-fixes">Build 182 - New Features and Bug fixes</h3>
+<h4 id="release-date-20-jan-2019">Release date: 20 Jan 2019.</h4>
+<h5 id="download-123"><a href="https://s3.amazonaws.com/tableplus-osx-builds/182/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-9fb00243048ec914a6795666af56e8937cef61b22155014b897613e742e290ef">SHA: <code class="language-plaintext highlighter-rouge">9fb00243048ec914a6795666af56e8937cef61b22155014b897613e742e290ef</code></h5>
+
+<ul>
+  <li>[PostgreSQL] Supported export/import PostgreSQL with foreign keys.</li>
+  <li>Supported Import/Export/Open Gzip file.</li>
+  <li>Added SQL Tab into Export Result popup.</li>
+  <li>Push notification after exporting/exporting.</li>
+  <li>TablePlus now remembers your favorite export/import options.</li>
+  <li>Changed tabs color in the dark theme.</li>
+  <li>TablePlus now allows opening 1 Table in multiple Tabs.</li>
+  <li>Fixed a crash bug when restoring a big dump file.</li>
+  <li>Fixed a bug auto-suggestion.</li>
+  <li>[Oracle] Fixed a crash bug when reconnecting.</li>
+  <li>[PostgreSQL] Improved raise notice.</li>
+  <li>[MySQL] Fixed a bug update row contains JSON.</li>
+  <li>Fixed a bug advanced filter with IN formula.</li>
+  <li>Fixed a bug where TablePlus doesn’t show plus button when viewing workspaces.</li>
+</ul>
+
+<h3 id="build-176---very-important-bug-fixes">Build 176 - Very important bug fixes.</h3>
+<h4 id="release-date-14-jan-2019">Release date: 14 Jan 2019.</h4>
+<h5 id="download-124"><a href="https://s3.amazonaws.com/tableplus-osx-builds/176/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-1ec0437e686f85e0ffc258b72bd1a3f172a6388f708d9c3f2a0d57276e5a169d">SHA: <code class="language-plaintext highlighter-rouge">1ec0437e686f85e0ffc258b72bd1a3f172a6388f708d9c3f2a0d57276e5a169d</code></h5>
+
+<ul>
+  <li>Fixed a bug where TablePlus shows unexpected Safe Mode popup.</li>
+  <li>Fixed a bug where TablePlus shows unexpected Connection popup.</li>
+  <li>Improved Open Anything.</li>
+  <li>Updated the connection form UI.</li>
+  <li>[SQL Server] Supported select Protocol Version when creating a new connection.</li>
+  <li>[Snowflake] Fixed a bug where TablePlus shows boolean value as EMPTY and 1.</li>
+  <li>[SSH] Fixed a bug where TablePlus didn’t ask for the private key passphrase password.</li>
+  <li>Fixed a bug escape character when importing a CSV.</li>
+  <li>Fixed a licensing UI issue.</li>
+</ul>
+
+<h3 id="build-174---new-features-and-bug-fixes">Build 174 - New features and bug fixes.</h3>
+<h4 id="release-date-10-jan-2019">Release date: 10 Jan 2019.</h4>
+<h5 id="download-125"><a href="https://s3.amazonaws.com/tableplus-osx-builds/174/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-e86b11d7b91f5ea8b67592f66a4a59fa004f532744765e406ac8b53f438ff611">SHA: <code class="language-plaintext highlighter-rouge">e86b11d7b91f5ea8b67592f66a4a59fa004f532744765e406ac8b53f438ff611</code></h5>
+
+<ul>
+  <li>Added PostgreSQL 11.0 binaries.</li>
+  <li>Added more monospaced fonts: Monaco, Menlo.</li>
+  <li>Copy Rows As… now are filtered by selected columns.</li>
+  <li>[SQL Server] Fixed a bug show MAX varchar length.</li>
+  <li>[MariaDB] Fixed a bug where TablePlus won’t allow you to edit query result.</li>
+  <li>[Cassandra] Supported data type TUPLE.</li>
+  <li>[Cassandra] Fixed a bug Copy As Insert Statements.</li>
+  <li>[Cassandra] Fixed a bug Update Counter.</li>
+  <li>[PostgreSQL] Fixed a bug show RAISE NOTICE.</li>
+  <li>[PostgreSQL] Supported push RAISE NOTICE notification.</li>
+  <li>[PostgreSQL] Fixed bug backup/restore database with an escaped password.</li>
+  <li>Fixed some table structure layout issues.</li>
+  <li>Fixed a bug copy/paste rich text which contains links into SQL Editor.</li>
+  <li>Fixed a bug where the Column Sort is removed unexpectedly when reloading data.</li>
+  <li>Fixed a bug where Table Grid is moved unexpectedly when editing a cell.</li>
+  <li>Fixed a bug update DEFAULT value when creating a new table.</li>
+  <li>Fixed a bug ENUM is not updated after editing.</li>
+  <li>Fixed a crash bug when switching theme in macOS 10.11.</li>
+  <li>Fixed a rare bug where TablePlus didn’t save the advanced filters.</li>
+  <li>Fixed a rare bug where TablePlus didn’t save the last query.</li>
+</ul>
+
+<h3 id="build-170---bug-fixes">Build 170 - Bug fixes.</h3>
+<h4 id="release-date-30-dec-2018">Release date: 30 Dec 2018.</h4>
+<h5 id="download-126"><a href="https://s3.amazonaws.com/tableplus-osx-builds/170/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-27efc9db57e92b887256d67bd255f29de8b509cf51cb4b2a60faacea0b434941">SHA: <code class="language-plaintext highlighter-rouge">27efc9db57e92b887256d67bd255f29de8b509cf51cb4b2a60faacea0b434941</code></h5>
+
+<ul>
+  <li>Supported unlock Safe Mode with Touch ID.</li>
+  <li>Improved the advanced filter UI/UX.</li>
+  <li>[SQL Server] Supported IDENTITY when creating a new table.</li>
+  <li>[SQL Server] Supported change connection encoding.</li>
+  <li>[MySQL] Supported change connection encoding.</li>
+  <li>[MySQL] Added User management.</li>
+  <li>[MySQL] Fixed a bug when editing the default value.</li>
+  <li>Fixed a bug export tables.</li>
+  <li>Fixed bug filter columns with spaces.</li>
+  <li>Fixed a crash bug table dum table dee.</li>
+  <li>Fixed a bug import CSV with null timestamp.</li>
+  <li>Fixed a bug copy as… with an empty column name.</li>
+</ul>
+
+<h3 id="build-164---bug-fixes">Build 164 - Bug fixes.</h3>
+<h4 id="release-date-09-dec-2018">Release date: 09 Dec 2018.</h4>
+<h5 id="download-127"><a href="https://s3.amazonaws.com/tableplus-osx-builds/164/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-a06e10479ce2f3dd649b284f324ce69739a0d70f8a2d1e83bd1f40fc232f6408">SHA: <code class="language-plaintext highlighter-rouge">a06e10479ce2f3dd649b284f324ce69739a0d70f8a2d1e83bd1f40fc232f6408</code></h5>
+
+<ul>
+  <li>Improved general UI/UX.</li>
+  <li>Show error detail when importing a CSV.</li>
+  <li>[Cassandra] Fixed a bug get the primary key in Cassandra 2.2.</li>
+  <li>[Cassandra] Fixed a crash bug when parsing decimal.</li>
+  <li>[MySQL] Fixed a backup/restore dump flags.</li>
+  <li>Fixed a bug case sensitive when navigating by foreign key links.</li>
+</ul>
+
+<h3 id="build-160---bug-fixes">Build 160 - Bug fixes.</h3>
+<h4 id="release-date-30-nov-2018">Release date: 30 Nov 2018.</h4>
+<h5 id="download-128"><a href="https://s3.amazonaws.com/tableplus-osx-builds/160/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-d53d06c27cf30031324e6dc7e1a3aeac09208b0a7e48d15fd8f7d4c690d53e4a">SHA: <code class="language-plaintext highlighter-rouge">d53d06c27cf30031324e6dc7e1a3aeac09208b0a7e48d15fd8f7d4c690d53e4a</code></h5>
+
+<ul>
+  <li>Added disconnect into the main menu.</li>
+  <li>General performance improvements.</li>
+  <li>Fixed a bug duplicate a row.</li>
+  <li>[MySQL] Fixed a bug generate insert/update with empty string</li>
+  <li>Fixed bug Keep Connection Alive option can’t be turned off.</li>
+  <li>Fixed a insert/update row inline.</li>
+  <li>Improved inline edit/delete rows speed.</li>
+  <li>Fixed a bug draw status bar.</li>
+  <li>Supported copy result as Raw.</li>
+  <li>[SQL Server] Fixed bug show datetime2 and decmial.</li>
+</ul>
+
+<h3 id="build-156---bug-fixes">Build 156 - Bug fixes.</h3>
+<h4 id="release-date-15-nov-2018">Release date: 15 Nov 2018.</h4>
+<h5 id="download-129"><a href="https://s3.amazonaws.com/tableplus-osx-builds/156/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-d8b387240e31b985d5bc49d44ff4592f7d1e8a51c2b51025602cdd069e849609">SHA: <code class="language-plaintext highlighter-rouge">d8b387240e31b985d5bc49d44ff4592f7d1e8a51c2b51025602cdd069e849609</code></h5>
+
+<ul>
+  <li>Fixed a crash that could occur when updating table.</li>
+</ul>
+
+<h3 id="build-154---bug-fixes">Build 154 - Bug fixes.</h3>
+<h4 id="release-date-14-nov-2018">Release date: 14 Nov 2018.</h4>
+<h5 id="download-130"><a href="https://s3.amazonaws.com/tableplus-osx-builds/154/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-01920729ee388a44f512f61c09a5093d90787222dd97c629e4e6f0696718fccb">SHA: <code class="language-plaintext highlighter-rouge">01920729ee388a44f512f61c09a5093d90787222dd97c629e4e6f0696718fccb</code></h5>
+
+<ul>
+  <li>[MySQL] Fixed a crash bug when import SQL Dump.</li>
+  <li>[Oracle] Fixed a bug cancel query.</li>
+  <li>[PostgreSQL] Fixed a bug get function list in PostgreSQL 11.</li>
+  <li>[Oracle] Supported PL/SQL syntax.</li>
+  <li>[Redis] Fixed a bug get databases.</li>
+  <li>[Snowflake] Fixed a bug hanging when returning an error.</li>
+  <li>Fix a rare bug generate update statement.</li>
+  <li>The sidebar database icon now has the color of the status bar.</li>
+  <li>TablePlus will fallback to ASCII and windowsCP1252 after failing to import SQL file with utf8.</li>
+  <li>Improved export, dump file speed.</li>
+  <li>Always open a new SQL tab when clicking the SQL button.</li>
+  <li>[Redis] Improved syntax parsing.</li>
+  <li>[MySQL] Fixed an escape character bug.</li>
+  <li>[Cassandra] Fixed an escape character bug.</li>
+  <li>Supported move focuses with up/down arrows.</li>
+  <li>Improved theme’s colors.</li>
+</ul>
+
+<h3 id="build-150---bug-fixes-and-new-features">Build 150 - Bug fixes and new features.</h3>
+<h4 id="release-date-05-nov-2018">Release date: 05 Nov 2018.</h4>
+<h5 id="download-131"><a href="https://s3.amazonaws.com/tableplus-osx-builds/150/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-0ec9682c512e5878b3fe7e9117551869556dcfcdeeb9be0c88c645a76ec05d81">SHA: <code class="language-plaintext highlighter-rouge">0ec9682c512e5878b3fe7e9117551869556dcfcdeeb9be0c88c645a76ec05d81</code></h5>
+
+<ul>
+  <li>[MySQL] Supported binary UUID as a primary key.</li>
+  <li>[MySQL] Supported binary as a Foreign Key.</li>
+  <li>[PostgreSQL] Supported binary as a Foreign Key.</li>
+  <li>[Cassandra] Fixed a bug get varint, decimal.</li>
+  <li>Fixed a bug escaped character when backup/restore.</li>
+  <li>Fixed a crash that could occur when importing SQL Dump file.</li>
+  <li>[SSH] Supported openssh, ecdsa key types.</li>
+  <li>[SSH] Fixed a bug saving SSH key passphrase.</li>
+  <li>[MySQL] Fixed bug parse function syntax.</li>
+  <li>[MySQL] Updated default restore flag.</li>
+  <li>[Oracle] Fixed a bug export rows as insert statement.</li>
+</ul>
+
+<h3 id="build-146---bug-fixes-and-performance-improvements">Build 146 - Bug fixes and performance improvements.</h3>
+<h4 id="release-date-26-oct-2018">Release date: 26 Oct 2018.</h4>
+<h5 id="download-132"><a href="https://s3.amazonaws.com/tableplus-osx-builds/146/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-956e92f651f93e2fa9a7cbdf36eec835bc55d887dacdfb6cf42fd009a7f68c00">SHA: <code class="language-plaintext highlighter-rouge">956e92f651f93e2fa9a7cbdf36eec835bc55d887dacdfb6cf42fd009a7f68c00</code></h5>
+
+<ul>
+  <li>Supported Snowflake.</li>
+  <li>[PostgreSQL] Supported bytea as the primary key.</li>
+  <li>[MySQL] Supported bulk delete table with ignoring foreign key check.</li>
+  <li>[MySQL] Fixed a bug utf8 on MySQL &lt; 5.5.</li>
+  <li>[Cassandra] Fixed a bug show Float value.</li>
+  <li>[Cassandra] Fixed a bug delete multiple rows.</li>
+  <li>Fixed a bug auto resize sidebar.</li>
+  <li>Fixed a bug reload row detail.</li>
+  <li>Fixed a bug import SQL Dump file.</li>
+  <li>Fixed bug selection on item outline.</li>
+  <li>The last SQL unique by pair connection/database.</li>
+  <li>Improved the query speed.</li>
+</ul>
+
+<h3 id="build-142---big-improvements-and-new-features">Build 142 - Big improvements and New features.</h3>
+<h4 id="release-date-10-oct-2018">Release date: 10 Oct 2018.</h4>
+<h5 id="download-133"><a href="https://s3.amazonaws.com/tableplus-osx-builds/142/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-dd5f9011503a73293ea1b6548badffa121661f436f3d257a02a89bf1a49594a9">SHA: <code class="language-plaintext highlighter-rouge">dd5f9011503a73293ea1b6548badffa121661f436f3d257a02a89bf1a49594a9</code></h5>
+
+<ul>
+  <li>[PostgreSQL] Fixed bug backup/restore.</li>
+  <li>[MySQL] Fixed bug backup/restore without password.</li>
+  <li>Localized syntax SQL Syntax.</li>
+  <li>Supported import SQL Dump.</li>
+  <li>Fixed an escape bug in advanced filter.</li>
+  <li>Improved export table function.</li>
+  <li>[MySQL] Fixed a few table structure issues.</li>
+  <li>[SQL Server] Fixed bug drop primary key.</li>
+  <li>[Oracle] Fixed a bug cancel query.</li>
+  <li>[Cassandra] Supported edit query result in SQL Query.</li>
+  <li>[Cockroach] Supported edit query result in SQL Query.</li>
+  <li>[SQL Server] Set default options.</li>
+  <li>Updated general UI (Colors and images).</li>
+  <li>Hide ping from query status bar.</li>
+  <li>Increased MySQL timeout.</li>
+  <li>[Cassandra] Fixed a bug update boolean column.</li>
+  <li>[SQL Server] Fixed a bug connect to Microsoft Azure.</li>
+  <li>Updated PostgreSQL and MySQL binaries.</li>
+  <li>Fixed some potential crash bugs</li>
+</ul>
+
+<h3 id="build-136---critical-update-for-mojave">Build 136 - Critical Update for Mojave.</h3>
+<h4 id="release-date-30-sep-2018">Release date: 30 Sep 2018.</h4>
+<h5 id="download-134"><a href="https://s3.amazonaws.com/tableplus-osx-builds/136/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-7e7a592dfe317db71425d869a92d0933a1110b22feb25841a8d993b9b87fc8fd">SHA: <code class="language-plaintext highlighter-rouge">7e7a592dfe317db71425d869a92d0933a1110b22feb25841a8d993b9b87fc8fd</code></h5>
+
+<ul>
+  <li>Added force reconnect hotkey: command + shift + R.</li>
+  <li>Added timeout for connection, ask the user if they want to reconnect.</li>
+  <li>Added auto theming.</li>
+  <li>Dark theme is free for all users.</li>
+  <li>Fixed a bug text editor cursor disappears on Mojave.</li>
+  <li>[PostgreSQL] Supported view check condition.</li>
+  <li>Show JSON viewer if the text is a valid JSON.</li>
+  <li>Show symbol ~ estimated row.</li>
+  <li>Fixed a crash bug after adding a new index in a new table.</li>
+  <li>[Oracle] Fixed a bug view the View data.</li>
+  <li>Fixed a bug auto-suggestion column for tables in case sensitive.</li>
+  <li>Fixed a bug switch database for the free version.</li>
+  <li>Fixed a bug the pinned table.</li>
+  <li>Fixed a bug escape JSON string.</li>
+</ul>
+
+<h3 id="build-132---critical-update-for-mojave">Build 132 - Critical Update for Mojave.</h3>
+<h4 id="release-date-25-sep-2018">Release date: 25 Sep 2018.</h4>
+<h5 id="download-135"><a href="https://s3.amazonaws.com/tableplus-osx-builds/132/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-5264883ea37399456583355fea58b095b9d8241f7dc5bb82364200a8f652b468">SHA: <code class="language-plaintext highlighter-rouge">5264883ea37399456583355fea58b095b9d8241f7dc5bb82364200a8f652b468</code></h5>
+
+<ul>
+  <li>[Critical Update] Fixed crash on Mojave official release.</li>
+  <li>Highlight table on the left sidebar after opening it by Open Anything.</li>
+</ul>
+
+<h3 id="build-130---improved-speed-and-stability">Build 130 - Improved speed and stability.</h3>
+<h4 id="release-date-22-sep-2018">Release date: 22 Sep 2018.</h4>
+<h5 id="download-136"><a href="https://s3.amazonaws.com/tableplus-osx-builds/130/TablePlus.dmg">Download</a></h5>
+<h5 id="sha-cfc2440e95931be9e1aeaca634d760bafc051264593e8b1282699b5807d64ef9">SHA: <code class="language-plaintext highlighter-rouge">cfc2440e95931be9e1aeaca634d760bafc051264593e8b1282699b5807d64ef9</code></h5>
+
+<ul>
+  <li>Attempt to fix resizing bug in SQL Query screen.</li>
+  <li>Upgrade SSH lib and optimize SSH speed.</li>
+  <li>[Cassandra] Supported view counter type.</li>
+  <li>[Cassandra] Supported view date type.</li>
+  <li>[Cassandra] Fixed bug compatible with version 2.</li>
+  <li>[MySQL] Fixed bug edit query result for a table has the uppercase name.</li>
+  <li>[CockroachDB] Fixed bug compatible with beta 2.1.</li>
+  <li>Disable automatic quote substitution in Quick Look and detail view.</li>
+  <li>Optimize TablePlus speed</li>
+</ul>
+
+<h3 id="build-128---faster-and-better">Build 128 - Faster and better.</h3>
+<h4 id="release-date-13-sep-2018">Release date: 13 Sep 2018.</h4>
+<h5 id="download-137"><a href="https://s3.amazonaws.com/tableplus-osx-builds/128/TablePlus.zip">Download</a></h5>
+<h5 id="sha-f9c0f66127428c889f48e8fd31aa59c656c29fe45aa728cf0928ce6d19a2eb7c">SHA: <code class="language-plaintext highlighter-rouge">f9c0f66127428c889f48e8fd31aa59c656c29fe45aa728cf0928ce6d19a2eb7c</code></h5>
+
+<ul>
+  <li>[Important] Fixed a crash bug while resizing the row detail.</li>
+  <li>Improved TablePlus Speed, it loads rows faster now.</li>
+  <li>Table data/structure is only loaded if needed.</li>
+  <li>[MySQL] Supported edit results in SQL Query when using table alias.</li>
+  <li>[MySQL] Fixed bug edit structure set extra.</li>
+  <li>[PostgreSQL] Fixed a bug create a new sequence.</li>
+  <li>[EL Capitan] Fixed bug switch database.</li>
+  <li>[PostgreSQL] Fixed bug create a sequence.</li>
+  <li>Improved console UI/UX.</li>
+</ul>
+
+<h3 id="build-125---bug-fixes-and-new-features">Build 125 - Bug fixes and new features.</h3>
+<h4 id="release-date-04-sep-2018">Release date: 04 Sep 2018.</h4>
+<h5 id="download-138"><a href="https://s3.amazonaws.com/tableplus-osx-builds/125/TablePlus.zip">Download</a></h5>
+<h5 id="sha-47f75ef3a766ef0ef28af13c648ca09f5f0c4cae09100342e5b94553f42b633f">SHA: <code class="language-plaintext highlighter-rouge">47f75ef3a766ef0ef28af13c648ca09f5f0c4cae09100342e5b94553f42b633f</code></h5>
+
+<ul>
+  <li>Added console log: Command + Shift + C.</li>
+  <li>Fixed a bug previous button does not work properly when monkey testing.</li>
+  <li>Fixed a bug cannot commit in SQL Query.</li>
+  <li>Fixed many crash bugs.</li>
+  <li>Auto expands text column.</li>
+  <li>Fixed autocompletion sometimes doesn’t suggest column name.</li>
+  <li>Export connection file now includes group logos.</li>
+</ul>
+
+<h3 id="build-122---stability-improvements">Build 122 - Stability improvements.</h3>
+<h4 id="release-date-27-aug-2018">Release date: 27 Aug 2018.</h4>
+<h5 id="download-139"><a href="https://s3.amazonaws.com/tableplus-osx-builds/122/TablePlus.zip">Download</a></h5>
+<h5 id="sha-76e45139cef4879fe3f84d97db3a6c5e6bc5f3a4bd3d669d467c98efaa05fe33">SHA: <code class="language-plaintext highlighter-rouge">76e45139cef4879fe3f84d97db3a6c5e6bc5f3a4bd3d669d467c98efaa05fe33</code></h5>
+
+<ul>
+  <li>Supported Redshift functions.</li>
+  <li>Fixed some potential crash bugs.</li>
+  <li>After build 122, we will change the update schedule to from weekly to monthly, if you want to receive weekly update, join our beta build: Preferences &gt; Receive Beta Updates.</li>
+</ul>
+
+<h3 id="build-121---bug-fixes-and-new-features">Build 121 - Bug fixes and new features.</h3>
+<h4 id="release-date-24-aug-2018">Release date: 24 Aug 2018.</h4>
+<h5 id="download-140"><a href="https://s3.amazonaws.com/tableplus-osx-builds/121/TablePlus.zip">Download</a></h5>
+<h5 id="sha-2f63de93d1c42c837cc8f95b287f3fc119a200754accbf828f728d87e96d1de1">SHA: <code class="language-plaintext highlighter-rouge">2f63de93d1c42c837cc8f95b287f3fc119a200754accbf828f728d87e96d1de1</code></h5>
+
+<ul>
+  <li>Supported open a connection by ID.</li>
+  <li>Supported open Redis by URL.</li>
+  <li>[Cassandra] Supported show UDT type value.</li>
+  <li>[Cassandra] Fixed bug show null value.</li>
+  <li>[Cassadnra] Fixed bug insert LIST/SET data type.</li>
+  <li>[Cassandra] Fixed update UUID.</li>
+  <li>[Cassandra] Fixed a bug TablePlus didn’t report the error message.</li>
+  <li>[PostgreSQL] Show precision for DateTime.</li>
+  <li>Command + S in SQL Query will trigger save dialog.</li>
+  <li>Fixed some potential crash bugs.</li>
+  <li>General UX improvements.</li>
+</ul>
+
+<h3 id="build-120---bug-fixes-and-new-features">Build 120 - Bug fixes and new features.</h3>
+<h5 id="download-141"><a href="https://s3.amazonaws.com/tableplus-osx-builds/120/TablePlus.zip">Download</a></h5>
+<h5 id="sha-9d96634d8e9eaa4101825bec60de35921cd8090b40b95093665ff65b2d255d80">SHA: <code class="language-plaintext highlighter-rouge">9d96634d8e9eaa4101825bec60de35921cd8090b40b95093665ff65b2d255d80</code></h5>
+<hr />
+<h4 id="release-date-17-aug-2018">Release date: 17 Aug 2018.</h4>
+
+<ul>
+  <li>Added table’s comment in the item overview tab.</li>
+  <li>Supported render multiple results.</li>
+  <li>Sorting rows is case insensitive, now.</li>
+  <li>Improved SQL Editor performance.</li>
+  <li>Updated schema colors.</li>
+  <li>Fixed memory leak on OSX 10.11.</li>
+  <li>[Redis] Fixed a crash bug when ran a SET statement.</li>
+</ul>
+
+<h3 id="build-119---bug-fixes-and-new-features">Build 119 - Bug fixes and new features.</h3>
+<h5 id="download-142"><a href="https://s3.amazonaws.com/tableplus-osx-builds/119/TablePlus.zip">Download</a></h5>
+<h5 id="sha-a7d472e529c137864d08d011ed37348e035490daf2e6413e071ad7479a0e2962">SHA: <code class="language-plaintext highlighter-rouge">a7d472e529c137864d08d011ed37348e035490daf2e6413e071ad7479a0e2962</code></h5>
+<hr />
+<h4 id="release-date-10-aug-2018">Release date: 10 Aug 2018.</h4>
+
+<ul>
+  <li>[Important] Fixed a crash bug when executed multiple statements.</li>
+  <li>Supported favorite keyword binding.</li>
+  <li>Supported create a new table from CSV.</li>
+  <li>[Redis] Corrected query status.</li>
+</ul>
+
+<h3 id="build-118---enhancements">Build 118 - Enhancements.</h3>
+<h5 id="download-143"><a href="https://s3.amazonaws.com/tableplus-osx-builds/118/TablePlus.zip">Download</a></h5>
+<h5 id="sha-eab49b8a06b8fb55a577b29875bfb57b13fc0e1039fa7876bff4f638edb66807">SHA: <code class="language-plaintext highlighter-rouge">eab49b8a06b8fb55a577b29875bfb57b13fc0e1039fa7876bff4f638edb66807</code></h5>
+<hr />
+<h4 id="release-date-3-aug-2018">Release date: 3 Aug 2018.</h4>
+
+<ul>
+  <li>Supported search item by regex: <code class="language-plaintext highlighter-rouge">|</code> or <code class="language-plaintext highlighter-rouge">,</code>.</li>
+  <li>Added shortcut for item search bar: command + shift + F.</li>
+  <li>Supported copy column name in data view.</li>
+  <li>Do not collapse SplitView when opened for the first time.</li>
+  <li>[MS SQL] Show length of nvarchar.</li>
+  <li>Fixed copy as CSV in the table structure.</li>
+  <li>[Redis] Fixed a parser bug.</li>
+</ul>
+
+<h3 id="build-117---json-viewer-ui-improvements">Build 117 - JSON Viewer, UI improvements.</h3>
+<h5 id="download-144"><a href="https://s3.amazonaws.com/tableplus-osx-builds/117/TablePlus.zip">Download</a></h5>
+<h5 id="sha-180660b99e9dc9cf48d1abc77b154be7648878d4974b2c109c2a3ce07bfc7176">SHA: <code class="language-plaintext highlighter-rouge">180660b99e9dc9cf48d1abc77b154be7648878d4974b2c109c2a3ce07bfc7176</code></h5>
+<hr />
+<h4 id="release-date-27-jul-2018">Release date: 27 Jul 2018.</h4>
+
+<ul>
+  <li>Added JSON Viewer.</li>
+  <li>Simplify the menu context in SQL Query.</li>
+  <li>Show editor after adding a Favorite.</li>
+  <li>Fixed many Mojave UI issues.</li>
+  <li>Fixed a dock menu bug.</li>
+  <li>Fixed a bug moving window by dragging title bar.</li>
+  <li>[Cassandra] Fixed a bug get TINY INT and SMALL INT.</li>
+</ul>
+
+<h3 id="build-116---bug-fixes">Build 116 - Bug fixes.</h3>
+<h3 id="download-145"><a href="https://s3.amazonaws.com/tableplus-osx-builds/116/TablePlus.zip">Download</a></h3>
+<hr />
+<h4 id="release-date-19-jul-2018">Release date: 19 Jul 2018.</h4>
+
+<ul>
+  <li>Fixed unexpected crash in SQL Query.</li>
+  <li>[MySLQ] Fixed a bug parse ENUM.</li>
+  <li>[MySQL] Support BIT data type.</li>
+  <li>Improved counter and loading states.</li>
+  <li>Supported disable loading wallpaper.</li>
+  <li>Improved Vertica support.</li>
+</ul>
+
+<h3 id="build-115---enhancements">Build 115 - Enhancements.</h3>
+<h3 id="download-146"><a href="https://s3.amazonaws.com/tableplus-osx-builds/115/TablePlus.zip">Download</a></h3>
+<hr />
+<h4 id="release-date-13-jul-2018">Release date: 13 Jul 2018.</h4>
+
+<ul>
+  <li>Supported export/import all connections and groups.</li>
+  <li>Improved syntax parsing, supported detection transaction/code block.</li>
+  <li>Open Anything supported schema switching.</li>
+  <li>[Cockroach] Fixed bug get indexes/foreign keys.</li>
+  <li>Improved import CSV Wizard.</li>
+</ul>
+
+<h3 id="build-114---general-uiux-improvements-new-features">Build 114 - General UI/UX improvements, new features.</h3>
+<h3 id="download-147"><a href="https://s3.amazonaws.com/tableplus-osx-builds/114/TablePlus.zip">Download</a></h3>
+<hr />
+<h4 id="release-date-07-jul-2018">Release date: 07 Jul 2018.</h4>
+
+<ul>
+  <li>Supported custom CSV decimal delimiter.</li>
+  <li>Changed the filter button title to Apply All.</li>
+  <li>Improved UX when clicking on the linked cell.</li>
+  <li>Fixed a bug hide an empty filter.</li>
+  <li>[PostgreSQL] Bring back RAISE NOTICE.</li>
+  <li>[PostgreSQL]Fixed a bug showing wrong the column name.</li>
+  <li>[PostgreSQL] Fixed sort columns in table structure.</li>
+  <li>[SQL Server] Fixed parsing syntax when statements contain BEGIN TRANSACTION.</li>
+  <li>[MySQL] Fixed a bug update column default.</li>
+</ul>
+
+<h3 id="build-113---bug-fixes-stability-improvements-and-new-features">Build 113 - Bug fixes, stability improvements and new features.</h3>
+<h3 id="download-148"><a href="https://s3.amazonaws.com/tableplus-osx-builds/113/TablePlus.zip">Download</a></h3>
+<hr />
+<h4 id="release-date-29-jun-2018">Release date: 29 Jun 2018.</h4>
+
+<ul>
+  <li>General UI improvements.</li>
+  <li>[MySQL] Supported dual drivers for MySQL 8 and MySQL 5.</li>
+  <li>[PostgreSQL] [SQL Server] Supported precision and scale for numeric.</li>
+  <li>[PostgreSQL] Show varchar length in column detail.</li>
+  <li>Supported copy selected columns.</li>
+  <li>Command + D: duplicate row.</li>
+  <li>Auto-focus after row inserted/duplicated.</li>
+  <li>[Cassandra] Fixed a crash bug.</li>
+  <li>[Cassandra] Fixed a filter bug.</li>
+  <li>Fixed a bug showing wrong foreign key.</li>
+  <li>Other bug fixes and stability improvements.</li>
+</ul>
+
+<h3 id="build-112---official-support-mysql-8-and-new-features">Build 112 - Official support MySQL 8 and new features.</h3>
+<hr />
+<h4 id="release-date-25-jun-2018">Release date: 25 Jun 2018.</h4>
+
+<ul>
+  <li>Official support MySQL 8.</li>
+  <li>Added support caching sha2 password.</li>
+  <li>Supported secured export/import connections.</li>
+  <li>[MS SQL] Fixed bug edit view definition.</li>
+  <li>[Cassandra] Fixed some bug view TimeUUID.</li>
+  <li>Improved Cassandra support with alter column command.</li>
+  <li>Fixed a bug export connection URL.</li>
+</ul>
+
+<h3 id="build-111---enhancements">Build 111 - Enhancements.</h3>
+<hr />
+<h4 id="release-date-22-jun-2018">Release date: 22 Jun 2018.</h4>
+
+<ul>
+  <li>[Redis] Supported auth Redis with Password.</li>
+  <li>Supported auto-completion for tables having name contains special characters.</li>
+  <li>Updated dark theme on Mojave.</li>
+  <li>Fixed a crash bug when removing an advanced filter.</li>
+  <li>[MySQL] Supported GEOMETRY, JSON.</li>
+  <li>[Cassandra] Fixed a bug error message is not showing.</li>
+  <li>[SQL Server] Fixed a bug edit procedure.</li>
+  <li>[Redis] Fixed crash when executing a query having quotes.</li>
+</ul>
+
+<h3 id="build-110---new-features">Build 110 - New features.</h3>
+<h3 id="download-149"><a href="https://s3.amazonaws.com/tableplus-osx-builds/110/TablePlus.zip">Download</a></h3>
+<hr />
+<h4 id="release-date-15-jun-2018">Release date: 15 Jun 2018.</h4>
+
+<ul>
+  <li>Redesigned the safe mode confirmation popup.</li>
+  <li>[Redis] Supported get value with key contains space.</li>
+  <li>Fixed a few layout issues on Mojave.</li>
+  <li>[SQL Server] Fixed an auto-complete bug.</li>
+  <li>Supported suggest function name in auto-completion.</li>
+  <li>Improved advanced filters UX.</li>
+  <li>Fixed some layout issue in SQL Editor.</li>
+  <li>TablePlus now shows primary index.</li>
+  <li>[SQL Server] Fixed a bug drop function/procedure.</li>
+  <li>Do not show multiple error popups when disconnected.</li>
+  <li>Improved restore/backup windows.</li>
+</ul>
+
+<h3 id="build-109---cassandra--mojave">Build 109 - Cassandra + Mojave.</h3>
+<hr />
+<h4 id="release-date-8-jun-2018">Release date: 8 Jun 2018.</h4>
+
+<ul>
+  <li>Fixed a few issues on macOS Mojave.</li>
+  <li>Added Cassandra support.</li>
+  <li>Improved SSH tunneling.</li>
+  <li>[Important] Fixed a bug generate the wrong update statement.</li>
+  <li>Added more SQLite extensions.</li>
+  <li>Fixed a bug SSH network traffic.</li>
+</ul>
+
+<h3 id="build-108---enhancements">Build 108 - Enhancements.</h3>
+<hr />
+<h4 id="release-date-1-jun-2018">Release date: 1 Jun 2018.</h4>
+
+<ul>
+  <li>Show sequences in Table Definition.</li>
+  <li>Added an option allow users to customize favorite/history behavior.</li>
+  <li>TablePlus will not swipe text when pressing ESC in advanced filter.</li>
+  <li>Fixed a bug auto adding quotes in auto-completion.</li>
+  <li>[PostgreSQL] Fixed a bug schema not shown.</li>
+  <li>[MySQL] Fixed a bug set default value in the table structure.</li>
+  <li>[MySQL] Supported auto detect socket.</li>
+  <li>Fixed an export CSV/JSON bug.</li>
+</ul>
+
+<h3 id="build-107---enhancements">Build 107 - Enhancements.</h3>
+<hr />
+<h4 id="release-date-25-may-2018">Release date: 25 May 2018.</h4>
+
+<ul>
+  <li>Improved welcome screen UI.</li>
+  <li>Supported row alternating color in the dark theme.</li>
+  <li>Added Overview items in left sidebar menu context.</li>
+  <li>TablePlus no longer close workspace after disconnected.</li>
+  <li>Disabled select current query in structure view/function view and trigger.</li>
+  <li>TablePlus no longer deselect row after pressing the tab key.</li>
+  <li>Added an option to disable highlight current query.</li>
+  <li>Add an option to hide function/recently sections.</li>
+  <li>Add an option to hide system schema.</li>
+  <li>Improved theme’s colors.</li>
+  <li>Fixed a crash bug due to some special characters (Example: Turkey).</li>
+  <li>Fixed bug shift-left string in SQL Query.</li>
+  <li>Fixed an escaping bug.</li>
+  <li>Fixed a bug lost all tabs when reconnecting.</li>
+  <li>And many other bug fixes and improvements.</li>
+</ul>
+
+<h3 id="build-106---stability-improvements">Build 106 - Stability improvements.</h3>
+<hr />
+<h4 id="release-date-18-may-2018">Release date: 18 May 2018.</h4>
+
+<ul>
+  <li>Support enum type.</li>
+  <li>Support customize the toolbar.</li>
+  <li>Improved toolbar UI.</li>
+  <li>[SQL Server] Show data length in the table structure.</li>
+  <li>[SQL Server] Fixed a bug escape column name.</li>
+  <li>[SQL Server] Fixed a bug get item listing.</li>
+  <li>[SQL Server] Fixed a bug get view definition.</li>
+  <li>[SQL Server] Fixed bug create a view.</li>
+  <li>Fixed a crash bug in Open Anything.</li>
+  <li>Fixed theming bug in backup/restore windows, pre-populate database name.</li>
+  <li>Fixed many other minor bugs.</li>
+</ul>
+
+<h3 id="build-105---updated-ui-new-features-added">Build 105 - Updated UI, new features added.</h3>
+<hr />
+
+<h4 id="release-date-11-may-2018">Release date: 11 May 2018.</h4>
+
+<ul>
+  <li>Column default supported: Sequence, Expression, Constant.</li>
+  <li>Added scroller bars for item/favorite/history panel.</li>
+  <li>Updated app UI color scheme.</li>
+  <li>Improved syntax highlighting.</li>
+  <li>Improved auto-completion.</li>
+  <li>[PostgreSQL] Fixed a bug load foreign key.</li>
+  <li>[PostgreSQL] Fixed a bug load table’s OID.</li>
+  <li>[SQL Server] Fixed a bug query returned the wrong result when there are duplicated fields.</li>
+</ul>
+
+<h3 id="build-104---added-trigger-support">Build 104 - Added trigger support.</h3>
+<hr />
+
+<h4 id="release-date-06-may-2018">Release date: 06 May 2018.</h4>
+
+<ul>
+  <li>Added trigger support.</li>
+  <li>Supported drag/drop favorite.</li>
+  <li>[SQL Server] Show message state/level/line.</li>
+  <li>Fixed a bug export JSON.</li>
+  <li>Fixed a bug wrong syntax when editing a table index.</li>
+  <li>Do not exit fullscreen mode when pressing ESC in SQL Query.</li>
+  <li>Do not add an empty filter when pressing Command + F.</li>
+  <li>Fixed some other minor issues.</li>
+</ul>
+
+<h3 id="build-103---enhancement">Build 103 - Enhancement.</h3>
+<hr />
+
+<h4 id="release-date-30-apr-2018">Release date: 30 Apr 2018.</h4>
+
+<ul>
+  <li>Supported SSH keyboard-interactive. (Two-factor authentication,…).</li>
+  <li>Added menu “Save As…” in SQL Query, Favorite, History…</li>
+  <li>[MySQL] Fixed a bug create auto increment for a column which wasn’t a primary key.</li>
+  <li>Fixed sort column ordinal in the table’s structure.</li>
+  <li>Fixed a bug reload row detail.</li>
+  <li>Fixed a memory leak bug.</li>
+  <li>Fixed a bug set filter by clicking on the foreign key link.</li>
+  <li>Fixed perfect pixels.</li>
+</ul>
+
+<h3 id="build-102---bug-fixes">Build 102 - Bug fixes.</h3>
+<hr />
+
+<h4 id="release-date-21-apr-2018">Release date: 21 Apr 2018.</h4>
+
+<ul>
+  <li>[MySQL] Supported MySQL 8.0.</li>
+  <li>[PostgreSQL] Fixed a bug load table structure.</li>
+  <li>[SQLite] Fixed a bug load foreign keys.</li>
+  <li>Fixed a bug restore saved filters.</li>
+  <li>Added Vertica DB driver.</li>
+</ul>
+
+<h3 id="build-101---improved-sql-editor">Build 101 - Improved SQL Editor.</h3>
+<hr />
+
+<h4 id="release-date-20-apr-2018">Release date: 20 Apr 2018.</h4>
+
+<ul>
+  <li>Auto add quote when table/column has <code class="language-plaintext highlighter-rouge">space</code> or case sensitive in auto-completion.</li>
+  <li>100x faster syntax parsing.</li>
+  <li>[SQLite] Supported rtree index.</li>
+  <li>[SQLite, SQL Server] Supported edit data directly in SQL Query.</li>
+  <li>[SQL Server] Fixed bug beautify SQL.</li>
+  <li>Supported show table creation/comment.</li>
+  <li>Fixed a bug missing options when creating a foreign key.</li>
+  <li>Changed comment code color.</li>
+</ul>
+
+<h3 id="build-100---the-100th-build">Build 100 - The 100th build.</h3>
+<hr />
+
+<h4 id="release-date-13-apr-2018">Release date: 13 Apr 2018.</h4>
+
+<ul>
+  <li>Redis official support.</li>
+  <li>Enabled “run current”  and “split result into tabs” by default.</li>
+  <li>Supported save filter states.</li>
+  <li>[MySQL] Support procedure.</li>
+  <li>[PostgreSQL] Improved parsing function.</li>
+  <li>[SQLite] Added encrypted key into connection form.</li>
+  <li>[SQL Server] Faster canceling a query.</li>
+  <li>[CockroachDB] Improved array serializer.</li>
+  <li>Supported export as HTML.</li>
+  <li>Fixed a bug when running custom query.</li>
+  <li>Fixed a syntax bug when sorting column.</li>
+  <li>Refactored title bar.</li>
+</ul>
+
+    </div>
+
+    
+
+  </article>
+</div>
+    </main>
+    <footer class="px-8-1300-px-0"
+    style="width: 100%; margin-left: auto; margin-right: auto; max-width: 1280px; padding-left: 32px; padding-right: 32px;">
+    <div style="padding-top: 38px; padding-bottom: 20px;">
+        <div class="flex-col-md-flex-row gap-col-4-md-gap-row-4" style="display: flex;">
+            <div class="space-x-4" style="width: 100%; display: flex;">
+                <div class="space-y-2"
+                    style="width: 100%; flex: 1 1 0%; text-align: left; display: flex; flex-direction: column;">
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1);">
+                        TablePlus</h5>
+                    <div class="space-y-2" style="display: flex; flex-direction: column; margin-top: -2px;">
+                        <a href="/blog/2018/04/getting-started-with-tableplus.html" class="footer-a">Getting started</a>
+                        <a href="/blog/2017/02/changelogs.html" class="footer-a">Version History</a>
+                        <a href="/pricing" class="footer-a">Pricing</a>
+                        <a href="/blog/2018/04/education-plan.html" class="footer-a">Education</a>
+                        <a href="/resellers/china" target="_blank" class="footer-a">Partners</a>
+                        <a href="/made-by-tableplus" target="_blank" class="footer-a">Made by TablePlus</a>
+                    </div>
+                </div>
+                <div class="space-y-2"
+                    style="width: 100%; flex: 1 1 0%; text-align: left; display: flex; flex-direction: column;">
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1)">
+                        SUPPORT</h5>
+                    <div class="space-y-2" style="display: flex; flex-direction: column; margin-top: -2px;">
+                        <a href="/pricing" class="footer-a">Licensing and Sales</a>
+                        <a href="/license-manager/access-link" class="footer-a">License Manager</a>
+                    </div>
+
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1); margin-top: 9px;">
+                        LEGAL</h5>
+                    <div class="space-y-2" style="display: flex; flex-direction: column;">
+                        <a href="/privacy" class="footer-a">Privacy Statement</a>
+                        <a href="/blog/2018/01/license-agreement.html" class="footer-a">License Agreement</a>
+                        <a href="/legal" class="footer-a">Terms and Conditions</a>
+                    </div>
+                </div>
+                <div class="space-y-2"
+                    style="width: 100%; flex: 1 1 0%; text-align: left; display: flex; flex-direction: column;">
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1)">
+                        Company</h5>
+                    <div class="space-y-2" style="display: flex; flex-direction: column; margin-top: -2px;">
+                        <a href="/about-us" class="footer-a">About Us</a>
+                    </div>
+
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1); margin-top: 9px;">
+                        Community</h5>
+                    <div class="space-y-2" style="display: flex; flex-direction: column;">
+                        <a href="https://github.com/TablePlus/TablePlus/issues" class="footer-a">Feedback</a>
+                        <a href="https://www.facebook.com/tableplusapp/" class="footer-a">Facebook</a>
+                        <a href="https://x.com/TablePlus" class="footer-a">X</a>
+                        <a href="https://github.com/TablePlus/TablePlus" class="footer-a">Github</a>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-2"
+                style="width: 100%; flex: 1 1 0%; text-align: left; display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; margin-top: -2px;">
+                    <h5
+                        style="font-size: 16px; line-height: 24px; text-transform: uppercase; font-weight: 600; color: rgb(17 24 39 / 1)">
+                        SUBSCRIBE TO NEWS
+                    </h5>
+                    <p style="font-size: 12px; line-height: 16px; color: rgb(55 65 81 / 1)">
+                        The latest news, tips, articles and resources. You will never be
+                        outdated.
+                    </p>
+
+                    <div class="modal fade" id="subcribe-success" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Message</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" id="windows-queue-form-message">
+                                        <div class="col-md-12">
+                                            Thank you for keeping in touch with us!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="subcribe-failed" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Message</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" id="windows-queue-form-message">
+                                        <div class="col-md-12">
+                                            Sorry, there are some errors when processing this request
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shadow-inner"
+                        style="background-color: #262626; border-radius: 4px; border: 1px solid #262626; overflow: hidden; min-width: 300px;">
+                        <form id="newsletter" onsubmit="return submitSubcribe(this);">
+                            <div class="input-group">
+                                <input name="Email" type="email" class="form-control" placeholder="Your email address">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" style="background-color: #262626; color: white;"
+                                        type="submit">Subscribe</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="flex-grow: 1;"></div>
+                    <div class="space-x-6"
+                        style="display: flex; justify-content: start; align-items: center; margin-top: 10px;">
+                        <a href="https://www.facebook.com/tableplusapp" target="_blank">
+                            <img class="link-fb" src="/blog//assets/icons/ic-fb.svg" />
+                        </a>
+                        <a href="https://x.com/tableplus" target="_blank">
+                            <img class="link-x" src="/blog//assets/icons/ic-x.svg" width="16px"
+                                height="16px" />
+                        </a>
+                        <a href="https://github.com/TablePlus/TablePlus" target="_blank">
+                            <img class="link-github" src="/blog//assets/icons/ic-github.svg" />
+                        </a>
+                        <a href="/cdn-cgi/l/email-protection#c5adb0bc85b1a4a7a9a0b5a9b0b6a4b5b5eba6aaa8" target="_blank">
+                            <img class="link-email" src="/blog//assets/icons/ic-email.svg" />
+                        </a>
+                    </div>
+                    <div style="font-size: 14px; line-height: 20px; margin-top: 9px;">
+                        &copy; 2024 <a style="color: rgb(37 99 235 / 1)" href="https://tableplus.com/">TablePlus
+                            Inc.</a> 1 Walker
+                        Rd, North York, Toronto, ON
+                        Canada. All rights
+                        reserved
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+  <script src="/blog//assets/js/menu.js"></script>
+  <script src="/blog//assets/js/newsletter.js"></script>
+</html>

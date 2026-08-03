@@ -1,0 +1,103 @@
+[
+  {
+    "pageId": "b58d9985dc76",
+    "name": "1Password releases",
+    "url": "https://releases.1password.com/",
+    "expected": "v8.12.5",
+    "fetchedAt": "2026-08-03T17:28:27.093629+00:00",
+    "status": 200,
+    "finalUrl": "https://releases.1password.com/",
+    "contentType": "text/html",
+    "bytes": 47729,
+    "htmlFile": "data/annotation-batches/batch-024/html/b58d9985dc76.html",
+    "snapshotSha256": "5acca9d20bbfc962fd30094c4b59d2fea9b04beb6578d77ab956b05d714245a1"
+  },
+  {
+    "pageId": "16540e0c7757",
+    "name": "HazeOver feed",
+    "url": "https://feeds.feedburner.com/hazeover",
+    "expected": "v1.9.7",
+    "fetchedAt": "2026-08-03T17:28:27.382782+00:00",
+    "status": 200,
+    "finalUrl": "https://feeds.feedburner.com/hazeover",
+    "contentType": "text/xml; charset=utf-8",
+    "bytes": 25909,
+    "htmlFile": "data/annotation-batches/batch-024/html/16540e0c7757.html",
+    "snapshotSha256": "4d88ca74138617d517c58933e817ad94e0d948cbace2f105b0281bb97f4c4136"
+  },
+  {
+    "pageId": "a9316a505cdc",
+    "name": "Enpass releases",
+    "url": "https://www.enpass.io/release-notes/windows-pc/",
+    "expected": "v1.0.0",
+    "fetchedAt": "2026-08-03T17:28:27.584244+00:00",
+    "status": null,
+    "error": "HTTP Error 403: Forbidden",
+    "bytes": 0
+  },
+  {
+    "pageId": "e8cceb1bfbfe",
+    "name": "Apple Notes support",
+    "url": "https://support.apple.com/en-us/120283",
+    "expected": "v1.0.0",
+    "fetchedAt": "2026-08-03T17:28:27.624181+00:00",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/en-us/120283",
+    "contentType": "text/html;charset=utf-8",
+    "bytes": 1190680,
+    "htmlFile": "data/annotation-batches/batch-024/html/e8cceb1bfbfe.html",
+    "snapshotSha256": "8f8ea345cdf603174bb697e30fe50babdb2831871f6fe394b7857af6af143413"
+  },
+  {
+    "pageId": "11964c858b3b",
+    "name": "LibreOffice release notes",
+    "url": "https://www.libreoffice.org/download/release-notes/",
+    "expected": "v26.2.5",
+    "fetchedAt": "2026-08-03T17:28:27.685192+00:00",
+    "status": 200,
+    "finalUrl": "https://www.libreoffice.org/release-notes/",
+    "contentType": "text/html",
+    "bytes": 22203,
+    "htmlFile": "data/annotation-batches/batch-024/html/11964c858b3b.html",
+    "snapshotSha256": "47af9790570985c7e427482fb3a5e77caf1a4ad1605bf577213e6349ce63f2db"
+  },
+  {
+    "pageId": "e610c0be54e8",
+    "name": "ForkLift release feed",
+    "url": "https://blog.binarynights.com/category/release-notes/feed/",
+    "expected": "v4.5.1",
+    "fetchedAt": "2026-08-03T17:28:28.880510+00:00",
+    "status": 200,
+    "finalUrl": "https://blog.binarynights.com/category/release-notes/feed/",
+    "contentType": "application/rss+xml; charset=UTF-8",
+    "bytes": 68542,
+    "htmlFile": "data/annotation-batches/batch-024/html/e610c0be54e8.html",
+    "snapshotSha256": "83b0e79a6c20de2477ab5c51a8681c6961abeaeea4737ff11d422ee3335b5eb1"
+  },
+  {
+    "pageId": "93690965fc03",
+    "name": "Cloudflare One changelog",
+    "url": "https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml",
+    "expected": "v2026.3.566.1",
+    "fetchedAt": "2026-08-03T17:28:29.511110+00:00",
+    "status": 200,
+    "finalUrl": "https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml",
+    "contentType": "application/xml",
+    "bytes": 189106,
+    "htmlFile": "data/annotation-batches/batch-024/html/93690965fc03.html",
+    "snapshotSha256": "388109f1f136b06cfc41d0d06f9052b49fd80660a2f58991a29801d23098161c"
+  },
+  {
+    "pageId": "1c2f00f7a746",
+    "name": "Notion release sitemap",
+    "url": "https://www.notion.com/releases/sitemap.xml",
+    "expected": "v2026-03-06",
+    "fetchedAt": "2026-08-03T17:28:29.600234+00:00",
+    "status": 200,
+    "finalUrl": "https://www.notion.com/releases/sitemap.xml",
+    "contentType": "application/xml",
+    "bytes": 24784,
+    "htmlFile": "data/annotation-batches/batch-024/html/1c2f00f7a746.html",
+    "snapshotSha256": "3836d7df04838fdcec58a73c87ff6468c11fed37755ac572eb448c0f4531601f"
+  }
+]

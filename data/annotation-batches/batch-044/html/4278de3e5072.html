@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="en" />
+  <meta name="author" content="Maël Hörz" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Page-Exit" content="BlendTrans(Duration=2.5)" />
+
+  <title>HxD - Freeware Hex Editor and Disk Editor | mh-nexus</title>
+
+  <link rel="stylesheet" type="text/css" href="/mh-nexus.css" />
+  <link rel="alternate" type="application/atom+xml" title="Feed - News" href="https://forum.mh-nexus.de/app.php/feed/news" />
+</head>
+
+<body>
+  <div>
+        <map name="mh-nexus-map" id="mh-nexus-map">
+    <area shape="poly" coords="11,69,157,22,149,0,119,0,0,40,11,69" href="https://mh-nexus.de/" alt="mh-nexus" />
+    </map>
+    <img src="/graphics/randlogo.jpg" alt="" height="97" width="300" usemap="#mh-nexus-map" />
+    
+    <div class="languagebar">
+      <form id="lang_form" dir="ltr" method="post" action="">
+        <script type="text/javascript">
+          <!--
+          document.writeln('<div>');
+          document.writeln('<img src="\/graphics\/globe.png" style="vertical-align:middle;" alt="Select language:" \/>');
+          document.writeln('<select id="flang" name="flang" onchange="this.form.submit()" style="vertical-align:middle;">');
+          document.writeln('  <option value="en" selected="selected">English<\/option>');
+document.writeln('  <option value="de">Deutsch<\/option>');
+          document.writeln('<\/select>');
+          document.writeln('<\/div>');
+          //-->
+        </script>
+        <noscript>
+          <div>
+            <img src="/graphics/globe.png" style="vertical-align:middle;" alt="Select language:" />
+              <span style="font-weight: bold;">English</span>   <span><a href="/de/hxd/">Deutsch</a></span> 
+          </div>
+        </noscript>
+      </form>
+    </div>
+
+    <div class="buttonbar">
+	  <a href="https://blog.mh-nexus.de"><img src="/en/graphics/blog.png" alt="Blog" class="button" /></a>
+      <a href="/en/articles.php"><img src="/en/graphics/articles.png" alt="Articles" class="button" /></a>
+      <a href="/en/programs.php"><img src="/en/graphics/programs.png" alt="Programs" class="button" /></a>
+      <!-- <a href="/en/components.php"><img src="/en/graphics/components.png" alt="Components" class="button" /></a> -->
+	  <p>&nbsp;</p>      
+      <a href="/en/about.php"><img src="/en/graphics/about.png" alt="About" class="button" /></a>
+      <a href="/en/contact.php"><img src="/en/graphics/contact.png" alt="Contact" class="button" /></a>
+      <a href="https://forum.mh-nexus.de"><img src="/en/graphics/forum.png" alt="Forum" class="button" /></a>
+      <!-- <a href="/en/contribute.php"><img src="/en/graphics/contribute.png" alt="Contribute" class="button" /></a> -->
+      <div  style="text-align:center;"><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><p>
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8JDWLPP4WYZD2" />
+	<input type="hidden" name="locale" value="en" />
+        <input type="hidden" name="item_name" value="Donation for HxD" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="no_note" value="0" />
+        <input type="hidden" name="tax" value="0" />
+        <input type="hidden" name="bn" value="PP-DonationsBF" />
+        <input type="image" style="position:relative; left:-5px;" src="/en/graphics/btn_donateCC_LG_global.gif" name="submit" alt="Donate for HxD using PayPal" />
+        </p></form>
+      </div>
+
+
+    </div>
+    <div class="maincontent">
+      <h1>HxD - Freeware Hex Editor and Disk Editor</h1>
+      <h1><br /></h1>
+      <div style="text-align: left; display: inline-block;">
+        <a href="/en/graphics/HxDShotLarge.png">
+          <img src="/en/graphics/MiniShotHxD.png" alt="Mini screenshot of HxD hex editor and disk editor" />
+        </a>
+        <div style="text-align: center; font-size: 80%">
+          <a href="/en/graphics/HxDShotLarge.png">Click to enlarge</a>
+        </div>
+      </div>
+            <p>HxD is a carefully designed and fast hex editor which, additionally to raw disk editing and modifying of main memory (RAM), handles files of any size.</p>
+            <p>The easy to use interface offers features such as searching and replacing, exporting, checksums/digests, insertion of byte patterns, a file shredder, concatenation or splitting of files, statistics and much more.</p>
+      <p>Editing works like in a text editor with a focus on a simple and task-oriented operation, as such functions were streamlined to hide differences that are purely technical.<br />
+        For example, drives and memory are presented similar to a file and are shown as a whole, in contrast to a sector/region-limited view that cuts off data which potentially belongs together. Drives and memory can be edited the same way as a regular file including support for undo. In addition memory-sections
+        define a foldable region and inaccessible sections are hidden by default.</p>
+        <p>Furthermore a lot of effort was put into making operations fast and efficient, instead of forcing you to use specialized functions for technical reasons or arbitrarily limiting file sizes. This includes a responsive interface and progress indicators for lengthy operations.</p>
+    <!--  <p>&nbsp;</p>
+      <h2>Future of HxD</h2>
+      <p> HxD will be able to represent templates directly in the editor 
+        window. <br />
+        Templates are a kind of a structured data-view. <br />
+        Usually a hex editor shows data in a stream with no interruption 
+        or any distinction between pictures, audio, dates, number, floats, 
+        ... <br />
+      </p>
+      <p> Today templates use an extra window to show a structured view 
+        of a data section. That kind of data input stops your work flow: 
+        you have to find the correct position, find where the interesting 
+        data starts, switch to a different window to see its structured 
+        view, switch back if you want to edit something else or see another 
+        part. </p>
+      <p>Instead, edit data as normal in the editor window but with appropriate 
+        editing methods and representation for many data types. As all 
+        is in one place it is easier to understand the data and to navigate.<br />
+        Unknown/undefined data still can be hex-edited as usual.</p> -->
+      <p>&nbsp;</p>
+      
+      <h2><a name="features"></a>Features</h2>
+      <ul>
+        <li>Available as a portable and installable edition</li>
+        <li>RAM-Editor
+          <ul>
+            <li>To edit the main memory</li>
+            <li>Memory sections are tagged with data-folds</li>
+          </ul>
+        </li>
+        <li>Disk-Editor (Hard disks, floppy disks, ZIP-disks, USB flash drives, CDs, ...)
+          <ul>
+            <li>RAW reading and writing of disks and drives</li>
+            <li>for Win9x, WinNT and higher</li>
+          </ul>
+        </li>
+        <li>Instant opening regardless of file-size
+          <ul>
+            <li>Up to 8EB; opening and editing is very fast</li>
+          </ul>
+        </li>
+        <li>Liberal but safe file sharing with other programs</li>
+        <li>Flexible and fast searching/replacing for several data types
+          <ul>
+            <li>Data types: text (including Unicode), hex-values, integers and floats</li>
+            <li>Search direction: Forward, Backwards, All (starting from the beginning)</li>
+          </ul>
+        </li>
+        <li>File compare (simple)</li>
+        <li>View data in Ansi, DOS, EBCDIC and Macintosh character sets</li>
+        <li>Checksum-Generator: Checksum, CRCs, Custom CRC, SHA-1, SHA-512, MD5, ...</li>
+        <li>Exporting of data to several formats
+          <ul>
+            <li>Source code (Pascal, C, Java, C#, VB.NET)</li>
+            <li>Formatted output (plain text, HTML, Richtext, TeX)</li>
+            <li>Hex files (Intel HEX, Motorola S-record)</li>
+          </ul>
+        </li>
+        <li>Insertion of byte patterns</li>
+        <li>File tools
+          <ul>
+            <li>File shredder for safe file deletion</li>
+            <li>Splitting or concatenating of files</li>
+          </ul>
+        </li>
+        <li>Basic data analysis (statistics)
+          <ul>
+            <li>Graphical representation of the byte/character distribution</li>
+        	<li>Helps to identify the data type of a selection</li>
+          </ul>
+        </li>
+        <li>Byte grouping
+          <ul>
+            <li>1, 2, 4, 8 or 16 bytes packed together into one column</li>
+          </ul>
+        </li>
+        <li>"Hex only" or "text only"-modes</li>
+        <li>Progress-window for lengthy operations
+          <ul>
+            <li>Shows the remaining time</li>
+            <li>Button to cancel</li>
+          </ul>
+        </li>
+        <li>Modified data is highlighted</li>
+        <li>Unlimited undo</li>
+        <li>"Find updates..."-function</li>
+        <li>Easy to use and modern interface</li>
+        <li>Goto address</li>
+        <li>Printing</li>
+        <li>Overwrite or insert mode</li>
+        <li>Cut, copy, paste insert, paste write</li>
+        <li>Clipboard support for other hex editors
+          <ul>
+            <li>Visual Studio/Visual C++, WinHex, HexWorkshop, RegEdit, ...</li>
+          </ul>
+        </li>
+        <li>Bookmarks
+          <ul>
+            <li>Ctrl+Shift+Number (0-9) sets a bookmark</li>
+            <li>Ctrl+Number (0-9) goes to a bookmark</li>
+          </ul>
+        </li>
+        <li>Navigating to nibbles with Ctrl+Left or Ctrl+Right</li>
+        <li>Flicker free display and fast drawing</li>
+      </ul>
+	  
+	  <p>&nbsp;</p>
+      
+      <table width="100%" border="0" cellspacing="3" cellpadding="0" style="padding-top: 1px; padding-bottom: 1px; padding-left: 5px; padding-right:5px;">
+        <tbody>
+        <tr> 
+          <th class="visible" style="width: 20%;">Version</th>
+          <td class="visible">
+            <span style="float: left;">2.5.0.0 (February 11, 2021)</span>
+            <span style="float: right;"><a href="/en/hxd/changelog.php">What's new?</a></span>
+          </td>
+        </tr>
+        <tr>
+          <th class="visible">OS</th>
+          <td class="visible">Windows XP, 2003, Vista, 7, 8 or 10</td>
+        </tr>
+        <tr> 
+          <th class="visible"></th>
+          <td class="visible"><a href="/en/downloads.php?product=HxD20"><img src="/graphics/Floppy.png" alt="" style="vertical-align: text-bottom;" /></a><a href="/en/downloads.php?product=HxD20">Download page</a></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+      
+      <table width="100%" border="0" cellspacing="3" cellpadding="0" style="padding-top: 1px; padding-bottom: 1px; padding-left: 5px; padding-right:5px;">
+        <tbody>
+        <tr> 
+          <th class="visible" style="width: 20%;">Version</th>
+          <td class="visible">
+            <span style="float: left;">1.7.7.0 (April  3, 2009)</span>
+            <span style="float: right;"><a href="/en/hxd/changelog.php#v_1.7.7.0">What's new?</a></span>
+          </td>
+        </tr>
+        <tr>
+          <th class="visible">OS</th>
+          <td class="visible">Windows 95, 98, ME, NT 4, 2000, XP, 2003, Vista, or 7</td>
+        </tr>
+        <tr> 
+          <th class="visible"></th>
+          <td class="visible"><a href="/en/downloads.php?product=HxD"><img src="/graphics/Floppy.png" alt="" style="vertical-align: text-bottom;" /></a><a href="/en/downloads.php?product=HxD">Download page</a></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+	  
+	  <h2>License</h2>
+	  <p>HxD is free of charge for private and commercial use. Selling HxD is not allowed. Distributing it as part of magazine addon CDs / DVDs / other media or putting it on download portals or private websites is allowed and welcome. For details, please see the <a href="/en/hxd/license.php">HxD License</a>.</p>
+
+      <h2><a name="whatsnew"></a>What's new</h2>
+      <p><a href="/en/hxd/changelog.php">Complete change log for HxD</a></p>
+      
+      <h2><a name="notes"></a>Notes</h2>
+      <h3>Disk-Editor</h3>
+      <p>To use the disk editor under Windows NT/2000/XP/2003/Vista/7 and higher you have to be an administrator or have the appropriate privileges.</p>
+	  <p>Starting with Vista you need to manually unmount the hard disk to successfully write to it, or in other words: make sure the disk you edit has no mounted file system. More details in <a href="http://forum.mh-nexus.de/viewtopic.php?f=3&amp;t=438">this forum thread</a>. A system drive (the one where Windows is installed on) cannot be written to while Windows is running. In order to still accomplish that, you will have to execute HxD from a boot CD/DVD like PartBE or VistaPE and edit the system disk from there.</p>
+      <h3>Windows NT 4</h3>
+      <p>If the RAM-editor doesn't show any processes under Windows NT 4 you most likely don't have PSAPI.DLL installed on your system. You can get it from Microsoft (<a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=3d1fbaed-d122-45cf-9d46-1cae384097ac&amp;DisplayLang=en">PSAPI.DLL Download</a>) and copy the DLL into the %windir%\System directory.<br />
+      HxD was only tested for Windows NT 4 SP 6, though it should work with versions prior to service pack 6.</p>
+	  <p>Windown NT 4 SP1 and newer are also supported, if WININET.DLL is added, through IE 3.02 or newer.</p>
+
+      <h2>Articles about HxD</h2>
+	  <ul>
+		<li><a href="StarManSaveSectors.htm" rel="nofollow">How to use HxD as a Disk Editor to save Sectors as Binary Files (by Daniel B. Sedory)</a></li>
+	  </ul>
+
+	  <ul>
+		<li><a href="http://www.megalab.it/7049/guida-operativa-a-hxd-il-bisturi-per-la-rimozione-definitiva-dei-rootkit" rel="nofollow">Removal of rootkits (Italian article by megalab.it)</a></li>
+	  </ul>
+	  <h2>Translators</h2>
+	  Thanks to <a href="translators.php">the translators</a>, HxD is available in many languages.
+	  <h2>More useful links</h2>
+      <ul>
+        <li>Interesting pages about data recovery, disk structure, boot managers, hex editing, assembler and other low level stuff:<br />
+        <a href="http://thestarman.pcministry.com/" rel="nofollow">The Starman's Realm</a></li>
+        <li><a href="http://www.thefreecountry.com/utilities/datarecovery.shtml" rel="nofollow">A list of free tools specialized in Data Recovery at "thefreecountry"</a></li>
+		<li><a href="http://www.eeclip.com/" rel="nofollow">EEClip - Universal In-circuit SOP8 Serial Eeprom USB Device Programmer</a></li>
+      </ul> 
+      <p>&nbsp;</p>
+
+            <table width="100%" border="0">
+        <tr>
+          <td class="copyright" style="text-align:left;">
+            Copyright &copy; 2003-2022 Maël Hörz.
+			<img src="https://mh-nexus.de/graphics/logo.png" alt="mh-nexus" width="61" height="32" style="vertical-align:text-bottom;" />
+          </td>
+          <td class="copyright" style="text-align:right; vertical-align:text-bottom;">
+            <a href="https://validator.w3.org/check?uri=referer">
+              <img src="https://mh-nexus.de/graphics/valid-xhtml10.png" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>  
+  </div>
+</body>
+</html>

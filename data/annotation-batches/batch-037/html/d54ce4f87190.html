@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+       Swift Programming Language 
+    </title>
+    
+    <meta name="author" content="Apple Inc." />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+     
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/bird.png"
+      as="image"
+    />
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/orange-swoop-bottom.png"
+      as="image"
+    />
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/orange-swoop-top.png"
+      as="image"
+    />
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/purple-swoop.png"
+      as="image"
+    />
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/white-swoop-1.png"
+      as="image"
+    />
+    <link
+      rel="prefetch"
+      href="/assets/images/landing-page/hero/white-swoop-2.png"
+      as="image"
+    />
+    
+    <link rel="license" href="/LICENSE.txt" />
+    <link
+      rel="stylesheet"
+      media="all"
+      href="/assets/stylesheets/new-stylesheets/application.css"
+    />
+    <script src="/assets/javascripts/new-javascripts/color-scheme-toggle.js"></script>
+    
+    <script src="/assets/javascripts/new-javascripts/vendor/anime.iife.min.js"></script>
+    <script src="/assets/javascripts/new-javascripts/hero.js"></script>
+    
+    <link
+      rel="shortcut icon"
+      sizes="16x16 24x24 32x32 48x48 64x64"
+      type="image/vnd.microsoft.icon"
+      href="/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon-180x180.png"
+    />
+    <link
+      rel="mask-icon"
+      href="/assets/images/icon-swift.svg"
+      color="#F05339"
+    />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Swift.org (Atom Feed)"
+      href="/atom.xml"
+    />
+
+    
+    <link rel="canonical" href="https://swift.org/" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@SwiftLang" />
+    
+    <meta name="twitter:title" content="Swift.org" />
+    <meta
+      name="twitter:description"
+      content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns."
+    />
+    
+
+    <meta property="og:site_name" content="Swift.org" />
+    <meta
+      property="og:image"
+      content="https://swift.org/apple-touch-icon-180x180.png"
+    />
+     
+    <meta property="og:title" content="Swift.org" />
+    <meta property="og:url" content="https://swift.org" />
+    <meta
+      property="og:description"
+      content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns."
+    />
+    
+  </head>
+
+  <body>
+    <script>
+      // Set theme before body content to avoid flash of light styles in dark mode
+      setColorScheme(getStoredScheme())
+    </script>
+    <main>
+      <header class="site-navigation">
+    <div class="wrapper">
+      <h1 class="logo">
+        <a href="/" title="Swift.org"> <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 191.186 59.391"><path fill="#F05138" d="M59.387 16.45a82.463 82.463 0 0 0-.027-1.792c-.035-1.301-.112-2.614-.343-3.9-.234-1.307-.618-2.523-1.222-3.71a12.464 12.464 0 0 0-5.453-5.452C51.156.992 49.941.609 48.635.374c-1.288-.232-2.6-.308-3.902-.343a85.714 85.714 0 0 0-1.792-.027C42.23 0 41.52 0 40.813 0H18.578c-.71 0-1.419 0-2.128.004-.597.004-1.195.01-1.792.027-.325.009-.651.02-.978.036-.978.047-1.959.133-2.924.307-.98.176-1.908.436-2.811.81A12.503 12.503 0 0 0 3.89 3.89a12.46 12.46 0 0 0-2.294 3.158C.992 8.235.61 9.45.374 10.758c-.231 1.286-.308 2.599-.343 3.9a85.767 85.767 0 0 0-.027 1.792C-.001 17.16 0 17.869 0 18.578v22.235c0 .71 0 1.418.004 2.128.004.597.01 1.194.027 1.791.035 1.302.112 2.615.343 3.901.235 1.307.618 2.523 1.222 3.71a12.457 12.457 0 0 0 5.453 5.453c1.186.603 2.401.986 3.707 1.22 1.287.232 2.6.31 3.902.344.597.016 1.195.023 1.793.027.709.005 1.417.004 2.127.004h22.235c.709 0 1.418 0 2.128-.004.597-.004 1.194-.011 1.792-.027 1.302-.035 2.614-.112 3.902-.343 1.306-.235 2.521-.618 3.707-1.222a12.461 12.461 0 0 0 5.453-5.452c.604-1.187.987-2.403 1.222-3.71.231-1.286.308-2.6.343-3.9.016-.598.023-1.194.027-1.792.004-.71.004-1.419.004-2.129V18.578c0-.71 0-1.419-.004-2.128z"/><path fill="#FFF" d="m47.06 36.66-.004-.004c.066-.224.134-.446.191-.675 2.465-9.821-3.55-21.432-13.731-27.546 4.461 6.048 6.434 13.374 4.681 19.78-.156.571-.344 1.12-.552 1.653-.225-.148-.51-.316-.89-.527 0 0-10.127-6.252-21.103-17.312-.288-.29 5.852 8.777 12.822 16.14-3.284-1.843-12.434-8.5-18.227-13.802.712 1.187 1.558 2.33 2.489 3.43C17.573 23.932 23.882 31.5 31.44 37.314c-5.31 3.25-12.814 3.502-20.285.003a30.646 30.646 0 0 1-5.193-3.098c3.162 5.058 8.033 9.423 13.96 11.97 7.07 3.039 14.1 2.833 19.336.05l-.004.007c.024-.016.055-.032.08-.047.214-.116.428-.234.636-.358 2.516-1.306 7.485-2.63 10.152 2.559.654 1.27 2.041-5.46-3.061-11.74z"/><path id="logotype" d="M81.93 38.542c.465 4.12 4.394 6.822 9.852 6.822 5.185 0 8.924-2.701 8.924-6.44 0-3.22-2.265-5.185-7.478-6.495l-5.048-1.282c-7.26-1.801-10.534-5.077-10.534-10.48 0-6.658 5.813-11.27 14.082-11.27 8.022 0 13.726 4.639 13.917 11.325h-5.32c-.41-4.093-3.74-6.604-8.734-6.604-4.94 0-8.378 2.538-8.378 6.249 0 2.892 2.13 4.612 7.369 5.95l4.202 1.09c8.133 1.993 11.462 5.159 11.462 10.863 0 7.259-5.759 11.816-14.928 11.816-8.514 0-14.327-4.53-14.763-11.543h5.376zM140.049 49.43h-5.35l-6.249-21.776h-.109L122.12 49.43h-5.348l-7.914-28.518h5.184l5.513 22.896h.11l6.221-22.896h5.021l6.277 22.896h.11l5.512-22.896h5.13L140.05 49.43zM151.39 13.244c0-1.718 1.419-3.11 3.138-3.11 1.746 0 3.165 1.392 3.165 3.11 0 1.72-1.419 3.139-3.165 3.139a3.157 3.157 0 0 1-3.139-3.139zm.545 7.669h5.213V49.43h-5.213V20.913zM191.186 25.116v-4.204h-5.513v-6.821h-5.185v6.821h-9.964v-2.51c.027-2.538 1.01-3.603 3.357-3.603.764 0 1.528.083 2.156.192v-4.094a18.193 18.193 0 0 0-2.756-.218c-5.568 0-7.915 2.32-7.915 7.642v2.591h-3.983v4.204h3.983V49.43h5.185V25.116H180.488v16.838c0 5.512 2.101 7.64 7.559 7.64 1.174 0 2.51-.082 3.111-.218v-4.257c-.355.055-1.392.137-1.965.137-2.428 0-3.52-1.147-3.52-3.712V25.116h5.513z"/></svg> </a>
+      </h1>
+  
+      <!-- desktop-navigation -->
+      <nav class="desktop-navigation" role="navigation">
+        <ul class="navigation-items">
+  
+  <li class="nav-item ">
+    <a href="/documentation/" data-text="Docs"><span>Docs</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/community/" data-text="Community"><span>Community</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/packages/" data-text="Packages"><span>Packages</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/blog/" data-text="Blog"><span>Blog</span></a>
+  </li>
+  
+  <li class="border">
+    <span />
+  </li>
+  <li class="nav-item ">
+    <a href="/install" data-text="Install"><span>Install <span>(6.3.3)</span></span></a>
+  </li>
+</ul>
+      </nav>
+  
+      <!-- toggle -->
+      <button
+        id="menu-toggle"
+        class="menu-item menu-toggle open"
+        aria-expanded="false"
+        aria-label="Toggle Navigation Menu"
+      />
+    </div>
+  
+    <!-- mobile-navigation -->
+    <nav class="mobile-navigation" role="navigation">
+        <ul class="navigation-items">
+  
+  <li class="nav-item ">
+    <a href="/documentation/" data-text="Docs"><span>Docs</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/community/" data-text="Community"><span>Community</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/packages/" data-text="Packages"><span>Packages</span></a>
+  </li>
+  
+  <li class="nav-item ">
+    <a href="/blog/" data-text="Blog"><span>Blog</span></a>
+  </li>
+  
+  <li class="border">
+    <span />
+  </li>
+  <li class="nav-item ">
+    <a href="/install" data-text="Install"><span>Install <span>(6.3.3)</span></span></a>
+  </li>
+</ul>
+    </nav>
+  </header>
+   <div class="animation-container">
+    <canvas id="purple-swoop" width="1248" height="1116"></canvas>
+    <canvas id="white-swoop-1" width="1248" height="1116"></canvas>
+    <canvas id="orange-swoop-top" width="1248" height="1116"></canvas>
+    <canvas id="orange-swoop-bottom" width="1248" height="1116"></canvas>
+    <canvas id="white-swoop-2" width="1248" height="1116"></canvas>
+    <canvas id="bird" width="1248" height="1116"></canvas>
+</div>
+<section id="what-is-swift" class="section">
+    <div class="hero-content">
+        <h1 class="title-0">Swift is the powerful, flexible,<br /> multiplatform programming language.</h1>
+        <div class="sub-text"><h2>Fast. Expressive. Safe.</h2></div>
+        <a href="/install/" data-text="Install">Install</a>
+        <p>Tools for Linux, macOS, and Windows</p>
+        <h2>Create using Swift</h2>
+    </div>
+    <nav aria-label="Get started with Swift">
+        <ul class="primary-links">
+            
+            <li>
+                <a href="/get-started/cloud-services" data-text="Cloud Services">
+                    <i class="cloud"></i>
+                    <div>
+                        <h3 class="title">Cloud Services</h3>
+                        <p class="subtitle">Run performant services on Linux and deploy to the cloud.</p>
+                    </div>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/get-started/command-line-tools" data-text="Command Line">
+                    <i class="command-line"></i>
+                    <div>
+                        <h3 class="title">Command Line</h3>
+                        <p class="subtitle">Create powerful CLI tools that are fast and memory safe.</p>
+                    </div>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/get-started/embedded" data-text="Embedded">
+                    <i class="chip"></i>
+                    <div>
+                        <h3 class="title">Embedded</h3>
+                        <p class="subtitle">Develop efficient, reliable firmware for devices like microcontrollers.</p>
+                    </div>
+                </a>
+            </li>
+            
+        </ul>
+        <ul class="secondary-links">
+            
+            <li>
+                <a href="/getting-started/swiftui/" data-text="iOS apps">
+                    <h4 class="title">iOS apps</h4>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/blog/swift-everywhere-windows-interop/" data-text="Windows apps">
+                    <h4 class="title">Windows apps</h4>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/blog/mlx-swift/" data-text="Machine learning and AI">
+                    <h4 class="title">Machine Learning &amp; AI</h4>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/getting-started/library-swiftpm/" data-text="Packages">
+                    <h4 class="title">Packages</h4>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+    <div class="swoop swoop-0 swoop-anim"></div>
+</section>
+
+<section id="pillar-1" class="section pillar">
+    <div class="pillar-wrapper content-wrapper">
+        <p class="pillar-intro">
+            Swift is designed to be the language you reach for at every layer of the software stack. Whether you are building embedded firmware, full-featured mobile apps, or internet-scale services, Swift delivers expressive language features and APIs, performance control when you need it, and strong safety guarantees.
+        </p>
+    </div>
+    
+ 
+<div class="callout  with-code">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Fast</h3>
+     
+    <p class="callout-subtitle title-2">Build with speed and performance.</p>
+     
+    <p class="callout-text body">Swift meets the most performance-critical needs, while allowing your code to remain expressive and approachable. Swift compiles directly to native code and provides predictable memory management.</p>
+    
+  </div>
+  
+  <!-- prettier-ignore -->
+  <div class="code">
+      <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Vectorized check that a utf8 buffer is all ASCII</span>
+<span class="kd">func</span> <span class="nf">isASCII</span><span class="p">(</span><span class="nv">utf8</span><span class="p">:</span> <span class="kt">Span</span><span class="o">&lt;</span><span class="kt">SIMD16</span><span class="o">&lt;</span><span class="kt">UInt8</span><span class="o">&gt;&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="c1">// combine all the code units into a single entry</span>
+  <span class="n">utf8</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="nv">into</span><span class="p">:</span> <span class="kt">SIMD16</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// fold each set of code units into the result</span>
+    <span class="nv">$0</span> <span class="o">|=</span> <span class="n">utf8</span><span class="p">[</span><span class="nv">$1</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="c1">// check that every entry is in the ASCII range</span>
+  <span class="o">.</span><span class="nf">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mh">0x80</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+    </div>
+    
+</div>
+
+    
+ 
+<div class="callout reverse with-code">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Expressive</h3>
+     
+    <p class="callout-subtitle title-2">Concise code. Powerful results.</p>
+     
+    <p class="callout-text body">Swift empowers you to write advanced code in a concise, readable syntax that even a beginner can understand. Swift supports object-oriented, functional, and generic programming patterns that experienced developers are familiar with. Its progressive disclosure allows you to pick up the language quickly, taking advantage of power-user features as you need them.</p>
+    
+  </div>
+  
+  <!-- prettier-ignore -->
+  <div class="code">
+      <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">ArgumentParser</span>
+
+<span class="c1">// Complete implementation of a command line tool</span>
+<span class="kd">@main</span> <span class="kd">struct</span> <span class="kt">Describe</span><span class="p">:</span> <span class="kt">ParsableCommand</span> <span class="p">{</span>
+  <span class="kd">@Argument</span><span class="p">(</span><span class="nv">help</span><span class="p">:</span> <span class="s">"The values to describe."</span><span class="p">)</span>
+  <span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">values</span><span class="o">.</span><span class="nf">sort</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">total</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+      <span class="s">"""
+      Smallest: </span><span class="se">\(</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="p">,</span> <span class="k">default</span><span class="p">:</span> <span class="s">"No value"</span><span class="se">)</span><span class="s">
+      Total:    </span><span class="se">\(</span><span class="n">total</span><span class="se">)</span><span class="s">
+      Mean:     </span><span class="se">\(</span><span class="n">total</span> <span class="o">/</span> <span class="kt">Double</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">count</span><span class="p">)</span><span class="se">)</span><span class="s">
+      """</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+    </div>
+    
+</div>
+
+    
+ 
+<div class="callout  with-code">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Safe</h3>
+     
+    <p class="callout-subtitle title-2">Protect memory safety.</p>
+     
+    <p class="callout-text body">Swift prioritizes safety and eliminates entire classes of bugs and vulnerabilities by its design. Memory safety and data race safety are core features of the language, making them straightforward to integrate into your codebase. Safety is required at compile time, before your applications are ever run.</p>
+    
+  </div>
+  
+  <!-- prettier-ignore -->
+  <div class="code">
+      <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">transform</span> <span class="o">=</span> <span class="kt">Affine2DTransformBuilder</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">translate</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span><span class="o">.</span><span class="n">span</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">rotate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="k">let</span> <span class="nv">v</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.0</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1">// Call C functions safely with Swift types</span>
+<span class="k">let</span> <span class="nv">u</span> <span class="o">=</span> <span class="nf">mat_vec_mul</span><span class="p">(</span>
+  <span class="n">transform</span><span class="p">,</span> <span class="n">rowCount</span><span class="p">,</span> <span class="n">colCount</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">span</span><span class="p">,</span> <span class="n">allocator</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">uMagnitude</span> <span class="o">=</span> <span class="nf">vec_mag</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">span</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </div>
+    
+</div>
+
+    
+
+    <div class="swoop swoop-1 swoop-anim"></div>
+
+</section>
+
+<section id="pillar-2" class="section pillar">
+    
+ 
+<div class="callout  with-code">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Interoperable</h3>
+     
+    <p class="callout-subtitle title-2">Adopt Swift in existing code incrementally.</p>
+     
+    <p class="callout-text body">Swift provides unmatched interoperability, with its combination of natively understanding C and C++ types without the need for foreign function interfaces, and offering bridging for bi-directional access. Swift’s interoperability features allow you to incrementally adopt the language into existing codebases without requiring a full code rewrite.</p>
+    
+  </div>
+  
+  <!-- prettier-ignore -->
+  <div class="code">
+      <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">CxxStdlib</span>
+
+<span class="c1">// Use types from C++, like std::string, directly</span>
+<span class="k">let</span> <span class="nv">beverages</span><span class="p">:</span> <span class="p">[</span><span class="n">std</span><span class="o">.</span><span class="n">string</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"apple juice"</span><span class="p">,</span> <span class="s">"grape juice"</span><span class="p">,</span> <span class="s">"green tea"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">juices</span> <span class="o">=</span> <span class="n">beverages</span><span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">cppstring</span> <span class="k">in</span>
+  <span class="c1">// and call methods directly on C++ types</span>
+  <span class="n">cppstring</span><span class="o">.</span><span class="nf">find</span><span class="p">(</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="s">"juice"</span><span class="p">))</span> <span class="o">!=</span> <span class="n">std</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">npos</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+    </div>
+    
+</div>
+
+    
+ 
+<div class="callout reverse with-code">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Adaptable</h3>
+     
+    <p class="callout-subtitle title-2">From microcontrollers to servers.</p>
+     
+    <p class="callout-text body">Spanning from embedded and kernel to server and apps, Swift excels no matter where it’s used, from constrained environments like firmware, where every byte counts, to cloud services handling billions of requests a day.</p>
+    
+  </div>
+  
+  <!-- prettier-ignore -->
+  <div class="code">
+      <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Configure UART by direct register manipulation</span>
+<span class="c1">// using Swift MMIO. Enables RX and TX, and sets</span>
+<span class="c1">// baud rate to 115,200. Compiles down to an</span>
+<span class="c1">// optimal assembly sequence with no overhead.</span>
+
+<span class="n">usart1</span><span class="o">.</span><span class="n">brr</span><span class="o">.</span><span class="n">modify</span> <span class="p">{</span> <span class="n">rw</span> <span class="k">in</span>
+  <span class="n">rw</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">brr_field</span> <span class="o">=</span> <span class="mi">16_000_000</span> <span class="o">/</span> <span class="mi">115_200</span>
+<span class="p">}</span>
+
+<span class="n">usart1</span><span class="o">.</span><span class="n">cr1</span><span class="o">.</span><span class="n">modify</span> <span class="p">{</span> <span class="n">rw</span> <span class="k">in</span>
+  <span class="n">rw</span><span class="o">.</span><span class="n">ue</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Enabled</span>
+  <span class="n">rw</span><span class="o">.</span><span class="n">re</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Enabled</span>
+  <span class="n">rw</span><span class="o">.</span><span class="n">te</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Enabled</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+    </div>
+    
+</div>
+
+    
+    <div class="swoop swoop-2 swoop-anim"></div>
+</section>
+
+<section id="pillar-3" class="section pillar">
+    
+ 
+<div class="callout  ">
+  <div class="text">
+    
+    <h3 class="callout-title title-1">Open Source</h3>
+     
+    <p class="callout-subtitle title-2">Contribute and get involved.</p>
+     
+  </div>
+    
+  <div class="links">
+    
+    <a href="https://github.com/swiftlang">View SwiftLang on GitHub</a>
+    
+    <a href="https://forums.swift.org">Join the forums</a>
+    
+  </div>
+  
+</div>
+
+    
+</section>
+ <footer class="global-footer">
+  <div class="container">
+    <div class="footer-navigation-container">
+      <nav aria-label="Main">
+    <a class="logo" href="/" title="Swift.org"> <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 191.186 59.391"><path fill="#F05138" d="M59.387 16.45a82.463 82.463 0 0 0-.027-1.792c-.035-1.301-.112-2.614-.343-3.9-.234-1.307-.618-2.523-1.222-3.71a12.464 12.464 0 0 0-5.453-5.452C51.156.992 49.941.609 48.635.374c-1.288-.232-2.6-.308-3.902-.343a85.714 85.714 0 0 0-1.792-.027C42.23 0 41.52 0 40.813 0H18.578c-.71 0-1.419 0-2.128.004-.597.004-1.195.01-1.792.027-.325.009-.651.02-.978.036-.978.047-1.959.133-2.924.307-.98.176-1.908.436-2.811.81A12.503 12.503 0 0 0 3.89 3.89a12.46 12.46 0 0 0-2.294 3.158C.992 8.235.61 9.45.374 10.758c-.231 1.286-.308 2.599-.343 3.9a85.767 85.767 0 0 0-.027 1.792C-.001 17.16 0 17.869 0 18.578v22.235c0 .71 0 1.418.004 2.128.004.597.01 1.194.027 1.791.035 1.302.112 2.615.343 3.901.235 1.307.618 2.523 1.222 3.71a12.457 12.457 0 0 0 5.453 5.453c1.186.603 2.401.986 3.707 1.22 1.287.232 2.6.31 3.902.344.597.016 1.195.023 1.793.027.709.005 1.417.004 2.127.004h22.235c.709 0 1.418 0 2.128-.004.597-.004 1.194-.011 1.792-.027 1.302-.035 2.614-.112 3.902-.343 1.306-.235 2.521-.618 3.707-1.222a12.461 12.461 0 0 0 5.453-5.452c.604-1.187.987-2.403 1.222-3.71.231-1.286.308-2.6.343-3.9.016-.598.023-1.194.027-1.792.004-.71.004-1.419.004-2.129V18.578c0-.71 0-1.419-.004-2.128z"/><path fill="#FFF" d="m47.06 36.66-.004-.004c.066-.224.134-.446.191-.675 2.465-9.821-3.55-21.432-13.731-27.546 4.461 6.048 6.434 13.374 4.681 19.78-.156.571-.344 1.12-.552 1.653-.225-.148-.51-.316-.89-.527 0 0-10.127-6.252-21.103-17.312-.288-.29 5.852 8.777 12.822 16.14-3.284-1.843-12.434-8.5-18.227-13.802.712 1.187 1.558 2.33 2.489 3.43C17.573 23.932 23.882 31.5 31.44 37.314c-5.31 3.25-12.814 3.502-20.285.003a30.646 30.646 0 0 1-5.193-3.098c3.162 5.058 8.033 9.423 13.96 11.97 7.07 3.039 14.1 2.833 19.336.05l-.004.007c.024-.016.055-.032.08-.047.214-.116.428-.234.636-.358 2.516-1.306 7.485-2.63 10.152 2.559.654 1.27 2.041-5.46-3.061-11.74z"/><path id="logotype" d="M81.93 38.542c.465 4.12 4.394 6.822 9.852 6.822 5.185 0 8.924-2.701 8.924-6.44 0-3.22-2.265-5.185-7.478-6.495l-5.048-1.282c-7.26-1.801-10.534-5.077-10.534-10.48 0-6.658 5.813-11.27 14.082-11.27 8.022 0 13.726 4.639 13.917 11.325h-5.32c-.41-4.093-3.74-6.604-8.734-6.604-4.94 0-8.378 2.538-8.378 6.249 0 2.892 2.13 4.612 7.369 5.95l4.202 1.09c8.133 1.993 11.462 5.159 11.462 10.863 0 7.259-5.759 11.816-14.928 11.816-8.514 0-14.327-4.53-14.763-11.543h5.376zM140.049 49.43h-5.35l-6.249-21.776h-.109L122.12 49.43h-5.348l-7.914-28.518h5.184l5.513 22.896h.11l6.221-22.896h5.021l6.277 22.896h.11l5.512-22.896h5.13L140.05 49.43zM151.39 13.244c0-1.718 1.419-3.11 3.138-3.11 1.746 0 3.165 1.392 3.165 3.11 0 1.72-1.419 3.139-3.165 3.139a3.157 3.157 0 0 1-3.139-3.139zm.545 7.669h5.213V49.43h-5.213V20.913zM191.186 25.116v-4.204h-5.513v-6.821h-5.185v6.821h-9.964v-2.51c.027-2.538 1.01-3.603 3.357-3.603.764 0 1.528.083 2.156.192v-4.094a18.193 18.193 0 0 0-2.756-.218c-5.568 0-7.915 2.32-7.915 7.642v2.591h-3.983v4.204h3.983V49.43h5.185V25.116H180.488v16.838c0 5.512 2.101 7.64 7.559 7.64 1.174 0 2.51-.082 3.111-.218v-4.257c-.355.055-1.392.137-1.965.137-2.428 0-3.52-1.147-3.52-3.712V25.116h5.513z"/></svg> </a>
+
+    <ul>
+        
+        <li class="item ">
+            <a href="/documentation/" data-text="Docs">Docs</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/community/" data-text="Community">Community</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/packages/" data-text="Packages">Packages</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/blog/" data-text="Blog">Blog</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/install/" data-text="Install">Install</a>
+        </li>
+        
+    </ul>
+</nav>
+
+      <nav aria-label="Tools">
+    <h3>Tools</h3>
+    <ul>
+        
+        <li class="item ">
+            <a href="https://developer.apple.com/xcode/" data-text="Xcode">Xcode</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/documentation/articles/getting-started-with-vscode-swift.html" data-text="Visual Studio Code">Visual Studio Code</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/documentation/articles/zero-to-swift-emacs.html" data-text="Emacs">Emacs</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/documentation/articles/zero-to-swift-nvim.html" data-text="Neovim">Neovim</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/documentation/articles/getting-started-with-cursor-swift.html" data-text="Cursor">Cursor</a>
+        </li>
+        
+        <li class="item ">
+            <a href="https://github.com/swiftlang/sourcekit-lsp/tree/main/Documentation/Editor%20Integration.md" data-text="Other Editors">Other Editors</a>
+        </li>
+        
+    </ul>
+</nav>
+
+      <nav aria-label="Community">
+    <h3>Community</h3>
+    <ul>
+        
+        <li class="item ">
+            <a href="/community/" data-text="Overview">Overview</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/swift-evolution/" data-text="Swift Evolution">Swift Evolution</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/diversity/" data-text="Diversity">Diversity</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/mentorship/" data-text="Mentorship">Mentorship</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/contributing/" data-text="Contributing">Contributing</a>
+        </li>
+        
+    </ul>
+</nav>
+
+      <nav class="governance" aria-label="Governance">
+    <h3>Governance</h3>
+    <ul>
+        
+        <li class="item ">
+            <a href="/code-of-conduct/" data-text="Code of Conduct">Code of Conduct</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/legal/license.html" data-text="License">License</a>
+        </li>
+        
+        <li class="item ">
+            <a href="/support/security.html" data-text="Security">Security</a>
+        </li>
+        
+    </ul>
+
+      <form
+  class="color-scheme-toggle"
+  role="radiogroup"
+  tabindex="0"
+  id="color-scheme-toggle"
+>
+  <legend class="visuallyhidden">Color scheme preference</legend>
+  <label class="scheme-light" for="scheme-light">
+    <input
+      id="scheme-light"
+      type="radio"
+      name="color-scheme-preference"
+      value="light"
+    />
+    <span class="color-scheme-toggle-label">Light</span>
+  </label>
+  <label class="scheme-dark" for="scheme-dark">
+    <input
+      id="scheme-dark"
+      type="radio"
+      name="color-scheme-preference"
+      value="dark"
+    />
+    <span class="color-scheme-toggle-label">Dark</span>
+  </label>
+  <label class="scheme-auto-wrapper" for="scheme-auto" id="scheme-auto-wrapper">
+    <input
+      id="scheme-auto"
+      type="radio"
+      name="color-scheme-preference"
+      value="auto"
+    />
+    <span class="color-scheme-toggle-label">Auto</span>
+  </label>
+</form>
+</nav>
+    </div>
+
+    <div class="sub-navigation">
+      <div class="legals">
+        <div class="copyright">
+    
+    <p>
+      Copyright © 2026 Apple Inc. All rights reserved.
+    </p>
+    <p>
+      Swift and the Swift logo are trademarks of Apple Inc.
+    </p>
+    
+</div>
+        <nav aria-label="Legals">
+    <ul>
+        
+            <li class="item ">
+                <a href="//www.apple.com/privacy/privacy-policy/">Privacy Policy</a>
+            </li>
+        
+            <li class="item ">
+                <a href="//www.apple.com/legal/privacy/en-ww/cookies/">Cookies</a>
+            </li>
+        
+            <li class="item ">
+                <a href="/openapi">API</a>
+            </li>
+        
+    </ul>
+</nav>
+      </div>
+
+      <nav class="socials" aria-label="Socials">
+    <ul>
+        
+            <li class="item ">
+                <a href="https://x.com/swiftlang" rel="me" title="Follow @SwiftLang on X"><i class="x"></i></a>
+            </li>
+        
+            <li class="item ">
+                <a href="https://bsky.app/profile/swift.org" rel="me" title="Follow @swift.org on Bluesky"><i class="bluesky"></i></a>
+            </li>
+        
+            <li class="item ">
+                <a href="https://mastodon.social/@swiftlang" rel="me" title="Follow @swiftLang on Mastodon"><i class="mastodon"></i></a>
+            </li>
+        
+            <li class="item ">
+                <a href="/atom.xml" rel="me" title="Subscribe to Site Updates"><i class="feed"></i></a>
+            </li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </div>
+</footer>
+
+    </main>
+
+    <script src="/assets/javascripts/new-javascripts/application.js"></script>
+    
+    <script src="/assets/javascripts/new-javascripts/landing.js"></script>
+     
+    <!-- metrics -->
+    <script>
+      /* RSID: */
+      var s_account = 'awdswiftorg'
+    </script>
+    
+    <script src="https://developer.apple.com/assets/metrics/scripts/analytics.js"></script>
+    <script>
+      s.pageName = AC && AC.Tracking && AC.Tracking.pageName()
+
+      /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+      var s_code = s.t()
+      if (s_code) document.write(s_code)
+    </script>
+    
+    <!-- /metrics -->
+  </body>
+</html>

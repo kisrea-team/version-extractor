@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html
+          PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="images/archer-fish.ico" />
+<meta name="keywords" content="gdb" />
+<link rel="stylesheet" href="css/site.css?hash=614097a2f540bcea7761591655e598d6" />
+
+<title>GDB: The GNU Project Debugger</title>
+
+</head>
+
+<body>
+
+<a href="mascot/"><img border="0"
+src="images/archer.svg" align="right" alt="[image of Archer
+Fish]" id="archer-logo"/></a>
+
+<center><h1>GDB: The GNU Project Debugger</h1></center>
+
+<center>
+<small>
+[<a href="bugs/">bugs</a>]
+[<a href="committee/">maintainers</a>]
+[<a href="contribute/">contributing</a>]
+[<a href="current/">current&nbsp;git</a>]
+[<a href="documentation/">documentation</a>]
+[<a href="download/">download</a>]
+[<a href="">home</a>]
+[<a href="irc/">irc</a>]
+[<a href="links/">links</a>]
+[<a href="mailing-lists/">mailing&nbsp;lists</a>]
+[<a href="news/">news</a>]
+[<a href="schedule/">schedule</a>]
+[<a href="song/">song</a>]
+[<a href="https://sourceware.org/gdb/wiki/">wiki</a>]
+</small>
+</center>
+
+<center><h2>GDB: The GNU Project Debugger</h2></center>
+
+<!-- NB: CURRENT / LATEST refer to the trunk -->
+<!-- NB: MOST RECENT refers to the branch -->
+
+<!-- body, update above using index.sh -->
+
+<h3>What is GDB?</h3>
+
+<p>GDB, the GNU Project debugger, allows you to see what is going on
+`inside' another program while it executes -- or what another program
+was doing at the moment it crashed.
+
+<p>GDB can do four main kinds of things (plus other things in support
+of these) to help you catch bugs in the act:
+
+<ul>
+<li>Start your program, specifying anything that might affect its behavior.
+<li>Make your program stop on specified conditions.
+<li>Examine what has happened, when your program has stopped.
+<li>Change things in your program, so you can experiment with
+correcting the effects of one bug and go on to learn about another.
+</ul>
+
+Those programs might be executing on the same machine as GDB (native),
+on another machine (remote), or on a simulator.  GDB can run on most
+popular UNIX and Microsoft Windows variants, as well as on macOS.<p>
+
+<h3>What Languages does GDB Support?</h3>
+
+GDB supports the following languages (in alphabetical order):
+<ul>
+  <li> Ada</li>
+  <li> Assembly</li>
+  <li> C</li>
+  <li> C++</li>
+  <li> D</li>
+  <li> Fortran</li>
+  <li> Go</li>
+  <li> Objective-C</li>
+  <li> OpenCL</li>
+  <li> Modula-2</li>
+  <li> Pascal</li>
+  <li> Rust</li>
+</ul>
+
+<h3>GDB version 17.2</h3>
+
+Version <a href="download/ANNOUNCEMENT">17.2</a> of GDB, the GNU
+Debugger, is now available for <a
+href="download/">download</a>.  See the <a
+href="download/ANNOUNCEMENT">ANNOUNCEMENT</a> for details
+including changes in this release.<p>
+
+An errata list (<a
+href="https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=gdb/PROBLEMS;hb=HEAD"
+>PROBLEMS</a>) and <a
+href="https://sourceware.org/gdb/download/onlinedocs/">documentation</a>
+are also available.<p>
+
+<h3>News</a></h3>
+
+<dl>
+
+<!-- PLEASE ADD ARTICLES TO BOTH news/index.html and index.html
+
+<dt>Month DD, YYYY: <b>Announcement</b></dt>
+<dd>
+<p> The message about the announcement goes here and can spread across
+several lines.  Each is proceeded by a P to make the indentation
+better.
+</p>
+</dd>
+
+-->
+
+<dt>May 10th, 2026: <b>GDB 17.2 Released!</b></dt>
+<dd>
+<p> The latest version of GDB, version 17.2, is available for <a
+href="../download/">download</a>.
+<p>
+This is a corrective release over GDB 17.1, fixing the following
+issues:
+<ul>
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33228">PR dap/33228</a> ([gdb/dap] error while listing register children)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33737">PR gdb/33737</a> (gdb --help says 'For more information, type "stream" from within GDB', but "stream" is not a defined command)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33747">PR build/33747</a> (Incompatible with MUSL libc: no member named 'c_ospeed' in 'termios')
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33748">PR gdb/33748</a> (gdb17 regression with displaying ANSI colors)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33753">PR gdb/33753</a> (Out-of-bounds writes in string_{v}printf -- threads and static data don't mix)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33761">PR cli/33761</a> (Setting style colors is broken on MS-Windows)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33768">PR gdb/33768</a> (Loading compressed GDB scripts from .debug_gdb_scripts fails)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33775">PR symtab/33775</a> ([gdb/symtab] data race in dwarf2_per_cu::{set_addr_size,set_offset_size,set_ref_addr_size})
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33777">PR symtab/33777</a> ([gdb/symtab] dw2_get_file_names doesn't cache result for dummy CU)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33825">PR symtab/33825</a> ([dwz] Extremely slow symbol lookup with DWZ-compressed debug info (thousands of partial units))
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33845">PR testsuite/33845</a> (gdb: There are 4 unexpected failures in breakpoint-in-ro-region.exp)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33872">PR gdb/33872</a> (`skip -gfile` has inverted logic)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=33926">PR gdb/33926</a> (GDB 17.1 AArch64: redefinition of user_gcs struct on musl)
+<li> <a href="https://sourceware.org/bugzilla/show_bug.cgi?id=34112">PR breakpoints/34112</a> (rbreak `file:regex` sets breakpoints for matches outside of `file` [reproducer attached])
+</ul>
+
+See the <a href="https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob_plain;f=gdb/NEWS;hb=gdb-17.2-release">NEWS</a> file for a more complete and detailed list of what this release includes.
+<p>
+</dd>
+
+<dt>December 20th, 2025: <b>GDB 17.1 Released!</b></dt>
+<dd>
+<br> The latest version of GDB, version 17.1, is available for <a
+href="download/">download</a>.
+<p>
+This version of GDB includes the following changes and enhancements:
+<p>
+<ul>
+ <li> x86-64 CET shadow stack support
+ <li> Debugging Linux programs that use AArch64 Guarded Control Stacks
+ <li> GDB record feature now supports rv64gc architectures
+ <li> 'info threads' command support for two new options '-stopped' and '-running'
+      to limit the list of displayed threads.
+ <li> On Linux and FreeBSD, the addresses shown by the 'info sharedlibrary' command
+      are now for the full memory range allocated to the shared library.
+ <li> Linux checkpoints now work with multiple inferiors
+ <li> Improved linker namespace support
+ <li> Warnings and error messages now start with an emoji (warning sign,
+      or cross mark) if supported by the host charset. Configurable.
+ <li> Built-in support for TLS on Linux as backup when libthread_db is not
+      available. Supported on the x86_64, aarch64, ppc64, s390x, and riscv
+      architectures, when compiled with GLIBC or MUSL.
+ <li> New command "set riscv numeric-register-names" to display risc-v
+      registers using their numeric names instead of their ABI names.
+ <li> The Alpha target now supports target descriptions.
+ <li>Python API enhancements
+ <ul>
+   <li> New class gdb.Color for dealing with colors, and new constant gdb.PARAM_COLOR
+   <li> New gdb.ParameterPrefix class, to create new 'set/show' command prefixes.
+   <li> New attribute gdb.Value.is_unavailable, this checks for
+        unavailability like gdb.Value.is_optimized_out checks for
+        optimized out values.
+   <li> New gdb.warning() function to print a warning message, with GDB's standard
+        'warning' prefix (see emoji support entry below)
+   <li> gdb.execute has an additional 'styling' argument.
+   <li> Prefix commands (gdb.Command sub-classes) that don't have an
+        invoke method now behave like builtin prefix commands when
+        invoked without a sub-command name.  This means printing the help
+        text for all sub-commands, unless the prefix command is a 'show'
+        command, in which case the value of all sub-commands is printed.
+   <li> Setting the documentation string (__doc__) of a gdb.Parameter
+        sub-class to the empty string, means GDB will only display the
+        set_doc or show_doc strings in the set/show help output.
+ </ul>
+ <li>Guile API enhancements:
+ <ul>
+   <li> New type <gdb:color> for dealing with colors and constant PARAM_COLOR
+   <li> Prefix commands (using make-command) that don't have a #:invoke
+        property will now behave like builtin prefix commands when
+        invoked without a sub-command name.  This means printing the help
+        text for all sub-commands, unless the prefix command is a 'show'
+        command, in which case the value of all sub-commands is printed.
+   <li> Eliding the #:doc string from make-parameter now means that GDB
+        will use a default documentation string.  Setting #:doc to the
+        empty string for make-parameter means GDB will only display the
+        #:set_doc or #:show_doc strings in the set/show help output.
+ </ul>
+ <li>Debugger Adapter Protocol changes
+ <ul>
+   <li> GDB now supports the "completions" request.
+   <li> New "--binary-output" command line option to disable LF translations (Windows only)
+ </ul>
+ <li> New convenience variables
+ <ul>
+   <li> $_colorsupport providing a comma-separated list of color space names
+        supported by the terminal.
+
+   <li> $linker_namespace_count and $_linker_namespace provide the list of
+        active linker namespaces.
+ </ul>
+ <li> Remote package additions and changes
+ <ul>
+   <li> New 'binary-upload+' value in qSupported reply
+   <li> The 'vFile:stat' command implementation has been corrected to use
+        stat rather than lstat. The documentation has also been clarified.
+   <li> New vFile:lstat packet, useful for handling symbolic links
+   <li> Support for the "id_str" attribute in 'qXfer:threads:read' XML answer.
+ </ul>
+ <li>GDB/MI changes
+ <ul>
+   <li> The =library-unloaded event now includes the 'ranges' field, which
+        has the same meaning as for the =library-loaded event.
+   <li> The =library-unloaded event now includes the 'still-in-use' field.
+ </ul>
+ <li> Configure changes
+ <ul>
+   <li> Ability to select which file formats to include support for
+   <li> New option --disable-gdb-compile to disable support for the compile subsystem.
+   <li> New option --disable-gdb-dwarf-support to disable support for
+        DWARF debug information in GDB.
+   <li> New option --disable-gdb-mdebug-support to disable support for
+        mdebug/ecoff debug information.
+ </ul>
+ <li>Incompatible changes
+ <ul>
+   <li> Support for Python versions older than 3.4 has been removed
+   <li> Support for stabs debugging format and the a.out/dbx object format is
+        deprecated, and will be removed in GDB 18.
+   <li> UST (static tracepoint) gdbserver support has been removed
+ </ul>
+</ul>
+See the <a href="https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob_plain;f=gdb/NEWS;hb=gdb-17.1-release">NEWS</a>
+file for a more complete and detailed list of what this release includes.
+<p>
+</dd>
+
+
+<dt>September 6th, 2025: <b>GDB 17 branch created</b></dt>
+<dd>
+<p> The GDB 17 branch (<tt>gdb-17-branch</tt>) has been created.
+To check out a copy of the branch use:
+<pre>
+git clone --branch gdb-17-branch https://sourceware.org/git/binutils-gdb.git
+</pre>
+<p>
+</dd>
+
+<dt>Nov 28, 2006: <b>Reversible Debugging</b></dt>
+<dd>
+<p> The GDB maintainers are looking for contributors interested
+in <a href="news/reversible.html">reversible debugging</a>.
+</p>
+</dd>
+
+</dl>
+
+Late breaking information, such as recently added features, can be
+found in the <a
+href="https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=gdb/NEWS;hb=HEAD"
+>NEWS</a> file in the gdb source tree.  Old announcements are in the
+news <a href="news">archive</a>.
+
+<!-- /body, update below using index.sh -->
+
+<p></p>
+
+<center>
+<small>
+[<a href="bugs/">bugs</a>]
+[<a href="committee/">maintainers</a>]
+[<a href="contribute/">contributing</a>]
+[<a href="current/">current&nbsp;git</a>]
+[<a href="documentation/">documentation</a>]
+[<a href="download/">download</a>]
+[<a href="">home</a>]
+[<a href="irc/">irc</a>]
+[<a href="links/">links</a>]
+[<a href="mailing-lists/">mailing&nbsp;lists</a>]
+[<a href="news/">news</a>]
+[<a href="schedule/">schedule</a>]
+[<a href="song/">song</a>]
+[<a href="https://sourceware.org/gdb/wiki/">wiki</a>]
+</small>
+</center>
+
+<hr />
+
+<address id="footer">
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to <a
+href="mailto:gnu@gnu.org">gnu@gnu.org</a>.  There are also <a
+href="https://www.gnu.org/home.html#ContactInfo">other ways to
+contact</a> the FSF.</p>
+
+<p>This page is maintained by <a href="">the GDB
+developers</a>.</p>
+
+<p>Copyright Free Software Foundation, Inc., 51 Franklin St - Fifth
+Floor, Boston, MA 02110-1301 USA.</p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.</p>
+
+<p>Last modified 2026-05-10.</p>
+</address>
+
+</body>
+</html>

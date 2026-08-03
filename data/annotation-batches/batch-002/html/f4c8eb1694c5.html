@@ -1,0 +1,1430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta name="author" content="Cactuslab"/>
+	<meta name="copyright" content="Copyright (c) 2026 XK72 Ltd"/>
+	<meta name="description" content="Charles Web Debugging Proxy - Official Site"/>
+	
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-987208-2', 'auto');
+ga('require', 'GTM-M6NJJ34');
+ga('send', 'pageview');
+</script>
+	
+
+	<link rel="canonical" href="https://www.charlesproxy.com/documentation/version-history/" />
+
+	<link rel="shortcut icon" href="/static/img/icon-CcEs46FV.png" />
+
+	
+		<script type="module" crossorigin src="/static/js/es/main-IFiioEdk.js"></script>
+		<link rel="modulepreload" crossorigin href="/static/js/es/chunks/hXRMurEE.js">
+		<link rel="modulepreload" crossorigin href="/static/js/es/chunks/DSrPHyh2.js">
+		<link rel="stylesheet" crossorigin href="/static/css/main-sb8LJu5s.css">
+	
+		<!-- Note that Vite moves any scripts from the body to the head, as JavaScript modules are loaded async anyway -->
+	
+
+	
+	
+			<title>Version History &bull; Charles Web Debugging Proxy</title>
+		
+
+
+	
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+	<a href="#content" class="skipnav">Skip to content &rarr;</a>
+	<div id="header">
+		<h1>Charles</h1>
+		<h2>Web Debugging Proxy Application for Windows, Mac OS and Linux</h2>
+		
+		
+			
+				
+			
+		
+		
+		<div id="nav">
+			<ul>
+				
+
+
+
+
+<li><a href="/">Home</a></li>
+				
+
+
+
+
+<li><a href="/overview/">Overview</a></li>
+				
+
+
+
+
+<li class="selected"><a href="/documentation/">Documentation</a></li>
+				
+
+
+
+
+<li class="download"><a href="/download/">Download</a></li>
+				
+
+
+
+
+<li><a href="/buy/">Buy</a></li>
+				
+
+
+
+
+<li><a href="/support/">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div id="sidebar">
+			
+	
+	<div class="sidepanel">
+		<ul class="subnav">
+			
+				
+						<li><a href="/documentation/welcome/">Welcome</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/installation/">Installation</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/getting-started/">Getting Started</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/configuration/">Configuration</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/using-charles/">Using Charles</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/proxying/">Proxying</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/tools/">Tools</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/faqs/">FAQs</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/additional/">Additional Information</a></li>
+					
+				
+			
+				
+						<li class="open"><a href="/documentation/version-history/" class="selected">Version History</a>
+							
+								<ul>
+									
+										
+												<li><a href="/documentation/version-history/old-versions/">Older Versions</a></li>
+											
+									
+								</ul>
+							
+						</li>
+					
+				
+			
+				
+						<li><a href="/documentation/security/">Security</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/privacy/">Privacy Statement</a></li>
+					
+				
+			
+				
+						<li><a href="/documentation/ios/">Charles for iOS</a></li>
+					
+				
+			
+		</ul>
+	</div>
+
+			
+<div class="sidepanel download">
+	<h3 class="image">Download</h3>
+	<div class="downloadbox">
+		<p><a href="/download/"><strong>Download a free trial</strong><br />Version 5.2</a></p>
+	</div>
+</div>
+			<div class="sidepanel" style="border-bottom: none;">
+				<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIKKQL&placement=charlesproxycom" id="_carbonads_js"></script>
+			</div>
+		</div>
+		<div id="main">
+			<div class="content">
+				<h3>Version History</h3>
+				
+				
+				
+				
+				
+				<h4>Version 5.2.1b1</h4>
+<p>23 June 2026</p>
+<p>This beta continues the networking correctness and robustness work from 5.2, and improves Map Remote.</p>
+<p>Minor new features</p>
+<ul>
+<li>Map Remote: new <em>Preserve base path</em> option stops a destination base path being applied twice when you map to a URL that has a base path (for example a backend mounted under a sub-path that emits absolute URLs already in that path-space). On by default; the checkbox is only enabled when the <em>Map To</em> location has a path.</li>
+</ul>
+<p>Minor improvements</p>
+<ul>
+<li>Windows: every bundled binary is now codesigned to improve interaction with Windows Defender Application Control (WDAC) policies.</li>
+</ul>
+<p>Bug fixes</p>
+<ul>
+<li>Several Map Remote fixes for tunnelled (HTTPS) requests: the destination path is now applied, the original location is reported, an HTTPS to HTTP mapping no longer attempts a TLS handshake with a plain HTTP server, and the requested port is restored from the SNI on a mapped CONNECT</li>
+<li>Fix for tool configurations that were lost when migrating settings from Charles 4 to Charles 5 (Windows &amp; Linux)</li>
+<li>Fix a rare keep-alive liveness probe that could corrupt the remote stream</li>
+<li>Fix rare throttling bugs that could lead to incorrect throttling under some conditions</li>
+<li>Further HTTP/2 proxying correctness and robustness fixes: trailers forwarded (such as gRPC), connection flow-control accounting and frame-size validation, stream concurrency and lifecycle handling, and send-window stall detection</li>
+<li>HTTP/1.x improvements for chunked trailers</li>
+<li>Improve Repeat behaviour after failed connects</li>
+<li>SOCKS5 method negotiation and version handling now more accurate follows the specification</li>
+<li>Improve SSL handshake handling, certificate cache, and TLS extension parsing</li>
+<li>Log timestamps on stdout and now at millisecond precision</li>
+</ul>
+<h4>Version 5.2</h4>
+<p>13 June 2026</p>
+<p>The 5.1.1b series has been released as 5.2 due to the scope of changes.</p>
+<p>Major improvements</p>
+<ul>
+<li>Faster and more reliable connections to dual-stack hosts using Happy Eyeballs (RFC 8305) connection establishment</li>
+<li>Forward 1xx interim responses, including 103 Early Hints, recorded as linked transactions</li>
+<li>Many HTTP/2 proxying correctness and robustness improvements (see bug fixes)</li>
+</ul>
+<p>Minor improvements</p>
+<ul>
+<li>New <em>Unencrypted</em> filter in the sequence view</li>
+<li>Improved sequence view filtering performance</li>
+<li>Improve expansion handling on the Structure view when using the filter</li>
+<li>New icons in the JSON and XML tree viewers</li>
+<li>Windows: JNA DLL is now codesigned</li>
+<li>Rewrite tool response status rewrite now works on HTTP2 responses</li>
+<li>Improved detection of text bodies for rewrite rules</li>
+<li>Rewrite the SSL certificate name when DNS Spoofing or the Rewrite tool changes the destination</li>
+<li>Recognise more TLS 1.3 draft minor versions and HTTP/3 draft version strings</li>
+<li>Propagate TCP half-close through tunnelled connections</li>
+<li>Flatlaf 3.7 for minor UI fixes &amp; improvements on Linux and Windows</li>
+<li>New <code>charles filter</code> CLI subcommand for filtering requests and responses from saved Charles sessions</li>
+<li><code>--debug</code> launch option to enable debug-level logging</li>
+<li>Allow saving the Error Log and streaming it to a file (right-click on Error Log)</li>
+</ul>
+<p>Bug fixes</p>
+<ul>
+<li>HTTP2 fixes and improvements: fixes a hang when concurrent streams exhaust the connection window; improve handling of max concurrent streams; improve hung stream detection; fix protocol error when Charles forwards a reset after remote close; fix an issue where Charles created an extra DATA frame on some GET requests; protocol compliance improvements; early connection closed handling and reporting</li>
+<li>Block list tool no longer hangs the connection when it blocks HTTP2 requests</li>
+<li>Fix NullPointerException on Active Connections frame when under load</li>
+<li>Avoid displaying non-sensical TLS information for in-progress streams</li>
+<li>Fix CSS and feed validation</li>
+<li>Reduce flashing when switching between requests</li>
+<li>macOS: menu bar icon dims again when the menu bar is inactive</li>
+</ul>
+<h4>Version 5.1.1b11</h4>
+<p>10 June 2026</p>
+<p>Minor new features</p>
+<ul>
+<li>Allow saving the Error Log and streaming it to a file (right-click on Error Log)</li>
+</ul>
+<h4>Version 5.1.1b10</h4>
+<p>9 June 2026</p>
+<p>Bug fixes and improvements</p>
+<ul>
+<li>Codesigning on Windows now includes JNA DLL</li>
+<li>Fix HTTP2 issue where Charles created an extra DATA frame on some GET requests</li>
+</ul>
+<h4>Version 5.1.1b9</h4>
+<p>27 May 2026</p>
+<p>Bug fixes and improvements</p>
+<ul>
+<li>Further HTTP2 fixes and improvements including:
+<ul>
+<li>Protocol error when Charles forwards a reset after remote close</li>
+<li>Block list tool no longer hangs the connection when it blocks</li>
+</ul>
+</li>
+<li>Fix NullPointerException on Active Connections frame when under load</li>
+</ul>
+<h4>Version 5.1.1b8</h4>
+<p>23 May 2026</p>
+<p>Bug fixes and improvements</p>
+<ul>
+<li>Further HTTP2 fixes and improvements including:
+<ul>
+<li>Fixes a hang when concurrent streams exhaust the connection window</li>
+<li>Protocol compliance improvements</li>
+<li>Early connection closed handling and reporting</li>
+</ul>
+</li>
+<li>macOS: menu bar icon dims again when the menu bar is inactive</li>
+<li>Faster and more reliable connections to dual-stack hosts</li>
+<li>Flatlaf 3.7 for minor UI fixes &amp; improvements on Linux and Windows</li>
+<li>103 Early Hints response status support</li>
+<li>JDK 25.0.3</li>
+</ul>
+<h4>Version 5.1.1b2</h4>
+<p>2 May 2026</p>
+<p>Minor new features</p>
+<ul>
+<li><code>filter</code> CLI command to allow filtering requests and responses from saved Charles sessions using the CLI</li>
+</ul>
+<p>Minor improvements</p>
+<ul>
+<li>Add Unencrypted checkbox in Sequence view</li>
+<li>Improve Sequence view filter performance</li>
+<li>Improve expansion handling on Structure view in conjunction with the filter</li>
+<li>New icons in JSON and XML tree viewers</li>
+<li>Fix Rewrite tool response status rewrite to work on HTTP2 responses</li>
+<li>Improve HTTP2 handling of max concurrent streams</li>
+<li>Improve HTTP2 hung stream detection</li>
+<li>Improve reconnecting to remote TLS hosts when earlier connection attempts failed</li>
+<li>Fix CSS and feed validation</li>
+<li>Avoid displaying non-sensical TLS information for in-progress streams</li>
+<li>Recognise more TLS 1.3 draft minor versions</li>
+<li>Recognise more HTTP/3 draft version strings (such as on HAR import)</li>
+</ul>
+<h4>Version 5.1</h4>
+<p>21 April 2026</p>
+<p>Major improvements</p>
+<ul>
+<li>Java 25 upgrade means we can use virtual threads which should improve overall performance</li>
+<li>Highlighting on URL query parameters to make them easier to read</li>
+<li>Performance improvements in rendering</li>
+<li>Proxying toggle added to the toolbar that toggles system proxy settings on / off (if available)</li>
+<li>zstd content encoding support</li>
+</ul>
+<p>Minor improvements</p>
+<ul>
+<li>All open transactions are now stopped when recording stops to prevent time calculations running forever</li>
+<li>Map Remote from an HTTP 2 request to HTTP 1.1</li>
+<li>Improved location matching of CONNECT requests; they will now match https URLs</li>
+<li>Limit error log size and add filtering</li>
+</ul>
+<p>Bug fixes</p>
+<ul>
+<li>macOS: Fix &quot;Install Charles Root Certificate in Java VMs&quot;</li>
+<li>macOS: Mouse wheel no longer accelerates outrageously on tall text views</li>
+<li>Windows: icons now sharp at 150% screen resolution</li>
+<li>Windows: <code>.msi </code>now shows a UI rather than installing silently</li>
+</ul>
+<h4>Version 5.0.3</h4>
+<p>20 September 2025</p>
+<ul>
+<li>Fix high CPU usage on macOS (regression in Charles 5.0.2)</li>
+<li>Show remote address while waiting to make a connection (rather than only after a connection has been established)</li>
+</ul>
+<h4>Version 5.0.2</h4>
+<p>9 August 2025</p>
+<ul>
+<li>Preserve scroll position when viewing the contents of a request or response that&#039;s in progress</li>
+<li>Highlight rules can now be disabled</li>
+<li>Highlight rules colours improved in dark mode</li>
+<li>Minor UI improvements to macOS, Windows &amp; Linux</li>
+<li>HAR import: fix HTTP/3 imports</li>
+<li>Build <code>.msi</code> files for Windows in addition to the <code>.appx</code></li>
+<li>Fix version update check when SOCKS proxy is enabled</li>
+<li>Fix detection and handling of truncated responses from upstream</li>
+<li>Fix <code>.chlz</code> importer to ignore dot files (so the zip can be easily created or modified on macOS)</li>
+</ul>
+<h4>Version 5.0.1</h4>
+<p>15 May 2025</p>
+<ul>
+<li>SSL: fix non standards compliant SSL certificates generated when proxying a self-signed certificate with a long expiry</li>
+<li>Windows: fix issues installing SSL Root Certificates due to app sandboxing</li>
+<li>HAR import: fix imports from Chrome omitting status</li>
+<li>Fix bug which could cause a Charles settings file to become unreadable</li>
+<li>Show startup logging in the Error Log</li>
+</ul>
+<h4>Version 4.6.8</h4>
+<p>16 March 2025</p>
+<ul>
+<li>macOS: support iOS Simulator 17 &amp; 18</li>
+<li>Allow Charles 5 license keys to also work in Charles 4</li>
+</ul>
+<h4>Version 5.0</h4>
+<p>12 March 2025</p>
+<ul>
+<li>Modernised UI and look &amp; feel with a focus on moden platform conventions and usability</li>
+<li>Various UI enhancements: 
+<ul>
+<li>Filtering in lists in dialogs</li>
+<li>Updated iconography</li>
+<li>Improved dark mode support</li>
+<li>Find within a single request / response</li>
+<li>Improved undo/redo support in dialogs</li>
+</ul>
+</li>
+<li>Support for Apple Silicon and Windows on ARM</li>
+<li>New <code>.chlz</code> session format for better compatibility and integration with other tools and workflows</li>
+<li>Automatically regenerate expired SSL root certificates</li>
+<li>macOS: support iOS Simulator 17 &amp; 18</li>
+</ul>
+<h4>Version 5.0b18</h4>
+<p>7 March 2025</p>
+<ul>
+<li>macOS: support iOS Simulator 17 &amp; 18</li>
+<li>Fix XML External Entity parsing vulnerability in Import/Export Settings (CVE-2018-19244)</li>
+<li>Windows &amp; Linux: UI improvements</li>
+<li>Linux: fix dark mode detection</li>
+</ul>
+<h4>Version 4.6.7</h4>
+<p>30 July 2024</p>
+<ul>
+<li>Fix hung connections consuming a lot of memory</li>
+<li>Fix XML External Entity parsing vulnerability in Import/Export Settings (CVE-2018-19244)</li>
+</ul>
+<h4>Version 5.0b16</h4>
+<p>25 July 2024</p>
+<ul>
+<li>Find: add find in requests and responses (in addition to the existing whole-session find)</li>
+<li>Find in Session: layout fixes</li>
+<li>Highlight rules: fix highlight rendering, and ensure text is visible on highlight background colour</li>
+<li>EULA moved into the app to suit new Windows install style</li>
+<li>Don’t reuse a remote SSL connection if the hostname has changed even if the IP address remains the same (not yet released in 5.0)</li>
+<li>Fix hung connections consuming a lot of memory</li>
+<li>Fix NegativeArraySizeException and ConcurrentModificationException</li>
+<li>macOS: fix blank alert windows after sleep</li>
+<li>Windows: tabs UI improvements</li>
+<li>JSON tree viewer: show number of children in arrays</li>
+<li>Sentence case in UI on Windows &amp; Linux</li>
+</ul>
+<h4>Version 4.6.6</h4>
+<p>25 March 2024</p>
+<p>Backported proxying fixes from 5.0, including:</p>
+<ul>
+<li>HTTP 2 bug fix for hung streams when a stream is reset</li>
+<li>Don’t reuse a remote SSL connection if the hostname has changed even if the IP address remains the same (not yet released in 5.0)</li>
+</ul>
+<h4>Version 5.0b13</h4>
+<p>24 January 2024</p>
+<ul>
+<li>Windows UI improvements including dark mode support by adopting <a href="https://www.formdev.com/flatlaf/" target="_blank" rel="noopener">FlatLaf</a></li>
+<li>Various UI improvements</li>
+<li>Bug fixes
+<ul>
+<li>Recover from &quot;Timer already cancelled&quot; error</li>
+</ul>
+</li>
+</ul>
+<h4>Version 5.0b12</h4>
+<p>16 November 2023</p>
+<ul>
+<li>SSL: automatically regenerate an expired Charles root certificate</li>
+<li>Support for trusting SSL certificates on iOS 17 Simulator</li>
+<li>Improvements to new <code>.chlz</code> session format</li>
+<li>Support image viewer on request bodies</li>
+<li>Tool settings can now be edited when the tool is disabled</li>
+<li>Many improvements under the hood, including a new configuration serialization approach</li>
+<li>Support Undo and Redo in text fields</li>
+<li>macOS: fix file chooser list view layout</li>
+</ul>
+<h4>Version 4.6.5</h4>
+<p>18 October 2023</p>
+<ul>
+<li>Support for trusting SSL certificates on iOS 17 Simulator</li>
+</ul>
+<h4>Version 5.0b11</h4>
+<p>7 July 2023</p>
+<ul>
+<li>New saved session format <code>.chlz</code></li>
+<li>Improved performance pretty-printing HTML, CSS and JavaScript</li>
+<li>Improved performance for text rendering</li>
+<li>Split out encrypted hosts in the structure tree</li>
+<li>Sequence table improvements, including improved sort indicators</li>
+<li>Bug fixes</li>
+</ul>
+<h4>Version 5.0b10</h4>
+<p>12 June 2023</p>
+<ul>
+<li>Fix checkbox cells in tables</li>
+</ul>
+<h4>Version 5.0b9</h4>
+<p>11 June 2023</p>
+<ul>
+<li>UI improvements to tables including improved auto-sizing of columns</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>HTTP 2 bug fix for hung streams when a stream is reset</li>
+<li>DNS Spoofing no longer requires valid source names (regression from 5.0b7)</li>
+</ul>
+<h4>Version 5.0b8</h4>
+<p>11 April 2023</p>
+<ul>
+<li>Early dark mode support for Windows and Linux</li>
+<li>UI improvements to tabs and Windows layouts</li>
+</ul>
+<h4>Version 5.0b7</h4>
+<p>9 April 2023</p>
+<p>First public beta of Charles 5</p>
+<ul>
+<li>Overhauled UI and look &amp; feel with a focus on moden platform conventions and usability
+<ul>
+<li>Filtering in lists in dialogs</li>
+<li>Updated iconography , improved dark mode, and more to come.</li>
+</ul>
+</li>
+<li>Support for Apple Silicon and Windows on ARM</li>
+<li>Java 17 under the hood</li>
+<li>More to be added and announced</li>
+</ul>
+<h4>Version 4.6.4</h4>
+<p>4 April 2023</p>
+<p>Bug fixes</p>
+<ul>
+<li>Crash on macOS in file dialogs</li>
+</ul>
+<p>Windows code-signing certificate updated.</p>
+<h4>Version 4.6.3</h4>
+<p>26 September 2022</p>
+<p>Bug fixes</p>
+<ul>
+<li>Java 11.0.17 update</li>
+<li>Fix repeat/compose failure in tall sequence views</li>
+<li>Fix error when filtering by custom columns</li>
+<li>Fix internal Charles services when using external proxies</li>
+<li>GitHub OAuth token improvements</li>
+<li>HAR: support response._error field</li>
+</ul>
+<h4>Version 4.6.2</h4>
+<p>6 July 2021</p>
+<p>Bug fixes</p>
+<ul>
+<li>Java 11.0.11</li>
+<li>CLI improvements</li>
+<li>Bearer authentication display improved</li>
+<li>Copy cURL Request: quotes fixed for Windows</li>
+<li>Fix NTLM authentication over H2</li>
+<li>Fix DNS Spoofing for SSL to domain names that don&#039;t actually exist</li>
+<li>Fix bug where some requests were incorrectly marked as mapped</li>
+<li>macOS disabled text colours fixed</li>
+<li>macOS: Improve &quot;Install Charles Root Certificate in Java VMs&quot; for new locations</li>
+<li>macOS: Update &quot;Install Charles Root Certificate in iOS Simulators&quot; for new locations and database format</li>
+</ul>
+<h4>Version 4.6.1</h4>
+<p>15 November 2020</p>
+<p>Fixes Dark Mode support on macOS.</p>
+<h4>Version 4.6</h4>
+<p>7 November 2020</p>
+<p>New features and stability improvements</p>
+<ul>
+<li>External DNS Resolver option (for overriding the system DNS with your own external DNS resolver)</li>
+<li>Fix new SSL CA certificates to be compatible with iOS and macOS changes</li>
+<li>Stability improvements on macOS, particularly around multi-monitor setups</li>
+<li>Fix <em>Install Charles Root Certificate in Java VMs</em> option for Java 11</li>
+<li>Improve display of hosts using TLS when a connection is made via IP rather than name</li>
+</ul>
+<h4>Version 4.5.6</h4>
+<p>15 January 2020</p>
+<p>Bug fixes and fixed security vulnerability.</p>
+<ul>
+<li>Custom SSL server certificate imports fixed</li>
+<li>macOS: Security vulnerability fixed in Charles&#039;s system proxy settings helper tool (ProxyHelper)
+<ul>
+<li>An unauthorised application or user could communicate with Charles&#039;s ProxyHelper application to change your system proxy settings.</li>
+<li>Thanks to Noah Tran and Csaba Fitzl for reporting this vulnerabilty, and to Christian at Obective Development for his great writeup of the general vulnerability.</li>
+</ul>
+</li>
+</ul>
+<h4>Version 4.5.5</h4>
+<p>5 December 2019</p>
+<p>Bug fixes and minor improvements.</p>
+<ul>
+<li>Custom SSL server, client and root certificate imports fixed</li>
+<li>View As and Viewer Mappings now support URL Encoded and Multipart options</li>
+</ul>
+<h4>Version 4.5.4</h4>
+<p>4 November 2019</p>
+<p>Fixes an error on launch on macOS.</p>
+<h4>Version 4.5.2</h4>
+<p>3 November 2019</p>
+<p>Bug fixes and minor improvements.</p>
+<ul>
+<li>Linux
+<ul>
+<li>Improve font rendering on Linux Hi DPI</li>
+</ul>
+</li>
+<li>Windows
+<ul>
+<li>Code-signing certificate updated</li>
+</ul>
+</li>
+<li>macOS
+<ul>
+<li>Resolve hangs on first launch</li>
+</ul>
+</li>
+<li>Add an option to reset the Charles SSL CA in the SSL Proxying Help menu</li>
+<li>Fix memory leak</li>
+</ul>
+<h4>Version 4.5.1</h4>
+<p>10 October 2019</p>
+<p>Bug fixes</p>
+<h4>Version 4.5</h4>
+<p>8 October 2019</p>
+<ul>
+<li>Update to JDK 11 on all platforms</li>
+<li>Highlight Rules; configure rules to automatically highlight matching requests</li>
+<li>Add filter to Sequence view</li>
+<li>Customise the fields shown in the Sequence view (including show the value of specific headers)</li>
+<li>Improvements to reporting of TLS errors</li>
+<li>No Caching headers fixed for HTTP 2.0</li>
+<li>SSL Proxying
+<ul>
+<li>Add an Exclude list, so you can now exclude hosts that may be matched by wildcards</li>
+<li>Activate / deactivate SSL Proxying using menu option or toolbar button</li>
+<li>Import your own server certificates in SSL Proxying settings (this lets you import real certificates from servers you control instead of using a Charles-generated certificate)</li>
+</ul>
+</li>
+<li>Compose
+<ul>
+<li>Add images to multipart POSTs</li>
+</ul>
+</li>
+<li>macOS
+<ul>
+<li>Catalina support (new proxy management approach uses Helper Tool)</li>
+<li>Dark mode</li>
+</ul>
+</li>
+</ul>
+<h4>Version 4.2.8</h4>
+<p>28 February 2019</p>
+<p>Bug fixes</p>
+<ul>
+<li>Fix mangling of requests with schemes starting with M</li>
+</ul>
+<h4>Version 4.2.7</h4>
+<p>14 September 2018</p>
+<p>Bug fixes and minor improvements</p>
+<ul>
+<li>Remove support for anonymous Gist creation</li>
+<li>HAR import will import HARs with missing values</li>
+<li>Charles will now passthrough response bodies if the server sends them, even if they aren&#039;t valid (such as in 204 responses).</li>
+<li>Improvements and fixes to behaviour with external proxies, including:
+<ul>
+<li>Fixes to port forwarding</li>
+<li>Fixes to IPv6 address handling</li>
+<li>Fixes when acting as a SOCKS proxy</li>
+<li>Fixes to tunnelled HTTPS requests</li>
+</ul>
+</li>
+<li>Raw request editor removed as it could often result in invalid requests (and there are other editors that don&#039;t)</li>
+<li>macOS: Find dialog no longer uses 100% CPU</li>
+<li>Fixes to saving CONNECT requests</li>
+<li>Headers editor can now create an empty set of headers</li>
+<li>Fix error in PCAP import with missing protocol version</li>
+<li>Map Local now supports local file paths starting with ~/</li>
+<li>Fix Chrome 66 certificate trust issues with Map Remote</li>
+</ul>
+<h4>Version 4.2.6</h4>
+<p>22 June 2018</p>
+<p>Bug fixes and minor improvements</p>
+<ul>
+<li>HTTP 2 handling faults corrected</li>
+<li>Date parsing fixed from Charles on iOS when used in London</li>
+<li>Memory usage with SOCKS proxying improved</li>
+<li>Save Transactions progress dialog fixed</li>
+<li>Fix UI deadlock</li>
+</ul>
+<h4>Version 4.2.5</h4>
+<p>7 April 2018</p>
+<p>Security fixes, major bug fixes and minor improvements.</p>
+<p>Security:</p>
+<ul>
+<li>Fixes a local privilege escalation vulnerability on macOS.</li>
+</ul>
+<p>Improvements:</p>
+<ul>
+<li>Hostname filter added to Structure view</li>
+<li>Websockets: added right-click to export all messages as individual files</li>
+<li>SSL Proxying support extended to Port Forwarding and non-HTTP SOCKS traffic</li>
+<li>Charles no longer prevents sleep on macOS</li>
+<li>SOCKS TLS connections now get a host name instead of just an IP address</li>
+<li>Many internal improvements to the minutiae of proxying, including reduced usage of chunked responses when they weren&#039;t warranted, and improved Expect/Continue behaviour.</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Map Remote and Map Local bugs fixed that prevents correct https -&gt; http and http -&gt; https mappings</li>
+<li>Authentication viewers fixes to display of bearer tokens and similar</li>
+<li>HTTP 2 over Reverse Proxy improved</li>
+<li>cURL-compatible URL creation fixed for HTTP 2</li>
+<li>Windows: some native code loading issues fixed, which prevented Charles from automatically controlling the Windows Proxy</li>
+</ul>
+<h4>Version 3.12.3</h4>
+<p>11 March 2018</p>
+<p>Security fixes and minor bug fixes.</p>
+<p>Security:</p>
+<ul>
+<li>Fixes a local privilege escalation vulnerability on macOS.</li>
+</ul>
+<h4>Version 4.2.1</h4>
+<p>22 November 2017</p>
+<p>Important bug fixes</p>
+<ul>
+<li>Fix Map Remote&#039;s preserving of host headers for HTTP 2</li>
+<li>Fix CONNECT tunnelling of unsupported protocols</li>
+<li>Fix importing of unexpectedly formed HAR content from Chrome</li>
+<li>macOS: Fix native code crashes</li>
+</ul>
+<h4>Version 3.12.2</h4>
+<p>22 November 2017</p>
+<p>Important bug fixes</p>
+<h4>Version 3.12.1</h4>
+<p>1 October 2017</p>
+<p>Windows:</p>
+<ul>
+<li>Updated to the latest Java 1.8 release</li>
+</ul>
+<p>macOS:</p>
+<ul>
+<li>Updated to the latest Java 1.8 release</li>
+<li>macOS High Sierra support</li>
+<li>Fixed missing menu bar on macOS High Sierra on non-English locales</li>
+<li>Menu bar icon now reverses correctly on dark menu bars</li>
+</ul>
+<h4>Version 4.2</h4>
+<p>30 September 2017</p>
+<p>Major new features:</p>
+<ul>
+<li>TLS information in the Overview tab now includes detailed information about the TLS connection, including:<br />
+<ul>
+<li>Session resumption</li>
+<li>Ciphers</li>
+<li>Certificates</li>
+<li>Extensions</li>
+</ul>
+</li>
+<li>TLS handshake sizes are now correctly accounted for when SSL Proxying</li>
+</ul>
+<p>Minor improvements:</p>
+<ul>
+<li>Charles system tray / menu bar icon now indicates throttling state</li>
+<li>Local address now shows local port on Overview tab</li>
+<li>SOCKS proxy HTTP ports now support ranges</li>
+<li>Icons tweaked to improve recognition for colour blind users</li>
+<li>Recognise all +json mime-types as JSON</li>
+<li>TLS exceptions now convey more information (to help debug connection failures)</li>
+<li>Active Connections view improved to actually show active connections rather than active requests/responses</li>
+<li>Websocket info on Overview tab</li>
+<li>Fix connections to hosts that resolve to multiple IPs where one IP doesn&#039;t work</li>
+<li>Remote connection handling now uses a connection pool to better match regular browser performance</li>
+<li>Response headers now shown for CONNECT requests</li>
+<li>Charles is now more likely to resume TLS sessions with clients</li>
+<li>JavaScript rendering performance improvements</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Fixed occassional failures of JSON, JavaScript and XML text rendering</li>
+<li>HTTP 2 bug fixes</li>
+<li>Fixed failure of Raw editor when there aren&#039;t headers</li>
+<li>Fixed occassional table rendering faults</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li>System tray icons improved</li>
+</ul>
+<p>macOS:</p>
+<ul>
+<li>macOS High Sierra compatibility fixes</li>
+<li>Fixed missing menu bar on macOS High Sierra on non-English locales</li>
+<li>Fixed crash when saving on macOS El Capitan</li>
+<li>Fixed focus issue with dialogs when in fullscreen mode</li>
+<li>Fixed menu accelerators not working when there wasn&#039;t an active session</li>
+<li>Added option to Help menu to install Charles SSL Root Certificate in Java VMs</li>
+</ul>
+<p>Linux:</p>
+<ul>
+<li>Improve behaviour of Charles launcher so a new icon doesn&#039;t appear in the dock</li>
+<li>Fix support for bundle JRE on 32bit hosts</li>
+</ul>
+<h4>Version 4.1.4</h4>
+<p>10 July 2017</p>
+<p>Minor improvements:</p>
+<ul>
+<li>Mirror tool now supprts partial responses (so you can mirror some streaming video)</li>
+<li>JSON export option added to Web Interface</li>
+<li>Recognise WebSocket upgrades on an existing connection</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Support IPv6 literal addresses in Location host fields</li>
+<li>Fix hung requests that occurred in some rare, but consistent circumstances</li>
+<li>Fix fault in multipart form viewer when expanding file details</li>
+<li>Improve SSL connection establishment when the first protocol offered is rejected aggressively</li>
+<li>Fix right-click issue on macOS on computers with a trackpad, where popup menus would appear then disappear</li>
+</ul>
+<h4>Version 3.12</h4>
+<p>10 July 2017</p>
+<p>New features</p>
+<ul>
+<li>Support for Brotli compression</li>
+</ul>
+<h4>Version 4.1.3</h4>
+<p>20 June 2017</p>
+<p>New features:</p>
+<ul>
+<li>Support for Brotli compression</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Fix rare chunked response bug</li>
+<li>Rewrite tool can now rewrite the Host to include a port</li>
+</ul>
+<p>Minor improvements:</p>
+<ul>
+<li>Add -v command-line argument to display the current version</li>
+</ul>
+<p>Windows specific improvements:</p>
+<ul>
+<li>Fixes to split pane behaviour, including making it easier to resize, and showing the correct cursor</li>
+</ul>
+<p>Linux specific improvements:</p>
+<ul>
+<li>Use update-alternatives so Charles 3 can be installed alongside Charles 4</li>
+</ul>
+<h4>Version 4.1.2</h4>
+<p>13 May 2017</p>
+<p>Bug fixes and minor improvements</p>
+<ul>
+<li>HTTP 2 improvements addressing faults with Map Remote, Map Local and general stability improvements.</li>
+<li>User font preference is now applied more uniformly to transaction viewers</li>
+<li>Fiddler import NumberFomatException fixed</li>
+</ul>
+<p>Windows specific improvements:</p>
+<ul>
+<li>Type rendering fixed when antialiasing is disabled </li>
+<li>Fix error output when using command-line tools</li>
+<li>Fix clipping of alert icons</li>
+<li>Fix crash when presenting file dialogs if GodMode is enabled</li>
+</ul>
+<p>macOS specific improvements:</p>
+<ul>
+<li>DNS Spoofing menu accelerator key changed to no longer conflict with Show/Hide Dock</li>
+<li>Menu accelerators now work when you&#039;ve closed the last session window</li>
+</ul>
+<h4>Version 3.11.7</h4>
+<p>10 May 2017</p>
+<p>Bug fixes and minor improvements</p>
+<ul>
+<li>Make it clear that throttling does not work on paths</li>
+<li>APT / YUM: Rename the package to charles-proxy3 and enable it to be installed alongside Charles 4.</li>
+</ul>
+<h4>Version 4.1.1</h4>
+<p>21 April 2017</p>
+<p>Bug fixes</p>
+<ul>
+<li>Fix failure to render JSON Text and XML Text views on Windows and Linux</li>
+<li>Fix failure to render Text view (when displaying line numbers) on Windows and Linux</li>
+<li>Fix failure to launch on Windows and Linux with some anti-aliasing system configurations</li>
+</ul>
+<h4>Version 4.1</h4>
+<p>10 April 2017</p>
+<p>Major new features</p>
+<ul>
+<li>Protobuf 3 support (and Protobuf descriptor registry, for parsing your Protobuf messages)</li>
+<li>HiDPI support on Windows and Linux</li>
+<li>Flow chart (to explore the profile of a connection over time)</li>
+<li>Linux versions now include a custom JRE, and no longer require Java to be installed separately</li>
+</ul>
+<p>Minor new features</p>
+<ul>
+<li>More info for unproxied SSL traffic, including protocol and ciphers</li>
+<li>More closely match the SSL protocol and cipher negotiated between client and server when SSL Proxying</li>
+<li>Client Process tool performance optimisation</li>
+<li>Added Copy Image and Export Image options to the Chart viewer</li>
+<li>ACL now supports IPv6 addresses</li>
+<li>Expanded support for extended JSON mime types</li>
+</ul>
+<p>Bug fixes</p>
+<ul>
+<li>Hangs on macOS after sleep or GPU change have been resolved (thank you to the many users who participated in testing this!)</li>
+<li>HTTP 2 stability improved when using Chrome</li>
+<li>SOCKS proxy now respects incoming IP address, rather than doing a DNS lookup for the requested Host</li>
+</ul>
+<h4>Version 4.0.2</h4>
+<p>19 November 2016</p>
+<p>Bug fixes and minor improvements</p>
+<ul>
+<li>Local IP addresses are now sorted, and the window is bigger</li>
+<li>Fix display of local IP address in SSL Proxying remote browser help</li>
+<li>macOS: Improve occassional hanging issue when using a retina display</li>
+<li>macOS: The window can now be dragged by the title label, and not when fullscreen</li>
+<li>Windows: larger toolbar icons</li>
+<li>JSON import/export: include exception details</li>
+<li>Focussed setting now remembered in Sequence view</li>
+<li>Antialias text on Chart view</li>
+</ul>
+<h4>Version 4.0.1</h4>
+<p>20 September 2016</p>
+<p>Bug fixes</p>
+<ul>
+<li>Fix display of local IP address in Help menu</li>
+<li>Fix negotation with external proxies for authenticated SSL connections</li>
+<li>Fix occassional hang on macOS with retina displays</li>
+<li>Fix NPE in DNS Spoofing for repeated events</li>
+<li>Fix HTML validation</li>
+<li>Refresh current viewer when viewer mappings change</li>
+<li>Ensure throttle settings are applied to repeated HTTP 2 requests</li>
+<li>Rename Mac OS X to macOS</li>
+<li>Improve PCAP file import</li>
+</ul>
+<h4>Version 4.0</h4>
+<p>1 August 2016</p>
+<p>Charles 4 is a major upgrade to Charles. Read the <a href="http://blog.xk72.com/post/148311808729/charles-4">Charles 4 release announcement</a>.</p>
+<p>Major features:</p>
+<ul>
+<li>HTTP 2 support</li>
+<li>IPv6 support</li>
+<li>Updated look and feel</li>
+<li>Improved performance</li>
+</ul>
+<p>The updated look and feel includes:</p>
+<ul>
+<li>Enhanced app icon!</li>
+<li>Beautiful new custom designed icons for the toolbar and in the session navigator tree</li>
+<li>Improved tab visual design on Mac OS X</li>
+<li>Improved compatibility with Windows 10</li>
+<li>Reduced border chrome</li>
+</ul>
+<p>Minor features:</p>
+<ul>
+<li>Command-line tool to export SSL certificates</li>
+<li>Notes field added to Sequence view</li>
+<li>XML summary export now includes headers</li>
+<li>JSON export format</li>
+<li>Kept-Alive count visible on Host and Path summaries</li>
+<li>Uncompressed sizes added to Summary tab</li>
+</ul>
+<h4>Version 3.11.6</h4>
+<p>16 September 2016</p>
+<p>Minor bug fixes and enhancements.</p>
+<ul>
+<li>Support for macOS Sierra</li>
+<li>Fixed breakpoint behaviour with 304 responses</li>
+<li>Fix potential to create corrupted saved sessions when saving an actively recording session</li>
+</ul>
+<h4>Version 3.11.5</h4>
+<p>29 May 2016</p>
+<p>Bug fixes:</p>
+<ul>
+<li>Fix SSL Root certificate installation bug on Android when using http://ssl.charles/</li>
+<li>SOAP viewer fixes</li>
+<li>HAR importer fixes</li>
+<li>Fix Malformed HTTP URL when proxying to unusual ports</li>
+</ul>
+<p>Minor improvements:</p>
+<ul>
+<li>Map Remote cookie path rewriting</li>
+<li>SSL Root certificate export command-line tool</li>
+<li>Mac OS X: add support for global preferences in /Library/Preferences</li>
+</ul>
+<h4>Version 3.11.4</h4>
+<p>29 February 2016</p>
+<p>Improvements:</p>
+<ul>
+<li>SSL now works with ATS on iOS 9</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Fix a crash on launch on Mac OS X 10.8 - 10.10</li>
+</ul>
+<h4>Version 3.11.3</h4>
+<p>15 February 2016</p>
+<p>Improvements:</p>
+<ul>
+<li>SSL certificate export is a .pem file rather than a .crt, which is more correct and improves compatibility with Blackberry</li>
+<li>Increased SSL cipher strength support</li>
+<li><a href="/documentation/tools/command-line-tools/">Convert command-line tool</a></li>
+<li>XML export: added more timing and SSL information</li>
+<li>Durations are now calculated live for in-progress requests and responses</li>
+<li>SSL: Improved support for servers that send inappropriate alert responses during SNI negotiation</li>
+<li>1Password 6 support for Mac OS X</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Command-line arguments support fixed on Mac OS X</li>
+<li>Map Remote query string replacement behaviour restored (and improved)</li>
+<li>SSL: Fix SNI support for hostnames ending in a dot</li>
+<li>Client Process Tool fixed on Mac OS X</li>
+<li>Fix menu accellerator overlap on Recording Settings and Repeat</li>
+<li>Websocket viewer bug fixes</li>
+</ul>
+<h4>Version 3.11.2</h4>
+<p>9 November 2015</p>
+<p>Minor improvements:</p>
+<ul>
+<li>SSL improvements to support legacy protocols (SSLv3) and ciphers (RC4 etc) when using SSL proxying with old (and dangerous) hosts</li>
+<li>The negotiated SSL protocol and cipher is now displayed on the Summary tab for SSL proxied requests</li>
+<li>Websockets: support for deflate extensions</li>
+<li>Map Local: add application/json mime-type for .json files</li>
+</ul>
+<h4>Version 3.11.1</h4>
+<p>27 October 2015</p>
+<p>Bug fixes and improvements:</p>
+<ul>
+<li>Fix Websocket support</li>
+<li>Mozilla Firefox add-on now installed from addons.mozilla.org</li>
+<li>JSON editor is now smarter about quoting around strings</li>
+<li>Warnings are smarter, and you can say &quot;Don&#039;t show this again&quot; (including access control warnings)</li>
+<li>Gist publishing bug fixed for requests with no response</li>
+<li>Look &amp; feel improved on Mac OS X El Capitan</li>
+<li>Fix ignored hosts showing up if they&#039;re non-proxied SSL hosts</li>
+<li>Other minor bug fixes</li>
+</ul>
+<h4>Version 3.11</h4>
+<p>4 October 2015</p>
+<p>Major new features:</p>
+<ul>
+<li>Websocket support</li>
+<li>Compose – create requests from scratch in Charles</li>
+<li>Chaos – additions and improvements to the Throttling tool to simulate bad network conditions</li>
+<li>Profiles – create profiles of different settings and switch between them</li>
+<li>Export – select and export selected requests/responses, rather than having to export entire sessions</li>
+</ul>
+<p>Other new features:</p>
+<ul>
+<li>Copy and paste requests/responses between sessions</li>
+<li>Map tool: add option to preserve the host header</li>
+<li>SSL root certificate import/export – share your generated SSL root certificate between team members (export from the Help menu)</li>
+</ul>
+<p>Improvements:</p>
+<ul>
+<li>Map tool: improvement to handling of Set-Cookie domain rewriting</li>
+<li>Throttling presets updated</li>
+<li>JSON editor now supports many more editing features</li>
+</ul>
+<p>Mac OS X:</p>
+<ul>
+<li>Support for Mac OS X El Capitan – this isn&#039;t perfect yet, so it will be improved in bug fix releases</li>
+</ul>
+<h4>Version 3.10.2</h4>
+<p>7 July 2015</p>
+<p>Bug fixes and improvements.</p>
+<ul>
+<li>SSL improvements to workaround servers that don&#039;t support TLS 1.2 (this became a problem in 3.10 under Java 8)</li>
+<li>Improve initial focus in dialogs (so you don&#039;t need to click into the first text field so much)</li>
+<li>Copy cURL Request improvements: includes more headers, use --data instead of --data-binary when appropriate, and other minor improvements that should make your cURLing better.</li>
+<li>HAR: support HAR files produced by Chrome</li>
+</ul>
+<h4>Version 3.10.1</h4>
+<p>31 March 2015</p>
+<p>Minor bug fixes.</p>
+<ul>
+<li>UI fixes for Mac OS X 10.7 &amp; 10.8</li>
+<li>Fix deadlock after 30 minute trial period timeout</li>
+<li>Improvement to SSL certificate installation on mobile devices and remote browsers</li>
+<li>Other minor bug fixes</li>
+</ul>
+<h4>Version 3.10</h4>
+<p>21 March 2015</p>
+<p>Major new features, improvements and bug fixes.</p>
+<p><strong>SSL changes</strong></p>
+<ul>
+<li>SSL certificate root certificate change to generate a unique certificate for each installation of Charles (see SSL Proxying in the Help menu)</li>
+<li>SSL Proxying now has its own settings menu item in the Proxy menu</li>
+</ul>
+<p>Please note that these changes will affect the way you currently use Charles for SSL Proxying. You will need to install and trust a new certificate, which will be automatically generated for you. You can install that certificate on your computer using the options in the Help menu, under SSL Proxying. You can also export the certificate, to send to other systems, or browse to download the certificate to install on mobile devices such as iPhones.</p>
+<p><strong>Java changes</strong></p>
+<p>Charles now uses Java 8 on all platforms by default. Java 8 supports all of the latest SSL ciphers and should have the best performance on all platforms.</p>
+<p><strong>Mac OS X</strong></p>
+<p>Charles now prefers Java 8 on Mac OS X. Finally! Until now I&#039;ve called the Apple Java 6 version the main version for Mac OS X, because I found Java 7 sluggish, and especially unbearable on retina displays. Java 6 is really old, and it doesn&#039;t support any of the latest SSL ciphers, which are increasingly essential these days. Not to mention other SSL features. So I&#039;m thrilled that Java 8 is working well on Mac OS X now, including on retina displays.</p>
+<p>Yosemite support has also improved. The typeface has changed. It looked really strange to me for a few days, but now I can&#039;t remember anything different. I hope the experience is similar for you!</p>
+<p><strong>New Features</strong></p>
+<ul>
+<li>&#039;Find&#039; rewritten and dramatically improved (it&#039;s actually usable now)</li>
+<li>Terminate long-running transactions manually from the context menu</li>
+<li>Advanced Repeat now supports delays between requests and repeats</li>
+<li>Customisable columns in the Sequence view (with a large selection of options) including sorting</li>
+<li>Cookie editor</li>
+<li>Whitelist tool (to complement existing Blacklist tool).  Enhanced both black and white list tools with options to either gracefully block or terminate the blacklisted requests.</li>
+<li>&#039;Copy cURL Request&#039; added to the context menu</li>
+<li>Protobuf extensions support</li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul>
+<li>Automatically terminate established SSL connections to a host when activating SSL proxying for that host (so you don&#039;t have to quit your browser or Charles to start SSL Proxying properly on new hosts)</li>
+<li>SSL requests that are not proxied now have a padlock icon, to indicate that they are encrypted (vs SSL Proxied requests which can be viewed unencrypted)</li>
+<li>Improved sorting in the Structure tree view</li>
+<li>Reduction in the amount of memory Charles uses, especially when dealing with large numbers of small transactions</li>
+<li>&#039;View Request As...&#039; and &#039;View Response As...&#039; commands added to the View menu.</li>
+<li>Re-organised the Proxy menu into more logical groups.</li>
+<li>Added tooltip for timestamp information in the Sequence table view that displays the full date/time</li>
+<li>When you cancel editing a request the original request is re-displayed</li>
+<li>Suppress the highlighting of requests when only peripheral data has changed</li>
+<li>Automatic fallback from TLS v1.2 to TLS v1.1 and TLS v1.0 for sites that don&#039;t support the newer protocol versions, and don&#039;t fallback nicely.</li>
+</ul>
+<p><strong>Bug fixes</strong></p>
+<ul>
+<li>AMF editor appeared twice when editing an AMF message</li>
+<li>Publish Gist didn&#039;t trust the Charles root SSL certificate!</li>
+<li>Many dialogs in Charles could be opened multiple times via either keyboard shortcut or menu command</li>
+<li>Fixed the &#039;Throttle Settings&#039; and &#039;External Proxy Settings&#039; dialogs so that they can be dismissed using the Escape key</li>
+<li>Fixed a race condition that could corrupt data sent over unproxied SSL connections</li>
+<li>Fixed the large memory use that could occur when binary content was displayed in the Text or Raw Viewer</li>
+</ul>
+<h4>Version 3.9.3</h4>
+<p>22 October 2014</p>
+<p>Minor bug fixes and improvements:</p>
+<ul>
+<li>SSL improvements, including SNI support</li>
+<li>Bypass Domains in Proxy Settings supports wildcards on domains again</li>
+<li>Charles automatically detects a headless environment and runs in headless mode (such as Linux command-line)</li>
+</ul>
+<p>Mac OS X improvements:</p>
+<ul>
+<li>iOS Simulator SSL configuration: Charles can now install its SSL CA certificate into your iOS Simulators (in the Help menu)</li>
+<li>Mac OS X Yosemite support</li>
+<li>1Password 5 support (Charles configures the bypass proxy settings to avoid conflicting with 1Password&#039;s browser extension)</li>
+</ul>
+<h4>Version 3.9.2</h4>
+<p>26 May 2014</p>
+<p>Minor bug fixes and improvements:</p>
+<ul>
+<li>Mac OS X: improve menubar show/hide behaviour, menubar icon improvements, improved 1Password detection</li>
+<li>Configuration fixes for Protobuf and others</li>
+<li>Map Remote bug fixed when mapping https to http</li>
+</ul>
+<h4>Version 3.9.1</h4>
+<p>5 May 2014</p>
+<p>Minor bug fixes and improvements:</p>
+<ul>
+<li>Retina toolbar icons on Mac OS X no longer go rogue when disabled or pressed</li>
+<li>Full-screen support on Mac OS X</li>
+<li>Menu bar item / System tray item improvements</li>
+</ul>
+<h4>Version 3.9</h4>
+<p>25 April 2014</p>
+<p>Major new features and improvements:</p>
+<ul>
+<li>Focus; focus on hosts that you&#039;re most interested in, and they&#039;ll be separated out in the structure view</li>
+<li>Structure view highlighting to show where requests and responses are being added</li>
+<li>Gist publish; publish one or more request and response traces as a Gist</li>
+<li>Charles menu bar item on Mac OS X (with option to disable in the Preferences)</li>
+<li>Retina icons and graphics for Mac OS X (not quite all, but a lot!)</li>
+<li>1Password 4 compatibility (fixes issue where 1Password shows a warning, and wouldn&#039;t fill passwords in a browser when Charles was running)</li>
+<li>Webp support</li>
+<li>Line wrapping support in the Raw viewer</li>
+<li>Improved sorting in the Structure view (Can sort by name and revert to original ordering)</li>
+<li>Rewrite rules; add case-sensitive option</li>
+<li>Full-screen support on Mac OS X</li>
+</ul>
+<p>Bug fixes</p>
+<ul>
+<li>Character set detection fixed so unicode characters (and others) will be correctly displayed.</li>
+<li>CSS viewer fixed so that CSS files with windows (&#039;\r\n&#039;) line endings and a multi-line comment can be displayed.</li>
+<li>Fix corrupt saved or exported files.</li>
+<li>Stripped the query string from the automatically generated filenames in the Save Response to avoid creating file names with illegal characters.</li>
+<li>Sequence view filter is now applied (if one exists) when switching from Tall to Wide view or vice versa.</li>
+<li>Changes made in the Protobuf Text editor would be lost if the user switched to another editor tab.</li>
+<li>Malformed HTTP requests would show in the Charles Sequence and Structure views as &#039;null:0&#039;.</li>
+<li>Requests where the path of the request is unknown (such as unproxied SSL connections) are now shown as &#039;&lt;unknown&gt;&#039; rather than &#039;&lt;default&gt;&#039; in the Structure view.</li>
+<li>Fixed incorrectly formatted date/times that were shown in some summary and overview tables when Charles was configured to display times with millisecond precision.</li>
+<li>The popup dialog that allows inspection of long content in some table columns would not be available if the table columns were rearranged to a different order.</li>
+<li>Socket closed exception on kept-alive sockets now correctly detected as a failed keep-alive and retried. Addresses a fault when using the Rewrite tool with response body rewriting.</li>
+</ul>
+<h4>Version 3.8.3</h4>
+<p>23 October 2013</p>
+<p>Minor bug fixes and improvements:</p>
+<ul>
+<li>Support for Mac OS X Mavericks: prevents Charles from being starved of CPU resources by App Nap.</li>
+<li>Headless mode fixed (no longer exits immediately on some platforms), and the preference setting to activate Throttling on startup will be respected.</li>
+<li>-throttling command-line switch added to activate Throttling on startup.</li>
+</ul>
+<h4>Version 3.8.2</h4>
+<p>21 October 2013</p>
+<p>Minor bug fixes:</p>
+<ul>
+<li>SSL bad_record_mac errors with some SSL servers have been resolved</li>
+<li>Fix loading saved .chls files from old Charles versions</li>
+</ul>
+<h4>Version 3.8.1</h4>
+<p>9 September 2013</p>
+<p>Minor bug fixes and improvements:</p>
+<ul>
+<li>Blacklist tool fixed (wouldn&#039;t activate)</li>
+<li>CSV export: fix failure when exporting incomplete requests</li>
+<li>Import/Export Settings: tidy naming and alert copy</li>
+<li>Tooltips on the Recording button, Throttling button, and similar, now reflect the current state</li>
+</ul>
+<h4>Version 3.8</h4>
+<p>4 September 2013</p>
+<p>Major new features and improvements:</p>
+<ul>
+<li>Viewer mappings: specific locations may be mapped to viewer types, this enables specific viewers to be used, such as when the content isn&#039;t identified correctly (also Protocol Buffer mappings can be defined)</li>
+<li>CSS viewer and editor added which formats minified CSS content for display</li>
+<li>XML Text viewer now supports tag folding</li>
+<li>Sort by name in structure view: now sorts by hostname rather than protocol and hostname.</li>
+<li>Rewrite tool: allow rewriting of response status</li>
+<li>Import and export Charles settings</li>
+<li>Mac OS X Mavericks support</li>
+</ul>
+<p>Bug fixes and minor changes:</p>
+<ul>
+<li>Fixed the misleading handling of path patterns that don&#039;t start with &#039;/&#039;, these paths will now automatically have a leading &#039;/&#039; prepended as all paths always start with &#039;/&#039;</li>
+<li>Fixed authorization header editing</li>
+<li>Fixed bug that caused error message dialogs to be hidden behind main Charles window when the &#039;Window Always On Top&#039; option was enabled</li>
+<li>Fix SSL certificate cache collision bug</li>
+<li>JSON viewer: remove quotes from around strings. It was noisy.</li>
+<li>HAR export timings now correct and validate.</li>
+</ul>
+<h4>Version 3.7</h4>
+<p>12 February 2013</p>
+<p>Major new features and improvements:</p>
+<ul>
+<li>Charles now bundles Java on Windows and Mac OS X so you do not need to have Java installed before using Charles</li>
+<li>Mac OS X: Charles is now signed so you can launch it without warning on Mountain Lion. Also the look &amp; feel on Mountain Lion has been improved</li>
+<li>DNS lookup, TCP connection, and SSL negotiation timing information is now measured and reported</li>
+<li>Keep-alive status for each request is now reported, so you can see whether a request was part of a kept-alive channel</li>
+<li><a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Protocol Buffer</a> support, see <a href="/documentation/using-charles/protocol-buffers/">the documentation</a>.</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>ACL warning no longer blocks all traffic</li>
+<li>Comparing transactions sometimes resulted in incorrectly repeated content</li>
+<li>Reverse proxy now correctly sets the Host header in the case of default ports</li>
+<li>Other minor bug fixes and improvements</li>
+</ul>
+<h4>Version 3.6.5</h4>
+<p>8 December 2011</p>
+<p>Major bug fixes:</p>
+<ul>
+<li>Java 1.7 now supported. Corrects slow startup and hung responses bugs.</li>
+<li>Java 1.7 bad certificate error workaround for sites that use now disabled algorithms (ie. MD2withRSA)</li>
+<li>Windows: Fix launching Charles by opening a file</li>
+<li>SSL empty requests regression from 3.6.4 fixed</li>
+<li>SSL now records the correct remote address details</li>
+<li>SSL errors now more consistently displayed in the browser</li>
+<li>Authentication header viewer can now recover from slightly oddly formatted headers</li>
+<li>Closed connections regression from 3.6.4 fixed</li>
+</ul>
+<p>Other changes:</p>
+<ul>
+<li>Double-clicking a request no longer switches Structure and Sequence view. I did this too many times accidentally. The contextual menu now has an option to switch.</li>
+</ul>
+<h4>Version 3.6.4</h4>
+<p>15 November 2011</p>
+<p>Major enhancements:</p>
+<ul>
+<li>Linux support greatly improved, including an APT repository for installing Charles, integration into Gnome window manager and an application icon.</li>
+</ul>
+<p>Minor enhancements:</p>
+<ul>
+<li>JSON-RPC support now includes named parameters support</li>
+<li>CSV export includes more information</li>
+<li>AMF viewer, contextual menu includes copy to clipboard and base 64 decode.</li>
+<li>Mac OS X UI improvements: including save dialog improvements (no longer save into the parent)</li>
+<li>Firefox add-on now supports Firefox 9 beta</li>
+<li>Add &quot;Always bypass external proxies for localhost&quot; option to external proxies configuration, defaults to on to maintain existing behaviour.</li>
+</ul>
+<p>HAR import/export bug fixes and enhancements:</p>
+<ul>
+<li>Missing data handling</li>
+<li>Charles specific status and exception information included for better export/import round-tripping</li>
+<li>Non-name-value POST bodies supported</li>
+<li>Date format compatibility</li>
+<li>Better error messages in the case of unsupported HAR imports</li>
+<li>Blank header handling</li>
+</ul>
+<p>PCAP import bug fixes and enhancements:</p>
+<ul>
+<li>Now works again.</li>
+<li>Correctly import keep-alive responses</li>
+<li>Display imported requests in the correct order</li>
+</ul>
+<p>Major bug fixes:</p>
+<ul>
+<li>Fix launch race condition that could result in a blank screen on startup</li>
+<li>Fix apparent hang on startup at Configuring Proxies on Linux</li>
+<li>Fix potential deadlock when using Breakpoints</li>
+<li>Mac OS X: fix problems on 10.6.8 with automatically configuring proxies</li>
+</ul>
+<p>Minor bug fixes:</p>
+<ul>
+<li>Toolbar tools menu: remove tools that don&#039;t support toggling</li>
+<li>Fix bug when opening some HTTP trace files</li>
+<li>Fix bug handling zipped boddies on some Java versions</li>
+</ul>
+<h4>Version 3.6.3</h4>
+<p>5 September 2011</p>
+<p>Minor bug fixes:</p>
+<ul>
+<li>Mac OS X Lion: fix regression in 3.6.2 on Lion UI for tab panes</li>
+</ul>
+<h4>Version 3.6.2</h4>
+<p>5 September 2011</p>
+<p>Major bug fixes:</p>
+<ul>
+<li>High CPU usage on Mac OS X resolved</li>
+<li>Msvcr100.dll not found error on Windows resolved</li>
+</ul>
+<p>Minor bug fixes:</p>
+<ul>
+<li>SAZ file import: close SAZ files after importing so they can be used, moved or renamed by another process</li>
+<li>Firefox integration reports success more accurately and links to the correct download URL if automatic installation fails.</li>
+</ul>
+<p>Minor enhancements:</p>
+<ul>
+<li>Recording Settings - include and exclude lists are now sorted</li>
+<li>Windows installer now allows the user to choose the install location </li>
+</ul>
+<h4>Version 3.6.1</h4>
+<p>24 August 2011</p>
+<p>Minor enhancements:</p>
+<ul>
+<li>512x512 icons on Mac OS X and 256x256 icons on Windows 7</li>
+<li>Firefox 7 add-on update</li>
+<li>Added an alert displaying the local OS IP address to the Help menu</li>
+<li>Map Local tool now adds a note to requests that fail to map local as the expected local resource doesn&#039;t exist</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Fiddler / SAZ import fixed and improved</li>
+<li>Fix hang on start up at &quot;Starting proxies...&quot; on some configurations</li>
+<li>Improved multipart body viewer detection of multipart/form-data bodies</li>
+</ul>
+<h4>Version 3.6</h4>
+<p>18 August 2011</p>
+<p>New features:</p>
+<ul>
+<li><a href="http://www.softwareishard.com/blog/har-12-spec/" target="_blank" title="HAR specification" rel="noopener">HAR file</a> import and export</li>
+<li>Fiddler session (SAZ files) import</li>
+<li>Mac OS X 10.7 support improved</li>
+</ul>
+<p>Enhancements:</p>
+<ul>
+<li>Rewrite tool URL rewrite now allows query strings to be created</li>
+<li>Mirror tool, filename length limit increased</li>
+<li>Firefox add-on detection improved for newer Firefox versions</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>Authentication viewer bug fix</li>
+<li>Fault on startup due to invalid data in RewriteConfiguration</li>
+<li>Map Remote bug where Set-Cookie headers set a domain with a port of -1 </li>
+</ul>
+<h4>Version 3.5.2</h4>
+<p>17 August 2010</p>
+<p>Bug fixes and minor enhancements.</p>
+<ul>
+<li>Include response status in filtering for sequence view</li>
+<li>Fix bug in table views for multipart responses</li>
+<li>Fix SSL certificate bugs in Internet Explorer</li>
+<li>Fix bug when using a custom CA cert that needs a password on startup</li>
+<li>Fix bug in reverse proxy not rewriting redirects over SSL</li>
+<li>Add &quot;Use External Proxy Servers&quot; toggle in Windows tray icon menu</li>
+<li>Fix Base64 decode popup positioning over text areas</li>
+<li>Fix multi-monitor positioning of the Charles window</li>
+<li>Fix bug where on Mac OS X the &quot;Grant Privileges&quot; prompt would repeat endlessly</li>
+<li>Fix POST support when authenticating with external proxy servers</li>
+<li>Add Multipart request editor</li>
+<li>Add Authentication request editor</li>
+<li>Add OAuth authentication header support</li>
+</ul>
+<h4>Version 3.5.1</h4>
+<p>1 January 2010</p>
+<p>Minor bug fixes.</p>
+<ul>
+<li>Repeat advanced tool: fix bug which caused it to stop prematurely after a number of requests</li>
+<li>Auto save tool: fix bug where &quot;Enable on startup&quot; didn&#039;t work</li>
+</ul>
+<h4>Version 3.5</h4>
+<p>23 December 2009</p>
+<p>Major new features, performance enhancements and bug fixes.</p>
+<p>New features:</p>
+<ul>
+<li>Import .pcap files captured by WireShark, tcpdump etc</li>
+<li>Transparent HTTP proxying – activated in the Proxy Settings, so you can connect to Charles as if it was any web server and it will connect to the remote host based on the Host header. This means you can transparently redirect HTTP traffic through Charles using firewall rules.</li>
+<li>NTLM (NT LAN Manager) authentication for external proxies now supported in the External Proxies configuration</li>
+<li>JavaScript syntax highlighting</li>
+<li>JSON syntax highlighting</li>
+<li>Base 64 decode right-click option for text areas</li>
+<li>GUI improvements for Mac OS X and Windows, especially Windows 7</li>
+</ul>
+<p>Performance enhancements:</p>
+<ul>
+<li>Improve network performance by using tcpNoDelay</li>
+<li>Memory usage problems on large downloads fixed</li>
+</ul>
+<p>Bug fixes and enhancements:</p>
+<ul>
+<li>Validation tool now validates CSS to CSS3</li>
+<li>Character encoding of XML responses is now detected based on the <!--?xml encoding="" ?--> header or defaults to UTF-8.</li>
+<li>Ignore action in the contextual menu now works across multiple hosts</li>
+<li>Repeat tool now respects throttling settings</li>
+<li>Repeat, Edit, Validate added to the Tools menu. A shortcut key has been added for Repeat.</li>
+<li>Sequence filter now also filters on the Info column</li>
+<li>Sequence filter waits for you to stop typing before filtering, improves the performance when filtering large lists</li>
+<li>Sequence auto scroll now automatically disables if you click off the last request, and re-enables when you click back onto the last request.</li>
+<li>External Proxy Settings: bypass domains now supports wildcards</li>
+<li>External Proxy Settings: don&#039;t pass localhost requests to the external proxy</li>
+<li>Request / response viewers: improve automatic choosing of viewers</li>
+<li>Mac OS X code-signing to solve issue with strict firewall setting</li>
+<li>AMF editing bug fix for error when changing the type of a property to a string</li>
+<li>Throttling bug fix for throttling when using an external proxy server</li>
+<li>Repeat bug fix for repeating when using an external proxy server</li>
+<li>Fix erroneous recording of chunked post request size as 2GB.</li>
+<li>Fix the Host header on SSL connections made through a reverse proxy</li>
+<li>Fix SSL Proxying for SSL connections through reverse proxy</li>
+</ul>
+				
+				
+				
+				
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<p><small>Charles is developed by <a href="http://www.xk72.com">XK72</a>. All content is copyright 2026. Site design by <a href="http://matthewbuchanan.name">Matthew Buchanan</a>.</small></p>
+	</div>
+</body>
+</html>
