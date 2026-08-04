@@ -188,6 +188,20 @@ export function extractVersionsFromJson(json: string): string[] {
   return [...out];
 }
 
+// 从下载文件名提取版本号：Notion-7.29.0.msix → 7.29.0；文件名中的版本是产品版本强信号
+export function extractVersionsFromFilename(filename: string): string[] {
+  const out = new Set<string>();
+  const re = /(?:^|[_-])(v?(?:0|[1-9]\d*)(?:\.(?:0|[1-9]\d*)){1,3})(?=[._-]|$)/gi;
+  for (const m of filename.matchAll(re)) {
+    const v = m[1];
+    if (!/\d/.test(v)) continue;
+    if (/^\d{4}[-.]?\d{2}[-.]?\d{2}/.test(v)) continue; // 日期
+    if (v.length > 20) continue;
+    out.add(v);
+  }
+  return [...out];
+}
+
 export async function fetchPageRenderedDeep(url: string, opts: { timeout?: number } = {}): Promise<RenderedWithNetwork> {
   const cacheKey3 = url + '#deep';
   const cached = cacheGet(cacheKey3);
@@ -214,6 +228,13 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
           const respUrl = resp.url() || '';
           if (THIRD_PARTY_RE.test(respUrl)) return;
           const ct = resp.headers()['content-type'] || '';
+          // 下载响应：Content-Disposition 文件名通常含版本（如 Notion-7.29.0.msix）
+          const cd = resp.headers()['content-disposition'] || '';
+          if (cd) {
+            const fn = cd.match(/filename=["']?([^"';]+)["']?/i)?.[1] || '';
+            const vs = extractVersionsFromFilename(fn);
+            for (const v of vs) networkCount.set(v, (networkCount.get(v) || 0) + 1);
+          }
           if (!/json/i.test(ct)) return;
           const body = await resp.text();
           if (body && body.length < 2_000_000) {

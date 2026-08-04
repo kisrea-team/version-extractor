@@ -8,8 +8,8 @@
 import type { Confidence, VersionResult } from './types';
 
 const SEMVER_RE =
-  /\bv?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:alpha|beta|rc|pre|patch)[0-9.]*)?(?:[+][0-9A-Za-z.-]+)?\b/g;
-const MINOR_RE = /\bv?(0|[1-9]\d*)\.(0|[1-9]\d*)\b/g;
+  /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:alpha|beta|rc|pre|patch)[0-9.]*)?(?:[+][0-9A-Za-z.-]+)?(?![0-9])/g;
+const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?![0-9.])/g;
 const MAJOR_RE = /\bv(0|[1-9]\d*)\b/g;
 
 function normalizeVersion(raw: string): string {
