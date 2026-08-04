@@ -161,12 +161,16 @@ export async function extractFromUrl(
   const finalVersion: VersionResult =
     version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
 
-  // 日志
+  // 日志：统一走 extractChangelog（内部含静态抓取 + 规则层 + 浏览器+Trafilatura 兜底）
   let changelog: ChangelogEntry | null = null;
   if (source.type === 'github-releases') {
     changelog = await extractChangelog(source, { token: opts.token });
-  } else if (page.text) {
-    changelog = await extractChangelog(source, { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token });
+  } else if (page.text || !opts.skipBrowser) {
+    // 优先用已抓取的页面 HTML（省一次请求）；静态为空时交给 extractChangelog 内部浏览器兜底
+    changelog = await extractChangelog(
+      source,
+      page.text ? { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token } : { version: finalVersion.version || undefined, token: opts.token }
+    );
   }
 
   return { url, source, version: finalVersion, changelog, neededBrowser, registryVersion, registryKey: registryResolvedKey, renderedText: neededBrowser ? page.text : undefined };

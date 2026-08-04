@@ -100,7 +100,7 @@ export async function fetchJson(url: string, opts: { timeout?: number } = {}): P
 // ── Playwright 渲染抓取（JS 站兜底：版本号只有 JS 跑完才出现在 DOM）──
 let browserPromise: Promise<any> | null = null;
 
-async function getBrowser(): Promise<any> {
+export async function getBrowser(): Promise<any> {
   if (!browserPromise) {
     const { chromium } = await import('playwright');
     browserPromise = chromium.launch({
