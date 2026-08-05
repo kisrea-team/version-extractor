@@ -151,11 +151,79 @@ function cleanSectionHtml(html: string): string {
     .trim();
 }
 
+function extractTargetVersionSection(html: string, target: string): string | null {
+  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const idPattern = `[^"'\\s>]*${escaped}[^"'\\s>]*`;
+  const idMatch = new RegExp(`(?:id=["']?${idPattern}["']?|\\bid=["']?${idPattern}["']?)`, 'i').exec(html);
+  if (idMatch && idMatch.index !== undefined) {
+    const elementStart = html.lastIndexOf('<', idMatch.index);
+    const articleStart = html.indexOf('<article', idMatch.index);
+    const articleEnd = articleStart >= 0 ? html.indexOf('</article>', articleStart) : -1;
+    if (articleStart >= 0 && articleEnd >= 0 && html.slice(idMatch.index, articleStart).length < 500) {
+      return html.slice(articleStart, articleEnd + '</article>'.length);
+    }
+    const next = html.slice(idMatch.index + idMatch[0].length).search(/<([a-z0-9]+)\b[^>]*\bid=["']?v?\d+(?:\.\d+){1,3}["']?[^>]*>/i);
+    return html.slice(elementStart >= 0 ? elementStart : idMatch.index, next >= 0 ? idMatch.index + idMatch[0].length + next : html.length);
+  }
+
+  // 时间线页面（如听点点）：版本容器有稳定的 id，以下一个版本容器为边界。
+  const timelineRe = new RegExp(`<([a-z0-9]+)\\b[^>]*\\bid=["']v?${escaped}["'][^>]*>`, 'i');
+  const timelineMatch = timelineRe.exec(html);
+  if (timelineMatch && timelineMatch.index !== undefined) {
+    const idStart = timelineMatch.index;
+    const next = html.slice(idStart + timelineMatch[0].length).search(/<([a-z0-9]+)\b[^>]*\bid=["']v?\d+(?:\.\d+){1,3}["'][^>]*>/i);
+    return html.slice(idStart, next >= 0 ? idStart + timelineMatch[0].length + next : html.length);
+  }
+  // 产品发布列表（如 1Password）：同一版本可能按平台出现多个更新块，取正文最丰富的一块。
+  const markerRe = new RegExp(`Updated\\s+to\\s+v?${escaped}(?:[-+][0-9A-Za-z.-]+)?\\s+on`, 'gi');
+  let markerMatch: RegExpExecArray | null;
+  let bestSection: { html: string; score: number } | null = null;
+  while ((markerMatch = markerRe.exec(html))) {
+    const marker = markerMatch.index;
+    const before = html.slice(0, marker);
+    const start = before.lastIndexOf('<div class="u-mb-16');
+    if (start < 0) continue;
+    const next = html.slice(marker).search(/<div class="u-mb-16/);
+    const section = html.slice(start, next >= 0 ? marker + next : html.length);
+    const text = cleanSectionHtml(section).replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ');
+    if (!bestSection || text.length > bestSection.score) bestSection = { html: section, score: text.length };
+  }
+  if (bestSection) return bestSection.html;
+  return null;
+}
+
 // ── Changelog 页面（版本锚点 + 文本密度）──
 export function extractFromChangelogPage(html: string, opts: { version?: string } = {}): ChangelogEntry | null {
   if (!html) return null;
   const target = opts.version ? opts.version.replace(/^v/i, '') : null;
   const type = detectChangelogType(html);
+
+  // 已知版本优先定位站点的版本区块，避免导航/JSON-LD/其它产品版本抢占正文。
+  if (target) {
+    const targetSection = extractTargetVersionSection(html, target);
+    if (targetSection) {
+      let sectionContent: string | null = null;
+      if (targetSection.includes('<article')) {
+        const articleMarkdown = cleanMarkdown(turndown.turndown(cleanSectionHtml(targetSection)));
+        sectionContent = articleMarkdown.length > 100 ? articleMarkdown : extractDensestBlock(targetSection);
+      } else if (targetSection.includes('Updated to')) {
+        sectionContent = extractDensestBlock(targetSection);
+      } else {
+        sectionContent = extractDenseText(targetSection, target);
+      }
+      if (sectionContent && sectionContent.length > 20) {
+        return {
+          version: normalizeVersion(target),
+          date: targetSection.match(/datetime=["']([^"']+)["']/i)?.[1] || null,
+          title: null,
+          content: sectionContent,
+          source: 'changelog-page',
+          language: detectLanguage(sectionContent),
+          confidence: 'medium',
+        };
+      }
+    }
+  }
 
   // 纯文本：nginx CHANGES 风格 → 按版本行切块（正文天然干净）
   if (type === 'plain-text') {
@@ -373,6 +441,22 @@ function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url:
   }
 }
 
+function findTargetDetailLinks(html: string, target: string, baseUrl: string): string[] {
+  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const marker = new RegExp(`Updated\\s+to\\s+v?${escaped}(?:[-+][0-9A-Za-z.-]+)?\\s+on`, 'i').exec(html);
+  if (!marker) return [];
+  const before = html.slice(0, marker.index);
+  const start = before.lastIndexOf('<div class="u-mb-16');
+  const next = html.slice(marker.index).search(/<div class="u-mb-16/);
+  const section = html.slice(start >= 0 ? start : marker.index, next >= 0 ? marker.index + next : html.length);
+  const links = [...section.matchAll(/<a[^>]+href=["']?([^"'\s>]+)["']?[^>]*>([\s\S]*?)<\/a>/gi)]
+    .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
+    .filter((x) => /read more|release notes|更新|详情/i.test(x.text));
+  return links.map((x) => {
+    try { return new URL(x.href, baseUrl).href; } catch { return x.href; }
+  });
+}
+
 // ── 统一入口 ──
 export async function extractChangelog(
   source: UpdateSource,
@@ -403,9 +487,25 @@ export async function extractChangelog(
           && !/<\/?(li|ul|ol|div|table|td|a|img|svg|h[1-6])[\s>]/.test(e.content)
           && !/Canonical URL|Creative Commons|Copyright|You are free to|\[Prev\]|\[Up\]|\[Next\]|Privacy Policy|Terms of Use/i.test(e.content);
 
-        // 列表/博客：版本是链接 → 跟随最新版本链接进详情页
+        // 版本详情链接：部分发布列表只展示摘要卡片，真正日志在 "Read more" 详情页中。
         let detailUrl: string | null = null;
-        if (type === 'list' || type === 'blog') {
+        if (opts.version) {
+          const targetLinks = findTargetDetailLinks(r.text, opts.version.replace(/^v/i, ''), source.url);
+          for (const targetLink of targetLinks) {
+            const page2 = await fetchPage(targetLink, { timeout: 15000 });
+            if (!page2.text || page2.error) continue;
+            const followed = extractFromChangelogPage(page2.text, { version: opts.version });
+            const followedIsGood = followed ? goodEnough(followed) : false;
+            if (followed && (followedIsGood || followed.content.length > 150)) {
+              return { ...followed, source: 'changelog-page', version: normalizeVersion(opts.version), confidence: 'medium' };
+            }
+            detailUrl = targetLink;
+            break;
+          }
+        }
+
+        // 列表/博客：版本是链接 → 跟随最新版本链接进详情页
+        if (!detailUrl && (type === 'list' || type === 'blog')) {
           const latestLink = findLatestVersionLinkWithVersion(r.text, source.url);
           if (latestLink) {
             const page2 = await fetchPage(latestLink.url, { timeout: 15000 });
@@ -431,7 +531,7 @@ export async function extractChangelog(
         if (!opts.skipBrowser) {
           const { extractChangelogWithBrowser } = await import('./changelog-ai');
           const browserUrl = detailUrl || source.url;
-          const browserVersion = detailUrl ? null : opts.version; // 详情页版本号由锚点提取
+          const browserVersion = opts.version;
           const browserEntry = await extractChangelogWithBrowser(browserUrl, { version: browserVersion || undefined });
           if (browserEntry && browserEntry.content.length > 20) return browserEntry;
         }

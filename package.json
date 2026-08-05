@@ -7,7 +7,9 @@
   "scripts": {
     "bench": "tsx scripts/bench.ts",
     "bench:cases": "tsx scripts/bench.ts --cases benchmark/cases.json",
-    "probe": "tsx scripts/bench.ts --probe"
+    "probe": "tsx scripts/bench.ts --probe",
+    "serve": "tsx src/server.ts",
+    "start": "tsx src/server.ts"
   },
   "dependencies": {
     "got-scraping": "^4.2.1",

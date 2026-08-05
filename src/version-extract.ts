@@ -45,9 +45,47 @@ function isDownloadUrl(u: string): boolean {
   );
 }
 
+// 版本序列检测：识别"Android 8/9/10/.../17"这类【相同前缀词 + 连续数字】的版本序列。
+// 只在语义列举区（<nav> 导航 + h1-h6 标题）提取。按前缀词分组，同前缀 ≥3 个不同数字才成序列。
+// 这比裸数字扫描严谨：php/bitwarden/sketch 的无前缀或年份数字不会误判。
+function detectVersionSequence(html: string): { latest: string; series: string[] } | null {
+  // 语义区：导航 + 标题区
+  const navText = [...html.matchAll(/<nav[\s\S]*?<\/nav>/gi)].map((m) => m[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')).join(' ');
+  const headText = [...html.matchAll(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi)].map((m) => m[1].replace(/<[^>]+>/g, ' ').trim()).join(' ');
+  const semantic = `${navText} ${headText}`;
+  // 提取 "前缀词 + 数字"（Android 17 / go1.26 / Version 14 / v17）
+  // 前缀词：产品名/版本词（Android/go/v/Version/版本），必须以字母结尾 ——
+  // 数字不能"粘"在前缀尾（x264 的 "x26" 就是数字结尾前缀 + 无空格，会把变体号误当版本）
+  const groups = new Map<string, Set<number>>();
+  const re = /\b([A-Za-z](?:[A-Za-z0-9._-]*[A-Za-z])?[\s-]*?)(?:v|version|版本|ver\.?)?[\s:]*(\d{1,2})(?:\.\d+){0,2}\b/g;
+  for (const m of semantic.matchAll(re)) {
+    const prefix = m[1].trim().toLowerCase();
+    const n = Number(m[2]);
+    if (n < 1 || n > 99) continue; // 排除年份/大数
+    if (prefix.length > 20) continue; // 太长的前缀不像产品名
+    if (!groups.has(prefix)) groups.set(prefix, new Set());
+    groups.get(prefix)!.add(n);
+  }
+  // 找同前缀 ≥3 个不同数字的序列，取跨度最密的
+  let best: { latest: number; series: number[] } | null = null;
+  for (const [prefix, nums] of groups) {
+    if (nums.size < 3) continue;
+    const sorted = [...nums].sort((a, b) => a - b);
+    const span = sorted[sorted.length - 1] - sorted[0];
+    // 连续性：跨度 ≤ 最大值，且覆盖大部分区间（版本序列连续，分页/年份不连续）
+    if (span > sorted[sorted.length - 1]) continue;
+    if (sorted.length < span * 0.5) continue;
+    if (!best || span > (best.series[best.series.length - 1] - best.series[0])) {
+      best = { latest: sorted[sorted.length - 1], series: sorted };
+    }
+  }
+  if (!best) return null;
+  return { latest: `v${best.latest}`, series: best.series.map((n) => `v${n}`) };
+}
+
 function extractStructuredText(html: string): string {
   const parts: string[] = [];
-  const jsonLd = html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi) || [];
+  const jsonLd = (html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi) || []) as string[];
   jsonLd.forEach((m) => parts.push(m.replace(/<[^>]+>/g, '')));
   // 关键：__NEXT_DATA__ / __INITIAL_STATE__ 是巨型 JSON，包含大量非版本数字（图片尺寸、坐标、ID）。
   // 只保留"版本语义字段"附近的值，避免把 JSON 噪音当版本。
@@ -109,6 +147,11 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
     }
   }
 
+  // 版本序列检测：页面出现 "Android 8/9/.../17"（相同前缀词 + 连续数字）→ 候选主版本 = 数值最大
+  // 不短路：作为候选加入正常评分，避免覆盖下载链接/标题里的正确版本
+  const seq = detectVersionSequence(html);
+  const seqLatest: string | null = seq ? seq.latest : null;
+
   const urls = [...html.matchAll(/(?:href|src)=["']([^"']+)["']/gi)].map((m) => m[1]).filter((u) => u.startsWith('http') || u.startsWith('/'));
   const downloadUrls = urls.filter(isDownloadUrl);
 
@@ -116,7 +159,8 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '';
   const metas = [...html.matchAll(/<meta[^>]+(?:name|property)=["'](?:description|og:title|og:description)["'][^>]*content=["']([^"']*)["']/gi)].map((m) => m[1]).join(' ');
   const structured = extractStructuredText(html);
-  const body = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ');
+  // 正文候选只看标签之间的文本；HTML 属性中的尺寸、资源路径、file-types 等不是页面可见版本信息。
+  const body = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ');
   const visibleText = `${title}\n${metas}\n${body}`; // 可见文字：真实产品版本必然出现在这里
   // 版本语义关键词：避免把 HTML 属性里的 `v class` 误当版本标记
   const keywordRe = /(?:version|ver\.?\s|release|changelog|download|下载|更新|版本)[^\n]{0,80}/gi;
@@ -155,6 +199,10 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
     if (/\.(js|css|mjs|cjs|map)(\?|#|$)/i.test(u)) continue;
     const m = u.match(/\bv?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)\b/);
     if (m && !isSuspicious(m[0])) candidates.push({ version: normalizeVersion(m[0]), pattern: 'semver', scope: 'url' });
+  }
+  // 版本序列候选：作为 heading 来源参与评分（序列版本出现在导航/标题区）
+  if (seqLatest) {
+    candidates.push({ version: seqLatest, pattern: 'major', scope: 'heading' });
   }
 
   if (candidates.length === 0) return none();

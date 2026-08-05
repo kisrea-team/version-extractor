@@ -39,14 +39,14 @@ async function cleanWithTrafilatura(html: string): Promise<string | null> {
 
 export async function extractChangelogWithBrowser(url: string, opts: { version?: string } = {}): Promise<ChangelogEntry | null> {
   try {
-    // 1. 渲染页面，取整页 HTML + 版本锚点标题（Trafilatura 是整页正文提取器，不需要精确容器）
-    const pageData = await renderPage(url);
+    // 优先按调用方已确认的版本定位 DOM 区块；找不到时才回退整页清洗。
+    const pageData = await renderPage(url, opts.version);
     if (!pageData) return null;
-    // 2. 版本号：优先已知 version；否则从锚点标题提取（最新版数字最大）
+    // 版本号：优先已知 version；否则从锚点标题提取（最新版数字最大）
     const versionFromTitle = (pageData.anchorTitle || '').match(/v?(\d+(?:\.\d+){1,3})/)?.[1] || '';
     const version = normalizeVersion(opts.version || versionFromTitle || '');
     if (!/\d/.test(version)) return null; // 无版本号 → 不是日志页
-    // 3. Trafilatura 整页提取正文
+    // Trafilatura 清洗已定位区块，未定位时使用整页 HTML
     const content = await cleanWithTrafilatura(pageData.html);
     if (!content || content.length < 20) return null;
     return {
@@ -63,8 +63,8 @@ export async function extractChangelogWithBrowser(url: string, opts: { version?:
   }
 }
 
-// 渲染页面：返回整页 HTML + 版本锚点（锚点只用于确认版本，正文交给 Trafilatura 整页提取）
-async function renderPage(url: string): Promise<{ html: string; anchorTitle: string | null } | null> {
+// 渲染页面：优先返回目标版本所在的 DOM 区块，找不到时返回整页 HTML。
+async function renderPage(url: string, targetVersion?: string): Promise<{ html: string; anchorTitle: string | null } | null> {
   const browser = await getBrowser();
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
@@ -75,18 +75,71 @@ async function renderPage(url: string): Promise<{ html: string; anchorTitle: str
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
     await page.waitForTimeout(2500);
     const html = await page.content();
-    // 版本锚点：优先含版本号的标题；否则从链接/文本找（obsidian 版本在 <a> 里不在 heading）
-    const anchor = await page.evaluate(() => {
-      const verRe = /\bv?(\d+\.\d+(?:\.\d+)?)/;
-      const heads = Array.from(document.querySelectorAll('h1,h2,h3,h4,h5,h6'));
-      const h = heads.find((x) => verRe.test(x.textContent || ''));
-      if (h) return { title: (h.textContent || '').trim(), ver: (h.textContent || '').match(verRe)?.[1] || null };
-      const all = Array.from(document.querySelectorAll('a,li,strong,span,p,td'));
-      const a = all.find((x) => verRe.test(x.textContent || ''));
-      if (a) return { title: (a.textContent || '').trim().slice(0, 80), ver: (a.textContent || '').match(verRe)?.[1] || null };
-      return { title: null, ver: null };
-    }).catch(() => ({ title: null, ver: null }));
-    return { html, anchorTitle: anchor.title };
+    const target = (targetVersion || '').replace(/^v/i, '').replace(/\+.*$/, '');
+    // 使用字符串函数体，避免 tsx/esbuild 将 __name helper 注入 page.evaluate。
+    const located = await page.evaluate(`(target) => {
+      const normalize = (value) => String(value || '').replace(/^v/i, '').replace(/\\+.*$/, '');
+      const targetValue = normalize(target);
+      const versionRe = /\\bv?(\\d+\\.\\d+(?:\\.\\d+)?)/;
+      const matchesTarget = (value) => {
+        const text = String(value || '');
+        if (!targetValue) return false;
+        return text.includes(targetValue) || text.includes('v' + targetValue);
+      };
+      const titleOf = (node) => String(node?.textContent || '').trim().slice(0, 120) || null;
+
+      // 听点点等时间线页面：版本号直接作为容器 id，区块边界最可靠。
+      if (targetValue) {
+        const idNode = document.getElementById('v' + targetValue) || document.getElementById(targetValue);
+        if (idNode) return { html: idNode.outerHTML, title: titleOf(idNode), located: true };
+      }
+
+      if (targetValue) {
+        const idNodes = Array.from(document.querySelectorAll('[id]')).filter((node) => String(node.id || '').includes(targetValue));
+        const article = idNodes.find((node) => node.closest('article'))?.closest('article');
+        if (article) return { html: article.outerHTML, title: titleOf(article), located: true };
+      }
+
+      // 1Password 等页面同一版本按平台重复出现；选择目标版本下正文最长的详情块。
+      if (targetValue) {
+        const markers = Array.from(document.querySelectorAll('div')).filter((node) => /Updated\\s+to\\s+/.test(node.textContent || '') && matchesTarget(node.textContent || ''));
+        let best = null;
+        for (const marker of markers) {
+          let current = marker;
+          for (let i = 0; i < 5 && current.parentElement; i += 1) {
+            const parent = current.parentElement;
+            const text = String(parent.textContent || '');
+            if (matchesTarget(text) && text.length >= 180 && text.length <= 20000) {
+              if (!best || text.length > best.text.length) best = { node: parent, text };
+            }
+            current = parent;
+          }
+        }
+        if (best) return { html: best.node.outerHTML, title: best.text.slice(0, 120), located: true };
+      }
+
+      const elements = Array.from(document.querySelectorAll('h1,h2,h3,h4,h5,h6,header,time,div,p,article,section'));
+      const anchor = elements.find((node) => matchesTarget(node.textContent || '') && (targetValue ? true : versionRe.test(node.textContent || '')));
+      if (anchor) {
+        // 1Password 等页面用“Updated to <version>”详情条紧邻正文卡片；向上取包含正文的组容器。
+        let current = anchor;
+        for (let i = 0; i < 5 && current.parentElement; i += 1) {
+          const parent = current.parentElement;
+          const text = String(parent.textContent || '');
+          if (targetValue && matchesTarget(text) && text.length >= 180 && text.length <= 20000) {
+            return { html: parent.outerHTML, title: titleOf(anchor), located: true };
+          }
+          current = parent;
+        }
+        return { html: anchor.outerHTML, title: titleOf(anchor), located: true };
+      }
+
+      // 无已知版本时，仍按版本标题/文本找锚点，但不误把整页第一个版本当成目标版本。
+      const fallback = elements.find((node) => versionRe.test(node.textContent || ''));
+      if (fallback) return { html: fallback.parentElement?.outerHTML || fallback.outerHTML, title: titleOf(fallback), located: true };
+      return { html, title: null, located: false };
+    }`, target);
+    return { html: located.html || html, anchorTitle: located.title };
   } catch {
     return null;
   } finally {

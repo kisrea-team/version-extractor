@@ -68,7 +68,55 @@ out.version    // { version: 'v3.15.0', source, confidence }
 out.changelog  // { version: 'v3.15.0', content: '...', date }
 ```
 
-## 基准测试
+## HTTP API / Docker 部署
+
+项目提供一个常驻 HTTP API，发送网址后可选择只返回版本号、只返回日志，或同时返回两者。服务会复用 Playwright 浏览器实例，减少重复启动开销。
+
+```bash
+# 本地运行
+npm run serve
+
+# Docker 构建与启动
+ docker build -t version-extractor .
+ docker run --rm -p 3000:3000 version-extractor
+```
+
+### `POST /extract`
+
+请求体：
+
+```json
+{
+  "url": "https://www.python.org/downloads/",
+  "fields": ["version", "changelog"]
+}
+```
+
+`fields` 可选值为 `version` 和 `changelog`；不传时默认返回两者。只获取版本号时：
+
+```bash
+curl -X POST http://localhost:3000/extract \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://www.python.org/downloads/","fields":["version"]}'
+```
+
+返回示例：
+
+```json
+{
+  "url": "https://www.python.org/downloads/",
+  "elapsedMs": 1200,
+  "version": {
+    "version": "v3.14.6",
+    "source": "official-endpoint",
+    "confidence": "high"
+  },
+  "changelog": null
+}
+```
+
+`GET /health` 返回服务状态。环境变量：`PORT`（默认 `3000`）、`MAX_CONCURRENT`（默认 `2`）、`EXTRACT_TIMEOUT_MS`（默认 `90000`）、`GITHUB_TOKEN`（可选）。对外暴露服务时应在反向代理层增加鉴权和限流；服务本身会拒绝明显的本机/私网目标地址。
+
 
 `benchmark/cases.json` 维护**经过验证的真值语料**（这是衡量可靠性的关键）：
 - `expectedVersion`：期望版本（前缀匹配，如 `v24` 匹配 `v24.18.1`）；空串 = 期望提取不到
