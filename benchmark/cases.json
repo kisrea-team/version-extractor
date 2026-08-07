@@ -126,13 +126,6 @@
     "registryKey": "winget:Meltytech.Shotcut"
   },
   {
-    "name": "kdenlive",
-    "url": "https://kdenlive.org/en/download/",
-    "expectedVersion": "v25",
-    "currentDbVersion": "v25.12.3",
-    "registryKey": "winget:KDE.Kdenlive"
-  },
-  {
     "name": "davinci",
     "url": "https://www.blackmagicdesign.com/products/davinciresolve",
     "expectedVersion": "v21",
@@ -220,9 +213,9 @@
   },
   {
     "name": "terraform",
-    "url": "https://www.terraform.io/downloads",
-    "expectedVersion": "v1",
-    "currentDbVersion": "v1.16.2"
+    "url": "https://developer.hashicorp.com/terraform/downloads",
+    "expectedVersion": "v1.15.8",
+    "currentDbVersion": "v1.15.8"
   },
   {
     "name": "vagrant",
@@ -233,8 +226,8 @@
   {
     "name": "dotnet",
     "url": "https://dotnet.microsoft.com/en-us/download",
-    "expectedVersion": "v10",
-    "currentDbVersion": "v10.0"
+    "expectedVersion": "v11.0",
+    "currentDbVersion": "v11.0"
   },
   {
     "name": "openjdk",
@@ -390,8 +383,8 @@
   {
     "name": "vscode",
     "url": "https://code.visualstudio.com/download",
-    "expectedVersion": "v1.131",
-    "currentDbVersion": "v1.131.0"
+    "expectedVersion": "v1.132",
+    "currentDbVersion": "v1.132"
   },
   {
     "name": "redis",
@@ -433,8 +426,8 @@
   },
   {
     "name": "chrome",
-    "url": "https://www.google.com/chrome/",
-    "expectedVersion": "v145",
+    "url": "https://developer.chrome.google.cn/release-notes?hl=zh-cn",
+    "expectedVersion": "v151",
     "currentDbVersion": "v145.0.7632.159"
   },
   {
@@ -446,26 +439,14 @@
   {
     "name": "windsurf",
     "url": "https://windsurf.com/editor/releases",
-    "expectedVersion": "v1",
-    "currentDbVersion": "v1.9577.43"
-  },
-  {
-    "name": "affinity-designer",
-    "url": "https://affinity.serif.com/en-us/designer/",
-    "expectedVersion": "v2",
-    "currentDbVersion": "v2.5.7"
+    "expectedVersion": "v3.6.27",
+    "currentDbVersion": "v3.6.27"
   },
   {
     "name": "cleanshot",
     "url": "https://cleanshot.com/changelog",
     "expectedVersion": "v4",
     "currentDbVersion": "v4.8.7"
-  },
-  {
-    "name": "rectangle",
-    "url": "https://rectangleapp.com/pro/downloads/updates.xml",
-    "expectedVersion": "v3",
-    "currentDbVersion": "v3.73"
   },
   {
     "name": "bitwarden",
@@ -476,7 +457,7 @@
   {
     "name": "raycast",
     "url": "https://www.raycast.com/changelog",
-    "expectedVersion": "v1.10",
+    "expectedVersion": "v1.104.0",
     "currentDbVersion": "v1.104.0"
   },
   {
@@ -500,31 +481,31 @@
   {
     "name": "gitkraken",
     "url": "https://www.gitkraken.com/download",
-    "expectedVersion": "v11",
-    "currentDbVersion": "v11.10.0"
+    "expectedVersion": "v12",
+    "currentDbVersion": "v12.2.1"
   },
   {
     "name": "eagle",
     "url": "https://eagle.cool/blog/post/eagle4-build20",
-    "expectedVersion": "v4",
-    "currentDbVersion": "v4.0"
+    "expectedVersion": "v5.0",
+    "currentDbVersion": "v5.0"
   },
   {
     "name": "shottr",
-    "url": "https://shottr.cc",
-    "expectedVersion": "v1",
+    "url": "https://shottr.cc/newversion.html",
+    "expectedVersion": "v1.9.1",
     "currentDbVersion": "v1.9.1"
   },
   {
     "name": "sketch",
     "url": "https://www.sketch.com/releases/mac/",
-    "expectedVersion": "v2025",
-    "currentDbVersion": "v2025.3"
+    "expectedVersion": "v2026",
+    "currentDbVersion": "v2026.2.1"
   },
   {
     "name": "insomnia",
     "url": "https://insomnia.rest/changelog",
-    "expectedVersion": "v12",
+    "expectedVersion": "v13.1",
     "currentDbVersion": "v12.4.0"
   },
   {

@@ -8,6 +8,7 @@
  */
 import { classifySource, enrichSource } from '../src/sources';
 import { extractChangelog } from '../src/changelog';
+import { extractVersionWithLgb } from '../src/lgb-score';
 import { fetchPage, closeBrowser } from '../src/crawler';
 
 // 测试用例：GitHub / RSS / changelog页 三类
@@ -35,12 +36,16 @@ async function main() {
     try {
       if (source.type === 'changelog-page') {
         const page = await fetchPage(c.url);
-        if (page.text) entry = extractChangelog(source, { pageHtml: page.text, token: process.env.GITHUB_TOKEN });
+        if (page.text) {
+          // 模拟完整管道：版本锚点用 LightGBM 归族（与生产 extractFromUrl 同一选择器）
+          const version = (await extractVersionWithLgb(page.text)).version || undefined;
+          entry = await extractChangelog(source, { pageHtml: page.text, version, token: process.env.GITHUB_TOKEN });
+        }
       } else {
         entry = await extractChangelog(source, { token: process.env.GITHUB_TOKEN });
       }
-    } catch (e) {
-      console.log(c.name.padEnd(20), source.type.padEnd(16), '❌异常', '—', String(e.message).slice(0, 40));
+    } catch (e: any) {
+      console.log(c.name.padEnd(20), source.type.padEnd(16), '❌异常', '—', String(e?.message || e).slice(0, 40));
       continue;
     }
 

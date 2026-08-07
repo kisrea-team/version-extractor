@@ -193,6 +193,31 @@ function extractTargetVersionSection(html: string, target: string): string | nul
 }
 
 // ── Changelog 页面（版本锚点 + 文本密度）──
+// 正文容器 class：常见 changelog/博客正文容器（typeset/content/post-content 等），优先于整页密度。
+const CONTENT_CLASS_RE =
+  /<([a-z][a-z0-9]*)\b[^>]*class=["'][^"']*(?:typeset|post-content|article-content|entry-content|markdown-body|content-body|prose|readme)[^"']*["'][^>]*>/i;
+function extractFromContentContainer(html: string, target: string | null): ChangelogEntry | null {
+  const contentMatch = html.match(CONTENT_CLASS_RE);
+  if (!contentMatch || contentMatch.index === undefined) return null;
+  // 正文容器起始位置；向后取一段（含嵌套容器），交给文本密度提取选正文块。
+  // 先移除 footer/nav/script/style，避免页脚社交链接块抢过正文。
+  const containerTail = html.slice(contentMatch.index, contentMatch.index + 30000);
+  const cleanedTail = cleanSectionHtml(containerTail);
+  // 整个正文容器转 Markdown（Obsidian 等多段正文）；过短才退回单块密度提取。
+  const fullMarkdown = cleanMarkdown(turndown.turndown(cleanedTail));
+  const contentBlock = fullMarkdown.length > 80 ? fullMarkdown : extractDensestBlock(cleanedTail);
+  if (!contentBlock) return null;
+  return {
+    version: normalizeVersion(target || '0.0.0'),
+    date: null,
+    title: null,
+    content: contentBlock,
+    source: 'changelog-page',
+    language: detectLanguage(contentBlock),
+    confidence: 'medium',
+  };
+}
+
 export function extractFromChangelogPage(html: string, opts: { version?: string } = {}): ChangelogEntry | null {
   if (!html) return null;
   const target = opts.version ? opts.version.replace(/^v/i, '') : null;
@@ -224,6 +249,10 @@ export function extractFromChangelogPage(html: string, opts: { version?: string 
       }
     }
   }
+
+  // 正文容器优先：typeset/content 等明确正文容器不依赖结构分类，Obsidian 首页/详情页都走这里。
+  const contentEntry = extractFromContentContainer(html, target);
+  if (contentEntry && contentEntry.content.length > 80) return contentEntry;
 
   // 纯文本：nginx CHANGES 风格 → 按版本行切块（正文天然干净）
   if (type === 'plain-text') {
@@ -333,7 +362,15 @@ function extractDenseText(sectionHtml: string, version: string): string | null {
     .split(/<(?:p|div|li|ul|ol|table|h[1-6]|blockquote|pre|section|article)\b[^>]*>/i)
     .map((b) => cleanSectionHtml(b));
   const sentencesRe = /\b[\w一-鿿]+\b/g;
+  // 面包屑/导航块：postgresql 等详情页标题后紧跟 [Prev][Up][Home][Next] 面包屑，
+  // 它们 words 够多但几乎全是链接，不是正文。
+  const isBreadcrumb = (b: string): boolean => {
+    const linkWords = (b.match(/<a[^>]+>/g) || []).length;
+    const words = (b.match(sentencesRe) || []).length;
+    return linkWords >= 3 && words <= linkWords * 2;
+  };
   for (const b of blocks) {
+    if (isBreadcrumb(b)) continue;
     const words = (b.match(sentencesRe) || []).length;
     const isLinkNav = /<a[^>]+href=/.test(b) && words < 5;
     if (words >= 5 && !isLinkNav) {
@@ -365,14 +402,30 @@ function extractDensestBlock(html: string): string | null {
 // 纯文本 changelog（nginx CHANGES / postgresql 等）：按"版本行 + 后续行"切块
 function extractFromPlainText(text: string, target: string | null): ChangelogEntry | null {
   const lines = text.split(/\r?\n/).map((l) => l.trim());
-  // 版本行：以版本号开头的行，如 "Changes with nginx 1.31.3" / "2026-07-15  PostgreSQL 18.2"
-  const versionLineRe = /(?:^|\s)(?:v|version\s+)?(\d+(?:\.\d+){1,3})(?:\s|$)/i;
+  // 版本行：优先匹配 "Changes with nginx 1.31.3"，避免行内正文/产品名里的旧数字抢占。
+  const versionLineRe = /(?:Changes?\s+with\s+[^\s]+\s+|Changelog\s+(?:with\s+[^\s]+\s+)?|(?:^|\s)(?:v|version\s+)?)(\d+(?:\.\d+){1,3})(?=\s|$)/i;
   let idx = -1;
-  if (target) idx = lines.findIndex((l) => l.includes(target));
-  if (idx === -1) idx = lines.findIndex((l) => versionLineRe.test(l) && !/^[A-Z]{2,}/.test(l));
+  if (target) {
+    const targetVersion = target.replace(/^v/i, '');
+    idx = lines.findIndex((line) => {
+      const match = line.match(versionLineRe);
+      return match?.[1] === targetVersion;
+    });
+    // 纯文本页有时没有目标版本时，继续按最高版本标题选择；不能把正文里的旧版本号当目标。
+  }
+  if (idx === -1) {
+    const versioned = lines
+      .map((line, i) => ({ line, i, match: line.match(versionLineRe) }))
+      .filter((x): x is { line: string; i: number; match: RegExpMatchArray } => Boolean(x.match));
+    if (versioned.length) {
+      versioned.sort((a, b) => compareVersions(`v${b.match[1]}`, `v${a.match[1]}`));
+      idx = versioned[0].i;
+    }
+  }
   if (idx === -1) return null;
 
-  const v = lines[idx].match(versionLineRe)?.[1];
+  const selectedLine = lines[idx];
+  const v = selectedLine.match(versionLineRe)?.[1];
   if (!v) return null;
   // 取到下一个版本行之间的内容
   const next = lines.slice(idx + 1).findIndex((l) => versionLineRe.test(l) && l !== lines[idx]);
@@ -417,16 +470,23 @@ function findLatestVersionLink(html: string, baseUrl: string): string | null {
   }
 }
 
+function isDateLikeVersion(v: string): boolean {
+  const cleaned = v.replace(/^v/i, '');
+  // 日期版本：首段是 4 位年份（2026.02.27 / 2026-02-27 / 20260227），不是产品版本号
+  const first = parseInt(cleaned.split(/[.-]/)[0], 10);
+  return Number.isFinite(first) && first >= 1900 && first <= 2100;
+}
+
 // 返回最新版本链接 + 版本号（供详情页提取时作为锚点）
 // 排除版权/法律/导航链接（creativecommons/license/privacy 等含版本号但非产品版本）
-function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url: string; version: string } | null {
+export function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url: string; version: string } | null {
   const EXCLUDE_RE = /creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal|github\.com\/(?!.*\/releases)|\.css|\.js|\.map/i;
   const links = [...html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)]
     .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
     .filter((l) => !EXCLUDE_RE.test(l.href + ' ' + l.text))
     .map((l) => {
       const m = (l.href + ' ' + l.text).match(/\bv?(\d+(?:\.\d+){1,3})\b/);
-      return m ? { href: l.href, version: m[1] } : null;
+      return m && !isDateLikeVersion(m[1]) ? { href: l.href, version: m[1] } : null;
     })
     .filter((x): x is { href: string; version: string } => x !== null);
   if (links.length === 0) return null;
@@ -441,6 +501,44 @@ function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url:
   }
 }
 
+export function findLatestChangelogDetailLink(html: string, baseUrl: string, targetVersion?: string): { url: string; version: string } | null {
+  const candidates: Array<{ href: string; version: string }> = [];
+  const targetMajor = targetVersion?.replace(/^v/i, '').split('.')[0];
+  const add = (href: string, version: string, requireChangelogPath = true) => {
+    if (requireChangelogPath && !/\/changelog\/|\/news\/|\/release\//i.test(href)) return;
+    if (targetMajor && version.split('.')[0] !== targetMajor) return;
+    try { candidates.push({ href: new URL(href, baseUrl).href, version }); } catch { /* ignore invalid links */ }
+  };
+
+  for (const m of html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+    const href = m[1];
+    const text = m[2].replace(/<[^>]+>/g, ' ').trim();
+    const match = (href + ' ' + text).match(/\bv?(\d+(?:\.\d+){1,3})\b/);
+    if (match && !isDateLikeVersion(match[1])) add(href, match[1]);
+  }
+
+  // Python/Obsidian-style news pages: version heading + nearby article link.
+  for (const heading of html.matchAll(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi)) {
+    const text = heading[1].replace(/<[^>]+>/g, ' ').trim();
+    const match = text.match(/\bv?(\d+(?:\.\d+){1,3})\b/);
+    if (!match || isDateLikeVersion(match[1]) || heading.index === undefined) continue;
+    const tail = html.slice(heading.index + heading[0].length, heading.index + heading[0].length + 2200);
+    const link = tail.match(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i);
+    if (link) add(link[1], match[1], false);
+  }
+
+  // Obsidian changelog entries expose the desktop version in the detail URL/text.
+  for (const m of html.matchAll(/<a[^>]+href=["']([^"']*\/changelog\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+    const text = m[2].replace(/<[^>]+>/g, ' ').trim();
+    const match = (m[1] + ' ' + text).match(/\bv?(\d+\.\d+(?:\.\d+)?)\b/);
+    if (match && !isDateLikeVersion(match[1])) add(m[1], match[1]);
+  }
+
+  if (!candidates.length) return null;
+  const best = candidates.sort((a, b) => compareVersions(`v${b.version}`, `v${a.version}`))[0];
+  return { url: best.href, version: best.version };
+}
+
 function findTargetDetailLinks(html: string, target: string, baseUrl: string): string[] {
   const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const marker = new RegExp(`Updated\\s+to\\s+v?${escaped}(?:[-+][0-9A-Za-z.-]+)?\\s+on`, 'i').exec(html);
@@ -452,15 +550,17 @@ function findTargetDetailLinks(html: string, target: string, baseUrl: string): s
   const links = [...section.matchAll(/<a[^>]+href=["']?([^"'\s>]+)["']?[^>]*>([\s\S]*?)<\/a>/gi)]
     .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
     .filter((x) => /read more|release notes|更新|详情/i.test(x.text));
-  return links.map((x) => {
-    try { return new URL(x.href, baseUrl).href; } catch { return x.href; }
-  });
+  return links
+    .filter((x) => !isDateLikeVersion(x.href.match(/\bv?(\d+(?:\.\d+){1,3})\b/)?.[1] || ''))
+    .map((x) => {
+      try { return new URL(x.href, baseUrl).href; } catch { return x.href; }
+    });
 }
 
 // ── 统一入口 ──
 export async function extractChangelog(
   source: UpdateSource,
-  opts: { token?: string; version?: string; pageHtml?: string; skipBrowser?: boolean } = {}
+  opts: { token?: string; version?: string; pageHtml?: string; skipBrowser?: boolean; productName?: string | null } = {}
 ): Promise<ChangelogEntry | null> {
   try {
     switch (source.type) {
@@ -480,6 +580,14 @@ export async function extractChangelog(
           return null;
         }
         const type = detectChangelogType(r.text);
+
+        // ── Trafilatura + LightGBM 首选路径（用户策略）──
+        // ① Trafilatura 清洗整页正文（结构无关）→ ② 版本候选 + LightGBM 评分 → ③ 组装。
+        // 纯文本 <pre>（nginx）/ JS 壳（python fallback）Trafilatura 提取失败 → 走下方规则层/浏览器兜底。
+        const traEntry = await import('./changelog-lgb').then((m) =>
+          m.extractChangelogWithTrafilatura(source, { version: opts.version, pageHtml: r.text, productName: opts.productName })
+        );
+        if (traEntry && traEntry.content.length > 100) return traEntry;
 
         // 规则层内容质量门控：太短或含 HTML 残片/版权 → 降级浏览器
         const goodEnough = (e: ChangelogEntry | null): e is ChangelogEntry =>
@@ -504,9 +612,24 @@ export async function extractChangelog(
           }
         }
 
+        // 列表/博客：版本是链接；即使结构分类偏成 plain-text，也优先跟随详情页。
+        if (!detailUrl) {
+          const latestLink = findLatestVersionLinkWithVersion(r.text, source.url) || findLatestChangelogDetailLink(r.text, source.url, opts.version);
+          if (latestLink) {
+            const page2 = await fetchPage(latestLink.url, { timeout: 15000 });
+            if (page2.text && !page2.error) {
+              const followed = extractFromChangelogPage(page2.text, { version: opts.version || latestLink.version });
+              if (followed && (followed.content.length > 20 || goodEnough(followed))) {
+                return { ...followed, source: 'changelog-page', version: normalizeVersion(opts.version || latestLink.version), confidence: 'medium' };
+              }
+              detailUrl = latestLink.url;
+            }
+          }
+        }
+
         // 列表/博客：版本是链接 → 跟随最新版本链接进详情页
         if (!detailUrl && (type === 'list' || type === 'blog')) {
-          const latestLink = findLatestVersionLinkWithVersion(r.text, source.url);
+          const latestLink = findLatestVersionLinkWithVersion(r.text, source.url) || findLatestChangelogDetailLink(r.text, source.url, opts.version);
           if (latestLink) {
             const page2 = await fetchPage(latestLink.url, { timeout: 15000 });
             if (page2.text && !page2.error) {

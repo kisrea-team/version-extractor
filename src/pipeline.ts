@@ -7,6 +7,7 @@
 //   4. 按来源提取更新日志
 import { classifySource, enrichSource } from './sources';
 import { extractVersionFromHtml } from './version-extract';
+import { extractVersionWithLgb } from './lgb-score';
 import { extractChangelog } from './changelog';
 import { fetchPage, fetchPageRendered, fetchPageRenderedDeep, closeBrowser } from './crawler';
 import { queryRegistry, queryOfficialEndpoint } from './registries';
@@ -25,23 +26,24 @@ export interface ExtractOutcome {
 
 export async function extractFromUrl(
   url: string,
-  opts: { token?: string; registryKey?: string; skipBrowser?: boolean } = {}
+  opts: { token?: string; registryKey?: string; skipBrowser?: boolean; productName?: string | null } = {}
 ): Promise<ExtractOutcome> {
   const source = await enrichSource(classifySource(url));
 
   // L3 结构化源优先（文档 three-tier-extractor.md P3）：官方 JSON 端点比注册表更权威。
   // 对已知域名尝试，命中即确定性返回。
   const l3 = await queryOfficialEndpoint(url);
-  if (l3) {
-    const finalVersion: VersionResult = {
-      version: l3.version,
-      source: 'official-endpoint',
-      confidence: 'high',
-      needsAiCheck: false,
-      needsBrowser: false,
-      suggestedRegex: null,
-    };
-    return { url, source, version: finalVersion, changelog: null, neededBrowser: false, registryVersion: null, registryKey: null };
+  const l3Version: VersionResult | null = l3 ? {
+    version: l3.version,
+    source: 'official-endpoint',
+    confidence: 'high',
+    needsAiCheck: false,
+    needsBrowser: false,
+    suggestedRegex: null,
+  } : null;
+  // 日志页/RSS 仍需继续抓页面；L3 只提供确定性版本锚点。
+  if (l3Version && source.type !== 'changelog-page' && source.type !== 'rss') {
+    return { url, source, version: l3Version, changelog: null, neededBrowser: false, registryVersion: null, registryKey: null };
   }
 
   // 0. 注册表优先：确定性命名字段，优于任何 HTML 猜测；命中直接短路（快且权威）
@@ -72,13 +74,15 @@ export async function extractFromUrl(
   let page = source.type === 'changelog-page' || source.type === 'rss'
     ? await fetchPage(url)
     : { status: 0, text: '', error: undefined };
-  let version = page.text ? extractVersionFromHtml(page.text) : null;
+  let version = l3Version || (page.text ? await extractVersionWithLgb(page.text, { productName: opts.productName }) : null);
   let neededBrowser = false;
 
   // L2 深度兜底（文档 three-tier-extractor.md P1/P2）：
   // 普通抓取拿不到/低置信 → 浏览器渲染 + 网络拦截 + 运行时全局态 + 主 CTA 定位
   // opts.skipBrowser 时跳过渲染（低内存机器/CI 用：只测 L1+注册表+L3 确定性路径）
-  if (!opts.skipBrowser && page.text && (!version || version.needsBrowser || !version.version)) {
+  // L1 静态抓取失败（page.text 空）也要试 L2——JS 站/反爬站常只有浏览器能拿到 DOM。
+  const needL2 = !page.text || !version || !version.version || version.needsBrowser;
+  if (!opts.skipBrowser && needL2) {
     const deep = await fetchPageRenderedDeep(url);
     let l2Version: VersionResult | null = null;
 
@@ -138,10 +142,15 @@ export async function extractFromUrl(
       version = l2Version;
       neededBrowser = true;
     } else {
-      // 渲染后 HTML 启发式（L1 在 JS 跑完后的 DOM 上重跑）
+      // 渲染后 DOM 用 LGB 归族重选（与 L1 同一选择器）——release-notes 页（chrome）
+      // 的版本在正文版本列表里，启发式只扫 heading/nav 会选到旧版本 v95，而
+      // LGB 归族能识别完整版本序列（v100~v151）选最大。启发式作 LGB 失败时的兜底。
       const rendered = await fetchPageRendered(url);
       if (!rendered.error && rendered.text) {
-        const re = extractVersionFromHtml(rendered.text);
+        const lgbRendered = await extractVersionWithLgb(rendered.text, { productName: opts.productName });
+        const re = (lgbRendered.version && lgbRendered.confidence !== 'low')
+          ? lgbRendered
+          : extractVersionFromHtml(rendered.text);
         // 只采用高置信的渲染后结果；低置信（营销页/SPA 噪音）宁缺毋滥
         if (re.version && re.confidence === 'high') {
           version = re;
@@ -164,12 +173,12 @@ export async function extractFromUrl(
   // 日志：统一走 extractChangelog（内部含静态抓取 + 规则层 + 浏览器+Trafilatura 兜底）
   let changelog: ChangelogEntry | null = null;
   if (source.type === 'github-releases') {
-    changelog = await extractChangelog(source, { token: opts.token });
+    changelog = await extractChangelog(source, { token: opts.token, productName: opts.productName });
   } else if (page.text || !opts.skipBrowser) {
     // 优先用已抓取的页面 HTML（省一次请求）；静态为空时交给 extractChangelog 内部浏览器兜底
     changelog = await extractChangelog(
       source,
-      page.text ? { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token } : { version: finalVersion.version || undefined, token: opts.token }
+      page.text ? { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token, productName: opts.productName } : { version: finalVersion.version || undefined, token: opts.token, productName: opts.productName }
     );
   }
 

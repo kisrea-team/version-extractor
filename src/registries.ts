@@ -240,15 +240,17 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
     },
   },
   {
-    // redis.io → 官方稳定版（从页面 JS 全局或下载链接）
+    // redis.io → 官方稳定版：/download 页面最新版信息稀少且历史下载文件占主导，
+    // 改用 GitHub redis/redis releases（权威 tag）。无 token 时也够低频使用。
     host: /redis\.io/,
     fetch: async () => {
-      const r = await fetch('https://redis.io/download/', { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }, signal: AbortSignal.timeout(20000) });
+      const r = await fetch('https://api.github.com/repos/redis/redis/releases/latest', {
+        headers: { 'User-Agent': 'version-extractor', Accept: 'application/vnd.github+json' },
+        signal: AbortSignal.timeout(20000),
+      });
       if (!r.ok) return null;
-      const text = await r.text();
-      // redis.io 用 "stable":"8.x" 或下载链接 redis-8.x
-      const m = text.match(/redis-(\d+\.\d+\.\d+)/i) || text.match(/stable[\"']?\s*[:=]\s*[\"'](\d+\.\d+)/i);
-      if (m) return `v${m[1]}`;
+      const d = await r.json();
+      if (d?.tag_name && /^\d/.test(d.tag_name)) return `v${d.tag_name}`;
       return null;
     },
   },

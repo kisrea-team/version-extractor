@@ -6,36 +6,10 @@
 //  3. 调 Python Trafilatura 清洗正文 → Markdown
 //
 // 降级：Playwright/Trafilatura 不可用时回退现有正则提取（extractFromChangelogPage）。
-import { execFile } from 'child_process';
-import { promisify } from 'util';
-import { tmpdir } from 'os';
-import { join } from 'path';
-import { writeFileSync, unlinkSync } from 'fs';
 import { normalizeVersion } from './changelog';
 import { getBrowser } from './crawler';
+import { cleanWithTrafilatura } from './trafilatura';
 import type { ChangelogEntry } from './types';
-
-const execFileAsync = promisify(execFile);
-
-// 调用 Python Trafilatura 清洗 HTML 区块 → Markdown
-async function cleanWithTrafilatura(html: string): Promise<string | null> {
-  const f = join(tmpdir(), `chg-${Date.now()}-${Math.random().toString(36).slice(2)}.html`);
-  writeFileSync(f, html, 'utf-8');
-  // tsx ESM 下 __dirname 不可用，用 process.cwd()（脚本需从项目根目录运行）
-  const script = join(process.cwd(), 'scripts', 'trafilatura_clean.py');
-  try {
-    const { stdout } = await execFileAsync('python', [script, f, '--format', 'markdown', '--precision'], {
-      timeout: 20000,
-      maxBuffer: 8 * 1024 * 1024,
-      windowsHide: true,
-    });
-    return stdout.trim() || null;
-  } catch {
-    return null;
-  } finally {
-    try { unlinkSync(f); } catch { /* ignore */ }
-  }
-}
 
 export async function extractChangelogWithBrowser(url: string, opts: { version?: string } = {}): Promise<ChangelogEntry | null> {
   try {
