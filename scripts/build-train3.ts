@@ -96,7 +96,7 @@ function featureRows(p: PageSpec, scored: Array<{ version: string; prob: number 
   }
   return rows;
 }
-const pySem = (() => { let active = 0; const q: Array<() => void> = []; const limit = 4; return { acquire: async () => { if (active >= limit) await new Promise((r) => q.push(r)); active++; }, release: () => { active--; q.shift()?.(); } }; })();
+const pySem = (() => { let active = 0; const q: Array<() => void> = []; const limit = 4; return { acquire: async () => { if (active >= limit) await new Promise<void>((resolve) => q.push(() => resolve())); active++; }, release: () => { active--; q.shift()?.(); } }; })();
 async function runPage(p: PageSpec) {
   const raw = collectCandidates(p.html); if (!raw.length) return [];
   const cs = raw.map((x) => ({ version: x.version, scopes: x.contexts.map((y) => y.scope), contexts: x.contexts, tag: x.tag, paths: x.paths }));

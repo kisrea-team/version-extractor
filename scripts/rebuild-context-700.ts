@@ -18,9 +18,9 @@ function buildText(version: string, contexts: Array<{ text: string; scope: strin
 }
 
 async function main() {
-  const ds = JSON.parse(readFileSync('ds700.tmp.json', 'utf-8'));
-  const pages = ds.pages;
-  const annotations = ds.annotations;
+  const ds: any = JSON.parse(readFileSync('ds700.tmp.json', 'utf-8'));
+  const pages: any[] = ds.pages;
+  const annotations: any[] = ds.annotations;
   const pageMap = new Map(pages.map((p: any) => [p.pageId, p]));
 
   const out: any[] = [];

@@ -28,7 +28,7 @@ const MAX_CONCURRENT = Number(process.env.LLM_MAX_CONCURRENT || 4);
 let llmInflight = 0;
 const llmQueue: Array<() => void> = [];
 async function acquireLlmSlot(): Promise<() => void> {
-  if (llmInflight >= MAX_CONCURRENT) await new Promise((r) => llmQueue.push(r));
+  if (llmInflight >= MAX_CONCURRENT) await new Promise<void>((resolve) => llmQueue.push(() => resolve()));
   llmInflight += 1;
   let released = false;
   return () => {
