@@ -654,13 +654,23 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
       candidates: [],
       rank: null,
       llm: null,
-      final: { version: hv.version, confidence: hv.confidence, source: hv.source, suggestedRegex: hv.suggestedRegex },
+      final: { version: hv.version, confidence: hv.confidence, source: hv.source, suggestedRegex: hv.suggestedRegex, matchedContext: hv.matchedContext },
     });
     return hv;
   }
   const best = selected;
   const sourceScope = candidates.find((c) => c.version === best.version)?.scopes?.[0] || 'body';
   const suggestedRegex = best.version.replace(/^v/i, '').split('.').length >= 3 ? `v?(\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?)` : `v?(\\d+\\.\\d+)`;
+  // matchedContext：选中候选的上下文片段（比 raw indexOf 干净——indexOf 会命中 CSS/JS 里的同名数字）
+  const matchedContext = (() => {
+    const candCtx = candidates.find((c) => c.version === best.version)?.contexts?.[0]?.text;
+    const text = (candCtx || '').replace(/\s+/g, ' ').trim();
+    if (text) return text.slice(0, 200) || undefined;
+    const bare = best.version.replace(/^v/i, '');
+    const idx = html.indexOf(bare);
+    if (idx < 0) return undefined;
+    return html.slice(Math.max(0, idx - 60), Math.min(html.length, idx + 60)).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() || undefined;
+  })();
   // 审计：记录候选+概率+rank+LLM+最终，由调用方(pipeline)补 url/html 后落库
   opts.onAudit?.({
     productName: opts.productName || null,
@@ -676,7 +686,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     })),
     rank: rankDetail ? { seed: rankDetail.result?.version || null, margin: rankDetail.margin, strong: rankDetail.strong } : null,
     llm: llmTrace,
-    final: { version: best.version, confidence, source: sourceScope, suggestedRegex },
+    final: { version: best.version, confidence, source: sourceScope, suggestedRegex, matchedContext },
   });
   return {
     version: best.version,
@@ -685,6 +695,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     needsAiCheck: confidence !== 'high',
     needsBrowser: false,
     suggestedRegex,
+    matchedContext,
     candidates: [...scored].sort((a, b) => b.prob - a.prob).slice(0, 8).map((s) => ({
       version: s.version,
       score: Math.round(s.prob * 100),

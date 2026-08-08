@@ -27,7 +27,7 @@ export interface AuditDecision {
   candidates: AuditCandidate[];
   rank?: { seed: string | null; margin: number | null; strong: boolean | null } | null;
   llm?: { triggered: boolean; margin: number | null; answer: string | null } | null;
-  final: { version: string | null; confidence: string; source: string | null; suggestedRegex?: string | null };
+  final: { version: string | null; confidence: string; source: string | null; suggestedRegex?: string | null; matchedContext?: string | null };
 }
 
 export interface AuditEntry extends AuditDecision {
