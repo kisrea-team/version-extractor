@@ -4,7 +4,8 @@
 //   POST /extract
 //   { "url": "https://www.python.org/downloads/",
 //     "fields": ["version", "changelog"],   // 可选；不传则全部返回
-//     "registryKey": "winget:7zip.7zip" }   // 可选；确定性注册表源优先
+//     "registryKey": "winget:7zip.7zip",    // 可选；确定性注册表源优先
+//     "productName": "python" }             // 可选；调用方已知产品名 → 触发产品锚点 + LLM 兜底
 //   → { "url": ..., "version": {...}, "changelog": {...}, "elapsedMs": ... }
 //
 //   GET /health → { ok: true, active: n }
@@ -63,7 +64,7 @@ function readBody(req: import('node:http').IncomingMessage, maxBytes = 64 * 1024
 }
 
 async function handleExtract(rawBody: string, res: import('node:http').ServerResponse): Promise<void> {
-  let parsed: { url?: string; fields?: string[]; registryKey?: string };
+  let parsed: { url?: string; fields?: string[]; registryKey?: string; productName?: string };
   try {
     parsed = JSON.parse(rawBody || '{}');
   } catch {
@@ -72,6 +73,8 @@ async function handleExtract(rawBody: string, res: import('node:http').ServerRes
 
   const url = typeof parsed.url === 'string' ? validateTargetUrl(parsed.url.trim()) : null;
   if (!url) return sendJson(res, 400, { error: 'url must be an http(s) URL with a public hostname' });
+  // 产品名（logup 已知项目的产品名）：传给提取器 → 产品锚点特征 + 低 margin 时触发 LLM 兜底
+  const productName = typeof parsed.productName === 'string' && parsed.productName.trim() ? parsed.productName.trim() : undefined;
 
   let fields: string[];
   if (parsed.fields === undefined) {
@@ -92,7 +95,7 @@ async function handleExtract(rawBody: string, res: import('node:http').ServerRes
   const start = Date.now();
   try {
     const out = await Promise.race([
-      extractFromUrl(url, { token: GITHUB_TOKEN, registryKey: parsed.registryKey }),
+      extractFromUrl(url, { token: GITHUB_TOKEN, registryKey: parsed.registryKey, productName }),
       new Promise<never>((_, reject) => setTimeout(() => reject(new Error('extract timeout')), EXTRACT_TIMEOUT_MS)),
     ]);
     const result: Record<string, unknown> = { url, elapsedMs: Date.now() - start };
