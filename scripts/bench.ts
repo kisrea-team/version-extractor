@@ -127,13 +127,14 @@ async function main() {
       return { name: c.name, expected: '', extracted: null, verdict: '跳过(待人工)', conf: '—', changelogOk: '—', browser: '', versionPass: false, versionCounted: false, changelogPass: false, changelogCounted: false, llmUsed: false, llmAnswer: null, llmOk: null };
     }
     // LLM 回退需要 productName 才会触发；用 c.name 当产品名，并记录每次 LLM 判定结果
-    let llmInfo: { margin: number; answer: string | null } | null = null;
+    let llmUsed = false;
+    let llmAnswer: string | null = null;
     const out = await extractFromUrl(c.url, {
       token: process.env.GITHUB_TOKEN,
       registryKey: c.registryKey,
       skipBrowser: process.env.SKIP_BROWSER === '1',
       productName: c.name,
-      onLlm: (info) => { llmInfo = info; },
+      onLlm: (info) => { llmUsed = true; llmAnswer = info.answer; },
     });
     const extracted = out.version?.version || null;
     const conf = out.version?.confidence || '—';
@@ -162,9 +163,9 @@ async function main() {
       versionCounted: true,
       changelogPass,
       changelogCounted,
-      llmUsed: !!llmInfo,
-      llmAnswer: llmInfo?.answer ?? null,
-      llmOk: llmInfo ? matchesPrefix(llmInfo.answer ?? '', c.expectedVersion) : null,
+      llmUsed,
+      llmAnswer,
+      llmOk: llmUsed ? matchesPrefix(llmAnswer ?? '', c.expectedVersion) : null,
     };
     printRow(r); // 完成即输出，实时可见
     return r;

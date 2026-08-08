@@ -76,8 +76,9 @@ export async function extractFromUrl(
     ? await fetchPage(url)
     : { status: 0, text: '', error: undefined };
   // 审计：收集提取决策（L1/L2 都触发，取最后一次），返回前统一落库
-  let auditLast: AuditDecision | null = null;
-  const onAudit = (d: AuditDecision) => { auditLast = d; };
+  // 用 box 对象而非 let + 闭包赋值——后者在部分 TS 版本下会被窄化到 never
+  const auditBox: { last: AuditDecision | null } = { last: null };
+  const onAudit = (d: AuditDecision) => { auditBox.last = d; };
   let version = l3Version || (page.text ? await extractVersionWithLgb(page.text, { productName: opts.productName, onLlm: opts.onLlm, onAudit }) : null);
   let neededBrowser = false;
 
@@ -187,9 +188,9 @@ export async function extractFromUrl(
   }
 
   // 审计落库：记录页面 HTML + 候选/rank/LLM/最终（供 API 调取排查）
-  if (auditLast) {
+  if (auditBox.last) {
     recordAudit({
-      ...auditLast,
+      ...auditBox.last,
       ts: new Date().toISOString(),
       url,
       htmlLength: (page.text || '').length,
