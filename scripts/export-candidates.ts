@@ -12,8 +12,12 @@ import { pathToFileURL } from 'url';
 // 但禁止前一个字符是数字/点（避免从 11.26.5 / 0.1.26.5 截出子串）。
 // 尾部 lookahead 排除数量单位（k/K/m/M/b/B）：GitHub star 数 "89.3k"、下载量 "1.2M"
 // 会假扮版本号（hugo 页面的 "Star 89315 89.3k" 曾把 v89.3 当版本）。
+// 尾部 lookahead 排除数量单位（k/K/m/M/b/B）：GitHub star 数 "89.3k"、下载量 "1.2M"
+// 会假扮版本号（hugo 页面的 "Star 89315 89.3k" 曾把 v89.3 当版本）。
+// 还必须排除"数字后面还有数字"：prometheus 下载表 "15.91 MiB" 若不做 (?![0-9])，
+// 正则回溯会把 15.91 切成 v15.9 放进来。
 const SEMVER_RE = /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:[-+][0-9A-Za-z.-]+)?(?![0-9kKmMbB])/g;
-const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?![0-9.\s][kKmMbB])/g;
+const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?![0-9])(?![0-9.\s][kKmMbB])/g;
 // MAJOR 仅匹配带 v 前缀的（避免把年份/数字当版本）；用于对比时让 BERT 候选池覆盖 v153 这类主版本号
 const MAJOR_RE = /\bv(0|[1-9]\d*)\b/g;
 // 带产品前缀的单段版本：Chrome 151 / Firefox 153 / Opera 134。
@@ -39,6 +43,8 @@ const STANDARD_PREFIX_STOP = new Set([
   'mpeg', 'mp3', 'mp4', 'pdf', 'dpi', 'fps', 'lts', 'sdk', 'api', 'oauth', 'openid', 'jwt', 'svg', 'png', 'jpeg',
   'gif', 'tiff', 'avif', 'webp', 'macos', 'mac', 'osx', 'windows', 'win', 'linux', 'ios', 'android', 'iphone',
   'ipad', 'watchos', 'tvos', 'directx', 'opengl', 'vulkan', 'sql',
+  // 标准/标准版本（Unicode 12.0 / Emoji 15.1 / ISO 8601 / CLDR 44 / UAX 11）：changelog 正文常提
+  'unicode', 'iso', 'emoji', 'cldr', 'uax',
   // 许可证名（有限集合，可靠）：ShareAlike 4.0 / Attribution 4.0 / CC BY 4.0 / CC by-sa 4.0
   'sharealike', 'attribution', 'creative', 'cc', 'by', 'sa',
   // 许可证 URL（gpl-2.0.en.html / License version 2.0）不是产品版本
@@ -49,13 +55,22 @@ const STANDARD_PREFIX_STOP = new Set([
   // 库/框架/平台名 + 版本号（Sparkle 1.13.1 / FontAwesome 7.2.0）不是产品版本
   'sparkle', 'fontawesome',
 ]);
+// "X for <platform> <version>"（Zeplin for Mac 10.1.0 / WPS Office for Windows 12.0.1）里
+// 平台词是产品平台描述、版本归产品，不算 OS 版本，必须豁免。只豁免"紧邻版本前、且前面是 for"的平台词；
+// "macOS 15.1"/"Windows 11"/"Linux 6.5" 这类 OS 名版本照常拦截。
+const PLATFORM_FOR_WORDS = new Set(['mac', 'osx', 'windows', 'win', 'linux', 'ios', 'android', 'iphone', 'ipad']);
 
 // 版本号匹配位置前最近的字母词是否为标准名/模型名（WCGA 2.0 → wcag；GPT-4.1 → gpt）
-// 用 split 按分隔符拆分，检查所有词：CC by-sa 4.0 → ["CC","by","sa"] → "cc" 在 STOP。
+// 用 split 按分隔符拆分，检查最近一词：CC by-sa 4.0 → ["CC","by","sa"] → "sa" 在 STOP。
 function hasStandardPrefix(text: string, index: number): boolean {
   const before = text.slice(Math.max(0, index - 30), index);
-  const words = before.toLowerCase().split(/[\s_\/-]+/);
-  return words.some((w) => STANDARD_PREFIX_STOP.has(w));
+  const words = before.toLowerCase().split(/[\s_\/-]+/).filter(Boolean);
+  if (words.length === 0) return false;
+  const last = words[words.length - 1];
+  if (!STANDARD_PREFIX_STOP.has(last)) return false;
+  // "for" 豁免：平台词前面是 for → 版本归产品（Zeplin for Mac 10.1.0），不拦截
+  if (PLATFORM_FOR_WORDS.has(last) && words[words.length - 2] === 'for') return false;
+  return true;
 }
 const VERSION_FIELD_RE = /["'](version|versionNumber|latestVersion|releaseVersion|appVersion|pkgVersion|softwareVersion|productVersion|currentVersion|stableVersion|newVersion|semanticVersion|tag_name|tagName)["']\s*:\s*["']([^"']{1,40})["']/gi;
 const SEMANTIC_SCRIPT_RE = /["'](?:modelUpgradeNotice|releaseNote|releaseNotes|releaseTitle|latestRelease|productTitle|title)["']\s*:\s*["']([^"']{1,240})["']/gi;
@@ -115,7 +130,8 @@ function addMatches(out: Map<string, Candidate>, text: string, scope: Scope, inc
   for (const re of res) {
     re.lastIndex = 0;
     for (const match of text.matchAll(re)) {
-      // 标准/协议名前缀（WCGA 2.0 / macOS 15 / HTML 5）不是产品版本，剔除
+      // 标准/协议名前缀（WCGA 2.0 / macOS 15 / HTML 5）不是产品版本，剔除；
+      // "X for Mac 10.1.0" 的平台词由 hasStandardPrefix 内的 for 豁免放行
       if (hasStandardPrefix(text, match.index || 0)) continue;
       addMatch(out, match[0], snippet(text, match.index || 0), scope);
     }

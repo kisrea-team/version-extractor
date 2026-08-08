@@ -13,7 +13,7 @@
  *   - expectChangelog: 期望能提取到更新日志内容
  */
 import { createRequire } from 'module';
-import { readFileSync } from 'fs';
+import { readFileSync, writeSync } from 'fs';
 import { extractFromUrl, closeBrowser } from '../src/pipeline';
 import { fetchPage } from '../src/crawler';
 import { shouldTrustExtraction } from '../src/version-extract';
@@ -92,9 +92,9 @@ async function main() {
         }
       })();
 
-  console.log(`\n=== 更新数据提取基准 (${cases.length} 例) ===\n`);
-  console.log('站点'.padEnd(12), '期望'.padEnd(10), '版本提取'.padEnd(16), '判定', '置信', '日志', '浏览器');
-  console.log('-'.repeat(80));
+  writeSync(1, `\n=== 更新数据提取基准 (${cases.length} 例) ===\n\n`);
+  writeSync(1, `${'站点'.padEnd(12)} ${'期望'.padEnd(10)} ${'版本提取'.padEnd(16)} 判定 置信 日志 浏览器\n`);
+  writeSync(1, `${'-'.repeat(80)}\n`);
 
   // 单例处理（可并行）
   interface CaseResult {
@@ -109,13 +109,32 @@ async function main() {
     versionCounted: boolean;
     changelogPass: boolean;
     changelogCounted: boolean;
+    llmUsed: boolean;
+    llmAnswer: string | null;
+    llmOk: boolean | null;
   }
+
+  // 每例结果实时写出：fs.writeSync(1, ...) 同步写 fd 1，绕过 Node 对文件的 stdout 缓冲，
+  // 重定向到日志也能逐行看到进度（否则 80 例 ~6KB 要等进程结束才落盘）。
+  function printRow(r: CaseResult): void {
+    const confIcon = { high: '🟢高', medium: '🟡中', low: '🔴低' }[r.conf] || r.conf;
+    writeSync(1, `${r.name.padEnd(12)} ${(r.expected || '(无)').padEnd(10)} ${(r.extracted || '—').padEnd(16)} ${r.verdict} ${confIcon} ${r.changelogOk} ${r.browser}\n`);
+  }
+
   async function runCase(c: TestCase): Promise<CaseResult> {
     // 待人工用例跳过（不参与评分）
     if (c.skip) {
-      return { name: c.name, expected: '', extracted: null, verdict: '跳过(待人工)', conf: '—', changelogOk: '—', browser: '', versionPass: false, versionCounted: false, changelogPass: false, changelogCounted: false };
+      return { name: c.name, expected: '', extracted: null, verdict: '跳过(待人工)', conf: '—', changelogOk: '—', browser: '', versionPass: false, versionCounted: false, changelogPass: false, changelogCounted: false, llmUsed: false, llmAnswer: null, llmOk: null };
     }
-    const out = await extractFromUrl(c.url, { token: process.env.GITHUB_TOKEN, registryKey: c.registryKey, skipBrowser: process.env.SKIP_BROWSER === '1' });
+    // LLM 回退需要 productName 才会触发；用 c.name 当产品名，并记录每次 LLM 判定结果
+    let llmInfo: { margin: number; answer: string | null } | null = null;
+    const out = await extractFromUrl(c.url, {
+      token: process.env.GITHUB_TOKEN,
+      registryKey: c.registryKey,
+      skipBrowser: process.env.SKIP_BROWSER === '1',
+      productName: c.name,
+      onLlm: (info) => { llmInfo = info; },
+    });
     const extracted = out.version?.version || null;
     const conf = out.version?.confidence || '—';
     let verdict: string;
@@ -131,7 +150,7 @@ async function main() {
       changelogPass = changelogOk === '✅';
     }
 
-    return {
+    const r: CaseResult = {
       name: c.name,
       expected: c.expectedVersion,
       extracted,
@@ -143,7 +162,12 @@ async function main() {
       versionCounted: true,
       changelogPass,
       changelogCounted,
+      llmUsed: !!llmInfo,
+      llmAnswer: llmInfo?.answer ?? null,
+      llmOk: llmInfo ? matchesPrefix(llmInfo.answer ?? '', c.expectedVersion) : null,
     };
+    printRow(r); // 完成即输出，实时可见
+    return r;
   }
 
   // 并发限流执行
@@ -160,7 +184,7 @@ async function main() {
     return results;
   }
 
-  const CONCURRENCY = 8; // 高并发：Playwright 单浏览器多页面，got-scraping 并发安全；缓存命中案例不吃内存
+  const CONCURRENCY = 12; // 高并发：Playwright 单浏览器多页面，got-scraping 并发安全；缓存命中案例不吃内存
   const results = await mapWithConcurrency(cases, CONCURRENCY, runCase);
 
   let versionPass = 0;
@@ -173,13 +197,22 @@ async function main() {
     if (r.versionPass) versionPass += 1;
     if (r.changelogCounted) changelogTotal += 1;
     if (r.changelogPass) changelogPass += 1;
-    const confIcon = { high: '🟢高', medium: '🟡中', low: '🔴低' }[r.conf] || r.conf;
-    console.log(r.name.padEnd(12), (r.expected || '(无)').padEnd(10), (r.extracted || '—').padEnd(16), r.verdict, confIcon, r.changelogOk, r.browser);
   }
 
   console.log('\n' + '='.repeat(60));
   console.log(`版本号提取准确率: ${versionPass}/${versionTotal} = ${(versionPass / Math.max(versionTotal, 1) * 100).toFixed(0)}%`);
   console.log(`更新日志提取成功率: ${changelogPass}/${changelogTotal} = ${(changelogPass / Math.max(changelogTotal, 1) * 100).toFixed(0)}%`);
+
+  // LLM 兜底判定：只统计真正咨询过 LLM 的用例（margin<0.1 + 有产品名才触发）
+  const llmCases = results.filter((r) => r.llmUsed);
+  const llmRight = llmCases.filter((r) => r.llmOk);
+  const llmWrong = llmCases.filter((r) => r.llmOk === false && r.llmAnswer);
+  const llmNone = llmCases.filter((r) => !r.llmAnswer);
+  console.log('\n=== LLM 兜底判定 ===');
+  console.log(`咨询 ${llmCases.length} 例 | 答对 ${llmRight.length} | 答错 ${llmWrong.length} | 无答案 ${llmNone.length}`);
+  if (llmRight.length) console.log('答对:', llmRight.map((r) => `${r.name}=${r.llmAnswer}`).join(' '));
+  if (llmWrong.length) console.log('答错:\n    ' + llmWrong.map((r) => `${r.name} 期望${r.expected} LLM=${r.llmAnswer} 最终=${r.extracted}`).join('\n    '));
+  if (llmNone.length) console.log('无答案:', llmNone.map((r) => r.name).join(' '));
   console.log('');
   await closeBrowser();
 }

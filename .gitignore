@@ -51,3 +51,8 @@ scripts/test-*.ts
 data/classifier.joblib
 data/classifier-clean-errors.jsonl
 data/embedder_name.joblib
+data/nvidia-keys.json
+data/modelbest-key.txt
+data/audit.db
+data/audit.db-wal
+data/audit.db-shm

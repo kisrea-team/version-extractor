@@ -19,6 +19,8 @@ COPY . .
 
 ENV PORT=3000
 ENV BENCH_CACHE_DIR=/app/.http-cache
+# Playwright noble 镜像锁 Node 22，node:sqlite 需要 --experimental-sqlite flag
+ENV NODE_OPTIONS=--experimental-sqlite
 EXPOSE 3000
 
 # 浏览器常驻服务，无需 closeBrowser

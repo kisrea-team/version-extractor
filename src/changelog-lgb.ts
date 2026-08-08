@@ -41,8 +41,13 @@ export async function extractChangelogWithTrafilatura(
     }
   }
 
-  // 1. Trafilatura 清洗整页正文（结构无关；纯文本 <pre>/JS 壳会失败，返回 null 走兜底）
-  const content = await cleanWithTrafilatura(html);
+  // 1. Trafilatura 清洗整页正文；feed/JS 页常抽空（Draw Things、MarsCode）→
+  //    回退用候选上下文拼内容（版本提及 + 周边文本，feed 页有真实 changelog 文本）
+  let content = await cleanWithTrafilatura(html);
+  if (!content || content.length < 40) {
+    const raw = collectExportCandidates(html);
+    content = raw.map((c) => c.contexts[0]?.text || '').filter(Boolean).join('\n');
+  }
   if (!content || content.length < 40) return null;
 
   // 2. 版本候选：优先调用方给定（版本提取器结果）；否则 LightGBM 选

@@ -8,6 +8,7 @@ import { join } from 'path';
 import { collectCandidates as collectExportCandidates } from '../scripts/export-candidates';
 import { extractVersionFromHtml, compareVersions, detectVersionSequence } from './version-extract';
 import { extractVersionWithLlm } from './llm';
+import type { AuditDecision } from './audit';
 import type { VersionResult } from './types';
 
 // 特征列顺序（与 data/lgb-nodl-cols.joblib 一致，14 列无 bert_prob）
@@ -511,7 +512,7 @@ export function selectVersionByFamily(scored: LgbResult[], candidates: LgbCandid
 
 // 页面排序模型选择 seed；数值归族仅约束 seed 可到达的版本线，不能以族规模改选其他族。
 // 返回 null 表示排序工件不可用/特征不匹配，由调用方回退旧选择器。
-export interface RankSeedDetail { result: LgbResult; margin: number; }
+export interface RankSeedDetail { result: LgbResult; margin: number; strong: boolean; }
 export async function selectVersionByRankSeedDetailed(
   html: string,
   scored: LgbResult[],
@@ -536,15 +537,15 @@ export async function selectVersionByRankSeedDetailed(
   const pathsOf = new Map(candidates.map((c) => [c.version, c.paths || []]));
   const nodes = valid.map((s) => numericNode(s, null, tagOf.get(s.version) || null, pathsOf.get(s.version) || []));
   const family = buildNumericFamilies(nodes, scopesOf).find((f) => f.nodes.some((n) => n.result.version === seed.version));
-  // 单点族且 seed 无强 scope 证据（下载链接/标题/heading/结构化）→ 极可能是孤立噪声
-  // （blender v330、redis v18.0），回退旧选择器而不是接受噪声 seed。
-  if (family) {
-    const seedScopes = scopesOf.get(seed.version) || new Set();
-    const strong = seedScopes.has('download-link') || seedScopes.has('title') || seedScopes.has('structured') || seedScopes.has('heading');
-    if (family.nodes.length === 1 && !strong) return null;
-  }
+  const seedScopes = scopesOf.get(seed.version) || new Set();
+  const strongScope = seedScopes.has('download-link') || seedScopes.has('title') || seedScopes.has('structured') || seedScopes.has('heading');
+  // 强 seed：有强 scope 证据（下载/标题/heading/结构化）或在多成员版本线内。
+  // 强 seed 即使 margin 低（排名平票）也应信任 rank，不让 LLM 覆盖（Things v3.22）。
+  const strong = strongScope || (family ? family.nodes.length > 1 : false);
+  // 单点族且 seed 无强 scope 证据 → 极可能是孤立噪声（blender v330、redis v18.0），回退旧选择器
+  if (family && family.nodes.length === 1 && !strongScope) return null;
   const result = family ? ([...family.nodes].sort(compareEvolution).pop()?.result || seed) : seed;
-  return { result, margin };
+  return { result, margin, strong };
 }
 
 export async function selectVersionByRankSeed(
@@ -562,7 +563,7 @@ export async function selectVersionByRankSeed(
 // LightGBM 不可用（python 缺失/超时）→ 回退现有启发式 extractVersionFromHtml。
 // opts.productName：调用方已知的产品名（如 "gimp"），用于"产品名 + 版本号"权威锚定，
 // 避免把页面里依赖库版本（GEGL/Mathjax）当主角。可靠且不依赖词表。
-export async function extractVersionWithLgb(html: string, opts: { versionRegex?: string | null; productName?: string | null; rank?: boolean; llm?: boolean } = {}): Promise<VersionResult> {
+export async function extractVersionWithLgb(html: string, opts: { versionRegex?: string | null; productName?: string | null; rank?: boolean; llm?: boolean; onLlm?: (info: { margin: number; answer: string | null }) => void; onAudit?: (d: AuditDecision) => void } = {}): Promise<VersionResult> {
   // 显式正则最高优先（与启发式一致）
   if (opts.versionRegex) {
     const re = new RegExp(opts.versionRegex);
@@ -622,13 +623,19 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
   const rankDetail = opts.rank === false ? null : await selectVersionByRankSeedDetailed(html, scored, candidates, opts.productName || null);
   let selected: LgbResult | null = null;
   let confidence: 'high' | 'medium' | 'low' = 'low';
+  let llmTrace: AuditDecision['llm'] = null; // 审计用：LLM 是否触发/给了什么答案
   if (rankDetail) {
     selected = rankDetail.result;
     if (rankDetail.margin >= 0.1) {
       confidence = 'high';
     } else if (opts.llm !== false && opts.productName) {
-      // 低 margin = rank 模型在两个候选间摇摆，交给纯文字 LLM 用完整语境判定
-      const llmVer = await extractVersionWithLlm(html, opts.productName);
+      // 低 margin = rank 模型在两个候选间摇摆，交给纯文字 LLM 用候选清单判定
+      const llmCandidates = candidates
+        .filter((c) => scored.some((s) => s.version === c.version && Number.isFinite(s.prob) && s.prob > 0.3))
+        .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob }));
+      const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates });
+      opts.onLlm?.({ margin: rankDetail.margin, answer: llmVer }); // 暴露 LLM 判定结果（bench 测 LLM 准确性用）
+      llmTrace = { triggered: true, margin: rankDetail.margin, answer: llmVer };
       if (llmVer) { selected = { version: llmVer, prob: 0.9 }; confidence = 'high'; }
       else confidence = 'low';
     } else {
@@ -640,17 +647,44 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
   }
   if (!selected) {
     // 过滤后无候选 / python 不可用 → 回退启发式
-    return extractVersionFromHtml(html, opts);
+    const hv = extractVersionFromHtml(html, opts);
+    opts.onAudit?.({
+      productName: opts.productName || null,
+      filterThreshold: 0.3,
+      candidates: [],
+      rank: null,
+      llm: null,
+      final: { version: hv.version, confidence: hv.confidence, source: hv.source, suggestedRegex: hv.suggestedRegex },
+    });
+    return hv;
   }
   const best = selected;
   const sourceScope = candidates.find((c) => c.version === best.version)?.scopes?.[0] || 'body';
+  const suggestedRegex = best.version.replace(/^v/i, '').split('.').length >= 3 ? `v?(\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?)` : `v?(\\d+\\.\\d+)`;
+  // 审计：记录候选+概率+rank+LLM+最终，由调用方(pipeline)补 url/html 后落库
+  opts.onAudit?.({
+    productName: opts.productName || null,
+    filterThreshold: 0.3,
+    candidates: candidates.map((c) => ({
+      version: c.version,
+      scopes: c.scopes,
+      contexts: (c.contexts || []).map((x) => ({ scope: x.scope, text: x.text.length > 300 ? x.text.slice(0, 300) + '…' : x.text })),
+      tag: c.tag,
+      paths: c.paths,
+      prob: scored.find((s) => s.version === c.version)?.prob ?? null,
+      isSeed: rankDetail ? c.version === rankDetail.result?.version : undefined,
+    })),
+    rank: rankDetail ? { seed: rankDetail.result?.version || null, margin: rankDetail.margin, strong: rankDetail.strong } : null,
+    llm: llmTrace,
+    final: { version: best.version, confidence, source: sourceScope, suggestedRegex },
+  });
   return {
     version: best.version,
     source: sourceScope,
     confidence,
     needsAiCheck: confidence !== 'high',
     needsBrowser: false,
-    suggestedRegex: best.version.replace(/^v/i, '').split('.').length >= 3 ? `v?(\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?)` : `v?(\\d+\\.\\d+)`,
+    suggestedRegex,
     candidates: [...scored].sort((a, b) => b.prob - a.prob).slice(0, 8).map((s) => ({
       version: s.version,
       score: Math.round(s.prob * 100),

@@ -11,6 +11,7 @@ import { extractVersionWithLgb } from './lgb-score';
 import { extractChangelog } from './changelog';
 import { fetchPage, fetchPageRendered, fetchPageRenderedDeep, closeBrowser } from './crawler';
 import { queryRegistry, queryOfficialEndpoint } from './registries';
+import { recordAudit, type AuditDecision } from './audit';
 import type { ChangelogEntry, UpdateSource, VersionResult } from './types';
 
 export interface ExtractOutcome {
@@ -26,7 +27,7 @@ export interface ExtractOutcome {
 
 export async function extractFromUrl(
   url: string,
-  opts: { token?: string; registryKey?: string; skipBrowser?: boolean; productName?: string | null } = {}
+  opts: { token?: string; registryKey?: string; skipBrowser?: boolean; productName?: string | null; onLlm?: (info: { margin: number; answer: string | null }) => void } = {}
 ): Promise<ExtractOutcome> {
   const source = await enrichSource(classifySource(url));
 
@@ -74,7 +75,10 @@ export async function extractFromUrl(
   let page = source.type === 'changelog-page' || source.type === 'rss'
     ? await fetchPage(url)
     : { status: 0, text: '', error: undefined };
-  let version = l3Version || (page.text ? await extractVersionWithLgb(page.text, { productName: opts.productName }) : null);
+  // 审计：收集提取决策（L1/L2 都触发，取最后一次），返回前统一落库
+  let auditLast: AuditDecision | null = null;
+  const onAudit = (d: AuditDecision) => { auditLast = d; };
+  let version = l3Version || (page.text ? await extractVersionWithLgb(page.text, { productName: opts.productName, onLlm: opts.onLlm, onAudit }) : null);
   let neededBrowser = false;
 
   // L2 深度兜底（文档 three-tier-extractor.md P1/P2）：
@@ -147,7 +151,7 @@ export async function extractFromUrl(
       // LGB 归族能识别完整版本序列（v100~v151）选最大。启发式作 LGB 失败时的兜底。
       const rendered = await fetchPageRendered(url);
       if (!rendered.error && rendered.text) {
-        const lgbRendered = await extractVersionWithLgb(rendered.text, { productName: opts.productName });
+        const lgbRendered = await extractVersionWithLgb(rendered.text, { productName: opts.productName, onLlm: opts.onLlm, onAudit });
         const re = (lgbRendered.version && lgbRendered.confidence !== 'low')
           ? lgbRendered
           : extractVersionFromHtml(rendered.text);
@@ -180,6 +184,17 @@ export async function extractFromUrl(
       source,
       page.text ? { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token, productName: opts.productName } : { version: finalVersion.version || undefined, token: opts.token, productName: opts.productName }
     );
+  }
+
+  // 审计落库：记录页面 HTML + 候选/rank/LLM/最终（供 API 调取排查）
+  if (auditLast) {
+    recordAudit({
+      ...auditLast,
+      ts: new Date().toISOString(),
+      url,
+      htmlLength: (page.text || '').length,
+      html: page.text || '',
+    });
   }
 
   return { url, source, version: finalVersion, changelog, neededBrowser, registryVersion, registryKey: registryResolvedKey, renderedText: neededBrowser ? page.text : undefined };

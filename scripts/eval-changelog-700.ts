@@ -6,12 +6,18 @@ import { extractVersionWithLgb } from '../src/lgb-score';
 import { fetchPage, closeBrowser } from '../src/crawler';
 
 // 从 700 训练集收集 changelog 性质 URL + current 真值
+// 用人工审计的 expected-fixes.json 覆盖过期/错误期望（Bandizip/Kdenlive 等）
+const FIXES: Record<string, string> = JSON.parse(readFileSync('data/expected-fixes.json', 'utf-8'));
 const data = new Map<string, { name: string; current: string | null }>();
 for (const line of readFileSync('data/ds700-ctx/train2.jsonl', 'utf-8').split('\n').filter(Boolean)) {
   const d = JSON.parse(line);
   const cur = data.get(d.url) || { name: d.name, current: null };
   if (d.temporalStatus === 'current' && d.label === 1 && d.version) cur.current = d.version;
   data.set(d.url, cur);
+}
+for (const [url, v] of Object.entries(FIXES)) {
+  const existing = data.get(url);
+  if (existing) existing.current = v; // 只覆盖 eval 已有用例，不新增
 }
 const cases = [...data.entries()]
   .filter(([u, v]) => /(changelog|releases?|news|release-notes|history|updates?|version|log)/i.test(u))
@@ -110,8 +116,27 @@ async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (item: T)
 console.log('用例'.padEnd(20), '期望'.padEnd(10), '版本'.padEnd(12), '长度'.padEnd(6), '结果');
 console.log('-'.repeat(72));
 
-// 并发 6：GitHub API 无 token 有配额，RSS/changelog-page 用缓存；避免并发太高触发限流
-const results = await mapWithConcurrency(cases, 12, runCase);
+// 每例 150s 硬超时，防单页（LLM/Trafilatura）卡死拖垮整批
+function runCaseWithTimeout(c: { url: string; name: string; expected: string | null }): Promise<CaseResult> {
+  return Promise.race([
+    runCase(c),
+    new Promise<CaseResult>((resolve) => setTimeout(() => {
+      resolve({ name: c.name, expected: c.expected || '', entryVersion: null, version: null, length: 0, pass: false, hasContent: false, verOk: false, error: '超时' });
+    }, 150000)),
+  ]);
+}
+
+// 并发 12：低 margin 页会走 LLM 回退（Trafilatura Python + NVIDIA 调用），
+// 每例 150s 硬超时防单页卡死；进度逐例打印便于定位。
+const results = await mapWithConcurrency(cases, 12, async (c) => {
+  const r = await runCaseWithTimeout(c);
+  if (r.error) { console.log(`${r.name.padEnd(20)} ${r.expected.padEnd(10)} ${r.error}`); }
+  else {
+    const mark = r.pass ? '✅' : `❌${r.hasContent ? '' : ' 无内容'}${r.verOk ? '' : ' 版本错'}`;
+    console.log(`${r.name.padEnd(20)} ${r.expected.padEnd(10)} ${(r.entryVersion || r.version || '—').padEnd(12)} ${String(r.length).padEnd(6)} ${mark}`);
+  }
+  return r;
+});
 
 let ok = 0, total = 0;
 for (const r of results) {
