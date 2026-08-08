@@ -581,7 +581,28 @@ export async function extractChangelog(
         }
         const type = detectChangelogType(r.text);
 
-        // ── Trafilatura + LightGBM 首选路径（用户策略）──
+        // ── 首选：remark AST 版本锚定分节 ──
+        // Trafilatura 清洗 → mdast → 找版本标题 → 取到下一个同级/更高级标题 = 该版本专属段落。
+        // sqlite/obsidian/php 等标准 changelog 页：日志终于只含当前版本，而不是整页正文。
+        const { cleanWithTrafilatura } = await import('./trafilatura');
+        const { extractMdVersionSection } = await import('./changelog-md');
+        const md = await cleanWithTrafilatura(r.text);
+        if (md) {
+          const mdEntry = extractMdVersionSection(md, opts.version || null);
+          if (mdEntry && mdEntry.content.length > 100 && !/<\/?[a-z][\s>]/.test(mdEntry.content)) {
+            return {
+              version: mdEntry.version,
+              date: mdEntry.date,
+              title: mdEntry.title,
+              content: mdEntry.content,
+              source: 'changelog-page',
+              language: detectLanguage(mdEntry.content),
+              confidence: 'high' as const,
+            };
+          }
+        }
+
+        // ── Trafilatura + LightGBM 兜底路径（原首选；分节失败时整页）──
         // ① Trafilatura 清洗整页正文（结构无关）→ ② 版本候选 + LightGBM 评分 → ③ 组装。
         // 纯文本 <pre>（nginx）/ JS 壳（python fallback）Trafilatura 提取失败 → 走下方规则层/浏览器兜底。
         const traEntry = await import('./changelog-lgb').then((m) =>
