@@ -139,7 +139,7 @@ async function handleAudit(query: string, res: import('node:http').ServerRespons
       return sendJson(res, 200, { url: targetUrl, found: true, extraction: row, candidates });
     }
     const where: string[] = [];
-    const args: unknown[] = [];
+    const args: Array<string | number> = [];
     if (llmWrong) {
       where.push('llmTriggered = 1 AND llmAnswer IS NOT NULL AND llmAnswer != finalVersion');
     }
