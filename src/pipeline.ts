@@ -229,6 +229,19 @@ export async function extractFromUrl(
       source,
       page.text ? { pageHtml: page.text, version: finalVersion.version || undefined, token: opts.token, productName: opts.productName } : { version: finalVersion.version || undefined, token: opts.token, productName: opts.productName }
     );
+    // 页面 changelog 锚定版本回填：注册表版本可能来自组件/子包（如 brew thingsmacsandboxhelper
+    // 的 3.48 是沙盒辅助组件版本，Things 主程序页面真实版本是 3.22.13）。changelog 锚定的版本
+    // 是页面正文真实标题（用户可见），与注册表不一致时以页面为准。
+    if (changelog?.version && finalVersion.version && changelog.version !== finalVersion.version) {
+      finalVersion = {
+        version: changelog.version,
+        source: changelog.source === 'changelog-page' ? 'changelog-anchor' : finalVersion.source,
+        confidence: 'high' as const,
+        needsAiCheck: false,
+        needsBrowser: false,
+        suggestedRegex: null,
+      };
+    }
   }
 
   // 审计落库：记录页面 HTML + 候选/rank/LLM/最终（供 API 调取排查）
