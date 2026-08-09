@@ -10,7 +10,7 @@ export type Confidence = 'high' | 'medium' | 'low';
 // ── 版本号提取结果 ──
 export interface VersionResult {
   version: string | null;
-  source: string; // version_regex | title | json-ld | body | url | none
+  source: string; // version_regex | title | structured | body | url | none
   confidence: Confidence;
   needsAiCheck: boolean; // 只有 high 才免 AI
   needsBrowser: boolean; // 页面疑似 JS 渲染，启发式拿不到 → 建议 chrome-devtools/AI
@@ -39,7 +39,7 @@ export interface ChangelogEntry {
   date?: string | null;
   title?: string | null;
   content: string; // Markdown
-  source: 'github-release' | 'github-tag' | 'rss' | 'changelog-page' | 'json' | 'none';
+  source: 'github-release' | 'github-tag' | 'rss' | 'changelog-page' | 'json' | 'official-endpoint' | 'none';
   language?: 'zh' | 'en' | 'other' | 'unknown';
   confidence: Confidence;
 }

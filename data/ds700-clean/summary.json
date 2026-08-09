@@ -1,0 +1,13 @@
+{
+  "annotations_original": 902,
+  "annotations_dedup": 858,
+  "pos": 220,
+  "neg": 60,
+  "hist": 115,
+  "amb": 463,
+  "ambiguous_converted_to_neg": 3,
+  "old_neg_merged": 77,
+  "train_urls": 161,
+  "val_urls": 37,
+  "test_urls": 49
+}

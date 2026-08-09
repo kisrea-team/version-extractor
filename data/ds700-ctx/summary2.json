@@ -1,0 +1,10 @@
+{
+  "read": 2811,
+  "binary_train": 1887,
+  "binary_val": 449,
+  "binary_test": 411,
+  "pairs": 779,
+  "train_urls": 182,
+  "val_urls": 42,
+  "test_urls": 56
+}

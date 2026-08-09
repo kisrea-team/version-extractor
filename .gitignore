@@ -3,3 +3,56 @@ node_modules/
 .env
 .DS_Store
 .bench-cache/
+.reg-cache/
+data/html/
+.fix.mts
+.pr_files.json
+
+
+# 一次性调试脚本（不提交，部分 import 已删除的函数会破坏 tsc）
+scripts/diag-*.ts
+scripts/check-*.ts
+scripts/test-*.ts
+
+# 大/临时数据（不进 git）
+data/annotation-batches/
+data/.l2cache/
+data/sort-crawl/
+data/html/
+data/compare-*.jsonl
+data/compare-report.jsonl
+data/compare-run*.log
+data/candidates*.jsonl
+data/classifier-*.joblib
+data/embedder-*.joblib
+data/ranker-*.joblib
+data/lgb-lr-bert.joblib
+data/*.tmp.json
+data/*.log
+data/audit-digest.txt
+
+# 一次性调试/对比脚本
+scripts/_*.ts
+scripts/study-*.ts
+scripts/verify-*.ts
+scripts/debug-*.ts
+scripts/ab-rank.ts
+scripts/audit-*.ts
+scripts/gen-audit-digest.ts
+scripts/calibrate-confidence.ts
+scripts/bench-family.ts
+scripts/compare-new.ts
+scripts/compare-tra-lgb.ts
+scripts/compare-train3-test.ts
+scripts/compare-new-l2.ts
+scripts/check-*.ts
+scripts/test-*.ts
+# 旧 BERT 模型（已弃用，当前用 lgb-filter-nodl + lgb-rank3）
+data/classifier.joblib
+data/classifier-clean-errors.jsonl
+data/embedder_name.joblib
+data/nvidia-keys.json
+data/modelbest-key.txt
+data/audit.db
+data/audit.db-wal
+data/audit.db-shm

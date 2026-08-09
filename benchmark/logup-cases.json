@@ -1,0 +1,387 @@
+[
+  {
+    "name": "通义灵码",
+    "url": "https://marketplace.visualstudio.com/items/Alibaba-Cloud.tongyi-lingma",
+    "expectedVersion": "v2.6.3",
+    "currentDbVersion": "v2.5.20",
+    "versionRegex": "\"Version\":\"([\\d.]+)\""
+  },
+  {
+    "name": "Retool",
+    "url": "https://docs.retool.com/releases/stable/all",
+    "expectedVersion": "",
+    "currentDbVersion": "v3.334.2",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)\\s*[–\\-]"
+  },
+  {
+    "name": "1Password CLI",
+    "url": "https://app-updates.agilebits.com/product_history/CLI2",
+    "expectedVersion": "v2.38.1",
+    "currentDbVersion": "v2.33.0",
+    "versionRegex": "<h3>\\s+(\\d+\\.\\d+\\.\\d+)\\s+<span"
+  },
+  {
+    "name": "SuperDuper",
+    "url": "https://www.shirt-pocket.com/blog/",
+    "expectedVersion": "v3.0.",
+    "currentDbVersion": "v3.12",
+    "versionRegex": "SuperDuper v([\\d.]+)"
+  },
+  {
+    "name": "newton-physics/newton",
+    "url": "https://raw.githubusercontent.com/newton-physics/newton/main/CHANGELOG.md",
+    "expectedVersion": "v1.4.0",
+    "currentDbVersion": "v1.0.0",
+    "versionRegex": "## \\[(\\d+\\.\\d+\\.\\d+)\\]"
+  },
+  {
+    "name": "Microsoft Excel",
+    "url": "https://learn.microsoft.com/en-us/officeupdates/current-channel",
+    "expectedVersion": "",
+    "currentDbVersion": "v2602",
+    "versionRegex": "## Version\\s+(\\d+):"
+  },
+  {
+    "name": "Basedash",
+    "url": "https://basedash.com/docs/changelog",
+    "expectedVersion": "",
+    "currentDbVersion": "v1.16.0",
+    "versionRegex": "(January|February|March|April|May|June|July|August|September|October|November|December)\\s+(\\d{1,2}),\\s+(\\d{4})"
+  },
+  {
+    "name": "Claude iOS App",
+    "url": "https://itunes.apple.com/lookup?id=6473753684&entity=software",
+    "expectedVersion": "v1.260721.0",
+    "currentDbVersion": "v1.260316.1",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  },
+  {
+    "name": "秘塔AI搜索",
+    "url": "https://chromewebstore.google.com/detail/秘塔ai搜索/amjmldchkefejkpgebhgioimmfkakgpo",
+    "expectedVersion": "",
+    "currentDbVersion": "v1.5.9",
+    "versionRegex": "\"version\"[^>]*>[^<]*([\\d.]+)"
+  },
+  {
+    "name": "豆包",
+    "url": "https://itunes.apple.com/cn/search?term=%E8%B1%86%E5%8C%85&media=software&limit=1",
+    "expectedVersion": "v14.4.0",
+    "currentDbVersion": "v12.5.0",
+    "versionRegex": "\"version\"\\s*:\\s*\"([^\"]+)\""
+  },
+  {
+    "name": "Photoroom",
+    "url": "https://itunes.apple.com/lookup?id=1455009060",
+    "expectedVersion": "v2026.31.01",
+    "currentDbVersion": "v2026.12.01",
+    "versionRegex": "\"version\"\\s*:\\s*\"([^\"]+)\""
+  },
+  {
+    "name": "PDFgear",
+    "url": "https://itunes.apple.com/lookup?id=6469021132&entity=software",
+    "expectedVersion": "v2.26",
+    "currentDbVersion": "v2.22",
+    "versionRegex": "\"version\"\\s*:\\s*\"([^\"\\}]+)\""
+  },
+  {
+    "name": "Gemini Code Assist",
+    "url": "https://cloud.google.com/gemini/docs/release-notes",
+    "expectedVersion": "",
+    "currentDbVersion": "v2.75.0",
+    "versionRegex": "VS Code Gemini Code Assist (\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Amp",
+    "url": "https://registry.npmjs.org/@sourcegraph/amp/latest",
+    "expectedVersion": "v0.0.1785716348-g5ad872",
+    "currentDbVersion": "v0.0.1774099812-ga029f6",
+    "versionRegex": "\\\"version\\\":\\\"([^\\\"]+)\\\""
+  },
+  {
+    "name": "Codeium",
+    "url": "https://marketplace.visualstudio.com/items/Codeium.codeium",
+    "expectedVersion": "v1.49.2",
+    "currentDbVersion": "v1.49.2",
+    "versionRegex": "\"Version\":\"([0-9]+\\.[0-9]+\\.[0-9]+)\""
+  },
+  {
+    "name": "Obsidian Canvas",
+    "url": "https://obsidian.md/changelog.json",
+    "expectedVersion": "v1.13",
+    "currentDbVersion": "v1.12.6",
+    "versionRegex": "\"title\":\\s*\"Obsidian\\s+([\\d.]+)\\s+Desktop"
+  },
+  {
+    "name": "Draw Things",
+    "url": "https://releases.drawthings.ai/feed",
+    "expectedVersion": "v20260330.0",
+    "currentDbVersion": "v1.20260314.0",
+    "versionRegex": "1\\.(\\d{8}\\.\\d+)"
+  },
+  {
+    "name": "Lens Studio",
+    "url": "https://ar.snap.com/download",
+    "expectedVersion": "v5.23.0",
+    "currentDbVersion": "v5.19.2",
+    "versionRegex": "Version\\s+(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Zotero",
+    "url": "https://www.zotero.org/support/changelog",
+    "expectedVersion": "v9.0.6",
+    "currentDbVersion": "v8.0.4",
+    "versionRegex": "Changes in (\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "Zeplin",
+    "url": "https://support.zeplin.io/en/articles/5308714-release-notes-zeplin-for-mac",
+    "expectedVersion": "v10.1.0",
+    "currentDbVersion": "v10.1.0",
+    "versionRegex": "Zeplin for Mac (\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "Ableton Live",
+    "url": "https://www.ableton.com/en/release-notes/live-12/",
+    "expectedVersion": "v12.3",
+    "currentDbVersion": "v12.3.6",
+    "versionRegex": "Live\\s+(\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "Tower",
+    "url": "https://www.git-tower.com/release-notes",
+    "expectedVersion": "",
+    "currentDbVersion": "v15",
+    "versionRegex": "\"version\":\\s*\"([^\"]+)\""
+  },
+  {
+    "name": "Scrivener",
+    "url": "https://www.literatureandlatte.com/scrivener/release-notes",
+    "expectedVersion": "v3.5.2",
+    "currentDbVersion": "v3.5.2",
+    "versionRegex": "Scrivener ([0-9]+\\.[0-9]+\\.[0-9]+)"
+  },
+  {
+    "name": "IntelliJ IDEA",
+    "url": "https://www.jetbrains.com/idea/whatsnew/",
+    "expectedVersion": "v2026.2",
+    "currentDbVersion": "v2025.3",
+    "versionRegex": "IntelliJ IDEA\\s+(\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "PyCharm",
+    "url": "https://data.services.jetbrains.com/products/releases?code=PCP,PCC&latest=true&type=release",
+    "expectedVersion": "v2025.3",
+    "currentDbVersion": "v2025.3.3",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  },
+  {
+    "name": "Via Browser",
+    "url": "https://www.apkmirror.com/apk/tu-yafeng/via-browser-fast-light-geek-best-choice/feed/",
+    "expectedVersion": "",
+    "currentDbVersion": "v7.0.0",
+    "versionRegex": "Via Browser - Fast (?:&#038;|&amp;|&) Light (\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "KWGT Kustom Widget Maker",
+    "url": "https://docs.kustom.rocks/releases/kwgt-aosp.json",
+    "expectedVersion": "v3.82b619510aosp",
+    "currentDbVersion": "v3.82",
+    "versionRegex": "\"version\"\\s*:\\s*\"([^\"]+)\""
+  },
+  {
+    "name": "QuillBot",
+    "url": "https://chrome.google.com/webstore/detail/quillbot-ai-writing-and-g/iidnbdjijdkbmajdffnidomddglmieko",
+    "expectedVersion": "",
+    "currentDbVersion": "v4.69.0",
+    "versionRegex": "Version</div><div[^>]*>(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Amazon Q Developer",
+    "url": "https://open-vsx.org/api/AmazonWebServices/amazon-q-vscode",
+    "expectedVersion": "v2.4.0",
+    "currentDbVersion": "v1.112.0",
+    "versionRegex": "\"version\":\"([0-9.]+)\""
+  },
+  {
+    "name": "LightPDF",
+    "url": "https://lightpdf.com/whats-new",
+    "expectedVersion": "v2.0.0",
+    "currentDbVersion": "v2.0.0",
+    "versionRegex": "<h3[^>]*>Version (\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Augment Code",
+    "url": "https://www.augmentcode.com/changelog",
+    "expectedVersion": "v0.2.5",
+    "currentDbVersion": "v0.2.31",
+    "versionRegex": "Intent\\s+([\\d.]+)\\s+Release Notes"
+  },
+  {
+    "name": "Core Shell",
+    "url": "https://itunes.apple.com/lookup?id=1354319581&entity=software",
+    "expectedVersion": "v4.0",
+    "currentDbVersion": "v4.0",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  },
+  {
+    "name": "Audio Hijack",
+    "url": "https://rogueamoeba.com/audiohijack/releasenotes.php",
+    "expectedVersion": "v4.5.8",
+    "currentDbVersion": "v4.5.6",
+    "versionRegex": "Audio Hijack\\s+(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Snipd",
+    "url": "https://itunes.apple.com/lookup?id=1557206126",
+    "expectedVersion": "v4.1.17",
+    "currentDbVersion": "v3.6.100",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  },
+  {
+    "name": "Linear CLI",
+    "url": "https://registry.npmjs.org/@linear/import",
+    "expectedVersion": "v3.2.6",
+    "currentDbVersion": "v3.0.12",
+    "versionRegex": "\"latest\":\"([^\"]+)\""
+  },
+  {
+    "name": "MacWhisper",
+    "url": "https://macwhisper.com/",
+    "expectedVersion": "",
+    "currentDbVersion": "v13.16",
+    "versionRegex": "&quot;name&quot;:&quot;Version&quot;,&quot;value&quot;:&quot;([0-9]+\\.[0-9]+(?:\\.[0-9]+)?)&quot;"
+  },
+  {
+    "name": "Postman Agent",
+    "url": "https://dl-agent.pstmn.io/update/win64/0.0.0",
+    "expectedVersion": "v0.4.90",
+    "currentDbVersion": "v1.0.0",
+    "versionRegex": "download/(\\d+\\.\\d+\\.\\d+)/"
+  },
+  {
+    "name": "Unite",
+    "url": "https://www.bzgapps.com/unite-changelog",
+    "expectedVersion": "v1.6",
+    "currentDbVersion": "v1.0.2",
+    "versionRegex": "Unite\\s+(?:Pro\\s+)?(\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "Dia Browser",
+    "url": "https://www.diabrowser.com/release-notes/latest",
+    "expectedVersion": "",
+    "currentDbVersion": "v1.23.0",
+    "versionRegex": "\"appVersion\":\"(\\d+\\.\\d+\\.\\d+)\""
+  },
+  {
+    "name": "ServBay",
+    "url": "https://support.servbay.com/zh-CN/getting-started/release-notes",
+    "expectedVersion": "v1.31.2",
+    "currentDbVersion": "v1.19.8",
+    "versionRegex": "版本 ([\\d.]+)"
+  },
+  {
+    "name": "Compressor",
+    "url": "https://support.apple.com/en-my/102745",
+    "expectedVersion": "v5.3",
+    "currentDbVersion": "v5.0",
+    "versionRegex": "(?:New in\\s+)?Compressor\\s+(\\d+(?:\\.\\d+)+)"
+  },
+  {
+    "name": "Logic Pro",
+    "url": "https://support.apple.com/en-us/109503",
+    "expectedVersion": "",
+    "currentDbVersion": "v12.0.1",
+    "versionRegex": "New in Logic Pro ([\\d.]+)"
+  },
+  {
+    "name": "Due",
+    "url": "https://itunes.apple.com/lookup?id=390017969&country=us",
+    "expectedVersion": "v26.4.3",
+    "currentDbVersion": "v26.2",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  },
+  {
+    "name": "Paprika Recipe Manager",
+    "url": "https://paprika-3.en.uptodown.com/android/versions",
+    "expectedVersion": "",
+    "currentDbVersion": "v3.3.10",
+    "versionRegex": "<div class=\"version\">(\\d+\\.\\d+\\.\\d+)</div>"
+  },
+  {
+    "name": "DeepL",
+    "url": "https://filehippo.com/download_deepl/",
+    "expectedVersion": "",
+    "currentDbVersion": "v26.1.1",
+    "versionRegex": "Download DeepL (\\d+\\.\\d+(?:\\.\\d+)*) for Windows"
+  },
+  {
+    "name": "Sora",
+    "url": "https://help.openai.com/en/articles/12593142-sora-release-notes",
+    "expectedVersion": "",
+    "currentDbVersion": "v2.0",
+    "versionRegex": "Today we.*?introducing.*?(\\d+\\.\\d+)|Version\\s+(\\d+\\.\\d+)|v(\\d+\\.\\d+)|Sora\\s+(\\d+\\.\\d+)"
+  },
+  {
+    "name": "可灵AI",
+    "url": "https://klingai.com/dev",
+    "expectedVersion": "v3.0",
+    "currentDbVersion": "v3.0",
+    "versionRegex": "(?:可灵|Kling)\\s*(\\d+\\.\\d+(?:\\.\\d+)?)"
+  },
+  {
+    "name": "NovelAI",
+    "url": "https://novelai.net/updates_localized.json",
+    "expectedVersion": "",
+    "currentDbVersion": "v342",
+    "versionRegex": "static\\.novelai\\.net/updates/(\\d+)-"
+  },
+  {
+    "name": "UncovAI",
+    "url": "https://chromewebstore.google.com/detail/uncovai-deepfake-detector/ljcoghbmlcdlpadiggapnbchdpahkbic",
+    "expectedVersion": "",
+    "currentDbVersion": "v2.3.2",
+    "versionRegex": "Version[\\s\\S]*?([\\d.]+)"
+  },
+  {
+    "name": "Cloudflare Workers",
+    "url": "https://developers.cloudflare.com/workers/platform/changelog/index.xml",
+    "expectedVersion": "v2026-06-04",
+    "currentDbVersion": "v2026.01.29",
+    "versionRegex": "<item><title>Workers - (\\d{4}-\\d{2}-\\d{2})</title>"
+  },
+  {
+    "name": "PotPlayer",
+    "url": "https://www.videohelp.com/software/PotPlayer/version-history",
+    "expectedVersion": "v260630",
+    "currentDbVersion": "v260114",
+    "versionRegex": "\\[(\\d{6})\\]"
+  },
+  {
+    "name": "MarsCode",
+    "url": "https://docs.marscode.cn/native-ide/changelog",
+    "expectedVersion": "v0.1.4",
+    "currentDbVersion": "v0.1.4",
+    "versionRegex": "version\\s+([0-9.]+)\\)"
+  },
+  {
+    "name": "Qwen Chat",
+    "url": "https://www.qianwen.com/download",
+    "expectedVersion": "v2.3.2",
+    "currentDbVersion": "v2.3.2",
+    "versionRegex": "/native/app/(\\d+\\.\\d+\\.\\d+)/"
+  },
+  {
+    "name": "WinToUSB",
+    "url": "https://www.easyuefi.com/wintousb/change-logs.html",
+    "expectedVersion": "v10.8",
+    "currentDbVersion": "v10.5",
+    "versionRegex": "Version\\s+(\\d+\\.\\d+)"
+  },
+  {
+    "name": "Picsart",
+    "url": "https://itunes.apple.com/lookup?id=587366035&entity=software",
+    "expectedVersion": "v30.4.2",
+    "currentDbVersion": "v29.4.3",
+    "versionRegex": "\"version\":\"([^\"]+)\""
+  }
+]

@@ -7,16 +7,26 @@
   "scripts": {
     "bench": "tsx scripts/bench.ts",
     "bench:cases": "tsx scripts/bench.ts --cases benchmark/cases.json",
-    "probe": "tsx scripts/bench.ts --probe"
+    "probe": "tsx scripts/bench.ts --probe",
+    "serve": "tsx src/server.ts",
+    "start": "tsx src/server.ts"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "got-scraping": "^4.2.1",
     "header-generator": "^2.1.87",
     "playwright": "^1.62.1",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
     "rss-parser": "^3.13.0",
-    "turndown": "^7.2.4"
+    "semver": "^7.8.5",
+    "turndown": "^7.2.4",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^26.1.2",
+    "pg": "^8.22.0",
     "tsx": "^4.19.0",
     "typescript": "^5"
   }

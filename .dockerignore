@@ -1,0 +1,23 @@
+node_modules
+.bench-cache
+.http-cache
+.git
+*.log
+# 保留生产模型 + 配置；排除大训练数据/HTML 快照
+data/annotation-batches/
+data/html/
+data/.l2cache/
+data/sort-crawl/
+data/ds700-ctx/
+data/ds700-clean/
+data/train3*.jsonl
+data/canonical-*.jsonl
+data/*.tmp.json
+data/audit-digest.txt
+data/train.log
+data/compare-*.jsonl
+data/candidates*.jsonl
+data/classifier*.joblib
+data/embedder*.joblib
+data/ranker*.joblib
+data/lgb-lr-bert.joblib

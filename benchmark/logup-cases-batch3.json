@@ -1,0 +1,310 @@
+[
+  {
+    "name": "Asana",
+    "url": "https://asana.com/download",
+    "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
+    "currentDbVersion": "v2026.2"
+  },
+  {
+    "name": "Trello",
+    "url": "https://trello.com",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v2026.4.1"
+  },
+  {
+    "name": "Miro",
+    "url": "https://miro.com/blog/whats-new-february-2026/",
+    "versionRegex": "article:published_time\\\" content=\\\"(\\d{4}-\\d{2}-\\d{2})T",
+    "currentDbVersion": "v2026.2.26"
+  },
+  {
+    "name": "monday.com",
+    "url": "https://monday.com",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v2026.2.26"
+  },
+  {
+    "name": "Vercel",
+    "url": "https://registry.npmjs.org/vercel/latest",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v50.34.3"
+  },
+  {
+    "name": "Postman",
+    "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+    "versionRegex": "\"changelog\"\\s*:\\s*\\[\\s*\\{\\s*\"name\"\\s*:\\s*\"([^\"]+)\"",
+    "currentDbVersion": "v12.2.2"
+  },
+  {
+    "name": "Render",
+    "url": "https://render.com/changelog",
+    "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
+    "currentDbVersion": "v2026.02.24"
+  },
+  {
+    "name": "Todoist",
+    "url": "https://www.todoist.com/help/articles/changelog-entries-from-2026-HD3jJAtLd",
+    "versionRegex": "Desktop\\s+v([0-9]+\\.[0-9]+\\.[0-9]+)",
+    "currentDbVersion": "v9.26.4"
+  },
+  {
+    "name": "Notion",
+    "url": "https://www.notion.com/releases/rss.xml",
+    "versionRegex": "https://www\\.notion\\.so/releases/([0-9]{4}-[0-9]{2}-[0-9]{2})",
+    "currentDbVersion": "v2026-03-20"
+  },
+  {
+    "name": "Everything (voidtools)",
+    "url": "https://www.voidtools.com/Changes.txt",
+    "versionRegex": "Version ([\\d.]+)",
+    "currentDbVersion": "v1.4.1.1032",
+    "registryKey": "winget:voidtools.Everything"
+  },
+  {
+    "name": "nuxt/nuxt",
+    "url": "https://registry.npmjs.org/nuxt/latest",
+    "versionRegex": "\"name\"\\s*:\\s*\"nuxt\"\\s*,\\s*\"version\"\\s*:\\s*\"([^\"]+)\"",
+    "currentDbVersion": "v4.3.1"
+  },
+  {
+    "name": "OrbStack",
+    "url": "https://orbstack.dev",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v2.0.5"
+  },
+  {
+    "name": "Sublime Text",
+    "url": "https://www.sublimetext.com/download",
+    "versionRegex": "class=\"latest\"><i>Version:<\\/i>\\s*Build\\s*([0-9]{4})<\\/p>",
+    "currentDbVersion": "v4200",
+    "registryKey": "winget:SublimeHQ.SublimeText"
+  },
+  {
+    "name": "Typora",
+    "url": "https://typora.io/releases/stable.html",
+    "versionRegex": "<h2>(\\d+\\.\\d+\\.\\d+)<\\/h2>",
+    "currentDbVersion": "v1.12.6"
+  },
+  {
+    "name": "Warp",
+    "url": "https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml",
+    "versionRegex": "<title>[^<]*?version\\s+(20[0-9]{2}\\.[0-9]+\\.[0-9]+\\.[0-9]+)",
+    "currentDbVersion": "v2026.3.566.1"
+  },
+  {
+    "name": "Notepad++",
+    "url": "https://notepad-plus-plus.org/downloads/",
+    "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
+    "currentDbVersion": "v8.9.2",
+    "registryKey": "winget:Notepad++.Notepad++"
+  },
+  {
+    "name": "Wireshark",
+    "url": "https://www.wireshark.org/docs/relnotes/wireshark-4.6.4.html",
+    "versionRegex": "Wireshark\\s+(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v4.6.4",
+    "registryKey": "winget:WiresharkFoundation.Wireshark"
+  },
+  {
+    "name": "WinSCP",
+    "url": "https://winscp.net/eng/docs/history",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v6.6.1",
+    "registryKey": "winget:WinSCP.WinSCP"
+  },
+  {
+    "name": "7-Zip",
+    "url": "https://www.7-zip.org/history.txt",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v26.00",
+    "registryKey": "winget:7zip.7zip"
+  },
+  {
+    "name": "Alfred",
+    "url": "https://www.alfredapp.com",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v5.7.2"
+  },
+  {
+    "name": "Snipaste",
+    "url": "https://www.snipaste.com/download.html",
+    "versionRegex": "<h4><b>(v\\d+(?:\\.\\d+)+)</b>\\s*\\(\\d{4}\\.\\d{2}\\.\\d{2}\\)</h4>",
+    "currentDbVersion": "v2.11.3"
+  },
+  {
+    "name": "WinRAR",
+    "url": "https://www.win-rar.com/start.html?&L=0",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v7.20",
+    "registryKey": "winget:RARLab.WinRAR"
+  },
+  {
+    "name": "Bandizip",
+    "url": "https://www.bandisoft.com/bandizip/history/",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v7.40"
+  },
+  {
+    "name": "Total Commander",
+    "url": "https://www.ghisler.com/download.htm",
+    "versionRegex": "Download\\s*version\\s*(\\d+\\.\\d+(?:\\.\\d+)?)\\s*of Total Commander",
+    "currentDbVersion": "v11.56"
+  },
+  {
+    "name": "HeidiSQL",
+    "url": "https://www.heidisql.com/download.php",
+    "versionRegex": "<h1>\\s*Download HeidiSQL (v[\\d.]+)",
+    "currentDbVersion": "v12.15.1.1"
+  },
+  {
+    "name": "Internet Download Manager",
+    "url": "https://www.internetdownloadmanager.com/news.html",
+    "versionRegex": "<[Hh]3>What's new in version ([0-9.]+ Build [0-9]+)</[Hh]3>",
+    "currentDbVersion": "6.42 Build 62"
+  },
+  {
+    "name": "nginx/nginx",
+    "url": "https://nginx.org/en/download.html",
+    "versionRegex": "Mainline version[\\s\\S]*?nginx-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+    "currentDbVersion": "release-1.29.5"
+  },
+  {
+    "name": "Python",
+    "url": "https://www.python.org/downloads/",
+    "versionRegex": "Python (\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "3.14.3"
+  },
+  {
+    "name": "OpenSSL",
+    "url": "https://www.openssl.org/source/",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "3.6.1"
+  },
+  {
+    "name": "NGINX",
+    "url": "https://nginx.org/en/CHANGES",
+    "versionRegex": "Changes with nginx (\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v1.29.5"
+  },
+  {
+    "name": "PostgreSQL",
+    "url": "https://www.postgresql.org/about/news/",
+    "versionRegex": "PostgreSQL\\s+(\\d+\\.\\d+(?:\\.\\d+)?)",
+    "currentDbVersion": "v18.3"
+  },
+  {
+    "name": "Apache Kafka",
+    "url": "https://kafka.apache.org/downloads",
+    "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
+    "currentDbVersion": "v4.2.0"
+  },
+  {
+    "name": "VLC media player",
+    "url": "https://www.videolan.org/vlc/releases/",
+    "versionRegex": "VLC\\s+(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v3.0.23",
+    "registryKey": "winget:VideoLAN.VLC"
+  },
+  {
+    "name": "IrfanView",
+    "url": "https://www.irfanview.com/main_history.htm",
+    "versionRegex": "<h3>Version\\s+([\\d.]+)\\s+\\(\\s*-\\s*CURRENT\\s+VERSION\\s*-\\s*\\)",
+    "currentDbVersion": "v4.73"
+  },
+  {
+    "name": "Arc Search",
+    "url": "https://itunes.apple.com/lookup?id=6472513080&country=us&entity=software",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v1.46.1"
+  },
+  {
+    "name": "OmniFocus 4",
+    "url": "https://www.omnigroup.com/releasenotes/omnifocus",
+    "versionRegex": "OmniFocus ([\\d.]+) for Mac",
+    "currentDbVersion": "v4.8.8"
+  },
+  {
+    "name": "Grammarly: AI Keyboard & Notes",
+    "url": "https://itunes.apple.com/lookup?id=1158877342",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v9.2.0"
+  },
+  {
+    "name": "Reeder.",
+    "url": "https://itunes.apple.com/lookup?id=6475002485",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v2025.9.1"
+  },
+  {
+    "name": "NetNewsWire: RSS Reader",
+    "url": "https://itunes.apple.com/lookup?id=1480640210",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v7.0"
+  },
+  {
+    "name": "Heptabase",
+    "url": "https://itunes.apple.com/lookup?id=6445801508",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v1.32.7"
+  },
+  {
+    "name": "Anybox",
+    "url": "https://itunes.apple.com/lookup?id=1593408455",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v2.12.3"
+  },
+  {
+    "name": "GoodLinks",
+    "url": "https://goodlinks.app/releases/",
+    "versionRegex": "[Vv]ersion[:\\s]+(\\d+\\.\\d+\\.?\\d*)",
+    "currentDbVersion": "v3.1"
+  },
+  {
+    "name": "Proton Pass",
+    "url": "https://itunes.apple.com/lookup?id=6443490629",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v1.18.1"
+  },
+  {
+    "name": "stackblitz/bolt.new",
+    "url": "https://support.bolt.new/release-notes",
+    "versionRegex": "data-component-part=\"update-label\">([^<]+)</div>",
+    "currentDbVersion": "v2026.02.07"
+  },
+  {
+    "name": "Kagi",
+    "url": "https://kagi.com",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v2026.02"
+  },
+  {
+    "name": "Figma Slides",
+    "url": "https://www.figma.com/release-notes/",
+    "versionRegex": "(\\d+\\.\\d+\\.\\d+)",
+    "currentDbVersion": "v2026.02.26"
+  },
+  {
+    "name": "VSCO: Photo Editor & Presets",
+    "url": "https://itunes.apple.com/lookup?id=588013838",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v458.1.0"
+  },
+  {
+    "name": "TablePlus - Database Client",
+    "url": "https://itunes.apple.com/lookup?id=1465448609",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v6.8.0"
+  },
+  {
+    "name": "Arc Search — Find it, Faster",
+    "url": "https://itunes.apple.com/lookup?id=6472513080",
+    "versionRegex": "\"version\":\"([^\"]+)\"",
+    "currentDbVersion": "v1.46.1"
+  },
+  {
+    "name": "Ulysses",
+    "url": "https://itunes.apple.com/lookup?id=1225570693",
+    "versionRegex": "\\\"version\\\":\\\"([0-9]+(?:\\.[0-9]+)*)\\\"",
+    "currentDbVersion": "v39.5"
+  }
+]
