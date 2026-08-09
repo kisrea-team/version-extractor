@@ -135,8 +135,10 @@ function isSequenceVersion(v: string): boolean {
 
 function extractStructuredText(html: string): string {
   const parts: string[] = [];
-  const jsonLd = (html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi) || []) as string[];
-  jsonLd.forEach((m) => parts.push(m.replace(/<[^>]+>/g, '')));
+  // JSON-LD 不再作为版本候选来源：SoftwareApplication 的 ld+json 里通常只有
+  // ratingValue（评分）、price（价格）、reviewCount 等非版本数字（CleanShot 的 4.9 是评分不是版本），
+  // 全文本扫描噪音远大于信号；且 JSON-LD 是写给搜索引擎的元数据，维护度低、可信度不如正文。
+  // 仅保留 __NEXT_DATA__ / __INITIAL_STATE__ 中显式 version 命名字段（语义明确，非全文本扫描）。
   // 关键：__NEXT_DATA__ / __INITIAL_STATE__ 是巨型 JSON，包含大量非版本数字（图片尺寸、坐标、ID）。
   // 只保留"版本语义字段"附近的值，避免把 JSON 噪音当版本。
   const nextData = html.match(/<script[^>]*id=["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
@@ -226,7 +228,7 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
 
   const scopes: Array<{ text: string; scope: string }> = [
     { text: `${title}\n${metas}`, scope: 'title' },
-    { text: structured, scope: 'json-ld' },
+    { text: structured, scope: 'structured' },
     { text: keywordText, scope: 'body' },
     // 标题区域（h1/h2/h3）：版本常出现在页面主标题/版本号徽章，不依赖关键词前缀
     { text: [...body.matchAll(/<(h1|h2|h3)[^>]*>([\s\S]*?)<\/\1>/gi)].map((m) => m[2].replace(/<[^>]+>/g, ' ')).join('\n'), scope: 'heading' },
@@ -274,12 +276,12 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
 
   if (candidates.length === 0) return none();
 
-  const scopeWeight: Record<string, number> = { title: 3, 'json-ld': 3, body: 2, url: 2, heading: 2, 'changelog-header': 8, 'changelog-url': 14 };
+  const scopeWeight: Record<string, number> = { title: 3, structured: 3, body: 2, url: 2, heading: 2, 'changelog-header': 8, 'changelog-url': 14 };
   const patternWeight: Record<string, number> = { semver: 2, minor: 1, major: 0 };
-  // json-ld/结构化数据中的版本是权威命名字段（如 vscode 的 version 字段），额外加权
+  // structured/命名字段中的版本是权威信号（如 vscode 的 version 字段），额外加权
   const structuredAuthority = new Map<string, number>(); // version -> 加成
   for (const c of candidates) {
-    if (c.scope === 'json-ld') structuredAuthority.set(c.version, (structuredAuthority.get(c.version) || 0) + 3);
+    if (c.scope === 'structured') structuredAuthority.set(c.version, (structuredAuthority.get(c.version) || 0) + 3);
   }
   const scoreMap = new Map<string, { score: number; inDownloadUrl: boolean; inVisibleText: boolean; scope: string; pattern: string; contexts: Set<string> }>();
 
@@ -374,21 +376,21 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   if (!bestKey) return none();
   const bestEntry2 = scoreMap.get(bestKey)!;
 
-  // 置信度：出现在可见正文是"真实版本"的必要条件（标题/json-ld 除外，它们是结构化权威源）
+  // 置信度：出现在可见正文是"真实版本"的必要条件（标题/structured 除外，它们是结构化权威源）
   let confidence: Confidence;
-  // 增强：json-ld 来源的版本若未出现在任何下载链接/标题中，很可能是 SDK/依赖版本而非产品版本
-  const jsonLdOnly = bestEntry2.scope === 'json-ld' && !bestEntry2.inDownloadUrl && !bestEntry2.inVisibleText;
+  // 增强：structured（命名字段）来源的版本若未出现在任何下载链接/标题中，很可能是 SDK/依赖版本而非产品版本
+  const structuredOnly = bestEntry2.scope === 'structured' && !bestEntry2.inDownloadUrl && !bestEntry2.inVisibleText;
   const bodyOnly = bestEntry2.scope === 'body' && !bestEntry2.inDownloadUrl && !bestEntry2.inVisibleText;
   // 可见正文门控（文档 L1）：body 来源 + 无下载链接 + 版本号不以 v 开头（如 CSS 类 py-2.5、SVG 坐标 2.5）
   // 真实产品版本几乎总出现在下载链接中或带 v 前缀；裸数字多来自 CSS/JS/图片元数据
   const bodyNoAnchorBare = bestEntry2.scope === 'body' && !bestEntry2.inDownloadUrl && !/^v/i.test(bestKey);
-  if (jsonLdOnly) {
+  if (structuredOnly) {
     confidence = 'low';
   } else if (bodyOnly || bodyNoAnchorBare) {
     confidence = 'low';
   } else if (bestEntry2.inDownloadUrl && bestEntry2.score >= 7 && bestEntry2.inVisibleText) confidence = 'high';
   else if (bestEntry2.scope === 'title' && bestEntry2.score >= 7) confidence = 'high';
-  else if (bestEntry2.scope === 'json-ld' && bestEntry2.score >= 6 && bestEntry2.inDownloadUrl) confidence = 'high';
+  else if (bestEntry2.scope === 'structured' && bestEntry2.score >= 6 && bestEntry2.inDownloadUrl) confidence = 'high';
   else if (bestEntry2.score >= 5 && bestEntry2.inVisibleText) confidence = 'medium';
   else confidence = 'low';
 

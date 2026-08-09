@@ -33,13 +33,14 @@ export type LgbRow = [
 
 // 运行时候选 scope → 训练词汇表映射
 // 训练: {download-link, structured, heading, visible, noise}
-// 运行时: {title, json-ld, body, heading, changelog-header, url, changelog-url}
+// 运行时: {title, structured, body, heading, changelog-header, url, changelog-url}
 export function mapScopeToTrain(scope: string): string {
   switch (scope) {
     case 'url':
     case 'changelog-url':
       return 'download-link';
-    case 'json-ld':
+    case 'structured':
+    case 'json-ld': // 旧数据兼容
     case 'changelog-header':
       return 'structured';
     case 'heading':
