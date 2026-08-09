@@ -22,6 +22,7 @@ export interface RegistryCandidate {
   matchedDomain: string; // 命中的域名（用于审计）
   desc?: string;         // 描述（SDK/预发布过滤用）
   prerelease?: boolean;  // 预发布变体（beta/nightly/snapshot）—— pick 时排后
+  fromUrl?: boolean;     // URL 直接解析的候选（最强信号，绝对优先）
 }
 
 // ── 域名工具 ──
@@ -229,6 +230,7 @@ export async function discoverRegistry(
       homepage: `https://github.com/${full}`,
       registryKey: `github:${full}`,
       matchedDomain: 'github.com (URL 直接解析)',
+      fromUrl: true,
     });
   }
 
@@ -282,16 +284,20 @@ export async function fetchGithubRelease(
 }
 
 // 候选去重排序：
+//   0. URL 直接解析的候选绝对优先（用户 URL 是最强信号，不受 brew 子串误伤影响）
 //   1. 预发布变体（@beta/@nightly）排最后
 //   2. 渠道优先级 brew(0) > github(1) > npm(2)（npm SDK 干扰最多，brew 命中即胜）
-//   3. 版本号大的优先（注册表版本通常带完整 patch）
+//   3. 同渠道内：有版本号的按版本大优先，无版本号（github 待查 releases）排前
 // 不用 SDK 词表：词表是脆弱枚举，会误伤产品（如 Postman "API development platform"）；
 // 渠道优先级已经天然规避 npm/github 的 SDK 干扰（brew 命中就赢）。
 export function pickBestCandidate(cands: RegistryCandidate[]): RegistryCandidate | null {
   if (cands.length === 0) return null;
   const stable = cands.filter((c) => !c.prerelease);
   const pool = stable.length > 0 ? stable : cands;
-  const srcRank = (c: RegistryCandidate) => (c.source === 'brew' ? 0 : c.source === 'github' ? 1 : 2);
+  const srcRank = (c: RegistryCandidate) => {
+    if (c.fromUrl) return -100; // URL 直接解析绝对优先
+    return c.source === 'brew' ? 0 : c.source === 'github' ? 1 : 2;
+  };
   const sorted = [...pool].sort((a, b) => {
     const ra = srcRank(a), rb = srcRank(b);
     if (ra !== rb) return ra - rb;
