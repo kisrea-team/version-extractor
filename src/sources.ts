@@ -20,6 +20,14 @@ export function classifySource(input: string): UpdateSource {
     return { type: 'github-releases', url, confidence: 'high', owner, repo, note: 'GitHub 仓库（默认走 releases）' };
   }
 
+  // raw.githubusercontent.com 的 CHANGELOG 文件：仓库 owner/repo 从路径解析，
+  // 走 GitHub releases API（真实 tag + release body），避免把 md 当 HTML 页清洗
+  // （newton-physics/newton 案例：v1.16.0 是正文 warp-lang 依赖版本，真实 release 是 v1.4.0）
+  const rawGh = url.match(/^https?:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\//i);
+  if (rawGh) {
+    return { type: 'github-releases', url, confidence: 'high', owner: rawGh[1], repo: rawGh[2], note: 'raw.githubusercontent.com 仓库文件（走 releases）' };
+  }
+
   // API 形式的 GitHub releases
   const ghApi = url.match(/^https?:\/\/api\.github\.com\/repos\/([^/]+)\/([^/#?]+)(.*)$/i);
   if (ghApi) {
