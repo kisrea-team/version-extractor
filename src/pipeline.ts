@@ -11,6 +11,7 @@ import { extractVersionWithLgb } from './lgb-score';
 import { extractChangelog } from './changelog';
 import { fetchPage, fetchPageRendered, fetchPageRenderedDeep, closeBrowser } from './crawler';
 import { queryRegistry, queryOfficialEndpoint } from './registries';
+import { discoverRegistry, fetchGithubRelease, pickBestCandidate } from './registry-discover';
 import { recordAudit, type AuditDecision } from './audit';
 import type { ChangelogEntry, UpdateSource, VersionResult } from './types';
 
@@ -50,6 +51,7 @@ export async function extractFromUrl(
   // 0. 注册表优先：确定性命名字段，优于任何 HTML 猜测；命中直接短路（快且权威）
   let registryVersion: string | null = null;
   let registryResolvedKey: string | null = null;
+  let discoveredChangelog: ChangelogEntry | null = null;
   if (opts.registryKey) {
     try {
       const reg = await queryRegistry(opts.registryKey, { token: opts.token });
@@ -57,6 +59,27 @@ export async function extractFromUrl(
       registryResolvedKey = opts.registryKey;
     } catch {
       // 注册表查询失败则回退 HTML
+    }
+  } else if (opts.productName) {
+    // 自动发现：给 URL + 产品名 → 多渠道搜索 → homepage 域名匹配 → pickBestCandidate（预发布过滤 + brew>github>npm）
+    try {
+      const cands = await discoverRegistry(url, { productName: opts.productName, token: opts.token });
+      const best = pickBestCandidate(cands);
+      if (best) {
+        if (best.version) {
+          registryVersion = best.version;
+        } else if (best.source === 'github') {
+          // GitHub 候选查 releases 拿最新 tag；顺带拿 release body 当 changelog
+          const rel = await fetchGithubRelease(best.name, opts.token);
+          if (rel?.version) registryVersion = rel.version;
+          if (rel?.changelog) {
+            discoveredChangelog = { version: rel.version, title: best.name, content: rel.changelog, date: rel.date, source: 'github-release', confidence: 'high' };
+          }
+        }
+        registryResolvedKey = best.registryKey;
+      }
+    } catch {
+      // 发现失败静默回退 HTML
     }
   }
   if (registryVersion) {
@@ -68,7 +91,11 @@ export async function extractFromUrl(
       needsBrowser: false,
       suggestedRegex: null,
     };
-    return { url, source, version: finalVersion, changelog: null, neededBrowser: false, registryVersion, registryKey: registryResolvedKey };
+    // 注册表命中：非日志页直接返回（版本确定性高，页面无日志可提）；
+    // 日志页/RSS 继续走页面流程拿 changelog，注册表版本作为锚点（同 L3 策略，避免版本对但日志 null）
+    if (source.type !== 'changelog-page' && source.type !== 'rss') {
+      return { url, source, version: finalVersion, changelog: discoveredChangelog, neededBrowser: false, registryVersion, registryKey: registryResolvedKey };
+    }
   }
 
   // changelog-page / rss 走页面；github 走 API（无需渲染）
@@ -171,9 +198,11 @@ export async function extractFromUrl(
     }
   }
 
-  // 注册表未命中时，用页面提取结果（含 L1/L2 各档结果）
+  // 最终版本：注册表命中（日志页场景）→ 注册表版本优先（确定性最高）；否则用页面提取结果
   const finalVersion: VersionResult =
-    version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
+    registryVersion
+      ? { version: registryVersion, source: 'registry', confidence: 'high' as const, needsAiCheck: false, needsBrowser: false, suggestedRegex: null }
+      : version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
 
   // 日志：统一走 extractChangelog（内部含静态抓取 + 规则层 + 浏览器+Trafilatura 兜底）
   let changelog: ChangelogEntry | null = null;
