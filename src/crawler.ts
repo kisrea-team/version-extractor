@@ -100,6 +100,27 @@ export async function fetchJson(url: string, opts: { timeout?: number } = {}): P
 // ── Playwright 渲染抓取（JS 站兜底：版本号只有 JS 跑完才出现在 DOM）──
 let browserPromise: Promise<any> | null = null;
 
+// 拦截无用资源：图片/字体/媒体/样式/统计脚本是内存和带宽大头（钉钉 1MB 页 60% 是图片），
+// 版本号只在 DOM/JSON 里，拦截后渲染更快、峰值内存更低（VPS 3.8G 防 OOM 关键）
+const BLOCK_RESOURCE_RE = /\.(png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf|eot|mp4|webm|mp3|ogg|mov|css)(\?|#|$)/i;
+const BLOCK_HOST_RE = /(googletagmanager|google-analytics|gtag|doubleclick|facebook\.net|connect\.facebook|mc\.yandex|hotjar|clarity\.ms|mixpanel|segment\.io|sentry|bugsnag|posthog|fullstory|intercom|zendesk|tawk|crisp|adsystem|adservice)/i;
+
+async function blockHeavyResources(page: any): Promise<void> {
+  try {
+    await page.route('**/*', async (route: any) => {
+      const req = route.request();
+      const url = req.url() || '';
+      if (BLOCK_RESOURCE_RE.test(url) || BLOCK_HOST_RE.test(url)) {
+        await route.abort().catch(() => {});
+      } else {
+        await route.continue().catch(() => {});
+      }
+    });
+  } catch {
+    // 路由设置失败不阻塞渲染
+  }
+}
+
 export async function getBrowser(): Promise<any> {
   if (!browserPromise) {
     const { chromium } = await import('playwright');
@@ -136,6 +157,8 @@ export async function fetchPageRendered(url: string, opts: { timeout?: number } 
     });
     try {
       const page = await context.newPage();
+      // 拦截图片/字体/媒体等无用资源，降低峰值内存（防 OOM）与渲染耗时
+      await blockHeavyResources(page);
       // domcontentloaded + 固定等待比 networkidle 快得多且不会在某些站永远挂起
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: opts.timeout || 15000 });
       await page.waitForTimeout(2000); // 让异步渲染落地
@@ -219,6 +242,8 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
     });
     try {
       const page = await context.newPage();
+      // 拦截图片/字体/媒体等无用资源，降低峰值内存（防 OOM）与渲染耗时
+      await blockHeavyResources(page);
       // 1. 网络拦截：捕获 XHR/fetch JSON 响应中的 version 字段
       // 排除第三方组件域（Intercom/Zendesk/Analytics 等在线客服/统计组件的 version 不是产品版本）
       // 也排除 Segment 类遥测配置端点（sourceConfig/writeKey/rsc2 等，响应含第三方集成名）

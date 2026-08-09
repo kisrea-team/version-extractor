@@ -170,6 +170,23 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
     },
   },
   {
+    // npm registry：registry.npmjs.org/<pkg> → dist-tags.latest（确定性版本）
+    // readme 作为 changelog（包文档，含更新说明）；避免整包 JSON 被当正文清洗
+    host: /registry\.npmjs\.org/,
+    fetch: async (url) => {
+      const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
+      if (!r.ok) return null;
+      const d = await r.json();
+      const v = d?.['dist-tags']?.latest;
+      if (!v) return null;
+      const readme = (d.readme || '').trim();
+      return {
+        version: v.startsWith('v') ? v : `v${v}`,
+        changelog: readme.length > 50 ? { content: readme } : null,
+      };
+    },
+  },
+  {
     // go.dev/dl/?mode=json → [{version:"go1.26.5",...}] 只返回稳定版
     host: /go\.dev|golang\.org/,
     fetch: async () => {
