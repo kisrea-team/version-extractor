@@ -510,6 +510,9 @@ export function findLatestChangelogDetailLink(html: string, baseUrl: string, tar
   const add = (href: string, version: string, requireChangelogPath = true) => {
     if (requireChangelogPath && !/\/changelog\/|\/news\/|\/release\//i.test(href)) return;
     if (targetMajor && version.split('.')[0] !== targetMajor) return;
+    // 排除下载文件本身（zip/exe/dmg 等安装包链接是二进制，不是"版本详情页"——
+    // Unite 案例：版本标题后紧跟 Unite+6.6.zip 下载链接，跟随拉回 27MB 当 changelog）
+    if (/\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso)(\?|#|$)/i.test(href)) return;
     try { candidates.push({ href: new URL(href, baseUrl).href, version }); } catch { /* ignore invalid links */ }
   };
 
