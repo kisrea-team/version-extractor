@@ -588,7 +588,10 @@ export async function extractChangelog(
         const { extractMdVersionSection } = await import('./changelog-md');
         const md = await cleanWithTrafilatura(r.text);
         if (md) {
-          const mdEntry = extractMdVersionSection(md, opts.version || null);
+          let mdEntry = extractMdVersionSection(md, opts.version || null);
+          // 版本锚定失败（提取的版本号不在页面里，如 brew helper 组件误匹配）：
+          // 回退取第一个版本标题 = 最新版，而不是放弃分节、回退整页正文。
+          if (!mdEntry && opts.version) mdEntry = extractMdVersionSection(md, null);
           if (mdEntry && mdEntry.content.length > 100 && !/<\/?[a-z][\s>]/.test(mdEntry.content)) {
             return {
               version: mdEntry.version,
