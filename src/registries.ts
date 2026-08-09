@@ -147,17 +147,26 @@ export async function queryRegistry(registryKey: string, opts: { token?: string 
 
 // ── L3 结构化源优先（文档 three-tier-extractor.md P3）──
 // 官方 JSON 端点确定性给出版本，无需猜 HTML。按 URL 域名匹配已知端点。
-const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<string | null> }> = [
+export interface OfficialEndpointResult {
+  version: string;
+  changelog?: { content: string; date?: string | null } | null;
+}
+const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<OfficialEndpointResult | string | null> }> = [
   {
     // iTunes lookup：id=... 或 bundleId=... → results[0].version（App Store 确定性版本）
+    // 同时提取 releaseNotes 作为 changelog（官方干净日志，避免整页 JSON 被当正文清洗）
     host: /itunes\.apple\.com\/lookup|apps\.apple\.com/,
     fetch: async (url) => {
       const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
       if (!r.ok) return null;
       const d = await r.json();
       const app = d?.results?.[0];
-      if (app?.version) return `v${app.version}`;
-      return null;
+      if (!app?.version) return null;
+      const notes = (app.releaseNotes || '').trim();
+      return {
+        version: `v${app.version}`,
+        changelog: notes.length > 0 ? { content: notes, date: app.currentVersionReleaseDate || null } : null,
+      };
     },
   },
   {
@@ -260,12 +269,13 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
   },
 ];
 
-export async function queryOfficialEndpoint(url: string): Promise<{ version: string } | null> {
+export async function queryOfficialEndpoint(url: string): Promise<OfficialEndpointResult | null> {
   for (const ep of OFFICIAL_ENDPOINTS) {
     if (ep.host.test(url)) {
       try {
         const v = await ep.fetch(url);
-        if (v) return { version: v };
+        if (!v) continue;
+        return typeof v === 'string' ? { version: v } : v;
       } catch {
         // 端点失败则继续
       }

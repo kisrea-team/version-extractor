@@ -39,7 +39,7 @@ export interface ChangelogEntry {
   date?: string | null;
   title?: string | null;
   content: string; // Markdown
-  source: 'github-release' | 'github-tag' | 'rss' | 'changelog-page' | 'json' | 'none';
+  source: 'github-release' | 'github-tag' | 'rss' | 'changelog-page' | 'json' | 'official-endpoint' | 'none';
   language?: 'zh' | 'en' | 'other' | 'unknown';
   confidence: Confidence;
 }

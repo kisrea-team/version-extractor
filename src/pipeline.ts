@@ -43,6 +43,14 @@ export async function extractFromUrl(
     needsBrowser: false,
     suggestedRegex: null,
   } : null;
+  // L3 附带 changelog（如 iTunes releaseNotes）→ 直接返回，避免 JSON 被当页面清洗成垃圾。
+  if (l3Version && l3?.changelog) {
+    return {
+      url, source, version: l3Version,
+      changelog: { version: l3.version, content: l3.changelog.content, date: l3.changelog.date || null, source: 'official-endpoint', confidence: 'high' as const },
+      neededBrowser: false, registryVersion: null, registryKey: null,
+    };
+  }
   // 日志页/RSS 仍需继续抓页面；L3 只提供确定性版本锚点。
   if (l3Version && source.type !== 'changelog-page' && source.type !== 'rss') {
     return { url, source, version: l3Version, changelog: null, neededBrowser: false, registryVersion: null, registryKey: null };
