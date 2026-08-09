@@ -40,52 +40,96 @@ export function domainMatch(a: string, b: string): boolean {
 }
 
 // ── brew casks：全量清单本地缓存 + 过滤 ──
-const CASK_CACHE = '.reg-cache/brew-casks.json';
-const CASK_TTL = 7 * 24 * 3600 * 1000; // 7 天
+const BREW_CACHE = '.reg-cache/brew-registry.json';
+const BREW_TTL = 7 * 24 * 3600 * 1000; // 7 天
 
 interface BrewCask {
   token: string;
   homepage: string;
   version: string;
   desc?: string;
+  kind: 'cask' | 'formula';
 }
 
-async function loadBrewCasks(): Promise<BrewCask[]> {
+async function loadBrewRegistry(): Promise<BrewCask[]> {
   try {
-    if (existsSync(CASK_CACHE)) {
-      const obj = JSON.parse(readFileSync(CASK_CACHE, 'utf-8'));
-      if (Date.now() - (obj.ts || 0) < CASK_TTL) return obj.casks;
+    if (existsSync(BREW_CACHE)) {
+      const obj = JSON.parse(readFileSync(BREW_CACHE, 'utf-8'));
+      if (Date.now() - (obj.ts || 0) < BREW_TTL) return obj.entries;
     }
   } catch { /* 缓存损坏则重下 */ }
-  try {
-    const r = await fetch('https://formulae.brew.sh/api/cask.json', {
-      headers: { 'User-Agent': 'version-extractor' },
-      signal: AbortSignal.timeout(30000),
-    });
-    if (!r.ok) throw new Error(`brew cask http ${r.status}`);
-    const raw = (await r.json()) as any[];
-    const casks: BrewCask[] = raw.map((c) => ({
-      token: typeof c.token === 'string' ? c.token : (Array.isArray(c.name) ? c.name[0] || '' : String(c.name || '')),
-      homepage: c.homepage || '',
-      version: String(c.version || '').split(',')[0] || '',
-      desc: c.desc || '',
-    }));
+  // cask = GUI 桌面应用（vscode/chrome/7zip）；formula = CLI/开发库（python/node/git）
+  // CLI 工具只在 formula 里，只查 cask 会漏掉 python/node/git 这类
+  const fetchers = [
+    { url: 'https://formulae.brew.sh/api/cask.json', kind: 'cask' as const },
+    { url: 'https://formulae.brew.sh/api/formula.json', kind: 'formula' as const },
+  ];
+  const entries: BrewCask[] = [];
+  const results = await Promise.allSettled(fetchers.map((f) => fetch(f.url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(30000) })));
+  for (let i = 0; i < fetchers.length; i += 1) {
+    const res = results[i];
+    if (res.status !== 'fulfilled' || !res.value.ok) continue;
     try {
-      mkdirSync('.reg-cache', { recursive: true });
-      writeFileSync(CASK_CACHE, JSON.stringify({ ts: Date.now(), casks }));
-    } catch { /* 缓存写失败忽略 */ }
-    return casks;
-  } catch {
-    return []; // 下载失败静默返回空（不拖垮发现流程）
+      const raw = (await res.value.json()) as any[];
+      for (const c of raw) {
+        const token = typeof c.token === 'string' ? c.token : (Array.isArray(c.name) ? c.name[0] || '' : String(c.name || ''));
+        if (!token) continue;
+        entries.push({
+          token,
+          homepage: c.homepage || '',
+          version: String(c.version || '').split(',')[0] || '',
+          desc: c.desc || '',
+          kind: fetchers[i].kind,
+        });
+      }
+    } catch { /* 单个包列表解析失败跳过 */ }
   }
+  try {
+    mkdirSync('.reg-cache', { recursive: true });
+    writeFileSync(BREW_CACHE, JSON.stringify({ ts: Date.now(), entries }));
+  } catch { /* 缓存写失败忽略 */ }
+  return entries;
 }
 
-// brew 候选：产品名 token 包含匹配（去符号）→ homepage 域名匹配在 discover 层做
-function searchBrewCasks(productName: string, urlDomain: string, casks: BrewCask[]): RegistryCandidate[] {
+// brew 直查兜底：全量列表（cask.json/formula.json 4-5MB）在部分网络会超时，
+// 改为按产品名直查单个 formula/cask 端点（小请求），命中即候选。
+async function searchBrewDirect(productName: string, urlDomain: string): Promise<RegistryCandidate[]> {
   const key = productName.toLowerCase().replace(/[^a-z0-9]/g, '');
   if (!key) return [];
   const out: RegistryCandidate[] = [];
-  for (const c of casks) {
+  for (const kind of ['formula', 'cask'] as const) {
+    try {
+      const r = await fetch(`https://formulae.brew.sh/api/${kind}/${encodeURIComponent(key)}.json`, {
+        headers: { 'User-Agent': 'version-extractor' },
+        signal: AbortSignal.timeout(12000),
+      });
+      if (!r.ok) continue;
+      const d = (await r.json()) as { homepage?: string; version?: string | string[]; desc?: string };
+      const cd = extractDomain(d.homepage || '');
+      if (!domainMatch(cd, urlDomain)) continue;
+      const raw = Array.isArray(d.version) ? d.version[0] : d.version;
+      const ver = String(raw || '').split(',')[0].trim();
+      out.push({
+        source: 'brew',
+        name: key,
+        version: ver && ver !== 'latest' ? (ver.startsWith('v') ? ver : `v${ver}`) : '',
+        homepage: d.homepage || '',
+        registryKey: `brew:${key}`,
+        matchedDomain: cd,
+        desc: d.desc || '',
+      });
+    } catch { /* 单个查询超时跳过 */ }
+  }
+  return out;
+}
+
+// brew 候选：产品名 token 包含匹配（去符号）→ homepage 域名匹配在 discover 层做
+// entries 同时含 casks（GUI）与 formulas（CLI），统一 key brew:<token>（queryHomebrew 自动探测）
+function searchBrewCasks(productName: string, urlDomain: string, entries: BrewCask[]): RegistryCandidate[] {
+  const key = productName.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (!key) return [];
+  const out: RegistryCandidate[] = [];
+  for (const c of entries) {
     const tok = c.token.toLowerCase().replace(/[^a-z0-9]/g, '');
     // token 与产品名精确相等，或 token 包含产品名 / 产品名包含 token（避免子串误匹配过短）
     const hit = tok === key || (tok.length >= 4 && (tok.includes(key) || key.includes(tok)));
@@ -188,16 +232,23 @@ export async function discoverRegistry(
     });
   }
 
-  const casks = await loadBrewCasks();
+  const entries = await loadBrewRegistry();
   // 渠道独立容错：一个渠道超时/失败不影响其他（GitHub search 15s 超时是常态，不能拖垮 brew）
-  const [brew, gh, npm] = await Promise.allSettled([
-    searchBrewCasks(name, urlDomain, casks),
+  const [brew, brewDirect, gh, npm] = await Promise.allSettled([
+    searchBrewCasks(name, urlDomain, entries),
+    searchBrewDirect(name, urlDomain),
     searchGithub(name, urlDomain, opts.token),
     searchNpm(name, urlDomain),
   ]);
+  const brewCands = [
+    ...(brew.status === 'fulfilled' ? brew.value : []),
+    ...(brewDirect.status === 'fulfilled' ? brewDirect.value : []),
+  ];
+  const seenBrew = new Set<string>();
+  const uniqueBrew = brewCands.filter((c) => (seenBrew.has(c.registryKey) ? false : (seenBrew.add(c.registryKey), true)));
   const cands: RegistryCandidate[] = [
     ...urlCandidates, // URL 直接解析的最可信，排最前
-    ...(brew.status === 'fulfilled' ? brew.value : []),
+    ...uniqueBrew,
     ...(gh.status === 'fulfilled' ? gh.value : []),
     ...(npm.status === 'fulfilled' ? npm.value : []),
   ];

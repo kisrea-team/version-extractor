@@ -100,14 +100,18 @@ export async function queryWinget(wingetId: string, opts: { token?: string } = {
   return { source: 'winget', version: `v${latest}`, confidence: 'high', registryKey: wingetId };
 }
 
-// Homebrew：formulae API 的 versions.stable 字段
-export async function queryHomebrew(formula: string): Promise<RegistryResult> {
-  const r = await fetch(`https://formulae.brew.sh/api/formula/${encodeURIComponent(formula)}.json`, { signal: AbortSignal.timeout(15000) });
+// Homebrew：formula 优先，404 回退 cask（GUI 应用只有 cask；formula 的 versions.stable / cask 的 version 字符串）
+export async function queryHomebrew(name: string): Promise<RegistryResult> {
+  let r = await fetch(`https://formulae.brew.sh/api/formula/${encodeURIComponent(name)}.json`, { signal: AbortSignal.timeout(15000) });
+  if (r.status === 404) {
+    r = await fetch(`https://formulae.brew.sh/api/cask/${encodeURIComponent(name)}.json`, { signal: AbortSignal.timeout(15000) });
+  }
   if (!r.ok) throw new Error(`brew http ${r.status}`);
-  const d = (await r.json()) as { versions?: { stable?: string } };
-  const stable = d.versions?.stable;
-  if (!stable) throw new Error(`brew ${formula}: no stable version`);
-  return { source: 'brew', version: stable.startsWith('v') ? stable : `v${stable}`, confidence: 'high', registryKey: formula };
+  const d = (await r.json()) as { versions?: { stable?: string | string[] }; version?: string };
+  const stableRaw = Array.isArray(d.versions?.stable) ? d.versions.stable[0] : d.versions?.stable || d.version;
+  const stable = String(stableRaw || '').split(',')[0].trim() || null;
+  if (!stable || stable === 'latest') throw new Error(`brew ${name}: no stable version`);
+  return { source: 'brew', version: stable.startsWith('v') ? stable : `v${stable}`, confidence: 'high', registryKey: name };
 }
 
 // Flathub：appstream 元数据
