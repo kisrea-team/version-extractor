@@ -9,9 +9,9 @@ import { coerce, compare } from 'semver';
 import type { Confidence, VersionResult } from './types';
 
 const SEMVER_RE =
-  /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:alpha|beta|rc|pre|patch)[0-9.]*)?(?:[+][0-9A-Za-z.-]+)?(?![0-9])/g;
-const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?![0-9.])/g;
-const MAJOR_RE = /\bv(0|[1-9]\d*)\b/g;
+  /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?:-(?:alpha|beta|rc|pre|patch)[0-9.]*)?(?:[+][0-9A-Za-z.-]+)?(?![0-9])/g;
+const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9.])/g;
+const MAJOR_RE = /\bv(0|[1-9]\d*|\d*[0-9])\b/g;
 
 function normalizeVersion(raw: string): string {
   const t = raw.trim();

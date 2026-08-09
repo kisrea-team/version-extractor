@@ -479,11 +479,14 @@ function isDateLikeVersion(v: string): boolean {
 
 // 返回最新版本链接 + 版本号（供详情页提取时作为锚点）
 // 排除版权/法律/导航链接（creativecommons/license/privacy 等含版本号但非产品版本）
+// 以及下载文件本身（exe/dmg/zip/msi 等安装包链接是二进制，不是"版本详情页"，
+// 跟随会拉回 1.5MB 可执行文件当 changelog——7-Zip 下载页案例）
 export function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url: string; version: string } | null {
-  const EXCLUDE_RE = /creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal|github\.com\/(?!.*\/releases)|\.css|\.js|\.map/i;
+  const EXCLUDE_RE = /creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal|github\.com\/(?!.*\/releases)|\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso)(\?|#|$)/i;
   const links = [...html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)]
     .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
-    .filter((l) => !EXCLUDE_RE.test(l.href + ' ' + l.text))
+    // href 和 text 分开测：href 的文件扩展名（.exe 等）必须命中；text 的关键词独立判断
+    .filter((l) => !EXCLUDE_RE.test(l.href) && !/(creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal)/i.test(l.text))
     .map((l) => {
       const m = (l.href + ' ' + l.text).match(/\bv?(\d+(?:\.\d+){1,3})\b/);
       return m && !isDateLikeVersion(m[1]) ? { href: l.href, version: m[1] } : null;
