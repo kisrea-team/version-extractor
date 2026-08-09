@@ -113,7 +113,10 @@ export async function extractFromUrl(
   // 普通抓取拿不到/低置信 → 浏览器渲染 + 网络拦截 + 运行时全局态 + 主 CTA 定位
   // opts.skipBrowser 时跳过渲染（低内存机器/CI 用：只测 L1+注册表+L3 确定性路径）
   // L1 静态抓取失败（page.text 空）也要试 L2——JS 站/反爬站常只有浏览器能拿到 DOM。
-  const needL2 = !page.text || !version || !version.version || version.needsBrowser;
+  // GitHub releases/tags 源：版本走 GitHub API（下方 changelog 回填），无需浏览器渲染
+  const needL2 = source.type === 'github-releases' || source.type === 'github-tags'
+    ? false
+    : !page.text || !version || !version.version || version.needsBrowser;
   if (!opts.skipBrowser && needL2) {
     const deep = await fetchPageRenderedDeep(url);
     let l2Version: VersionResult | null = null;
@@ -199,7 +202,7 @@ export async function extractFromUrl(
   }
 
   // 最终版本：注册表命中（日志页场景）→ 注册表版本优先（确定性最高）；否则用页面提取结果
-  const finalVersion: VersionResult =
+  let finalVersion: VersionResult =
     registryVersion
       ? { version: registryVersion, source: 'registry', confidence: 'high' as const, needsAiCheck: false, needsBrowser: false, suggestedRegex: null }
       : version || { version: null, source: 'none', confidence: 'low' as const, needsAiCheck: true, needsBrowser: true, suggestedRegex: null };
@@ -208,6 +211,18 @@ export async function extractFromUrl(
   let changelog: ChangelogEntry | null = null;
   if (source.type === 'github-releases') {
     changelog = await extractChangelog(source, { token: opts.token, productName: opts.productName });
+    // GitHub API 返回的 release/tag 版本回填：无注册表/无 HTML 版本时直接用 release tag，
+    // 避免 version=null 触发慢速浏览器渲染（github.com/xxx/releases 纯链接场景）
+    if (changelog?.version && !finalVersion.version) {
+      finalVersion = {
+        version: changelog.version,
+        source: changelog.source === 'github-tag' ? 'github-tag' : 'github-release',
+        confidence: 'high' as const,
+        needsAiCheck: false,
+        needsBrowser: false,
+        suggestedRegex: null,
+      };
+    }
   } else if (page.text || !opts.skipBrowser) {
     // 优先用已抓取的页面 HTML（省一次请求）；静态为空时交给 extractChangelog 内部浏览器兜底
     changelog = await extractChangelog(
