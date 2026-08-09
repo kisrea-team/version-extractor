@@ -557,6 +557,25 @@ function findTargetDetailLinks(html: string, target: string, baseUrl: string): s
     });
 }
 
+// ── 非日志内容识别 ──
+// 更新端点/下载清单等"看起来有内容、实则无 changelog"的响应：
+// 硬信号判定，不依赖词表——命中即视为"该源没有日志"。
+function isNonChangelogContent(content: string): boolean {
+  if (!content || content.length < 20) return true;
+  // ① 哈希串（SHA1/SHA256 等）密集出现：更新清单的签名/校验和特征
+  const hashCount = (content.match(/\b[0-9A-Fa-f]{32,}\b/g) || []).length;
+  if (hashCount >= 2) return true;
+  // ② 行级 URL 占优：>50% 的行是纯 URL（下载清单/feed 裸地址）
+  const lines = content.split('\n').map((l) => l.trim()).filter(Boolean);
+  if (lines.length >= 2) {
+    const urlLines = lines.filter((l) => /^https?:\/\/\S+$/.test(l) || (/https?:\/\//.test(l) && l.split(/\s+/).length <= 3)).length;
+    if (urlLines / lines.length > 0.5) return true;
+  }
+  // ③ 单行 URL + 文件大小（"hash url size"）：下载条目特征
+  if (lines.length <= 3 && lines.every((l) => /https?:\/\/\S+\s+\d+$/.test(l) || /\b[0-9A-Fa-f]{32,}\b/.test(l))) return true;
+  return false;
+}
+
 // ── 统一入口 ──
 export async function extractChangelog(
   source: UpdateSource,
@@ -611,13 +630,15 @@ export async function extractChangelog(
         const traEntry = await import('./changelog-lgb').then((m) =>
           m.extractChangelogWithTrafilatura(source, { version: opts.version, pageHtml: r.text, productName: opts.productName })
         );
-        if (traEntry && traEntry.content.length > 100) return traEntry;
+        // 非日志内容识别：下载清单/更新端点响应不是 changelog，宁可 null 也不入库
+        if (traEntry && traEntry.content.length > 100 && !isNonChangelogContent(traEntry.content)) return traEntry;
 
-        // 规则层内容质量门控：太短或含 HTML 残片/版权 → 降级浏览器
+        // 规则层内容质量门控：太短或含 HTML 残片/版权/非日志 → 降级浏览器
         const goodEnough = (e: ChangelogEntry | null): e is ChangelogEntry =>
           !!e && e.content.length > 300
           && !/<\/?(li|ul|ol|div|table|td|a|img|svg|h[1-6])[\s>]/.test(e.content)
-          && !/Canonical URL|Creative Commons|Copyright|You are free to|\[Prev\]|\[Up\]|\[Next\]|Privacy Policy|Terms of Use/i.test(e.content);
+          && !/Canonical URL|Creative Commons|Copyright|You are free to|\[Prev\]|\[Up\]|\[Next\]|Privacy Policy|Terms of Use/i.test(e.content)
+          && !isNonChangelogContent(e.content);
 
         // 版本详情链接：部分发布列表只展示摘要卡片，真正日志在 "Read more" 详情页中。
         let detailUrl: string | null = null;
