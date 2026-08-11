@@ -121,6 +121,9 @@ function snippet(text: string, index: number, width = 180): string {
 function addMatch(out: Map<string, Candidate>, raw: string, context: string, scope: Scope): void {
   const version = norm(purifyVersion(raw)); // 净化：8.5.9-src.zip → v8.5.9
   if (!context || /^(?:v?\d{4}[-.]\d{2}[-.]\d{2})$/.test(version)) return;
+  // 浮点垃圾/评分数字过滤: 0.1000000014901161(浮点误差) / 8.3333333333(评分均值) / 1.5714285714
+  // 特征: 段 ≥6 位且非 19xx/20xx 年份开头(年份版本如 20260716.0 是合法的)
+  if (/\.(?!\d{4}\b)\d{6,}\b/.test(version)) return;
   const candidate = out.get(version) || { version, contexts: [] };
   if (!candidate.contexts.some((c) => c.scope === scope && c.text === context)) candidate.contexts.push({ text: context, scope });
   out.set(version, candidate);
