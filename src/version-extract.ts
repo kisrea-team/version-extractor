@@ -174,9 +174,21 @@ function extractStructuredText(html: string): string {
 // JSON 响应（iTunes lookup / 版本接口等）：提取精确 version 键的值；排除 OS/SDK/API/构建版本键
 function extractVersionFromJsonLike(json: string): string | null {
   const BAD_KEY_RE = /minimumOsVersion|minimum_os_version|requiredOsVersion|sdkVersion|sdk_version|apiVersion|api_version|buildNumber|build_number|schemaVersion|schema_version|protocolVersion|protocol_version|releaseCandidateVersion|minRequiredVersion|compatibleVersion/i;
-  // 优先精确 version 键（产品版本）
+  // JSON Feed 格式(obsidian.md/changelog.json 等): 顶层 version 是规范 URL("https://jsonfeed.org/version/1.1"),
+  // items 数组才是版本条目(最新在前)。识别后取 items[0] 的 id/title 里的版本号。
+  if (/"items"\s*:\s*\[/.test(json) && /"feed_url"|"home_page_url"/.test(json)) {
+    const item = json.match(/"items"\s*:\s*\[\s*\{([\s\S]*?)\}\s*,/);
+    if (item) {
+      const m = item[1].match(/(?:id|title|url)["']\s*:\s*["']([^"']*?v?\d+\.\d+[^"']*)["']/i);
+      if (m) {
+        const vm = m[1].match(/(?:v)?(\d+\.\d+(?:\.\d+)*(?:[-+][0-9A-Za-z.-]+)?)/);
+        if (vm && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(vm[1])) return normalizeVersion(vm[1]);
+      }
+    }
+  }
+  // 优先精确 version 键（产品版本）——排除值为 URL 的（JSON Feed 规范版本等）
   const exact = json.match(/["']version["']\s*:\s*["']([^"']{1,30})["']/i);
-  if (exact && !BAD_KEY_RE.test(exact[0])) {
+  if (exact && !BAD_KEY_RE.test(exact[0]) && !/^https?:/.test(exact[1])) {
     const v = exact[1].trim();
     if (/\d/.test(v) && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(v)) return normalizeVersion(v);
   }
