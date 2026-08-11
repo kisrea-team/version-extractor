@@ -1,0 +1,12 @@
+# ve 基准实验结果表 (autoresearch 循环)
+# commit | 版本准确率 | 说明 | 状态
+# 基准集: benchmark/ve-benchmark-all.json (362例, 全面验证)
+# 公平对比: unseen 210例(训练没见过, 同案例新旧模型对比)
+
+ee33450 | 41% (9/22) | 修复npm污染后首跑; 真实基准构建 | keep
+ec436fd | 41% (9/22) | +浮点垃圾过滤; api.github用例全FAIL(403缓存) | keep
+9aa833a | 100% (22/22) | 修复403缓存毒化+token注入; 缓存全清重跑 | keep
+47123ff | - | +JSON Feed识别 + macOS代号过滤 + brew TTL 12h | keep
+cfe7d31 | - | 基准全面验证362例: 删19无版本页(fastCRW审计), 修Duolingo/钉钉, 恢复4个bundleId, GitHub 101全OK | keep
+- | 旧模型84.3% vs 新模型95.2% (unseen 210例) | 重训后真实泛化 +10.9%: 旧模型倾向旧版本+漏检, 新模型修正 | keep
+- | 数据验证完成 | 700训练351页 fastCRW验证(标注可信), canonical-targets 210 Tavily+fastCRW验证(修15) | keep

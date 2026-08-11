@@ -70,6 +70,29 @@ function cacheSet(url: string, result: FetchResult) {
 export async function fetchPage(url: string, opts: { timeout?: number; retries?: number } = {}): Promise<FetchResult> {
   const cached = cacheGet(url);
   if (cached) return cached;
+  // fastCRW 模式: 用 fastCRW scrape 替代 got-scraping(解决反爬 + JS 渲染)
+  if (process.env.FETCHER === 'fastcrw') {
+    const { timeout = 30000 } = opts;
+    try {
+      const resp = await fetch(`${process.env.FASTCRW_URL || 'http://127.0.0.1:3000'}/v1/scrape`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, formats: ['markdown', 'html'] }),
+        signal: AbortSignal.timeout(timeout),
+      });
+      const data: any = await resp.json();
+      if (data?.success && data?.data) {
+        // 优先原始 HTML(和 ve 原管道一致), 无则用 markdown
+        const text = data.data.html || data.data.markdown || '';
+        const result = { status: 200, text };
+        cacheSet(url, result);
+        return result;
+      }
+      return { status: resp.status, text: '', error: data?.error || 'fastcrw failed' };
+    } catch (e: any) {
+      return { status: 0, text: '', error: e?.message || 'fastcrw fetch failed' };
+    }
+  }
   const { timeout = 15000, retries = 2 } = opts;
   let lastError: string | undefined;
   for (let attempt = 0; attempt <= retries; attempt += 1) {
@@ -154,6 +177,12 @@ export async function fetchPageRendered(url: string, opts: { timeout?: number } 
   const cacheKey2 = url + '#rendered';
   const cached = cacheGet(cacheKey2);
   if (cached) return cached;
+  // fastCRW 模式: LightPanda 已做 JS 渲染, 直接复用 fetchPage
+  if (process.env.FETCHER === 'fastcrw') {
+    const r = await fetchPage(url, opts);
+    if (r.text) cacheSet(cacheKey2, r);
+    return r;
+  }
   try {
     const browser = await getBrowser();
     const context = await browser.newContext({

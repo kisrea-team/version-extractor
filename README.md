@@ -131,6 +131,34 @@ Docker 镜像构建需 Node 22+（Playwright noble 镜像锁 Node 22，`node:sql
 
 输出每例判定 + 置信度 + 📦(注册表)/🖥️(浏览器) 来源标记 + 汇总准确率，以及 **LLM 兜底判定段**（咨询多少例、答对/答错/无答案各多少，逐例列出）。磁盘缓存 `.bench-cache/` 让改模型重跑不用重新抓页。
 
+### 数据集验证（2026-08-11）
+
+基准与训练数据全部经过**真实源交叉验证**（Tavily 搜索 + fastCRW 抓取 + GitHub/iTunes/npm/brew API 三线）：
+
+- **`benchmark/ve-benchmark-all.json`（362 例）**：全面验证后保留。删除 19 个「页面无版本号」的营销页（SaaS 登录页/JS 营销站，信息论上无法提取）；修正过期期望值（Duolingo 7.135、钉钉 8.5.1 等）；恢复 4 个 bundleId 格式的 iTunes 项目。GitHub 101 例全部通过 releases API 复核。
+- **`data/canonical-targets.jsonl`（210 页）**：训练 label 来源，Tavily 子代理 + fastCRW 全量验证，修正 15 个错误版本（Alpine 3.24.1 / GCC 16.1 / Tcl 9.0.4 / Linux内核 7.1.4 等，均快照前已发布）。
+- **`data/ds700-ctx/train-ready.jsonl`（351 页 / 9476 条候选）**：current 标注 15 个差异全部可解释（抓取提取错或版本更新），historical 标注经 Tavily 修正 16 条（Alpine/Inkscape/VS 等版本颠倒）。
+
+**关键方法论：**
+1. **时间对齐**：快照（2026-08-03）标注只能用快照时点的版本验证，不能用今天的版本改（否则把「当时正确」误判成错）。
+2. **官方源可能误导**：官网常列 dev/beta 版（Inkscape 官网有 1.5 dev，但稳定版是 1.4.4），必须以权威第三方（Wikipedia/发布日志）+ 多源交叉为准。
+3. **页面无版本是常态**：约 20% 官网（营销页/博客列表页/登录页）确实没有版本号，任何提取器（含 LLM）都提取不到，属于信息论极限，应从基准剔除而非优化。
+
+### 模型重训与公平对比（2026-08-11）
+
+用修正后的数据重训 LambdaRank（`train3_lgb.py`），**同 210 例训练未见过页面公平对比**：
+
+| 模型 | 准确率 |
+|---|---|
+| 旧模型（2026-08-08） | 84.3%（177/210） |
+| **新模型（重训后）** | **95.2%（200/210）** |
+
+旧模型 FAIL 聚类：倾向选旧一版（claude-code v2.1.226 vs 2.1.227）、漏检多（GitHub API 密集批 17/18 FAIL）；新模型修正了这两类。真实泛化提升 **+10.9%**。
+
+### fastCRW 抓取模式（可选）
+
+`FETCHER=fastcrw FASTCRW_URL=http://<host>:3000` 可将抓取层替换为 [fastCRW](https://github.com/us/crw)（Firecrawl 兼容自托管爬虫，LightPanda JS 渲染 + stealth 反爬），替代本地 Playwright。适合内存受限环境（VPS 3.8G 跑不动批量浏览器渲染时）。验证：5 例混合类型 100% 通过。
+
 ## 已知边界（诚实记录）
 
 - **依赖/组件版本压过产品**：页面出现 Chromium/Electron/其他库的更高版本时，rank 可能选错；margin 盲区（自信选错）不会触发 LLM。LLM 兜底也非万无一失（windsurf 曾被 "Chromium: 138.0.7204" 带偏，已通过提示词上下文窗口修正）。
