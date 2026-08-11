@@ -1,0 +1,2432 @@
+[
+ {
+  "name": "Comfy-Org/ComfyUI",
+  "url": "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest",
+  "expectedVersion": "v0.31.0",
+  "currentDbVersion": "v0.31.0"
+ },
+ {
+  "name": "modelcontextprotocol/typescript-sdk",
+  "url": "https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases/latest",
+  "expectedVersion": "@modelcontextprotocol/fastify@2.0.0",
+  "currentDbVersion": "v@modelcontextprotocol/fastify@2.0.0"
+ },
+ {
+  "name": "maybe-finance/maybe",
+  "url": "https://github.com/maybe-finance/maybe/releases",
+  "expectedVersion": "v0.6.0",
+  "currentDbVersion": "v0.6.0"
+ },
+ {
+  "name": "iina/iina",
+  "url": "https://api.github.com/repos/iina/iina/releases/latest",
+  "expectedVersion": "v1.4.4",
+  "currentDbVersion": "v0.8.30"
+ },
+ {
+  "name": "microsoft/playwright-mcp",
+  "url": "https://api.github.com/repos/microsoft/playwright-mcp/releases/latest",
+  "expectedVersion": "v0.0.79",
+  "currentDbVersion": "v0.0.68"
+ },
+ {
+  "name": "go-gitea/gitea",
+  "url": "https://api.github.com/repos/go-gitea/gitea/releases/latest",
+  "expectedVersion": "v1.27.1",
+  "currentDbVersion": "v1.27.1"
+ },
+ {
+  "name": "Wei-Shaw/claude-relay-service",
+  "url": "https://api.github.com/repos/Wei-Shaw/claude-relay-service/releases/latest",
+  "expectedVersion": "v1.1.314",
+  "currentDbVersion": "v1.1.295"
+ },
+ {
+  "name": "obra/superpowers",
+  "url": "https://api.github.com/repos/obra/superpowers/releases/latest",
+  "expectedVersion": "v6.2.0",
+  "currentDbVersion": "v6.2.0"
+ },
+ {
+  "name": "pocketbase/pocketbase",
+  "url": "https://api.github.com/repos/pocketbase/pocketbase/releases/latest",
+  "expectedVersion": "v0.39.10",
+  "currentDbVersion": "v0.36.7"
+ },
+ {
+  "name": "starship/starship",
+  "url": "https://api.github.com/repos/starship/starship/releases/latest",
+  "expectedVersion": "v1.26.0",
+  "currentDbVersion": "v1.26.0"
+ },
+ {
+  "name": "zadam/trilium",
+  "url": "https://github.com/zadam/trilium/releases/latest",
+  "expectedVersion": "v0.104.1",
+  "currentDbVersion": "v0.104.1"
+ },
+ {
+  "name": "lightpanda-io/browser",
+  "url": "https://github.com/lightpanda-io/browser/releases",
+  "expectedVersion": "nightly",
+  "currentDbVersion": "vnightly"
+ },
+ {
+  "name": "janeczku/calibre-web",
+  "url": "https://api.github.com/repos/janeczku/calibre-web/releases/latest",
+  "expectedVersion": "0.6.27",
+  "currentDbVersion": "v0.6.27"
+ },
+ {
+  "name": "pydantic/pydantic",
+  "url": "https://github.com/pydantic/pydantic/releases",
+  "expectedVersion": "v2.13.4",
+  "currentDbVersion": "v2.13.4"
+ },
+ {
+  "name": "promptfoo/promptfoo",
+  "url": "https://github.com/promptfoo/promptfoo/releases",
+  "expectedVersion": "0.122.0",
+  "currentDbVersion": "v0.122.0"
+ },
+ {
+  "name": "agentscope-ai/ReMe",
+  "url": "https://github.com/agentscope-ai/ReMe/releases",
+  "expectedVersion": "v0.4.1.5",
+  "currentDbVersion": "v0.4.1.5"
+ },
+ {
+  "name": "qdrant/qdrant",
+  "url": "https://api.github.com/repos/qdrant/qdrant/releases/latest",
+  "expectedVersion": "v1.19.0",
+  "currentDbVersion": "v1.17.0"
+ },
+ {
+  "name": "anthropics/claude-code",
+  "url": "https://api.github.com/repos/anthropics/claude-code/releases",
+  "expectedVersion": "v2.1.227",
+  "currentDbVersion": "v2.1.81"
+ },
+ {
+  "name": "alienator88/Pearcleaner",
+  "url": "https://api.github.com/repos/alienator88/Pearcleaner/releases",
+  "expectedVersion": "5.4.3",
+  "currentDbVersion": "5.4.3"
+ },
+ {
+  "name": "grafana/loki",
+  "url": "https://api.github.com/repos/grafana/loki/releases/latest",
+  "expectedVersion": "v3.7.6",
+  "currentDbVersion": "v3.6.7"
+ },
+ {
+  "name": "arpanghosh8453/open-dronelog",
+  "url": "https://github.com/arpanghosh8453/open-dronelog/releases",
+  "expectedVersion": "3.3.0",
+  "currentDbVersion": "v3.3.0"
+ },
+ {
+  "name": "run-llama/llama_index",
+  "url": "https://github.com/run-llama/llama_index/releases",
+  "expectedVersion": "v0.14.23",
+  "currentDbVersion": "v0.14.23"
+ },
+ {
+  "name": "pola-rs/polars",
+  "url": "https://api.github.com/repos/pola-rs/polars/releases",
+  "expectedVersion": "rs-0.55.2",
+  "currentDbVersion": "vrs-0.55.2"
+ },
+ {
+  "name": "NevaMind-AI/memU",
+  "url": "https://github.com/NevaMind-AI/memU/releases",
+  "expectedVersion": "v1.5.1",
+  "currentDbVersion": "v1.5.1"
+ },
+ {
+  "name": "nuxt/nuxt",
+  "url": "https://registry.npmjs.org/nuxt/latest",
+  "expectedVersion": "4.5.2",
+  "currentDbVersion": "v4.5.2"
+ },
+ {
+  "name": "electron/electron",
+  "url": "https://api.github.com/repos/electron/electron/releases/latest",
+  "expectedVersion": "v43.3.0",
+  "currentDbVersion": "v43.3.0"
+ },
+ {
+  "name": "apache/apisix",
+  "url": "https://api.github.com/repos/apache/apisix/releases/latest",
+  "expectedVersion": "3.17.0",
+  "currentDbVersion": "v3.15.0"
+ },
+ {
+  "name": "pytorch/pytorch",
+  "url": "https://api.github.com/repos/pytorch/pytorch/releases/latest",
+  "expectedVersion": "v2.13.0",
+  "currentDbVersion": "v2.10.0"
+ },
+ {
+  "name": "kevinho/clawfeed",
+  "url": "https://github.com/kevinho/clawfeed/releases",
+  "expectedVersion": "v0.2.0",
+  "currentDbVersion": "v0.2.0"
+ },
+ {
+  "name": "imsnif/bandwhich",
+  "url": "https://github.com/imsnif/bandwhich/releases",
+  "expectedVersion": "v0.23.1",
+  "currentDbVersion": "v0.23.1"
+ },
+ {
+  "name": "go-task/task",
+  "url": "https://api.github.com/repos/go-task/task/releases/latest",
+  "expectedVersion": "v3.52.0",
+  "currentDbVersion": "v3.52.0"
+ },
+ {
+  "name": "sharkdp/bat",
+  "url": "https://api.github.com/repos/sharkdp/bat/releases/latest",
+  "expectedVersion": "v0.26.1",
+  "currentDbVersion": "v0.26.1"
+ },
+ {
+  "name": "influxdata/influxdb",
+  "url": "https://github.com/influxdata/influxdb/releases",
+  "expectedVersion": "v3.10.0",
+  "currentDbVersion": "v3.10.0"
+ },
+ {
+  "name": "apify/crawlee",
+  "url": "https://github.com/apify/crawlee/releases/latest",
+  "expectedVersion": "v3.18.0",
+  "currentDbVersion": "v3.18.0"
+ },
+ {
+  "name": "nlohmann/json",
+  "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
+  "expectedVersion": "v3.12.0",
+  "currentDbVersion": "v3.12.0"
+ },
+ {
+  "name": "anthropics/claude-code",
+  "url": "https://api.github.com/repos/anthropics/claude-code/releases/latest",
+  "expectedVersion": "v2.1.227",
+  "currentDbVersion": "v2.1.226"
+ },
+ {
+  "name": "qodo-ai/pr-agent",
+  "url": "https://github.com/qodo-ai/pr-agent/releases",
+  "expectedVersion": "v0.42.0",
+  "currentDbVersion": "v0.42.0"
+ },
+ {
+  "name": "hoppscotch/hoppscotch",
+  "url": "https://github.com/hoppscotch/hoppscotch/releases",
+  "expectedVersion": "2026.7.0",
+  "currentDbVersion": "v2026.7.0"
+ },
+ {
+  "name": "chatboxai/chatbox",
+  "url": "https://github.com/chatboxai/chatbox/releases",
+  "expectedVersion": "v1.22.3",
+  "currentDbVersion": "v1.22.3"
+ },
+ {
+  "name": "red-data-tools/YouPlot",
+  "url": "https://api.github.com/repos/red-data-tools/YouPlot/releases/latest",
+  "expectedVersion": "v0.5.0",
+  "currentDbVersion": "v0.4.6"
+ },
+ {
+  "name": "prettier/prettier",
+  "url": "https://api.github.com/repos/prettier/prettier/releases/latest",
+  "expectedVersion": "3.9.6",
+  "currentDbVersion": "v3.8.1"
+ },
+ {
+  "name": "openai/codex",
+  "url": "https://api.github.com/repos/openai/codex/releases/latest",
+  "expectedVersion": "rust-v0.147.0",
+  "currentDbVersion": "vrust-v0.147.0"
+ },
+ {
+  "name": "utmapp/UTM",
+  "url": "https://github.com/utmapp/UTM/releases",
+  "expectedVersion": "v4.7.5",
+  "currentDbVersion": "v4.7.5"
+ },
+ {
+  "name": "redis/redis",
+  "url": "https://api.github.com/repos/redis/redis/releases/latest",
+  "expectedVersion": "8.10.0",
+  "currentDbVersion": "v8.10.0"
+ },
+ {
+  "name": "awesome-selfhosted/awesome-selfhosted",
+  "url": "https://github.com/awesome-selfhosted/awesome-selfhosted/releases.atom",
+  "expectedVersion": "1.0.0",
+  "currentDbVersion": "v1.0.0"
+ },
+ {
+  "name": "casey/just",
+  "url": "https://api.github.com/repos/casey/just/releases/latest",
+  "expectedVersion": "1.58.0",
+  "currentDbVersion": "1.47.1"
+ },
+ {
+  "name": "RooVetGit/Roo-Cline",
+  "url": "https://github.com/RooCodeInc/Roo-Code/releases",
+  "expectedVersion": "v3.54.0",
+  "currentDbVersion": "v3.54.0"
+ },
+ {
+  "name": "getmaxun/maxun",
+  "url": "https://github.com/getmaxun/maxun/releases.atom",
+  "expectedVersion": "v0.0.45",
+  "currentDbVersion": "v0.0.45"
+ },
+ {
+  "name": "greenshot/greenshot",
+  "url": "https://github.com/greenshot/greenshot/releases",
+  "expectedVersion": "v1.3.315",
+  "currentDbVersion": "v1.3.315"
+ },
+ {
+  "name": "k3s-io/k3s",
+  "url": "https://api.github.com/repos/k3s-io/k3s/releases/latest",
+  "expectedVersion": "v1.36.3+k3s1",
+  "currentDbVersion": "v1.35.1+k3s1"
+ },
+ {
+  "name": "AppFlowy-IO/AppFlowy",
+  "url": "https://api.github.com/repos/AppFlowy-IO/AppFlowy/releases/latest",
+  "expectedVersion": "0.13.1",
+  "currentDbVersion": "0.11.4"
+ },
+ {
+  "name": "sharkdp/hyperfine",
+  "url": "https://api.github.com/repos/sharkdp/hyperfine/releases/latest",
+  "expectedVersion": "v1.20.0",
+  "currentDbVersion": "v1.20.0"
+ },
+ {
+  "name": "volcengine/OpenViking",
+  "url": "https://github.com/volcengine/OpenViking/releases",
+  "expectedVersion": "v0.4.13",
+  "currentDbVersion": "v0.4.13"
+ },
+ {
+  "name": "nestjs/nest",
+  "url": "https://api.github.com/repos/nestjs/nest/releases/latest",
+  "expectedVersion": "v11.1.29",
+  "currentDbVersion": "v11.1.17"
+ },
+ {
+  "name": "python-poetry/poetry",
+  "url": "https://api.github.com/repos/python-poetry/poetry/releases/latest",
+  "expectedVersion": "2.4.1",
+  "currentDbVersion": "v2.4.1"
+ },
+ {
+  "name": "orhun/git-cliff",
+  "url": "https://api.github.com/repos/orhun/git-cliff/releases/latest",
+  "expectedVersion": "v2.13.1",
+  "currentDbVersion": "v2.13.1"
+ },
+ {
+  "name": "photoprism/photoprism",
+  "url": "https://api.github.com/repos/photoprism/photoprism/releases/latest",
+  "expectedVersion": "260728-bbde8f452",
+  "currentDbVersion": "v260728-bbde8f452"
+ },
+ {
+  "name": "neovim/neovim",
+  "url": "https://api.github.com/repos/neovim/neovim/releases/latest",
+  "expectedVersion": "v0.12.4",
+  "currentDbVersion": "v0.12.4"
+ },
+ {
+  "name": "getsops/sops",
+  "url": "https://api.github.com/repos/getsops/sops/releases/latest",
+  "expectedVersion": "v3.13.3",
+  "currentDbVersion": "v3.13.3"
+ },
+ {
+  "name": "makeplane/plane",
+  "url": "https://api.github.com/repos/makeplane/plane/releases/latest",
+  "expectedVersion": "v1.4.1",
+  "currentDbVersion": "v1.2.3"
+ },
+ {
+  "name": "danielmiessler/fabric",
+  "url": "https://github.com/danielmiessler/fabric/releases",
+  "expectedVersion": "v1.4.470",
+  "currentDbVersion": "v1.4.470"
+ },
+ {
+  "name": "alibaba/page-agent",
+  "url": "https://github.com/alibaba/page-agent/releases",
+  "expectedVersion": "v1.12.2",
+  "currentDbVersion": "v1.12.2"
+ },
+ {
+  "name": "pdfme/pdfme",
+  "url": "https://github.com/pdfme/pdfme/releases",
+  "expectedVersion": "6.0.0",
+  "currentDbVersion": "v6.0.0"
+ },
+ {
+  "name": "PowerShell/PowerShell",
+  "url": "https://api.github.com/repos/PowerShell/PowerShell/releases/latest",
+  "expectedVersion": "v7.6.4",
+  "currentDbVersion": "v7.6.0"
+ },
+ {
+  "name": "stacklok/toolhive",
+  "url": "https://github.com/stacklok/toolhive/releases",
+  "expectedVersion": "v0.42.1",
+  "currentDbVersion": "v0.42.1"
+ },
+ {
+  "name": "charmbracelet/bubbletea",
+  "url": "https://api.github.com/repos/charmbracelet/bubbletea/releases/latest",
+  "expectedVersion": "v2.0.8",
+  "currentDbVersion": "v2.0.8"
+ },
+ {
+  "name": "microsoft/vscode",
+  "url": "https://api.github.com/repos/microsoft/vscode/releases/latest",
+  "expectedVersion": "1.132.0",
+  "currentDbVersion": "v1.132.0"
+ },
+ {
+  "name": "ajeetdsouza/zoxide",
+  "url": "https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest",
+  "expectedVersion": "v0.10.0",
+  "currentDbVersion": "v0.10.0"
+ },
+ {
+  "name": "facebook/folly",
+  "url": "https://api.github.com/repos/facebook/folly/releases/latest",
+  "expectedVersion": "v2026.08.10.00",
+  "currentDbVersion": "v2026.08.03.00"
+ },
+ {
+  "name": "teableio/teable",
+  "url": "https://github.com/teableio/teable/releases",
+  "expectedVersion": "release.2026-08-10T07-45-10Z.2574",
+  "currentDbVersion": "vrelease.2026-08-09T08-35-12Z.2557"
+ },
+ {
+  "name": "jdx/mise",
+  "url": "https://api.github.com/repos/jdx/mise/releases/latest",
+  "expectedVersion": "v2026.8.4",
+  "currentDbVersion": "v2026.8.3"
+ },
+ {
+  "name": "tolgee/tolgee-platform",
+  "url": "https://github.com/tolgee/tolgee-platform/releases",
+  "expectedVersion": "v3.218.0",
+  "currentDbVersion": "v3.218.0"
+ },
+ {
+  "name": "expo/expo",
+  "url": "https://registry.npmjs.org/expo/latest",
+  "expectedVersion": "57.0.12",
+  "currentDbVersion": "v57.0.11"
+ },
+ {
+  "name": "microsoft/edit",
+  "url": "https://api.github.com/repos/ghostty-org/ghostty/releases/latest",
+  "expectedVersion": "v2.0.0",
+  "currentDbVersion": "v1.3.1"
+ },
+ {
+  "name": "krille-chan/fluffychat",
+  "url": "https://github.com/krille-chan/fluffychat/releases",
+  "expectedVersion": "v2.8.0",
+  "currentDbVersion": "v2.8.0"
+ },
+ {
+  "name": "ruvnet/ruflo",
+  "url": "https://api.github.com/repos/ruvnet/ruflo/releases/latest",
+  "expectedVersion": "v3.36.0",
+  "currentDbVersion": "v3.34.0"
+ },
+ {
+  "name": "astral-sh/ruff",
+  "url": "https://api.github.com/repos/astral-sh/ruff/releases/latest",
+  "expectedVersion": "0.16.2",
+  "currentDbVersion": "v0.16.2"
+ },
+ {
+  "name": "zylon-ai/private-gpt",
+  "url": "https://github.com/zylon-ai/private-gpt/releases",
+  "expectedVersion": "v1.0.1",
+  "currentDbVersion": "v1.0.1"
+ },
+ {
+  "name": "dolthub/dolt",
+  "url": "https://github.com/dolthub/dolt/releases",
+  "expectedVersion": "v2.2.3",
+  "currentDbVersion": "v2.2.3"
+ },
+ {
+  "name": "milvus-io/milvus",
+  "url": "https://github.com/milvus-io/milvus/releases",
+  "expectedVersion": "v3.0.0",
+  "currentDbVersion": "v3.0.0"
+ },
+ {
+  "name": "tensorflow/tensorflow",
+  "url": "https://api.github.com/repos/tensorflow/tensorflow/releases/latest",
+  "expectedVersion": "v2.21.0",
+  "currentDbVersion": "v2.21.0"
+ },
+ {
+  "name": "airbnb/lottie-ios",
+  "url": "https://github.com/airbnb/lottie-ios/releases",
+  "expectedVersion": "4.6.1",
+  "currentDbVersion": "v4.6.1"
+ },
+ {
+  "name": "devspace-sh/devspace",
+  "url": "https://api.github.com/repos/devspace-sh/devspace/releases/latest",
+  "expectedVersion": "v6.3.21",
+  "currentDbVersion": "v6.3.20"
+ },
+ {
+  "name": "opentofu/opentofu",
+  "url": "https://github.com/opentofu/opentofu/releases",
+  "expectedVersion": "v1.12.5",
+  "currentDbVersion": "v1.12.5"
+ },
+ {
+  "name": "Anxcye/anx-reader",
+  "url": "https://github.com/Anxcye/anx-reader/releases.atom",
+  "expectedVersion": "v1.14.0",
+  "currentDbVersion": "v1.14.0"
+ },
+ {
+  "name": "facebook/docusaurus",
+  "url": "https://api.github.com/repos/facebook/docusaurus/releases/latest",
+  "expectedVersion": "v3.10.2",
+  "currentDbVersion": "v3.10.2"
+ },
+ {
+  "name": "BuilderIO/mitosis",
+  "url": "https://api.github.com/repos/BuilderIO/mitosis/releases",
+  "expectedVersion": "@builder.io/mitosis-cli@0.14.0",
+  "currentDbVersion": "v@builder.io/mitosis-cli@0.14.0"
+ },
+ {
+  "name": "ScoopInstaller/Scoop",
+  "url": "https://api.github.com/repos/ScoopInstaller/Scoop/releases/latest",
+  "expectedVersion": "v0.5.3",
+  "currentDbVersion": "v0.5.3"
+ },
+ {
+  "name": "Significant-Gravitas/AutoGPT",
+  "url": "https://github.com/Significant-Gravitas/AutoGPT/releases",
+  "expectedVersion": "autogpt-platform-beta-v0.7.0",
+  "currentDbVersion": "vautogpt-platform-beta-v0.7.0"
+ },
+ {
+  "name": "gin-gonic/gin",
+  "url": "https://api.github.com/repos/gin-gonic/gin/releases/latest",
+  "expectedVersion": "v1.12.0",
+  "currentDbVersion": "v1.12.0"
+ },
+ {
+  "name": "666ghj/MiroFish",
+  "url": "https://github.com/666ghj/MiroFish/releases",
+  "expectedVersion": "v0.1.2",
+  "currentDbVersion": "v0.1.2"
+ },
+ {
+  "name": "jupyterlab/jupyterlab",
+  "url": "https://api.github.com/repos/jupyterlab/jupyterlab/releases/latest",
+  "expectedVersion": "v4.6.3",
+  "currentDbVersion": "v4.5.6"
+ },
+ {
+  "name": "umami-software/umami",
+  "url": "https://api.github.com/repos/umami-software/umami/releases/latest",
+  "expectedVersion": "v3.2.0",
+  "currentDbVersion": "v3.0.3"
+ },
+ {
+  "name": "SnapKit/SnapKit",
+  "url": "https://github.com/SnapKit/SnapKit/releases",
+  "expectedVersion": "6.0.0",
+  "currentDbVersion": "v6.0.0"
+ },
+ {
+  "name": "openai/openai-agents-python",
+  "url": "https://api.github.com/repos/openai/openai-agents-python/releases/latest",
+  "expectedVersion": "v0.20.0",
+  "currentDbVersion": "v0.19.4"
+ },
+ {
+  "name": "argoproj/argo-cd",
+  "url": "https://github.com/argoproj/argo-cd/releases/latest",
+  "expectedVersion": "v3.5.0",
+  "currentDbVersion": "v3.5.0"
+ },
+ {
+  "name": "ianyh/Amethyst",
+  "url": "https://api.github.com/repos/ianyh/Amethyst/releases/latest",
+  "expectedVersion": "v0.24.3",
+  "currentDbVersion": "v0.24.3"
+ },
+ {
+  "name": "firecrawl/anydoc",
+  "url": "https://github.com/firecrawl/anydoc/releases",
+  "expectedVersion": "v0.1.8",
+  "currentDbVersion": "v0.1.7"
+ },
+ {
+  "name": "trpc/trpc",
+  "url": "https://github.com/trpc/trpc/releases",
+  "expectedVersion": "v11.18.0",
+  "currentDbVersion": "v11.18.0"
+ },
+ {
+  "name": "swiftbar/SwiftBar",
+  "url": "https://github.com/swiftbar/SwiftBar/releases",
+  "expectedVersion": "v2.1.0",
+  "currentDbVersion": "v2.0.1"
+ },
+ {
+  "name": "activepieces/activepieces",
+  "url": "https://github.com/activepieces/activepieces/releases",
+  "expectedVersion": "0.87.0",
+  "currentDbVersion": "v0.87.0"
+ },
+ {
+  "name": "thedotmack/claude-mem",
+  "url": "https://github.com/thedotmack/claude-mem/releases",
+  "expectedVersion": "v13.15.0",
+  "currentDbVersion": "v13.14.0"
+ },
+ {
+  "name": "langchain-ai/deepagents",
+  "url": "https://github.com/langchain-ai/deepagents/releases",
+  "expectedVersion": "deepagents==0.7.5",
+  "currentDbVersion": "vdeepagents==0.7.5"
+ },
+ {
+  "name": "Canva: AI Photo & Video Editor",
+  "url": "https://itunes.apple.com/lookup?id=897446215",
+  "expectedVersion": "4.221.0",
+  "currentDbVersion": "v4.219.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Structured - Daily Planner",
+  "url": "https://itunes.apple.com/lookup?id=1499198946",
+  "expectedVersion": "4.5.3",
+  "currentDbVersion": "v4.5.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bear - Markdown Notes",
+  "url": "https://itunes.apple.com/lookup?id=1016366447",
+  "expectedVersion": "2.9.3",
+  "currentDbVersion": "v2.9.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Superlist: To-Do List & Tasks",
+  "url": "https://itunes.apple.com/lookup?id=1547585270",
+  "expectedVersion": "1.56.4",
+  "currentDbVersion": "v1.56.4",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Locus GTD",
+  "url": "https://itunes.apple.com/lookup?id=6738880378",
+  "expectedVersion": "2.2.0",
+  "currentDbVersion": "v2.2.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Proton Mail - Encrypted Email",
+  "url": "https://itunes.apple.com/lookup?id=979659905",
+  "expectedVersion": "7.10.3",
+  "currentDbVersion": "v7.10.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Canary Mail",
+  "url": "https://itunes.apple.com/lookup?id=1155470386",
+  "expectedVersion": "5.21.0",
+  "currentDbVersion": "v5.21.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Hevy - Workout Tracker Gym Log",
+  "url": "https://itunes.apple.com/lookup?id=1458862350",
+  "expectedVersion": "3.1.8",
+  "currentDbVersion": "v3.1.8",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Alook Browser",
+  "url": "https://itunes.apple.com/lookup?id=1261944766",
+  "expectedVersion": "22.9",
+  "currentDbVersion": "v22.9",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "raycast",
+  "url": "https://formulae.brew.sh/api/cask/raycast.json",
+  "expectedVersion": "1.104.24",
+  "currentDbVersion": "v1.104.24",
+  "verify": "brew"
+ },
+ {
+  "name": "Figma",
+  "url": "https://itunes.apple.com/lookup?id=1152747299",
+  "expectedVersion": "26.29.0",
+  "currentDbVersion": "v26.29.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Goodnotes: AI Notes, Docs, PDF",
+  "url": "https://itunes.apple.com/lookup?id=1444383602",
+  "expectedVersion": "7.1.12",
+  "currentDbVersion": "v7.1.10",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Duolingo - Language Lessons",
+  "url": "https://itunes.apple.com/lookup?id=570060128",
+  "expectedVersion": "7.135.0",
+  "currentDbVersion": "v7.134.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Heptabase",
+  "url": "https://itunes.apple.com/lookup?id=6445801508",
+  "expectedVersion": "1.37.5",
+  "currentDbVersion": "v1.37.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Calendars by Readdle",
+  "url": "https://itunes.apple.com/lookup?id=608834326",
+  "expectedVersion": "5.37.34",
+  "currentDbVersion": "v5.37.34",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Spark AI Email & Calendar",
+  "url": "https://itunes.apple.com/lookup?id=997102246",
+  "expectedVersion": "3.19.24",
+  "currentDbVersion": "v3.19.24",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Flora - Green Focus",
+  "url": "https://itunes.apple.com/lookup?id=1225155794",
+  "expectedVersion": "3.7.39",
+  "currentDbVersion": "v3.7.39",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Raindrop.io",
+  "url": "https://itunes.apple.com/lookup?id=1021913807",
+  "expectedVersion": "5.4.7",
+  "currentDbVersion": "v5.4.7",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "GoodLinks",
+  "url": "https://itunes.apple.com/lookup?id=1474335294",
+  "expectedVersion": "3.3.5",
+  "currentDbVersion": "v3.3.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Gmail - Email by Google",
+  "url": "https://itunes.apple.com/lookup?id=422689480",
+  "expectedVersion": "6.0.260727",
+  "currentDbVersion": "v6.0.260727",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Infuse",
+  "url": "https://itunes.apple.com/lookup?id=1136220934",
+  "expectedVersion": "8.5",
+  "currentDbVersion": "v8.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "NetNewsWire: RSS Reader",
+  "url": "https://itunes.apple.com/lookup?id=1480640210",
+  "expectedVersion": "7.1.2",
+  "currentDbVersion": "v7.1.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Anybox",
+  "url": "https://itunes.apple.com/lookup?id=1593408455",
+  "expectedVersion": "2.13",
+  "currentDbVersion": "v2.13",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Notion Calendar",
+  "url": "https://itunes.apple.com/lookup?id=1607562761",
+  "expectedVersion": "1.92.0",
+  "currentDbVersion": "v1.92.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Goodnotes 6",
+  "url": "https://itunes.apple.com/lookup?id=1444383602",
+  "expectedVersion": "7.1.12",
+  "currentDbVersion": "v7.1.10",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Focast",
+  "url": "https://itunes.apple.com/lookup?id=1479696191",
+  "expectedVersion": "3.1.2",
+  "currentDbVersion": "v3.1.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Proton Pass",
+  "url": "https://itunes.apple.com/lookup?id=6443490629",
+  "expectedVersion": "1.20.0",
+  "currentDbVersion": "v1.20.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "TablePlus - Database Client",
+  "url": "https://itunes.apple.com/lookup?id=1465448609",
+  "expectedVersion": "26.8.1",
+  "currentDbVersion": "v26.8.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bear",
+  "url": "https://itunes.apple.com/lookup?id=1016366447",
+  "expectedVersion": "2.9.3",
+  "currentDbVersion": "v2.9.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Pixelmator Pro",
+  "url": "https://itunes.apple.com/lookup?id=6746662575",
+  "expectedVersion": "4.3",
+  "currentDbVersion": "v4.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Notion: Notes, Tasks, AI",
+  "url": "https://itunes.apple.com/lookup?id=1232780281",
+  "expectedVersion": "1.7.327",
+  "currentDbVersion": "v1.7.327",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Craft: Notes, Documents, AI",
+  "url": "https://itunes.apple.com/lookup?id=1487937127",
+  "expectedVersion": "3.5.4",
+  "currentDbVersion": "v3.5.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "TimeTree: Shared Calendar",
+  "url": "https://itunes.apple.com/lookup?id=952578473",
+  "expectedVersion": "15.24.0",
+  "currentDbVersion": "v15.24.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Amphetamine",
+  "url": "https://itunes.apple.com/lookup?id=937984704",
+  "expectedVersion": "5.3.2",
+  "currentDbVersion": "v5.3.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Todoist: To Do List & Calendar",
+  "url": "https://itunes.apple.com/lookup?id=572688855",
+  "expectedVersion": "26.8.5",
+  "currentDbVersion": "v26.7.17",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Day One Journal",
+  "url": "https://itunes.apple.com/lookup?id=1044867788",
+  "expectedVersion": "2026.16",
+  "currentDbVersion": "v2026.16",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bevel",
+  "url": "https://itunes.apple.com/lookup?id=6456176249",
+  "expectedVersion": "3.1.5",
+  "currentDbVersion": "v3.1.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "PDF Expert",
+  "url": "https://itunes.apple.com/lookup?id=743974925",
+  "expectedVersion": "7.25.10",
+  "currentDbVersion": "v7.25.10",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "CARROT Weather",
+  "url": "https://itunes.apple.com/lookup?id=993487541",
+  "expectedVersion": "4.15.17",
+  "currentDbVersion": "v4.15.17",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "VSCO: Photo Editor & Presets",
+  "url": "https://itunes.apple.com/lookup?id=588013838",
+  "expectedVersion": "461.6.4",
+  "currentDbVersion": "v461.6.4",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Goblin Tools",
+  "url": "https://itunes.apple.com/lookup?id=6449003064",
+  "expectedVersion": "1.1",
+  "currentDbVersion": "v1.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "WeChat（微信）",
+  "url": "https://apps.apple.com/cn/app/wechat/id414478124",
+  "expectedVersion": "8.0.75",
+  "currentDbVersion": "v8.0.75",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Opal: Screen Time Control",
+  "url": "https://itunes.apple.com/lookup?id=1497465230",
+  "expectedVersion": "4.9",
+  "currentDbVersion": "v4.9",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Scanner Pro",
+  "url": "https://itunes.apple.com/lookup?id=333710667",
+  "expectedVersion": "8.38.1",
+  "currentDbVersion": "v8.38.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bitwarden Password Manager",
+  "url": "https://itunes.apple.com/lookup?id=1137397744",
+  "expectedVersion": "2026.7.1",
+  "currentDbVersion": "v2026.7.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "CleanMyMac X",
+  "url": "https://itunes.apple.com/lookup?id=1339170533&entity=macSoftware",
+  "expectedVersion": "5.5.7",
+  "currentDbVersion": "v5.5.7",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Fantastical Calendar",
+  "url": "https://itunes.apple.com/lookup?id=718043190",
+  "expectedVersion": "4.1.17",
+  "currentDbVersion": "v4.1.17",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Lumy",
+  "url": "https://itunes.apple.com/lookup?id=908905093",
+  "expectedVersion": "2026.1.17",
+  "currentDbVersion": "v2026.1.17",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Kimi",
+  "url": "https://itunes.apple.com/lookup?id=6474233312",
+  "expectedVersion": "3.0.3",
+  "currentDbVersion": "v3.0.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Otter Transcribe Voice Notes",
+  "url": "https://itunes.apple.com/lookup?id=1276437113",
+  "expectedVersion": "3.105.0",
+  "currentDbVersion": "v3.104.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "文心一言",
+  "url": "https://itunes.apple.com/cn/lookup?id=6446882473",
+  "expectedVersion": "5.17.0",
+  "currentDbVersion": "v5.17.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Werdsmith: Writing App",
+  "url": "https://itunes.apple.com/lookup?id=489746330",
+  "expectedVersion": "6.5.1",
+  "currentDbVersion": "v6.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "TopNotch",
+  "url": "https://formulae.brew.sh/api/cask/topnotch.json",
+  "expectedVersion": "1.3.2",
+  "currentDbVersion": "v1.3.2",
+  "verify": "brew"
+ },
+ {
+  "name": "腾讯会议",
+  "url": "https://itunes.apple.com/lookup?id=1484048379&country=cn",
+  "expectedVersion": "3.44.11",
+  "currentDbVersion": "v3.44.11",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Ulysses",
+  "url": "https://itunes.apple.com/lookup?id=1225570693",
+  "expectedVersion": "40.3",
+  "currentDbVersion": "v40.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "1Blocker: Ad Blocker",
+  "url": "https://itunes.apple.com/lookup?id=1365531024",
+  "expectedVersion": "6.6.1",
+  "currentDbVersion": "v6.6.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bear Notes",
+  "url": "https://itunes.apple.com/lookup?id=1016366447",
+  "expectedVersion": "2.9.3",
+  "currentDbVersion": "v2.9.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Snipd",
+  "url": "https://itunes.apple.com/lookup?id=1557206126",
+  "expectedVersion": "4.1.19",
+  "currentDbVersion": "v4.1.17",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "PDFgear",
+  "url": "https://itunes.apple.com/lookup?id=6469021132&entity=software",
+  "expectedVersion": "2.26",
+  "currentDbVersion": "v2.26",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Unread",
+  "url": "https://apps.apple.com/us/app/unread-an-rss-reader/id1363637349",
+  "expectedVersion": "4.9.8",
+  "currentDbVersion": "v4.9.8",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Quiche Browser",
+  "url": "https://itunes.apple.com/lookup?id=1668363952",
+  "expectedVersion": "1.73.2",
+  "currentDbVersion": "v1.73.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "卓悦智能",
+  "url": "https://itunes.apple.com/lookup?id=1529062889&country=cn",
+  "expectedVersion": "1.4.9",
+  "currentDbVersion": "v1.4.9",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Due",
+  "url": "https://itunes.apple.com/lookup?id=390017969&country=us",
+  "expectedVersion": "26.4.3",
+  "currentDbVersion": "v26.4.3",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Forest",
+  "url": "https://itunes.apple.com/lookup?id=866450515",
+  "expectedVersion": "5.23.0",
+  "currentDbVersion": "v5.23.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Picsew",
+  "url": "https://itunes.apple.com/lookup?id=1208145167",
+  "expectedVersion": "3.17.4",
+  "currentDbVersion": "v3.17.4",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Agenda",
+  "url": "https://itunes.apple.com/lookup?id=1287445660&country=us",
+  "expectedVersion": "23.2",
+  "currentDbVersion": "v23.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "iA Writer",
+  "url": "https://itunes.apple.com/lookup?id=775737590&country=us",
+  "expectedVersion": "8.0.6",
+  "currentDbVersion": "v8.0.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Shazam",
+  "url": "https://itunes.apple.com/lookup?id=284993459",
+  "expectedVersion": "26.14.1",
+  "currentDbVersion": "v26.14.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Paste",
+  "url": "https://itunes.apple.com/lookup?id=967805235&entity=software",
+  "expectedVersion": "6.6.6",
+  "currentDbVersion": "v6.6.6",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Vercel",
+  "url": "https://registry.npmjs.org/vercel/latest",
+  "expectedVersion": "58.9.1",
+  "currentDbVersion": "v58.9.0",
+  "verify": "npm"
+ },
+ {
+  "name": "Core Shell",
+  "url": "https://itunes.apple.com/lookup?id=1354319581&entity=software",
+  "expectedVersion": "4.0",
+  "currentDbVersion": "v4.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Spark Mail",
+  "url": "https://itunes.apple.com/lookup?id=997102246",
+  "expectedVersion": "3.19.24",
+  "currentDbVersion": "v3.19.24",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Notability",
+  "url": "https://itunes.apple.com/lookup?id=360593530",
+  "expectedVersion": "16.8.1",
+  "currentDbVersion": "v16.8.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Forest 专注森林",
+  "url": "https://itunes.apple.com/lookup?id=866450515",
+  "expectedVersion": "5.23.0",
+  "currentDbVersion": "v5.23.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Linear Mobile",
+  "url": "https://itunes.apple.com/lookup?id=1645587184",
+  "expectedVersion": "1.84.0",
+  "currentDbVersion": "v1.84.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Things 3",
+  "url": "https://itunes.apple.com/lookup?id=904237743",
+  "expectedVersion": "3.22.11",
+  "currentDbVersion": "v3.22.11",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Airmail",
+  "url": "https://itunes.apple.com/lookup?id=918858936&country=us&entity=macSoftware",
+  "expectedVersion": "26.0.26",
+  "currentDbVersion": "v26.0.26",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Toggl Track",
+  "url": "https://itunes.apple.com/lookup?id=1291898086",
+  "expectedVersion": "6.17.0",
+  "currentDbVersion": "v6.17.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Cubox",
+  "url": "https://itunes.apple.com/lookup?id=1113361350",
+  "expectedVersion": "8.2.5",
+  "currentDbVersion": "v8.2.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Linearity Curve",
+  "url": "https://itunes.apple.com/lookup?id=1219074514",
+  "expectedVersion": "6.12.0",
+  "currentDbVersion": "v6.12.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "书尖AI",
+  "url": "https://itunes.apple.com/cn/lookup?id=6740615365",
+  "expectedVersion": "1.6.1",
+  "currentDbVersion": "v1.6.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Proton Drive",
+  "url": "https://itunes.apple.com/lookup?id=1509667851",
+  "expectedVersion": "3.0.1",
+  "currentDbVersion": "v3.0.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Timery",
+  "url": "https://itunes.apple.com/lookup?id=1425368544",
+  "expectedVersion": "1.8",
+  "currentDbVersion": "v1.8",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "智谱清言",
+  "url": "https://itunes.apple.com/lookup?id=6450893458&country=cn",
+  "expectedVersion": "3.7.2",
+  "currentDbVersion": "v3.7.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Drafts",
+  "url": "https://itunes.apple.com/lookup?id=1236254471",
+  "expectedVersion": "53.0",
+  "currentDbVersion": "v53.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Superwhisper",
+  "url": "https://itunes.apple.com/lookup?id=6471464415",
+  "expectedVersion": "2.20",
+  "currentDbVersion": "v2.19",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "LiquidText",
+  "url": "https://itunes.apple.com/lookup?id=922765270",
+  "expectedVersion": "7.3.12",
+  "currentDbVersion": "v7.3.12",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "RunCat Neo",
+  "url": "https://itunes.apple.com/lookup?bundleId=com.kyome.Neo.RunCat&country=cn",
+  "expectedVersion": "1.0",
+  "currentDbVersion": "v1.0",
+  "verify": "itunes-bundle"
+ },
+ {
+  "name": "OrbStack",
+  "url": "https://orbstack.dev",
+  "expectedVersion": "2.2.3",
+  "currentDbVersion": "v2.2.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Miro",
+  "url": "https://miro.com/blog/whats-new-february-2026/",
+  "expectedVersion": "0.11.168",
+  "currentDbVersion": "v0.11.168",
+  "verify": "brew"
+ },
+ {
+  "name": "Krita",
+  "url": "https://krita.org/en/posts/index.xml",
+  "expectedVersion": "5.3.3",
+  "currentDbVersion": "v5.3.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Obsidian Canvas",
+  "url": "https://obsidian.md/changelog.json",
+  "expectedVersion": "1.13.6",
+  "currentDbVersion": "v1.13.4",
+  "verify": "brew-dom"
+ },
+ {
+  "name": "Readwise Reader",
+  "url": "https://itunes.apple.com/lookup?id=1567599761",
+  "expectedVersion": "0.1.3052",
+  "currentDbVersion": "v8.16",
+  "verify": "brew"
+ },
+ {
+  "name": "Sublime Text",
+  "url": "https://www.sublimetext.com/download",
+  "expectedVersion": "4206",
+  "currentDbVersion": "v3.8",
+  "verify": "brew"
+ },
+ {
+  "name": "Warp",
+  "url": "https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml",
+  "expectedVersion": "0.2026.08.05.09.03.stable_01",
+  "currentDbVersion": "v2026.6.880",
+  "verify": "brew"
+ },
+ {
+  "name": "Wireshark",
+  "url": "https://www.wireshark.org/docs/relnotes/wireshark-4.6.4.html",
+  "expectedVersion": "4.6.7",
+  "currentDbVersion": "v29.212",
+  "verify": "brew"
+ },
+ {
+  "name": "Affinity Photo",
+  "url": "https://store.serif.com/en-us/update/windows/photo/2/",
+  "expectedVersion": "2.6.5",
+  "currentDbVersion": "v2.6.5",
+  "verify": "brew"
+ },
+ {
+  "name": "Shottr",
+  "url": "https://shottr.cc",
+  "expectedVersion": "1.9.1",
+  "currentDbVersion": "v1.9.1",
+  "verify": "brew"
+ },
+ {
+  "name": "iTerm2",
+  "url": "https://iterm2.com/downloads.html",
+  "expectedVersion": "3.6.11",
+  "currentDbVersion": "v3.6.11",
+  "verify": "brew"
+ },
+ {
+  "name": "Keyboard Maestro",
+  "url": "https://www.keyboardmaestro.com",
+  "expectedVersion": "11.1.1",
+  "currentDbVersion": "v11.1.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Little Snitch",
+  "url": "https://www.obdev.at/products/littlesnitch/releasenotes.html",
+  "expectedVersion": "6.5",
+  "currentDbVersion": "v6.4.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Hazel",
+  "url": "https://www.noodlesoft.com/release_notes",
+  "expectedVersion": "6.1.2",
+  "currentDbVersion": "v6.1.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Figma Slides",
+  "url": "https://www.figma.com/release-notes/",
+  "expectedVersion": "126.8.11",
+  "currentDbVersion": "v126.7.10",
+  "verify": "brew-dom"
+ },
+ {
+  "name": "WPS Office",
+  "url": "https://home.wps.cn/topic/12477",
+  "expectedVersion": "12.1.26032",
+  "currentDbVersion": "v18.19",
+  "verify": "brew"
+ },
+ {
+  "name": "MongoDB Compass",
+  "url": "https://www.mongodb.com/docs/compass/current/release-notes/",
+  "expectedVersion": "1.49.14",
+  "currentDbVersion": "v1.49.12",
+  "verify": "brew"
+ },
+ {
+  "name": "CleanClip",
+  "url": "https://cleanclip.cc/download",
+  "expectedVersion": "2.4.7",
+  "currentDbVersion": "v2.4.7",
+  "verify": "brew"
+ },
+ {
+  "name": "GitKraken",
+  "url": "https://www.gitkraken.com/download",
+  "expectedVersion": "12.4.0",
+  "currentDbVersion": "v12.4.0",
+  "verify": "brew"
+ },
+ {
+  "name": "TextExpander",
+  "url": "https://textexpander.com/release/mac",
+  "expectedVersion": "8.4.6",
+  "currentDbVersion": "v8.4.6",
+  "verify": "brew"
+ },
+ {
+  "name": "HazeOver",
+  "url": "https://feeds.feedburner.com/hazeover",
+  "expectedVersion": "1.9.7",
+  "currentDbVersion": "v1.9",
+  "verify": "brew"
+ },
+ {
+  "name": "VLC media player",
+  "url": "https://www.videolan.org/vlc/releases/",
+  "expectedVersion": "3.0.23",
+  "currentDbVersion": "v3.0.23",
+  "verify": "brew"
+ },
+ {
+  "name": "Paw",
+  "url": "https://paw.cloud/api/v2/updates/appcast",
+  "expectedVersion": "4.5.5",
+  "currentDbVersion": "v2",
+  "verify": "brew-dom"
+ },
+ {
+  "name": "Parallels Desktop",
+  "url": "https://kb.parallels.com/cn/131014",
+  "expectedVersion": "20.4.2-55999",
+  "currentDbVersion": "v26.4.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Default Folder X",
+  "url": "https://stclairsoft.com/DefaultFolderX/release.html",
+  "expectedVersion": "6.2.8",
+  "currentDbVersion": "v6.2.8",
+  "verify": "brew"
+ },
+ {
+  "name": "Rocket",
+  "url": "https://macrelease.matthewpalmer.net/distribution/releasenotes/rocket-80.html",
+  "expectedVersion": "1.9.5",
+  "currentDbVersion": "v1.9",
+  "verify": "brew"
+ },
+ {
+  "name": "Typinator",
+  "url": "https://ergonis.com/en/typinator/version-history/mac/",
+  "expectedVersion": "10.2",
+  "currentDbVersion": "v10.2",
+  "verify": "brew"
+ },
+ {
+  "name": "LaunchBar",
+  "url": "https://obdev.at/products/launchbar/releasenotes.html",
+  "expectedVersion": "6.24",
+  "currentDbVersion": "v6.24",
+  "verify": "brew"
+ },
+ {
+  "name": "TickTick 滴答清单",
+  "url": "https://itunes.apple.com/lookup?bundleId=com.TickTick.task.mac",
+  "expectedVersion": "8.0.75",
+  "currentDbVersion": "v8.0.75",
+  "verify": "brew"
+ },
+ {
+  "name": "Linear",
+  "url": "https://linear.app/changelog",
+  "expectedVersion": "1.32.1",
+  "currentDbVersion": "v1.32.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Postman",
+  "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+  "expectedVersion": "12.22.8",
+  "currentDbVersion": "v12.22.8",
+  "verify": "brew"
+ },
+ {
+  "name": "RunJS",
+  "url": "https://runjs.app/releases/latest",
+  "expectedVersion": "4.1.0",
+  "currentDbVersion": "v1.0.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Screen Studio",
+  "url": "https://screen.studio/changelog",
+  "expectedVersion": "3.7.5-4595",
+  "currentDbVersion": "v3.7.5-4595",
+  "verify": "brew"
+ },
+ {
+  "name": "Enpass",
+  "url": "https://www.enpass.io/release-notes/windows-pc/",
+  "expectedVersion": "6.12.5.2673",
+  "currentDbVersion": "v6.12.5.2673",
+  "verify": "brew"
+ },
+ {
+  "name": "Zeplin",
+  "url": "https://support.zeplin.io/en/articles/5308714-release-notes-zeplin-for-mac",
+  "expectedVersion": "10.32.0",
+  "currentDbVersion": "v10.1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Tower",
+  "url": "https://www.git-tower.com/release-notes",
+  "expectedVersion": "17.1",
+  "currentDbVersion": "v17.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Eagle",
+  "url": "https://eagle.cool/blog/post/eagle4-build20",
+  "expectedVersion": "4.0",
+  "currentDbVersion": "v4.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Snipaste",
+  "url": "https://www.snipaste.com/download.html",
+  "expectedVersion": "2.11.3",
+  "currentDbVersion": "v2.11.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Rectangle Pro",
+  "url": "https://rectangleapp.com/pro/downloads/updates.xml",
+  "expectedVersion": "3.82",
+  "currentDbVersion": "v3.82",
+  "verify": "brew"
+ },
+ {
+  "name": "TeamViewer",
+  "url": "https://www.filepuma.com/download/teamviewer_32bit_-205/versions/",
+  "expectedVersion": "15.80.4",
+  "currentDbVersion": "v15.76.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Todoist",
+  "url": "https://www.todoist.com/help/articles/changelog-entries-from-2026-HD3jJAtLd",
+  "expectedVersion": "9.30.0",
+  "currentDbVersion": "v9.30.0",
+  "verify": "brew"
+ },
+ {
+  "name": "LibreOffice",
+  "url": "https://www.libreoffice.org/download/release-notes/",
+  "expectedVersion": "26.2.5",
+  "currentDbVersion": "v26.2.5",
+  "verify": "brew"
+ },
+ {
+  "name": "Framer",
+  "url": "https://www.framer.com/developers/changelog",
+  "expectedVersion": "2026.31.2",
+  "currentDbVersion": "v4.1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Obsidian",
+  "url": "https://obsidian.md/changelog.json",
+  "expectedVersion": "1.13.6",
+  "currentDbVersion": "v1.13.4",
+  "verify": "brew"
+ },
+ {
+  "name": "RescueTime",
+  "url": "https://www.rescuetime.com/release-notes/detect_os/rtx?formatted=true",
+  "expectedVersion": "3.2.12.3",
+  "currentDbVersion": "v3.2.12.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Lark",
+  "url": "https://www.larksuite.com/hc/en-US/articles/360046836333",
+  "expectedVersion": "7.73.11",
+  "currentDbVersion": "v7.73.11",
+  "verify": "brew"
+ },
+ {
+  "name": "Mimestream",
+  "url": "https://mimestream.com/releases",
+  "expectedVersion": "1.10.6",
+  "currentDbVersion": "v1.10.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Roam Research",
+  "url": "https://play.google.com/store/apps/details?id=com.roamresearch.relemma",
+  "expectedVersion": "0.0.38",
+  "currentDbVersion": "v1.1.16",
+  "verify": "brew"
+ },
+ {
+  "name": "Postman Agent",
+  "url": "https://dl-agent.pstmn.io/update/win64/0.0.0",
+  "expectedVersion": "0.4.90",
+  "currentDbVersion": "v0.4.90",
+  "verify": "brew"
+ },
+ {
+  "name": "Setapp",
+  "url": "https://setapp.com/download",
+  "expectedVersion": "3.54.2",
+  "currentDbVersion": "v3.54.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Coda",
+  "url": "https://coda.io/product/whats-new",
+  "expectedVersion": "latest",
+  "currentDbVersion": "v4.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Antigravity",
+  "url": "https://antigravity.google/changelog",
+  "expectedVersion": "2.6.0",
+  "currentDbVersion": "v2.6.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Replit",
+  "url": "https://blog.replit.com/",
+  "expectedVersion": "1.1.6",
+  "currentDbVersion": "v1.1.6",
+  "verify": "brew"
+ },
+ {
+  "name": "1Password CLI",
+  "url": "https://app-updates.agilebits.com/product_history/CLI2",
+  "expectedVersion": "2.38.2-beta.01",
+  "currentDbVersion": "v2.38.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Clockify",
+  "url": "https://clockify.cn.uptodown.com/windows/versions",
+  "expectedVersion": "2.12.5",
+  "currentDbVersion": "v2.11.28",
+  "verify": "brew"
+ },
+ {
+  "name": "Perplexity",
+  "url": "https://itunes.apple.com/lookup?id=1668000334",
+  "expectedVersion": "26.31.1",
+  "currentDbVersion": "v26.30.1",
+  "verify": "brew"
+ },
+ {
+  "name": "PixPin",
+  "url": "https://pixpin.cn/docs/official-log/3.4.3.2",
+  "expectedVersion": "3.4.3.2",
+  "currentDbVersion": "v3.3.5.7",
+  "verify": "brew"
+ },
+ {
+  "name": "Shutter Encoder",
+  "url": "https://www.shutterencoder.com",
+  "expectedVersion": "20.2",
+  "currentDbVersion": "v20.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Alfred",
+  "url": "https://www.alfredapp.com",
+  "expectedVersion": "5.7.3",
+  "currentDbVersion": "v5.7.3",
+  "verify": "brew"
+ },
+ {
+  "name": "perplexity",
+  "url": "https://itunes.apple.com/lookup?id=1668000334",
+  "expectedVersion": "26.31.1",
+  "currentDbVersion": "v26.30.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Routine",
+  "url": "https://feedback.routine.co/api/v1/changelog/feed.rss",
+  "expectedVersion": "2.1.0",
+  "currentDbVersion": "v2.0.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Termius",
+  "url": "https://snapcraft.io/termius-app",
+  "expectedVersion": "9.43.0",
+  "currentDbVersion": "v9.37.4",
+  "verify": "brew"
+ },
+ {
+  "name": "Inkscape",
+  "url": "https://gitlab.com/api/v4/projects/inkscape%2Finkscape/repository/tags?per_page=1",
+  "expectedVersion": "1.4.4",
+  "currentDbVersion": "v1.4.3",
+  "verify": "brew"
+ },
+ {
+  "name": "ForkLift",
+  "url": "https://blog.binarynights.com/category/release-notes/feed/",
+  "expectedVersion": "4.7.3",
+  "currentDbVersion": "v4.7.3",
+  "verify": "brew"
+ },
+ {
+  "name": "The Unarchiver",
+  "url": "https://theunarchiver.com/",
+  "expectedVersion": "4.3.9",
+  "currentDbVersion": "v4.3.9",
+  "verify": "brew"
+ },
+ {
+  "name": "CapCut",
+  "url": "https://viamaker.en.uptodown.com/android/versions",
+  "expectedVersion": "9.2.0.4444",
+  "currentDbVersion": "v17.2.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Timing",
+  "url": "https://timingapp.com/changes",
+  "expectedVersion": "2026.4.1",
+  "currentDbVersion": "v2026.4",
+  "verify": "brew"
+ },
+ {
+  "name": "MacWhisper",
+  "url": "https://macwhisper.com/",
+  "expectedVersion": "14.6",
+  "currentDbVersion": "v13.16",
+  "verify": "brew"
+ },
+ {
+  "name": "BetterTouchTool",
+  "url": "https://folivora.ai/releases",
+  "expectedVersion": "6.710",
+  "currentDbVersion": "v6.681",
+  "verify": "brew"
+ },
+ {
+  "name": "Kaleidoscope",
+  "url": "https://cloud.kaleidoscope.app/support/release-notes",
+  "expectedVersion": "7.0.1",
+  "currentDbVersion": "v7.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Sora",
+  "url": "https://help.openai.com/en/articles/12593142-sora-release-notes",
+  "expectedVersion": "latest",
+  "currentDbVersion": "v2.0",
+  "verify": "brew"
+ },
+ {
+  "name": "DeepL",
+  "url": "https://filehippo.com/download_deepl/",
+  "expectedVersion": "26.6.14916780",
+  "currentDbVersion": "v26.5.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Superhuman",
+  "url": "https://blog.superhuman.com/feed",
+  "expectedVersion": "1041.0.29",
+  "currentDbVersion": "v1041.0.29",
+  "verify": "brew"
+ },
+ {
+  "name": "Unity",
+  "url": "https://endoflife.date/api/unity.json",
+  "expectedVersion": "6000.5.7f1",
+  "currentDbVersion": "v6000.5.7",
+  "verify": "brew"
+ },
+ {
+  "name": "Wispr Flow",
+  "url": "https://roadmap.wisprflow.ai",
+  "expectedVersion": "1.6.447",
+  "currentDbVersion": "v26.4",
+  "verify": "brew"
+ },
+ {
+  "name": "Sketch",
+  "url": "https://www.sketch.com/releases/mac/",
+  "expectedVersion": "2026.2.1",
+  "currentDbVersion": "v2026.2.1",
+  "verify": "brew"
+ },
+ {
+  "name": "DataGrip",
+  "url": "https://data.services.jetbrains.com/products/releases?code=DG&latest=true&type=release",
+  "expectedVersion": "2026.2.3",
+  "currentDbVersion": "v2026.2.3",
+  "verify": "brew"
+ },
+ {
+  "name": "PhpStorm",
+  "url": "https://www.jetbrains.com/phpstorm/whatsnew/",
+  "expectedVersion": "2026.2.1",
+  "currentDbVersion": "v2026.2.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Surge",
+  "url": "https://kb.nssurge.com/surge-knowledge-base/release-notes/surge-mac-6-release-note",
+  "expectedVersion": "6.8.1",
+  "currentDbVersion": "v6.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Synthesia",
+  "url": "https://synthesia.noticeable.news/feed.rss",
+  "expectedVersion": "10.9",
+  "currentDbVersion": "v1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Granola",
+  "url": "https://itunes.apple.com/lookup?id=6739429409&entity=software",
+  "expectedVersion": "7.469.1",
+  "currentDbVersion": "v1.15.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Descript",
+  "url": "https://descript.canny.io/api/changelog/feed.rss",
+  "expectedVersion": "114.0.4-release.20250509.32955",
+  "currentDbVersion": "v4.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Carbon Copy Cloner",
+  "url": "https://bombich.com/software/updates/ccc7_rn.html",
+  "expectedVersion": "7.1.6",
+  "currentDbVersion": "v7.1.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Blender",
+  "url": "https://www.blender.org/download/releases/",
+  "expectedVersion": "5.2.0",
+  "currentDbVersion": "v5.2.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Beeper",
+  "url": "https://www.beeper.com/changelog/android",
+  "expectedVersion": "4.3.20",
+  "currentDbVersion": "v4.3.20",
+  "verify": "brew"
+ },
+ {
+  "name": "TablePlus",
+  "url": "https://tableplus.com/blog/2017/02/changelogs.html",
+  "expectedVersion": "26.8.6",
+  "currentDbVersion": "v26.8.6",
+  "verify": "brew"
+ },
+ {
+  "name": "PyCharm",
+  "url": "https://data.services.jetbrains.com/products/releases?code=PCP,PCC&latest=true&type=release",
+  "expectedVersion": "2026.2.0.1",
+  "currentDbVersion": "v2026.2.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Insomnia",
+  "url": "https://insomnia.rest/changelog",
+  "expectedVersion": "13.1.0",
+  "currentDbVersion": "v8.5.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Fork",
+  "url": "https://git-fork.com/releasenotes",
+  "expectedVersion": "2.69.0",
+  "currentDbVersion": "v1.0.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Itsycal",
+  "url": "https://www.mowglii.com/itsycal/versionhistory.html",
+  "expectedVersion": "0.15.12",
+  "currentDbVersion": "v0.15.12",
+  "verify": "brew"
+ },
+ {
+  "name": "xScope",
+  "url": "https://xscopeapp.com/history",
+  "expectedVersion": "4.7.2",
+  "currentDbVersion": "v4.7.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Zoom",
+  "url": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061222",
+  "expectedVersion": "7.1.5.84650",
+  "currentDbVersion": "v4.7.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Runway",
+  "url": "https://runwayml.com/changelog",
+  "expectedVersion": "0.19.2",
+  "currentDbVersion": "v181.906",
+  "verify": "brew"
+ },
+ {
+  "name": "GrandPerspective",
+  "url": "https://sourceforge.net/projects/grandperspectiv/best_release.json",
+  "expectedVersion": "3.7.2",
+  "currentDbVersion": "v3.7.2",
+  "verify": "brew"
+ },
+ {
+  "name": "PopClip",
+  "url": "https://www.popclip.app/changelog",
+  "expectedVersion": "2026.7.1",
+  "currentDbVersion": "v2026.7.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Raycast",
+  "url": "https://www.raycast.com/changelog/ios",
+  "expectedVersion": "1.104.24",
+  "currentDbVersion": "v1.104.24",
+  "verify": "brew"
+ },
+ {
+  "name": "Audio Hijack",
+  "url": "https://rogueamoeba.com/audiohijack/releasenotes.php",
+  "expectedVersion": "4.5.9",
+  "currentDbVersion": "v4.5.9",
+  "verify": "brew"
+ },
+ {
+  "name": "DaisyDisk",
+  "url": "https://daisydiskapp.com/download",
+  "expectedVersion": "4.34.2",
+  "currentDbVersion": "v4.34.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Microsoft Teams",
+  "url": "https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning",
+  "expectedVersion": "26198.202.4929.7171",
+  "currentDbVersion": "v26198.202.4929.7171",
+  "verify": "brew"
+ },
+ {
+  "name": "Unite",
+  "url": "https://www.bzgapps.com/unite-changelog",
+  "expectedVersion": "6.6",
+  "currentDbVersion": "v6.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Obsidian Mobile",
+  "url": "https://obsidian.md/changelog.json",
+  "expectedVersion": "1.13.6",
+  "currentDbVersion": "v1.13.4",
+  "verify": "brew-dom"
+ },
+ {
+  "name": "Sublime Merge",
+  "url": "https://www.sublimemerge.com/download",
+  "expectedVersion": "2126",
+  "currentDbVersion": "v2125",
+  "verify": "brew"
+ },
+ {
+  "name": "Microsoft Excel",
+  "url": "https://learn.microsoft.com/en-us/officeupdates/current-channel",
+  "expectedVersion": "16.111.26080215",
+  "currentDbVersion": "v16.111.26080215",
+  "verify": "brew"
+ },
+ {
+  "name": "SuperDuper",
+  "url": "https://www.shirt-pocket.com/blog/",
+  "expectedVersion": "4.0.2",
+  "currentDbVersion": "v4.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "钉钉 DingTalk",
+  "url": "https://itunes.apple.com/lookup?bundleId=com.laiwang.DingTalk&country=cn",
+  "expectedVersion": "8.0.2",
+  "currentDbVersion": "v8.0.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Raycast: AI, Notes and more",
+  "url": "https://itunes.apple.com/lookup?id=6503428327",
+  "expectedVersion": "1.3.5",
+  "currentDbVersion": "v1.3.5",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Grammarly: AI Keyboard & Notes",
+  "url": "https://itunes.apple.com/lookup?id=1158877342",
+  "expectedVersion": "13.2.0",
+  "currentDbVersion": "v13.2.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Reeder.",
+  "url": "https://itunes.apple.com/lookup?id=6475002485",
+  "expectedVersion": "2026.6",
+  "currentDbVersion": "v2026.6",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "CapCut: Photo & Video Editor",
+  "url": "https://itunes.apple.com/lookup?id=1500855883",
+  "expectedVersion": "18.9.0",
+  "currentDbVersion": "v18.9.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Aiko",
+  "url": "https://itunes.apple.com/lookup?id=1672085276",
+  "expectedVersion": "1.11.0",
+  "currentDbVersion": "v1.11.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Moises: The Musician's App",
+  "url": "https://itunes.apple.com/lookup?id=1515796612",
+  "expectedVersion": "2.139.0",
+  "currentDbVersion": "v2.139.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "1inch",
+  "url": "https://itunes.apple.com/lookup?id=1546049391&entity=software",
+  "expectedVersion": "4.13",
+  "currentDbVersion": "v4.13",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Discord - Talk, Play, Hang Out",
+  "url": "https://itunes.apple.com/lookup?id=985746746",
+  "expectedVersion": "340.0",
+  "currentDbVersion": "v340.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Claude by Anthropic",
+  "url": "https://itunes.apple.com/lookup?id=6473753684",
+  "expectedVersion": "1.260721.0",
+  "currentDbVersion": "v1.260721.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Photoroom",
+  "url": "https://itunes.apple.com/lookup?id=1455009060",
+  "expectedVersion": "2026.33.01",
+  "currentDbVersion": "v2026.32.01",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Bluesky",
+  "url": "https://itunes.apple.com/lookup?id=6444370199",
+  "expectedVersion": "1.130.0",
+  "currentDbVersion": "v1.129.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Plaud AI",
+  "url": "https://itunes.apple.com/lookup?id=6450364080",
+  "expectedVersion": "3.27.1",
+  "currentDbVersion": "v3.27.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Imgur",
+  "url": "https://itunes.apple.com/lookup?id=639881495",
+  "expectedVersion": "2026.03.02",
+  "currentDbVersion": "v2026.03.02",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "DocuSign",
+  "url": "https://itunes.apple.com/lookup?id=474990205&country=us",
+  "expectedVersion": "3.47.2",
+  "currentDbVersion": "v3.47.2",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Picsart",
+  "url": "https://itunes.apple.com/lookup?id=587366035&entity=software",
+  "expectedVersion": "30.5.1",
+  "currentDbVersion": "v30.5.1",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Claude iOS App",
+  "url": "https://itunes.apple.com/lookup?id=6473753684&entity=software",
+  "expectedVersion": "1.260721.0",
+  "currentDbVersion": "v1.260721.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "HeidiSQL",
+  "url": "https://www.heidisql.com/download.php",
+  "expectedVersion": "12.20.0",
+  "currentDbVersion": "v12.21",
+  "verify": "web-x18"
+ },
+ {
+  "name": "Python",
+  "url": "https://www.python.org/downloads/",
+  "expectedVersion": "3.14.7",
+  "currentDbVersion": "3.14.3",
+  "verify": "web-x14"
+ },
+ {
+  "name": "OpenSSL",
+  "url": "https://www.openssl.org/source/",
+  "expectedVersion": "4.0.1",
+  "currentDbVersion": "3.6.1",
+  "verify": "web-x9"
+ },
+ {
+  "name": "Xcode 26",
+  "url": "https://xcodereleases.com/data.json",
+  "expectedVersion": "17.0.0",
+  "currentDbVersion": "v1300.0.47",
+  "verify": "web-x51"
+ },
+ {
+  "name": "Notepad++",
+  "url": "https://notepad-plus-plus.org/downloads/",
+  "expectedVersion": "8.9.7",
+  "currentDbVersion": "v8.9.7",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Ableton Live",
+  "url": "https://www.ableton.com/en/release-notes/live-12/",
+  "expectedVersion": "1.1.1",
+  "currentDbVersion": "v12.4.3",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Qoder",
+  "url": "https://plugins.jetbrains.com/api/plugins/28926/updates",
+  "expectedVersion": "2026.2.1",
+  "currentDbVersion": "v2026.806.58779059",
+  "verify": "web-x180"
+ },
+ {
+  "name": "NGINX",
+  "url": "https://nginx.org/en/CHANGES",
+  "expectedVersion": "0.8.11",
+  "currentDbVersion": "v1.31.3",
+  "verify": "web-x13"
+ },
+ {
+  "name": "stackblitz/bolt.new",
+  "url": "https://support.bolt.new/release-notes",
+  "expectedVersion": "7.2.0",
+  "currentDbVersion": "v4.7",
+  "verify": "web-x62"
+ },
+ {
+  "name": "通义灵码",
+  "url": "https://marketplace.visualstudio.com/items/Alibaba-Cloud.tongyi-lingma",
+  "expectedVersion": "11.4.6",
+  "currentDbVersion": "v2.6.7",
+  "verify": "web-x10"
+ },
+ {
+  "name": "Fireflies.ai",
+  "url": "https://docs.fireflies.ai/additional-info/change-log",
+  "expectedVersion": "7.2.0",
+  "currentDbVersion": "v2.24.1",
+  "verify": "web-x14"
+ },
+ {
+  "name": "Quicker",
+  "url": "https://getquicker.net/Download",
+  "expectedVersion": "1.45.5",
+  "currentDbVersion": "v1.44.55",
+  "verify": "web-x13"
+ },
+ {
+  "name": "一个木函",
+  "url": "https://sj.qq.com/appdetail/com.One.WoodenLetter",
+  "expectedVersion": "1.714.857",
+  "currentDbVersion": "v2026.2.8",
+  "verify": "web-x8"
+ },
+ {
+  "name": "CodeGeeX",
+  "url": "https://open-vsx.org/api/-/query?extensionId=aminer.codegeex",
+  "expectedVersion": "2.27.5",
+  "currentDbVersion": "v2.21.3",
+  "verify": "web-x62"
+ },
+ {
+  "name": "UncovAI",
+  "url": "https://chromewebstore.google.com/detail/uncovai-deepfake-detector/ljcoghbmlcdlpadiggapnbchdpahkbic",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v2.6.9",
+  "verify": "web-x5"
+ },
+ {
+  "name": "kibitzsh/kibitz",
+  "url": "https://registry.npmjs.org/@kibitzsh/kibitz",
+  "expectedVersion": "1.85.0",
+  "currentDbVersion": "v0.0.6",
+  "verify": "web-x8"
+ },
+ {
+  "name": "夸克网盘",
+  "url": "https://www.32r.com/app/106737.html",
+  "expectedVersion": "10.15.0.130",
+  "currentDbVersion": "v10",
+  "verify": "web-x4"
+ },
+ {
+  "name": "OmniFocus 4",
+  "url": "https://www.omnigroup.com/releasenotes/omnifocus",
+  "expectedVersion": "4.8.13",
+  "currentDbVersion": "v4.8.13",
+  "verify": "web-x7"
+ },
+ {
+  "name": "CleanShot X",
+  "url": "https://cleanshot.com/changelog",
+  "expectedVersion": "4.8.10",
+  "currentDbVersion": "v4.9",
+  "verify": "web-x8"
+ },
+ {
+  "name": "SQLite",
+  "url": "https://www.sqlite.org/changes.html",
+  "expectedVersion": "3.12.0",
+  "currentDbVersion": "v3.53.0",
+  "verify": "web-x13"
+ },
+ {
+  "name": "Speedtest by Ookla",
+  "url": "https://speedtest-net-mobile.cn.uptodown.com/android/versions",
+  "expectedVersion": "7.0.3",
+  "currentDbVersion": "v6.6.5",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Lens Studio",
+  "url": "https://ar.snap.com/download",
+  "expectedVersion": "5.23.1",
+  "currentDbVersion": "v5.23.1",
+  "verify": "web-x8"
+ },
+ {
+  "name": "JetBrains Junie",
+  "url": "https://plugins.jetbrains.com/api/plugins/26104/updates",
+  "expectedVersion": "2026.1.4",
+  "currentDbVersion": "v262.2144.90",
+  "verify": "web-x135"
+ },
+ {
+  "name": "Workona",
+  "url": "https://addons.mozilla.org/en-US/firefox/addon/workona/versions/",
+  "expectedVersion": "3.1.34",
+  "currentDbVersion": "v3.1.34",
+  "verify": "web-x5"
+ },
+ {
+  "name": "golang/go",
+  "url": "https://go.dev/doc/devel/release",
+  "expectedVersion": "1.6.1",
+  "currentDbVersion": "v1.26.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "audacity/audacity",
+  "url": "https://www.audacityteam.org/download/",
+  "expectedVersion": "4.0.0",
+  "currentDbVersion": "Audacity-3.7.7",
+  "verify": "web-x6"
+ },
+ {
+  "name": "Devin",
+  "url": "https://www.cognition.ai/blog",
+  "expectedVersion": "07.13.26",
+  "currentDbVersion": "v10.2",
+  "verify": "web-x4"
+ },
+ {
+  "name": "cursorless-dev/cursorless",
+  "url": "https://open-vsx.org/api/pokey/cursorless/latest",
+  "expectedVersion": "1.1.1794",
+  "currentDbVersion": "v1.1.1794",
+  "verify": "web-x17"
+ },
+ {
+  "name": "v0.dev",
+  "url": "https://v0.app/changelog",
+  "expectedVersion": "16.2.0",
+  "currentDbVersion": "v16.2.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Dato",
+  "url": "https://dato.macupdate.com/",
+  "expectedVersion": "5.4.3",
+  "currentDbVersion": "v5.8.0",
+  "verify": "web-x16"
+ },
+ {
+  "name": "Codeium",
+  "url": "https://marketplace.visualstudio.com/items/Codeium.codeium",
+  "expectedVersion": "11.4.6",
+  "currentDbVersion": "v1.49.2",
+  "verify": "web-x10"
+ },
+ {
+  "name": "HiBit Uninstaller",
+  "url": "https://hibitsoft.ir/Uninstaller.html",
+  "expectedVersion": "4.0.10",
+  "currentDbVersion": "v4.0.10",
+  "verify": "web-x7"
+ },
+ {
+  "name": "QuillBot",
+  "url": "https://chrome.google.com/webstore/detail/quillbot-ai-writing-and-g/iidnbdjijdkbmajdffnidomddglmieko",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v4.100.0",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Playdate",
+  "url": "https://devforum.play.date/c/announcement/40.json",
+  "expectedVersion": "2.7.0",
+  "currentDbVersion": "v3.1.1",
+  "verify": "web-x6"
+ },
+ {
+  "name": "DeepSeek App",
+  "url": "https://play.google.com/store/apps/details?id=com.deepseek.chat",
+  "expectedVersion": "2.1.1",
+  "currentDbVersion": "v1.7.10",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Linear CLI",
+  "url": "https://registry.npmjs.org/@linear/cli",
+  "expectedVersion": "0.0.5",
+  "currentDbVersion": "v0.1.0",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Amazon Q Developer",
+  "url": "https://open-vsx.org/api/AmazonWebServices/amazon-q-vscode",
+  "expectedVersion": "2.4.0",
+  "currentDbVersion": "v2.4.0",
+  "verify": "web-x17"
+ },
+ {
+  "name": "Beautiful.ai",
+  "url": "https://www.beautiful.ai/product-updates",
+  "expectedVersion": "2022.53.37",
+  "currentDbVersion": "v2022.53.37",
+  "verify": "web-x7"
+ },
+ {
+  "name": "ServBay",
+  "url": "https://support.servbay.com/zh-CN/getting-started/release-notes",
+  "expectedVersion": "1.0.2",
+  "currentDbVersion": "v1.31.2",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Node.js",
+  "url": "https://nodejs.org/",
+  "expectedVersion": "24.19.0",
+  "currentDbVersion": "v26.7.0",
+  "verify": "web-x6"
+ },
+ {
+  "name": "Amp",
+  "url": "https://registry.npmjs.org/@sourcegraph/amp/latest",
+  "expectedVersion": "0.0.1786422466",
+  "currentDbVersion": "v0.0.1786249585-g6ca812",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Rytr",
+  "url": "https://chromewebstore.google.com/detail/rytr-ai-powered-writing-a/cpnnabpklgnhjopaenljbbmkejamagel",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v1.3.1",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Augment Code",
+  "url": "https://www.augmentcode.com/changelog",
+  "expectedVersion": "0.34.0",
+  "currentDbVersion": "v0.35.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Jira",
+  "url": "https://confluence.atlassian.com/jirasoftware/jira-software-release-notes-776821069.html",
+  "expectedVersion": "4.8.27",
+  "currentDbVersion": "v10.1.2",
+  "verify": "web-x10"
+ },
+ {
+  "name": "通义灵码",
+  "url": "https://marketplace.visualstudio.com/items/Alibaba-Cloud.tongyi-lingma",
+  "expectedVersion": "11.4.6",
+  "currentDbVersion": "v2.6.7",
+  "verify": "web-x10"
+ },
+ {
+  "name": "秘塔AI搜索",
+  "url": "https://chromewebstore.google.com/detail/秘塔ai搜索/amjmldchkefejkpgebhgioimmfkakgpo",
+  "expectedVersion": "1.6.1",
+  "currentDbVersion": "v1.6.1",
+  "verify": "js-render"
+ },
+ {
+  "name": "PotPlayer",
+  "url": "https://www.videohelp.com/software/PotPlayer/version-history",
+  "expectedVersion": "1.7.18346",
+  "currentDbVersion": "v3.5.7",
+  "verify": "js-render"
+ },
+ {
+  "name": "Space Sniffer",
+  "url": "https://www.uderzo.it/main_products/space_sniffer/download_alt.html",
+  "expectedVersion": "1.3.0",
+  "currentDbVersion": "v1.3.0.2",
+  "verify": "js-render"
+ },
+ {
+  "name": "PCalc",
+  "url": "https://www.pcalc.com/english/history.html",
+  "expectedVersion": "2.2.3",
+  "currentDbVersion": "v3.5.3",
+  "verify": "js-render"
+ },
+ {
+  "name": "NotchNest",
+  "url": "https://itunes.apple.com/lookup?bundleId=com.silverseahog.notchnestapp&country=cn",
+  "expectedVersion": "1.2.4",
+  "verify": "itunes-bundle"
+ }
+]
