@@ -10,12 +10,15 @@ const generator = new HeaderGenerator({
 
 function headers(): Record<string, string> {
   const h = generator.getHeaders();
-  return {
+  const hdrs: Record<string, string> = {
     'user-agent': h['user-agent'] || 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36',
     'accept-language': h['accept-language'] || 'zh-CN,zh;q=0.9,en;q=0.8',
     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'accept-encoding': 'gzip, deflate, br',
   };
+  // GitHub API 注入 token: 无 token 60 req/h 限流, 批量提取必踩; 有 token 5000 req/h
+  if (process.env.GITHUB_TOKEN) hdrs.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  return hdrs;
 }
 
 export interface FetchResult {
@@ -54,6 +57,8 @@ function cacheGet(url: string): FetchResult | null {
 function cacheSet(url: string, result: FetchResult) {
   const dir = process.env.BENCH_CACHE_DIR;
   if (!dir) return;
+  // 只缓存成功响应: 403 限流/5xx 错误缓存了会导致 24h 内全部命中错误结果
+  if (result.status < 200 || result.status >= 300) return;
   try {
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, cacheKey(url) + '.json'), JSON.stringify({ status: result.status, text: result.text, ts: Date.now() }));

@@ -185,7 +185,7 @@ async function main() {
     return results;
   }
 
-  const CONCURRENCY = 12; // 高并发：Playwright 单浏览器多页面，got-scraping 并发安全；缓存命中案例不吃内存
+  const CONCURRENCY = 1; // 串行防 OOM(本机/VPS 均 3.8G 内存): Playwright 页面不释放, 任何并发都会累积内存; 串行+缓存命中可跑完整基准
   const results = await mapWithConcurrency(cases, CONCURRENCY, runCase);
 
   let versionPass = 0;
