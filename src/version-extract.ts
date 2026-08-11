@@ -13,8 +13,21 @@ const SEMVER_RE =
 const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9.])/g;
 const MAJOR_RE = /\bv(0|[1-9]\d*|\d*[0-9])\b/g;
 
+/** 剥离版本号前缀污染: npm 包名(@scope/pkg@1.2.3 / pkg@1.2.3) + 分支前缀(desktop-v0.0.11 / app-v2.6.5)
+ * 保留纯 semver。不误伤: release.2026-08-10(日期)、3.19.0-0.1.pre(预发布)、b10355(构建号) */
+export function stripVersionPrefix(raw: string): string {
+  let t = raw.trim();
+  // @scope/pkg@1.2.3 → 1.2.3
+  t = t.replace(/^@?[\w.-]+(?:\/[\w.-]+)?@(?=\d)/, '');
+  // pkg@1.2.3 → 1.2.3(无 scope 形式, 如 n8n@2.33.7)
+  t = t.replace(/^[\w.-]+@(?=\d)/, '');
+  // desktop-v0.0.11 → v0.0.11(必须紧跟 v, 不带 v 的是日期不剥)
+  t = t.replace(/^[a-z][\w.-]*?-(?=v\d)/i, '');
+  return t;
+}
+
 function normalizeVersion(raw: string): string {
-  const t = raw.trim();
+  const t = stripVersionPrefix(raw);
   return t.startsWith('v') || t.startsWith('V') ? t : `v${t}`;
 }
 

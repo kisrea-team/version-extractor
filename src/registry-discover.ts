@@ -9,7 +9,7 @@
 // 版本来源：cask.json 的 version 字段 / GitHub releases / npm latest
 // 命中返回候选列表（域名已匹配），由 pipeline 结合页面版本做合理性过滤
 
-import { compareVersions } from './version-extract';
+import { compareVersions, stripVersionPrefix } from './version-extract';
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
@@ -272,9 +272,10 @@ export async function fetchGithubRelease(
     if (!r.ok) return null;
     const d = (await r.json()) as { tag_name?: string; body?: string | null; published_at?: string | null };
     if (!d.tag_name) return null;
-    const v = d.tag_name.replace(/^v/i, '');
+    // 剥离 npm 包名/分支前缀污染(共享清洗): @scope/pkg@1.2.3 → 1.2.3, desktop-v0.0.11 → v0.0.11
+    const v = stripVersionPrefix(d.tag_name).replace(/^v/i, '');
     return {
-      version: v.startsWith('v') ? `v${v}` : `v${v}`,
+      version: `v${v}`,
       changelog: d.body && d.body.trim().length > 50 ? d.body.trim() : null,
       date: d.published_at || null,
     };
