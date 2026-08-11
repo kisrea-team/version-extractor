@@ -44,6 +44,8 @@ const STANDARD_PREFIX_STOP = new Set([
   'mpeg', 'mp3', 'mp4', 'pdf', 'dpi', 'fps', 'lts', 'sdk', 'api', 'oauth', 'openid', 'jwt', 'svg', 'png', 'jpeg',
   'gif', 'tiff', 'avif', 'webp', 'macos', 'mac', 'osx', 'windows', 'win', 'linux', 'ios', 'android', 'iphone',
   'ipad', 'watchos', 'tvos', 'directx', 'opengl', 'vulkan', 'sql',
+  // macOS 系统代号(Tahoe 15 / Sequoia 15.1 / Sonoma 14 等): 系统版本不是产品版本
+  'tahoe', 'sequoia', 'sonoma', 'ventura', 'monterey', 'catalina', 'mojave', 'sierra', 'yosemite', 'bigsur',
   // 标准/标准版本（Unicode 12.0 / Emoji 15.1 / ISO 8601 / CLDR 44 / UAX 11）：changelog 正文常提
   'unicode', 'iso', 'emoji', 'cldr', 'uax',
   // 许可证名（有限集合，可靠）：ShareAlike 4.0 / Attribution 4.0 / CC BY 4.0 / CC by-sa 4.0

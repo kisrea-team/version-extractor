@@ -260,8 +260,9 @@ export function extractVersionFromHtml(html: string, opts: { versionRegex?: stri
   ];
   // 噪音上下文：版本号若紧邻这些词（许可证、CSS 类、JS 资源、日期、坐标、系统要求），不是产品版本。
   // 系统要求（macOS 10.15 / iOS 15 / Windows 11）是平台版本不是软件版本。
+  // macOS 代号(Tahoe/Sequoia/Sonoma/Ventura/Monterey/Big Sur 等)后跟版本号也是系统版本
   const NOISE_CTX_RE =
-    /(apache|mit|gpl|bsd|mpl|lgpl|cc[\s-]?by|creative\s*commons|license|licen[sc]e|版权|许可|class=|className|py-|px-|mt-|mb-|ml-|mr-|text-|gap-|grid-|flex-|w-|h-|translate|rotate|scale|opacity|stroke|fill|width=|height=|viewBox|d=|points=|javascript|\.js|\.css|\.map|\.json|chunk|webpack|node_modules|\.min\.|src=|href=|macOS|mac\s?os|ios|iphone|ipad|watchos|tvOS|windows|android|linux|ubuntu|debian|centos|minimum|最低|或更高|or later|and higher|compatible)([\s"'=:.]{0,6})(v?(?:0|[1-9]\d*)(?:\.(?:0|[1-9]\d*)){1,3})/gi;
+    /(apache|mit|gpl|bsd|mpl|lgpl|cc[\s-]?by|creative\s*commons|license|licen[sc]e|版权|许可|class=|className|py-|px-|mt-|mb-|ml-|mr-|text-|gap-|grid-|flex-|w-|h-|translate|rotate|scale|opacity|stroke|fill|width=|height=|viewBox|d=|points=|javascript|\.js|\.css|\.map|\.json|chunk|webpack|node_modules|\.min\.|src=|href=|macOS|mac\s?os|ios|iphone|ipad|watchos|tvOS|windows|android|linux|ubuntu|debian|centos|minimum|最低|或更高|or later|and higher|compatible|Tahoe|Sequoia|Sonoma|Ventura|Monterey|Big\s*Sur|Catalina|Mojave|High\s*Sierra|Sierra|El\s*Capitan|Yosemite|Mavericks|Mountain\s*Lion|Lion|Snow\s*Leopard|Leopard|Tiger|Panther|Jaguar|Puma|Cheetah)([\s"'=:.]{0,6})(v?(?:0|[1-9]\d*)(?:\.(?:0|[1-9]\d*)){1,3})/gi;
   // 过滤噪音：从各 scope 文本中剔除噪音上下文的版本号
   const noiseFilter = (text: string): string => text.replace(NOISE_CTX_RE, ' ');
   const patterns: Array<{ re: RegExp; name: 'semver' | 'minor' | 'major' }> = [
