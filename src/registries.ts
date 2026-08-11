@@ -157,7 +157,14 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
     // 同时提取 releaseNotes 作为 changelog（官方干净日志，避免整页 JSON 被当正文清洗）
     host: /itunes\.apple\.com\/lookup|apps\.apple\.com/,
     fetch: async (url) => {
-      const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
+      // apps.apple.com/xxx/id123456 是 HTML 页(不是 JSON): 提取 id 再调 iTunes lookup API
+      let apiUrl = url;
+      if (/apps\.apple\.com/.test(url)) {
+        const m = url.match(/\/id(\d+)/);
+        if (!m) return null;
+        apiUrl = `https://itunes.apple.com/lookup?id=${m[1]}&country=cn`;
+      }
+      const r = await fetch(apiUrl, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
       if (!r.ok) return null;
       const d = await r.json();
       const app = d?.results?.[0];
