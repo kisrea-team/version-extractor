@@ -28,7 +28,7 @@ export interface ExtractOutcome {
 
 export async function extractFromUrl(
   url: string,
-  opts: { token?: string; registryKey?: string; skipBrowser?: boolean; productName?: string | null; onLlm?: (info: { margin: number; answer: string | null }) => void } = {}
+  opts: { token?: string; registryKey?: string; skipBrowser?: boolean; productName?: string | null; noRegistry?: boolean; onLlm?: (info: { margin: number; answer: string | null }) => void } = {}
 ): Promise<ExtractOutcome> {
   const source = await enrichSource(classifySource(url));
 
@@ -68,8 +68,9 @@ export async function extractFromUrl(
     } catch {
       // 注册表查询失败则回退 HTML
     }
-  } else if (opts.productName) {
+  } else if (opts.productName && !opts.noRegistry) {
     // 自动发现：给 URL + 产品名 → 多渠道搜索 → homepage 域名匹配 → pickBestCandidate（预发布过滤 + brew>github>npm）
+    // noRegistry=true 时禁用注册表, 强制纯 HTML/浏览器提取(测 VE 页面能力而非注册表查询)
     try {
       const cands = await discoverRegistry(url, { productName: opts.productName, token: opts.token });
       const best = pickBestCandidate(cands);

@@ -55,16 +55,18 @@ function matchesPrefix(actual: string, prefix: string): boolean {
 }
 
 function parseArgs(argv: string[]) {
-  const args: { cases?: string; probe?: string } = {};
+  const args: { cases?: string; probe?: string; noRegistry?: boolean } = {};
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === '--cases') args.cases = argv[i + 1];
     if (argv[i] === '--probe') args.probe = argv[i + 1];
+    if (argv[i] === '--no-registry') args.noRegistry = true;
   }
   return args;
 }
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  const noRegistry = args.noRegistry;
 
   if (args.probe) {
     const url = args.probe;
@@ -131,7 +133,8 @@ async function main() {
     let llmAnswer: string | null = null;
     const out = await extractFromUrl(c.url, {
       token: process.env.GITHUB_TOKEN,
-      registryKey: c.registryKey,
+      registryKey: noRegistry ? undefined : c.registryKey,
+      noRegistry,
       skipBrowser: process.env.SKIP_BROWSER === '1',
       productName: c.name,
       onLlm: (info) => { llmUsed = true; llmAnswer = info.answer; },
