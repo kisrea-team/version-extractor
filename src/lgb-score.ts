@@ -106,8 +106,8 @@ function ensureWorker(): import('child_process').ChildProcess {
     const script = join(process.cwd(), 'scripts', 'lgb_worker.py');
     worker = spawn('python', [script], { windowsHide: true });
     workerBuf = '';
-    worker.stderr.on('data', (d: Buffer) => { if (process.env.DEBUG_LLM) console.error('[worker-stderr]', d.toString().slice(0, 300)); });
-    worker.stdout.on('data', (d: Buffer) => {
+    worker.stderr!.on('data', (d: Buffer) => { if (process.env.DEBUG_LLM) console.error('[worker-stderr]', d.toString().slice(0, 300)); });
+    worker.stdout!.on('data', (d: Buffer) => {
       if (process.env.DEBUG_LLM) console.error('[worker-stdout-raw]', JSON.stringify(d.toString().slice(0, 200)));
       workerBuf += d.toString();
       let nl: number;
@@ -156,7 +156,7 @@ function pumpWorker() {
   currentReq = workerQueue.shift()!;
   workerBusy = true;
   const child = ensureWorker();
-  child.stdin.write(JSON.stringify({ mode: currentReq.mode, rows: currentReq.rows }) + '\n');
+  child.stdin!.write(JSON.stringify({ mode: currentReq.mode, rows: currentReq.rows }) + '\n');
 }
 
 // 批量推理：构造候选级过滤特征 → 返回产品版本概率。
@@ -753,6 +753,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
   let llmTrace: AuditDecision['llm'] = null; // 审计用：LLM 是否触发/给了什么答案
   if (rankDetail) {
     selected = rankDetail.result;
+    if (!selected) { /* rankDetail 有 result 为 null 的边界 → 走下方兜底 */ } else {
     // 触发 LLM 兜底的条件:
     //   margin < 0.5 —— rank 有明显分歧就交给 LLM 语义裁决。
     //   注意不能加"seed 非 globalMax"限制: Termius 案例 seed=v26.10 恰好是候选池最大(但它是
@@ -870,7 +871,8 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
         // 救一个案例又误伤一个, 是"任务定义错"的症状)。只剩两条版本字符串硬规则:
         // ① LLM 答的是 seed 的截断(丢段/丢后缀) → 保留 seed(完整版更精确, Unity f1/mpv 反向)
         // ② LLM 答的更完整 → 采用 LLM(mpv v0.41.0 vs seed v0.41)
-        const seedCand0 = candidates.find((cc) => cc.version === selected.version);
+        const selVer = selected.version; // 闭包外取局部值, find 回调内 TS 不保持收窄
+        const seedCand0 = candidates.find((cc) => cc.version === selVer);
         const llmIsTruncation = llmVer !== selected.version && (
           selected.version.startsWith(llmVer + '.') ||
           selected.version.startsWith(llmVer + '-') ||
@@ -910,6 +912,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     } else {
       confidence = 'low';
     }
+    } /* else: selected null → 走下方 family 兜底 */
   } else {
     selected = selectVersionByFamily(scored, candidates, opts.productName || null, anchorHits.size > 0 ? anchorHits : null);
     confidence = selected ? (selected.prob >= 0.7 ? 'high' : selected.prob >= 0.3 ? 'medium' : 'low') : 'low';
