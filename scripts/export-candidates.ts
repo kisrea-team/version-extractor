@@ -18,7 +18,9 @@ import { pathToFileURL } from 'url';
 // 正则回溯会把 15.91 切成 v15.9 放进来。
 // 段用 (0|[1-9]\d*|\d*[0-9])：允许前导零（7-Zip 26.02 的 02 段），同时不把纯数字组拆开
 const SEMVER_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?:[-+][0-9A-Za-z.-]+)?(?![0-9kKmMbB])/g;
-const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9])(?![0-9.\s][kKmMbB])/g;
+// MINOR_RE: 排除 4.0b(紧贴小写 b = beta) 但保留 "4.0 Build"(空格+大写B = Build 单词, Eagle 案例)
+// 原 `(?![0-9.\s][kKmMbB])` 把 "4.0 Build 22" 的 4.0 拒绝(空格+B 命中 kmbB), 导致 Eagle 候选为 0
+const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9])(?![0-9.]b)(?!\s*(?:MB|KB|GB|MiB|KiB|GiB)\b)/g;
 // MAJOR 仅匹配带 v 前缀的（避免把年份/数字当版本）；用于对比时让 BERT 候选池覆盖 v153 这类主版本号
 const MAJOR_RE = /\bv(0|[1-9]\d*|\d*[0-9])\b/g;
 // 带产品前缀的单段版本：Chrome 151 / Firefox 153 / Opera 134。
@@ -75,7 +77,7 @@ function hasStandardPrefix(text: string, index: number): boolean {
   if (PLATFORM_FOR_WORDS.has(last) && words[words.length - 2] === 'for') return false;
   return true;
 }
-const VERSION_FIELD_RE = /["'](version|versionNumber|latestVersion|releaseVersion|appVersion|pkgVersion|softwareVersion|productVersion|currentVersion|stableVersion|newVersion|semanticVersion|tag_name|tagName)["']\s*:\s*["']([^"']{1,40})["']/gi;
+const VERSION_FIELD_RE = /["'](version|versionNumber|latestVersion|latest|releaseVersion|appVersion|pkgVersion|softwareVersion|productVersion|currentVersion|stableVersion|newVersion|tag_name|tagName)["']\s*:\s*["']([^"']{1,40})["']/gi;
 const SEMANTIC_SCRIPT_RE = /["'](?:modelUpgradeNotice|releaseNote|releaseNotes|releaseTitle|latestRelease|productTitle|title)["']\s*:\s*["']([^"']{1,240})["']/gi;
 const NOISE_RE = /(?:build(?:Number|_number|\s*number)?|minimumOsVersion|minimum_os_version|sdkVersion|sdk_version|apiVersion|api_version|schemaVersion|protocolVersion|viewBox|line-height|font-size|semanticVersion|node_modules|webpack|chunk|\.css|\.js|\.map|svg|asset|bundle|internal version|revision|commit)/i;
 const PAGE_VERSION_RE = /(?:changelog|change-log|release|releases|history|updates?|version|rss|feed|download|changes|product_history)/i;
@@ -103,7 +105,8 @@ export function norm(v: string): string {
 export function purifyVersion(raw: string): string {
   const text = String(raw || '');
   // 保留常见预发布标记，避免 1.27rc2 被折叠为 1.27；源码包/文件扩展名仍被截掉。
-  const m = text.match(/v?\d+(?:\.\d+){0,3}(?:(?:-|\.)?(?:alpha|beta|rc|pre|dev|patch)\d*)?/i);
+  // f\d+ = Unity 的 final build 标记(6000.5.7f1), 也必须保留。
+  const m = text.match(/v?\d+(?:\.\d+){0,3}(?:(?:-|\.)?(?:alpha|beta|rc|pre|dev|patch|f)\d*)?/i);
   return m ? m[0] : text;
 }
 
@@ -139,7 +142,20 @@ function addMatches(out: Map<string, Candidate>, text: string, scope: Scope, inc
       // 标准/协议名前缀（WCGA 2.0 / macOS 15 / HTML 5）不是产品版本，剔除；
       // "X for Mac 10.1.0" 的平台词由 hasStandardPrefix 内的 for 豁免放行
       if (hasStandardPrefix(text, match.index || 0)) continue;
-      addMatch(out, match[0], snippet(text, match.index || 0), scope);
+      // Unity 的 f 后缀(6000.5.7f1 final build)紧贴版本号, SEMVER_RE 的 (?:[-+][...])? 不匹配裸 f1——
+      // 检查匹配后是否紧跟 f\d+, 拼回去保留(2022.3.62f3 → 6000.5.7f1)
+      // 同理 4 段版本(夸克 10.15.0.130): SEMVER_RE 只匹配 3 段, 匹配后紧跟 .数字 时拼回第 4 段。
+      // ⚠️ 第 4 段 4 位仅当首段 ≥3 位时接受: MSTeams 26198.202.4929(首段 5 位, 4929 是合法版本段)✓,
+      // Lens Studio 5.64.396(首段 1 位, 兼容性版本)✗ 不拼——v36 实测 4 位全放开让 rank 被 5.64.396 吸引
+      let raw = match[0];
+      const after = text.slice((match.index || 0) + match[0].length);
+      const fm = after.match(/^f\d+/);
+      if (fm && !/^[0-9kKmMbB]/.test(after)) raw = match[0] + fm[0];
+      const firstSeg = match[0].replace(/^v/i, '').split('.')[0];
+      const fourth4 = firstSeg.length >= 3 ? 4 : 3;
+      const fourth = after.match(new RegExp(`^\\.(\\d{1,${fourth4}})(?![\\d.])`));
+      if (fourth) raw = match[0] + fourth[0];
+      addMatch(out, raw, snippet(text, match.index || 0), scope);
     }
   }
   // 带产品前缀的单段版本（Chrome 151 / Firefox 153）：前缀给了单段数字"这是产品版本"的语义，
@@ -176,6 +192,19 @@ export function collectCandidates(html: string, includeMajor = false): Candidate
   // 全量剔除许可证版本：必须在 <a> 标签循环/visible 提取之前，否则 anchor 里也会提出版本
   html = html.replace(LICENSE_VERSION_RE, ' ');
   const out = new Map<string, Candidate>();
+  // 纯 JSON API 页面(正文以 [ 或 { 开头, 无 HTML 标签): 直接对整个文本跑 VERSION_FIELD_RE。
+  // Junie 案例: plugins.jetbrains.com/api/plugins/26104/updates 返回 [{...}], "version":"262.2144.90"
+  // 藏在 JSON 里但没被 <script> 标签包装 → script 分支永远执行不到。
+  const trimmed = html.trimStart();
+  if (/^[[{]/.test(trimmed) && !/<\/html>/i.test(html)) {
+    for (const field of html.matchAll(VERSION_FIELD_RE)) {
+      addMatches(out, field[2], 'structured', includeMajor);
+      const version = norm(field[2]);
+      const candidate = out.get(version);
+      if (candidate) candidate.contexts.unshift({ text: `${field[1]}: ${field[2]}`, scope: 'structured' });
+    }
+    return [...out.values()];
+  }
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '';
   addMatches(out, cleanText(title), 'title', includeMajor);
 

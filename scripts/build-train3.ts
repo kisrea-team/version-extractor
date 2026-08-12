@@ -89,6 +89,9 @@ function featureRows(p: PageSpec, scored: Array<{ version: string; prob: number 
       is_global_max: bare(s.version) === bare(globalMax) ? 1 : 0, is_same_major_latest: sameMajorLatest ? 1 : 0,
       occurrence_count: occurrences, first_position_pct: first >= 0 ? first / Math.max(p.html.length, 1) : 1, scope_count: c?.contexts?.length || 0, independent_scope_count: scopes.size,
       product_anchor: anchor ? 1 : 0, title_product_anchor: titleAnchor ? 1 : 0, product_name_present: prod && (c?.contexts || []).some((x: any) => new RegExp('\\b' + esc(prod) + '\\b', 'i').test(x.text)) ? 1 : 0,
+      // ⚠️ 语义标注特征(2026-08-12): 页面明确写 "Latest/Current/Stable version: X" 时该候选是当前版
+      // Bandizip v7.45 有 "Latest version:" 标注但 prob 低, filter 模型看不到语义只能打低分
+      latest_annotated: (c?.contexts || []).some((x: any) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0,
       same_major_path_match: dominantPath && paths.includes(dominantPath) ? 1 : 0, same_major_path_share: dominantPath && paths.includes(dominantPath) ? (pathCounts.get(dominantPath) || 0) / Math.max(group.length, 1) : 0,
       same_major_minor_count: new Set(group.map((x) => numeric(x.version).slice(0, 2).join('.'))).size, sequence_member: seq?.series.some((v) => matches(s.version, v)) ? 1 : 0, sequence_latest: seq && matches(s.version, seq.latest) ? 1 : 0, page_type_download: pageType === 'download' ? 1 : 0, page_type_history: pageType === 'history' ? 1 : 0, page_type_article: pageType === 'article' ? 1 : 0, page_type_error: pageType === 'error' ? 1 : 0,
     };
@@ -101,6 +104,7 @@ async function runPage(p: PageSpec) {
   const raw = collectCandidates(p.html); if (!raw.length) return [];
   const cs = raw.map((x) => ({ version: x.version, scopes: x.contexts.map((y) => y.scope), contexts: x.contexts, tag: x.tag, paths: x.paths }));
   await pySem.acquire(); let scored; try { scored = await predictCandidateVersions(cs); } finally { pySem.release(); }
+  if (process.env.DEBUG_BT3) console.error(`[bt3] ${p.url.slice(0, 60)} candidates=${raw.length} scored=${scored.length}`);
   // 与生产 seed 路径一致：只对过滤后（prob>0.3、非日期）候选训练排序。
   const eligible = scored.filter((s) => Number.isFinite(s.prob) && s.prob > 0.3 && !/^v?\d{4}[-.]\d{2}[-.]\d{2}$/.test(s.version));
   return featureRows(p, eligible, raw, p.expected);

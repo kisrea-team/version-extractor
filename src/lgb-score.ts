@@ -8,6 +8,7 @@ import { join } from 'path';
 import { collectCandidates as collectExportCandidates } from '../scripts/export-candidates';
 import { extractVersionFromHtml, compareVersions, detectVersionSequence } from './version-extract';
 import { extractVersionWithLlm } from './llm';
+import { rerankProductVersions } from './reranker';
 import type { AuditDecision } from './audit';
 import type { VersionResult } from './types';
 
@@ -29,6 +30,7 @@ export type LgbRow = [
   number, // scope_noise
   number, // scope_structured
   number, // scope_visible
+  number, // latest_annotated
 ];
 
 // 运行时候选 scope → 训练词汇表映射
@@ -54,11 +56,13 @@ export function mapScopeToTrain(scope: string): string {
 }
 
 // 从版本字符串重建结构化特征（对应 train_lgb_filter.py 的 version_features，无 bert 列）
-export function buildFeatureRow(version: string, scopes: string[]): LgbRow {
+export function buildFeatureRow(version: string, scopes: string[], contexts?: Array<{ text: string; scope: string }>): LgbRow {
   const base = version.replace(/^[vV]/, '').split('-')[0].split('+')[0];
   const nums = (base.match(/\d+/g) || []).map(Number);
   const seg = base.split('.');
   const scopeSet = new Set(scopes);
+  // latest_annotated 特征(与 15 列 filter 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
+  const latestAnnotated = (contexts || []).some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0;
   return [
     version.startsWith('v') || version.startsWith('V') ? 1 : 0, // has_v
     /^\d+(\.\d+){0,3}$/.test(base) ? 1 : 0, // is_clean
@@ -74,6 +78,7 @@ export function buildFeatureRow(version: string, scopes: string[]): LgbRow {
     scopeSet.has('noise') ? 1 : 0,
     scopeSet.has('structured') ? 1 : 0,
     scopeSet.has('visible') ? 1 : 0,
+    latestAnnotated,
   ];
 }
 
@@ -112,7 +117,7 @@ async function runPredict(mode: 'filter' | 'rank', rows: number[][]): Promise<an
 // 批量推理：构造候选级过滤特征 → 返回产品版本概率。
 export async function predictCandidateVersions(candidates: LgbCandidate[]): Promise<LgbResult[]> {
   if (candidates.length === 0) return [];
-  const rows: LgbRow[] = candidates.map((c) => buildFeatureRow(c.version, c.scopes));
+  const rows: LgbRow[] = candidates.map((c) => buildFeatureRow(c.version, c.scopes, c.contexts));
   const parsed = await runPredict('filter', rows);
   const probs: number[][] = parsed?.probs || [];
   return candidates.map((c, i) => ({ version: c.version, prob: probs[i] && Number.isFinite(probs[i][1]) ? probs[i][1] : -1 }));
@@ -513,15 +518,38 @@ export function selectVersionByFamily(scored: LgbResult[], candidates: LgbCandid
 
 // 页面排序模型选择 seed；数值归族仅约束 seed 可到达的版本线，不能以族规模改选其他族。
 // 返回 null 表示排序工件不可用/特征不匹配，由调用方回退旧选择器。
-export interface RankSeedDetail { result: LgbResult; margin: number; strong: boolean; }
+export interface RankSeedDetail { result: LgbResult; margin: number; strong: boolean; globalMax?: string; }
 export async function selectVersionByRankSeedDetailed(
   html: string,
   scored: LgbResult[],
   candidates: LgbCandidate[],
   productName?: string | null,
 ): Promise<RankSeedDetail | null> {
-  const valid = scored.filter((s) => Number.isFinite(s.prob) && s.prob > 0.3 && !/^v?\d{4}[-.]\d{2}[-.]\d{2}$/.test(s.version));
-  if (valid.length === 0) return null;
+  // 过滤门槛 prob>0.3, 但保留"前缀匹配高prob候选"的低prob完整版:
+  // v0.dev 案例: v16.2(导航, prob=0.94) 与 v16.2.0(详情文本, prob=0.02) 同前缀,
+  // filter 给显眼位置高分、详情低分——若把 v16.2.0 滤掉, rank 永远看不到完整版。
+  // 规则: prob>0.3 的候选先取; 对每个高prob候选 X.Y, 若存在 X.Y.Z 且 prob<0.3, 也保留(交 rank 裁决)。
+  const base = scored.filter((s) => Number.isFinite(s.prob) && s.prob > 0.3 && !/^v?\d{4}[-.]\d{2}[-.]\d{2}$/.test(s.version));
+  const baseVers = new Set(base.map((s) => s.version.replace(/^v/i, '')));
+  const prefixKeep = scored.filter((s) => {
+    if (s.prob > 0.3 || !Number.isFinite(s.prob)) return false;
+    if (/^v?\d{4}[-.]\d{2}[-.]\d{2}$/.test(s.version)) return false;
+    const bare = s.version.replace(/^v/i, '');
+    // 自己是某高prob候选的扩展(X.Y.Z 是 X.Y 的扩展)
+    return baseVers.has(bare.split('.').slice(0, 2).join('.'));
+  });
+  const valid = [...base, ...prefixKeep];
+  // ⚠️ valid 空兜底(2026-08-12): filter 重训后部分页面候选 prob 全 <0.3(SD v2.5=0.208/v3.0=0.002),
+  // valid 空 → seed undefined 崩溃。取 prob 最高的 1-2 个兜底, 至少让 rank 有候选可判。
+  if (valid.length === 0) {
+    const fallback = scored
+      .filter((s) => Number.isFinite(s.prob) && !/^v?\d{4}[-.]\d{2}[-.]\d{2}$/.test(s.version))
+      .sort((a, b) => b.prob - a.prob)
+      .slice(0, 2);
+    valid.push(...fallback);
+    if (process.env.DEBUG_LLM) console.error('[rd] valid 空, 兜底取 prob 最高: ' + fallback.map((s) => s.version).join(','));
+  }
+  const globalMax = [...valid].sort((a, b) => rankVersionCompare(a.version, b.version)).pop()?.version || '';
   const rows = buildRankFeatureRows(html, valid, candidates, productName);
   const scores = await predictRankScores(rows);
   if (!scores) return null;
@@ -530,10 +558,13 @@ export async function selectVersionByRankSeedDetailed(
     if (valid[index].prob !== valid[best].prob) return valid[index].prob > valid[best].prob ? index : best;
     return rankVersionCompare(valid[index].version, valid[best].version) > 0 ? index : best;
   }, 0);
-  const seed = valid[seedIndex];
+  let seed = valid[seedIndex];
+  if (process.env.DEBUG_LLM && !seed) console.error('[rd] seed undefined! seedIndex=' + seedIndex, 'valid.length=' + valid.length, 'scores.length=' + scores.length);
   const sorted = [...scores].sort((a, b) => b - a);
   const margin = sorted.length > 1 ? sorted[0] - sorted[1] : 1;
   const scopesOf = new Map(candidates.map((c) => [c.version, new Set(c.scopes || [])]));
+  // (回滚 2026-08-11 v40): prob 优先替换 seed 是负收益——Insomnia v2023.5.8(年份版干扰)prob 高但
+  // 模型打分低, 强行替换 seed 破坏 rank 综合判断, 4 例退化(76% < 92%)。恢复纯模型打分选 seed
   const tagOf = new Map(candidates.map((c) => [c.version, c.tag || null]));
   const pathsOf = new Map(candidates.map((c) => [c.version, c.paths || []]));
   const nodes = valid.map((s) => numericNode(s, null, tagOf.get(s.version) || null, pathsOf.get(s.version) || []));
@@ -545,8 +576,15 @@ export async function selectVersionByRankSeedDetailed(
   const strong = strongScope || (family ? family.nodes.length > 1 : false);
   // 单点族且 seed 无强 scope 证据 → 极可能是孤立噪声（blender v330、redis v18.0），回退旧选择器
   if (family && family.nodes.length === 1 && !strongScope) return null;
-  const result = family ? ([...family.nodes].sort(compareEvolution).pop()?.result || seed) : seed;
-  return { result, margin, strong };
+  // ⚠️ family 归族尊重 seed(2026-08-12): Bandizip 案例 seed=v7.45(rank 打分最高+latest 标注),
+  // v8.1(OS 版本)被 prefix 归族误并入同族, 族内"选最大"覆盖成 v8.1。
+  // 归族只应把"seed 的扩展版本"(v16.2 → v16.2.0)选出来, 不应选数值更大的不同版本。
+  const familyMembers = family ? [...family.nodes].map((n) => n.result) : [seed];
+  const seedBare = seed.version.replace(/^v/i, '');
+  const extended = familyMembers.filter((m) => m.version !== seed.version && (m.version.replace(/^v/i, '').startsWith(seedBare + '.') || m.version.replace(/^v/i, '').startsWith(seedBare + '-')));
+  const result = extended.length ? [...extended].sort((a, b) => rankVersionCompare(b.version, a.version))[0] : seed;
+  if (process.env.DEBUG_LLM) console.error('[rd] seed=' + seed.version, 'family=' + (family ? family.nodes.length : 'none'), 'extended=' + extended.map((m) => m.version).join(','), 'result=' + result?.version);
+  return { result, margin, strong, globalMax };
 }
 
 export async function selectVersionByRankSeed(
@@ -622,29 +660,185 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
   // 选择：rank seed → 受限归族。rank 工件不可用/特征不匹配 → 回退旧归族。
   // 置信度用 rank margin：≥0.1 高置信；<0.1 触发 LLM（有产品名时）拿页面语境定夺。
   const rankDetail = opts.rank === false ? null : await selectVersionByRankSeedDetailed(html, scored, candidates, opts.productName || null);
+  if (process.env.DEBUG_LLM) console.error('[evl] rankDetail.result=' + rankDetail?.result?.version, 'seqVersion=' + seqVersion, 'candidates=' + candidates.length);
   let selected: LgbResult | null = null;
   let confidence: 'high' | 'medium' | 'low' = 'low';
   let llmTrace: AuditDecision['llm'] = null; // 审计用：LLM 是否触发/给了什么答案
   if (rankDetail) {
     selected = rankDetail.result;
-    if (rankDetail.margin >= 0.1) {
-      confidence = 'high';
+    // 触发 LLM 兜底的条件:
+    //   margin < 0.5 —— rank 有明显分歧就交给 LLM 语义裁决。
+    //   注意不能加"seed 非 globalMax"限制: Termius 案例 seed=v26.10 恰好是候选池最大(但它是
+    //   Ubuntu 版本, 错误的), 如果要求"非 globalMax 才触发"就把这种场景排除了。
+    const llmNeeded = rankDetail.margin < 0.5;
+    if (!llmNeeded) {
+      confidence = rankDetail.margin >= 0.1 ? 'high' : 'low';
     } else if (opts.llm !== false && opts.productName) {
-      // 低 margin = rank 模型在两个候选间摇摆，交给纯文字 LLM 用候选清单判定
+      // 交给纯文字 LLM 用候选清单判定(含全局最大版本, 让 LLM 能发现 rank 漏选的最新版)
+      // ⚠️ 候选清单同样要"前缀保留": v0.dev 案例 v16.2.0 prob=0.02 会被 >0.3 过滤,
+      //    LLM 永远看不到完整版 → 必须把低 prob 的完整版也喂给 LLM
+      // ═══════ 争议集候选(2026-08-11 架构重构, 用户指出"补丁越加越多=任务定义错了") ═══════
+      // 旧方案: 家族锚定+自适应数量+前缀保留+产品名强制 → 8-15 个候选, LLM 注意力分散,
+      // 需要 6 条仲裁规则判"谁对"(seedHasDl0/seedIsPrerelease/llmIsTruncation/llmMoreComplete...)
+      // 每条救一个案例又误伤一个(CPU-Z 救回/ImageMagick 误伤/audacity 误伤)。
+      // 新方案: LLM 只看到"rank 有争议的候选"——seed + 归属 score 最高的 4 个。
+      // LLM 的任务从"15 选 1"变成"5 选 1 的争议裁决", 答案在争议集内就采用, 无需复杂仲裁。
+      const llmScored = scored.filter((s) => Number.isFinite(s.prob));
+      const pn = (opts.productName || '').toLowerCase();
+      // reranker(硅基流动 bge-reranker-v2-m3)对候选做产品归属打分——比规则"产品名共现"更准:
+      // Termius 案例 v9.43.0(rerank 0.96, 产品版)vs v14.16.1(Ubuntu 版)rerank 能区分;
+      // Terraform 案例 v1.15.8(稳定版)vs v1.16.0-beta(预发布)rerank 能识别。
+      // 失败(无 key/超时)时返回 [] → 回退纯规则排序
+      // ⚠️ 只对"有归属线索"的候选 rerank: Unity/Node.js 等 JSON 页面候选上下文是版本号+日期,
+      // reranker 对纯数字列表无判别力, 反而把 v6000.0.81(含 version 字段)排前误导。跳过 JSON 页
+      // ⚠️ 只 rerank 预筛后的少量候选(各族顶端 + prob top): BTT 2899 候选全喂 reranker
+      // 会超时+限流(每例卡几分钟), 预筛 ≤15 个再 rerank 快且够
+      let rerankScores: Map<string, number> = new Map();
+      try {
+        const preFilter = (() => {
+          const fam = new Map<string, LgbResult>();
+          for (const s of llmScored) {
+            const bare = s.version.replace(/^v/i, '');
+            const seg = bare.split('.');
+            const f = seg.length >= 2 ? seg.slice(0, 2).join('.') : seg[0];
+            const cur = fam.get(f);
+            if (!cur || rankVersionCompare(s.version, cur.version) > 0) fam.set(f, s);
+          }
+          return [...fam.values()].sort((a, b) => b.prob - a.prob).slice(0, 15);
+        })();
+        const ctxSamples = preFilter.slice(0, 5).map((s) => {
+          const cc = candidates.find((x) => x.version === s.version);
+          return cc?.contexts?.[0]?.text || '';
+        }).join(' ');
+        const looksNatural = /[a-zA-Z]{3,}/.test(ctxSamples) && !/^\s*[\[\]{}\"0-9,\s]*$/.test(ctxSamples);
+        if (looksNatural) {
+          const rr = await rerankProductVersions(opts.productName || '', preFilter.map((s) => {
+            const cc = candidates.find((x) => x.version === s.version);
+            return { version: s.version, context: cc?.contexts?.[0]?.text || '' };
+          }));
+          // 归一化到 0-1, 存 version → score
+          const max = Math.max(...rr.map((r) => r.score), 1e-9);
+          rr.forEach((r) => {
+            const s = preFilter[r.index];
+            if (s) rerankScores.set(s.version, r.score / max);
+          });
+        }
+      } catch { /* reranker 失败 → 空 map */ }
+      const llmScoreOf = (s: LgbResult): number => {
+        const cc = candidates.find((x) => x.version === s.version);
+        if (!cc) return 0;
+        const p = cc.contexts?.some((x) => x.text.toLowerCase().includes(pn)) ? 2 : 0;
+        const h = cc.contexts?.some((x) => x.scope === 'heading') ? 3 : 0;
+        const r = (rerankScores.get(s.version) || 0) * 2; // rerank 分 ×2(与产品名共现同权)
+        return p + h + r;
+      };
+      // 争议集 = seed + 竞争候选(共 5):
+      // ⚠️ 不能纯按 score 取 top4——Prometheus 案例 v3.5.4/v3.5.5(旧版)score=5 占满名额,
+      // 正确 v3.13.2 排 #6 被截。竞争候选 = ①seed 同族最高版本(famMax, 各族顶端) ②score 高者
+      // 这样 v3.13.2(3.x 族最高, 正确当前版)必进, v3.5.5(旧版)被各族顶端挤掉
+      const famMax2 = new Map<string, LgbResult>();
+      for (const s of llmScored) {
+        const bare = s.version.replace(/^v/i, '');
+        const seg = bare.split('.');
+        const fam = seg.length >= 2 ? seg.slice(0, 2).join('.') : seg[0];
+        const cur = famMax2.get(fam);
+        if (!cur || rankVersionCompare(s.version, cur.version) > 0) famMax2.set(fam, s);
+      }
+      // 各族顶端 + score 高者混合, 按 score 降序取 4 个(各族顶端保证版本号最新候选可见)
+      // ⚠️ 排序 tiebreak 用 prob(模型可信度)而非版本号: Termius 案例各族顶端 v14.16.1(Ubuntu 版)
+      // 与 v9.43.0(产品版)score 相同, 按版本号降序 v14.16.1 排前误导 LLM; prob 是模型对
+      // "是版本"的判断, v9.43.0 prob=0.9352 > v14.16.1, 更可信
+      // ⚠️ 数量: 各族顶端必须全进(它们是"各族最新", 截断会丢正确版——Prometheus 案例 v3.13.2
+      // 是 3.13 族顶端但 prob=0.707 低, 取 4 个会被 v3.5.5 挤掉)。族本身不多(≤10), 放宽到 10
+      const famMaxVers2 = [...famMax2.values()];
+      const llmContested = [...new Set([...famMaxVers2, ...llmScored])]
+        .sort((a, b) => llmScoreOf(b) - llmScoreOf(a) || b.prob - a.prob)
+        .slice(0, 10);
+      const contestedVers = new Set([selected.version, ...llmContested.map((s) => s.version)]);
       const llmCandidates = candidates
-        .filter((c) => scored.some((s) => s.version === c.version && Number.isFinite(s.prob) && s.prob > 0.3))
+        .filter((c) => contestedVers.has(c.version))
         .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob }));
       const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates });
       opts.onLlm?.({ margin: rankDetail.margin, answer: llmVer }); // 暴露 LLM 判定结果（bench 测 LLM 准确性用）
       llmTrace = { triggered: true, margin: rankDetail.margin, answer: llmVer };
-      if (llmVer) { selected = { version: llmVer, prob: 0.9 }; confidence = 'high'; }
-      else confidence = 'low';
+      if (process.env.DEBUG_LLM) console.error('[llm-check]', 'llmVer=' + llmVer, 'typeof=' + typeof llmVer, 'seed=' + selected.version);
+      if (llmVer) {
+        // ═══════ 简化仲裁(2026-08-11 架构重构) ═══════
+        // LLM 候选 = 争议集(seed + score top4, 最多 5 个), LLM 看到的就是 rank 拿不准的候选。
+        // 任务清晰后不再需要语义补丁(seedHasDl0/seedIsPrerelease/llmStrong 全删——它们每条
+        // 救一个案例又误伤一个, 是"任务定义错"的症状)。只剩两条版本字符串硬规则:
+        // ① LLM 答的是 seed 的截断(丢段/丢后缀) → 保留 seed(完整版更精确, Unity f1/mpv 反向)
+        // ② LLM 答的更完整 → 采用 LLM(mpv v0.41.0 vs seed v0.41)
+        const seedCand0 = candidates.find((cc) => cc.version === selected.version);
+        const llmIsTruncation = llmVer !== selected.version && (
+          selected.version.startsWith(llmVer + '.') ||
+          selected.version.startsWith(llmVer + '-') ||
+          // 紧贴字母数字后缀(6000.5.7f1 vs 6000.5.7)——必须先验证前缀一致!
+          // ⚠️ bug: v5.64.396 vs v5.23.1, slice(7)='96' 纯数字误判截断, 但 v5.64.396 前缀不是 v5.23.1
+          (llmVer.startsWith('v') === selected.version.startsWith('v') &&
+           selected.version.startsWith(llmVer) &&
+           selected.version.slice(llmVer.length).match(/^[a-z]?\d+$/i) !== null)
+        );
+        const llmMoreComplete = llmVer.startsWith(selected.version + '.') ||
+          (llmVer.startsWith('v') === selected.version.startsWith('v') && llmVer.slice(selected.version.length).match(/^\.\d+/));
+        if (llmVer === selected.version) {
+          confidence = 'high';
+        } else if (llmIsTruncation) {
+          confidence = 'medium'; // 保留完整 seed
+        } else if (llmMoreComplete) {
+          selected = { version: llmVer, prob: 0.9 }; confidence = 'high';
+        } else {
+          // 争议集内 LLM 裁决: rank 与 LLM 冲突时, LLM 看到的是同样的候选 + 上下文,
+          // 它的语义判断优先(它能识别 预发布/依赖版本/Ubuntu 版等 rank 不懂的信号)
+          // ⚠️ 但 seed 是 JSON latest/structured 字段指向的版本时(Unity "latest":"6000.5.7f1"),
+          // 结构化数据明确标注了最新版, LLM 的语义判断(可能选 alpha v6000.0.81)不应覆盖。
+          // 注意: 只认 structured JSON 字段, 不认 "Latest version: X" 文本文案
+          // (文案可能过时/指向 preview, 用户 2026-08-12 纠正——文本文案不是可靠信号)
+          const seedIsLatestField = seedCand0?.contexts?.some((x) =>
+            x.scope === 'structured' && /\blatest\b|"latest"|latest\s*[:=]/.test(x.text)
+          );
+          if (seedIsLatestField) {
+            confidence = 'medium'; // 保留 JSON latest 标注的 seed
+          } else {
+            selected = { version: llmVer, prob: 0.9 }; confidence = 'high';
+          }
+        }
+      } else {
+        confidence = 'low';
+      }
     } else {
       confidence = 'low';
     }
   } else {
     selected = selectVersionByFamily(scored, candidates, opts.productName || null, anchorHits.size > 0 ? anchorHits : null);
     confidence = selected ? (selected.prob >= 0.7 ? 'high' : selected.prob >= 0.3 ? 'medium' : 'low') : 'low';
+    // rank 返回 null(单点族无强证据, v0.dev 案例 seed=v4.2.0 单点族)时也触发 LLM 兜底:
+    // 候选里有 v16.2.0(期望)但 prob 0.02 太低, family 回退选 v2.5——LLM 从候选清单里可能选对
+    if (selected && opts.llm !== false && opts.productName && scored.length > 0) {
+      const pn = (opts.productName || '').toLowerCase();
+      const llmScored2 = scored.filter((s) => Number.isFinite(s.prob));
+      // rank=null 场景候选本来就少(≤15), 全部给 LLM 不过滤——
+      // v0.dev 的 v16.2.0 prob=0.02 前缀不在 base(v16.2), 任何过滤都会丢它
+      const llmPool2 = llmScored2.length <= 15 ? llmScored2 : llmScored2.slice(0, 15);
+      if (llmPool2.length > 0) {
+        try {
+          const llmVer2 = await extractVersionWithLlm(html, opts.productName, {
+            candidates: llmPool2.map((s) => {
+              const cc = candidates.find((x) => x.version === s.version);
+              return { version: s.version, scopes: cc?.scopes || [], contexts: cc?.contexts || [], prob: s.prob };
+            }),
+          });
+          if (llmVer2 && llmVer2 !== selected.version) {
+            const llmCand2 = candidates.find((cc) => cc.version === llmVer2);
+            const llmStrong2 = llmCand2?.contexts?.some((x) => x.text.toLowerCase().includes(pn));
+            if (llmStrong2) {
+              selected = { version: llmVer2, prob: 0.9 };
+              confidence = 'medium';
+            }
+          }
+        } catch { /* LLM 失败不阻塞 */ }
+      }
+    }
   }
   if (!selected) {
     // 过滤后无候选 / python 不可用 → 回退启发式

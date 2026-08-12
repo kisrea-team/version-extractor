@@ -27,7 +27,9 @@ function loadKeys(): string[] {
   return [];
 }
 let KEYS = loadKeys();
-let keyIndex = 0;
+// 轮换改为随机起始(2026-08-12): 串行单测/多进程时每个进程 keyIndex=0 导致前几个 key 被反复打,
+// 后 45 个 key 闲置 → 前几个 key 限流 429/503。随机起始让每次进程/调用从不同 key 开始。
+let keyIndex = Math.floor(Math.random() * Math.max(KEYS.length, 1));
 function nextKey(): string | null {
   if (KEYS.length === 0) return null;
   const k = KEYS[keyIndex % KEYS.length];
@@ -58,44 +60,66 @@ async function acquireLlmSlot(): Promise<() => void> {
 }
 
 // 从 LLM 输出里提取版本号
+// 模型回答常先复述候选清单("v5.64.396 [visible] ...")再给结论("答案是 5.23.1")。
+// 取第一个版本号会抓到复述里的错误版本——应取【结论位置】的版本号:
+//   ① 优先"答案/结论是"关键词后的版本
+//   ② 否则取最后出现的版本号(模型惯例:结论在末尾)
 export function extractVersionFromLlmText(answer: string): string | null {
   if (!answer) return null;
-  const m = answer.match(/(?:v)?(\d+(?:\.\d+){1,3})/);
-  if (!m) return null;
-  return 'v' + m[1];
+  const RE = /(?:v)?(\d+(?:\.\d+){1,3})/g;
+  // ① 结论关键词后的版本号
+  const conclusion = answer.match(/(?:答案|answer|conclusion|final|is|:)\s*(?:v)?(\d+(?:\.\d+){1,3})/i);
+  if (conclusion) return 'v' + conclusion[1];
+  // ② 最后出现的版本号
+  const all = [...answer.matchAll(RE)];
+  if (all.length === 0) return null;
+  return 'v' + all[all.length - 1][1];
 }
 
 const SYSTEM_MSG = 'You extract the current version of a product from a page that may also mention dependencies/components ("updated Electron to X", "mongosh to X"), other products\' requirements ("version X or higher" after a list of app names), and old versions. Be careful: only return the target product\'s OWN current latest stable version. Return ONLY the version number.';
 
-// 调 NVIDIA diffusiongemma：单次尝试，一次不通（429/错误/空内容/超时）立刻交回调用方换 modelbest。
-// key 轮询 = 每次【调用】首次访问用不同 key（nextKey 跨调用轮换），不在单次调用内换 key 重试。
+// 调 NVIDIA Nemotron：失败换 key 重试(translate_en.py 模式: 全局轮询, 每次调用换 key)。
+// 限流(429/503)/超时/空内容/提取失败 → 换下一个 key 重试, 最多 MAX_ATTEMPTS 次, 全失败才交回 modelbest。
 async function callNvidia(prompt: string, timeout: number): Promise<string | null> {
   const release = await acquireLlmSlot();
   try {
-    const key = nextKey();
-    if (!key) return null;
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-    try {
-      const res = await fetch(`${NV_BASE}/chat/completions`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-        body: JSON.stringify({
-          model: NV_MODEL,
-          messages: [{ role: 'system', content: SYSTEM_MSG }, { role: 'user', content: prompt }],
-          temperature: 0,
-          max_tokens: 200,
+    const MAX_ATTEMPTS = 4;
+    let lastErr = '';
+    for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
+      const key = nextKey();
+      if (!key) return null;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeout);
+      try {
+        const res = await fetch(`${NV_BASE}/chat/completions`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+          body: JSON.stringify({
+            model: NV_MODEL,
+            messages: [{ role: 'system', content: SYSTEM_MSG }, { role: 'user', content: prompt }],
+            temperature: 0,
+            max_tokens: 2000,
+            // diffusiongemma: 支持 thinkingConfig; 默认 LOW 思考 = 归属判断够用且比完整 thinking 快
+            // THINKING_LEVEL 环境变量可覆盖(HIGH 用于验证思考是否提升多版本线选错场景)
+            thinkingConfig: { thinkingLevel: process.env.THINKING_LEVEL || 'LOW' },
         }),
-        signal: controller.signal,
-      });
-      if (!res.ok) return null; // 429/403/500 → 一次不通，交回调用方换 modelbest
-      const j: any = await res.json();
-      const answer = j.choices?.[0]?.message?.content || '';
-      if (!answer) return null;
-      return extractVersionFromLlmText(answer);
-    } finally {
-      clearTimeout(timer);
+          signal: controller.signal,
+        });
+        if (!res.ok) { lastErr = `http-${res.status}`; continue; }
+        const j: any = await res.json();
+        const answer = j.choices?.[0]?.message?.content || '';
+        if (!answer) { lastErr = 'empty'; continue; }
+        const extracted = extractVersionFromLlmText(answer);
+        if (extracted) return extracted;
+        lastErr = 'extract-fail';
+      } catch (e: any) {
+        lastErr = e?.message?.slice(0, 60) || 'fetch-fail';
+      } finally {
+        clearTimeout(timer);
+      }
+      await new Promise((r) => setTimeout(r, 300 * (attempt + 1))); // 退避
     }
+    return null; // 全部 key 失败 → 交回调用方换 modelbest
   } finally {
     release();
   }
@@ -147,14 +171,10 @@ export async function extractVersionWithLlm(
     // 按版本号降序：修 MongoDB/禅道/Thunderbird（正确版本是数字最大的）。
     // 注意：依赖/组件版本往往数字更大反而排前面，所以提示词里明确"最上面不一定是产品版本"。
     const cv = (v: string) => v.replace(/^v/i, '').split('.').map(Number);
-    const ordered = [...opts.candidates].sort((a, b) => {
-      const x = cv(a.version), y = cv(b.version);
-      for (let i = 0; i < 4; i += 1) {
-        const xi = x[i] || 0, yi = y[i] || 0;
-        if (xi !== yi) return yi - xi;
-      }
-      return 0;
-    });
+    // 传入的 candidates 已按归属强度排序(lgb-score.ts 的 llmOrdered: heading 3 + 产品名 2 + famMax 1)。
+    // ⚠️ 不再内部重排! 否则 Lens Studio 的 v5.23.1(heading 证据, 排 #0)会被 llm.ts 的
+    // "产品名共现+版本号降序"重排到后面, LLM 看不到强证据候选(v38 实测 heading 权重无效的根因)
+    const ordered = [...opts.candidates];
     // 每个候选选"最强上下文"并截版本号周围窗口，让版本归属词可见：
     //   ① 含产品名的上下文（release 标题 "Windsurf v3.6.27 August 1"）优先；
     //   ② 否则标题/下载/结构化 scope；
@@ -178,7 +198,11 @@ export async function extractVersionWithLlm(
       const scope = c.scopes?.[0] || '';
       return `- ${c.version} [${scope}] …${pickCtx(c)}…`;
     }).join('\n');
-    prompt = `Product: ${productName}\n\nPage title: ${title}\n\nVersion-like numbers found on the page (ordered by version number — NOT by what is newest for the product):\n${candList}\n\nEach line shows the text around that number. The number belongs to whoever the text names right before it: "Chromium: 138.0.7204" means 138.0.7204 is the Chromium version; "updated Electron to 37.6.0" means 37.6.0 is Electron's; "requires HelperApp 7.1 or higher" means 7.1 is HelperApp's. These component/OS/library versions are often numerically LARGER than the product's own version, so the largest number is usually NOT the answer.\n${productName}'s OWN current version is the one attached to "${productName}": it appears in a release title/heading (like "${productName} X.Y.Z" or "Version X.Y.Z"), in a download link, or as the newest entry of ${productName}'s version list. Return ONLY ${productName}'s own current latest stable version as a number.`;
+    prompt = `Find ${productName}'s own current version.
+Candidates are sorted by evidence strength (product-name mention, heading, download link) — the top ones are far more likely to be the answer.
+Lines where the version belongs to another product/component (Camera Kit, System Requirements, dependencies like "requires X or higher", "updated to X") are NOT ${productName}'s version. The numerically largest version is usually NOT the answer.
+${candList}
+${productName}'s version: `;
   } else {
     // 回退：Trafilatura 正文前段
     const text = (await cleanWithTrafilatura(html)) || '';

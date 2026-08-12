@@ -17,6 +17,7 @@ FEATS = [
     'is_global_max', 'is_same_major_latest', 'occurrence_count', 'first_position_pct',
     'scope_count', 'independent_scope_count', 'product_anchor', 'title_product_anchor',
     'product_name_present', 'same_major_path_match', 'same_major_path_share',
+    'latest_annotated',
     'same_major_minor_count', 'sequence_member', 'sequence_latest',
     'page_type_download', 'page_type_history', 'page_type_article', 'page_type_error',
 ]

@@ -48,10 +48,12 @@ const BUILTIN_CASES: TestCase[] = [
 ];
 
 function matchesPrefix(actual: string, prefix: string): boolean {
-  const norm = (s: string) => s.replace(/^v/i, '');
+  // norm: 去 v 前缀 + 去 -/+ build 后缀(ImageMagick 7.1.2-29 vs v7.1.2 提取截断, 双向匹配)
+  const norm = (s: string) => s.replace(/^v/i, '').split('-')[0].split('+')[0];
   const a = norm(actual);
   const e = norm(prefix);
-  return a === e || a.startsWith(e + '.');
+  // 双向匹配: 提取=期望, 或互为前缀(页面只显示短版本如 13.1 vs DB 完整版 13.1.0, 或带 build 号)
+  return a === e || a.startsWith(e + '.') || e.startsWith(a + '.');
 }
 
 function parseArgs(argv: string[]) {

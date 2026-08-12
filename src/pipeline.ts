@@ -107,8 +107,10 @@ export async function extractFromUrl(
     }
   }
 
-  // changelog-page / rss 走页面；github 走 API（无需渲染）
-  let page = source.type === 'changelog-page' || source.type === 'rss'
+  // changelog-page / rss 走页面；github 走 API（无需渲染）——但 API 失败/限流时 HTML 兜底
+  // ⚠️ github-releases 也抓 HTML: 新50基准 mpv/jq/Pandoc/Restic/Zola 的 GitHub API 调用失败返回
+  // null, 纯 API 路径导致 version=null。HTML 提取(v0.41.0 等)作为兜底, 避免 None
+  let page = source.type === 'changelog-page' || source.type === 'rss' || source.type === 'github-releases' || source.type === 'github-tags'
     ? await fetchPage(url)
     : { status: 0, text: '', error: undefined };
   // 审计：收集提取决策（L1/L2 都触发，取最后一次），返回前统一落库
@@ -241,7 +243,11 @@ export async function extractFromUrl(
     // 页面 changelog 锚定版本回填：注册表版本可能来自组件/子包（如 brew thingsmacsandboxhelper
     // 的 3.48 是沙盒辅助组件版本，Things 主程序页面真实版本是 3.22.13）。changelog 锚定的版本
     // 是页面正文真实标题（用户可见），与注册表不一致时以页面为准。
-    if (changelog?.version && finalVersion.version && changelog.version !== finalVersion.version) {
+    // ⚠️ 只覆盖"注册表来源"的版本——LGBM rank/LLM 提取的版本(version-extract/lgb-score)是页面
+    //   候选语义选择的结果，changelog anchor 可能从 changelog 标题误提取组件版本
+    //   (Junie 案例: changelog 标题 "2xx.105.40" 是 IDE 兼容区间, 覆盖了 LGBM 的 262.2144.90)
+    const fromRegistry = finalVersion.source === 'registry' || finalVersion.source === 'official-endpoint';
+    if (fromRegistry && changelog?.version && finalVersion.version && changelog.version !== finalVersion.version) {
       finalVersion = {
         version: changelog.version,
         source: changelog.source === 'changelog-page' ? 'changelog-anchor' : finalVersion.source,
