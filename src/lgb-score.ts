@@ -848,10 +848,18 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
         .sort((a, b) => llmScoreOf(b) - llmScoreOf(a) || b.prob - a.prob)
         .slice(0, 10);
       const contestedVers = new Set([selected.version, ...llmContested.map((s) => s.version)]);
+      // ⚠️ 2026-08-12 修复: 之前 llmCandidates 按 candidates 原始顺序(HTML 出现序)传,
+      // 但提示词声明 "sorted by evidence strength" → LLM 被误导(CPU-Z/nginx 选错根因之一)。
+      // 现在按 llmScoreOf(rerank + 产品名 + heading)降序, 与提示词声明一致, seed 排最前并标注 ★
       const llmCandidates = candidates
         .filter((c) => contestedVers.has(c.version))
+        .sort((a, b) => {
+          const sa = llmScoreOf(scored.find((s) => s.version === a.version) as LgbResult);
+          const sb = llmScoreOf(scored.find((s) => s.version === b.version) as LgbResult);
+          return sb - sa || (scored.find((s) => s.version === b.version)?.prob || 0) - (scored.find((s) => s.version === a.version)?.prob || 0);
+        })
         .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob }));
-      const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates });
+      const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates, seed: selected.version });
       opts.onLlm?.({ margin: rankDetail.margin, answer: llmVer }); // 暴露 LLM 判定结果（bench 测 LLM 准确性用）
       llmTrace = { triggered: true, margin: rankDetail.margin, answer: llmVer };
       if (process.env.DEBUG_LLM) console.error('[llm-check]', 'llmVer=' + llmVer, 'typeof=' + typeof llmVer, 'seed=' + selected.version);

@@ -98,10 +98,9 @@ async function callNvidia(prompt: string, timeout: number): Promise<string | nul
             model: NV_MODEL,
             messages: [{ role: 'system', content: SYSTEM_MSG }, { role: 'user', content: prompt }],
             temperature: 0,
-            max_tokens: 2000,
-            // diffusiongemma: 支持 thinkingConfig; 默认 LOW 思考 = 归属判断够用且比完整 thinking 快
-            // THINKING_LEVEL 环境变量可覆盖(HIGH 用于验证思考是否提升多版本线选错场景)
-            thinkingConfig: { thinkingLevel: process.env.THINKING_LEVEL || 'LOW' },
+            max_tokens: 200, // ⚠️ 2026-08-12 2000→200: 100 会截断复述(v26.2 丢 .5), 200 平衡速度与完整性; 单次从 ~70s 降到 ~10-20s
+            // diffusiongemma: 支持 thinkingConfig; MINIMAL = 最快(归属判断够用), 比 LOW 少思考 tokens
+            thinkingConfig: { thinkingLevel: process.env.THINKING_LEVEL || 'MINIMAL' },
         }),
           signal: controller.signal,
         });
@@ -162,7 +161,7 @@ export interface LlmCandidate { version: string; scopes?: string[]; contexts?: A
 export async function extractVersionWithLlm(
   html: string,
   productName: string,
-  opts: { timeout?: number; candidates?: LlmCandidate[] } = {}
+  opts: { timeout?: number; candidates?: LlmCandidate[]; seed?: string } = {}
 ): Promise<string | null> {
   if (KEYS.length === 0) return null;
   const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -196,10 +195,12 @@ export async function extractVersionWithLlm(
     };
     const candList = ordered.slice(0, 40).map((c) => {
       const scope = c.scopes?.[0] || '';
-      return `- ${c.version} [${scope}] …${pickCtx(c)}…`;
+      const isSeed = opts.seed && c.version === opts.seed;
+      return `- ${isSeed ? '★ ' : ''}${c.version} [${scope}] …${pickCtx(c)}…`;
     }).join('\n');
     prompt = `Find ${productName}'s own current version.
 Candidates are sorted by evidence strength (product-name mention, heading, download link) — the top ones are far more likely to be the answer.
+The candidate marked ★ is the rank model's first choice. Prefer it unless the page clearly shows it is NOT the current version (e.g. it's a preview/beta/dev/build version, or another candidate is explicitly labeled as the current/stable version).
 Lines where the version belongs to another product/component (Camera Kit, System Requirements, dependencies like "requires X or higher", "updated to X") are NOT ${productName}'s version. The numerically largest version is usually NOT the answer.
 ${candList}
 ${productName}'s version: `;
