@@ -131,6 +131,10 @@ async function callNvidia(prompt: string, timeout: number): Promise<string | nul
         if (!res.ok) { lastErr = `http-${res.status}`; if (process.env.DEBUG_LLM) console.error(`[llm] attempt${attempt} key#${keyIndex - 1} http-${res.status} ${Date.now() - t0}ms`); continue; }
         const j: any = await res.json();
         const answer = j.choices?.[0]?.message?.content || '';
+        if (process.env.DEBUG_LLM) {
+          const u = j.usage || {};
+          console.error(`[llm] attempt${attempt} 成功 ${Date.now() - t0}ms prompt_tokens=${u.prompt_tokens ?? '?'} completion_tokens=${u.completion_tokens ?? '?'} total=${u.total_tokens ?? '?'} answer="${(answer || '').replace(/\n/g, ' ').slice(0, 80)}"`);
+        }
         if (!answer) { lastErr = 'empty'; continue; }
         const extracted = extractVersionFromLlmText(answer);
         if (extracted) return extracted;
