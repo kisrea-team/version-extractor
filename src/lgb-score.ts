@@ -576,8 +576,11 @@ export async function selectVersionByRankSeedDetailed(
   // 强 seed：有强 scope 证据（下载/标题/heading/结构化）或在多成员版本线内。
   // 强 seed 即使 margin 低（排名平票）也应信任 rank，不让 LLM 覆盖（Things v3.22）。
   const strong = strongScope || (family ? family.nodes.length > 1 : false);
-  // 单点族且 seed 无强 scope 证据 → 极可能是孤立噪声（blender v330、redis v18.0），回退旧选择器
-  if (family && family.nodes.length === 1 && !strongScope) return null;
+  // 单点族且 seed 无强 scope 证据 → 旧逻辑直接回退旧选择器(prob 最高)。
+  // ⚠️ 2026-08-12 移除回退: 该保护为旧模型的 blender v330/redis v18.0 噪声设计,
+  // 模型重训(38列)后保护对象消失(blender 现在 seed=v227 strong=true 不触发孤点族),
+  // 却误伤 Bandizip v7.45(正确版本, 孤点族+visible scope → 回退 → v8.1 OS 版本)。
+  // 孤点族正确解法: 不硬回退, seed 仍交给后续 margin<0.5 的 LLM 兜底裁决。
   // ⚠️ family 归族同 major 选最大(2026-08-12): v42 是"族内选最大"——BTT seed=v6.701 提为 v6.712(同 6.x 族)。
   // 但 Bandizip v7.45 vs v8.1 被 prefix 归族误并入同族, "选最大"会错选 v8.1(OS 版本, 跨 major)。
   // 折中: 族内选最大, 但只限同 major 的候选(v7.45 与 v8.1 major 不同 → 不选 v8.1)。
