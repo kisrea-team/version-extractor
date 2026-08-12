@@ -92,22 +92,71 @@ export interface LgbResult {
 }
 
 // 统一 Python 推理协议。模型缺失、超时或输出异常时返回 null，让调用方完整回退。
+// ⚠️ 2026-08-12 常驻 worker 优化: 之前每次 spawn python 进程(加载模型 ~0.5-1s),
+// 24 例基准 = 50+ 次 spawn 纯启动开销 30-50s。改为单例 worker 进程循环读 stdin,
+// 模型加载一次, 后续请求毫秒级。并发请求通过队列串行(worker 单进程)。
+let worker: import('child_process').ChildProcess | null = null;
+let workerQueue: Array<{ mode: string; rows: number[][]; resolve: (v: any) => void; done?: boolean }> = [];
+let workerBusy = false;
+let workerBuf = '';
+let currentReq: { mode: string; rows: number[][]; resolve: (v: any) => void; done?: boolean } | null = null;
+
+function ensureWorker(): import('child_process').ChildProcess {
+  if (!worker || worker.exitCode !== null) {
+    const script = join(process.cwd(), 'scripts', 'lgb_worker.py');
+    worker = spawn('python', [script], { windowsHide: true });
+    workerBuf = '';
+    worker.stderr.on('data', (d: Buffer) => { if (process.env.DEBUG_LLM) console.error('[worker-stderr]', d.toString().slice(0, 300)); });
+    worker.stdout.on('data', (d: Buffer) => {
+      if (process.env.DEBUG_LLM) console.error('[worker-stdout-raw]', JSON.stringify(d.toString().slice(0, 200)));
+      workerBuf += d.toString();
+      let nl: number;
+      while ((nl = workerBuf.indexOf('\n')) >= 0) {
+        const line = workerBuf.slice(0, nl).trim();
+        workerBuf = workerBuf.slice(nl + 1);
+        if (!line) continue;
+        workerBusy = false;
+        const req = currentReq;
+        currentReq = null;
+        if (req) {
+          req.done = true;
+          try { req.resolve(JSON.parse(line)); } catch { req.resolve(null); }
+          setImmediate(pumpWorker);
+        }
+      }
+    });
+    worker.on('error', () => { /* 由超时兜底 */ });
+    worker.on('exit', () => { worker = null; });
+  }
+  return worker;
+}
+
 async function runPredict(mode: 'filter' | 'rank', rows: number[][]): Promise<any | null> {
   if (rows.length === 0) return mode === 'filter' ? { probs: [] } : { scores: [] };
-  const script = join(process.cwd(), 'scripts', 'lgb_predict.py');
   return new Promise((resolve) => {
-    const child = spawn('python', [script], { windowsHide: true });
-    let stdout = '';
-    const timer = setTimeout(() => { child.kill(); resolve(null); }, 15000);
-    child.stdout.on('data', (d) => { stdout += d; });
-    child.on('error', () => { clearTimeout(timer); resolve(null); });
-    child.on('close', () => {
-      clearTimeout(timer);
-      try { resolve(JSON.parse(stdout)); } catch { resolve(null); }
-    });
-    child.stdin.write(JSON.stringify({ mode, rows }));
-    child.stdin.end();
+    const req: any = { mode, rows, resolve, done: false };
+    workerQueue.push(req);
+    pumpWorker();
+    // 兜底超时(worker 卡死/崩溃时避免永久挂起): 重建 worker, 重置状态
+    setTimeout(() => {
+      if (req.done) return;
+      req.done = true;
+      const i = workerQueue.indexOf(req);
+      if (i >= 0) workerQueue.splice(i, 1);
+      workerBusy = false;
+      if (worker) { try { worker.kill(); } catch { /* noop */ } }
+      worker = null;
+      resolve(null);
+    }, 30000);
   });
+}
+
+function pumpWorker() {
+  if (workerBusy || workerQueue.length === 0) return;
+  currentReq = workerQueue.shift()!;
+  workerBusy = true;
+  const child = ensureWorker();
+  child.stdin.write(JSON.stringify({ mode: currentReq.mode, rows: currentReq.rows }) + '\n');
 }
 
 // 批量推理：构造候选级过滤特征 → 返回产品版本概率。
@@ -115,6 +164,7 @@ export async function predictCandidateVersions(candidates: LgbCandidate[]): Prom
   if (candidates.length === 0) return [];
   const rows: LgbRow[] = candidates.map((c) => buildFeatureRow(c.version, c.scopes, c.contexts));
   const parsed = await runPredict('filter', rows);
+  if (process.env.DEBUG_LLM) console.error('[predict] parsed=', JSON.stringify(parsed)?.slice(0, 200));
   const probs: number[][] = parsed?.probs || [];
   return candidates.map((c, i) => ({ version: c.version, prob: probs[i] && Number.isFinite(probs[i][1]) ? probs[i][1] : -1 }));
 }
