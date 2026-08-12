@@ -32,6 +32,7 @@
     "product_name_present",
     "same_major_path_match",
     "same_major_path_share",
+    "latest_annotated",
     "same_major_minor_count",
     "sequence_member",
     "sequence_latest",
@@ -40,10 +41,10 @@
     "page_type_article",
     "page_type_error"
   ],
-  "train_pages": 95,
+  "train_pages": 97,
   "val_pages": 21,
   "test_pages": 21,
-  "train_manifest_pages": 137,
-  "train_manifest_rows": 9120,
-  "manifest_hash": "e51a652f74fd58be8c9f570a26cd282db0bccb9f836cd762b8385600ec6bd310"
+  "train_manifest_pages": 139,
+  "train_manifest_rows": 7714,
+  "manifest_hash": "3268e7f7fbb4118f2c444acbe50ddcfc626b2b6dc8bc00a9a8bc194fad645905"
 }

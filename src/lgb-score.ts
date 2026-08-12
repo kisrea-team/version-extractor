@@ -208,6 +208,8 @@ export function buildRankFeatureRows(
       anchor ? 1 : 0, titleAnchor ? 1 : 0, productPresent ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? (pathCounts.get(dominantPath) || 0) / Math.max(group.length, 1) : 0,
+      // latest_annotated(与 38 列 rank 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
+      contexts.some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0,
       new Set(group.map((x) => rankVersionParts(x.version).slice(0, 2).join('.'))).size,
       sequence?.series.some((v) => rankMatches(s.version, v)) ? 1 : 0,
       sequence && rankMatches(s.version, sequence.latest) ? 1 : 0,
