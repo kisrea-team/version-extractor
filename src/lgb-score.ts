@@ -30,7 +30,6 @@ export type LgbRow = [
   number, // scope_noise
   number, // scope_structured
   number, // scope_visible
-  number, // latest_annotated
 ];
 
 // 运行时候选 scope → 训练词汇表映射
@@ -61,8 +60,6 @@ export function buildFeatureRow(version: string, scopes: string[], contexts?: Ar
   const nums = (base.match(/\d+/g) || []).map(Number);
   const seg = base.split('.');
   const scopeSet = new Set(scopes);
-  // latest_annotated 特征(与 15 列 filter 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
-  const latestAnnotated = (contexts || []).some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0;
   return [
     version.startsWith('v') || version.startsWith('V') ? 1 : 0, // has_v
     /^\d+(\.\d+){0,3}$/.test(base) ? 1 : 0, // is_clean
@@ -78,7 +75,6 @@ export function buildFeatureRow(version: string, scopes: string[], contexts?: Ar
     scopeSet.has('noise') ? 1 : 0,
     scopeSet.has('structured') ? 1 : 0,
     scopeSet.has('visible') ? 1 : 0,
-    latestAnnotated,
   ];
 }
 
@@ -208,8 +204,6 @@ export function buildRankFeatureRows(
       anchor ? 1 : 0, titleAnchor ? 1 : 0, productPresent ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? (pathCounts.get(dominantPath) || 0) / Math.max(group.length, 1) : 0,
-      // latest_annotated(与 38 列 rank 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
-      contexts.some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0,
       new Set(group.map((x) => rankVersionParts(x.version).slice(0, 2).join('.'))).size,
       sequence?.series.some((v) => rankMatches(s.version, v)) ? 1 : 0,
       sequence && rankMatches(s.version, sequence.latest) ? 1 : 0,

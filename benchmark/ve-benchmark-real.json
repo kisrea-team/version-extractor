@@ -1,0 +1,134 @@
+[
+ {
+  "name": "Comfy-Org/ComfyUI",
+  "url": "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest",
+  "expectedVersion": "v0.31.0",
+  "currentDbVersion": "v0.31.0"
+ },
+ {
+  "name": "modelcontextprotocol/typescript-sdk",
+  "url": "https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases/latest",
+  "expectedVersion": "@modelcontextprotocol/fastify@2.0.0",
+  "currentDbVersion": "v@modelcontextprotocol/fastify@2.0.0"
+ },
+ {
+  "name": "maybe-finance/maybe",
+  "url": "https://github.com/maybe-finance/maybe/releases",
+  "expectedVersion": "v0.6.0",
+  "currentDbVersion": "v0.6.0"
+ },
+ {
+  "name": "iina/iina",
+  "url": "https://api.github.com/repos/iina/iina/releases/latest",
+  "expectedVersion": "v1.4.4",
+  "currentDbVersion": "v0.8.30"
+ },
+ {
+  "name": "microsoft/playwright-mcp",
+  "url": "https://api.github.com/repos/microsoft/playwright-mcp/releases/latest",
+  "expectedVersion": "v0.0.79",
+  "currentDbVersion": "v0.0.68"
+ },
+ {
+  "name": "go-gitea/gitea",
+  "url": "https://api.github.com/repos/go-gitea/gitea/releases/latest",
+  "expectedVersion": "v1.27.1",
+  "currentDbVersion": "v1.27.1"
+ },
+ {
+  "name": "Wei-Shaw/claude-relay-service",
+  "url": "https://api.github.com/repos/Wei-Shaw/claude-relay-service/releases/latest",
+  "expectedVersion": "v1.1.314",
+  "currentDbVersion": "v1.1.295"
+ },
+ {
+  "name": "obra/superpowers",
+  "url": "https://api.github.com/repos/obra/superpowers/releases/latest",
+  "expectedVersion": "v6.2.0",
+  "currentDbVersion": "v6.2.0"
+ },
+ {
+  "name": "pocketbase/pocketbase",
+  "url": "https://api.github.com/repos/pocketbase/pocketbase/releases/latest",
+  "expectedVersion": "v0.39.10",
+  "currentDbVersion": "v0.36.7"
+ },
+ {
+  "name": "starship/starship",
+  "url": "https://api.github.com/repos/starship/starship/releases/latest",
+  "expectedVersion": "v1.26.0",
+  "currentDbVersion": "v1.26.0"
+ },
+ {
+  "name": "zadam/trilium",
+  "url": "https://github.com/zadam/trilium/releases/latest",
+  "expectedVersion": "v0.104.1",
+  "currentDbVersion": "v0.104.1"
+ },
+ {
+  "name": "lightpanda-io/browser",
+  "url": "https://github.com/lightpanda-io/browser/releases",
+  "expectedVersion": "nightly",
+  "currentDbVersion": "vnightly"
+ },
+ {
+  "name": "janeczku/calibre-web",
+  "url": "https://api.github.com/repos/janeczku/calibre-web/releases/latest",
+  "expectedVersion": "0.6.27",
+  "currentDbVersion": "v0.6.27"
+ },
+ {
+  "name": "pydantic/pydantic",
+  "url": "https://github.com/pydantic/pydantic/releases",
+  "expectedVersion": "v2.13.4",
+  "currentDbVersion": "v2.13.4"
+ },
+ {
+  "name": "promptfoo/promptfoo",
+  "url": "https://github.com/promptfoo/promptfoo/releases",
+  "expectedVersion": "0.122.0",
+  "currentDbVersion": "v0.122.0"
+ },
+ {
+  "name": "agentscope-ai/ReMe",
+  "url": "https://github.com/agentscope-ai/ReMe/releases",
+  "expectedVersion": "v0.4.1.5",
+  "currentDbVersion": "v0.4.1.5"
+ },
+ {
+  "name": "qdrant/qdrant",
+  "url": "https://api.github.com/repos/qdrant/qdrant/releases/latest",
+  "expectedVersion": "v1.19.0",
+  "currentDbVersion": "v1.17.0"
+ },
+ {
+  "name": "anthropics/claude-code",
+  "url": "https://api.github.com/repos/anthropics/claude-code/releases",
+  "expectedVersion": "v2.1.227",
+  "currentDbVersion": "v2.1.81"
+ },
+ {
+  "name": "alienator88/Pearcleaner",
+  "url": "https://api.github.com/repos/alienator88/Pearcleaner/releases",
+  "expectedVersion": "5.4.3",
+  "currentDbVersion": "5.4.3"
+ },
+ {
+  "name": "grafana/loki",
+  "url": "https://api.github.com/repos/grafana/loki/releases/latest",
+  "expectedVersion": "v3.7.6",
+  "currentDbVersion": "v3.6.7"
+ },
+ {
+  "name": "arpanghosh8453/open-dronelog",
+  "url": "https://github.com/arpanghosh8453/open-dronelog/releases",
+  "expectedVersion": "3.3.0",
+  "currentDbVersion": "v3.3.0"
+ },
+ {
+  "name": "run-llama/llama_index",
+  "url": "https://github.com/run-llama/llama_index/releases",
+  "expectedVersion": "v0.14.23",
+  "currentDbVersion": "v0.14.23"
+ }
+]

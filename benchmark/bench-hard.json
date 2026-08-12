@@ -1,0 +1,478 @@
+[
+ {
+  "name": "RunJS",
+  "url": "https://runjs.app/releases/latest",
+  "expectedVersion": "4.1.0",
+  "currentDbVersion": "v1.0.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Screen Studio",
+  "url": "https://screen.studio/changelog",
+  "expectedVersion": "3.7.5-4595",
+  "currentDbVersion": "v3.7.5-4595",
+  "verify": "brew"
+ },
+ {
+  "name": "Enpass",
+  "url": "https://www.enpass.io/release-notes/windows-pc/",
+  "expectedVersion": "6.12.5.2673",
+  "currentDbVersion": "v6.12.5.2673",
+  "verify": "brew"
+ },
+ {
+  "name": "Zeplin",
+  "url": "https://support.zeplin.io/en/articles/5308714-release-notes-zeplin-for-mac",
+  "expectedVersion": "10.32.0",
+  "currentDbVersion": "v10.1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Eagle",
+  "url": "https://eagle.cool/blog/post/eagle4-build20",
+  "expectedVersion": "4.0",
+  "currentDbVersion": "v4.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Rectangle Pro",
+  "url": "https://rectangleapp.com/pro/downloads/updates.xml",
+  "expectedVersion": "3.82",
+  "currentDbVersion": "v3.82",
+  "verify": "brew"
+ },
+ {
+  "name": "Todoist",
+  "url": "https://www.todoist.com/help/articles/changelog-entries-from-2026-HD3jJAtLd",
+  "expectedVersion": "9.30.0",
+  "currentDbVersion": "v9.30.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Framer",
+  "url": "https://www.framer.com/developers/changelog",
+  "expectedVersion": "2026.31.2",
+  "currentDbVersion": "v4.1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Lark",
+  "url": "https://www.larksuite.com/hc/en-US/articles/360046836333",
+  "expectedVersion": "7.73.11",
+  "currentDbVersion": "v7.73.11",
+  "verify": "brew"
+ },
+ {
+  "name": "Roam Research",
+  "url": "https://play.google.com/store/apps/details?id=com.roamresearch.relemma",
+  "expectedVersion": "0.0.38",
+  "currentDbVersion": "v1.1.16",
+  "verify": "brew"
+ },
+ {
+  "name": "Setapp",
+  "url": "https://setapp.com/download",
+  "expectedVersion": "3.54.2",
+  "currentDbVersion": "v3.54.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Coda",
+  "url": "https://coda.io/product/whats-new",
+  "expectedVersion": "latest",
+  "currentDbVersion": "v4.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Antigravity",
+  "url": "https://antigravity.google/changelog",
+  "expectedVersion": "2.6.0",
+  "currentDbVersion": "v2.6.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Replit",
+  "url": "https://blog.replit.com/",
+  "expectedVersion": "1.1.6",
+  "currentDbVersion": "v1.1.6",
+  "verify": "brew"
+ },
+ {
+  "name": "1Password CLI",
+  "url": "https://app-updates.agilebits.com/product_history/CLI2",
+  "expectedVersion": "2.38.2-beta.01",
+  "currentDbVersion": "v2.38.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Clockify",
+  "url": "https://clockify.cn.uptodown.com/windows/versions",
+  "expectedVersion": "2.12.5",
+  "currentDbVersion": "v2.11.28",
+  "verify": "brew"
+ },
+ {
+  "name": "PixPin",
+  "url": "https://pixpin.cn/docs/official-log/3.4.3.2",
+  "expectedVersion": "3.4.3.2",
+  "currentDbVersion": "v3.3.5.7",
+  "verify": "brew"
+ },
+ {
+  "name": "Routine",
+  "url": "https://feedback.routine.co/api/v1/changelog/feed.rss",
+  "expectedVersion": "2.1.0",
+  "currentDbVersion": "v2.0.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Termius",
+  "url": "https://snapcraft.io/termius-app",
+  "expectedVersion": "9.43.0",
+  "currentDbVersion": "v9.37.4",
+  "verify": "brew"
+ },
+ {
+  "name": "Inkscape",
+  "url": "https://gitlab.com/api/v4/projects/inkscape%2Finkscape/repository/tags?per_page=1",
+  "expectedVersion": "1.4.4",
+  "currentDbVersion": "v1.4.3",
+  "verify": "brew"
+ },
+ {
+  "name": "CapCut",
+  "url": "https://viamaker.en.uptodown.com/android/versions",
+  "expectedVersion": "9.2.0.4444",
+  "currentDbVersion": "v17.2.0",
+  "verify": "brew"
+ },
+ {
+  "name": "MacWhisper",
+  "url": "https://macwhisper.com/",
+  "expectedVersion": "14.6",
+  "currentDbVersion": "v13.16",
+  "verify": "brew"
+ },
+ {
+  "name": "BetterTouchTool",
+  "url": "https://folivora.ai/releases",
+  "expectedVersion": "6.710",
+  "currentDbVersion": "v6.681",
+  "verify": "brew"
+ },
+ {
+  "name": "Sora",
+  "url": "https://help.openai.com/en/articles/12593142-sora-release-notes",
+  "expectedVersion": "latest",
+  "currentDbVersion": "v2.0",
+  "verify": "brew"
+ },
+ {
+  "name": "DeepL",
+  "url": "https://filehippo.com/download_deepl/",
+  "expectedVersion": "26.6.14916780",
+  "currentDbVersion": "v26.5.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Superhuman",
+  "url": "https://blog.superhuman.com/feed",
+  "expectedVersion": "1041.0.29",
+  "currentDbVersion": "v1041.0.29",
+  "verify": "brew"
+ },
+ {
+  "name": "Unity",
+  "url": "https://endoflife.date/api/unity.json",
+  "expectedVersion": "6000.5.7f1",
+  "currentDbVersion": "v6000.5.7",
+  "verify": "brew"
+ },
+ {
+  "name": "Wispr Flow",
+  "url": "https://roadmap.wisprflow.ai",
+  "expectedVersion": "1.6.447",
+  "currentDbVersion": "v26.4",
+  "verify": "brew"
+ },
+ {
+  "name": "DataGrip",
+  "url": "https://data.services.jetbrains.com/products/releases?code=DG&latest=true&type=release",
+  "expectedVersion": "2026.2.3",
+  "currentDbVersion": "v2026.2.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Surge",
+  "url": "https://kb.nssurge.com/surge-knowledge-base/release-notes/surge-mac-6-release-note",
+  "expectedVersion": "6.8.1",
+  "currentDbVersion": "v6.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Synthesia",
+  "url": "https://synthesia.noticeable.news/feed.rss",
+  "expectedVersion": "10.9",
+  "currentDbVersion": "v1.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Descript",
+  "url": "https://descript.canny.io/api/changelog/feed.rss",
+  "expectedVersion": "114.0.4-release.20250509.32955",
+  "currentDbVersion": "v4.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Beeper",
+  "url": "https://www.beeper.com/changelog/android",
+  "expectedVersion": "4.3.20",
+  "currentDbVersion": "v4.3.20",
+  "verify": "brew"
+ },
+ {
+  "name": "PyCharm",
+  "url": "https://data.services.jetbrains.com/products/releases?code=PCP,PCC&latest=true&type=release",
+  "expectedVersion": "2026.2.0.1",
+  "currentDbVersion": "v2026.2.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "Insomnia",
+  "url": "https://insomnia.rest/changelog",
+  "expectedVersion": "13.1.0",
+  "currentDbVersion": "v8.5.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Fork",
+  "url": "https://git-fork.com/releasenotes",
+  "expectedVersion": "2.69.0",
+  "currentDbVersion": "v1.0.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Itsycal",
+  "url": "https://www.mowglii.com/itsycal/versionhistory.html",
+  "expectedVersion": "0.15.12",
+  "currentDbVersion": "v0.15.12",
+  "verify": "brew"
+ },
+ {
+  "name": "Zoom",
+  "url": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061222",
+  "expectedVersion": "7.1.5.84650",
+  "currentDbVersion": "v4.7.0",
+  "verify": "brew"
+ },
+ {
+  "name": "Runway",
+  "url": "https://runwayml.com/changelog",
+  "expectedVersion": "0.19.2",
+  "currentDbVersion": "v181.906",
+  "verify": "brew"
+ },
+ {
+  "name": "GrandPerspective",
+  "url": "https://sourceforge.net/projects/grandperspectiv/best_release.json",
+  "expectedVersion": "3.7.2",
+  "currentDbVersion": "v3.7.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Raycast",
+  "url": "https://www.raycast.com/changelog/ios",
+  "expectedVersion": "1.104.24",
+  "currentDbVersion": "v1.104.24",
+  "verify": "brew"
+ },
+ {
+  "name": "DaisyDisk",
+  "url": "https://daisydiskapp.com/download",
+  "expectedVersion": "4.34.2",
+  "currentDbVersion": "v4.34.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Microsoft Teams",
+  "url": "https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning",
+  "expectedVersion": "26198.202.4929.7171",
+  "currentDbVersion": "v26198.202.4929.7171",
+  "verify": "brew"
+ },
+ {
+  "name": "Unite",
+  "url": "https://www.bzgapps.com/unite-changelog",
+  "expectedVersion": "6.6",
+  "currentDbVersion": "v6.6",
+  "verify": "brew"
+ },
+ {
+  "name": "Sublime Merge",
+  "url": "https://www.sublimemerge.com/download",
+  "expectedVersion": "2126",
+  "currentDbVersion": "v2125",
+  "verify": "brew"
+ },
+ {
+  "name": "Microsoft Excel",
+  "url": "https://learn.microsoft.com/en-us/officeupdates/current-channel",
+  "expectedVersion": "16.111.26080215",
+  "currentDbVersion": "v16.111.26080215",
+  "verify": "brew"
+ },
+ {
+  "name": "SuperDuper",
+  "url": "https://www.shirt-pocket.com/blog/",
+  "expectedVersion": "4.0.2",
+  "currentDbVersion": "v4.0.1",
+  "verify": "brew"
+ },
+ {
+  "name": "HeidiSQL",
+  "url": "https://www.heidisql.com/download.php",
+  "expectedVersion": "12.20.0",
+  "currentDbVersion": "v12.21",
+  "verify": "web-x18"
+ },
+ {
+  "name": "Python",
+  "url": "https://www.python.org/downloads/",
+  "expectedVersion": "3.14.7",
+  "currentDbVersion": "3.14.3",
+  "verify": "web-x14"
+ },
+ {
+  "name": "Xcode 26",
+  "url": "https://xcodereleases.com/data.json",
+  "expectedVersion": "17.0.0",
+  "currentDbVersion": "v1300.0.47",
+  "verify": "web-x51"
+ },
+ {
+  "name": "Notepad++",
+  "url": "https://notepad-plus-plus.org/downloads/",
+  "expectedVersion": "8.9.7",
+  "currentDbVersion": "v8.9.7",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Qoder",
+  "url": "https://plugins.jetbrains.com/api/plugins/28926/updates",
+  "expectedVersion": "2026.2.1",
+  "currentDbVersion": "v2026.806.58779059",
+  "verify": "web-x180"
+ },
+ {
+  "name": "stackblitz/bolt.new",
+  "url": "https://support.bolt.new/release-notes",
+  "expectedVersion": "7.2.0",
+  "currentDbVersion": "v4.7",
+  "verify": "web-x62"
+ },
+ {
+  "name": "Fireflies.ai",
+  "url": "https://docs.fireflies.ai/additional-info/change-log",
+  "expectedVersion": "7.2.0",
+  "currentDbVersion": "v2.24.1",
+  "verify": "web-x14"
+ },
+ {
+  "name": "一个木函",
+  "url": "https://sj.qq.com/appdetail/com.One.WoodenLetter",
+  "expectedVersion": "1.714.857",
+  "currentDbVersion": "v2026.2.8",
+  "verify": "web-x8"
+ },
+ {
+  "name": "UncovAI",
+  "url": "https://chromewebstore.google.com/detail/uncovai-deepfake-detector/ljcoghbmlcdlpadiggapnbchdpahkbic",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v2.6.9",
+  "verify": "web-x5"
+ },
+ {
+  "name": "夸克网盘",
+  "url": "https://www.32r.com/app/106737.html",
+  "expectedVersion": "10.15.0.130",
+  "currentDbVersion": "v10",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Lens Studio",
+  "url": "https://ar.snap.com/download",
+  "expectedVersion": "5.23.1",
+  "currentDbVersion": "v5.23.1",
+  "verify": "web-x8"
+ },
+ {
+  "name": "JetBrains Junie",
+  "url": "https://plugins.jetbrains.com/api/plugins/26104/updates",
+  "expectedVersion": "2026.1.4",
+  "currentDbVersion": "v262.2144.90",
+  "verify": "web-x135"
+ },
+ {
+  "name": "audacity/audacity",
+  "url": "https://www.audacityteam.org/download/",
+  "expectedVersion": "4.0.0",
+  "currentDbVersion": "Audacity-3.7.7",
+  "verify": "web-x6"
+ },
+ {
+  "name": "Devin",
+  "url": "https://www.cognition.ai/blog",
+  "expectedVersion": "07.13.26",
+  "currentDbVersion": "v10.2",
+  "verify": "web-x4"
+ },
+ {
+  "name": "v0.dev",
+  "url": "https://v0.app/changelog",
+  "expectedVersion": "16.2.0",
+  "currentDbVersion": "v16.2.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "QuillBot",
+  "url": "https://chrome.google.com/webstore/detail/quillbot-ai-writing-and-g/iidnbdjijdkbmajdffnidomddglmieko",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v4.100.0",
+  "verify": "web-x5"
+ },
+ {
+  "name": "DeepSeek App",
+  "url": "https://play.google.com/store/apps/details?id=com.deepseek.chat",
+  "expectedVersion": "2.1.1",
+  "currentDbVersion": "v1.7.10",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Beautiful.ai",
+  "url": "https://www.beautiful.ai/product-updates",
+  "expectedVersion": "2022.53.37",
+  "currentDbVersion": "v2022.53.37",
+  "verify": "web-x7"
+ },
+ {
+  "name": "ServBay",
+  "url": "https://support.servbay.com/zh-CN/getting-started/release-notes",
+  "expectedVersion": "1.0.2",
+  "currentDbVersion": "v1.31.2",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Rytr",
+  "url": "https://chromewebstore.google.com/detail/rytr-ai-powered-writing-a/cpnnabpklgnhjopaenljbbmkejamagel",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v1.3.1",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Augment Code",
+  "url": "https://www.augmentcode.com/changelog",
+  "expectedVersion": "0.34.0",
+  "currentDbVersion": "v0.35.0",
+  "verify": "web-x4"
+ }
+]

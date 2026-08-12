@@ -1,0 +1,107 @@
+[
+ {
+  "name": "raycast",
+  "url": "https://www.raycast.com/download",
+  "expectedVersion": "1.104.24",
+  "currentDbVersion": "v1.104.24",
+  "verify": "brew"
+ },
+ {
+  "name": "TopNotch",
+  "url": "https://topnotch.app",
+  "expectedVersion": "1.3.2",
+  "currentDbVersion": "v1.3.2",
+  "verify": "brew"
+ },
+ {
+  "name": "OrbStack",
+  "url": "https://orbstack.dev/download",
+  "expectedVersion": "2.2.3",
+  "currentDbVersion": "v2.2.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Miro",
+  "url": "https://miro.com/release-notes/",
+  "expectedVersion": "0.11.168",
+  "currentDbVersion": "v0.11.168",
+  "verify": "brew"
+ },
+ {
+  "name": "Krita",
+  "url": "https://krita.org/en/download/",
+  "expectedVersion": "5.3.3",
+  "currentDbVersion": "v5.3.3",
+  "verify": "brew"
+ },
+ {
+  "name": "Obsidian Canvas",
+  "url": "https://obsidian.md/changelog.json",
+  "expectedVersion": "1.13.6",
+  "currentDbVersion": "v1.13.4",
+  "verify": "brew-dom"
+ },
+ {
+  "name": "Readwise Reader",
+  "url": "https://readwise.io/read",
+  "expectedVersion": "0.1.3052",
+  "currentDbVersion": "v8.16",
+  "verify": "brew"
+ },
+ {
+  "name": "Sublime Text",
+  "url": "https://www.sublimetext.com/3",
+  "expectedVersion": "4206",
+  "currentDbVersion": "v3.8",
+  "verify": "brew"
+ },
+ {
+  "name": "Warp",
+  "url": "https://www.warp.dev/release-notes",
+  "expectedVersion": "0.2026.08.05.09.03.stable_01",
+  "currentDbVersion": "v2026.6.880",
+  "verify": "brew"
+ },
+ {
+  "name": "Bartender",
+  "url": "https://www.macbartender.com/",
+  "expectedVersion": "6.6.2",
+  "currentDbVersion": "v6.4.2",
+  "verify": "brew"
+ },
+ {
+  "name": "Wireshark",
+  "url": "https://www.wireshark.org/download.html",
+  "expectedVersion": "4.6.7",
+  "currentDbVersion": "v29.212",
+  "verify": "brew"
+ },
+ {
+  "name": "Tana",
+  "url": "https://tana.app/changelog",
+  "expectedVersion": "5.4.3",
+  "currentDbVersion": "v2026.02",
+  "verify": "brew"
+ },
+ {
+  "name": "Trae",
+  "url": "https://www.trae.ai/",
+  "expectedVersion": "2.3.61406",
+  "currentDbVersion": "v3.3.34",
+  "verify": "brew"
+ },
+ {
+  "name": "Loom",
+  "url": "https://www.loom.com/changelog",
+  "expectedVersion": "0.367.1",
+  "currentDbVersion": "v0.337.5",
+  "verify": "brew"
+ },
+ {
+  "name": "Affinity Photo",
+  "url": "https://affinity.serif.com/en-us/photo/",
+  "expectedVersion": "2.6.5",
+  "currentDbVersion": "v2.6.5",
+  "verify": "brew"
+ }
+]

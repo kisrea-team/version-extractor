@@ -1,0 +1,92 @@
+[
+ {
+  "name": "audacity/audacity",
+  "url": "https://www.audacityteam.org/download/",
+  "expectedVersion": "4.0.0",
+  "currentDbVersion": "Audacity-3.7.7",
+  "verify": "web-x6"
+ },
+ {
+  "name": "Devin",
+  "url": "https://www.cognition.ai/blog",
+  "expectedVersion": "07.13.26",
+  "currentDbVersion": "v10.2",
+  "verify": "web-x4"
+ },
+ {
+  "name": "v0.dev",
+  "url": "https://v0.app/changelog",
+  "expectedVersion": "16.2.0",
+  "currentDbVersion": "v16.2.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Codeium",
+  "url": "https://marketplace.visualstudio.com/items/Codeium.codeium",
+  "expectedVersion": "11.4.6",
+  "currentDbVersion": "v1.49.2",
+  "verify": "web-x10"
+ },
+ {
+  "name": "QuillBot",
+  "url": "https://chrome.google.com/webstore/detail/quillbot-ai-writing-and-g/iidnbdjijdkbmajdffnidomddglmieko",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v4.100.0",
+  "verify": "web-x5"
+ },
+ {
+  "name": "DeepSeek App",
+  "url": "https://play.google.com/store/apps/details?id=com.deepseek.chat",
+  "expectedVersion": "2.1.1",
+  "currentDbVersion": "v1.7.10",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Linear CLI",
+  "url": "https://registry.npmjs.org/@linear/cli",
+  "expectedVersion": "0.0.5",
+  "currentDbVersion": "v0.1.0",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Beautiful.ai",
+  "url": "https://www.beautiful.ai/product-updates",
+  "expectedVersion": "2022.53.37",
+  "currentDbVersion": "v2022.53.37",
+  "verify": "web-x7"
+ },
+ {
+  "name": "ServBay",
+  "url": "https://support.servbay.com/zh-CN/getting-started/release-notes",
+  "expectedVersion": "1.0.2",
+  "currentDbVersion": "v1.31.2",
+  "verify": "web-x8"
+ },
+ {
+  "name": "Amp",
+  "url": "https://registry.npmjs.org/@sourcegraph/amp/latest",
+  "expectedVersion": "0.0.1786422466",
+  "currentDbVersion": "v0.0.1786249585-g6ca812",
+  "verify": "web-x4"
+ },
+ {
+  "name": "Rytr",
+  "url": "https://chromewebstore.google.com/detail/rytr-ai-powered-writing-a/cpnnabpklgnhjopaenljbbmkejamagel",
+  "expectedVersion": "4.38.38",
+  "currentDbVersion": "v1.3.1",
+  "verify": "web-x5"
+ },
+ {
+  "name": "Augment Code",
+  "url": "https://www.augmentcode.com/changelog",
+  "expectedVersion": "0.34.0",
+  "currentDbVersion": "v0.35.0",
+  "verify": "web-x4"
+ },
+ {
+  "name": "NotchNest",
+  "url": "https://itunes.apple.com/lookup?bundleId=com.silverseahog.notchnestapp&country=cn",
+  "expectedVersion": "1.2.4",
+  "verify": "itunes-bundle"
+ }
+]

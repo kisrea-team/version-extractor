@@ -131,6 +131,16 @@ Docker 镜像构建需 Node 22+（Playwright noble 镜像锁 Node 22，`node:sql
 
 输出每例判定 + 置信度 + 📦(注册表)/🖥️(浏览器) 来源标记 + 汇总准确率，以及 **LLM 兜底判定段**（咨询多少例、答对/答错/无答案各多少，逐例列出）。磁盘缓存 `.bench-cache/` 让改模型重跑不用重新抓页。
 
+### 评测基准（2026-08-12）
+
+三套纯页面提取基准（`--no-registry`，只用页面 HTML，禁注册表兜底），零重叠：
+
+- **`benchmark/bench-hard-final.json`（24 例）**：官网难例硬基准（原 25 例）。8-12 净化：SuperDuper URL 换官网首页 `shirt-pocket.com/`（原 blog 页内容漂移，页面无版本号）、剔除夸克网盘（官网 `pan.quark.cn` 渲染后无版本号，信息论极限）、MSTeams 期望更新为 New Teams 当前版 `26198.304.4946.9672`（页面标题 "new and classic"，多版本线取主流）。历史成绩：23/25 = 92%（v48，部分依赖当时缓存内容）。
+- **`benchmark/bench-new50.json`（52 例）**：第二轮扩展基准，多版本线/噪音干扰难例。历史成绩：44/52 = 85%（v8）。
+- **`benchmark/bench-new30.json`（30 例）**：第三轮官网/changelog 基准（27 官网 + 3 changelog），全部 fastCRW render_js 渲染抓取。历史成绩：26/30 = 87%（v3）→ 28/30 = 93%（v4，带 latest 特征）。
+
+**成绩记录口径**：`--no-registry` + `FETCHER=fastcrw` + `render_js:true`（SPA 必传，见 `src/crawler.ts`）；判定为 `vX` 前缀匹配；缓存 `.bench-cache/` 使改模型重跑不重新抓页。
+
 ### 数据集验证（2026-08-11）
 
 基准与训练数据全部经过**真实源交叉验证**（Tavily 搜索 + fastCRW 抓取 + GitHub/iTunes/npm/brew API 三线）：

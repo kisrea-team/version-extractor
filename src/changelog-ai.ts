@@ -7,7 +7,7 @@
 //
 // 降级：Playwright/Trafilatura 不可用时回退现有正则提取（extractFromChangelogPage）。
 import { normalizeVersion } from './changelog';
-import { getBrowser } from './crawler';
+import { getBrowser, fetchPage } from './crawler';
 import { cleanWithTrafilatura } from './trafilatura';
 import type { ChangelogEntry } from './types';
 
@@ -39,6 +39,13 @@ export async function extractChangelogWithBrowser(url: string, opts: { version?:
 
 // 渲染页面：优先返回目标版本所在的 DOM 区块，找不到时返回整页 HTML。
 async function renderPage(url: string, targetVersion?: string): Promise<{ html: string; anchorTitle: string | null } | null> {
+  // fastCRW 模式: LightPanda 已做 JS 渲染 + stealth 反爬, 复用 fetchPage 即可,
+  // 不启动本地 Chromium(3.8G VPS 上批量跑必 OOM)。DOM 定位降级为整页返回。
+  if (process.env.FETCHER === 'fastcrw') {
+    const r = await fetchPage(url, { timeout: 30000 });
+    if (r.error || !r.text) return null;
+    return { html: r.text, anchorTitle: null };
+  }
   const browser = await getBrowser();
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',

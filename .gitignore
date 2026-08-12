@@ -56,3 +56,4 @@ data/modelbest-key.txt
 data/audit.db
 data/audit.db-wal
 data/audit.db-shm
+data/*.env

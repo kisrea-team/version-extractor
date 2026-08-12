@@ -482,7 +482,9 @@ function isDateLikeVersion(v: string): boolean {
 // 以及下载文件本身（exe/dmg/zip/msi 等安装包链接是二进制，不是"版本详情页"，
 // 跟随会拉回 1.5MB 可执行文件当 changelog——7-Zip 下载页案例）
 export function findLatestVersionLinkWithVersion(html: string, baseUrl: string): { url: string; version: string } | null {
-  const EXCLUDE_RE = /creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal|github\.com\/(?!.*\/releases)|\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso)(\?|#|$)/i;
+  // /releases/download/ 是 GitHub release 的二进制下载重定向(几 MB~几百 MB 安装包), 不是版本详情页;
+  // 扩展名列表含 AppImage(此前漏了, RunJS 案例: 把 v4.1.0.AppImage 当详情页跟随, 卡死下载)
+  const EXCLUDE_RE = /creativecommons|license|licen[sc]e|privacy|terms|imprint|about|legal|github\.com\/(?!.*\/releases)|github\.com\/[^/]+\/[^/]+\/releases\/download\/|\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso|appimage)(\?|#|$)/i;
   const links = [...html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)]
     .map((m) => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').trim() }))
     // href 和 text 分开测：href 的文件扩展名（.exe 等）必须命中；text 的关键词独立判断
@@ -512,7 +514,9 @@ export function findLatestChangelogDetailLink(html: string, baseUrl: string, tar
     if (targetMajor && version.split('.')[0] !== targetMajor) return;
     // 排除下载文件本身（zip/exe/dmg 等安装包链接是二进制，不是"版本详情页"——
     // Unite 案例：版本标题后紧跟 Unite+6.6.zip 下载链接，跟随拉回 27MB 当 changelog）
-    if (/\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso)(\?|#|$)/i.test(href)) return;
+    // 含 AppImage 扩展名 + GitHub /releases/download/ 二进制重定向路径
+    if (/github\.com\/[^/]+\/[^/]+\/releases\/download\//i.test(href)) return;
+    if (/\.(css|js|map|exe|dmg|zip|msi|pkg|7z|tar\.gz|tar\.xz|tgz|txz|deb|rpm|apk|dll|iso|appimage)(\?|#|$)/i.test(href)) return;
     try { candidates.push({ href: new URL(href, baseUrl).href, version }); } catch { /* ignore invalid links */ }
   };
 

@@ -1,0 +1,33 @@
+[
+ {
+  "name": "nuxt/nuxt",
+  "url": "https://registry.npmjs.org/nuxt/latest",
+  "expectedVersion": "4.5.2",
+  "currentDbVersion": "v4.5.2"
+ },
+ {
+  "name": "expo/expo",
+  "url": "https://registry.npmjs.org/expo/latest",
+  "expectedVersion": "57.0.12",
+  "currentDbVersion": "v57.0.11"
+ },
+ {
+  "name": "Canva: AI Photo & Video Editor",
+  "url": "https://itunes.apple.com/lookup?id=897446215",
+  "expectedVersion": "4.221.0",
+  "currentDbVersion": "v4.219.0",
+  "verify": "itunes-id"
+ },
+ {
+  "name": "Comfy-Org/ComfyUI",
+  "url": "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest",
+  "expectedVersion": "v0.31.0",
+  "currentDbVersion": "v0.31.0"
+ },
+ {
+  "name": "modelcontextprotocol/typescript-sdk",
+  "url": "https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases/latest",
+  "expectedVersion": "@modelcontextprotocol/fastify@2.0.0",
+  "currentDbVersion": "v@modelcontextprotocol/fastify@2.0.0"
+ }
+]

@@ -1,0 +1,596 @@
+[
+ {
+  "name": "Comfy-Org/ComfyUI",
+  "url": "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest",
+  "expectedVersion": "v0.31.0",
+  "currentDbVersion": "v0.31.0"
+ },
+ {
+  "name": "modelcontextprotocol/typescript-sdk",
+  "url": "https://api.github.com/repos/modelcontextprotocol/typescript-sdk/releases/latest",
+  "expectedVersion": "@modelcontextprotocol/fastify@2.0.0",
+  "currentDbVersion": "v@modelcontextprotocol/fastify@2.0.0"
+ },
+ {
+  "name": "maybe-finance/maybe",
+  "url": "https://github.com/maybe-finance/maybe/releases",
+  "expectedVersion": "v0.6.0",
+  "currentDbVersion": "v0.6.0"
+ },
+ {
+  "name": "iina/iina",
+  "url": "https://api.github.com/repos/iina/iina/releases/latest",
+  "expectedVersion": "v1.4.4",
+  "currentDbVersion": "v0.8.30"
+ },
+ {
+  "name": "microsoft/playwright-mcp",
+  "url": "https://api.github.com/repos/microsoft/playwright-mcp/releases/latest",
+  "expectedVersion": "v0.0.79",
+  "currentDbVersion": "v0.0.68"
+ },
+ {
+  "name": "go-gitea/gitea",
+  "url": "https://api.github.com/repos/go-gitea/gitea/releases/latest",
+  "expectedVersion": "v1.27.1",
+  "currentDbVersion": "v1.27.1"
+ },
+ {
+  "name": "Wei-Shaw/claude-relay-service",
+  "url": "https://api.github.com/repos/Wei-Shaw/claude-relay-service/releases/latest",
+  "expectedVersion": "v1.1.314",
+  "currentDbVersion": "v1.1.295"
+ },
+ {
+  "name": "obra/superpowers",
+  "url": "https://api.github.com/repos/obra/superpowers/releases/latest",
+  "expectedVersion": "v6.2.0",
+  "currentDbVersion": "v6.2.0"
+ },
+ {
+  "name": "pocketbase/pocketbase",
+  "url": "https://api.github.com/repos/pocketbase/pocketbase/releases/latest",
+  "expectedVersion": "v0.39.10",
+  "currentDbVersion": "v0.36.7"
+ },
+ {
+  "name": "starship/starship",
+  "url": "https://api.github.com/repos/starship/starship/releases/latest",
+  "expectedVersion": "v1.26.0",
+  "currentDbVersion": "v1.26.0"
+ },
+ {
+  "name": "zadam/trilium",
+  "url": "https://github.com/zadam/trilium/releases/latest",
+  "expectedVersion": "v0.104.1",
+  "currentDbVersion": "v0.104.1"
+ },
+ {
+  "name": "pola-rs/polars",
+  "url": "https://api.github.com/repos/pola-rs/polars/releases",
+  "expectedVersion": "rs-0.55.2",
+  "currentDbVersion": "vrs-0.55.2"
+ },
+ {
+  "name": "lightpanda-io/browser",
+  "url": "https://github.com/lightpanda-io/browser/releases",
+  "expectedVersion": "nightly",
+  "currentDbVersion": "vnightly"
+ },
+ {
+  "name": "janeczku/calibre-web",
+  "url": "https://api.github.com/repos/janeczku/calibre-web/releases/latest",
+  "expectedVersion": "0.6.27",
+  "currentDbVersion": "v0.6.27"
+ },
+ {
+  "name": "pydantic/pydantic",
+  "url": "https://github.com/pydantic/pydantic/releases",
+  "expectedVersion": "v2.13.4",
+  "currentDbVersion": "v2.13.4"
+ },
+ {
+  "name": "promptfoo/promptfoo",
+  "url": "https://github.com/promptfoo/promptfoo/releases",
+  "expectedVersion": "0.122.0",
+  "currentDbVersion": "v0.122.0"
+ },
+ {
+  "name": "agentscope-ai/ReMe",
+  "url": "https://github.com/agentscope-ai/ReMe/releases",
+  "expectedVersion": "v0.4.1.5",
+  "currentDbVersion": "v0.4.1.5"
+ },
+ {
+  "name": "NevaMind-AI/memU",
+  "url": "https://github.com/NevaMind-AI/memU/releases",
+  "expectedVersion": "v1.5.1",
+  "currentDbVersion": "v1.5.1"
+ },
+ {
+  "name": "nuxt/nuxt",
+  "url": "https://registry.npmjs.org/nuxt/latest",
+  "expectedVersion": "4.5.2",
+  "currentDbVersion": "v4.5.2"
+ },
+ {
+  "name": "qdrant/qdrant",
+  "url": "https://api.github.com/repos/qdrant/qdrant/releases/latest",
+  "expectedVersion": "v1.19.0",
+  "currentDbVersion": "v1.17.0"
+ },
+ {
+  "name": "electron/electron",
+  "url": "https://api.github.com/repos/electron/electron/releases/latest",
+  "expectedVersion": "v43.3.0",
+  "currentDbVersion": "v43.3.0"
+ },
+ {
+  "name": "apache/apisix",
+  "url": "https://api.github.com/repos/apache/apisix/releases/latest",
+  "expectedVersion": "3.17.0",
+  "currentDbVersion": "v3.15.0"
+ },
+ {
+  "name": "pytorch/pytorch",
+  "url": "https://api.github.com/repos/pytorch/pytorch/releases/latest",
+  "expectedVersion": "v2.13.0",
+  "currentDbVersion": "v2.10.0"
+ },
+ {
+  "name": "kevinho/clawfeed",
+  "url": "https://github.com/kevinho/clawfeed/releases",
+  "expectedVersion": "v0.2.0",
+  "currentDbVersion": "v0.2.0"
+ },
+ {
+  "name": "imsnif/bandwhich",
+  "url": "https://github.com/imsnif/bandwhich/releases",
+  "expectedVersion": "v0.23.1",
+  "currentDbVersion": "v0.23.1"
+ },
+ {
+  "name": "go-task/task",
+  "url": "https://api.github.com/repos/go-task/task/releases/latest",
+  "expectedVersion": "v3.52.0",
+  "currentDbVersion": "v3.52.0"
+ },
+ {
+  "name": "sharkdp/bat",
+  "url": "https://api.github.com/repos/sharkdp/bat/releases/latest",
+  "expectedVersion": "v0.26.1",
+  "currentDbVersion": "v0.26.1"
+ },
+ {
+  "name": "influxdata/influxdb",
+  "url": "https://github.com/influxdata/influxdb/releases",
+  "expectedVersion": "v3.10.0",
+  "currentDbVersion": "v3.10.0"
+ },
+ {
+  "name": "apify/crawlee",
+  "url": "https://github.com/apify/crawlee/releases/latest",
+  "expectedVersion": "v3.18.0",
+  "currentDbVersion": "v3.18.0"
+ },
+ {
+  "name": "nlohmann/json",
+  "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
+  "expectedVersion": "v3.12.0",
+  "currentDbVersion": "v3.12.0"
+ },
+ {
+  "name": "anthropics/claude-code",
+  "url": "https://api.github.com/repos/anthropics/claude-code/releases/latest",
+  "expectedVersion": "v2.1.227",
+  "currentDbVersion": "v2.1.226"
+ },
+ {
+  "name": "qodo-ai/pr-agent",
+  "url": "https://github.com/qodo-ai/pr-agent/releases",
+  "expectedVersion": "v0.42.0",
+  "currentDbVersion": "v0.42.0"
+ },
+ {
+  "name": "hoppscotch/hoppscotch",
+  "url": "https://github.com/hoppscotch/hoppscotch/releases",
+  "expectedVersion": "2026.7.0",
+  "currentDbVersion": "v2026.7.0"
+ },
+ {
+  "name": "chatboxai/chatbox",
+  "url": "https://github.com/chatboxai/chatbox/releases",
+  "expectedVersion": "v1.22.3",
+  "currentDbVersion": "v1.22.3"
+ },
+ {
+  "name": "red-data-tools/YouPlot",
+  "url": "https://api.github.com/repos/red-data-tools/YouPlot/releases/latest",
+  "expectedVersion": "v0.5.0",
+  "currentDbVersion": "v0.4.6"
+ },
+ {
+  "name": "prettier/prettier",
+  "url": "https://api.github.com/repos/prettier/prettier/releases/latest",
+  "expectedVersion": "3.9.6",
+  "currentDbVersion": "v3.8.1"
+ },
+ {
+  "name": "openai/codex",
+  "url": "https://api.github.com/repos/openai/codex/releases/latest",
+  "expectedVersion": "rust-v0.147.0",
+  "currentDbVersion": "vrust-v0.147.0"
+ },
+ {
+  "name": "utmapp/UTM",
+  "url": "https://github.com/utmapp/UTM/releases",
+  "expectedVersion": "v4.7.5",
+  "currentDbVersion": "v4.7.5"
+ },
+ {
+  "name": "redis/redis",
+  "url": "https://api.github.com/repos/redis/redis/releases/latest",
+  "expectedVersion": "8.10.0",
+  "currentDbVersion": "v8.10.0"
+ },
+ {
+  "name": "awesome-selfhosted/awesome-selfhosted",
+  "url": "https://github.com/awesome-selfhosted/awesome-selfhosted/releases.atom",
+  "expectedVersion": "1.0.0",
+  "currentDbVersion": "v1.0.0"
+ },
+ {
+  "name": "casey/just",
+  "url": "https://api.github.com/repos/casey/just/releases/latest",
+  "expectedVersion": "1.58.0",
+  "currentDbVersion": "1.47.1"
+ },
+ {
+  "name": "RooVetGit/Roo-Cline",
+  "url": "https://github.com/RooCodeInc/Roo-Code/releases",
+  "expectedVersion": "v3.54.0",
+  "currentDbVersion": "v3.54.0"
+ },
+ {
+  "name": "getmaxun/maxun",
+  "url": "https://github.com/getmaxun/maxun/releases.atom",
+  "expectedVersion": "v0.0.45",
+  "currentDbVersion": "v0.0.45"
+ },
+ {
+  "name": "greenshot/greenshot",
+  "url": "https://github.com/greenshot/greenshot/releases",
+  "expectedVersion": "v1.3.315",
+  "currentDbVersion": "v1.3.315"
+ },
+ {
+  "name": "k3s-io/k3s",
+  "url": "https://api.github.com/repos/k3s-io/k3s/releases/latest",
+  "expectedVersion": "v1.36.3+k3s1",
+  "currentDbVersion": "v1.35.1+k3s1"
+ },
+ {
+  "name": "AppFlowy-IO/AppFlowy",
+  "url": "https://api.github.com/repos/AppFlowy-IO/AppFlowy/releases/latest",
+  "expectedVersion": "0.13.1",
+  "currentDbVersion": "0.11.4"
+ },
+ {
+  "name": "sharkdp/hyperfine",
+  "url": "https://api.github.com/repos/sharkdp/hyperfine/releases/latest",
+  "expectedVersion": "v1.20.0",
+  "currentDbVersion": "v1.20.0"
+ },
+ {
+  "name": "volcengine/OpenViking",
+  "url": "https://github.com/volcengine/OpenViking/releases",
+  "expectedVersion": "v0.4.13",
+  "currentDbVersion": "v0.4.13"
+ },
+ {
+  "name": "nestjs/nest",
+  "url": "https://api.github.com/repos/nestjs/nest/releases/latest",
+  "expectedVersion": "v11.1.29",
+  "currentDbVersion": "v11.1.17"
+ },
+ {
+  "name": "python-poetry/poetry",
+  "url": "https://api.github.com/repos/python-poetry/poetry/releases/latest",
+  "expectedVersion": "2.4.1",
+  "currentDbVersion": "v2.4.1"
+ },
+ {
+  "name": "orhun/git-cliff",
+  "url": "https://api.github.com/repos/orhun/git-cliff/releases/latest",
+  "expectedVersion": "v2.13.1",
+  "currentDbVersion": "v2.13.1"
+ },
+ {
+  "name": "photoprism/photoprism",
+  "url": "https://api.github.com/repos/photoprism/photoprism/releases/latest",
+  "expectedVersion": "260728-bbde8f452",
+  "currentDbVersion": "v260728-bbde8f452"
+ },
+ {
+  "name": "neovim/neovim",
+  "url": "https://api.github.com/repos/neovim/neovim/releases/latest",
+  "expectedVersion": "v0.12.4",
+  "currentDbVersion": "v0.12.4"
+ },
+ {
+  "name": "anthropics/claude-code",
+  "url": "https://api.github.com/repos/anthropics/claude-code/releases",
+  "expectedVersion": "v2.1.227",
+  "currentDbVersion": "v2.1.81"
+ },
+ {
+  "name": "getsops/sops",
+  "url": "https://api.github.com/repos/getsops/sops/releases/latest",
+  "expectedVersion": "v3.13.3",
+  "currentDbVersion": "v3.13.3"
+ },
+ {
+  "name": "makeplane/plane",
+  "url": "https://api.github.com/repos/makeplane/plane/releases/latest",
+  "expectedVersion": "v1.4.1",
+  "currentDbVersion": "v1.2.3"
+ },
+ {
+  "name": "danielmiessler/fabric",
+  "url": "https://github.com/danielmiessler/fabric/releases",
+  "expectedVersion": "v1.4.470",
+  "currentDbVersion": "v1.4.470"
+ },
+ {
+  "name": "alibaba/page-agent",
+  "url": "https://github.com/alibaba/page-agent/releases",
+  "expectedVersion": "v1.12.2",
+  "currentDbVersion": "v1.12.2"
+ },
+ {
+  "name": "pdfme/pdfme",
+  "url": "https://github.com/pdfme/pdfme/releases",
+  "expectedVersion": "6.0.0",
+  "currentDbVersion": "v6.0.0"
+ },
+ {
+  "name": "PowerShell/PowerShell",
+  "url": "https://api.github.com/repos/PowerShell/PowerShell/releases/latest",
+  "expectedVersion": "v7.6.4",
+  "currentDbVersion": "v7.6.0"
+ },
+ {
+  "name": "stacklok/toolhive",
+  "url": "https://github.com/stacklok/toolhive/releases",
+  "expectedVersion": "v0.42.1",
+  "currentDbVersion": "v0.42.1"
+ },
+ {
+  "name": "charmbracelet/bubbletea",
+  "url": "https://api.github.com/repos/charmbracelet/bubbletea/releases/latest",
+  "expectedVersion": "v2.0.8",
+  "currentDbVersion": "v2.0.8"
+ },
+ {
+  "name": "microsoft/vscode",
+  "url": "https://api.github.com/repos/microsoft/vscode/releases/latest",
+  "expectedVersion": "1.132.0",
+  "currentDbVersion": "v1.132.0"
+ },
+ {
+  "name": "ajeetdsouza/zoxide",
+  "url": "https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest",
+  "expectedVersion": "v0.10.0",
+  "currentDbVersion": "v0.10.0"
+ },
+ {
+  "name": "facebook/folly",
+  "url": "https://api.github.com/repos/facebook/folly/releases/latest",
+  "expectedVersion": "v2026.08.10.00",
+  "currentDbVersion": "v2026.08.03.00"
+ },
+ {
+  "name": "teableio/teable",
+  "url": "https://github.com/teableio/teable/releases",
+  "expectedVersion": "release.2026-08-10T07-45-10Z.2574",
+  "currentDbVersion": "vrelease.2026-08-09T08-35-12Z.2557"
+ },
+ {
+  "name": "jdx/mise",
+  "url": "https://api.github.com/repos/jdx/mise/releases/latest",
+  "expectedVersion": "v2026.8.4",
+  "currentDbVersion": "v2026.8.3"
+ },
+ {
+  "name": "tolgee/tolgee-platform",
+  "url": "https://github.com/tolgee/tolgee-platform/releases",
+  "expectedVersion": "v3.218.0",
+  "currentDbVersion": "v3.218.0"
+ },
+ {
+  "name": "expo/expo",
+  "url": "https://registry.npmjs.org/expo/latest",
+  "expectedVersion": "57.0.12",
+  "currentDbVersion": "v57.0.11"
+ },
+ {
+  "name": "microsoft/edit",
+  "url": "https://api.github.com/repos/ghostty-org/ghostty/releases/latest",
+  "expectedVersion": "v2.0.0",
+  "currentDbVersion": "v1.3.1"
+ },
+ {
+  "name": "krille-chan/fluffychat",
+  "url": "https://github.com/krille-chan/fluffychat/releases",
+  "expectedVersion": "v2.8.0",
+  "currentDbVersion": "v2.8.0"
+ },
+ {
+  "name": "ruvnet/ruflo",
+  "url": "https://api.github.com/repos/ruvnet/ruflo/releases/latest",
+  "expectedVersion": "v3.36.0",
+  "currentDbVersion": "v3.34.0"
+ },
+ {
+  "name": "astral-sh/ruff",
+  "url": "https://api.github.com/repos/astral-sh/ruff/releases/latest",
+  "expectedVersion": "0.16.2",
+  "currentDbVersion": "v0.16.2"
+ },
+ {
+  "name": "zylon-ai/private-gpt",
+  "url": "https://github.com/zylon-ai/private-gpt/releases",
+  "expectedVersion": "v1.0.1",
+  "currentDbVersion": "v1.0.1"
+ },
+ {
+  "name": "dolthub/dolt",
+  "url": "https://github.com/dolthub/dolt/releases",
+  "expectedVersion": "v2.2.3",
+  "currentDbVersion": "v2.2.3"
+ },
+ {
+  "name": "milvus-io/milvus",
+  "url": "https://github.com/milvus-io/milvus/releases",
+  "expectedVersion": "v3.0.0",
+  "currentDbVersion": "v3.0.0"
+ },
+ {
+  "name": "tensorflow/tensorflow",
+  "url": "https://api.github.com/repos/tensorflow/tensorflow/releases/latest",
+  "expectedVersion": "v2.21.0",
+  "currentDbVersion": "v2.21.0"
+ },
+ {
+  "name": "airbnb/lottie-ios",
+  "url": "https://github.com/airbnb/lottie-ios/releases",
+  "expectedVersion": "4.6.1",
+  "currentDbVersion": "v4.6.1"
+ },
+ {
+  "name": "devspace-sh/devspace",
+  "url": "https://api.github.com/repos/devspace-sh/devspace/releases/latest",
+  "expectedVersion": "v6.3.21",
+  "currentDbVersion": "v6.3.20"
+ },
+ {
+  "name": "opentofu/opentofu",
+  "url": "https://github.com/opentofu/opentofu/releases",
+  "expectedVersion": "v1.12.5",
+  "currentDbVersion": "v1.12.5"
+ },
+ {
+  "name": "Anxcye/anx-reader",
+  "url": "https://github.com/Anxcye/anx-reader/releases.atom",
+  "expectedVersion": "v1.14.0",
+  "currentDbVersion": "v1.14.0"
+ },
+ {
+  "name": "facebook/docusaurus",
+  "url": "https://api.github.com/repos/facebook/docusaurus/releases/latest",
+  "expectedVersion": "v3.10.2",
+  "currentDbVersion": "v3.10.2"
+ },
+ {
+  "name": "BuilderIO/mitosis",
+  "url": "https://api.github.com/repos/BuilderIO/mitosis/releases",
+  "expectedVersion": "@builder.io/mitosis-cli@0.14.0",
+  "currentDbVersion": "v@builder.io/mitosis-cli@0.14.0"
+ },
+ {
+  "name": "ScoopInstaller/Scoop",
+  "url": "https://api.github.com/repos/ScoopInstaller/Scoop/releases/latest",
+  "expectedVersion": "v0.5.3",
+  "currentDbVersion": "v0.5.3"
+ },
+ {
+  "name": "Significant-Gravitas/AutoGPT",
+  "url": "https://github.com/Significant-Gravitas/AutoGPT/releases",
+  "expectedVersion": "autogpt-platform-beta-v0.7.0",
+  "currentDbVersion": "vautogpt-platform-beta-v0.7.0"
+ },
+ {
+  "name": "gin-gonic/gin",
+  "url": "https://api.github.com/repos/gin-gonic/gin/releases/latest",
+  "expectedVersion": "v1.12.0",
+  "currentDbVersion": "v1.12.0"
+ },
+ {
+  "name": "666ghj/MiroFish",
+  "url": "https://github.com/666ghj/MiroFish/releases",
+  "expectedVersion": "v0.1.2",
+  "currentDbVersion": "v0.1.2"
+ },
+ {
+  "name": "jupyterlab/jupyterlab",
+  "url": "https://api.github.com/repos/jupyterlab/jupyterlab/releases/latest",
+  "expectedVersion": "v4.6.3",
+  "currentDbVersion": "v4.5.6"
+ },
+ {
+  "name": "umami-software/umami",
+  "url": "https://api.github.com/repos/umami-software/umami/releases/latest",
+  "expectedVersion": "v3.2.0",
+  "currentDbVersion": "v3.0.3"
+ },
+ {
+  "name": "SnapKit/SnapKit",
+  "url": "https://github.com/SnapKit/SnapKit/releases",
+  "expectedVersion": "6.0.0",
+  "currentDbVersion": "v6.0.0"
+ },
+ {
+  "name": "openai/openai-agents-python",
+  "url": "https://api.github.com/repos/openai/openai-agents-python/releases/latest",
+  "expectedVersion": "v0.20.0",
+  "currentDbVersion": "v0.19.4"
+ },
+ {
+  "name": "argoproj/argo-cd",
+  "url": "https://github.com/argoproj/argo-cd/releases/latest",
+  "expectedVersion": "v3.5.0",
+  "currentDbVersion": "v3.5.0"
+ },
+ {
+  "name": "ianyh/Amethyst",
+  "url": "https://api.github.com/repos/ianyh/Amethyst/releases/latest",
+  "expectedVersion": "v0.24.3",
+  "currentDbVersion": "v0.24.3"
+ },
+ {
+  "name": "firecrawl/anydoc",
+  "url": "https://github.com/firecrawl/anydoc/releases",
+  "expectedVersion": "v0.1.8",
+  "currentDbVersion": "v0.1.7"
+ },
+ {
+  "name": "trpc/trpc",
+  "url": "https://github.com/trpc/trpc/releases",
+  "expectedVersion": "v11.18.0",
+  "currentDbVersion": "v11.18.0"
+ },
+ {
+  "name": "swiftbar/SwiftBar",
+  "url": "https://github.com/swiftbar/SwiftBar/releases",
+  "expectedVersion": "v2.1.0",
+  "currentDbVersion": "v2.0.1"
+ },
+ {
+  "name": "activepieces/activepieces",
+  "url": "https://github.com/activepieces/activepieces/releases",
+  "expectedVersion": "0.87.0",
+  "currentDbVersion": "v0.87.0"
+ },
+ {
+  "name": "thedotmack/claude-mem",
+  "url": "https://github.com/thedotmack/claude-mem/releases",
+  "expectedVersion": "v13.15.0",
+  "currentDbVersion": "v13.14.0"
+ },
+ {
+  "name": "langchain-ai/deepagents",
+  "url": "https://github.com/langchain-ai/deepagents/releases",
+  "expectedVersion": "deepagents==0.7.5",
+  "currentDbVersion": "vdeepagents==0.7.5"
+ }
+]

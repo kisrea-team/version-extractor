@@ -77,7 +77,8 @@ export async function fetchPage(url: string, opts: { timeout?: number; retries?:
       const resp = await fetch(`${process.env.FASTCRW_URL || 'http://127.0.0.1:3000'}/v1/scrape`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, formats: ['markdown', 'html'] }),
+        // render_js: 强制 lightpanda 渲染(Brave/Vivaldi/Waterfox 等 SPA 页面 http 模式抓不到版本)
+        body: JSON.stringify({ url, formats: ['markdown', 'html'], render_js: true, wait_for: 4000 }),
         signal: AbortSignal.timeout(timeout),
       });
       const data: any = await resp.json();
@@ -264,6 +265,13 @@ export async function fetchPageRenderedDeep(url: string, opts: { timeout?: numbe
   const cached = cacheGet(cacheKey3);
   if (cached) {
     return { text: cached.text, networkVersions: (cached as any).networkVersions || [], globalVersions: (cached as any).globalVersions || [], ctaVersions: (cached as any).ctaVersions || [] };
+  }
+  // fastCRW 模式: LightPanda 已做 JS 渲染, 无 Chromium 网络拦截能力;
+  // 降级为复用 fetchPage 的渲染后 HTML, 网络/全局态留空(调用方会回退到 DOM/启发式)。
+  if (process.env.FETCHER === 'fastcrw') {
+    const r = await fetchPage(url, { timeout: opts.timeout || 30000 });
+    if (r.error || !r.text) return { text: '', networkVersions: [], globalVersions: [], ctaVersions: [] };
+    return { text: r.text, networkVersions: [], globalVersions: [], ctaVersions: [] };
   }
   const networkCount = new Map<string, number>(); // version -> 出现该版本的响应数
   const globalVersions = new Set<string>();

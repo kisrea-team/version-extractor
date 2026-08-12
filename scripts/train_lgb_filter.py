@@ -46,6 +46,10 @@ def version_features(s):
     nums = re.findall(r'\d+', base)
     scopes = set(s.get('scopes', []))
     clean = bool(re.match(r'^\d+(\.\d+){0,3}$', base))
+    # ⚠️ latest_annotated(2026-08-12): 页面明确写 "Latest/Current/Stable version: X"
+    # Bandizip v7.45 案例: filter 模型看不到语义标注, prob 低, 正确版本被过滤
+    text = str(s.get('text', ''))
+    latest_annotated = int(bool(re.search(r'(?:latest|current|stable|newest)\s+version\s*[:=]\s*["\']?v?\d', text, re.I)))
     return {
         'has_v': 1 if str(v).startswith(('v', 'V')) else 0,
         'n_seg': len(base.split('.')),
@@ -61,6 +65,7 @@ def version_features(s):
         'scope_visible': int('visible' in scopes),
         'scope_noise': int('noise' in scopes),
         'is_short_major': int(len(base.split('.')) == 1),
+        'latest_annotated': latest_annotated,
     }
 
 

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Paint.NET",
+    "url": "https://www.getpaint.net/download.html",
+    "expectedVersion": "5.1.12"
+  },
+  {
+    "name": "WinMerge",
+    "url": "https://winmerge.org/downloads/",
+    "expectedVersion": "2.16.58"
+  },
+  {
+    "name": "DBeaver",
+    "url": "https://dbeaver.io/download/",
+    "expectedVersion": "26.1.4"
+  },
+  {
+    "name": "foobar2000",
+    "url": "https://www.foobar2000.org/download",
+    "expectedVersion": "2.25.10"
+  },
+  {
+    "name": "VeraCrypt",
+    "url": "https://www.veracrypt.fr/en/Downloads.html",
+    "expectedVersion": "1.26.29"
+  },
+  {
+    "name": "KeePassXC",
+    "url": "https://keepassxc.org/download/",
+    "expectedVersion": "2.7.12"
+  },
+  {
+    "name": "WinSCP",
+    "url": "https://winscp.net/eng/download.php",
+    "expectedVersion": "6.5.6"
+  },
+  {
+    "name": "Angry IP Scanner",
+    "url": "https://angryip.org/download/",
+    "expectedVersion": "3.9.3"
+  },
+  {
+    "name": "AutoHotkey",
+    "url": "https://www.autohotkey.com/download/",
+    "expectedVersion": "2.0.26"
+  },
+  {
+    "name": "Ghostty",
+    "url": "https://ghostty.org/download",
+    "expectedVersion": "1.3.1"
+  },
+  {
+    "name": "PeaZip",
+    "url": "https://peazip.github.io/",
+    "expectedVersion": "11.2.0"
+  },
+  {
+    "name": "Bandizip",
+    "url": "https://en.bandisoft.com/bandizip/",
+    "expectedVersion": "7.45"
+  },
+  {
+    "name": "PDFsam",
+    "url": "https://pdfsam.org/download-pdfsam/",
+    "expectedVersion": "6.0.5"
+  },
+  {
+    "name": "Rufus",
+    "url": "https://rufus.ie/",
+    "expectedVersion": "4.15"
+  },
+  {
+    "name": "Ventoy",
+    "url": "https://www.ventoy.net/en/download.html",
+    "expectedVersion": "1.1.17"
+  },
+  {
+    "name": "PowerISO",
+    "url": "https://www.poweriso.com/download.htm",
+    "expectedVersion": "9.4"
+  },
+  {
+    "name": "ImgBurn",
+    "url": "https://www.imgburn.com/",
+    "expectedVersion": "2.5.8"
+  },
+  {
+    "name": "MPC-HC",
+    "url": "https://github.com/clsid2/mpc-hc/releases",
+    "expectedVersion": "2.8.0"
+  },
+  {
+    "name": "Obsidian",
+    "url": "https://obsidian.md/changelog/",
+    "expectedVersion": "1.13.7"
+  },
+  {
+    "name": "Darktable",
+    "url": "https://www.darktable.org/install/",
+    "expectedVersion": "5.6.0"
+  },
+  {
+    "name": "RawTherapee",
+    "url": "https://rawtherapee.com/downloads/",
+    "expectedVersion": "5.13"
+  },
+  {
+    "name": "XnView MP",
+    "url": "https://www.xnview.com/en/xnviewmp/",
+    "expectedVersion": "1.11"
+  },
+  {
+    "name": "Shotwell",
+    "url": "https://wiki.gnome.org/Apps/Shotwell",
+    "expectedVersion": "0.32.2"
+  },
+  {
+    "name": "Gpg4win",
+    "url": "https://www.gpg4win.org/download.html",
+    "expectedVersion": "5.1.0"
+  },
+  {
+    "name": "Nmap",
+    "url": "https://nmap.org/download.html",
+    "expectedVersion": "7.991"
+  },
+  {
+    "name": "QEMU",
+    "url": "https://www.qemu.org/download/",
+    "expectedVersion": "11.1.0"
+  },
+  {
+    "name": "Pale Moon",
+    "url": "https://www.palemoon.org/releasenotes.shtml",
+    "expectedVersion": "34.3.2"
+  },
+  {
+    "name": "Zettlr",
+    "url": "https://www.zettlr.com/download",
+    "expectedVersion": "4.7.0"
+  },
+  {
+    "name": "Slack",
+    "url": "https://slack.com/downloads/windows",
+    "expectedVersion": "4.51.185"
+  },
+  {
+    "name": "Mullvad",
+    "url": "https://mullvad.net/en/download",
+    "expectedVersion": "2026.3"
+  }
+]

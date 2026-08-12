@@ -1,0 +1,314 @@
+[
+  {
+    "name": "7-Zip",
+    "url": "https://www.7-zip.org/",
+    "expectedVersion": "26.02",
+    "verify": "page"
+  },
+  {
+    "name": "GIMP",
+    "url": "https://www.gimp.org/downloads/",
+    "expectedVersion": "3.2.4",
+    "verify": "page"
+  },
+  {
+    "name": "Blender",
+    "url": "https://www.blender.org/download/",
+    "expectedVersion": "5.2.0",
+    "verify": "page"
+  },
+  {
+    "name": "OBS Studio",
+    "url": "https://obsproject.com/download",
+    "expectedVersion": "32.2.1",
+    "verify": "page"
+  },
+  {
+    "name": "HandBrake",
+    "url": "https://handbrake.fr/",
+    "expectedVersion": "1.11.2",
+    "verify": "page"
+  },
+  {
+    "name": "Krita",
+    "url": "https://krita.org/en/download/",
+    "expectedVersion": "5.3.3",
+    "verify": "page"
+  },
+  {
+    "name": "KeePass",
+    "url": "https://keepass.info/download.html",
+    "expectedVersion": "2.61.1",
+    "verify": "page"
+  },
+  {
+    "name": "LibreOffice",
+    "url": "https://www.libreoffice.org/download/download-libreoffice/",
+    "expectedVersion": "26.2.5",
+    "verify": "page"
+  },
+  {
+    "name": "qBittorrent",
+    "url": "https://www.qbittorrent.org/download",
+    "expectedVersion": "5.2.3",
+    "verify": "page"
+  },
+  {
+    "name": "PuTTY",
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+    "expectedVersion": "0.84",
+    "verify": "page"
+  },
+  {
+    "name": "IrfanView",
+    "url": "https://www.irfanview.com/",
+    "expectedVersion": "4.75",
+    "verify": "page"
+  },
+  {
+    "name": "Everything",
+    "url": "https://www.voidtools.com/downloads/",
+    "expectedVersion": "1.4.1.1032",
+    "verify": "page"
+  },
+  {
+    "name": "SumatraPDF",
+    "url": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
+    "expectedVersion": "3.6.1",
+    "verify": "page"
+  },
+  {
+    "name": "WinRAR",
+    "url": "https://www.win-rar.com/download.html",
+    "expectedVersion": "7.23",
+    "verify": "page"
+  },
+  {
+    "name": "CPU-Z",
+    "url": "https://www.cpuid.com/softwares/cpu-z.html",
+    "expectedVersion": "2.20.2",
+    "verify": "page"
+  },
+  {
+    "name": "Shotcut",
+    "url": "https://shotcut.org/download/",
+    "expectedVersion": "26.8.1",
+    "verify": "page"
+  },
+  {
+    "name": "MuseScore",
+    "url": "https://musescore.org/en/download",
+    "expectedVersion": "4.7.4",
+    "verify": "page"
+  },
+  {
+    "name": "FreeCAD",
+    "url": "https://www.freecad.org/downloads.php",
+    "expectedVersion": "1.1.3",
+    "verify": "page"
+  },
+  {
+    "name": "GnuCash",
+    "url": "https://www.gnucash.org/download.phtml",
+    "expectedVersion": "5.16",
+    "verify": "page"
+  },
+  {
+    "name": "ImageMagick",
+    "url": "https://imagemagick.org/script/download.php",
+    "expectedVersion": "7.1.2-29",
+    "verify": "page"
+  },
+  {
+    "name": "FFmpeg",
+    "url": "https://ffmpeg.org/download.html",
+    "expectedVersion": "9.0",
+    "verify": "page"
+  },
+  {
+    "name": "Audacity",
+    "url": "https://www.audacityteam.org/download/",
+    "expectedVersion": "3.7.8",
+    "verify": "page"
+  },
+  {
+    "name": "VLC",
+    "url": "https://www.videolan.org/vlc/",
+    "expectedVersion": "3.0.23",
+    "verify": "page"
+  },
+  {
+    "name": "Wireshark",
+    "url": "https://www.wireshark.org/download.html",
+    "expectedVersion": "4.6.7",
+    "verify": "page"
+  },
+  {
+    "name": "nginx",
+    "url": "https://nginx.org/en/download.html",
+    "expectedVersion": "1.31.3",
+    "verify": "page"
+  },
+  {
+    "name": "Apache HTTPD",
+    "url": "https://httpd.apache.org/download.cgi",
+    "expectedVersion": "2.4.68",
+    "verify": "page"
+  },
+  {
+    "name": "MariaDB",
+    "url": "https://mariadb.org/download/",
+    "expectedVersion": "11.5",
+    "verify": "page"
+  },
+  {
+    "name": "Kubernetes",
+    "url": "https://kubernetes.io/releases/",
+    "expectedVersion": "1.36.2",
+    "verify": "page"
+  },
+  {
+    "name": "Git",
+    "url": "https://git-scm.com/download/win",
+    "expectedVersion": "2.55.0",
+    "verify": "page"
+  },
+  {
+    "name": "Node.js",
+    "url": "https://nodejs.org/dist/index.json",
+    "expectedVersion": "26.7.0",
+    "verify": "json"
+  },
+  {
+    "name": "Go",
+    "url": "https://go.dev/dl/?mode=json",
+    "expectedVersion": "1.26.5",
+    "verify": "json"
+  },
+  {
+    "name": "yt-dlp",
+    "url": "https://github.com/yt-dlp/yt-dlp/releases",
+    "expectedVersion": "2026.07.04",
+    "verify": "gh"
+  },
+  {
+    "name": "mpv",
+    "url": "https://github.com/mpv-player/mpv/releases",
+    "expectedVersion": "0.41.0",
+    "verify": "gh"
+  },
+  {
+    "name": "jq",
+    "url": "https://github.com/jqlang/jq/releases",
+    "expectedVersion": "1.8.2",
+    "verify": "gh"
+  },
+  {
+    "name": "ripgrep",
+    "url": "https://github.com/BurntSushi/ripgrep/releases",
+    "expectedVersion": "15.2.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Neovim",
+    "url": "https://github.com/neovim/neovim/releases",
+    "expectedVersion": "0.12.4",
+    "verify": "gh"
+  },
+  {
+    "name": "Helix",
+    "url": "https://github.com/helix-editor/helix/releases",
+    "expectedVersion": "25.07.1",
+    "verify": "gh"
+  },
+  {
+    "name": "Lazygit",
+    "url": "https://github.com/jesseduffield/lazygit/releases",
+    "expectedVersion": "0.64.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Delta",
+    "url": "https://github.com/dandavison/delta/releases",
+    "expectedVersion": "0.19.2",
+    "verify": "gh"
+  },
+  {
+    "name": "Zoxide",
+    "url": "https://github.com/ajeetdsouza/zoxide/releases",
+    "expectedVersion": "0.10.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Fzf",
+    "url": "https://github.com/junegunn/fzf/releases",
+    "expectedVersion": "0.74.2",
+    "verify": "gh"
+  },
+  {
+    "name": "Nushell",
+    "url": "https://github.com/nushell/nushell/releases",
+    "expectedVersion": "0.114.1",
+    "verify": "gh"
+  },
+  {
+    "name": "Starship",
+    "url": "https://github.com/starship/starship/releases",
+    "expectedVersion": "1.26.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Pandoc",
+    "url": "https://github.com/jgm/pandoc/releases",
+    "expectedVersion": "3.10.1",
+    "verify": "gh"
+  },
+  {
+    "name": "Rclone",
+    "url": "https://github.com/rclone/rclone/releases",
+    "expectedVersion": "1.75.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Restic",
+    "url": "https://github.com/restic/restic/releases",
+    "expectedVersion": "0.19.1",
+    "verify": "gh"
+  },
+  {
+    "name": "Hugo",
+    "url": "https://github.com/gohugoio/hugo/releases",
+    "expectedVersion": "0.164.0",
+    "verify": "gh"
+  },
+  {
+    "name": "Zola",
+    "url": "https://github.com/getzola/zola/releases",
+    "expectedVersion": "0.23.3",
+    "verify": "gh"
+  },
+  {
+    "name": "Grafana",
+    "url": "https://github.com/grafana/grafana/releases",
+    "expectedVersion": "13.1.3",
+    "verify": "gh"
+  },
+  {
+    "name": "Prometheus",
+    "url": "https://github.com/prometheus/prometheus/releases",
+    "expectedVersion": "3.13.2",
+    "verify": "gh"
+  },
+  {
+    "name": "Vault",
+    "url": "https://github.com/hashicorp/vault/releases",
+    "expectedVersion": "1.21.4",
+    "verify": "gh"
+  },
+  {
+    "name": "Terraform",
+    "url": "https://github.com/hashicorp/terraform/releases",
+    "expectedVersion": "1.15.8",
+    "verify": "gh"
+  }
+]

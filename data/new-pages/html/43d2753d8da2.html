@@ -1,0 +1,653 @@
+<!doctype html>
+<html>
+    <head>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+        <title>CCC Release Notes</title>
+        <link rel="stylesheet" href="https://bombich.com/software/updates/css/normalize.css">
+        <link rel="stylesheet" href="https://bombich.com/software/updates/css/main.css">
+        <link rel="stylesheet" href="https://bombich.com/software/updates/css/upgrade.css">
+    </head>
+    <body>
+
+	<details open id="primary">
+	    <summary><a name="7.1.6"></a>CCC 7.1.6 &mdash; This is a FREE update for CCC 7 license holders</span></summary>
+        <p><strong>This is the official qualification build of CCC for macOS 27 (Golden Gate). Most of the improvements in this update are not specific to Golden Gate, so this update is recommended for users running Tahoe, Sequoia, Ventura, and Sonoma as well.</strong></p>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Added a "search" button to the header of the Snapshots table to make it easier to access the Snapshot Comparison Browser and "search for a file across snapshots" functionality.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved search indexing performance in the Snapshot Comparison Browser by as much as 3X for SSDs. The performance gains are more modest for rotational media, only about 7%, but still an improvement.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC's software updates will now be facilitated by CCC's helper tool whenever possible (this allows us to drop a deprecated system request). CCC now validates an ED25519 signature of software update archives (a notch more secure than validating the SHA256 checksum).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Implemented a method that will instigate the Finder to more proactively update the size of a bundle file when CCC modifies the content of that bundle file. This doesn't change anything about what gets copied, it just avoids a situation where people reach an invalid conclusion about the content of the destination based on invalid Finder information.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a handful of edge-case crashers.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed the reporting of file-specific errors when a stall is encountered while downloading cloud-only files.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Protected snapshots now have a friendlier label when selected as the source to a Restore task.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>We have received a handful of new reports from Tahoe users that the mini task progress window is remaining on screen and unresponsive after all task activity has completed. This update includes some modifications to the memory management of that window that should resolve this issue.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "Last health check" event time is now presented next to the Backup Health Check frequency popup menu for additional context when making a health check frequency choice.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Refactored the mechanism that is used to coordinate the "hide menubar icon" setting between CCC, the Dashboard, and the System Settings "Allow in the menubar" UI such that it no longer relies on a CCC global setting. If you were seeing an occasional request for authentication from the CCC Dashboard application on login, and you're logged in to a non-admin account, then this change should resolve those authentication requests.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed the "current file" feedback for tasks that specify a remote Mac as a source or destination.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a logic error that avoided enabling ownership on a remote Mac destination.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>The Quick Update feature will now be suppressed for the next event if the user has enabled the "Remove excluded files" setting since the previous event (i.e. without making any other changes to the task filter). This avoids a situation where excluded files wouldn't be removed from the destination until some other modification was made to the containing folder on the source.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The Quick Update setting is now disabled when "Temporarily download cloud-only files" is enabled. These settings are mutually exclusive because FSEvents can't detect changes to cloud-only content that might have occurred on some other device.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1.5"></a>CCC 7.1.5: March 5, 2026</span></summary>
+			<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Errors related to accessing the content of the "/private/var/protected" folder are now suppressed (because that folder is, very transparently, protected by System Integrity Protection). </p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a crash that was occurring when choosing the option to convert a destination to APFS in the Backup Volume Setup Assistant.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "Temporarily download cloud-only content" setting is now only applied if the source is a folder. We're seeing too many cases where people have this setting applied to a task that backs up the whole startup disk, and that's leading to a din of annoying (albeit usually harmless) errors, and potential space constraints for future restore activity. See <a href="https://support.bombich.com/hc/en-us/articles/20686419951767-Backing-up-the-content-of-cloud-storage-volumes#temp_download_best_practice">this Kbase article</a> for additional details on this change.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Implemented an alternate method for forcing the download of cloud-only file data in cases where macOS FileProvider claimed to download a file without error, but did not actually populate the data. This resolves a handful of reports we have received regarding the presence of 0-byte placeholder files on a backup volume despite the task being configured to download cloud-only content.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Made small adjustment to how the WiFi SSID is obtained on macOS Tahoe that should be a little bit more reliable (i.e. when determining if a backup task should run based on network conditions).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>CCC's privileged helper tool now ignores requests from older versions of CCC. This change resolves a theoretical scenario in which an older version of the CCC command-line utility could be altered and manipulated to mount a snapshot without superuser privileges (but with at least administrator privileges). macOS doesn't require superuser privileges to mount snapshots, nevertheless we prefer to impose the superuser requirement for requests coming from CCC's command-line utility to ensure that they are performed with deliberate user intent and consideration. Thanks to Csaba Fitzl (@theevilbit) of Iru for raising this esoteric scenario to our attention.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Attempts to mount a snapshot of the startup disk will now only be permitted via <a href="https://support.bombich.com/hc/articles/21384614166935-Mounting-and-browsing-the-contents-of-a-snapshot">CCC's Disk Center</a>. The mount will also be preceded by a dialog comparable to the one presented by Disk Utility in the same scenario, explaining that <a href="https://support.bombich.com/hc/en-us/articles/21385602599191-Frequently-Asked-Questions-About-Snapshots#root_snapshots">some protected folders will be accessible on the snapshot</a>.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added support for pausing tasks to the CCC command-line utility (e.g. Carbon Copy Cloner.app/Contents/MacOS/ccc task pause "task name").</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the contrast of the text in the Action column in Task History Audits; particularly in cases where the user's macOS Theme color is Graphite.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a handful of issues related to importing tasks, especially tasks that are arranged in groups.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed some logic that was preventing the Start button from getting disabled when you switch from a non-running task to a running task.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed the drawing of the snapshot navigator slider cell elements for macOS Tahoe.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a logic issue that was preventing CCC from creating "vacation snapshots" on the source when the destination is a NAS that is unavailable.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved CCC's responsiveness to macOS Appearance (i.e. Light vs. Dark) changes on macOS Tahoe.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>A Preview run will no longer create folders on the destination when the Task Filter behavior is set to "Include".</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed some file size values (and the resulting "bytes copied" math) in a "Preview" audit in cases where those files are not copied, rather only their attributes are updated.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1.4"></a>CCC 7.1.4: December 9, 2025</span></summary>
+			<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the contrast of the options presented in the Backup Volume Setup Assistant. The buttons in most of the option boxes now respond to the Return key press so they are colored with the accent color. This is very handy on Tahoe where buttons otherwise appear lifeless and practically fade into the background.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Added an exclusion for an application installation staging folder that popped up in Tahoe and was causing some unnecessary errors.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the task audit's presentation of the quantity of data removed or replaced during an event. For Preview events, this information is now presented in red text.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "current" volume is now indexed in the Snapshot Comparison window so that files that are present on the current volume but not in one of the selected snapshots will show up in the search results.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Made some adjustments to the calculation of checksums for extended attributes to address the errant recopying of files that have an out-of-spec "com.apple.decmpfs" extended attribute on the source despite not actually being compressed.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed an issue where some files were repeatedly appearing in a task audit because CCC was attempting to re-apply the UF_TRACKED flag to those files. This was occurring on a MacFUSE volume that doesn't support that flag (nor complain when the flag is applied, nor retain the flag).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>"Suspend all tasks" is now available in the Dashboard contextual menu (e.g. right-click on the "C" icon in the menubar).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Addressed an issue where CCC was showing "-1 bytes" of snapshot disk usage for volumes that had no snapshots.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The search expression in the Task Audit table is now preserved when selecting a different task event.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>In addition to holding down the Control key (and clicking the "Start" button) to apply a Backup Health Check when it otherwise would not have been applied, you can now hold down the Control key to <i>disable</i> Backup Health Check if a Backup Health Check is due. This behavior was also extended to the "Run Task" contextual menu item for the CCC Dashboard (i.e. the menu you see when you right-click on the "C" icon in the menubar).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue that was causing the Save button to immediately reappear after saving a "When source files are modified" task when applying a run time limit.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The total snapshot disk usage presented in the Disk Center chart is now updated in a more timely manner after snapshots are deleted.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue in which the Automation popover might hang when enabling a task runtime limit.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Increased the font size of the Task Notes text view.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>We have received a handful of reports that the mini Task Progress window won't close on macOS Tahoe (despite an apparent effort to close the window). This build of CCC adds a second, slightly different close request that should resolve that. If you're still seeing this behavior, though, please choose "Report a problem" from CCC's Help menu to let us know about it.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added a "Comment" column to the Snapshots table to show comments associated with protected snapshots. This column is hidden by default, but can be enabled by right-clicking on the table header.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1.3"></a>CCC 7.1.3: August 27, 2025</span></summary>
+			<ul>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Addressed the handling of vestigial, pre-Sonoma-era iCloud placeholder files. These placeholders should never exist on a post-Ventura version of macOS, but we found one case where the presence of these terds was leading to inconsistent results. These files are now treated like ordinary files and will no longer affect the copying of the "real" files that they reside next to.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Addressed an issue that arose in 7.1.2 where sparse files located on a NAS volume (that claims to support sparse files) were getting recopied each time the backup task runs.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC will now more effectively dissent requests to unmount the source volume snapshot when the task is actively using that volume for the duration of a task event. Requests to unmount that snapshot are pretty rare, but that can happen if free space on the source volume is very low, or during a logout event. This change resolves the errors that would ensue in those cases when the source is unmounted while we're using it.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed the hotkey that is used to perform an ad hoc Backup Health Check (it should have been the Control key, not the Command key).</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1.2"></a>CCC 7.1.2: August 20, 2025</span></summary>
+        <p><strong>This is the official qualification build of CCC for macOS 26 (Tahoe). Most of the improvements in this update are not specific to Tahoe, so this update is recommended for users running Ventura, Sonoma and Sequoia as well.</strong></p>
+			<ul>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>CCC has a new "glass" icon that looks great on macOS Tahoe! Big thanks to our UI designer Enelia at <a href="https://www.abacusfinch.com">Abacus Finch</a> who was able to find a way to keep our beloved page curl with the new glass material.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>The CCC menubar icon can now be moved around in the menubar, or removed by holding down the Command key while dragging the icon. Removing it in this manner will sync with the "Show CCC's icon in the menubar" setting in CCC Settings > Dashboard. Tahoe users: If you disable the CCC menubar icon via the new System Settings &gt; Menu Bar &gt; Allow in the Menu Bar interface, <a href="https://developer.apple.com/forums/thread/788101">CCC cannot be aware of that setting</a>. For the best experience, we recommend that you use the settings inside of CCC for controlling whether the CCC menubar icon is visible.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "Find and replace corrupted files on the destination" setting is now officially named <a href="https://support.bombich.com/hc/articles/20686511433623#bhc">"Backup Health Check"</a>.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Removed the "Standard Copy" button; the name of this button was a misnomer. This button was only present when Quick Update was enabled on a task, and in those cases, running the task with the Quick Update setting is the "standard" way of running that task. The Standard Copy button was added as a way to suppress the Quick Update feature in an ad hoc manner. This button was not frequently used, and its presence with that particular name was leading to some unnecessary confusion and concern. In lieu of a separate button, you can now hold down the Option key while clicking the Start button if you would like to have CCC rescan the entire source and destination (i.e. suppress Quick Update). Additionally, you can hold down the Control key to perform an ad hoc <a href="https://support.bombich.com/hc/articles/20686511433623#bhc">Backup Health Check</a>. The resulting behavior of the modifier key presses is reinforced by icons on the Start button that correspond to the Quick Update and Backup Health Check features, as well as customized tooltips that will appear when you hover your mouse over those buttons.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added a menu item to the Volumes sidebar contextual menu that offers to delete an APFS volume (e.g. if you accidentally added an extraneous volume via the Backup Volume Setup Assistant). Select the volume in the sidebar first, then right-click on the volume to get an option to delete it.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Added yet another workaround for Apple's restriction on access to the current WiFi network name for the macOS Sequoia 15.6 update. CCC uses the WiFi network name only in support of the option to limit a scheduled task to running when the system is connected to a specific WiFi network.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the repopulation of extended attributes in cases where the "Don't support extended attributes" setting was <em>disabled</em> after initially populating the destination while the setting was enabled. In cases where this setting was initially enabled because the destination was a NAS volume, CCC will now proactively seek out absent resource fork and FinderInfo extended attributes on files that are otherwise unmodified if the task is subsequently configured to preserve extended attributes.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Adding "/*" to the end of a search expression in a Task Audit will now show the content of a matching folder.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Resolved an issue where CCC would fail to import tasks or restore the CCC application support folder if CCC's helper tool was not yet registered with macOS. CCC will now prompt to register the helper tool prior to importing tasks.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a crasher that could occur if many, many tasks were started simultaneously (e.g. in response to a volume mount event).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed a logic issue that was causing some "Folder was deleted" audit transactions to get a "circle with plus" icon rather than the "circle with minus" icon. Addressed another issue that was leading to extraneous folder entries in an audit when those folders had not actually been modified.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Orphaned compression attributes are dropped when transferring a file or dataless folder that does not have the associated "this file is compressed" flag (this part is not new). Addressed a logic issue that was causing files (or more commonly, no-longer-dataless folders) with these vestigial attributes to appear in the task audit every time the task is run, despite that the files were not actually getting modified.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Addressed an issue in which CCC was prematurely aborting a task due to an apparent stall while collecting the attributes of files in a folder that had an exceptionally high file count (e.g. >100K).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue that affected how sparse files are copied between volumes that have different optimal buffer sizes.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the experience of switching between Simple Mode and Standard Mode, especially when CCC's helper tool has not yet been registered with macOS.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC will avoid auditing a Quick Update task if the destination NAS filesystem URL has only a DNS-suffix difference (e.g. smb://user@host vs. smb://user@host._smb._tcp.local are now treated as the same).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC now verifies that the device ID of the "_CCC SafetyNet" folder matches the device ID of the destination volume. If that folder has been replaced with a symlink that points to some other volume (for example), CCC will abort the task. This change resolves the errors that would occur if the SafetyNet folder was on some other volume (e.g. because files cannot be moved across device boundaries, they would have to be <i>copied, then deleted</i>). CCC only moves content into the SafetyNet folder &mdash; copying and then deleting the content defeats the purpose of the SafetyNet feature.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue in which the Backup Volume Setup Assistant would be unresponsive when opened via the button in the Backup Coach window.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed the collection of total snapshot disk usage for the source and destination popup menu charts.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed an issue where CCC was failing to create a new folder because the parent folder was locked on the destination.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Corrected an issue that was leading to "Audit failure" messages in the Task Filter window when a previously-excluded folder had been replaced by a symbolic link. CCC never follows symbolic links, so having filter rules that descend from a symlink is invalid &mdash; these obsolete rules are now removed from the filter whenever the filter window is opened.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fileflags (e.g. hidden, locked) that can be preserved on the destination are now preserved by default when backing up to or from a NAS volume.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1.2"></a>CCC 7.1.1: April 17, 2025</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Removed a condition that was causing CCC to re-enable Spotlight on the destination in some cases.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a localization issue that was causing notifications to be presented only in English.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue that could lead to the wrong notes being presented for a task if you were to select another task before dismissing the Notes popover.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Addressed an issue that could cause the Backup Volume Setup Assistant to be unresponsive.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Corrected the handling of resource forks that are larger than 4GB.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.1"></a>CCC 7.1: March 31, 2025</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>For Sonoma and Sequoia users, CCC now offers an option to set a custom icon on locally-attached source and destination volumes. Select an image of your own, or get creative with Apple's new Image Playground. Click on CCC's Source or Destination selector to find the new "Set custom icon" options. Apple's Image Playground requires an Apple Silicon Mac that supports Apple Intelligence and macOS Sequoia 15.2 or later.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The Snapshot Comparison Browser search field now supports wildcard and regular expression searches.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>CCC Dashboard's "Suspend all tasks" dialog now offers a date picker option for those cases where the pre-set intervals are not flexible enough.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>In the Tasks tab of the CCC Dashboard application, the "Defer&hellip;" option is now available for any scheduled task even when that task is not running. This allows the user to proactively defer a task before its scheduled run time rather than having to wait until the task is actually running.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>If a task is configured to restart or shut down the system "after a 60 second delay", that delay will no longer be applied when the screen is locked. In those cases macOS will not present the restart/shutdown dialog at all, so CCC proceeds directly to the request instead. This does not affect the fate of unsaved documents. If an application requires attention before it can quit, that application will cancel the restart/shutdown request even if the screen is locked.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a logic issue in the Dashboard that was causing the "Shutdown if previously off" feature to not work.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Spotlight will now be disabled on the destination by default when selecting the option to use a destination volume exclusively for the CCC task in the Backup Volume Setup Assistant. Users can also select a volume in the sidebar and disable (or re-enable) Spotlight via a switch. This change will hopefully address the interference that Spotlight and its mediaanalysisd buddy are causing with regard to unmounting CCC destination volumes.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added an option to the ccc command-line utility to perform snapshot thinning and pruning on a specified volume according to its current Snapshot Retention Policy.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the recapturing of space savings on the destination when files have been duplicated on the source (e.g. in the Finder).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The macOS Installer Media Assistant now requests 20GB when "borrowing" space for installer media. This accommodates the larger requirement for macOS Sequoia 15.3.1.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "Legacy Bootable Copy Assistant" functionality is now merged into the Backup Volume Setup Assistant.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>When a task is configured to make a legacy bootable copy of the source, the task is no longer automatically converted to a "Standard Backup" configuration after the cloning procedure has completed. When you subsequently run the task again, CCC will erase the destination and repeat the legacy bootable copy procedure.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "Present an alert dialog for reminders" Dashboard setting is now only applied to reminders, not to "Prompt before proceeding" task prompts.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The "MobileSoftwareUpdate" folder is now hidden by default on the destination. This folder is technically not hidden at the root of the startup disk, but it's not exposed via a firmlink, and it exists exclusively on the Data volume, so it effectively does not appear in the Finder.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Build 8132 addresses a regression around the handling of large sparse files when determining whether there is enough free space for a file. It also addresses an edge case in which CCC would request that the user grant full disk access to CCC despite that it was already granted.</p></span>
+			</li>
+		</ul>
+<h4>This update includes a handful of proactive security and privacy enhancements</h4>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>This version of CCC embraces new macOS functionality that allows us to avoid installing the <a href="https://support.bombich.com/hc/articles/20686388957719-What-is-CCC-s-Privileged-Helper-Tool">CCC helper tool</a> into Macintosh HD &gt; Library &gt; PrivilegedHelperTools. The helper tool will be "registered" with macOS, but will remain inside of the CCC application bundle. This new practice resolves a long list of complications that have arisen over the years with the legacy LaunchDaemon configuration as Apple has improved macOS platform security.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Full Disk Access is no longer required separately for CCC's helper tool. CCC's coaching around this procedure has been updated to reflect the new requirement. No changes are required for current CCC installations.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC offers new UI in Settings &gt; Advanced to specify the authorization requirements for a variety of CCC activities. For example, you may wish to require an admin user for CCC task changes, but allow non-admin users to start/stop tasks. Now you can configure that with ease in Advanced Settings.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.0.4"></a>CCC 7.0.4: November 19, 2024</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Build 8082 improves some 7.0.4 changes to the handling of low free space conditions on the destination.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The Snapshot Navigator now indexes bundle contents too, so we can search for files within, for example, a Photos library bundle file.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a logic issue introduced in the 7.0.3 update that leads to an error when running "legacy bootable copy" tasks on Intel Macs running Sequoia.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue introduced in the 7.0.3 update that would cause postflight shut down and restart requests to fail if the task was started manually.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Added yet another workaround for Apple's restriction on access to the current WiFi network name in macOS Sequoia. These restrictions are affecting our ability to limit task execution to when the Mac is connected to a specific WiFi network. Thanks to the assembly of WiFi network name+location databases (e.g. collected by companies that provide street-view imagery), WiFi network names can be used for location fingerprinting. As such, Apple deems this to be "private" data. Access to this information is only granted to an application that specifically requests access to location information. That's way more information than we want or need for this particular feature within CCC. Making the matter yet worse, that location service isn't even available to background "daemon" applications, like CCC's helper tool. While this update includes a workaround that will temporarily allow us to continue pulling the current WiFi SSID from the system, we anticipate that Apple will eventually "fix" these gaps as well, and the feature will have to be disabled.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fixed an odd edge-case condition where CCC was failing a task in the readiness phase because a source NTFS volume lacked support for a common system call.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.0.3"></a>CCC 7.0.3: September 24, 2024</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue in which CCC's helper was occasionally not completely exiting on startup in cases where there were no scheduled tasks. This was leading to cases where the task history database would be closed, thus disallowing new entries to be recorded.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the experience of editing a password in the email server settings panel.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Addressed an edge case scenario where file ownership/permissions were preserved despite using the "Don't preserve permissions" advanced setting in cases where files were cloned via the APFS clonefile() method (i.e. in cases where the source and destination are folders on the same APFS volume).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>CCC will apply a more strict 5GB minimum free space requirement when the destination is the startup disk (or a volume in the same APFS container as the startup disk).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Adjusted how ASR is invoked when creating a legacy bootable copy of macOS Sequoia on Apple Silicon Macs. This corrects <i>some</i> cases where the destination would fail to boot and the macOS Boot Recovery Assistant would indicate that macOS would need to be reinstalled. This does not resolve <i>all</i> of those issues, though. We have still found ASR to be a little bit inconsistent in its ability to produce bootable devices on the Apple Silicon platform, despite creating perfect byte-for-byte copies.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Implemented a workaround for some oddly-specific folder corruption on Lucidfs that occasionally prevents CCC from creating the write readiness cookie file, despite having no trouble creating other files in the same folder.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Task groups no longer get a "success" icon if they run (e.g. on a schedule) but have no tasks to run (e.g. because all tasks within it are disabled, or because the group has no tasks at all).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed a false-positive postflight re-verification error that was affecting filesystem-compressed files on macOS Sequoia.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Resolved a scenario where files that had been duplicated via the APFS clonefile() procedure were getting re-cloned on the destination during each run because macOS adds a GateKeeper extended attribute to files on the destination.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.0.2"></a>CCC 7.0.2: July 30, 2024</span></summary>
+		<p><strong>This build of CCC is qualified to run on macOS Sequoia.</strong></p>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Build 8048 addresses a crashing issue that was introduced in 7.0.2 that could occur on Macs that lack a WiFi interface.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Addressed a scrolling performance issue in the "Verify files copied by this task" window that could occur when selecting multiple files.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Corrected the appearance of the Notes text in Dark Mode.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The Task Filter, Advanced Settings, and Notes icons at the bottom of the CCC window now use a badge to indicate that customizations are applied rather than relying on color alone.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>UUID resetting is now disabled for ExFAT volumes because the exfat.util resets the UUID to all zeroes (bug filed with Apple: FB13813658).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>When a postflight power management setting is selected that involves presenting the system's 60 second countdown dialog, CCC now wakes the screen before making the request so that this dialog is presented more consistently.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Fix a "missing character" font issue for a message in the Task Plan for tasks that are configured to run "When files are modified on the source".</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Fixed an issue where the "Delete snapshots that are older than {}" and "Limit snapshot disk usage to {}" values were getting swapped in the Snapshot Retention Policy table.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>"At rest" encrypted volumes (i.e. the internal storage in an Apple Silicon Mac, or an Intel Mac with a T2 chip) are no longer presented as "Encrypted" in the Disk Center unless FileVault is explicitly enabled with a password.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>When you select a volume in CCC's sidebar and enable encryption on that volume, CCC no longer saves the user-specified password in the System keychain. The prompt for password retention is deliberately limited to cases where an encrypted volume is selected as a source or destination to a CCC task.</p></span>
+			</li>
+		</ul>
+	</details>
+
+
+	<details>
+	    <summary><a name="7.0.1"></a>CCC 7.0.1: May 22, 2024</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Improved the procedure of granting full disk access to CCC's helper tool.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Network location-based limits can also be applied to task groups.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Fixed">Fixed</div></span>
+				<span class="description"><p>Resolved an issue with creating hardlinks in cases where the destination was low on free space.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>The Snapshot Comparison browser now shows older versions of application bundles.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type Improved">Improved</div></span>
+				<span class="description"><p>Navigation activity to and from task groups is now included in the history that is tracked by the Back/Next buttons in the toolbar.</p></span>
+			</li>
+		</ul>
+	</details>
+	
+	<details>
+	    <summary><a name="7.0"></a>CCC 7.0: May 7, 2024</span></summary>
+		<ul>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>A new Backup Volume Setup Assistant guides users through formatting destination volumes, and asserts that the destination is dedicated to the backup task to avoid conflicts with other backups and other purposes of disk usage. The new setup assistant should go a really long way towards getting backup tasks set up correctly the first time, and without a trip to the documentation.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added search functionality to the Snapshot Comparison Window.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added a snapshot disk usage limit to custom snapshot retention policies (i.e. so you can say, "I want to retain backup history, but I only want the 'history' part of my backup to consume 500GB of space").</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added support for flagging specific snapshots to not be deleted by CCC snapshot thinning and pruning, "protected snapshots".</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Added support for manually creating snapshots on a volume.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>Scheduled tasks can now be limited to running only when the Mac is on ethernet, on a specific WiFi network, or set to a specific location.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>CCC's file copier can now detect renamed folders on APFS source volumes, and will rename the folder on the destination rather than recopying all of its content.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>You can now store notes alongside each task (e.g. to indicate the purpose of a task, or some other piece of helpful context).</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>When snapshot support is enabled on the source, CCC will now create snapshots on the source at the scheduled task run time, even if the destination is unavailable. When you travel without a backup disk, this allows you to retain older versions of files on the source while you're traveling.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>You can now enable/disable encryption on APFS volumes via a simple switch. Select a volume in the sidebar to find this setting.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>We added support to the CCC command-line utility for creating, deleting, listing and mounting snapshots. Run the ccc utility without arguments to see the new options.</p></span>
+			</li>
+			<li>
+				<span class="icon"><div class="type New">New</div></span>
+				<span class="description"><p>The CCC Dashboard offers more granular control over which CCC Activity events are shared with Notification Center and the level of attention that the notifications will request.</p></span>
+			</li>
+		</ul>
+	</details>
+    <hr>
+
+    <p>To update CCC, choose &quot;Check for Updates...&quot; from the &quot;Carbon Copy Cloner&quot; menu.</p>
+
+    <p><a href="https://support.bombich.com/hc/en-us/articles/20686469389719-CCC-7-Release-Notes">Complete CCC Release History</a></p>
+    </body>
+</html>

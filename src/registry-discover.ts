@@ -42,7 +42,7 @@ export function domainMatch(a: string, b: string): boolean {
 
 // ── brew casks：全量清单本地缓存 + 过滤 ──
 const BREW_CACHE = '.reg-cache/brew-registry.json';
-const BREW_TTL = 7 * 24 * 3600 * 1000; // 7 天
+const BREW_TTL = 12 * 3600 * 1000; // 12 小时(软件版本天天变, 7天TTL会让所有brew源项目提取旧版本)
 
 interface BrewCask {
   token: string;
