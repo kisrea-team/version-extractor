@@ -187,14 +187,34 @@ function extractVersionFromJsonLike(json: string): string | null {
     }
   }
   // 优先精确 version 键（产品版本）——排除值为 URL 的（JSON Feed 规范版本等）
-  const exact = json.match(/["']version["']\s*:\s*["']([^"']{1,30})["']/i);
-  if (exact && !BAD_KEY_RE.test(exact[0]) && !/^https?:/.test(exact[1])) {
-    const v = exact[1].trim();
-    if (/\d/.test(v) && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(v)) return normalizeVersion(v);
+  // ⚠️ 取所有 version 字段里数值最大的: PyCharm JSON {"PCC":[...version:2025.3], "PCP":[...version:2026.2.0.1]}
+  // 多产品分支时第一个 version 是 Community(旧), 期望是 Professional(新)——最新版本通常是最大数值
+  const exactAll = [...json.matchAll(/["']version["']\s*:\s*["']([^"']{1,30})["']/gi)]
+    .map((m) => ({ raw: m[1].trim(), full: m[0] }))
+    .filter((m) => !BAD_KEY_RE.test(m.full) && !/^https?:/.test(m.raw) && /\d/.test(m.raw) && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(m.raw));
+  if (exactAll.length > 0) {
+    const best = exactAll.sort((a, b) => {
+      const av = a.raw.replace(/^v/i, '').split(/[.+-]/).map((x) => parseInt(x, 10) || 0);
+      const bv = b.raw.replace(/^v/i, '').split(/[.+-]/).map((x) => parseInt(x, 10) || 0);
+      for (let i = 0; i < 4; i += 1) {
+        const ai = av[i] || 0, bi = bv[i] || 0;
+        if (ai !== bi) return bi - ai;
+      }
+      return 0;
+    })[0];
+    return normalizeVersion(best.raw);
   }
   // 其他命名字段（排除 BAD）
   const m = json.match(/["'](?:appVersion|latestVersion|releaseVersion|currentVersion|stableVersion|newVersion)["']\s*:\s*["']([^"']{1,30})["']/i);
   if (m && !BAD_KEY_RE.test(m[0])) return normalizeVersion(m[1]);
+  // GitLab/GitHub release tag 格式: "name":"INKSCAPE_1_4_4" / "v1.2.3-rc1" / "release-1.4.4"
+  // ⚠️ 只收"下划线/连字符分隔的数字段"或 v 前缀版本形态, 不收普通产品名("Inkscape")
+  const tag = json.match(/["'](?:name|tag_name|tagName)["']\s*:\s*["']([A-Za-z]*_?\d+_\d+(?:_\d+)*|v\d+\.\d+(?:\.\d+)*[^"']*|release[-_]\d+\.\d+(?:\.\d+)*)["']/i);
+  if (tag) {
+    const cleaned = tag[1].replace(/^[A-Za-z]+_/i, '').replace(/_/g, '.').replace(/^release[-_]/i, '');
+    const vm = cleaned.match(/(?:v)?(\d+\.\d+(?:\.\d+)*(?:[-+][0-9A-Za-z.-]+)?)/);
+    if (vm && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(vm[1])) return normalizeVersion(vm[1]);
+  }
   return null;
 }
 
