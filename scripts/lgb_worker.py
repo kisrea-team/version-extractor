@@ -10,7 +10,13 @@ MODELS = {}
 COLS = {}
 
 def load_models():
-    base = '/root/ve-docker-api/data'
+    # ⚠️ 2026-08-12 容器内模型在 /app/data(无 /root/ve-docker-api), 动态探测:
+    # 优先 env LGB_DATA_DIR, 再试宿主机路径, 最后脚本相对路径 ../data
+    import os
+    cands = [os.environ.get('LGB_DATA_DIR', ''),
+             '/root/ve-docker-api/data',
+             os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')]
+    base = next((p for p in cands if p and os.path.isfile(os.path.join(p, 'lgb-filter-nodl.joblib'))), cands[-1])
     MODELS['filter'] = joblib.load(f'{base}/lgb-filter-nodl.joblib')
     MODELS['rank'] = joblib.load(f'{base}/lgb-rank3.joblib')
 

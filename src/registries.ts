@@ -177,6 +177,24 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
     },
   },
   {
+    // Postman changelog JSON API：dl.pstmn.io/changelog?channel=stable... → changelog[0].name + Release Notes
+    // （2026-08-12: 之前落入 changelog-page 把整个 JSON 当 HTML 清洗成 170KB 垃圾 + v59.000 假版本）
+    host: /dl\.pstmn\.io\/changelog/,
+    fetch: async (url) => {
+      const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
+      if (!r.ok) return null;
+      const d: any = await r.json();
+      const cl = Array.isArray(d?.changelog) ? d.changelog : null;
+      if (!cl || cl.length === 0 || !cl[0]?.name) return null;
+      const notes = cl[0].notes?.['Release Notes'];
+      const content = Array.isArray(notes) ? notes.join('\n\n').trim() : (typeof notes === 'string' ? notes.trim() : '');
+      return {
+        version: `v${cl[0].name}`,
+        changelog: content.length > 0 ? { content } : null,
+      };
+    },
+  },
+  {
     // npm registry：registry.npmjs.org/<pkg> → dist-tags.latest（确定性版本）
     // readme 作为 changelog（包文档，含更新说明）；避免整包 JSON 被当正文清洗
     host: /registry\.npmjs\.org/,
@@ -184,7 +202,9 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
       const r = await fetch(url, { headers: { 'User-Agent': 'version-extractor' }, signal: AbortSignal.timeout(15000) });
       if (!r.ok) return null;
       const d = await r.json();
-      const v = d?.['dist-tags']?.latest;
+      // /pkg/latest 返回单版本 package.json(无 dist-tags, 用 d.version); 根路径返回 registry 文档(dist-tags.latest)
+      // （2026-08-12: Vercel URL registry.npmjs.org/vercel/latest 之前取不到版本 → 整包 JSON 被当 HTML 清洗）
+      const v = d?.['dist-tags']?.latest || d?.version;
       if (!v) return null;
       const readme = (d.readme || '').trim();
       return {

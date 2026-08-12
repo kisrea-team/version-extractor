@@ -3,7 +3,7 @@
 // 模型：data/lgb-filter.joblib（15 特征，43/51 验证）
 // 推理：调 scripts/lgb_predict.py 子进程（同 Trafilatura 模式）
 // 特征：14 个可从版本字符串重建，bert_prob 传 0
-import { spawn } from 'child_process';
+import { spawn, spawnSync } from 'child_process';
 import { join } from 'path';
 import { collectCandidates as collectExportCandidates } from '../scripts/export-candidates';
 import { extractVersionFromHtml, compareVersions, detectVersionSequence } from './version-extract';
@@ -101,10 +101,22 @@ let workerBusy = false;
 let workerBuf = '';
 let currentReq: { mode: string; rows: number[][]; resolve: (v: any) => void; done?: boolean } | null = null;
 
+// ⚠️ 2026-08-12 容器只有 python3 无 python 别名(spawn('python') 起不来 → 推理全挂 60s 超时,
+// 容器内测试 foobar2000 null/Bandizip v7)。同 trafilatura.ts 的 PYTHON_BIN 探测。
+const PYTHON_BIN = (() => {
+  for (const cand of ['python3', 'python']) {
+    try {
+      const r = spawnSync(cand, ['-c', 'import lightgbm, sklearn, joblib'], { timeout: 10000 });
+      if (r.status === 0) return cand;
+    } catch { /* 下一个候选 */ }
+  }
+  return 'python3';
+})();
+
 function ensureWorker(): import('child_process').ChildProcess {
   if (!worker || worker.exitCode !== null) {
     const script = join(process.cwd(), 'scripts', 'lgb_worker.py');
-    worker = spawn('python', [script], { windowsHide: true });
+    worker = spawn(PYTHON_BIN, [script], { windowsHide: true });
     workerBuf = '';
     worker.stderr!.on('data', (d: Buffer) => { if (process.env.DEBUG_LLM) console.error('[worker-stderr]', d.toString().slice(0, 300)); });
     worker.stdout!.on('data', (d: Buffer) => {
