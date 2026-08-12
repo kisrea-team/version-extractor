@@ -515,6 +515,41 @@ export function selectVersionByFamily(scored: LgbResult[], candidates: LgbCandid
 // 页面排序模型选择 seed；数值归族仅约束 seed 可到达的版本线，不能以族规模改选其他族。
 // 返回 null 表示排序工件不可用/特征不匹配，由调用方回退旧选择器。
 export interface RankSeedDetail { result: LgbResult; margin: number; strong: boolean; globalMax?: string; }
+
+// ═══ 发布通道检测(2026-08-12 语义冲突触发): 候选上下文是否命中 stable/preview/beta 等字样 ═══
+// foobar2000 案例: "Latest stable version 2.25.10" vs "Latest preview version 2.26"——
+// rank 选 preview(margin=0.79 高不触发 LLM), 但页面存在通道冲突, 该升级给 LLM 语义裁决。
+// 这不是规则裁决(不直接选 stable), 只是"检测到冲突 → 触发 LLM", 答案仍由 LLM 定。
+function channelOf(candidate: { contexts?: Array<{ text: string; scope: string }> }): string | null {
+  for (const ctx of candidate.contexts || []) {
+    const t = ctx.text;
+    if (/(?:stable|current|latest|release)\s+version/i.test(t)) return 'stable';
+    if (/preview/i.test(t)) return 'preview';
+    if (/\bbeta\b/i.test(t)) return 'beta';
+    if (/\balpha\b/i.test(t)) return 'alpha';
+    if (/\brc\b/i.test(t)) return 'rc';
+    if (/\bdev\b/i.test(t)) return 'dev';
+  }
+  return null;
+}
+
+function hasChannelConflict(scored: LgbResult[], candidates: LgbCandidate[], seedVersion: string): boolean {
+  const channels = new Map<string, string>();
+  for (const c of candidates) {
+    const ch = channelOf(c);
+    if (ch) channels.set(c.version, ch);
+  }
+  const seedCh = channels.get(seedVersion);
+  if (!seedCh) return false;
+  // seed 通道与任一其他候选通道不同 → 冲突(特别是 seed 非 stable 而存在 stable 候选)
+  for (const [v, ch] of channels) {
+    if (v === seedVersion) continue;
+    if (ch !== seedCh) return true;
+    if (seedCh !== 'stable' && ch === 'stable') return true;
+  }
+  return false;
+}
+
 export async function selectVersionByRankSeedDetailed(
   html: string,
   scored: LgbResult[],
@@ -674,7 +709,11 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     //   Ubuntu 版本, 错误的), 如果要求"非 globalMax 才触发"就把这种场景排除了。
     //   ⚠️ 不加 "strong 不触发": Blender(seed=v227 噪声, 多成员族 strong=true)需要 LLM 纠正;
     //   foobar2000(seed=v2.26 preview)也需要 LLM 纠正。strong 只表示 rank 有倾向, 不代表倾向正确。
-    const llmNeeded = rankDetail.margin < 0.5;
+    //   ⚠️ 语义冲突触发(2026-08-12): 页面同时有 stable/preview 等通道候选且 rank 选了非 stable
+    //   (foobar2000 v2.26 preview margin=0.79 高不触发) → 升级给 LLM 裁决, 不硬编码选哪个。
+    const channelConflict = hasChannelConflict(scored, candidates, rankDetail.result.version);
+    const llmNeeded = rankDetail.margin < 0.5 || channelConflict;
+    if (process.env.DEBUG_LLM && channelConflict) console.error('[evl] channel-conflict 触发 LLM: seed=' + rankDetail.result.version);
     if (!llmNeeded) {
       confidence = rankDetail.margin >= 0.1 ? 'high' : 'low';
     } else if (opts.llm !== false && opts.productName) {
