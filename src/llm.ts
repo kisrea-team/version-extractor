@@ -5,10 +5,22 @@
 // NVIDIA diffusiongemma-26b-a4b-it，多 key 每次调用轮换一个；一次不通立刻换 modelbest
 // MiniCPM-V-4.6-1B 兜底。并行 12。
 import { readFileSync, existsSync } from 'fs';
+import { resolve } from 'path';
 import { cleanWithTrafilatura } from './trafilatura';
 
 const NV_BASE = 'https://integrate.api.nvidia.com/v1';
-const NV_MODEL = 'google/diffusiongemma-26b-a4b-it';
+const NV_MODEL = process.env.NV_MODEL || 'google/diffusiongemma-26b-a4b-it';
+
+// ⚠️ 2026-08-12 Resin 代理池限流解法: NVIDIA 按出口 IP+model 限流, 换 key 没用(IP 没变)。
+// 限流/超时/失败 → 走 Resin 代理(http://Default.<account>:TOKEN@127.0.0.1:2260)换出口 IP。
+// 每个 account 锚定不同健康节点 = 不同出口 IP(已验证: t1→18.180.61.65 JP, t3→东京)。
+import { ProxyAgent } from 'undici';
+const RESIN_TOKEN = (() => {
+  try {
+    return readFileSync(resolve(process.cwd(), '/root/resin/.env'), 'utf-8').match(/RESIN_PROXY_TOKEN=(\S+)/)?.[1] || '';
+  } catch { return ''; }
+})();
+const RESIN_ACCOUNTS = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'];
 
 // modelbest 回退（NVIDIA 超时/全失败时）：MiniCPM-V-4.6-1B 小且快，兜底不拖慢批量 eval
 const MB_BASE = 'https://api.modelbest.cn/v1';
@@ -88,23 +100,35 @@ async function callNvidia(prompt: string, timeout: number): Promise<string | nul
     for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
       const key = nextKey();
       if (!key) return null;
+      // ⚠️ 2026-08-12 限流解法: attempt 0-1 直连(换key), attempt 2-3 走 Resin 代理(换account=换出口IP)。
+      // NVIDIA 按出口 IP+model 限流——直连换 key 无效, 必须换 IP; 代理每次用不同 account 锚定不同节点。
+      const useProxy = attempt >= 2 && RESIN_TOKEN;
+      let proxyAgent: InstanceType<typeof ProxyAgent> | null = null;
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeout);
+      const t0 = Date.now();
       try {
+        if (useProxy) {
+          const acct = RESIN_ACCOUNTS[attempt % RESIN_ACCOUNTS.length];
+          proxyAgent = new ProxyAgent(`http://Default.${acct}:${RESIN_TOKEN}@127.0.0.1:2260`);
+          if (process.env.DEBUG_LLM) console.error(`[llm] attempt${attempt} 走代理 account=${acct} (换出口IP)`);
+        }
         const res = await fetch(`${NV_BASE}/chat/completions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+          ...(proxyAgent ? { dispatcher: proxyAgent } : {}),
           body: JSON.stringify({
             model: NV_MODEL,
             messages: [{ role: 'system', content: SYSTEM_MSG }, { role: 'user', content: prompt }],
             temperature: 0,
-            max_tokens: 200, // ⚠️ 2026-08-12 2000→200: 100 会截断复述(v26.2 丢 .5), 200 平衡速度与完整性; 单次从 ~70s 降到 ~10-20s
+            max_tokens: 150, // ⚠️ 2026-08-12 200→150: 100 截断(v26.2 丢 .5), 200 够但生成慢; 150 平衡速度与完整性
             // diffusiongemma: 支持 thinkingConfig; MINIMAL = 最快(归属判断够用), 比 LOW 少思考 tokens
-            thinkingConfig: { thinkingLevel: process.env.THINKING_LEVEL || 'MINIMAL' },
+            // ⚠️ 其他模型(llama-3.1-8b 等)不支持 thinkingConfig, 参数会导致 400
+            ...(NV_MODEL.includes('diffusiongemma') ? { thinkingConfig: { thinkingLevel: process.env.THINKING_LEVEL || 'MINIMAL' } } : {}),
         }),
           signal: controller.signal,
         });
-        if (!res.ok) { lastErr = `http-${res.status}`; continue; }
+        if (!res.ok) { lastErr = `http-${res.status}`; if (process.env.DEBUG_LLM) console.error(`[llm] attempt${attempt} key#${keyIndex - 1} http-${res.status} ${Date.now() - t0}ms`); continue; }
         const j: any = await res.json();
         const answer = j.choices?.[0]?.message?.content || '';
         if (!answer) { lastErr = 'empty'; continue; }
@@ -115,6 +139,7 @@ async function callNvidia(prompt: string, timeout: number): Promise<string | nul
         lastErr = e?.message?.slice(0, 60) || 'fetch-fail';
       } finally {
         clearTimeout(timer);
+        if (proxyAgent) { try { proxyAgent.close(); } catch { /* 忽略 */ } }
       }
       await new Promise((r) => setTimeout(r, 300 * (attempt + 1))); // 退避
     }

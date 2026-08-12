@@ -45,7 +45,7 @@ export async function rerankProductVersions(
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({ model, query, documents: docs, top_n: docs.length }),
-      signal: AbortSignal.timeout(opts.timeout || 30000),
+      signal: AbortSignal.timeout(opts.timeout || 5000),
     });
     if (!resp.ok) return [];
     const data: any = await resp.json();
