@@ -20,7 +20,8 @@ import { pathToFileURL } from 'url';
 const SEMVER_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?:[-+][0-9A-Za-z.-]+)?(?![0-9kKmMbB])/g;
 // MINOR_RE: 排除 4.0b(紧贴小写 b = beta) 但保留 "4.0 Build"(空格+大写B = Build 单词, Eagle 案例)
 // 原 `(?![0-9.\s][kKmMbB])` 把 "4.0 Build 22" 的 4.0 拒绝(空格+B 命中 kmbB), 导致 Eagle 候选为 0
-const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9])(?![0-9.]b)(?!\s*(?:MB|KB|GB|MiB|KiB|GiB)\b)/g;
+// ⚠️ 2026-08-12 加 (?![kKmM]): Lazygit "Star 81.2k" 的 81.2 被当版本(star 数), k 后缀=千
+const MINOR_RE = /(?<![0-9.])v?(0|[1-9]\d*|\d*[0-9])\.(0|[1-9]\d*|\d*[0-9])(?![0-9kKmM])(?![0-9.]b)(?!\s*(?:MB|KB|GB|MiB|KiB|GiB)\b)/g;
 // MAJOR 仅匹配带 v 前缀的（避免把年份/数字当版本）；用于对比时让 BERT 候选池覆盖 v153 这类主版本号
 const MAJOR_RE = /\bv(0|[1-9]\d*|\d*[0-9])\b/g;
 // 带产品前缀的单段版本：Chrome 151 / Firefox 153 / Opera 134。
@@ -72,7 +73,13 @@ function hasStandardPrefix(text: string, index: number): boolean {
   const words = before.toLowerCase().split(/[\s_\/-]+/).filter(Boolean);
   if (words.length === 0) return false;
   const last = words[words.length - 1];
-  if (!STANDARD_PREFIX_STOP.has(last)) return false;
+  if (!STANDARD_PREFIX_STOP.has(last)) {
+    // ⚠️ 2026-08-12 库名前缀(FFmpeg 页面 "libavformat 58.76.100" 的库版本不是产品版):
+    // libc/libssl/libpng/libavformat/libswscale 等 lib* 开头的词 + 版本 = 库版本, 排除。
+    // 但 "for" 豁免同样适用(平台词场景与库无关, 这里只处理 lib 前缀)。
+    if (/^lib[a-z0-9]+$/i.test(last) && words[words.length - 2] !== 'for') return true;
+    return false;
+  }
   // "for" 豁免：平台词前面是 for → 版本归产品（Zeplin for Mac 10.1.0），不拦截
   if (PLATFORM_FOR_WORDS.has(last) && words[words.length - 2] === 'for') return false;
   return true;
@@ -114,6 +121,9 @@ function cleanText(value: string): string {
   return value
     .replace(/<[^>]+>/g, ' ')
     .replace(/&(?:nbsp|amp|lt|gt|quot);/gi, ' ')
+    // ⚠️ 2026-08-12 合并"数字. 空格 数字"(FFmpeg 库版本 "58. 76.100" 是 HTML 换行/断行导致,
+    // SEMVER 匹配不到断开串, 碎片 .100/.102 污染候选)。只合并点+空格+数字, 不误伤文字。
+    .replace(/(\d)\.\s+(\d)/g, '$1.$2')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -135,27 +145,49 @@ function addMatch(out: Map<string, Candidate>, raw: string, context: string, sco
 }
 
 function addMatches(out: Map<string, Candidate>, text: string, scope: Scope, includeMajor = false): void {
-  const res: RegExp[] = includeMajor && scope !== 'visible' ? [SEMVER_RE, MINOR_RE, MAJOR_RE] : [SEMVER_RE, MINOR_RE];
+  // ⚠️ 2026-08-12 同源碎片合并: 同一数字串被多正则各抓一次(FFmpeg "58.76.100" →
+  // SEMVER 抓 v58.76.100, MINOR 抓 v76.100, MAJOR 抓 v100), 产生同源假候选污染 rank。
+  // 先跑 SEMVER 收集区间, MINOR/MAJOR 匹配落在 SEMVER 区间内 → 跳过(最长匹配优先)。
+  const semverSpans: Array<{ start: number; end: number }> = [];
+  SEMVER_RE.lastIndex = 0;
+  for (const m of text.matchAll(SEMVER_RE)) {
+    const mi = m.index || 0;
+    semverSpans.push({ start: mi, end: mi + m[0].length });
+    if (hasStandardPrefix(text, mi)) continue;
+    let raw = m[0];
+    const after = text.slice(mi + m[0].length);
+    const fm = after.match(/^f\d+/);
+    if (fm && !/^[0-9kKmMbB]/.test(after)) raw = m[0] + fm[0];
+    const firstSeg = m[0].replace(/^v/i, '').split('.')[0];
+    const fourth4 = firstSeg.length >= 3 ? 4 : 3;
+    const fourth = after.match(new RegExp(`^\\.(\\d{1,${fourth4}})(?![\\d.])`));
+    if (fourth) raw = m[0] + fourth[0];
+    addMatch(out, raw, snippet(text, mi), scope);
+  }
+  const res: RegExp[] = includeMajor && scope !== 'visible' ? [MINOR_RE, MAJOR_RE] : [MINOR_RE];
   for (const re of res) {
     re.lastIndex = 0;
     for (const match of text.matchAll(re)) {
+      const mi = match.index || 0;
+      // 与 SEMVER 匹配重叠(起点落在某 SEMVER 区间内) → 该串已被最长匹配捕获, 跳过碎片
+      if (semverSpans.some((s) => mi >= s.start && mi < s.end)) continue;
       // 标准/协议名前缀（WCGA 2.0 / macOS 15 / HTML 5）不是产品版本，剔除；
       // "X for Mac 10.1.0" 的平台词由 hasStandardPrefix 内的 for 豁免放行
-      if (hasStandardPrefix(text, match.index || 0)) continue;
+      if (hasStandardPrefix(text, mi)) continue;
       // Unity 的 f 后缀(6000.5.7f1 final build)紧贴版本号, SEMVER_RE 的 (?:[-+][...])? 不匹配裸 f1——
       // 检查匹配后是否紧跟 f\d+, 拼回去保留(2022.3.62f3 → 6000.5.7f1)
       // 同理 4 段版本(夸克 10.15.0.130): SEMVER_RE 只匹配 3 段, 匹配后紧跟 .数字 时拼回第 4 段。
       // ⚠️ 第 4 段 4 位仅当首段 ≥3 位时接受: MSTeams 26198.202.4929(首段 5 位, 4929 是合法版本段)✓,
       // Lens Studio 5.64.396(首段 1 位, 兼容性版本)✗ 不拼——v36 实测 4 位全放开让 rank 被 5.64.396 吸引
       let raw = match[0];
-      const after = text.slice((match.index || 0) + match[0].length);
+      const after = text.slice(mi + match[0].length);
       const fm = after.match(/^f\d+/);
       if (fm && !/^[0-9kKmMbB]/.test(after)) raw = match[0] + fm[0];
       const firstSeg = match[0].replace(/^v/i, '').split('.')[0];
       const fourth4 = firstSeg.length >= 3 ? 4 : 3;
       const fourth = after.match(new RegExp(`^\\.(\\d{1,${fourth4}})(?![\\d.])`));
       if (fourth) raw = match[0] + fourth[0];
-      addMatch(out, raw, snippet(text, match.index || 0), scope);
+      addMatch(out, raw, snippet(text, mi), scope);
     }
   }
   // 带产品前缀的单段版本（Chrome 151 / Firefox 153）：前缀给了单段数字"这是产品版本"的语义，
@@ -236,6 +268,9 @@ export function collectCandidates(html: string, includeMajor = false): Candidate
   for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
     const attrs = match[1];
     const href = attrs.match(/href=["']([^"']*)["']/i)?.[1] || '';
+    // ⚠️ 2026-08-12 媒体/截图 URL 排除(VLC 页面 "screenshots/2.2.0/vlc-2.2-macosx-playback-dark.jpg"):
+    // 截图/图片路径里的版本是视觉资源版本, 不是产品版。图片扩展名或 media 目录直接跳过该 anchor。
+    if (/\.(?:jpg|jpeg|png|gif|webp|svg|avif|bmp|ico)(?:[?#]|$)/i.test(href) || /(?:screenshots?|images?|img|pics?|gallery|thumbs?)(?:\/|$)/i.test(href)) continue;
     const anchor = cleanText(`${match[2]} ${href}`);
     if (!anchor) continue;
     const scope: Scope = /download|release|\.((?:zip|dmg|exe|msi|pkg|tar\.gz))(?:[?#]|$)/i.test(href) ? 'download-link' : 'visible';
