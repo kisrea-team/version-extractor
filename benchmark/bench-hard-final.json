@@ -100,7 +100,7 @@
   {
     "name": "Microsoft Teams",
     "url": "https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning",
-    "expectedVersion": "26198.202.4929.7171",
+    "expectedVersion": "26198.304.4946.9672",
     "currentDbVersion": "v26198.202.4929.7171",
     "verify": "brew"
   },
