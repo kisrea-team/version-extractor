@@ -30,6 +30,7 @@ export type LgbRow = [
   number, // scope_noise
   number, // scope_structured
   number, // scope_visible
+  number, // latest_annotated
 ];
 
 // 运行时候选 scope → 训练词汇表映射
@@ -60,6 +61,8 @@ export function buildFeatureRow(version: string, scopes: string[], contexts?: Ar
   const nums = (base.match(/\d+/g) || []).map(Number);
   const seg = base.split('.');
   const scopeSet = new Set(scopes);
+  // latest_annotated 特征(与 15 列 filter 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
+  const latestAnnotated = (contexts || []).some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0;
   return [
     version.startsWith('v') || version.startsWith('V') ? 1 : 0, // has_v
     /^\d+(\.\d+){0,3}$/.test(base) ? 1 : 0, // is_clean
@@ -75,6 +78,7 @@ export function buildFeatureRow(version: string, scopes: string[], contexts?: Ar
     scopeSet.has('noise') ? 1 : 0,
     scopeSet.has('structured') ? 1 : 0,
     scopeSet.has('visible') ? 1 : 0,
+    latestAnnotated,
   ];
 }
 
@@ -204,6 +208,8 @@ export function buildRankFeatureRows(
       anchor ? 1 : 0, titleAnchor ? 1 : 0, productPresent ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? 1 : 0,
       dominantPath && paths.includes(dominantPath) ? (pathCounts.get(dominantPath) || 0) / Math.max(group.length, 1) : 0,
+      // latest_annotated(与 38 列 rank 模型匹配): 候选上下文含 "Latest/Current version: X" 标注
+      contexts.some((x) => /(?:latest|current|stable|newest)\s+version\s*[:=]\s*["']?v?\d/i.test(x.text)) ? 1 : 0,
       new Set(group.map((x) => rankVersionParts(x.version).slice(0, 2).join('.'))).size,
       sequence?.series.some((v) => rankMatches(s.version, v)) ? 1 : 0,
       sequence && rankMatches(s.version, sequence.latest) ? 1 : 0,
@@ -572,8 +578,8 @@ export async function selectVersionByRankSeedDetailed(
   const strong = strongScope || (family ? family.nodes.length > 1 : false);
   // 单点族且 seed 无强 scope 证据 → 极可能是孤立噪声（blender v330、redis v18.0），回退旧选择器
   if (family && family.nodes.length === 1 && !strongScope) return null;
-  // ⚠️ family 归族恢复 v48 语义(2026-08-12): v48 是"族内选最大"——BTT seed=v6.701 提为 v6.712(同 6.x 族)。
-  // 但 Bandizip v7.45 vs v8.1 被 prefix 归族误并入同族, "选最大"会错选 v8.1(OS 版本)。
+  // ⚠️ family 归族同 major 选最大(2026-08-12): v42 是"族内选最大"——BTT seed=v6.701 提为 v6.712(同 6.x 族)。
+  // 但 Bandizip v7.45 vs v8.1 被 prefix 归族误并入同族, "选最大"会错选 v8.1(OS 版本, 跨 major)。
   // 折中: 族内选最大, 但只限同 major 的候选(v7.45 与 v8.1 major 不同 → 不选 v8.1)。
   const seedMajor = rankVersionParts(seed.version)[0];
   const sameMajorMembers = family
@@ -582,6 +588,7 @@ export async function selectVersionByRankSeedDetailed(
   const result = sameMajorMembers.length > 1
     ? [...sameMajorMembers].sort((a, b) => rankVersionCompare(b.version, a.version))[0]
     : seed;
+  if (process.env.DEBUG_LLM) console.error('[rd] seed=' + seed.version, 'family=' + (family ? family.nodes.length : 'none'), 'result=' + result?.version);
   return { result, margin, strong, globalMax };
 }
 
@@ -668,6 +675,8 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     //   margin < 0.5 —— rank 有明显分歧就交给 LLM 语义裁决。
     //   注意不能加"seed 非 globalMax"限制: Termius 案例 seed=v26.10 恰好是候选池最大(但它是
     //   Ubuntu 版本, 错误的), 如果要求"非 globalMax 才触发"就把这种场景排除了。
+    //   ⚠️ 不加 "strong 不触发": Blender(seed=v227 噪声, 多成员族 strong=true)需要 LLM 纠正;
+    //   foobar2000(seed=v2.26 preview)也需要 LLM 纠正。strong 只表示 rank 有倾向, 不代表倾向正确。
     const llmNeeded = rankDetail.margin < 0.5;
     if (!llmNeeded) {
       confidence = rankDetail.margin >= 0.1 ? 'high' : 'low';
