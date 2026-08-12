@@ -572,14 +572,16 @@ export async function selectVersionByRankSeedDetailed(
   const strong = strongScope || (family ? family.nodes.length > 1 : false);
   // 单点族且 seed 无强 scope 证据 → 极可能是孤立噪声（blender v330、redis v18.0），回退旧选择器
   if (family && family.nodes.length === 1 && !strongScope) return null;
-  // ⚠️ family 归族尊重 seed(2026-08-12): Bandizip 案例 seed=v7.45(rank 打分最高+latest 标注),
-  // v8.1(OS 版本)被 prefix 归族误并入同族, 族内"选最大"覆盖成 v8.1。
-  // 归族只应把"seed 的扩展版本"(v16.2 → v16.2.0)选出来, 不应选数值更大的不同版本。
-  const familyMembers = family ? [...family.nodes].map((n) => n.result) : [seed];
-  const seedBare = seed.version.replace(/^v/i, '');
-  const extended = familyMembers.filter((m) => m.version !== seed.version && (m.version.replace(/^v/i, '').startsWith(seedBare + '.') || m.version.replace(/^v/i, '').startsWith(seedBare + '-')));
-  const result = extended.length ? [...extended].sort((a, b) => rankVersionCompare(b.version, a.version))[0] : seed;
-  if (process.env.DEBUG_LLM) console.error('[rd] seed=' + seed.version, 'family=' + (family ? family.nodes.length : 'none'), 'extended=' + extended.map((m) => m.version).join(','), 'result=' + result?.version);
+  // ⚠️ family 归族恢复 v48 语义(2026-08-12): v48 是"族内选最大"——BTT seed=v6.701 提为 v6.712(同 6.x 族)。
+  // 但 Bandizip v7.45 vs v8.1 被 prefix 归族误并入同族, "选最大"会错选 v8.1(OS 版本)。
+  // 折中: 族内选最大, 但只限同 major 的候选(v7.45 与 v8.1 major 不同 → 不选 v8.1)。
+  const seedMajor = rankVersionParts(seed.version)[0];
+  const sameMajorMembers = family
+    ? [...family.nodes].map((n) => n.result).filter((m) => rankVersionParts(m.version)[0] === seedMajor)
+    : [seed];
+  const result = sameMajorMembers.length > 1
+    ? [...sameMajorMembers].sort((a, b) => rankVersionCompare(b.version, a.version))[0]
+    : seed;
   return { result, margin, strong, globalMax };
 }
 
