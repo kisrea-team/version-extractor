@@ -800,36 +800,40 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
       // ⚠️ 只 rerank 预筛后的少量候选(各族顶端 + prob top): BTT 2899 候选全喂 reranker
       // 会超时+限流(每例卡几分钟), 预筛 ≤15 个再 rerank 快且够
       let rerankScores: Map<string, number> = new Map();
-      try {
-        const preFilter = (() => {
-          const fam = new Map<string, LgbResult>();
-          for (const s of llmScored) {
-            const bare = s.version.replace(/^v/i, '');
-            const seg = bare.split('.');
-            const f = seg.length >= 2 ? seg.slice(0, 2).join('.') : seg[0];
-            const cur = fam.get(f);
-            if (!cur || rankVersionCompare(s.version, cur.version) > 0) fam.set(f, s);
-          }
-          return [...fam.values()].sort((a, b) => b.prob - a.prob).slice(0, 15);
-        })();
-        const ctxSamples = preFilter.slice(0, 5).map((s) => {
-          const cc = candidates.find((x) => x.version === s.version);
-          return cc?.contexts?.[0]?.text || '';
-        }).join(' ');
-        const looksNatural = /[a-zA-Z]{3,}/.test(ctxSamples) && !/^\s*[\[\]{}\"0-9,\s]*$/.test(ctxSamples);
-        if (looksNatural) {
-          const rr = await rerankProductVersions(opts.productName || '', preFilter.map((s) => {
+      // ⚠️ 2026-08-13 临时禁用 reranker: 验证其影响(每触发案例固定 5s 开销 + 贡献有限)
+      const RERANK_ENABLED = false;
+      if (RERANK_ENABLED) {
+        try {
+          const preFilter = (() => {
+            const fam = new Map<string, LgbResult>();
+            for (const s of llmScored) {
+              const bare = s.version.replace(/^v/i, '');
+              const seg = bare.split('.');
+              const f = seg.length >= 2 ? seg.slice(0, 2).join('.') : seg[0];
+              const cur = fam.get(f);
+              if (!cur || rankVersionCompare(s.version, cur.version) > 0) fam.set(f, s);
+            }
+            return [...fam.values()].sort((a, b) => b.prob - a.prob).slice(0, 15);
+          })();
+          const ctxSamples = preFilter.slice(0, 5).map((s) => {
             const cc = candidates.find((x) => x.version === s.version);
-            return { version: s.version, context: cc?.contexts?.[0]?.text || '' };
-          }));
-          // 归一化到 0-1, 存 version → score
-          const max = Math.max(...rr.map((r) => r.score), 1e-9);
-          rr.forEach((r) => {
-            const s = preFilter[r.index];
-            if (s) rerankScores.set(s.version, r.score / max);
-          });
-        }
-      } catch { /* reranker 失败 → 空 map */ }
+            return cc?.contexts?.[0]?.text || '';
+          }).join(' ');
+          const looksNatural = /[a-zA-Z]{3,}/.test(ctxSamples) && !/^\s*[\[]{}\"0-9,\s]*$/.test(ctxSamples);
+          if (looksNatural) {
+            const rr = await rerankProductVersions(opts.productName || '', preFilter.map((s) => {
+              const cc = candidates.find((x) => x.version === s.version);
+              return { version: s.version, context: cc?.contexts?.[0]?.text || '' };
+            }));
+            // 归一化到 0-1, 存 version → score
+            const max = Math.max(...rr.map((r) => r.score), 1e-9);
+            rr.forEach((r) => {
+              const s = preFilter[r.index];
+              if (s) rerankScores.set(s.version, r.score / max);
+            });
+          }
+        } catch { /* reranker 失败 → 空 map */ }
+      }
       const llmScoreOf = (s: LgbResult): number => {
         const cc = candidates.find((x) => x.version === s.version);
         if (!cc) return 0;

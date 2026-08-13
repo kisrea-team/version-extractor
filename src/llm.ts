@@ -100,9 +100,10 @@ async function callNvidia(prompt: string, timeout: number): Promise<string | nul
     for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
       const key = nextKey();
       if (!key) return null;
-      // ⚠️ 2026-08-12 限流解法: attempt 0-1 直连(换key), attempt 2-3 走 Resin 代理(换account=换出口IP)。
-      // NVIDIA 按出口 IP+model 限流——直连换 key 无效, 必须换 IP; 代理每次用不同 account 锚定不同节点。
-      const useProxy = attempt >= 2 && RESIN_TOKEN;
+      // ⚠️ 2026-08-12 限流解法: attempt 0 直连试一次, 失败(限流/超时)后立即走 Resin 代理
+      // (换 account=换出口 IP)。NVIDIA 按出口 IP+model 限流——直连换 key 无效, 必须换 IP;
+      // ⚠️ 2026-08-13 修复: 之前 attempt 0-1 直连(两次等待), 限流时白等 2×超时。改为 attempt>=1 全走代理。
+      const useProxy = attempt >= 1 && RESIN_TOKEN;
       let proxyAgent: InstanceType<typeof ProxyAgent> | null = null;
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeout);
@@ -242,13 +243,9 @@ ${productName}'s version: `;
     const cleanText = text.replace(/\s+/g, ' ').trim();
     prompt = `Product: ${productName}\n\nPage title: ${title}\n\nThe content below is its changelog/release history (newest usually first). Find ${productName}'s OWN current latest stable version; ignore other components and "requires X or higher" mentions of other products. Return ONLY the version number.\n\nPage content:\n${cleanText.slice(0, 5000)}`;
   }
-  // NVIDIA 一次不通（429/500/空内容）或超时 → 立刻换 modelbest 兜底
+  // NVIDIA 失败(429/500/空内容/超时)直接返回 null, 不再调 modelbest 兜底(2026-08-13)
   try {
-    const v = await callNvidia(prompt, opts.timeout || 60000);
-    if (v) return v;
-  } catch { /* 超时/网络异常 → 换 modelbest */ }
-  try {
-    return await callModelbest(prompt, opts.timeout || 60000);
+    return await callNvidia(prompt, opts.timeout || 20000);
   } catch {
     return null;
   }
