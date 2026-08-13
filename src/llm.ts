@@ -186,7 +186,7 @@ async function callModelbest(prompt: string, timeout: number): Promise<string | 
   }
 }
 
-export interface LlmCandidate { version: string; scopes?: string[]; contexts?: Array<{ text: string; scope: string }>; prob?: number; }
+export interface LlmCandidate { version: string; scopes?: string[]; contexts?: Array<{ text: string; scope: string }>; prob?: number; paths?: string[]; }
 export async function extractVersionWithLlm(
   html: string,
   productName: string,
@@ -225,12 +225,15 @@ export async function extractVersionWithLlm(
     const candList = ordered.slice(0, 40).map((c) => {
       const scope = c.scopes?.[0] || '';
       const isSeed = opts.seed && c.version === opts.seed;
-      return `- ${isSeed ? '★ ' : ''}${c.version} [${scope}] …${pickCtx(c)}…`;
+      const paths = c.paths && c.paths.length ? c.paths.slice(0, 2).join(' | ') : '';
+      const pathTag = paths ? ` <${paths}>` : '';
+      return `- ${isSeed ? '★ ' : ''}${c.version} [${scope}]${pathTag} …${pickCtx(c)}…`;
     }).join('\n');
     prompt = `Find ${productName}'s own current version.
 Candidates are sorted by evidence strength (product-name mention, heading, download link) — the top ones are far more likely to be the answer.
 The candidate marked ★ is the rank model's first choice. Prefer it unless the page clearly shows it is NOT the current version (e.g. it's a preview/beta/dev/build version, or another candidate is explicitly labeled as the current/stable version).
 Lines where the version belongs to another product/component (Camera Kit, System Requirements, dependencies like "requires X or higher", "updated to X") are NOT ${productName}'s version. The numerically largest version is usually NOT the answer.
+Each candidate shows its DOM structure path in <...>: h2/h3/li means a changelog/release heading, td/th means a compatibility-matrix cell (NOT the product's version), a means a link, p/strong means body text. Prefer candidates in h2/h3/li (declaration positions) over td (matrix) or a (generic link).
 ${candList}
 ${productName}'s version: `;
   } else {

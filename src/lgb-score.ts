@@ -871,7 +871,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
           const sb = llmScoreOf(scored.find((s) => s.version === b.version) as LgbResult);
           return sb - sa || (scored.find((s) => s.version === b.version)?.prob || 0) - (scored.find((s) => s.version === a.version)?.prob || 0);
         })
-        .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob }));
+        .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob, paths: c.paths }));
       const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates, seed: selected.version });
       opts.onLlm?.({ margin: rankDetail.margin, answer: llmVer }); // 暴露 LLM 判定结果（bench 测 LLM 准确性用）
       llmTrace = { triggered: true, margin: rankDetail.margin, answer: llmVer };
