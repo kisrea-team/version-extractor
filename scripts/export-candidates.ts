@@ -113,7 +113,9 @@ export function purifyVersion(raw: string): string {
   const text = String(raw || '');
   // 保留常见预发布标记，避免 1.27rc2 被折叠为 1.27；源码包/文件扩展名仍被截掉。
   // f\d+ = Unity 的 final build 标记(6000.5.7f1), 也必须保留。
-  const m = text.match(/v?\d+(?:\.\d+){0,3}(?:(?:-|\.)?(?:alpha|beta|rc|pre|dev|patch|f)\d*)?/i);
+  // (?:-\d{1,4}(?!\d))? = 纯数字 build 后缀(3.7.5-4595/7.1.2-29), 1-4 位且后不跟数字,
+  // 避免日期 build(1.2.3-20240101)被截成 -2024 的噪声。
+  const m = text.match(/v?\d+(?:\.\d+){0,3}(?:(?:-|\.)?(?:alpha|beta|rc|pre|dev|patch|f)\d*)?(?:-\d{1,4}(?!\d))?/i);
   return m ? m[0] : text;
 }
 
@@ -121,8 +123,11 @@ function cleanText(value: string): string {
   return value
     .replace(/<[^>]+>/g, ' ')
     .replace(/&(?:nbsp|amp|lt|gt|quot);/gi, ' ')
+    // ⚠️ 2026-08-13 URL 编码空格: "Setup%206.6.17.exe" → "Setup 6.6.17"(%20 会让 20+6.6.17
+    //    拼成 4 段伪版本 206.6.17, Waterfox 案例 LLM 被它迷惑)
+    .replace(/%20/g, ' ')
     // ⚠️ 2026-08-12 合并"数字. 空格 数字"(FFmpeg 库版本 "58. 76.100" 是 HTML 换行/断行导致,
-    // SEMVER 匹配不到断开串, 碎片 .100/.102 污染候选)。只合并点+空格+数字, 不误伤文字。
+    //    SEMVER 匹配不到断开串, 碎片 .100/.102 污染候选)。只合并点+空格+数字, 不误伤文字。
     .replace(/(\d)\.\s+(\d)/g, '$1.$2')
     .replace(/\s+/g, ' ')
     .trim();

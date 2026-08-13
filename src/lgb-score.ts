@@ -775,7 +775,14 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
     //   ⚠️ 语义冲突触发(2026-08-12): 页面同时有 stable/preview 等通道候选且 rank 选了非 stable
     //   (foobar2000 v2.26 preview margin=0.79 高不触发) → 升级给 LLM 裁决, 不硬编码选哪个。
     const channelConflict = hasChannelConflict(scored, candidates, rankDetail.result.version);
-    const llmNeeded = rankDetail.margin < 0.5 || channelConflict;
+    // ⚠️ 2026-08-13 组合触发: margin<0.5 基础 + p12diff<0.015 精细触发(rank top2 概率差小=有分歧)
+    //    p12diff 抓 Lens(0.947/0.010)/audacity(0.612/0.000) 等 margin 高但 rank 实际犹豫的案例
+    let p12diff = -1;
+    try {
+      const byProb = [...scored].sort((a, b) => b.prob - a.prob);
+      if (byProb.length >= 2) p12diff = Math.abs(byProb[0].prob - byProb[1].prob);
+    } catch { /* 无 prob 数据 */ }
+    const llmNeeded = rankDetail.margin < 0.5 || channelConflict || p12diff < 0.015;
     if (process.env.DEBUG_LLM && channelConflict) console.error('[evl] channel-conflict 触发 LLM: seed=' + rankDetail.result.version);
     if (!llmNeeded) {
       confidence = rankDetail.margin >= 0.1 ? 'high' : 'low';

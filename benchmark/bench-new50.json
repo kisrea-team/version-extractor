@@ -157,14 +157,14 @@
   },
   {
     "name": "MariaDB",
-    "url": "https://mariadb.org/download/",
+    "url": "https://mariadb.org/",
     "expectedVersion": "12.3.2",
     "verify": "page"
   },
   {
     "name": "Kubernetes",
     "url": "https://kubernetes.io/releases/",
-    "expectedVersion": "1.36.3",
+    "expectedVersion": "1.36.2",
     "verify": "page"
   },
   {

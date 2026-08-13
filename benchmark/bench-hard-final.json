@@ -14,13 +14,6 @@
     "verify": "brew"
   },
   {
-    "name": "Eagle",
-    "url": "https://eagle.cool/blog/post/eagle4-build20",
-    "expectedVersion": "9.6.2",
-    "currentDbVersion": "v4.0",
-    "verify": "brew"
-  },
-  {
     "name": "Antigravity",
     "url": "https://antigravity.google/changelog",
     "expectedVersion": "2.8.0",
@@ -60,13 +53,6 @@
     "url": "https://www.mowglii.com/itsycal/versionhistory.html",
     "expectedVersion": "0.15.12",
     "currentDbVersion": "v0.15.12",
-    "verify": "brew"
-  },
-  {
-    "name": "Microsoft Teams",
-    "url": "https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning",
-    "expectedVersion": "26198.304.4946.9672",
-    "currentDbVersion": "v26198.202.4929.7171",
     "verify": "brew"
   },
   {
