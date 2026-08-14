@@ -186,6 +186,13 @@ function extractVersionFromJsonLike(json: string): string | null {
       }
     }
   }
+  // ⚠️ 2026-08-14 嵌套 version 对象: xcodereleases.com/data.json 等
+  // {"version":{"build":"27A5237l","number":"27.0","release":{"beta":5}}}
+  // 版本在 version 对象的 number/version 字段(排除 build/release 元数据)
+  const nestedVersion = json.match(/["']version["']\s*:\s*\{[^{}]*?["'](?:number|version|displayName)["']\s*:\s*["']([^"']{1,30})["']/i);
+  if (nestedVersion && !BAD_KEY_RE.test(nestedVersion[0]) && !/^\d{4}[-.]\d{2}[-.]\d{2}/.test(nestedVersion[1])) {
+    return normalizeVersion(nestedVersion[1]);
+  }
   // 优先精确 version 键（产品版本）——排除值为 URL 的（JSON Feed 规范版本等）
   // ⚠️ 取所有 version 字段里数值最大的: PyCharm JSON {"PCC":[...version:2025.3], "PCP":[...version:2026.2.0.1]}
   // 多产品分支时第一个 version 是 Community(旧), 期望是 Professional(新)——最新版本通常是最大数值
