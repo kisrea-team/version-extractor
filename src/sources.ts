@@ -39,6 +39,12 @@ export function classifySource(input: string): UpdateSource {
     return { type: 'rss', url, confidence: 'high', feedUrl: url, note: 'RSS/Atom feed' };
   }
 
+  // JSON 端点（npm registry 等结构化数据源）：确定性 JSON，禁止当 HTML 页清洗
+  // （deepseek-harness 案例：registry.npmjs.org 整包 JSON 被当正文 → changelog 变垃圾）
+  if (/^https?:\/\/registry\.npmjs\.org\//i.test(url)) {
+    return { type: 'json', url, confidence: 'high', note: 'npm registry JSON 端点' };
+  }
+
   // 默认：changelog 页面（运行时可进一步检测 feed 链接）
   return { type: 'changelog-page', url, confidence: 'medium', note: 'Changelog 页面（待页面级检测）' };
 }

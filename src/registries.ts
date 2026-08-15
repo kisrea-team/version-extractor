@@ -207,9 +207,12 @@ const OFFICIAL_ENDPOINTS: Array<{ host: RegExp; fetch: (url: string) => Promise<
       const v = d?.['dist-tags']?.latest || d?.version;
       if (!v) return null;
       const readme = (d.readme || '').trim();
+      // readme 常为空（包作者没发布到 npm），兜底用 description（包的一句话说明）
+      const desc = (d.description || '').trim();
+      const changelog = readme.length > 50 ? readme : (desc.length > 10 ? desc : '');
       return {
         version: v.startsWith('v') ? v : `v${v}`,
-        changelog: readme.length > 50 ? { content: readme } : null,
+        changelog: changelog.length > 0 ? { content: changelog } : null,
       };
     },
   },
