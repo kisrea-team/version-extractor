@@ -13,21 +13,28 @@ const TUMUER_BASE = 'https://router.tumuer.me/v1';
 const TUMUER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
 
 function loadConfig(): { key: string; model: string; base: string } {
-  // tumuer router key 优先 (data/tumuer-key.env)
+  // 1. 环境变量优先（Docker 部署: data/*.env 被 gitignore 不进镜像, 必须用 env 传 key）
+  if (process.env.TUMUER_KEY) {
+    return { key: process.env.TUMUER_KEY, model: process.env.TUMUER_RERANKER || 'Qwen/Qwen3-Reranker-8B', base: TUMUER_BASE };
+  }
+  // 2. tumuer router key 文件 (data/tumuer-key.env)
   try {
     const env = readFileSync(resolve(process.cwd(), 'data/tumuer-key.env'), 'utf-8');
     const tkey = env.match(/TUMUER_KEY=(\S+)/)?.[1] || '';
     const tmodel = env.match(/TUMUER_RERANKER=(\S+)/)?.[1] || 'Qwen/Qwen3-Reranker-8B';
     if (tkey) return { key: tkey, model: tmodel, base: TUMUER_BASE };
   } catch { /* fallthrough */ }
-  // 回退: 硅基流动 bge
+  // 3. 回退: 硅基流动 bge (env → 文件)
+  if (process.env.SILICONFLOW_KEY) {
+    return { key: process.env.SILICONFLOW_KEY, model: process.env.SILICONFLOW_RERANKER || 'Pro/BAAI/bge-reranker-v2-m3', base: 'https://api.siliconflow.cn/v1' };
+  }
   try {
     const env = readFileSync(resolve(process.cwd(), 'data/siliconflow-key.env'), 'utf-8');
     const key = env.match(/SILICONFLOW_KEY=(\S+)/)?.[1] || '';
     const model = env.match(/SILICONFLOW_RERANKER=(\S+)/)?.[1] || 'Pro/BAAI/bge-reranker-v2-m3';
     return { key, model, base: 'https://api.siliconflow.cn/v1' };
   } catch {
-    return { key: process.env.SILICONFLOW_KEY || '', model: 'Pro/BAAI/bge-reranker-v2-m3', base: 'https://api.siliconflow.cn/v1' };
+    return { key: '', model: 'Pro/BAAI/bge-reranker-v2-m3', base: 'https://api.siliconflow.cn/v1' };
   }
 }
 
