@@ -807,8 +807,10 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
       // ⚠️ 只 rerank 预筛后的少量候选(各族顶端 + prob top): BTT 2899 候选全喂 reranker
       // 会超时+限流(每例卡几分钟), 预筛 ≤15 个再 rerank 快且够
       let rerankScores: Map<string, number> = new Map();
-      // ⚠️ 2026-08-13 临时禁用 reranker: 验证其影响(每触发案例固定 5s 开销 + 贡献有限)
-      const RERANK_ENABLED = false;
+      // ⚠️ 2026-08-14 重新启用 reranker: 换成 Qwen/Qwen3-Reranker-8B(tumuer)后 Bandizip
+      // 案例验证有效——bge 排错(v1.0 第一), Qwen3 把 v7.45 顶到第一(0.84) → LLM 答对。
+      // 原禁用原因(bge 固定 5s 开销+贡献有限)已随模型切换改变
+      const RERANK_ENABLED = true;
       if (RERANK_ENABLED) {
         try {
           const preFilter = (() => {
@@ -840,6 +842,14 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
             });
           }
         } catch { /* reranker 失败 → 空 map */ }
+      }
+      // ⚠️ 2026-08-14 rerank 成功时, ★(LLM 首选标记)应跟着 rerank 第一名而不是 rank seed:
+      //   Bandizip 案例 rank seed=v8.1(Windows 8.1 噪声), rerank 把 v7.45 顶到第一(0.765),
+      //   但 ★ 仍标 v8.1 → DeepSeek 遵循"★ 是首选"选了错候选。rerank 语义更强, 应接管 ★。
+      let llmSeed = selected.version;
+      if (rerankScores.size > 0) {
+        const rerankTop = [...rerankScores.entries()].sort((a, b) => b[1] - a[1])[0];
+        if (rerankTop && rerankTop[1] > 0.5) llmSeed = rerankTop[0];
       }
       const llmScoreOf = (s: LgbResult): number => {
         const cc = candidates.find((x) => x.version === s.version);
@@ -883,7 +893,7 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
           return sb - sa || (scored.find((s) => s.version === b.version)?.prob || 0) - (scored.find((s) => s.version === a.version)?.prob || 0);
         })
         .map((c) => ({ version: c.version, scopes: c.scopes, contexts: c.contexts, prob: scored.find((s) => s.version === c.version)?.prob, paths: c.paths }));
-      const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates, seed: selected.version });
+      const llmVer = await extractVersionWithLlm(html, opts.productName, { candidates: llmCandidates, seed: llmSeed });
       opts.onLlm?.({ margin: rankDetail.margin, answer: llmVer }); // 暴露 LLM 判定结果（bench 测 LLM 准确性用）
       llmTrace = { triggered: true, margin: rankDetail.margin, answer: llmVer };
       if (process.env.DEBUG_LLM) console.error('[llm-check]', 'llmVer=' + llmVer, 'typeof=' + typeof llmVer, 'seed=' + selected.version);

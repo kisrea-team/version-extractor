@@ -26,7 +26,104 @@ const RESIN_ACCOUNTS = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'];
 const MB_BASE = 'https://api.modelbest.cn/v1';
 const MB_MODEL = 'MiniCPM-V-4.6-1B';
 
-// 多 key 轮询池：从 env NVIDIA_KEYS（逗号分隔）或本地 gitignored 文件读取
+// ⚠️ 2026-08-14 Google AI Studio 兜底: env GOOGLE_AI_KEY 设置时优先于 NVIDIA
+// 模型 gemma-4-26b-a4b-it (AI Studio 免费层, 限速严格 → 串行 + 间隔 1.2s)
+const GOOGLE_BASE = 'https://generativelanguage.googleapis.com/v1beta';
+const GOOGLE_MODEL = process.env.GOOGLE_LLM_MODEL || 'gemma-4-26b-a4b-it';
+
+function loadGoogleKey(): string {
+  if (process.env.GOOGLE_AI_KEY) return process.env.GOOGLE_AI_KEY.trim();
+  try {
+    const env = readFileSync(resolve(process.cwd(), 'data/google-ai-key.env'), 'utf-8');
+    return env.match(/GOOGLE_AI_KEY=(\S+)/)?.[1] || '';
+  } catch { return ''; }
+}
+
+let googleLastCall = 0;
+async function callGoogle(prompt: string, timeout: number): Promise<string | null> {
+  const key = loadGoogleKey();
+  if (!key) return null;
+  const wait = googleLastCall + 1200 - Date.now();
+  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+  googleLastCall = Date.now();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  const t0 = Date.now();
+  try {
+    const res = await fetch(`${GOOGLE_BASE}/models/${GOOGLE_MODEL}:generateContent?key=${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: SYSTEM_MSG }] },
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0, maxOutputTokens: 150 },
+      }),
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      if (process.env.DEBUG_LLM) console.error(`[llm-google] http-${res.status} ${Date.now() - t0}ms`);
+      return null;
+    }
+    const j: any = await res.json();
+    const answer = j.candidates?.[0]?.content?.parts?.map((p: any) => p.text || '').join('') || '';
+    if (process.env.DEBUG_LLM) console.error(`[llm-google] 成功 ${Date.now() - t0}ms answer="${(answer || '').replace(/\n/g, ' ').slice(0, 80)}"`);
+    if (!answer) return null;
+    return extractVersionFromLlmText(answer);
+  } catch (e: any) {
+    if (process.env.DEBUG_LLM) console.error(`[llm-google] ${String(e).slice(0, 60)}`);
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// ⚠️ 2026-08-14 硅基流动 LLM: deepseek-ai/DeepSeek-V4-Flash (env LLM_PROVIDER=sf 时启用)
+// key 复用 data/siliconflow-key.env 的 SILICONFLOW_KEY
+const SF_BASE = 'https://api.siliconflow.cn/v1';
+const SF_MODEL = process.env.SF_LLM_MODEL || 'deepseek-ai/DeepSeek-V4-Flash';
+
+function loadSiliconflowKey(): string {
+  if (process.env.SILICONFLOW_KEY) return process.env.SILICONFLOW_KEY.trim();
+  try {
+    const env = readFileSync(resolve(process.cwd(), 'data/siliconflow-key.env'), 'utf-8');
+    return env.match(/SILICONFLOW_KEY=(\S+)/)?.[1] || '';
+  } catch { return ''; }
+}
+
+async function callSiliconflow(prompt: string, timeout: number): Promise<string | null> {
+  const key = loadSiliconflowKey();
+  if (!key) return null;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  const t0 = Date.now();
+  try {
+    const res = await fetch(`${SF_BASE}/chat/completions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+      body: JSON.stringify({
+        model: SF_MODEL,
+        messages: [{ role: 'system', content: SYSTEM_MSG }, { role: 'user', content: prompt }],
+        temperature: 0,
+        max_tokens: 150,
+      }),
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      if (process.env.DEBUG_LLM) console.error(`[llm-sf] http-${res.status} ${Date.now() - t0}ms`);
+      return null;
+    }
+    const j: any = await res.json();
+    const answer = j.choices?.[0]?.message?.content || '';
+    if (process.env.DEBUG_LLM) console.error(`[llm-sf] 成功 ${Date.now() - t0}ms answer="${(answer || '').replace(/\n/g, ' ').slice(0, 80)}"`);
+    if (!answer) return null;
+    return extractVersionFromLlmText(answer);
+  } catch (e: any) {
+    if (process.env.DEBUG_LLM) console.error(`[llm-sf] ${String(e).slice(0, 60)}`);
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 function loadKeys(): string[] {
   const fromEnv = (process.env.NVIDIA_KEYS || '').split(',').map((s) => s.trim()).filter(Boolean);
   if (fromEnv.length) return fromEnv;
@@ -230,6 +327,7 @@ export async function extractVersionWithLlm(
       const pathTag = paths ? ` <${paths}>` : '';
       return `- ${isSeed ? '★ ' : ''}${c.version} [${scope}]${pathTag} …${pickCtx(c)}…`;
     }).join('\n');
+    if (process.env.DEBUG_LLM) console.error('[llm-cands]', candList);
     prompt = `Find ${productName}'s own current version.
 Candidates are sorted by evidence strength (product-name mention, heading, download link) — the top ones are far more likely to be the answer.
 The candidate marked ★ is the rank model's first choice. Prefer it unless the page clearly shows it is NOT the current version (e.g. it's a preview/beta/dev/build version, or another candidate is explicitly labeled as the current/stable version).
@@ -242,6 +340,17 @@ ${productName}'s version: `;
     const text = (await cleanWithTrafilatura(html)) || '';
     const cleanText = text.replace(/\s+/g, ' ').trim();
     prompt = `Product: ${productName}\n\nPage title: ${title}\n\nThe content below is its changelog/release history (newest usually first). Find ${productName}'s OWN current latest stable version; ignore other components and "requires X or higher" mentions of other products. Return ONLY the version number.\n\nPage content:\n${cleanText.slice(0, 5000)}`;
+  }
+  // ⚠️ 2026-08-14 硅基流动优先(env LLM_PROVIDER=sf 时): deepseek-ai/DeepSeek-V4-Flash
+  if (process.env.LLM_PROVIDER === 'sf') {
+    const sv = await callSiliconflow(prompt, opts.timeout || 20000);
+    if (sv) return sv;
+  }
+  // ⚠️ 2026-08-14 Google 优先(配了 GOOGLE_AI_KEY 时): gemma-4-26b-a4b-it 串行限速,
+  // 失败(限流/超时)才回退 NVIDIA(多 key+resin 代理)
+  if (loadGoogleKey()) {
+    const gv = await callGoogle(prompt, opts.timeout || 20000);
+    if (gv) return gv;
   }
   // NVIDIA 失败(429/500/空内容/超时)直接返回 null, 不再调 modelbest 兜底(2026-08-13)
   try {

@@ -57,3 +57,8 @@ data/audit.db
 data/audit.db-wal
 data/audit.db-shm
 data/*.env
+.gh-token.env
+data/*.joblib.orig*
+data/*.joblib.prod*
+data/*.exp.joblib
+*.bak
