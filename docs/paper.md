@@ -3,8 +3,8 @@
 > 版本选择问题的失败模式驱动设计
 > (Failure-Mode-Driven Design for Current-Release Selection from Heterogeneous Vendor Pages)
 >
-> 作者待定 — LogUp / version-extractor 工程团队
-> 目标：arXiv / WWW 工业轨 / CIKM 应用轨
+> 作者 zitons
+
 
 ## 摘要
 
@@ -49,7 +49,7 @@
 | `css` | font-size、line-height、间距数值 | 属性名可区分 |
 | `other_noise` | 价格、数量、统计值（"1.1万"）、订单号 | **语义不可分** |
 
-**失败案例 1（海螺AI）**：官网营销页渲染出的统计数字流 `1175 1.1万 95 191 182 236 231 ...` 被正则提取为候选，"1.1万"经版本语法清洗后成为 `v1.1`，以 high 置信度入库 —— 页面根本没有版本声明，ve 从噪声中"碰运气"。
+**案例 1（海螺AI）**：官网营销页渲染出的统计数字流 `1175 1.1万 95 191 182 236 231 ...` 被正则提取为候选，"1.1万"经版本语法清洗后成为 `v1.1`，以 high 置信度入库 —— 页面根本没有版本声明，启发式从噪声中"碰运气"。
 
 关键洞察：**至少两类噪声（SVG 坐标、统计数字）在文本形式上与真版本不可分**。"净化后取最大数字"的假设 —— 真版本是最大数 —— 在实测中仅 44.8%（29 例集）。**版本选择需要"版本号 + 页面语义"联合判断，纯数字或纯结构规则都到不了 85%**。
 
@@ -61,7 +61,7 @@
 
 注册表（winget manifest、Homebrew formula、Flathub appstream、npm registry、Go module proxy）把 `latest` 作为命名域暴露；官方端点（GitHub Releases API、iTunes lookup、python.org、redis.io、filezilla-project.org、blackmagicdesign.com）用按主机分表的 fetcher 精确解析。这两层零 HTML 解析、零模型推理，命中即正确。
 
-**失败案例 2（npm registry JSON dump）**：deepseek-harness 的源是 `registry.npmjs.org/@deepseek-ai/dsh`。早期 classifySource 不认识 npm registry，把整包 JSON 当 HTML 页面清洗，版本号取自 `dist-tags.latest`（正确），但 changelog 变成整包 JSON dump。修复：**源分类层把 JSON 端点显式归类为 `json` 类型**，禁止进入 HTML 清洗路径。
+**案例 2（npm registry JSON dump）**：deepseek-harness 的源是 `registry.npmjs.org/@deepseek-ai/dsh`。启发式不认识 npm registry，把整包 JSON 当 HTML 页面清洗，版本号取自 `dist-tags.latest`（正确），但 changelog 变成整包 JSON dump。
 
 ### 3.2 为什么不做"通用 JSON 解析"：源分类即解析契约
 
@@ -83,7 +83,7 @@
 - **scope**：download-link / structured / heading / visible / noise 五个来源位
 - **语义**：BERT 概率（候选文本是产品版本的概率）
 
-为什么学习型净化严格优于手工排除规则？因为规则只能枚举已知噪声（年份、build 后缀），而**噪声形态学是开放的**（十类）；LightGBM 学到的是"什么样的候选处于什么样的上下文"的联合模式。实测：净化后数字最大（44.8%）vs 纯结构规则（75.0%）vs 完整管线（70.9–74.5%，含更难的当前集）—— 规则的收益存在，但被"误杀正确版本"（下载页单上下文）和"漏放新噪声"两面夹击。
+为什么学习型净化严格优于手工排除规则？因为规则只能枚举已知噪声（年份、build 后缀），而**噪声形态学是开放的**（十类）；LightGBM 学到的是"什么样的候选处于什么样的上下文"的联合模式。实测：净化后数字最大（44.8%）vs 纯结构规则（75.0%）vs 完整管线（70.9–74.5%，含更难的当前集）—— 规则的收益存在，但被"误杀正确版本"（下载页单上下文）和"漏放新噪声"两面夹击。纯结构小样本下获得75%，但完全的结构方法在更难的样本中失效。
 
 ### 4.3 排序：为什么"当前 vs 历史"排序模型会失败，LambdaRank 却成功
 
@@ -130,7 +130,7 @@
 
 **结论：裁决器模型选择是二阶杠杆（+2 例）；候选质量（采集、净化、排序）与触发策略占主导。**
 
-**失败案例 3（Bandizip — 候选显著性）**：官网有 "Latest version: v7.45 — July 20, 2026" 硬声明，但 v7.45 的启发式分数只有 11（"Latest version:" 声明缺少对应特征），Windows 8.1 系统要求（score 78）反而成为 seed。rank 选错 → LLM 候选清单里 v7.45 排最后 → 换任何 LLM 都选 v8.1。修复链路：Qwen3-Reranker-8B 重排把 v7.45 顶到第一（0.84 vs 0.01）→ **★ 标记跟随 rerank 第一名**（原 bug：rerank 排对了但 ★ 仍标 rank seed，LLM 遵循"★ 是首选"选错）→ LLM 答对。三层修复（候选排序 + 裁决标记 + 模型）缺一不可。
+**案例 3（Bandizip — 候选显著性）**：官网有 "Latest version: v7.45 — July 20, 2026" 硬声明，但 v7.45 的启发式分数只有 11（"Latest version:" 声明缺少对应特征），Windows 8.1 系统要求（score 78）反而成为 seed。rank 选错 → LLM 候选清单里 v7.45 排最后 → 换任何 LLM 都选 v8.1。修复链路：Qwen3-Reranker-8B 重排把 v7.45 顶到第一（0.84 vs 0.01）→ **★ 标记跟随 rerank 第一名**（事实证明提示词给出候选的顺序会影响LLM的裁决判断）→ LLM 答对。三层修复（候选排序 + 裁决标记 + 模型）缺一不可。
 
 ### 5.3 Changelog 质量门控：从"存垃圾"到"宁可为空"
 
@@ -209,17 +209,3 @@ VE 是一个生产级版本提取系统，组织为失败模式驱动的四层�
 | 31 | family_major_minor | 同 major 组内 major.minor 数 | 家族结构 |
 | 32-33 | in_sequence / is_seq_latest | 版本序列成员 / 序列最新 | 序列检测（detectVersionSequence） |
 | 34-37 | page_download / history / article / error | 页面类型四类 | 页面意图先验 |
-
-## 附录 B：审稿人风险清单
-
-| 项目 | 状态 | 说明 |
-|---|---|---|
-| 主主张一句话可辩护 | 通过 | "分层确定性 + 学习型隐式净化 + LLM 克制调用" —— 三原理各有失败案例与对照实验 |
-| 贡献类型 | 通过 | 系统 + 实证研究 + 基准 + 失败模式分类学 |
-| 去掉管线图后新颖性 | 风险 | 分层架构在*本任务*是新的；需突出"SVG 坐标/统计数字不可分"的任务结构论证 |
-| 主张-实验主线 | 通过 | 每层有消融（§6.2），每原理有失败案例 |
-| 统计严谨性 | 风险 | 55 例单次运行；需方差/自助法或多次采样 |
-| 最相关工作 | 风险 | 需补 wrapper 归纳、注册表即真值（依赖解析）、LLM IE 三条线的引用 |
-| 可复现性 | 风险 | 模型+基准需开源；55 页数据许可需检查 |
-| 首页诚实图 | 缺失 | 需要"一页 40 候选，真版本排第 17"图（Bandizip 类） |
-| 标题/命名 | 风险 | "我们何时知道……"吸引人但含糊；VE 名称通用 |
