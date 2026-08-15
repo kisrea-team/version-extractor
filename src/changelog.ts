@@ -583,6 +583,21 @@ function isNonChangelogContent(content: string): boolean {
   }
   // ③ 单行 URL + 文件大小（"hash url size"）：下载条目特征
   if (lines.length <= 3 && lines.every((l) => /https?:\/\/\S+\s+\d+$/.test(l) || /\b[0-9A-Fa-f]{32,}\b/.test(l))) return true;
+  // ④ 原始 JSON dump（端点响应被当正文）：`"key":` 结构密度高或以 { 开头
+  //    （deepseek-harness 案例：npm registry 整包 JSON 清洗后进 changelog）
+  const jsonKeyCount = (content.match(/"[^"\n]{1,40}"\s*:/g) || []).length;
+  if (jsonKeyCount >= 5 || /^\s*\{/.test(content)) return true;
+  // ⑤ 数据 dump：纯数字 token 占优（含 1.1万 式统计数字），非自然语言
+  //    （海螺AI 案例：营销页 JS 渲染出的统计数字流）
+  const tokens = content.split(/\s+/).filter(Boolean);
+  if (tokens.length >= 20) {
+    const numTokens = tokens.filter((t) => /^[\d.,:%+万千亿]+$/.test(t)).length;
+    if (numTokens / tokens.length > 0.4) return true;
+  }
+  // ⑥ 链接列表/导航页：markdown 链接行占优，无实质正文
+  //    （Chrome 商店首页/视频站导航案例）
+  const mdLinks = (content.match(/\[[^\]\n]{1,60}\]\([^)\n]{4,}\)/g) || []).length;
+  if (lines.length >= 4 && mdLinks / lines.length > 0.5) return true;
   return false;
 }
 
