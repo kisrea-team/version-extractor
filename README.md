@@ -68,6 +68,33 @@ out.version    // { version: 'v3.15.0', source, confidence }
 out.changelog  // { version: 'v3.15.0', content: '...', date }
 ```
 
+### 提取示例（真实案例）
+
+**Bandizip 官网**（`https://en.bandisoft.com/bandizip/`）—— 页面同时含 Windows 8.1 系统要求、文件格式列表和一句 "Latest version: v7.45" 声明。噪声候选（v8.1/v1.0）分高，真版本 v7.45 分最低：
+
+```json
+POST /extract  {"url": "https://en.bandisoft.com/bandizip/", "fields": ["version"], "productName": "Bandizip"}
+```
+
+```json
+{
+  "url": "https://en.bandisoft.com/bandizip/",
+  "elapsedMs": 6200,
+  "version": {
+    "version": "v7.45",
+    "source": "visible",
+    "confidence": "high",
+    "candidates": [
+      { "version": "v8.1",  "score": 78, "scope": "visible", "inDownloadUrl": false },
+      { "version": "v1.0",  "score": 71, "scope": "visible", "inDownloadUrl": false },
+      { "version": "v7.45", "score": 11, "scope": "visible", "inDownloadUrl": false }
+    ]
+  }
+}
+```
+
+内部链路：rank 选出 seed v8.1（噪声）→ **Qwen3-Reranker 把 v7.45 顶到第一**（0.76 vs 0.01，读懂了 "Latest version:" 硬声明）→ ★ 标记跟随 → LLM（DeepSeek-V4-Flash）裁决答 v7.45。这就是论文里"候选显著性 > 阅读理解"的活例。
+
 ## HTTP API / Docker 部署
 
 常驻 HTTP API，可只返回版本号、只返回日志，或两者都要。服务复用 Playwright 浏览器实例。
