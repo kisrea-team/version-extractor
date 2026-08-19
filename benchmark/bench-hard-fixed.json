@@ -338,7 +338,7 @@
  {
   "name": "夸克网盘",
   "url": "https://www.32r.com/app/106737.html",
-  "expectedVersion": "10.15.0.130",
+  "expectedVersion": "10.15.5.132",
   "currentDbVersion": "v10",
   "verify": "web-x4"
  },
@@ -359,7 +359,7 @@
  {
   "name": "Devin",
   "url": "https://www.cognition.ai/blog",
-  "expectedVersion": "2.24.26",
+  "expectedVersion": "2.2",
   "currentDbVersion": "v10.2",
   "verify": "web-x4"
  },

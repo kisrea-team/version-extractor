@@ -7,7 +7,7 @@ import { collectCandidates } from './export-candidates';
 import { predictCandidateVersions } from '../src/lgb-score';
 import { detectVersionSequence } from '../src/version-extract';
 
-type PageSpec = { url: string; name: string; expected: string; html: string; source: '700' | '80'; histVersions: Set<string> };
+type PageSpec = { url: string; name: string; expected: string; html: string; source: '700' | '80' | 'brew' | 'logup'; histVersions: Set<string> };
 const bare = (v: string) => v.replace(/^v/i, '');
 const parts = (v: string) => bare(v).split(/[.+-]/)[0].split('.').map((x) => Number(x) || 0);
 const compare = (a: string, b: string) => { const x = parts(a), y = parts(b); for (let i = 0; i < 4; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
@@ -43,6 +43,58 @@ function pageList(): { pages: PageSpec[]; conflicts: any[]; recallMiss: any[] } 
     if (!html) { recallMiss.push({ source: '700', pageId: target.pageId, url: target.url, reason: 'missing-html' }); continue; }
     const histVersions = new Set(rows.filter((r) => r.label === 'historical_product').map((r) => 'v' + bare(r.version)));
     pages.push({ source: '700', url: target.url, name: target.name, expected: target.canonicalVersion, html, histVersions });
+  }
+  // ⚠️ 2026-08-16 新增 brew-cross 页（+100 页，其中 58 页候选池≥30 的长列表）：
+  //   标签 = brew cask 注册表 version（命名字段，Homebrew CI livecheck 维护）
+  //   ∩ 该版本字面出现于同时抓取的页面 ∩ 页面无更高同族版本（单调性门）
+  //   三重保证使标签独立于"从页面提取"这一过程本身，不存在自举偏差。
+  //   107 条已逐条复检（门1/门2 复现 + 快照 SHA-256 校验 0 失配）；审计发现
+  //   "页面最大版本"多为 OS 版本/价格/文件大小噪声，正是要学会拒绝的形态。
+  //
+  //   收益（scripts/train3_ablate.py 四方对照实测）：
+  //     长列表页 9 → 58 页后，同一 37 列模型 test 60.9% → 73.7%，
+  //     长列表子集 33.3% → 66.7%（翻倍）。
+  //   ——长列表排序短板的真因是"训练集没有长列表页"，不是缺特征：
+  //     试过的 nearby_date_recency / decl_word_distance 两个特征单元验证判别
+  //     方向正确（Fork 1.0 vs 0.48、Termius 0.5 vs 0），但对照实验 val 涨 test 跌
+  //     （过拟合），且 both40 在长列表上反降到 50%，故不并入（实现保留在
+  //     src/decl-date-features.ts 供后续更大数据量时重试）。
+  const brewLabels = 'data/annotation-batches/batch-brew/labels.jsonl';
+  if (existsSync(brewLabels)) {
+    const seen = new Set(pages.map((p) => p.url.replace(/\/$/, '')));
+    const byId = new Map<string, any>();
+    for (const line of readFileSync(brewLabels, 'utf8').split('\n').filter(Boolean)) {
+      const r = JSON.parse(line);
+      byId.set(r.pageId, r);   // 去重：多轮抓取可能重复 pageId
+    }
+    for (const r of byId.values()) {
+      if (REMOVE.has(r.url) || seen.has(r.url.replace(/\/$/, ''))) continue;
+      // ⚠️ 2026-08-17 配比消融：不再砍 brew homepage（噪声页反而是"拒绝非版本数字"的
+      //    有用样本），占比由 train3_ablate.py 的 --brew-max 控制（默认全量）
+      const f = join(process.cwd(), r.snapshotFile);
+      if (!existsSync(f)) { recallMiss.push({ source: 'brew', pageId: r.pageId, url: r.url, reason: 'missing-html' }); continue; }
+      // brew 页无 historical 标注 → 空集（featureRows 按"同 major 且低于 target"兜底推断）
+      pages.push({ source: 'brew', url: r.url, name: r.name, expected: r.currentVersion, html: readFileSync(f, 'utf8'), histVersions: new Set() });
+    }
+  }
+  // ⚠️ 2026-08-17 新增 logup 官网 changelog 页（+79 页）：
+  //   标签 = logup latest_version 交叉验证（门1: 字面出现 → logup-verified）
+  //         失败时回退页面最高版本（page-latest, changelog 页最新条目即真值）
+  //   标签来源记录在 labelSource，可审计
+  const logupLabels = 'data/annotation-batches/batch-logup/labels.jsonl';
+  if (existsSync(logupLabels)) {
+    const seen = new Set(pages.map((p) => p.url.replace(/\/$/, '')));
+    const byId = new Map<string, any>();
+    for (const line of readFileSync(logupLabels, 'utf8').split('\n').filter(Boolean)) {
+      const r = JSON.parse(line);
+      byId.set(r.pageId, r);
+    }
+    for (const r of byId.values()) {
+      if (REMOVE.has(r.url) || seen.has(r.url.replace(/\/$/, ''))) continue;
+      const f = r.html || join(process.cwd(), r.snapshotFile);
+      if (!existsSync(f)) { recallMiss.push({ source: 'logup', pageId: r.pageId, url: r.url, reason: 'missing-html' }); continue; }
+      pages.push({ source: 'logup', url: r.url, name: r.name, expected: r.expected || r.currentVersion, html: readFileSync(f, 'utf8'), histVersions: new Set() });
+    }
   }
   // 80 基准故意不进入训练：其 expected 多为粗前缀且部分快照已过期/损坏。
   return { pages, conflicts, recallMiss };

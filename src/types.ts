@@ -17,6 +17,8 @@ export interface VersionResult {
   suggestedRegex: string | null;
   matchedContext?: string;
   candidates?: Array<{ version: string; score: number; inDownloadUrl: boolean; scope: string }>;
+  // 完整候选池（无 top-8 截断）：用于失败层归因，区分采集层漏召回 vs 选择层选错
+  allCandidates?: string[];
 }
 
 // ── 更新源识别 ──

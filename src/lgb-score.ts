@@ -1034,5 +1034,9 @@ export async function extractVersionWithLgb(html: string, opts: { versionRegex?:
       inDownloadUrl: candidates.find((c) => c.version === s.version)?.scopes?.includes('download-link') || false,
       scope: candidates.find((c) => c.version === s.version)?.scopes?.[0] || 'body',
     })),
+    // ⚠️ 2026-08-16 candidates 是 top-8 展示截断，不能用来判断"真版本是否被采集到"。
+    // 失败层归因需要完整候选池：allCandidates 给全部采集到的版本号（无截断），
+    // 供 bench/审计区分「采集层漏召回」与「选择层选错」。
+    allCandidates: candidates.map((c) => c.version),
   };
 }
